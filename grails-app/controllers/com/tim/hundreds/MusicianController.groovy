@@ -25,8 +25,7 @@ class MusicianController {
 
     @Transactional
     def save(Musician musicianInstance) {
-      log.info "MusicianInstance"
-      log.info musicianInstance
+      log.info musicianInstance.dump()
         if (musicianInstance == null) {
             notFound()
             return
