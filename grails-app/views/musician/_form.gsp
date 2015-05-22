@@ -65,66 +65,66 @@
 
 </div>
 <fieldset class="embedded"><legend><g:message code="musician.social.label" default="Social" /></legend>
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.facebook', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.facebook', 'error')} required">
 	<label for="social.facebook">
 		<g:message code="musician.social.facebook.label" default="Facebook" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textArea name="facebook" cols="40" rows="5" maxlength="255" value="${socialInstance?.facebook}"/>
+	<g:textField name="facebook" required="" value="${socialInstance?.facebook}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.googlePlus', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.googlePlus', 'error')} required">
 	<label for="social.googlePlus">
 		<g:message code="musician.social.googlePlus.label" default="Google Plus" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textArea name="googlePlus" cols="40" rows="5" maxlength="255" value="${socialInstance?.googlePlus}"/>
+	<g:textField name="googlePlus" required="" value="${socialInstance?.googlePlus}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.instagram', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.instagram', 'error')} required">
 	<label for="social.instagram">
 		<g:message code="musician.social.instagram.label" default="Instagram" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textArea name="instagram" cols="40" rows="5" maxlength="255" value="${socialInstance?.instagram}"/>
+	<g:textField name="instagram" required="" value="${socialInstance?.instagram}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.linkedin', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.linkedin', 'error')} required">
 	<label for="social.linkedin">
 		<g:message code="musician.social.linkedin.label" default="Linkedin" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textArea name="linkedin" cols="40" rows="5" maxlength="255" value="${socialInstance?.linkedin}"/>
+	<g:textField name="linkedin" required="" value="${socialInstance?.linkedin}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.other', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.other', 'error')} required">
 	<label for="social.other">
 		<g:message code="musician.social.other.label" default="Other" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textArea name="other" cols="40" rows="5" maxlength="255" value="${socialInstance?.other}"/>
+	<g:textField name="other" required="" value="${socialInstance?.other}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.twitter', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.twitter', 'error')} required">
 	<label for="social.twitter">
 		<g:message code="musician.social.twitter.label" default="Twitter" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textArea name="twitter" cols="40" rows="5" maxlength="255" value="${socialInstance?.twitter}"/>
+	<g:textField name="twitter" required="" value="${socialInstance?.twitter}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.youtube', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.youtube', 'error')} required">
 	<label for="social.youtube">
 		<g:message code="musician.social.youtube.label" default="Youtube" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textArea name="youtube" cols="40" rows="5" maxlength="255" value="${socialInstance?.youtube}"/>
+	<g:textField name="youtube" required="" value="${socialInstance?.youtube}"/>
 
 </div>
 </fieldset>

@@ -5,7 +5,7 @@ class Musician {
   String history
   String web
 
-  Social social = new Social()
+  Social social
   static embedded = ['social']
 
   static hasMany = [
