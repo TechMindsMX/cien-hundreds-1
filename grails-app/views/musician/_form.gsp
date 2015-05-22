@@ -83,15 +83,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.id', 'error')} required">
-	<label for="social.id">
-		<g:message code="musician.social.id.label" default="Id" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="id" type="number" value="${socialInstance?.id}" required=""/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.instagram', 'error')} ">
 	<label for="social.instagram">
 		<g:message code="musician.social.instagram.label" default="Instagram" />
@@ -125,15 +116,6 @@
 		
 	</label>
 	<g:textArea name="twitter" cols="40" rows="5" maxlength="255" value="${socialInstance?.twitter}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.version', 'error')} required">
-	<label for="social.version">
-		<g:message code="musician.social.version.label" default="Version" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="version" type="number" value="${socialInstance?.version}" required=""/>
 
 </div>
 
