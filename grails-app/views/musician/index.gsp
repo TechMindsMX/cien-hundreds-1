@@ -30,6 +30,8 @@
 					
 						<g:sortableColumn property="web" title="${message(code: 'musician.web.label', default: 'Web')}" />
 					
+						<th><g:message code="musician.social.label" default="Social" /></th>
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -41,6 +43,8 @@
 						<td>${fieldValue(bean: musicianInstance, field: "history")}</td>
 					
 						<td>${fieldValue(bean: musicianInstance, field: "web")}</td>
+					
+						<td>${fieldValue(bean: musicianInstance, field: "social")}</td>
 					
 					</tr>
 				</g:each>

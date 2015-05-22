@@ -64,7 +64,88 @@
 
 
 </div>
+<fieldset class="embedded"><legend><g:message code="musician.social.label" default="Social" /></legend>
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.facebook', 'error')} ">
+	<label for="social.facebook">
+		<g:message code="musician.social.facebook.label" default="Facebook" />
+		
+	</label>
+	<g:textArea name="facebook" cols="40" rows="5" maxlength="255" value="${socialInstance?.facebook}"/>
 
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.googlePlus', 'error')} ">
+	<label for="social.googlePlus">
+		<g:message code="musician.social.googlePlus.label" default="Google Plus" />
+		
+	</label>
+	<g:textArea name="googlePlus" cols="40" rows="5" maxlength="255" value="${socialInstance?.googlePlus}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.id', 'error')} required">
+	<label for="social.id">
+		<g:message code="musician.social.id.label" default="Id" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="id" type="number" value="${socialInstance?.id}" required=""/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.instagram', 'error')} ">
+	<label for="social.instagram">
+		<g:message code="musician.social.instagram.label" default="Instagram" />
+		
+	</label>
+	<g:textArea name="instagram" cols="40" rows="5" maxlength="255" value="${socialInstance?.instagram}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.linkedin', 'error')} ">
+	<label for="social.linkedin">
+		<g:message code="musician.social.linkedin.label" default="Linkedin" />
+		
+	</label>
+	<g:textArea name="linkedin" cols="40" rows="5" maxlength="255" value="${socialInstance?.linkedin}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.other', 'error')} ">
+	<label for="social.other">
+		<g:message code="musician.social.other.label" default="Other" />
+		
+	</label>
+	<g:textArea name="other" cols="40" rows="5" maxlength="255" value="${socialInstance?.other}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.twitter', 'error')} ">
+	<label for="social.twitter">
+		<g:message code="musician.social.twitter.label" default="Twitter" />
+		
+	</label>
+	<g:textArea name="twitter" cols="40" rows="5" maxlength="255" value="${socialInstance?.twitter}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.version', 'error')} required">
+	<label for="social.version">
+		<g:message code="musician.social.version.label" default="Version" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="version" type="number" value="${socialInstance?.version}" required=""/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social.youtube', 'error')} ">
+	<label for="social.youtube">
+		<g:message code="musician.social.youtube.label" default="Youtube" />
+		
+	</label>
+	<g:textArea name="youtube" cols="40" rows="5" maxlength="255" value="${socialInstance?.youtube}"/>
+
+</div>
+</fieldset>
 <div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'videos', 'error')} ">
 	<label for="videos">
 		<g:message code="musician.videos.label" default="Videos" />

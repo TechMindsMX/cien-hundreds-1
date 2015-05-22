@@ -1,15 +1,17 @@
 package com.tim.hundreds
 
 class Musician {
-
   String name
   String history
   String web
 
+  Social social
+  static embedded = ['social']
+
   static hasMany = [
     photos : Photo,
     videos : Video,
-    audios : Audio,
+    audios : Audio
   ]
 
   static constraints = {
@@ -17,5 +19,5 @@ class Musician {
     history blank:false,size:1..1000
     web nullable:true,blank:false,size:1..100
   }
-
 }
+

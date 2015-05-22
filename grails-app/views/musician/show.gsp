@@ -72,6 +72,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${musicianInstance?.social}">
+				<li class="fieldcontain">
+					<span id="social-label" class="property-label"><g:message code="musician.social.label" default="Social" /></span>
+					
+						<span class="property-value" aria-labelledby="social-label"><g:fieldValue bean="${musicianInstance}" field="social"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${musicianInstance?.videos}">
 				<li class="fieldcontain">
 					<span id="videos-label" class="property-label"><g:message code="musician.videos.label" default="Videos" /></span>
