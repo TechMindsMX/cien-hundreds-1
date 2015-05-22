@@ -59,6 +59,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${suggestionInstance?.musician}">
+				<li class="fieldcontain">
+					<span id="musician-label" class="property-label"><g:message code="suggestion.musician.label" default="Musician" /></span>
+					
+						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${suggestionInstance?.musician?.id}">${suggestionInstance?.musician?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:suggestionInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

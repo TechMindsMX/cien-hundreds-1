@@ -101,21 +101,21 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'suggestion', 'error')} required">
-	<label for="suggestion">
-		<g:message code="musician.suggestion.label" default="Suggestion" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="suggestion" name="suggestion.id" from="${com.tim.hundreds.Suggestion.list()}" optionKey="id" required="" value="${musicianInstance?.suggestion?.id}" class="many-to-one"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'suggestions', 'error')} ">
 	<label for="suggestions">
 		<g:message code="musician.suggestions.label" default="Suggestions" />
 		
 	</label>
-	<g:select name="suggestions" from="${com.tim.hundreds.Suggestion.list()}" multiple="multiple" optionKey="id" size="5" value="${musicianInstance?.suggestions*.id}" class="many-to-many"/>
+	
+<ul class="one-to-many">
+<g:each in="${musicianInstance?.suggestions?}" var="s">
+    <li><g:link controller="suggestion" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="suggestion" action="create" params="['musician.id': musicianInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'suggestion.label', default: 'Suggestion')])}</g:link>
+</li>
+</ul>
+
 
 </div>
 

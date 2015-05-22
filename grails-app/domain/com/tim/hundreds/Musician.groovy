@@ -13,7 +13,6 @@ class Musician {
 
   Genre genre
   Social social
-  Suggestion suggestion
   static hasOne = [ social : Social ]
 
   static hasMany = [

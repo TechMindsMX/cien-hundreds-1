@@ -32,6 +32,8 @@
 					
 						<th><g:message code="suggestion.telephone.label" default="Telephone" /></th>
 					
+						<th><g:message code="suggestion.musician.label" default="Musician" /></th>
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -45,6 +47,8 @@
 						<td>${fieldValue(bean: suggestionInstance, field: "email")}</td>
 					
 						<td>${fieldValue(bean: suggestionInstance, field: "telephone")}</td>
+					
+						<td>${fieldValue(bean: suggestionInstance, field: "musician")}</td>
 					
 					</tr>
 				</g:each>

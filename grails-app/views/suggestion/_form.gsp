@@ -29,12 +29,21 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: suggestionInstance, field: 'telephone', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: suggestionInstance, field: 'telephone', 'error')} ">
 	<label for="telephone">
 		<g:message code="suggestion.telephone.label" default="Telephone" />
+		
+	</label>
+	<g:select id="telephone" name="telephone.id" from="${com.tim.hundreds.Telephone.list()}" optionKey="id" value="${suggestionInstance?.telephone?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: suggestionInstance, field: 'musician', 'error')} required">
+	<label for="musician">
+		<g:message code="suggestion.musician.label" default="Musician" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="telephone" name="telephone.id" from="${com.tim.hundreds.Telephone.list()}" optionKey="id" required="" value="${suggestionInstance?.telephone?.id}" class="many-to-one"/>
+	<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionKey="id" required="" value="${suggestionInstance?.musician?.id}" class="many-to-one"/>
 
 </div>
 
