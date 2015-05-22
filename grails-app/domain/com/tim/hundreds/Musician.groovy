@@ -6,7 +6,8 @@ class Musician {
   String web
 
   Social social
-  static embedded = ['social']
+
+  static hasOne = [ social : Social ]
 
   static hasMany = [
     photos : Photo,
@@ -18,6 +19,7 @@ class Musician {
     name blank:false,size:1..100
     history blank:false,size:1..1000
     web nullable:true,blank:false,size:1..100
+    social nullable:true
   }
 
 }

@@ -1,7 +1,6 @@
 package com.tim.hundreds
 
 class Social {
-
   String facebook
   String twitter
   String googlePlus
@@ -9,6 +8,8 @@ class Social {
   String youtube
   String linkedin
   String other
+
+  static belongsTo = [ musician : Musician ]
 
   static constraints = {
     facebook nullable:true,blank:false,size:1..255
@@ -19,5 +20,4 @@ class Social {
     linkedin nullable:true,blank:false,size:1..255
     other nullable:true,blank:false,size:1..255
   }
-
 }

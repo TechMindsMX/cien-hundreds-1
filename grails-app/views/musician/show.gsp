@@ -50,6 +50,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${musicianInstance?.social}">
+				<li class="fieldcontain">
+					<span id="social-label" class="property-label"><g:message code="musician.social.label" default="Social" /></span>
+					
+						<span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" id="${musicianInstance?.social?.id}">${musicianInstance?.social?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${musicianInstance?.audios}">
 				<li class="fieldcontain">
 					<span id="audios-label" class="property-label"><g:message code="musician.audios.label" default="Audios" /></span>
@@ -68,15 +77,6 @@
 						<g:each in="${musicianInstance.photos}" var="p">
 						<span class="property-value" aria-labelledby="photos-label"><g:link controller="photo" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${musicianInstance?.social}">
-				<li class="fieldcontain">
-					<span id="social-label" class="property-label"><g:message code="musician.social.label" default="Social" /></span>
-					
-						<span class="property-value" aria-labelledby="social-label"><g:fieldValue bean="${musicianInstance}" field="social"/></span>
 					
 				</li>
 				</g:if>
