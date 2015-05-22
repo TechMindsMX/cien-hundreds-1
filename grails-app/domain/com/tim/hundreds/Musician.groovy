@@ -13,7 +13,11 @@ class Musician {
 
   Genre genre
   Social social
-  static hasOne = [ social : Social ]
+  Address  address
+  static hasOne = [
+    social : Social,
+    address : Address
+  ]
 
   static hasMany = [
     photos : Photo,
@@ -27,6 +31,7 @@ class Musician {
     history blank:false,size:1..1000
     web nullable:true,blank:false,size:1..100
     social nullable:true
+    address nullable:true
   }
 
 }

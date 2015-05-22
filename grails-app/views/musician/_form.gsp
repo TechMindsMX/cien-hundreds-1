@@ -38,6 +38,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'address', 'error')} ">
+	<label for="address">
+		<g:message code="musician.address.label" default="Address" />
+		
+	</label>
+	<g:select id="address" name="address.id" from="${com.tim.hundreds.Address.list()}" optionKey="id" value="${musicianInstance?.address?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'audios', 'error')} ">
 	<label for="audios">
 		<g:message code="musician.audios.label" default="Audios" />

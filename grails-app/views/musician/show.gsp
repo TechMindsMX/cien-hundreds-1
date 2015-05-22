@@ -59,6 +59,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${musicianInstance?.address}">
+				<li class="fieldcontain">
+					<span id="address-label" class="property-label"><g:message code="musician.address.label" default="Address" /></span>
+					
+						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${musicianInstance?.address?.id}">${musicianInstance?.address?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${musicianInstance?.audios}">
 				<li class="fieldcontain">
 					<span id="audios-label" class="property-label"><g:message code="musician.audios.label" default="Audios" /></span>
