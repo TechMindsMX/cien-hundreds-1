@@ -32,6 +32,10 @@
 					
 						<th><g:message code="musician.social.label" default="Social" /></th>
 					
+						<g:sortableColumn property="dateCreated" title="${message(code: 'musician.dateCreated.label', default: 'Date Created')}" />
+					
+						<g:sortableColumn property="formed" title="${message(code: 'musician.formed.label', default: 'Formed')}" />
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -45,6 +49,10 @@
 						<td>${fieldValue(bean: musicianInstance, field: "web")}</td>
 					
 						<td>${fieldValue(bean: musicianInstance, field: "social")}</td>
+					
+						<td><g:formatDate date="${musicianInstance.dateCreated}" /></td>
+					
+						<td><g:formatDate date="${musicianInstance.formed}" /></td>
 					
 					</tr>
 				</g:each>

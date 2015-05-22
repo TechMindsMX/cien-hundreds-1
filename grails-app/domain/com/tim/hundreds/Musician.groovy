@@ -5,8 +5,13 @@ class Musician {
   String history
   String web
 
-  Social social
+  Date dateCreated
+  Date lastUpdated
+  Date formed
 
+  Boolean hasManager
+
+  Social social
   static hasOne = [ social : Social ]
 
   static hasMany = [

@@ -70,6 +70,42 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${musicianInstance?.dateCreated}">
+				<li class="fieldcontain">
+					<span id="dateCreated-label" class="property-label"><g:message code="musician.dateCreated.label" default="Date Created" /></span>
+					
+						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${musicianInstance?.dateCreated}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${musicianInstance?.formed}">
+				<li class="fieldcontain">
+					<span id="formed-label" class="property-label"><g:message code="musician.formed.label" default="Formed" /></span>
+					
+						<span class="property-value" aria-labelledby="formed-label"><g:formatDate date="${musicianInstance?.formed}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${musicianInstance?.hasManager}">
+				<li class="fieldcontain">
+					<span id="hasManager-label" class="property-label"><g:message code="musician.hasManager.label" default="Has Manager" /></span>
+					
+						<span class="property-value" aria-labelledby="hasManager-label"><g:formatBoolean boolean="${musicianInstance?.hasManager}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${musicianInstance?.lastUpdated}">
+				<li class="fieldcontain">
+					<span id="lastUpdated-label" class="property-label"><g:message code="musician.lastUpdated.label" default="Last Updated" /></span>
+					
+						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${musicianInstance?.lastUpdated}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${musicianInstance?.photos}">
 				<li class="fieldcontain">
 					<span id="photos-label" class="property-label"><g:message code="musician.photos.label" default="Photos" /></span>

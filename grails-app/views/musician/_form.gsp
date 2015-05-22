@@ -56,6 +56,24 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'formed', 'error')} required">
+	<label for="formed">
+		<g:message code="musician.formed.label" default="Formed" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:datePicker name="formed" precision="day"  value="${musicianInstance?.formed}"  />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'hasManager', 'error')} ">
+	<label for="hasManager">
+		<g:message code="musician.hasManager.label" default="Has Manager" />
+		
+	</label>
+	<g:checkBox name="hasManager" value="${musicianInstance?.hasManager}" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'photos', 'error')} ">
 	<label for="photos">
 		<g:message code="musician.photos.label" default="Photos" />
