@@ -13,12 +13,14 @@ class Musician {
 
   Genre genre
   Social social
+  Suggestion suggestion
   static hasOne = [ social : Social ]
 
   static hasMany = [
     photos : Photo,
     videos : Video,
-    audios : Audio
+    audios : Audio,
+    suggestions : Suggestion
   ]
 
   static constraints = {

@@ -101,6 +101,24 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'suggestion', 'error')} required">
+	<label for="suggestion">
+		<g:message code="musician.suggestion.label" default="Suggestion" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="suggestion" name="suggestion.id" from="${com.tim.hundreds.Suggestion.list()}" optionKey="id" required="" value="${musicianInstance?.suggestion?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'suggestions', 'error')} ">
+	<label for="suggestions">
+		<g:message code="musician.suggestions.label" default="Suggestions" />
+		
+	</label>
+	<g:select name="suggestions" from="${com.tim.hundreds.Suggestion.list()}" multiple="multiple" optionKey="id" size="5" value="${musicianInstance?.suggestions*.id}" class="many-to-many"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'videos', 'error')} ">
 	<label for="videos">
 		<g:message code="musician.videos.label" default="Videos" />

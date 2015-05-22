@@ -126,6 +126,26 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${musicianInstance?.suggestion}">
+				<li class="fieldcontain">
+					<span id="suggestion-label" class="property-label"><g:message code="musician.suggestion.label" default="Suggestion" /></span>
+					
+						<span class="property-value" aria-labelledby="suggestion-label"><g:link controller="suggestion" action="show" id="${musicianInstance?.suggestion?.id}">${musicianInstance?.suggestion?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${musicianInstance?.suggestions}">
+				<li class="fieldcontain">
+					<span id="suggestions-label" class="property-label"><g:message code="musician.suggestions.label" default="Suggestions" /></span>
+					
+						<g:each in="${musicianInstance.suggestions}" var="s">
+						<span class="property-value" aria-labelledby="suggestions-label"><g:link controller="suggestion" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${musicianInstance?.videos}">
 				<li class="fieldcontain">
 					<span id="videos-label" class="property-label"><g:message code="musician.videos.label" default="Videos" /></span>
