@@ -88,6 +88,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${musicianInstance?.genre}">
+				<li class="fieldcontain">
+					<span id="genre-label" class="property-label"><g:message code="musician.genre.label" default="Genre" /></span>
+					
+						<span class="property-value" aria-labelledby="genre-label"><g:fieldValue bean="${musicianInstance}" field="genre"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${musicianInstance?.hasManager}">
 				<li class="fieldcontain">
 					<span id="hasManager-label" class="property-label"><g:message code="musician.hasManager.label" default="Has Manager" /></span>

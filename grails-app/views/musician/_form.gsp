@@ -65,6 +65,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'genre', 'error')} required">
+	<label for="genre">
+		<g:message code="musician.genre.label" default="Genre" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select name="genre" from="${com.tim.hundreds.Genre?.values()}" keys="${com.tim.hundreds.Genre.values()*.name()}" required="" value="${musicianInstance?.genre?.name()}" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'hasManager', 'error')} ">
 	<label for="hasManager">
 		<g:message code="musician.hasManager.label" default="Has Manager" />

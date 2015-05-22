@@ -11,6 +11,7 @@ class Musician {
 
   Boolean hasManager
 
+  Genre genre
   Social social
   static hasOne = [ social : Social ]
 
