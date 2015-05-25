@@ -30,7 +30,7 @@
 					
 						<g:sortableColumn property="email" title="${message(code: 'suggestion.email.label', default: 'Email')}" />
 					
-						<th><g:message code="suggestion.telephone.label" default="Telephone" /></th>
+						<g:sortableColumn property="phone" title="${message(code: 'suggestion.phone.label', default: 'Phone')}" />
 					
 						<th><g:message code="suggestion.musician.label" default="Musician" /></th>
 					
@@ -46,7 +46,7 @@
 					
 						<td>${fieldValue(bean: suggestionInstance, field: "email")}</td>
 					
-						<td>${fieldValue(bean: suggestionInstance, field: "telephone")}</td>
+						<td>${fieldValue(bean: suggestionInstance, field: "phone")}</td>
 					
 						<td>${fieldValue(bean: suggestionInstance, field: "musician")}</td>
 					

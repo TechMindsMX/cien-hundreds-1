@@ -41,15 +41,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${telephoneInstance?.suggesion}">
-				<li class="fieldcontain">
-					<span id="suggesion-label" class="property-label"><g:message code="telephone.suggesion.label" default="Suggesion" /></span>
-					
-						<span class="property-value" aria-labelledby="suggesion-label"><g:link controller="suggestion" action="show" id="${telephoneInstance?.suggesion?.id}">${telephoneInstance?.suggesion?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${telephoneInstance?.type}">
 				<li class="fieldcontain">
 					<span id="type-label" class="property-label"><g:message code="telephone.type.label" default="Type" /></span>

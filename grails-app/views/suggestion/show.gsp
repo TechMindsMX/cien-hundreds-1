@@ -50,11 +50,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${suggestionInstance?.telephone}">
+				<g:if test="${suggestionInstance?.phone}">
 				<li class="fieldcontain">
-					<span id="telephone-label" class="property-label"><g:message code="suggestion.telephone.label" default="Telephone" /></span>
+					<span id="phone-label" class="property-label"><g:message code="suggestion.phone.label" default="Phone" /></span>
 					
-						<span class="property-value" aria-labelledby="telephone-label"><g:link controller="telephone" action="show" id="${suggestionInstance?.telephone?.id}">${suggestionInstance?.telephone?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="phone-label"><g:fieldValue bean="${suggestionInstance}" field="phone"/></span>
 					
 				</li>
 				</g:if>

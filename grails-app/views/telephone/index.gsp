@@ -28,8 +28,6 @@
 					
 						<th><g:message code="telephone.contact.label" default="Contact" /></th>
 					
-						<th><g:message code="telephone.suggesion.label" default="Suggesion" /></th>
-					
 						<g:sortableColumn property="type" title="${message(code: 'telephone.type.label', default: 'Type')}" />
 					
 					</tr>
@@ -41,8 +39,6 @@
 						<td><g:link action="show" id="${telephoneInstance.id}">${fieldValue(bean: telephoneInstance, field: "phone")}</g:link></td>
 					
 						<td>${fieldValue(bean: telephoneInstance, field: "contact")}</td>
-					
-						<td>${fieldValue(bean: telephoneInstance, field: "suggesion")}</td>
 					
 						<td>${fieldValue(bean: telephoneInstance, field: "type")}</td>
 					

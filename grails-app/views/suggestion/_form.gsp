@@ -29,12 +29,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: suggestionInstance, field: 'telephone', 'error')} ">
-	<label for="telephone">
-		<g:message code="suggestion.telephone.label" default="Telephone" />
+<div class="fieldcontain ${hasErrors(bean: suggestionInstance, field: 'phone', 'error')} ">
+	<label for="phone">
+		<g:message code="suggestion.phone.label" default="Phone" />
 		
 	</label>
-	<g:select id="telephone" name="telephone.id" from="${com.tim.hundreds.Telephone.list()}" optionKey="id" value="${suggestionInstance?.telephone?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:textField name="phone" maxlength="10" pattern="${suggestionInstance.constraints.phone.matches}" value="${suggestionInstance?.phone}"/>
 
 </div>
 

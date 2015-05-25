@@ -20,15 +20,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: telephoneInstance, field: 'suggesion', 'error')} required">
-	<label for="suggesion">
-		<g:message code="telephone.suggesion.label" default="Suggesion" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="suggesion" name="suggesion.id" from="${com.tim.hundreds.Suggestion.list()}" optionKey="id" required="" value="${telephoneInstance?.suggesion?.id}" class="many-to-one"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: telephoneInstance, field: 'type', 'error')} required">
 	<label for="type">
 		<g:message code="telephone.type.label" default="Type" />
