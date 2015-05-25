@@ -32,6 +32,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${telephoneInstance?.contact}">
+				<li class="fieldcontain">
+					<span id="contact-label" class="property-label"><g:message code="telephone.contact.label" default="Contact" /></span>
+					
+						<span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" id="${telephoneInstance?.contact?.id}">${telephoneInstance?.contact?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${telephoneInstance?.suggesion}">
 				<li class="fieldcontain">
 					<span id="suggesion-label" class="property-label"><g:message code="telephone.suggesion.label" default="Suggesion" /></span>

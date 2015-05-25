@@ -1,0 +1,76 @@
+<%@ page import="com.tim.hundreds.Contact" %>
+
+
+
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'emails', 'error')} ">
+	<label for="emails">
+		<g:message code="contact.emails.label" default="Emails" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${contactInstance?.emails?}" var="e">
+    <li><g:link controller="email" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="email" action="create" params="['contact.id': contactInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'email.label', default: 'Email')])}</g:link>
+</li>
+</ul>
+
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'firstName', 'error')} required">
+	<label for="firstName">
+		<g:message code="contact.firstName.label" default="First Name" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="firstName" required="" value="${contactInstance?.firstName}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'lastName', 'error')} required">
+	<label for="lastName">
+		<g:message code="contact.lastName.label" default="Last Name" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="lastName" required="" value="${contactInstance?.lastName}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'middleName', 'error')} required">
+	<label for="middleName">
+		<g:message code="contact.middleName.label" default="Middle Name" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="middleName" required="" value="${contactInstance?.middleName}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'role', 'error')} required">
+	<label for="role">
+		<g:message code="contact.role.label" default="Role" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select name="role" from="${com.tim.hundreds.Role?.values()}" keys="${com.tim.hundreds.Role.values()*.name()}" required="" value="${contactInstance?.role?.name()}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'telephones', 'error')} ">
+	<label for="telephones">
+		<g:message code="contact.telephones.label" default="Telephones" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${contactInstance?.telephones?}" var="t">
+    <li><g:link controller="telephone" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="telephone" action="create" params="['contact.id': contactInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'telephone.label', default: 'Telephone')])}</g:link>
+</li>
+</ul>
+
+
+</div>
+
