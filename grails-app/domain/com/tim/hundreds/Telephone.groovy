@@ -6,7 +6,6 @@ class Telephone {
   TelephoneType type
 
   static belongsTo = [
-    suggesion : Suggestion,
     contact : Contact
   ]
 

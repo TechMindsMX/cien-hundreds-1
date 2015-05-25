@@ -13,8 +13,6 @@ class Contact {
   ]
 
   static constraints = {
-
-
   }
 
 }
