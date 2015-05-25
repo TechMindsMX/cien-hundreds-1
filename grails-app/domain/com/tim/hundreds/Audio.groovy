@@ -2,14 +2,14 @@ package com.tim.hundreds
 
 class Audio {
 
-  String path
+  String link
 
   static belongsTo = [
     musician : Musician
   ]
 
   static constraints = {
-    path blank:false,size:1..255
+    link blank:false,size:1..100
   }
 
 }

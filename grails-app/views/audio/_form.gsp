@@ -2,12 +2,12 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: audioInstance, field: 'path', 'error')} required">
-	<label for="path">
-		<g:message code="audio.path.label" default="Path" />
+<div class="fieldcontain ${hasErrors(bean: audioInstance, field: 'link', 'error')} required">
+	<label for="link">
+		<g:message code="audio.link.label" default="Link" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textArea name="path" cols="40" rows="5" maxlength="255" required="" value="${audioInstance?.path}"/>
+	<g:textField name="link" maxlength="100" required="" value="${audioInstance?.link}"/>
 
 </div>
 
