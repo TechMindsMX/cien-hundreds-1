@@ -23,11 +23,11 @@
 			</g:if>
 			<ol class="property-list audio">
 			
-				<g:if test="${audioInstance?.path}">
+				<g:if test="${audioInstance?.link}">
 				<li class="fieldcontain">
-					<span id="path-label" class="property-label"><g:message code="audio.path.label" default="Path" /></span>
+					<span id="link-label" class="property-label"><g:message code="audio.link.label" default="Link" /></span>
 					
-						<span class="property-value" aria-labelledby="path-label"><g:fieldValue bean="${audioInstance}" field="path"/></span>
+						<span class="property-value" aria-labelledby="link-label"><g:fieldValue bean="${audioInstance}" field="link"/></span>
 					
 				</li>
 				</g:if>

@@ -7,7 +7,7 @@
 		<g:message code="social.facebook.label" default="Facebook" />
 		
 	</label>
-	<g:textArea name="facebook" cols="40" rows="5" maxlength="255" value="${socialInstance?.facebook}"/>
+	<g:textField name="facebook" maxlength="100" value="${socialInstance?.facebook}"/>
 
 </div>
 
@@ -16,7 +16,7 @@
 		<g:message code="social.twitter.label" default="Twitter" />
 		
 	</label>
-	<g:textArea name="twitter" cols="40" rows="5" maxlength="255" value="${socialInstance?.twitter}"/>
+	<g:textField name="twitter" maxlength="100" value="${socialInstance?.twitter}"/>
 
 </div>
 
@@ -25,7 +25,7 @@
 		<g:message code="social.googlePlus.label" default="Google Plus" />
 		
 	</label>
-	<g:textArea name="googlePlus" cols="40" rows="5" maxlength="255" value="${socialInstance?.googlePlus}"/>
+	<g:textField name="googlePlus" maxlength="100" value="${socialInstance?.googlePlus}"/>
 
 </div>
 
@@ -34,7 +34,7 @@
 		<g:message code="social.instagram.label" default="Instagram" />
 		
 	</label>
-	<g:textArea name="instagram" cols="40" rows="5" maxlength="255" value="${socialInstance?.instagram}"/>
+	<g:textField name="instagram" maxlength="100" value="${socialInstance?.instagram}"/>
 
 </div>
 
@@ -43,7 +43,7 @@
 		<g:message code="social.youtube.label" default="Youtube" />
 		
 	</label>
-	<g:textArea name="youtube" cols="40" rows="5" maxlength="255" value="${socialInstance?.youtube}"/>
+	<g:textField name="youtube" maxlength="100" value="${socialInstance?.youtube}"/>
 
 </div>
 
@@ -52,7 +52,7 @@
 		<g:message code="social.linkedin.label" default="Linkedin" />
 		
 	</label>
-	<g:textArea name="linkedin" cols="40" rows="5" maxlength="255" value="${socialInstance?.linkedin}"/>
+	<g:textField name="linkedin" maxlength="100" value="${socialInstance?.linkedin}"/>
 
 </div>
 
@@ -61,7 +61,7 @@
 		<g:message code="social.other.label" default="Other" />
 		
 	</label>
-	<g:textArea name="other" cols="40" rows="5" maxlength="255" value="${socialInstance?.other}"/>
+	<g:textField name="other" maxlength="100" value="${socialInstance?.other}"/>
 
 </div>
 

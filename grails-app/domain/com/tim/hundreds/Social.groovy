@@ -12,12 +12,12 @@ class Social {
   static belongsTo = [ musician : Musician ]
 
   static constraints = {
-    facebook nullable:true,blank:false,size:1..255
-    twitter nullable:true,blank:false,size:1..255
-    googlePlus nullable:true,blank:false,size:1..255
-    instagram nullable:true,blank:false,size:1..255
-    youtube nullable:true,blank:false,size:1..255
-    linkedin nullable:true,blank:false,size:1..255
-    other nullable:true,blank:false,size:1..255
+    facebook nullable:true,blank:false,size:1..100
+    twitter nullable:true,blank:false,size:1..100
+    googlePlus nullable:true,blank:false,size:1..100
+    instagram nullable:true,blank:false,size:1..100
+    youtube nullable:true,blank:false,size:1..100
+    linkedin nullable:true,blank:false,size:1..100
+    other nullable:true,blank:false,size:1..100
   }
 }
