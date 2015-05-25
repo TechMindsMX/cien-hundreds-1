@@ -23,22 +23,20 @@
 			</g:if>
 			<ol class="property-list contact">
 			
-				<g:if test="${contactInstance?.emails}">
-				<li class="fieldcontain">
-					<span id="emails-label" class="property-label"><g:message code="contact.emails.label" default="Emails" /></span>
-					
-						<g:each in="${contactInstance.emails}" var="e">
-						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${contactInstance?.firstName}">
 				<li class="fieldcontain">
 					<span id="firstName-label" class="property-label"><g:message code="contact.firstName.label" default="First Name" /></span>
 					
 						<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${contactInstance}" field="firstName"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${contactInstance?.middleName}">
+				<li class="fieldcontain">
+					<span id="middleName-label" class="property-label"><g:message code="contact.middleName.label" default="Middle Name" /></span>
+					
+						<span class="property-value" aria-labelledby="middleName-label"><g:fieldValue bean="${contactInstance}" field="middleName"/></span>
 					
 				</li>
 				</g:if>
@@ -52,11 +50,31 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${contactInstance?.middleName}">
+				<g:if test="${contactInstance?.other}">
 				<li class="fieldcontain">
-					<span id="middleName-label" class="property-label"><g:message code="contact.middleName.label" default="Middle Name" /></span>
+					<span id="other-label" class="property-label"><g:message code="contact.other.label" default="Other" /></span>
 					
-						<span class="property-value" aria-labelledby="middleName-label"><g:fieldValue bean="${contactInstance}" field="middleName"/></span>
+						<span class="property-value" aria-labelledby="other-label"><g:fieldValue bean="${contactInstance}" field="other"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${contactInstance?.social}">
+				<li class="fieldcontain">
+					<span id="social-label" class="property-label"><g:message code="contact.social.label" default="Social" /></span>
+					
+						<span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" id="${contactInstance?.social?.id}">${contactInstance?.social?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${contactInstance?.emails}">
+				<li class="fieldcontain">
+					<span id="emails-label" class="property-label"><g:message code="contact.emails.label" default="Emails" /></span>
+					
+						<g:each in="${contactInstance.emails}" var="e">
+						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>

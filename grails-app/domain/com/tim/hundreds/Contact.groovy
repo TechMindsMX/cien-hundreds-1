@@ -4,8 +4,15 @@ class Contact {
   String firstName
   String middleName
   String lastName
+  String other
 
   Role role
+
+  static belongsTo = [ musician : Musician ]
+
+  static hasOne = [
+    social : Social
+  ]
 
   static hasMany = [
     emails : Email,
@@ -13,6 +20,11 @@ class Contact {
   ]
 
   static constraints = {
+    firstName blank:false,size:1..100
+    middleName blank:false,size:1..100
+    lastName blank:false,size:1..100
+    other nullable:true,blank:false,size:1..50
+    social nullable:true
   }
 
 }

@@ -24,7 +24,8 @@ class Musician {
     photos : Photo,
     videos : Video,
     audios : Audio,
-    suggestions : Suggestion
+    suggestions : Suggestion,
+    contacts: Contact
   ]
 
   static constraints = {

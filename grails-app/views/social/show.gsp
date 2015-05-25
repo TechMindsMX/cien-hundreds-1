@@ -86,6 +86,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${socialInstance?.contact}">
+				<li class="fieldcontain">
+					<span id="contact-label" class="property-label"><g:message code="social.contact.label" default="Contact" /></span>
+					
+						<span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" id="${socialInstance?.contact?.id}">${socialInstance?.contact?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${socialInstance?.musician}">
 				<li class="fieldcontain">
 					<span id="musician-label" class="property-label"><g:message code="social.musician.label" default="Musician" /></span>
