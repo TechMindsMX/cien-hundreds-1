@@ -29,6 +29,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'notes', 'error')} ">
+	<label for="notes">
+		<g:message code="musician.notes.label" default="Notes" />
+		
+	</label>
+	<g:textArea name="notes" cols="40" rows="5" maxlength="1000" value="${musicianInstance?.notes}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social', 'error')} ">
 	<label for="social">
 		<g:message code="musician.social.label" default="Social" />
@@ -44,6 +53,15 @@
 		
 	</label>
 	<g:select id="address" name="address.id" from="${com.tim.hundreds.Address.list()}" optionKey="id" value="${musicianInstance?.address?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'datosFiscales', 'error')} ">
+	<label for="datosFiscales">
+		<g:message code="musician.datosFiscales.label" default="Datos Fiscales" />
+		
+	</label>
+	<g:select id="datosFiscales" name="datosFiscales.id" from="${com.tim.hundreds.DatosFiscales.list()}" optionKey="id" value="${musicianInstance?.datosFiscales?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 

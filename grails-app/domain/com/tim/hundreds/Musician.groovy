@@ -4,6 +4,7 @@ class Musician {
   String name
   String history
   String web
+  String notes
 
   Date dateCreated
   Date lastUpdated
@@ -16,7 +17,8 @@ class Musician {
   Address  address
   static hasOne = [
     social : Social,
-    address : Address
+    address : Address,
+    datosFiscales : DatosFiscales
   ]
 
   static hasMany = [
@@ -30,8 +32,10 @@ class Musician {
     name blank:false,size:1..100
     history blank:false,size:1..1000
     web nullable:true,blank:false,size:1..100
+    notes nullable:true,blank:false,size:1..1000
     social nullable:true
     address nullable:true
+    datosFiscales nullable:true
   }
 
 }

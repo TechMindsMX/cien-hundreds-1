@@ -50,6 +50,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${musicianInstance?.notes}">
+				<li class="fieldcontain">
+					<span id="notes-label" class="property-label"><g:message code="musician.notes.label" default="Notes" /></span>
+					
+						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${musicianInstance}" field="notes"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${musicianInstance?.social}">
 				<li class="fieldcontain">
 					<span id="social-label" class="property-label"><g:message code="musician.social.label" default="Social" /></span>
@@ -64,6 +73,15 @@
 					<span id="address-label" class="property-label"><g:message code="musician.address.label" default="Address" /></span>
 					
 						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${musicianInstance?.address?.id}">${musicianInstance?.address?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${musicianInstance?.datosFiscales}">
+				<li class="fieldcontain">
+					<span id="datosFiscales-label" class="property-label"><g:message code="musician.datosFiscales.label" default="Datos Fiscales" /></span>
+					
+						<span class="property-value" aria-labelledby="datosFiscales-label"><g:link controller="datosFiscales" action="show" id="${musicianInstance?.datosFiscales?.id}">${musicianInstance?.datosFiscales?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

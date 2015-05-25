@@ -30,11 +30,11 @@
 					
 						<g:sortableColumn property="web" title="${message(code: 'musician.web.label', default: 'Web')}" />
 					
+						<g:sortableColumn property="notes" title="${message(code: 'musician.notes.label', default: 'Notes')}" />
+					
 						<th><g:message code="musician.social.label" default="Social" /></th>
 					
 						<th><g:message code="musician.address.label" default="Address" /></th>
-					
-						<g:sortableColumn property="dateCreated" title="${message(code: 'musician.dateCreated.label', default: 'Date Created')}" />
 					
 					</tr>
 				</thead>
@@ -48,11 +48,11 @@
 					
 						<td>${fieldValue(bean: musicianInstance, field: "web")}</td>
 					
+						<td>${fieldValue(bean: musicianInstance, field: "notes")}</td>
+					
 						<td>${fieldValue(bean: musicianInstance, field: "social")}</td>
 					
 						<td>${fieldValue(bean: musicianInstance, field: "address")}</td>
-					
-						<td><g:formatDate date="${musicianInstance.dateCreated}" /></td>
 					
 					</tr>
 				</g:each>

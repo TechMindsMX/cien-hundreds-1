@@ -1,0 +1,104 @@
+package com.tim.hundreds
+
+
+
+import static org.springframework.http.HttpStatus.*
+import grails.transaction.Transactional
+
+@Transactional(readOnly = true)
+class DatosFiscalesController {
+
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+    def index(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond DatosFiscales.list(params), model:[datosFiscalesInstanceCount: DatosFiscales.count()]
+    }
+
+    def show(DatosFiscales datosFiscalesInstance) {
+        respond datosFiscalesInstance
+    }
+
+    def create() {
+        respond new DatosFiscales(params)
+    }
+
+    @Transactional
+    def save(DatosFiscales datosFiscalesInstance) {
+        if (datosFiscalesInstance == null) {
+            notFound()
+            return
+        }
+
+        if (datosFiscalesInstance.hasErrors()) {
+            respond datosFiscalesInstance.errors, view:'create'
+            return
+        }
+
+        datosFiscalesInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'datosFiscales.label', default: 'DatosFiscales'), datosFiscalesInstance.id])
+                redirect datosFiscalesInstance
+            }
+            '*' { respond datosFiscalesInstance, [status: CREATED] }
+        }
+    }
+
+    def edit(DatosFiscales datosFiscalesInstance) {
+        respond datosFiscalesInstance
+    }
+
+    @Transactional
+    def update(DatosFiscales datosFiscalesInstance) {
+        if (datosFiscalesInstance == null) {
+            notFound()
+            return
+        }
+
+        if (datosFiscalesInstance.hasErrors()) {
+            respond datosFiscalesInstance.errors, view:'edit'
+            return
+        }
+
+        datosFiscalesInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'DatosFiscales.label', default: 'DatosFiscales'), datosFiscalesInstance.id])
+                redirect datosFiscalesInstance
+            }
+            '*'{ respond datosFiscalesInstance, [status: OK] }
+        }
+    }
+
+    @Transactional
+    def delete(DatosFiscales datosFiscalesInstance) {
+
+        if (datosFiscalesInstance == null) {
+            notFound()
+            return
+        }
+
+        datosFiscalesInstance.delete flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'DatosFiscales.label', default: 'DatosFiscales'), datosFiscalesInstance.id])
+                redirect action:"index", method:"GET"
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+
+    protected void notFound() {
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'datosFiscales.label', default: 'DatosFiscales'), params.id])
+                redirect action: "index", method: "GET"
+            }
+            '*'{ render status: NOT_FOUND }
+        }
+    }
+}
