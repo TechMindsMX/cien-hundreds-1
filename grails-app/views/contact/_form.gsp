@@ -47,6 +47,24 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'biography', 'error')} required">
+	<label for="biography">
+		<g:message code="contact.biography.label" default="Biography" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="biography" required="" value="${contactInstance?.biography}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'birthDate', 'error')} required">
+	<label for="birthDate">
+		<g:message code="contact.birthDate.label" default="Birth Date" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:datePicker name="birthDate" precision="day"  value="${contactInstance?.birthDate}"  />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'emails', 'error')} ">
 	<label for="emails">
 		<g:message code="contact.emails.label" default="Emails" />
@@ -65,6 +83,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'entryDate', 'error')} required">
+	<label for="entryDate">
+		<g:message code="contact.entryDate.label" default="Entry Date" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:datePicker name="entryDate" precision="day"  value="${contactInstance?.entryDate}"  />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'musician', 'error')} required">
 	<label for="musician">
 		<g:message code="contact.musician.label" default="Musician" />
@@ -74,12 +101,30 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'nationality', 'error')} required">
+	<label for="nationality">
+		<g:message code="contact.nationality.label" default="Nationality" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="nationality" required="" value="${contactInstance?.nationality}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'role', 'error')} required">
 	<label for="role">
 		<g:message code="contact.role.label" default="Role" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select name="role" from="${com.tim.hundreds.Role?.values()}" keys="${com.tim.hundreds.Role.values()*.name()}" required="" value="${contactInstance?.role?.name()}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'style', 'error')} required">
+	<label for="style">
+		<g:message code="contact.style.label" default="Style" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="style" required="" value="${contactInstance?.style}"/>
 
 </div>
 

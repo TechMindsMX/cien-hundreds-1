@@ -5,6 +5,12 @@ class Contact {
   String middleName
   String lastName
   String other
+  String nationality
+  String biography
+  String style
+
+  Date birthDate
+  Date entryDate
 
   Role role
   Social social
