@@ -7,8 +7,8 @@ class BootStrap {
   def init = { servletContext ->
     def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
 
-    def user = new User(username: 'josdem', password: '12345678')
-    def profile = new Profile(email:'me@techminds.com.mx', firstName:'me', middleName:'middleName', lastName:'lastName')
+    def user = new User(username: 'cien', password: '12345678')
+    def  profile = new Profile(email:'me@techminds.com.mx', firstName:'me', middleName:'middleName', lastName:'lastName')
     user.profile = profile
     user.save(flush: true)
 
