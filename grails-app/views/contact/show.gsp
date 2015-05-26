@@ -59,11 +59,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${contactInstance?.social}">
+				<g:if test="${contactInstance?.nationality}">
 				<li class="fieldcontain">
-					<span id="social-label" class="property-label"><g:message code="contact.social.label" default="Social" /></span>
+					<span id="nationality-label" class="property-label"><g:message code="contact.nationality.label" default="Nationality" /></span>
 					
-						<span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" id="${contactInstance?.social?.id}">${contactInstance?.social?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="nationality-label"><g:fieldValue bean="${contactInstance}" field="nationality"/></span>
 					
 				</li>
 				</g:if>
@@ -73,6 +73,24 @@
 					<span id="biography-label" class="property-label"><g:message code="contact.biography.label" default="Biography" /></span>
 					
 						<span class="property-value" aria-labelledby="biography-label"><g:fieldValue bean="${contactInstance}" field="biography"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${contactInstance?.style}">
+				<li class="fieldcontain">
+					<span id="style-label" class="property-label"><g:message code="contact.style.label" default="Style" /></span>
+					
+						<span class="property-value" aria-labelledby="style-label"><g:fieldValue bean="${contactInstance}" field="style"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${contactInstance?.social}">
+				<li class="fieldcontain">
+					<span id="social-label" class="property-label"><g:message code="contact.social.label" default="Social" /></span>
+					
+						<span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" id="${contactInstance?.social?.id}">${contactInstance?.social?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -115,29 +133,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${contactInstance?.nationality}">
-				<li class="fieldcontain">
-					<span id="nationality-label" class="property-label"><g:message code="contact.nationality.label" default="Nationality" /></span>
-					
-						<span class="property-value" aria-labelledby="nationality-label"><g:fieldValue bean="${contactInstance}" field="nationality"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${contactInstance?.role}">
 				<li class="fieldcontain">
 					<span id="role-label" class="property-label"><g:message code="contact.role.label" default="Role" /></span>
 					
 						<span class="property-value" aria-labelledby="role-label"><g:fieldValue bean="${contactInstance}" field="role"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${contactInstance?.style}">
-				<li class="fieldcontain">
-					<span id="style-label" class="property-label"><g:message code="contact.style.label" default="Style" /></span>
-					
-						<span class="property-value" aria-labelledby="style-label"><g:fieldValue bean="${contactInstance}" field="style"/></span>
 					
 				</li>
 				</g:if>

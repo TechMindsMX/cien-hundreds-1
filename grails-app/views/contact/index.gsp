@@ -32,7 +32,7 @@
 					
 						<g:sortableColumn property="other" title="${message(code: 'contact.other.label', default: 'Other')}" />
 					
-						<th><g:message code="contact.social.label" default="Social" /></th>
+						<g:sortableColumn property="nationality" title="${message(code: 'contact.nationality.label', default: 'Nationality')}" />
 					
 						<g:sortableColumn property="biography" title="${message(code: 'contact.biography.label', default: 'Biography')}" />
 					
@@ -50,7 +50,7 @@
 					
 						<td>${fieldValue(bean: contactInstance, field: "other")}</td>
 					
-						<td>${fieldValue(bean: contactInstance, field: "social")}</td>
+						<td>${fieldValue(bean: contactInstance, field: "nationality")}</td>
 					
 						<td>${fieldValue(bean: contactInstance, field: "biography")}</td>
 					
