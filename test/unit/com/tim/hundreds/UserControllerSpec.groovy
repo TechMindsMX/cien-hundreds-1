@@ -8,13 +8,20 @@ import spock.lang.Specification
  */
 @TestFor(UserController)
 class UserControllerSpec extends Specification {
+  UserService userService = Mock(UserService)
 
-    def setup() {
-    }
+  def setup() {
+    controller.userService = userService
+  }
 
-    def cleanup() {
-    }
-
-    void "test something"() {
-    }
+  void "should create user"() {
+  given:
+    def user = new User()
+    user.username = "josdem"
+    user.password = "password"
+  when:
+    controller.create(user)
+  then:
+    1 * userService.create(user)
+  }
 }
