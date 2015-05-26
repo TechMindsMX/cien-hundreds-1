@@ -65,6 +65,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'musician', 'error')} required">
+	<label for="musician">
+		<g:message code="contact.musician.label" default="Musician" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionKey="id" required="" value="${contactInstance?.musician?.id}" class="many-to-one"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'role', 'error')} required">
 	<label for="role">
 		<g:message code="contact.role.label" default="Role" />

@@ -34,7 +34,7 @@
 					
 						<th><g:message code="contact.social.label" default="Social" /></th>
 					
-						<g:sortableColumn property="role" title="${message(code: 'contact.role.label', default: 'Role')}" />
+						<th><g:message code="contact.musician.label" default="Musician" /></th>
 					
 					</tr>
 				</thead>
@@ -52,7 +52,7 @@
 					
 						<td>${fieldValue(bean: contactInstance, field: "social")}</td>
 					
-						<td>${fieldValue(bean: contactInstance, field: "role")}</td>
+						<td>${fieldValue(bean: contactInstance, field: "musician")}</td>
 					
 					</tr>
 				</g:each>

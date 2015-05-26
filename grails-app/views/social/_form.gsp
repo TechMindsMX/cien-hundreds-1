@@ -65,21 +65,3 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: socialInstance, field: 'contact', 'error')} required">
-	<label for="contact">
-		<g:message code="social.contact.label" default="Contact" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="contact" name="contact.id" from="${com.tim.hundreds.Contact.list()}" optionKey="id" required="" value="${socialInstance?.contact?.id}" class="many-to-one"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: socialInstance, field: 'musician', 'error')} required">
-	<label for="musician">
-		<g:message code="social.musician.label" default="Musician" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionKey="id" required="" value="${socialInstance?.musician?.id}" class="many-to-one"/>
-
-</div>
-

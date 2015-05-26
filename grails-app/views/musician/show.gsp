@@ -97,6 +97,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${musicianInstance?.contacts}">
+				<li class="fieldcontain">
+					<span id="contacts-label" class="property-label"><g:message code="musician.contacts.label" default="Contacts" /></span>
+					
+						<g:each in="${musicianInstance.contacts}" var="c">
+						<span class="property-value" aria-labelledby="contacts-label"><g:link controller="contact" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${musicianInstance?.dateCreated}">
 				<li class="fieldcontain">
 					<span id="dateCreated-label" class="property-label"><g:message code="musician.dateCreated.label" default="Date Created" /></span>

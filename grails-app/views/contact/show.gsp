@@ -79,6 +79,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${contactInstance?.musician}">
+				<li class="fieldcontain">
+					<span id="musician-label" class="property-label"><g:message code="contact.musician.label" default="Musician" /></span>
+					
+						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${contactInstance?.musician?.id}">${contactInstance?.musician?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${contactInstance?.role}">
 				<li class="fieldcontain">
 					<span id="role-label" class="property-label"><g:message code="contact.role.label" default="Role" /></span>

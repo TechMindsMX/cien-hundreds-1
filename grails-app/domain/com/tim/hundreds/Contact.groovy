@@ -7,12 +7,9 @@ class Contact {
   String other
 
   Role role
+  Social social
 
   static belongsTo = [ musician : Musician ]
-
-  static hasOne = [
-    social : Social
-  ]
 
   static hasMany = [
     emails : Email,

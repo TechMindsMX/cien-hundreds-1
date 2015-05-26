@@ -13,9 +13,9 @@ class Musician {
   Boolean hasManager
 
   Genre genre
+  Social social
 
   static hasOne = [
-    social : Social,
     address : Address,
     datosFiscales : DatosFiscales
   ]
@@ -37,6 +37,5 @@ class Musician {
     address nullable:true
     datosFiscales nullable:true
   }
-
 }
 
