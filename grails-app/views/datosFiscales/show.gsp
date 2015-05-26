@@ -41,6 +41,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${datosFiscalesInstance?.address}">
+				<li class="fieldcontain">
+					<span id="address-label" class="property-label"><g:message code="datosFiscales.address.label" default="Address" /></span>
+					
+						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${datosFiscalesInstance?.address?.id}">${datosFiscalesInstance?.address?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${datosFiscalesInstance?.musician}">
 				<li class="fieldcontain">
 					<span id="musician-label" class="property-label"><g:message code="datosFiscales.musician.label" default="Musician" /></span>

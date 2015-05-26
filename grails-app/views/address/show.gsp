@@ -77,15 +77,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${addressInstance?.musician}">
-				<li class="fieldcontain">
-					<span id="musician-label" class="property-label"><g:message code="address.musician.label" default="Musician" /></span>
-					
-						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${addressInstance?.musician?.id}">${addressInstance?.musician?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 			</ol>
 			<g:form url="[resource:addressInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

@@ -20,6 +20,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'address', 'error')} ">
+	<label for="address">
+		<g:message code="datosFiscales.address.label" default="Address" />
+		
+	</label>
+	<g:select id="address" name="address.id" from="${com.tim.hundreds.Address.list()}" optionKey="id" value="${datosFiscalesInstance?.address?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'musician', 'error')} required">
 	<label for="musician">
 		<g:message code="datosFiscales.musician.label" default="Musician" />

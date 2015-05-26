@@ -56,12 +56,3 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: addressInstance, field: 'musician', 'error')} required">
-	<label for="musician">
-		<g:message code="address.musician.label" default="Musician" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionKey="id" required="" value="${addressInstance?.musician?.id}" class="many-to-one"/>
-
-</div>
-

@@ -8,8 +8,6 @@ class Address {
   String state
   String country
 
-  static belongsTo = [ musician : Musician ]
-
   static constraints = {
     street blank:false,size:1..200
     zipcode blank:false,size:5..5

@@ -28,6 +28,8 @@
 					
 						<g:sortableColumn property="rfc" title="${message(code: 'datosFiscales.rfc.label', default: 'Rfc')}" />
 					
+						<th><g:message code="datosFiscales.address.label" default="Address" /></th>
+					
 						<th><g:message code="datosFiscales.musician.label" default="Musician" /></th>
 					
 						<g:sortableColumn property="tipoPersona" title="${message(code: 'datosFiscales.tipoPersona.label', default: 'Tipo Persona')}" />
@@ -41,6 +43,8 @@
 						<td><g:link action="show" id="${datosFiscalesInstance.id}">${fieldValue(bean: datosFiscalesInstance, field: "razonSocial")}</g:link></td>
 					
 						<td>${fieldValue(bean: datosFiscalesInstance, field: "rfc")}</td>
+					
+						<td>${fieldValue(bean: datosFiscalesInstance, field: "address")}</td>
 					
 						<td>${fieldValue(bean: datosFiscalesInstance, field: "musician")}</td>
 					
