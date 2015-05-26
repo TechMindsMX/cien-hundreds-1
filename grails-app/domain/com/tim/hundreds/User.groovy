@@ -11,6 +11,9 @@ class User {
 	boolean accountLocked
 	boolean passwordExpired
 
+  Profile profile
+  static embedded = ['profile']
+
 	static transients = ['springSecurityService']
 
 	static constraints = {
