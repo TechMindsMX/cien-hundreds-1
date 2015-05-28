@@ -65,6 +65,24 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'activities', 'error')} ">
+	<label for="activities">
+		<g:message code="musician.activities.label" default="Activities" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${musicianInstance?.activities?}" var="a">
+    <li><g:link controller="activity" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="activity" action="create" params="['musician.id': musicianInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'activity.label', default: 'Activity')])}</g:link>
+</li>
+</ul>
+
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'audios', 'error')} ">
 	<label for="audios">
 		<g:message code="musician.audios.label" default="Audios" />

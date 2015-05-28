@@ -124,7 +124,7 @@
 		<g:message code="contact.role.label" default="Role" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="role" from="${com.tim.hundreds.Role?.values()}" keys="${com.tim.hundreds.Role.values()*.name()}" required="" value="${contactInstance?.role?.name()}" />
+	<g:select name="role" from="${com.tim.hundreds.RoleType?.values()}" keys="${com.tim.hundreds.RoleType.values()*.name()}" required="" value="${contactInstance?.role?.name()}" />
 
 </div>
 

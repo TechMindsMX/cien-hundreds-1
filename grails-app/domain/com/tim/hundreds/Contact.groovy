@@ -12,7 +12,7 @@ class Contact {
   Date birthDate
   Date entryDate
 
-  Role role
+  RoleType role
   Social social
 
   static belongsTo = [ musician : Musician ]

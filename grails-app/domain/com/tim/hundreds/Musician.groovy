@@ -25,7 +25,8 @@ class Musician {
     videos : Video,
     audios : Audio,
     suggestions : Suggestion,
-    contacts: Contact
+    contacts : Contact,
+    activities : Activity
   ]
 
   static constraints = {

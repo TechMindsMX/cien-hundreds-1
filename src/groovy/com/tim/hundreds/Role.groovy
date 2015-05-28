@@ -1,5 +1,5 @@
 package com.tim.hundreds
 
-enum Role {
+enum RoleType {
   MANAGER,ELEMENT,OTHER
 }

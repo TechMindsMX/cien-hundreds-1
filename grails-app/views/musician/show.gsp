@@ -86,6 +86,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${musicianInstance?.activities}">
+				<li class="fieldcontain">
+					<span id="activities-label" class="property-label"><g:message code="musician.activities.label" default="Activities" /></span>
+					
+						<g:each in="${musicianInstance.activities}" var="a">
+						<span class="property-value" aria-labelledby="activities-label"><g:link controller="activity" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${musicianInstance?.audios}">
 				<li class="fieldcontain">
 					<span id="audios-label" class="property-label"><g:message code="musician.audios.label" default="Audios" /></span>
