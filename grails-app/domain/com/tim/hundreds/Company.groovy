@@ -10,7 +10,8 @@ class Company {
   ActivityType type
 
   static hasMany = [
-    references : Reference
+    references : Reference,
+    events : Event
   ]
 
   static constraints = {
