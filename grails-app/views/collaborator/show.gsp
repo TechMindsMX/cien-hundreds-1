@@ -68,33 +68,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${collaboratorInstance?.emails}">
-				<li class="fieldcontain">
-					<span id="emails-label" class="property-label"><g:message code="collaborator.emails.label" default="Emails" /></span>
-					
-						<g:each in="${collaboratorInstance.emails}" var="e">
-						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${collaboratorInstance?.position}">
 				<li class="fieldcontain">
 					<span id="position-label" class="property-label"><g:message code="collaborator.position.label" default="Position" /></span>
 					
 						<span class="property-value" aria-labelledby="position-label"><g:fieldValue bean="${collaboratorInstance}" field="position"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${collaboratorInstance?.telephones}">
-				<li class="fieldcontain">
-					<span id="telephones-label" class="property-label"><g:message code="collaborator.telephones.label" default="Telephones" /></span>
-					
-						<g:each in="${collaboratorInstance.telephones}" var="t">
-						<span class="property-value" aria-labelledby="telephones-label"><g:link controller="telephone" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
-						</g:each>
 					
 				</li>
 				</g:if>

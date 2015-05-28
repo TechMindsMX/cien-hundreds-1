@@ -47,30 +47,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'emails', 'error')} ">
-	<label for="emails">
-		<g:message code="collaborator.emails.label" default="Emails" />
-		
-	</label>
-	<g:select name="emails" from="${com.tim.hundreds.Email.list()}" multiple="multiple" optionKey="id" size="5" value="${collaboratorInstance?.emails*.id}" class="many-to-many"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'position', 'error')} required">
 	<label for="position">
 		<g:message code="collaborator.position.label" default="Position" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="position" required="" value="${collaboratorInstance?.position}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'telephones', 'error')} ">
-	<label for="telephones">
-		<g:message code="collaborator.telephones.label" default="Telephones" />
-		
-	</label>
-	<g:select name="telephones" from="${com.tim.hundreds.Telephone.list()}" multiple="multiple" optionKey="id" size="5" value="${collaboratorInstance?.telephones*.id}" class="many-to-many"/>
 
 </div>
 
