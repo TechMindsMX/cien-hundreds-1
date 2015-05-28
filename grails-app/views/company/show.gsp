@@ -68,6 +68,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${companyInstance?.collaborators}">
+				<li class="fieldcontain">
+					<span id="collaborators-label" class="property-label"><g:message code="company.collaborators.label" default="Collaborators" /></span>
+					
+						<g:each in="${companyInstance.collaborators}" var="c">
+						<span class="property-value" aria-labelledby="collaborators-label"><g:link controller="collaborator" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${companyInstance?.events}">
 				<li class="fieldcontain">
 					<span id="events-label" class="property-label"><g:message code="company.events.label" default="Events" /></span>

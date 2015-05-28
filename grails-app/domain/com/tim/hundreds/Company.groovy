@@ -12,6 +12,7 @@ class Company {
 
   static hasMany = [
     references : Reference,
+    collaborators : Collaborator,
     events : Event
   ]
 
