@@ -6,6 +6,7 @@ class Company {
   String web
 
   Address address
+  Social social
 
   ActivityType type
 
@@ -19,5 +20,6 @@ class Company {
     description blank:false,size:1..1000
     web nullable:true,blank:false,size:1..100
     address nullable:true
+    social nullable:true
   }
 }

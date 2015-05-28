@@ -38,6 +38,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'social', 'error')} ">
+	<label for="social">
+		<g:message code="company.social.label" default="Social" />
+		
+	</label>
+	<g:select id="social" name="social.id" from="${com.tim.hundreds.Social.list()}" optionKey="id" value="${companyInstance?.social?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'events', 'error')} ">
 	<label for="events">
 		<g:message code="company.events.label" default="Events" />

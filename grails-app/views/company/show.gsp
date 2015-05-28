@@ -59,6 +59,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${companyInstance?.social}">
+				<li class="fieldcontain">
+					<span id="social-label" class="property-label"><g:message code="company.social.label" default="Social" /></span>
+					
+						<span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" id="${companyInstance?.social?.id}">${companyInstance?.social?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${companyInstance?.events}">
 				<li class="fieldcontain">
 					<span id="events-label" class="property-label"><g:message code="company.events.label" default="Events" /></span>
