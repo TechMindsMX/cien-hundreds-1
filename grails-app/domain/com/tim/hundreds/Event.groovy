@@ -1,6 +1,7 @@
 package com.tim.hundreds
 
 class Event {
+  String activity
   String place
   Date date
 
