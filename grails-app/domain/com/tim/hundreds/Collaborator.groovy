@@ -9,11 +9,6 @@ class Collaborator {
 
   static belongsTo = [ company : Company ]
 
-  static hasMany = [
-    emails : Email,
-    telephones : Telephone
-  ]
-
   static constraints = {
     firstName blank:false,size:1..100
     middleName blank:false,size:1..100
