@@ -5,6 +5,8 @@ class Company {
   String description
   String web
 
+  Address address
+
   ActivityType type
 
   static hasMany = [
@@ -15,5 +17,6 @@ class Company {
     name blank:false,size:1..100
     description blank:false,size:1..1000
     web nullable:true,blank:false,size:1..100
+    address nullable:true
   }
 }

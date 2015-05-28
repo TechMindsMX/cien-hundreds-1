@@ -50,6 +50,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${companyInstance?.address}">
+				<li class="fieldcontain">
+					<span id="address-label" class="property-label"><g:message code="company.address.label" default="Address" /></span>
+					
+						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${companyInstance?.address?.id}">${companyInstance?.address?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${companyInstance?.references}">
 				<li class="fieldcontain">
 					<span id="references-label" class="property-label"><g:message code="company.references.label" default="References" /></span>

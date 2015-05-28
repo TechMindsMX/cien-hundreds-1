@@ -30,6 +30,8 @@
 					
 						<g:sortableColumn property="web" title="${message(code: 'company.web.label', default: 'Web')}" />
 					
+						<th><g:message code="company.address.label" default="Address" /></th>
+					
 						<g:sortableColumn property="type" title="${message(code: 'company.type.label', default: 'Type')}" />
 					
 					</tr>
@@ -43,6 +45,8 @@
 						<td>${fieldValue(bean: companyInstance, field: "description")}</td>
 					
 						<td>${fieldValue(bean: companyInstance, field: "web")}</td>
+					
+						<td>${fieldValue(bean: companyInstance, field: "address")}</td>
 					
 						<td>${fieldValue(bean: companyInstance, field: "type")}</td>
 					

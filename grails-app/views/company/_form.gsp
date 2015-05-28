@@ -29,6 +29,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'address', 'error')} ">
+	<label for="address">
+		<g:message code="company.address.label" default="Address" />
+		
+	</label>
+	<g:select id="address" name="address.id" from="${com.tim.hundreds.Address.list()}" optionKey="id" value="${companyInstance?.address?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'references', 'error')} ">
 	<label for="references">
 		<g:message code="company.references.label" default="References" />
