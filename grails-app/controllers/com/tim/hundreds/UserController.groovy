@@ -6,8 +6,12 @@ import grails.plugin.springsecurity.annotation.Secured
 class UserController {
   def userService
 
-  def create(User user){
-    log.info "Creating user: ${user?.dump()}"
-    userService.create(user)
+  def save(User userInstance){
+    if(userInstance){
+      log.info "Creating user: ${userInstance?.dump()}"
+      log.info "Params: ${params.dump()}"
+      log.info "${params.password} : ${params.passwordCheck}"
+      userService.create(userInstance)
+    }
   }
 }
