@@ -21,10 +21,16 @@ class UserCommand {
     lastName blank:false,size:1..100
     phone nullable:true,blank:false,matches:/^[0-9]*$/,size:10..10
 
-    password(blank:false, size:10..50, validator:{val, obj ->
+    password(blank:false,size:10..50,matches:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{10,}$/,validator:{val, obj ->
       if(!val.equalsIgnoreCase(obj.passwordCheck)) {
         return false
       }
     })
+    username(blank:false,size:3..50,validator:{val, obj ->
+      if(User.findByUsername(val)) {
+        return false
+      }
+    })
+
   }
 }
