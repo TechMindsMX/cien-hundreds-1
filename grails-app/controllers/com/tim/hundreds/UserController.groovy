@@ -6,6 +6,14 @@ import grails.plugin.springsecurity.annotation.Secured
 class UserController {
   def userService
 
+  def index(){
+    respond new UserCommand()
+  }
+
+  def create(){
+    respond new UserCommand()
+  }
+
   def save(UserCommand command){
     log.info "Creating user: ${command?.dump()}"
     if(command == null){
