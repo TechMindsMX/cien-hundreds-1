@@ -37,6 +37,9 @@
                 <p>Por favor ingrese los datos de este formulario par crear una cuenta de usuario en la plataforma 100  Hundreds</p>
             </div>
             <div class="dropdown theme-dropdown clearfix">
+              <g:hasErrors>
+                <g:eachError><g:message error="${it}"/></g:eachError>
+              </g:hasErrors>
                 <g:form url="[resource:userInstance, action:'save']" >
                     <div class="col-xs-8 col-md-9 ">
                         <table class="table">
