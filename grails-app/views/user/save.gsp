@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <body>
+  <g:hasErrors>
+    <g:eachError><g:message error="${it}"/></g:eachError>
+  </g:hasErrors>
   <g:form url="[resource:userInstance, action:'save']" >
   <g:textField name="email" placeholder="Email:" /><br/>
   <g:textField name="emailCheck" placeholder="Confirma correo electrónico:" /><br/>

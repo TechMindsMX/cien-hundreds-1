@@ -9,12 +9,15 @@ class UserController {
   def save(UserCommand command){
     if(command.username){
       log.info "Creating user: ${command?.dump()}"
-      if(!command.hasErrors()){
+      if(command.hasErrors()){
+        respond command.errors, view: 'save'
+      } else {
         def User user = new User(username: command.username, password: command.password)
         def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName)
         user.profile = profile
         userService.create(user)
       }
     }
+    command
   }
 }
