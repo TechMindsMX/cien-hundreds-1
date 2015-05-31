@@ -27,7 +27,7 @@ class BootStrap {
   }
 
   def createAdminRole(){
-    def adminRole = new Role(authority: 'ADMIN_ROLE').save(flush: true)
+    def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
     def user = new User(username: 'admin', password: '12345678')
     def  profile = new Profile(email:'admin@techminds.com.mx', firstName:'admin', middleName:'middleName', lastName:'lastName')
     user.profile = profile
