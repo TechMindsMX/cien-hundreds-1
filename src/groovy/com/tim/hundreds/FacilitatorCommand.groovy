@@ -6,7 +6,6 @@ import grails.validation.Validateable
 class FacilitatorCommand {
   String username
   String password
-  String email
   String firstName
   String middleName
   String lastName
@@ -18,6 +17,7 @@ class FacilitatorCommand {
     firstName blank:false,size:1..100
     middleName blank:false,size:1..100
     lastName blank:false,size:1..100
+    role blank:false,size:6..20
 
     password(blank:false,size:10..50,matches:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{10,}$/,validator:{val, obj ->
       if(!val.equalsIgnoreCase(obj.passwordCheck)) {
