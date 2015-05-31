@@ -10,6 +10,7 @@ class FacilitatorCommand {
   String firstName
   String middleName
   String lastName
+  String role
 
   String passwordCheck
 
