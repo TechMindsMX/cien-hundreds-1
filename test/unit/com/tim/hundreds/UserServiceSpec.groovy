@@ -8,13 +8,26 @@ import spock.lang.Specification
  */
 @TestFor(UserService)
 class UserServiceSpec extends Specification {
+  UserHelperService userHelperService = Mock(UserHelperService)
 
-    def setup() {
-    }
+  def setup() {
+    service.userHelperService = userHelperService
+  }
 
-    def cleanup() {
-    }
+  void "should create an user with role type user"() {
+  given: "An user"
+    User user = Mock(User)
+  when: "We assing values to command"
+    service.create(user)
+  then:"We validate command"
+    1 * userHelperService.addUserRole(user)
+  }
 
-    void "test something"() {
-    }
+  void "should not create an user with role type user since user is null"() {
+  when: "We assing values to command"
+    def result = service.create(null)
+  then:"We validate command"
+    !result
+  }
+
 }
