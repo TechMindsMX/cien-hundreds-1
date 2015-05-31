@@ -12,7 +12,7 @@
   <g:passwordField name="password" placeholder="Constraseña:" /><br/>
   <g:passwordField name="passwordCheck" placeholder="Confirma constraseña:" /><br/>
   <g:textField name="phone" placeholder="Phone:" /><br/>
-  <g:select name="role" from="${Role.findAll()}" optionKey="id" optionValue="authority"/><br/><br/>
+  <g:select name="role" from="${Role.findAll()}" optionKey="authority" optionValue="authority"/><br/><br/>
   <g:submitButton name="create" placeholder="Salvar" />
   </g:form>
 </body>
