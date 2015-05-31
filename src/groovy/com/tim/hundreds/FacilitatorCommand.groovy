@@ -13,8 +13,6 @@ class FacilitatorCommand {
 
   String passwordCheck
 
-  UserType type
-
   static constraints = {
     firstName blank:false,size:1..100
     middleName blank:false,size:1..100

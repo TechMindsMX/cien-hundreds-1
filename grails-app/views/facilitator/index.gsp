@@ -1,4 +1,4 @@
-<%@ page import="com.tim.hundreds.UserType" %>
+<%@ page import="com.tim.hundreds.Role" %>
 <!DOCTYPE html>
 <html>
 <body>
@@ -12,7 +12,7 @@
   <g:passwordField name="password" placeholder="Constraseña:" /><br/>
   <g:passwordField name="passwordCheck" placeholder="Confirma constraseña:" /><br/>
   <g:textField name="phone" placeholder="Phone:" /><br/>
-  <g:select name="type" from="${UserType.values()}"/><br/><br/>
+  <g:select name="role.id" from="${Role.findAll()}" optionKey="id" optionValue="authority"/><br/><br/>
   <g:submitButton name="create" placeholder="Salvar" />
   </g:form>
 </body>
