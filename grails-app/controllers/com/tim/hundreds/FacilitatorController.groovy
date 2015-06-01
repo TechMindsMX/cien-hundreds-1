@@ -7,14 +7,14 @@ class FacilitatorController {
   def userService
 
   def index(){
-    respond new FacilitatorCommand()
+    respond new UserCommand()
   }
 
   def create(){
-    respond new FacilitatorCommand()
+    respond new UserCommand()
   }
 
-  def save(FacilitatorCommand command){
+  def save(UserCommand command){
     log.info "Creating user: ${command?.dump()}"
     if(command == null){
       notFound()

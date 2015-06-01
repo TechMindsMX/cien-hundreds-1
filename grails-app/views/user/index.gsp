@@ -154,6 +154,7 @@
                                         Acepto los
                                         <a href="#">Términos y condiciones</a>
                                         <div>
+                                        <g:hiddenField name="role" value="ROLE_USER"/>
                                         <g:submitButton name="create" placeholder="Salvar" class="btn btn-success" value="Enviar"/>
                                         <button type="button" class="btn btn-danger">Cancelar</button>
                                         </div>
