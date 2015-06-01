@@ -7,6 +7,7 @@ class Profile {
   String lastName
   String phone
   String role
+  String photoPath
 
   static constraints = {
     firstName blank:false,size:1..100
@@ -14,5 +15,6 @@ class Profile {
     lastName blank:false,size:1..100
     phone nullable:true,blank:false,matches:/^[0-9]*$/,size:10..10
     role nullable:true
+    photoPath nullable:true
   }
 }
