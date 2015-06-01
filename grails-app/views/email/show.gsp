@@ -32,15 +32,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${emailInstance?.contact}">
-				<li class="fieldcontain">
-					<span id="contact-label" class="property-label"><g:message code="email.contact.label" default="Contact" /></span>
-					
-						<span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" id="${emailInstance?.contact?.id}">${emailInstance?.contact?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${emailInstance?.type}">
 				<li class="fieldcontain">
 					<span id="type-label" class="property-label"><g:message code="email.type.label" default="Type" /></span>

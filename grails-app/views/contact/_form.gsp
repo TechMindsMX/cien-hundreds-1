@@ -88,16 +88,7 @@
 		<g:message code="contact.emails.label" default="Emails" />
 		
 	</label>
-	
-<ul class="one-to-many">
-<g:each in="${contactInstance?.emails?}" var="e">
-    <li><g:link controller="email" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="email" action="create" params="['contact.id': contactInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'email.label', default: 'Email')])}</g:link>
-</li>
-</ul>
-
+	<g:select name="emails" from="${com.tim.hundreds.Email.list()}" multiple="multiple" optionKey="id" size="5" value="${contactInstance?.emails*.id}" class="many-to-many"/>
 
 </div>
 
@@ -133,16 +124,7 @@
 		<g:message code="contact.telephones.label" default="Telephones" />
 		
 	</label>
-	
-<ul class="one-to-many">
-<g:each in="${contactInstance?.telephones?}" var="t">
-    <li><g:link controller="telephone" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="telephone" action="create" params="['contact.id': contactInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'telephone.label', default: 'Telephone')])}</g:link>
-</li>
-</ul>
-
+	<g:select name="telephones" from="${com.tim.hundreds.Telephone.list()}" multiple="multiple" optionKey="id" size="5" value="${contactInstance?.telephones*.id}" class="many-to-many"/>
 
 </div>
 

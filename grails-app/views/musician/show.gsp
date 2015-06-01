@@ -128,6 +128,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${musicianInstance?.emails}">
+				<li class="fieldcontain">
+					<span id="emails-label" class="property-label"><g:message code="musician.emails.label" default="Emails" /></span>
+					
+						<g:each in="${musicianInstance.emails}" var="e">
+						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${musicianInstance?.formed}">
 				<li class="fieldcontain">
 					<span id="formed-label" class="property-label"><g:message code="musician.formed.label" default="Formed" /></span>
@@ -181,6 +192,17 @@
 					
 						<g:each in="${musicianInstance.suggestions}" var="s">
 						<span class="property-value" aria-labelledby="suggestions-label"><g:link controller="suggestion" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${musicianInstance?.telephones}">
+				<li class="fieldcontain">
+					<span id="telephones-label" class="property-label"><g:message code="musician.telephones.label" default="Telephones" /></span>
+					
+						<g:each in="${musicianInstance.telephones}" var="t">
+						<span class="property-value" aria-labelledby="telephones-label"><g:link controller="telephone" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
