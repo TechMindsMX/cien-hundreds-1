@@ -1,6 +1,9 @@
 package com.tim.hundreds
 
-class Musician {
+import grails.validation.Validateable
+
+@Validateable
+class MusicianCommand {
   String name
   String history
   String web
