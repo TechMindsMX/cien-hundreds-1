@@ -5,7 +5,8 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_ADMIN'])
 class FacilitatorController {
   def userService
-  def storerService
+  def photoStorerService
+  def resumeStorerService
 
   def index(){
     respond new UserCommand()
@@ -32,8 +33,12 @@ class FacilitatorController {
     profile.role = command.role
 
     if(params.photo){
-      def photoPath = storerService.storeFile(request.getFile('photo'))
+      def photoPath = photoStorerService.storeFile(request.getFile('photo'))
       profile.photoPath = photoPath
+    }
+    if(params.resume){
+      def resumePath = resumeStorerService.storeFile(request.getFile('resume'))
+      profile.resumePath = resumePath
     }
 
     user.profile = profile

@@ -12,8 +12,9 @@
   <g:passwordField name="password" placeholder="Constraseña:" /><br/>
   <g:passwordField name="passwordCheck" placeholder="Confirma constraseña:" /><br/>
   <g:textField name="phone" placeholder="Phone:" /><br/>
-  <g:select name="role" from="${Role.findAll()}" optionKey="authority" optionValue="authority"/><br/>
-  <input type='file' name='photo'/><br/><br/>
+  <g:select name="role" from="${Role.findAll()}" optionKey="authority" optionValue="authority"/><br/><br/>
+  Photo(png): <input type='file' name='photo'/><br/>
+  Resume(pdf): <input type='file' name='resume'/><br/><br/>
   <g:submitButton name="create" placeholder="Salvar" />
   </g:uploadForm>
 </body>
