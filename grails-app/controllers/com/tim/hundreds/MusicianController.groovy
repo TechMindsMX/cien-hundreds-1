@@ -28,13 +28,14 @@ class MusicianController {
 
     @Transactional
     def save(MusicianCommand command) {
+      log.info "command: ${command.dump()}"
         if (command == null) {
             notFound()
             return
         }
 
         if (command.hasErrors()) {
-            respond musicianInstance.errors, view:'create'
+            respond command.errors, view:'create'
             return
         }
 
@@ -42,9 +43,10 @@ class MusicianController {
           def logoPath = logoStorerService.storeFile(request.getFile('logo'))
           command.logoPath = logoPath
         }
-        Musician musicianInstance = new Musician(command)
-        musicianInstance.save flush:true
+        Musician musicianInstance = new Musician()
+        bindData(musicianInstance, command)
 
+        musicianInstance.save flush:true
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'musician.label', default: 'Musician'), musicianInstance.id])

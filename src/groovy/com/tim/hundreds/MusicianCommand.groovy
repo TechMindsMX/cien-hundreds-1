@@ -10,8 +10,6 @@ class MusicianCommand {
   String notes
   String logoPath
 
-  Date dateCreated
-  Date lastUpdated
   Date formed
 
   Boolean hasManager
@@ -20,9 +18,7 @@ class MusicianCommand {
   Social social
   Address address
 
-  static hasOne = [
-    datosFiscales : DatosFiscales
-  ]
+  def datosFiscales
 
   static hasMany = [
     photos : Photo,
