@@ -13,8 +13,6 @@ class UserCommand {
   String phone
   String role
 
-  byte[] photo
-
   String emailCheck
   String passwordCheck
 
@@ -25,7 +23,6 @@ class UserCommand {
     email blank:false,email:true,unique:true,size:1..200
     phone nullable:true,blank:false,matches:/^[0-9]*$/,size:10..10
     role blank:false,size:6..20
-    photo nullable:true
 
     password(blank:false,size:10..50,matches:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{10,}$/,validator:{val, obj ->
       if(!val.equalsIgnoreCase(obj.passwordCheck)) {
