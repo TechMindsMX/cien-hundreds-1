@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <g:form url="[resource:facilitatorInstance, action:'save']" >
+  <g:uploadForm url="[resource:facilitatorInstance, action:'save']" >
   <g:textField name="email" placeholder="Email:" /><br/>
   <g:textField name="emailCheck" placeholder="Confirma correo electrónico:" /><br/>
   <g:textField name="firstName" placeholder="Nombre completo:" /><br/>
@@ -12,8 +12,10 @@
   <g:passwordField name="password" placeholder="Constraseña:" /><br/>
   <g:passwordField name="passwordCheck" placeholder="Confirma constraseña:" /><br/>
   <g:textField name="phone" placeholder="Phone:" /><br/>
-  <g:select name="role.authority" from="${Role.findAll()}" optionKey="id" optionValue="authority"/><br/><br/>
+  <g:select name="role" from="${Role.findAll()}" optionKey="authority" optionValue="authority"/><br/><br/>
+  Photo(png): <input type='file' name='photo'/><br/>
+  Resume(pdf): <input type='file' name='resume'/><br/><br/>
   <g:submitButton name="create" placeholder="Salvar" />
-  </g:form>
+  </g:uploadForm>
 </body>
 </html>
