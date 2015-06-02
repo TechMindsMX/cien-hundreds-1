@@ -37,14 +37,20 @@ class AudioController {
             return
         }
 
-        audioInstance.save flush:true
+        log.info "Audio count by user: ${Audio.findByMusician(audioInstance.musician)?.count()}"
+        def audiosSize = Audio.findByMusician(audioInstance.musician)?.count()
+        if(audiosSize < 5){
+          audioInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'audio.label', default: 'Audio'), audioInstance.id])
                 redirect audioInstance
             }
-            '*' { respond audioInstance, [status: CREATED] }
+    '*' { respond audioInstance, [status: CREATED] }
+        }
+        } else {
+          respond audioInstance
         }
     }
 
