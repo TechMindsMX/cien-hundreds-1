@@ -240,6 +240,9 @@
         <li>
         <g:link controller="social" action="create" params='[musicianId: "${musicianInstance.id}"]'>Add Social</g:link>
         </li>
+        <li>
+        <g:link controller="datosFiscales" action="create" params='[musicianId: "${musicianInstance.id}"]'>Add Datos Fiscales</g:link>
+        </li>
 
 			</ol>
 			<g:form url="[resource:musicianInstance, action:'delete']" method="DELETE">
