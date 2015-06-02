@@ -32,9 +32,9 @@
 					
 						<g:sortableColumn property="notes" title="${message(code: 'musician.notes.label', default: 'Notes')}" />
 					
-						<g:sortableColumn property="logoPath" title="${message(code: 'musician.logoPath.label', default: 'Logo Path')}" />
+						<g:sortableColumn property="tags" title="${message(code: 'musician.tags.label', default: 'Tags')}" />
 					
-						<th><g:message code="musician.social.label" default="Social" /></th>
+						<g:sortableColumn property="logoPath" title="${message(code: 'musician.logoPath.label', default: 'Logo Path')}" />
 					
 					</tr>
 				</thead>
@@ -50,9 +50,9 @@
 					
 						<td>${fieldValue(bean: musicianInstance, field: "notes")}</td>
 					
-						<td>${fieldValue(bean: musicianInstance, field: "logoPath")}</td>
+						<td>${fieldValue(bean: musicianInstance, field: "tags")}</td>
 					
-						<td>${fieldValue(bean: musicianInstance, field: "social")}</td>
+						<td>${fieldValue(bean: musicianInstance, field: "logoPath")}</td>
 					
 					</tr>
 				</g:each>

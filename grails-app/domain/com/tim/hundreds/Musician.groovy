@@ -5,6 +5,7 @@ class Musician {
   String history
   String web
   String notes
+  String tags
   String logoPath
 
   Date dateCreated
@@ -37,6 +38,7 @@ class Musician {
     history blank:false,size:1..1000
     web nullable:true,blank:false,size:1..100
     notes nullable:true,blank:false,size:1..1000
+    tags nullable:true,blank:false,size:1..1000
     logoPath nullable:true
     social nullable:true
     address nullable:true

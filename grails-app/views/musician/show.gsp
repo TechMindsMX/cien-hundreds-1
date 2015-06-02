@@ -59,6 +59,15 @@
 				</li>
 				</g:if>
 
+				<g:if test="${musicianInstance?.tags}">
+				<li class="fieldcontain">
+					<span id="tags-label" class="property-label"><g:message code="musician.tags.label" default="Tags" /></span>
+
+						<span class="property-value" aria-labelledby="tags-label"><g:fieldValue bean="${musicianInstance}" field="tags"/></span>
+
+				</li>
+				</g:if>
+
 				<g:if test="${musicianInstance?.logoPath}">
 				<li class="fieldcontain">
 					<span id="logoPath-label" class="property-label"><g:message code="musician.logoPath.label" default="Logo Path" /></span>

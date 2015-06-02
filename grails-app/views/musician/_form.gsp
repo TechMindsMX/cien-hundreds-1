@@ -1,3 +1,6 @@
+<%@ page import="com.tim.hundreds.Musician" %>
+
+
 
 <div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'name', 'error')} required">
 	<label for="name">
@@ -35,6 +38,23 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'tags', 'error')} ">
+	<label for="tags">
+		<g:message code="musician.tags.label" default="Tags" />
+
+	</label>
+	<g:textArea name="tags" cols="40" rows="5" maxlength="1000" value="${musicianInstance?.tags}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'logoPath', 'error')} ">
+	<label for="logoPath">
+		<g:message code="musician.logoPath.label" default="Logo Path" />
+
+	</label>
+	<g:textField name="logoPath" value="${musicianInstance?.logoPath}"/>
+
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'social', 'error')} ">
 	<label for="social">
@@ -216,9 +236,10 @@
 
 </div>
 
+
 <div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
   <label for="logo">
-  <g:message code="musician.logo.label" default="Logo" />
+    <g:message code="musician.logo.label" default="Logo" />
 
   </label>
   <input type="file" id="logo" name="logo" />
