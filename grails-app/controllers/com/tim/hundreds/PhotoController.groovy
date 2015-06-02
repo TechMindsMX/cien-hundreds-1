@@ -10,6 +10,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class PhotoController {
     def photoStorerService
+    def photoService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -46,16 +47,18 @@ class PhotoController {
         Photo photoInstance = new Photo()
         bindData(photoInstance, command)
 
-        log.info "photoInstance: ${photoInstance.dump()}"
-
-        photoInstance.save flush:true
-
-        request.withFormat {
+        try{
+          photoService.savePhoto(photoInstance)
+          request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'photo.label', default: 'Photo'), photoInstance.id])
                 redirect photoInstance
             }
             '*' { respond photoInstance, [status: CREATED] }
+          }
+        } catch (BusinessException be){
+          log.info "Message ${be.message}"
+          respond photoInstance
         }
     }
 
