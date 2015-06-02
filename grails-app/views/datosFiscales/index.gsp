@@ -30,9 +30,11 @@
 					
 						<th><g:message code="datosFiscales.address.label" default="Address" /></th>
 					
-						<th><g:message code="datosFiscales.musician.label" default="Musician" /></th>
+						<g:sortableColumn property="personaMoral" title="${message(code: 'datosFiscales.personaMoral.label', default: 'Persona Moral')}" />
 					
-						<g:sortableColumn property="tipoPersona" title="${message(code: 'datosFiscales.tipoPersona.label', default: 'Tipo Persona')}" />
+						<g:sortableColumn property="personaFisica" title="${message(code: 'datosFiscales.personaFisica.label', default: 'Persona Fisica')}" />
+					
+						<th><g:message code="datosFiscales.musician.label" default="Musician" /></th>
 					
 					</tr>
 				</thead>
@@ -46,9 +48,11 @@
 					
 						<td>${fieldValue(bean: datosFiscalesInstance, field: "address")}</td>
 					
-						<td>${fieldValue(bean: datosFiscalesInstance, field: "musician")}</td>
+						<td><g:formatBoolean boolean="${datosFiscalesInstance.personaMoral}" /></td>
 					
-						<td><g:formatBoolean boolean="${datosFiscalesInstance.tipoPersona}" /></td>
+						<td><g:formatBoolean boolean="${datosFiscalesInstance.personaFisica}" /></td>
+					
+						<td>${fieldValue(bean: datosFiscalesInstance, field: "musician")}</td>
 					
 					</tr>
 				</g:each>

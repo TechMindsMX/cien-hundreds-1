@@ -50,20 +50,29 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${datosFiscalesInstance?.personaMoral}">
+				<li class="fieldcontain">
+					<span id="personaMoral-label" class="property-label"><g:message code="datosFiscales.personaMoral.label" default="Persona Moral" /></span>
+					
+						<span class="property-value" aria-labelledby="personaMoral-label"><g:formatBoolean boolean="${datosFiscalesInstance?.personaMoral}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${datosFiscalesInstance?.personaFisica}">
+				<li class="fieldcontain">
+					<span id="personaFisica-label" class="property-label"><g:message code="datosFiscales.personaFisica.label" default="Persona Fisica" /></span>
+					
+						<span class="property-value" aria-labelledby="personaFisica-label"><g:formatBoolean boolean="${datosFiscalesInstance?.personaFisica}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${datosFiscalesInstance?.musician}">
 				<li class="fieldcontain">
 					<span id="musician-label" class="property-label"><g:message code="datosFiscales.musician.label" default="Musician" /></span>
 					
 						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${datosFiscalesInstance?.musician?.id}">${datosFiscalesInstance?.musician?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${datosFiscalesInstance?.tipoPersona}">
-				<li class="fieldcontain">
-					<span id="tipoPersona-label" class="property-label"><g:message code="datosFiscales.tipoPersona.label" default="Tipo Persona" /></span>
-					
-						<span class="property-value" aria-labelledby="tipoPersona-label"><g:formatBoolean boolean="${datosFiscalesInstance?.tipoPersona}" /></span>
 					
 				</li>
 				</g:if>

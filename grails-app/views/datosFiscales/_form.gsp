@@ -29,21 +29,30 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'personaMoral', 'error')} ">
+	<label for="personaMoral">
+		<g:message code="datosFiscales.personaMoral.label" default="Persona Moral" />
+		
+	</label>
+	<g:checkBox name="personaMoral" value="${datosFiscalesInstance?.personaMoral}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'personaFisica', 'error')} ">
+	<label for="personaFisica">
+		<g:message code="datosFiscales.personaFisica.label" default="Persona Fisica" />
+		
+	</label>
+	<g:checkBox name="personaFisica" value="${datosFiscalesInstance?.personaFisica}" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'musician', 'error')} required">
 	<label for="musician">
 		<g:message code="datosFiscales.musician.label" default="Musician" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionKey="id" required="" value="${datosFiscalesInstance?.musician?.id}" class="many-to-one"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'tipoPersona', 'error')} ">
-	<label for="tipoPersona">
-		<g:message code="datosFiscales.tipoPersona.label" default="Tipo Persona" />
-		
-	</label>
-	<g:checkBox name="tipoPersona" value="${datosFiscalesInstance?.tipoPersona}" />
 
 </div>
 
