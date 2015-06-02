@@ -14,7 +14,9 @@ class User {
   Profile profile
 
   static hasMany = [
-    musicians : Musician
+    musicians : Musician,
+    emails : Email,
+    telephones : Telephone
   ]
 
 	static transients = ['springSecurityService']
