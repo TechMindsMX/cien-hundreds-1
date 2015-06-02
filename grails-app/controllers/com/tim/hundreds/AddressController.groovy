@@ -25,6 +25,7 @@ class AddressController {
 
     @Transactional
     def save(Address addressInstance) {
+        log.info "addressInstace: ${addressInstance.dump()}"
         if (addressInstance == null) {
             notFound()
             return
