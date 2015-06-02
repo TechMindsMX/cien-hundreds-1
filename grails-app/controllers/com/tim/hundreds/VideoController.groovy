@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class VideoController {
+    def videoService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -37,14 +38,18 @@ class VideoController {
             return
         }
 
-        videoInstance.save flush:true
-
-        request.withFormat {
+        try{
+          videoService.saveVideo(videoInstance)
+          request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'video.label', default: 'Video'), videoInstance.id])
                 redirect videoInstance
             }
             '*' { respond videoInstance, [status: CREATED] }
+          }
+        } catch (BusinessException be){
+          log.info "Message ${be.message}"
+          respond videoInstance
         }
     }
 

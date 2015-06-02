@@ -103,8 +103,8 @@ log4j.main = {
         console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     }
 
-    info 'grails.app.controllers.com.tim.hundreds'
-         'grails.app.services.com.tim.hundreds'
+    info 'grails.app.controllers.com.tim.hundreds',
+         'grails.app.services.com.tim.hundreds',
          'grails.app.domain.com.tim.hundreds'
 
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers

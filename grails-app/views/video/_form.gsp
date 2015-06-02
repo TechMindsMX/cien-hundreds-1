@@ -7,7 +7,7 @@
 		<g:message code="video.path.label" default="Path" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textArea name="path" cols="40" rows="5" maxlength="255" required="" value="${videoInstance?.path}"/>
+	<g:textField name="path" maxlength="100" required="" value="${videoInstance?.path}"/>
 
 </div>
 
