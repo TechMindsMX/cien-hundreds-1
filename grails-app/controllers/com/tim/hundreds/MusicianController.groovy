@@ -10,7 +10,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class MusicianController {
     def logoStorerService
-    def springSecurityService
+    def musicianService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -47,10 +47,8 @@ class MusicianController {
         Musician musicianInstance = new Musician()
         bindData(musicianInstance, command)
 
-        musicianInstance.save flush:true
-        def user = springSecurityService.currentUser
-        user.addToMusicians(musicianInstance)
-        user.save()
+        musicianService.save(musicianInstance)
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'musician.label', default: 'Musician'), musicianInstance.id])
