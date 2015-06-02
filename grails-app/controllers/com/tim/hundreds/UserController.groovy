@@ -29,6 +29,7 @@ class UserController {
     def User user = new User(username: command.username, password: command.password)
     def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName)
     profile.role = command.role
+    profile.save(validation: false)
     user.profile = profile
     userService.create(user)
     redirect(uri:'/')
