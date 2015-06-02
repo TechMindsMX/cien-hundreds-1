@@ -2,12 +2,12 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: photoInstance, field: 'path', 'error')} required">
-	<label for="path">
-		<g:message code="photo.path.label" default="Path" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textArea name="path" cols="40" rows="5" maxlength="255" required="" value="${photoInstance?.path}"/>
+<div class="fieldcontain ${hasErrors(bean: photoInstance, field: 'file', 'error')} ">
+  <label for="file">
+    <g:message code="musician.file.label" default="File" />
+
+  </label>
+  <input type="file" id="file" name="file" />
 
 </div>
 

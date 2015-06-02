@@ -29,7 +29,7 @@ class FacilitatorController {
     }
 
     def User user = new User(username: command.username, password: command.password)
-    def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName)
+    def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName).save(validation: false)
     profile.role = command.role
 
     if(params.photo){

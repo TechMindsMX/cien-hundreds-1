@@ -26,16 +26,23 @@ class PhotoController {
     }
 
     @Transactional
-    def save(Photo photoInstance) {
-        if (photoInstance == null) {
+    def save(PhotoCommand command) {
+        if (command == null) {
             notFound()
             return
         }
 
-        if (photoInstance.hasErrors()) {
-            respond photoInstance.errors, view:'create'
+        if (command.hasErrors()) {
+            respond command.errors, view:'create'
             return
         }
+
+        if(params.file){
+          def logoPath = photoStorerService.storeFile(request.getFile('file'))
+          command.photoPath = photoPath
+        }
+        Photo photoInstance = new Photo()
+        bindData(photoInstance, command)
 
         photoInstance.save flush:true
 
