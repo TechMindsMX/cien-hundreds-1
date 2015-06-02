@@ -10,6 +10,8 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class AudioController {
 
+    def audioService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -37,19 +39,17 @@ class AudioController {
             return
         }
 
-        log.info "Audio count by user: ${Audio.findByMusician(audioInstance.musician)?.count()}"
-        def audiosSize = Audio.findByMusician(audioInstance.musician)?.count()
-        if(audiosSize < ApplicationState.MAX_AUDIOS){
-          audioInstance.save flush:true
-
-        request.withFormat {
+        try{
+          audioService.saveAudio(audioInstance)
+          request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'audio.label', default: 'Audio'), audioInstance.id])
                 redirect audioInstance
             }
-    '*' { respond audioInstance, [status: CREATED] }
-        }
-        } else {
+    '*'   { respond audioInstance, [status: CREATED] }
+          }
+        } catch (BusinessException be){
+          log.info "Message ${be.message}"
           respond audioInstance
         }
     }
