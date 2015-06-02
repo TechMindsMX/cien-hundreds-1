@@ -39,7 +39,7 @@ class AudioController {
 
         log.info "Audio count by user: ${Audio.findByMusician(audioInstance.musician)?.count()}"
         def audiosSize = Audio.findByMusician(audioInstance.musician)?.count()
-        if(audiosSize < 5){
+        if(audiosSize < ApplicationState.MAX_AUDIOS){
           audioInstance.save flush:true
 
         request.withFormat {
