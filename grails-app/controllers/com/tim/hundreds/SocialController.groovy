@@ -22,7 +22,7 @@ class SocialController {
     }
 
     def create() {
-        respond new Social(params)
+      [musicianId: params.musicianId]
     }
 
     @Transactional
@@ -38,6 +38,9 @@ class SocialController {
         }
 
         socialInstance.save flush:true
+        def musician = Musician.findById(params.musicianId)
+        musician.social = socialInstance
+        musician.save()
 
         request.withFormat {
             form multipartForm {

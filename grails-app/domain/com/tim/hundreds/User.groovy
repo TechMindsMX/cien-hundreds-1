@@ -12,7 +12,10 @@ class User {
 	boolean passwordExpired
 
   Profile profile
-  static embedded = ['profile']
+
+  static hasMany = [
+    musicians : Musician
+  ]
 
 	static transients = ['springSecurityService']
 

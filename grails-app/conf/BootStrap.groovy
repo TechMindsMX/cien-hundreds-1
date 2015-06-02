@@ -17,7 +17,7 @@ class BootStrap {
     def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
 
     def user = new User(username: 'cien', password: '12345678')
-    def  profile = new Profile(email:'me@techminds.com.mx', firstName:'me', middleName:'middleName', lastName:'lastName')
+    def  profile = new Profile(email:'me@techminds.com.mx', firstName:'me', middleName:'middleName', lastName:'lastName').save(validation: false)
     user.profile = profile
     user.save(flush: true)
 
@@ -30,7 +30,7 @@ class BootStrap {
   def createAdminRole(){
     def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
     def user = new User(username: 'admin', password: '12345678')
-    def  profile = new Profile(email:'admin@techminds.com.mx', firstName:'admin', middleName:'middleName', lastName:'lastName')
+    def  profile = new Profile(email:'admin@techminds.com.mx', firstName:'admin', middleName:'middleName', lastName:'lastName').save(validation: false)
     user.profile = profile
     user.save(flush: true)
 
@@ -43,7 +43,7 @@ class BootStrap {
   def createFacilitatorRole(){
     def facilitatorRole = new Role(authority: 'ROLE_FACILITATOR').save(flush: true)
     def user = new User(username: 'facilitator', password: '12345678')
-    def  profile = new Profile(email:'facilitator@techminds.com.mx', firstName:'facilitator', middleName:'middleName', lastName:'lastName')
+    def  profile = new Profile(email:'facilitator@techminds.com.mx', firstName:'facilitator', middleName:'middleName', lastName:'lastName').save(validation: false)
     user.profile = profile
     user.save(flush: true)
 
