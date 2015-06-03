@@ -153,6 +153,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${contactInstance?.type}">
+				<li class="fieldcontain">
+					<span id="type-label" class="property-label"><g:message code="contact.type.label" default="Type" /></span>
+					
+						<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${contactInstance}" field="type"/></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:contactInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

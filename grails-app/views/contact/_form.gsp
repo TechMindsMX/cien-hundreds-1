@@ -128,3 +128,12 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'type', 'error')} required">
+	<label for="type">
+		<g:message code="contact.type.label" default="Type" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select name="type" from="${com.tim.hundreds.GenderType?.values()}" keys="${com.tim.hundreds.GenderType.values()*.name()}" required="" value="${contactInstance?.type?.name()}" />
+
+</div>
+
