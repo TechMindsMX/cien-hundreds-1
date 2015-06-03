@@ -9,7 +9,6 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class AudioController {
-
     def audioService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]

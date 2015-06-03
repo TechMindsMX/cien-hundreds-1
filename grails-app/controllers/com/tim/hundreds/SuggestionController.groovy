@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class SuggestionController {
+    def suggestionService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -37,14 +38,18 @@ class SuggestionController {
             return
         }
 
-        suggestionInstance.save flush:true
-
-        request.withFormat {
+        try{
+          suggestionService.save(suggestionInstance)
+          request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'suggestion.label', default: 'Suggestion'), suggestionInstance.id])
                 redirect suggestionInstance
             }
             '*' { respond suggestionInstance, [status: CREATED] }
+          }
+        } catch (BusinessException be){
+          log.info "Message ${be.message}"
+          respond suggestionInstance
         }
     }
 

@@ -29,12 +29,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: suggestionInstance, field: 'phone', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: suggestionInstance, field: 'phone', 'error')} required">
 	<label for="phone">
 		<g:message code="suggestion.phone.label" default="Phone" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="phone" maxlength="10" pattern="${suggestionInstance.constraints.phone.matches}" value="${suggestionInstance?.phone}"/>
+	<g:textField name="phone" maxlength="10" pattern="${suggestionInstance.constraints.phone.matches}" required="" value="${suggestionInstance?.phone}"/>
 
 </div>
 
