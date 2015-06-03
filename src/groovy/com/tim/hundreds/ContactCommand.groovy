@@ -1,0 +1,41 @@
+package com.tim.hundreds
+
+import grails.validation.Validateable
+
+@Validateable
+class ContactCommand {
+  String firstName
+  String middleName
+  String lastName
+  String other
+  String nationality
+  String biography
+  String style
+
+  Date birthDate
+  Date entryDate
+
+  GenderType type
+
+  RoleType role
+  Social social
+
+  def musician
+
+  static hasMany = [
+    emails : Email,
+    telephones : Telephone
+  ]
+
+  static constraints = {
+    firstName blank:false,size:1..100
+    middleName blank:false,size:1..100
+    lastName blank:false,size:1..100
+    other nullable:true,blank:false,size:1..50
+    nationality nullable:true,blank:false,size:1..50
+    biography nullable:true,blank:false,size:1..1000
+    style nullable:true,blank:false,size:1..1000
+    social nullable:true
+  }
+
+}

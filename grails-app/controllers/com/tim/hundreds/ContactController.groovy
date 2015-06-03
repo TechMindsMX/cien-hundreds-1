@@ -26,16 +26,20 @@ class ContactController {
     }
 
     @Transactional
-    def save(Contact contactInstance) {
-        if (contactInstance == null) {
+    def save(ContactCommand command) {
+        log.info "command: ${command.dump()}"
+        if (command == null) {
             notFound()
             return
         }
 
-        if (contactInstance.hasErrors()) {
+        if (command.hasErrors()) {
             respond contactInstance.errors, view:'create'
             return
         }
+
+        Contact contactInstance = new Contact()
+        bindData(contactInstance, command)
 
         contactInstance.save flush:true
 
