@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class TelephoneController {
+    def contactId
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -22,11 +23,13 @@ class TelephoneController {
     }
 
     def create() {
-        respond new Telephone(params)
+      contactId = params.contactId
+      respond new Telephone(params)
     }
 
     @Transactional
     def save(Telephone telephoneInstance) {
+        log.info "contactId: ${contactId}"
         if (telephoneInstance == null) {
             notFound()
             return
@@ -38,6 +41,9 @@ class TelephoneController {
         }
 
         telephoneInstance.save flush:true
+        def contact = Contact.findById(contactId)
+        contact.telephones.add(telephoneInstance)
+        contact.save()
 
         request.withFormat {
             form multipartForm {
