@@ -193,6 +193,10 @@
         <li>
           <g:link controller="telephone" action="create" params='[contactId: "${contactInstance.id}"]'>Agregar Teléfono</g:link>
         </li>
+        <li>
+          <g:link controller="email" action="create" params='[contactId: "${contactInstance.id}"]'>Agregar Email</g:link>
+        </li>
+
 
 			</ol>
 			<g:form url="[resource:contactInstance, action:'delete']" method="DELETE">
