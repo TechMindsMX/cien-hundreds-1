@@ -83,6 +83,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'address', 'error')} ">
+	<label for="address">
+		<g:message code="contact.address.label" default="Address" />
+
+	</label>
+	<g:select id="address" name="address.id" from="${com.tim.hundreds.Address.list()}" optionKey="id" value="${contactInstance?.address?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'birthDate', 'error')} required">
 	<label for="birthDate">
 		<g:message code="contact.birthDate.label" default="Birth Date" />
@@ -146,11 +155,10 @@
 
 </div>
 
-
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'photo', 'error')} ">
- <label for="photo">
-   <g:message code="contact.photo.label" default="Photo" />
+  <label for="photo">
+  <g:message code="contact.photo.label" default="Photo" />
 
-   </label>
+ </label>
    <input type="file" id="photo" name="photo" />
 </div>

@@ -104,6 +104,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${contactInstance?.address}">
+				<li class="fieldcontain">
+					<span id="address-label" class="property-label"><g:message code="contact.address.label" default="Address" /></span>
+					
+						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${contactInstance?.address?.id}">${contactInstance?.address?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${contactInstance?.birthDate}">
 				<li class="fieldcontain">
 					<span id="birthDate-label" class="property-label"><g:message code="contact.birthDate.label" default="Birth Date" /></span>

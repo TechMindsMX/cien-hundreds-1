@@ -17,6 +17,7 @@ class Contact {
 
   RoleType role
   Social social
+  Address address
 
   static belongsTo = [ musician : Musician ]
 
@@ -35,6 +36,7 @@ class Contact {
     style nullable:true,blank:false,size:1..1000
     photoPath nullable:true
     social nullable:true
+    address nullable:true
   }
 
 }

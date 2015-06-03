@@ -29,7 +29,6 @@ class ContactController {
 
     @Transactional
     def save(ContactCommand command) {
-        log.info "command: ${command.dump()}"
         if (command == null) {
             notFound()
             return
