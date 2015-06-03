@@ -5,11 +5,16 @@ import grails.transaction.Transactional
 @Transactional
 class SocialService {
 
-  def save(socialInstance, musicianId){
+  def saveMusician(socialInstance, musician){
     socialInstance.save flush:true
-    def musician = Musician.findById(musicianId)
     musician.social = socialInstance
     musician.save()
+  }
+
+  def saveContact(socialInstance, contact){
+    socialInstance.save flush:true
+    contact.social = socialInstance
+    contact.save()
   }
 
 }

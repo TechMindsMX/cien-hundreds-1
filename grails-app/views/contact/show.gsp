@@ -185,6 +185,11 @@
           <g:link controller="address" action="create" params='[contactId: "${contactInstance.id}"]'>Agregar Dirección</g:link>
           </li>
         </g:if>
+        <g:if test="${contactInstance.social == null}">
+         <li>
+         <g:link controller="social" action="create" params='[contactId: "${contactInstance.id}"]'>Agregar Redes Sociales</g:link>
+         </li>
+        </g:if>
 
 			</ol>
 			<g:form url="[resource:contactInstance, action:'delete']" method="DELETE">

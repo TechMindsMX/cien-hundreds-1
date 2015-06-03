@@ -10,6 +10,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class SocialController {
     def socialService
+    def contactId
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -23,6 +24,7 @@ class SocialController {
     }
 
     def create() {
+      contactId = params.contactId
       [musicianId: params.musicianId]
     }
 
@@ -31,6 +33,7 @@ class SocialController {
         log.info "socialInstance: ${socialInstance.dump()}"
         log.info "params: ${params.dump()}"
         log.info "musicianId: ${params.musicianId}"
+        log.info "contactId: ${contactId}"
         if (socialInstance == null) {
             notFound()
             return
@@ -41,7 +44,14 @@ class SocialController {
             return
         }
 
-        socialService.save(socialInstance, params.musicianId)
+        if(params.musicianId){
+          def musician = Musician.findById(musicianId)
+          socialService.saveMusician(socialInstance, params.musicianId)
+        }
+        if(contactId){
+          def contact = Contact.findById(contactId)
+          socialService.saveContact(socialInstance, contact)
+        }
 
         request.withFormat {
             form multipartForm {
