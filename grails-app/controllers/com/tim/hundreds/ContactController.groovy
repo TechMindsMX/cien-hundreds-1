@@ -10,6 +10,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class ContactController {
     def photoStorerService
+    def contactService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -46,10 +47,7 @@ class ContactController {
 
         Contact contactInstance = new Contact()
         bindData(contactInstance, command)
-        contactInstance.musician = Musician.findById(params.musician.id)
-        log.info "contactInstance: ${contactInstance.dump()}"
-
-        contactInstance.save flush:true
+        contactService.save(contactInstance, params.musician.id)
 
         request.withFormat {
             form multipartForm {
