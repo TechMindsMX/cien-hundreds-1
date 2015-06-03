@@ -28,6 +28,9 @@ class SocialController {
 
     @Transactional
     def save(Social socialInstance) {
+        log.info "socialInstance: ${socialInstance.dump()}"
+        log.info "params: ${params.dump()}"
+        log.info "musicianId: ${params.musicianId}"
         if (socialInstance == null) {
             notFound()
             return

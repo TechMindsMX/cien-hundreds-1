@@ -7,6 +7,8 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class AddressController {
+    def addressService
+    def datosFiscalesId
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -20,12 +22,14 @@ class AddressController {
     }
 
     def create() {
-        respond new Address(params)
+      log.info "datosFiscalesId: ${params.datosFiscalesId}"
+      datosFiscalesId = params.datosFiscalesId
     }
 
     @Transactional
     def save(Address addressInstance) {
-        log.info "addressInstace: ${addressInstance.dump()}"
+        log.info "datosFiscalesId2: ${datosFiscalesId}"
+
         if (addressInstance == null) {
             notFound()
             return
@@ -36,7 +40,7 @@ class AddressController {
             return
         }
 
-        addressInstance.save flush:true
+        addressService.save(addressInstance, datosFiscalesId)
 
         request.withFormat {
             form multipartForm {
