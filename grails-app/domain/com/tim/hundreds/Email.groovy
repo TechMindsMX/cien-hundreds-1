@@ -5,7 +5,7 @@ class Email {
   EmailType type
 
   static constraints = {
-    address blank:false,email:true,unique:true,size:1..200
+    address blank:false,email:true,size:1..200
   }
 
 }

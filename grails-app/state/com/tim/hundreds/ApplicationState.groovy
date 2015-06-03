@@ -6,4 +6,5 @@ interface ApplicationState {
   static final Integer MAX_PHOTOS = 5
   static final Integer MAX_SUGGESTION = 3
   static final Integer MAX_TELEPHONES = 3
+  static final Integer MAX_EMAILS = 3
 }
