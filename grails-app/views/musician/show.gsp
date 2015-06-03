@@ -249,13 +249,21 @@
 
             <tr>
 
-                <th><g:link class="btn btn-info btn-lg" controller="social" action="create" params='[musicianId: "${musicianInstance.id}"]'>Agregar Redes Sociales</g:link></th>
-
                 <th><g:link class="btn btn-info btn-lg" controller="video" action="create" params='[musicianId: "${musicianInstance.id}"]'>Agregar Videos</g:link></th>
 
                 <th><g:link class="btn btn-info btn-lg" controller="photo" action="create" params='[musicianId: "${musicianInstance.id}"]'>Agregar Fotos</g:link></th>
 
                 <th><g:link class="btn btn-info btn-lg" controller="audio" action="create" params='[musicianId: "${musicianInstance.id}"]'>Agregar Audio</g:link></th>
+
+                <g:if test="${musicianInstance.social == null}">
+                <th><g:link class="btn btn-info btn-lg" controller="social" action="create" params='[musicianId: "${musicianInstance.id}"]'>Agregar Redes Sociales</g:link></th>
+                </g:if>
+                <g:if test="${musicianInstance.address == null}">
+                <th><g:link class="btn btn-info btn-lg" controller="address" action="create" params='[musicianId: "${musicianInstance.id}"]'>Agregar Dirección</g:link></th>
+                </g:if>
+                <g:if test="${musicianInstance.datosFiscales == null}">
+                <th><g:link class="btn btn-info btn-lg" controller="datosFiscales" action="create" params='[musicianId: "${musicianInstance.id}"]'>Agregar Datos Fiscales</g:link></th>
+                </g:if>
 
             </tr>
 
@@ -290,12 +298,6 @@
 					</g:if>
 				</td>
 
-        <td>
-        <g:link controller="social" action="create" params='[musicianId: "${musicianInstance.id}"]'>Add Social</g:link>
-        </td>
-        <td>
-        <g:link controller="datosFiscales" action="create" params='[musicianId: "${musicianInstance.id}"]'>Add Datos Fiscales</g:link>
-        </td>
             </tr>
 
         </tbody>
