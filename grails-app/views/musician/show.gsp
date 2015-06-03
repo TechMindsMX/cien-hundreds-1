@@ -255,6 +255,14 @@
 
                 <th><g:link class="btn btn-info btn-lg" controller="audio" action="create" params='[musicianId: "${musicianInstance.id}"]'>Agregar Audio</g:link></th>
 
+                <th><g:link class="btn btn-info btn-lg" controller="suggestion" action="create" params='[musicianId: "${musicianInstance.id}"]'>Agregar Sugerencias</g:link></th>
+
+                <th><g:link class="btn btn-info btn-lg" controller="contact" action="create" params='[musicianId: "${musicianInstance.id}"]'>Agregar Contactos</g:link></th>
+
+                </tr>
+                <tr>
+                <th><g:link class="btn btn-info btn-lg" controller="activity" action="create" params='[musicianId: "${musicianInstance.id}"]'>Agregar Actividades</g:link></th>
+
                 <g:if test="${musicianInstance.social == null}">
                 <th><g:link class="btn btn-info btn-lg" controller="social" action="create" params='[musicianId: "${musicianInstance.id}"]'>Agregar Redes Sociales</g:link></th>
                 </g:if>
