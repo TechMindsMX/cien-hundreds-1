@@ -39,8 +39,6 @@ html * {
 body {
 	background: #ffffff;
 	color: #333333;
-	margin: 0 auto;
-	max-width: 960px;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
 	   -moz-box-shadow: 0 0 0.3em #255b17;
 	-webkit-box-shadow: 0 0 0.3em #255b17;
@@ -48,7 +46,10 @@ body {
 }
 
 #grailsLogo {
-	background-color: #abbf78;
+	background-image: linear-gradient(to bottom, #e8e8e8 0px, #f5f5f5 100%);
+    background-repeat: repeat-x;
+    border-color: #dcdcdc;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) inset, 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -65,7 +66,7 @@ body {
 }
 
 a:link, a:visited, a:hover {
-	color: #48802c;
+	color: #337ab7;
 }
 
 a:hover, a:active {
@@ -108,11 +109,10 @@ img {
 }
 
 .footer {
-	background: #abbf78;
+	background: #f5f5f5;
 	color: #000;
 	clear: both;
 	font-size: 0.8em;
-	margin-top: 1.5em;
 	padding: 1em;
 	min-height: 1em;
 }
@@ -135,11 +135,8 @@ img {
 /* NAVIGATION MENU */
 
 .nav {
-	background-color: #efefef;
-	padding: 0.5em 0.75em;
-	   -moz-box-shadow: 0 0 3px 1px #aaaaaa;
-	-webkit-box-shadow: 0 0 3px 1px #aaaaaa;
-	        box-shadow: 0 0 3px 1px #aaaaaa;
+	background-color: #f5f5f5;
+	padding: 0.5em 0.75em;	  
 	zoom: 1;
 }
 
@@ -399,7 +396,7 @@ input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
 /* TABLES */
 
 table {
-	border-top: 1px solid #DFDFDF;
+	/*border-top: 1px solid #DFDFDF;*/
 	border-collapse: collapse;
 	width: 100%;
 	margin-bottom: 1em;
@@ -423,7 +420,7 @@ td, th {
 	text-align: left;
 	vertical-align: top;
 }
-
+/*
 th {
 	background-color: #efefef;
 	background-image: -moz-linear-gradient(top, #ffffff, #eaeaea);
@@ -435,7 +432,7 @@ th {
 	line-height: 1.7em;
 	padding: 0.2em 0.6em;
 }
-
+*/
 thead th {
 	white-space: nowrap;
 }
@@ -475,9 +472,7 @@ th.desc a {
 	background: #ffffff;
 }
 
-th:hover, tr:hover {
-	background: #E1F2B6;
-}
+
 
 /* PAGINATION */
 
