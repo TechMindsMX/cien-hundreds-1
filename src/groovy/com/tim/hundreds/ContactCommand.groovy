@@ -11,6 +11,7 @@ class ContactCommand {
   String nationality
   String biography
   String style
+  String photoPath
 
   Date birthDate
   Date entryDate
@@ -20,7 +21,9 @@ class ContactCommand {
   RoleType role
   Social social
 
-  def musician
+  static belongsTo = [
+    musician : Musician
+  ]
 
   static hasMany = [
     emails : Email,
@@ -36,6 +39,7 @@ class ContactCommand {
     biography nullable:true,blank:false,size:1..1000
     style nullable:true,blank:false,size:1..1000
     social nullable:true
+    photoPath nullable:true
   }
 
 }

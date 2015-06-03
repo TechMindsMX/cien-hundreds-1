@@ -8,6 +8,7 @@ class Contact {
   String nationality
   String biography
   String style
+  String photoPath
 
   Date birthDate
   Date entryDate
@@ -32,6 +33,7 @@ class Contact {
     nationality nullable:true,blank:false,size:1..50
     biography nullable:true,blank:false,size:1..1000
     style nullable:true,blank:false,size:1..1000
+    photoPath nullable:true
     social nullable:true
   }
 

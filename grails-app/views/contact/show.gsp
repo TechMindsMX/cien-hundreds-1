@@ -86,6 +86,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${contactInstance?.photoPath}">
+				<li class="fieldcontain">
+					<span id="photoPath-label" class="property-label"><g:message code="contact.photoPath.label" default="Photo Path" /></span>
+					
+						<span class="property-value" aria-labelledby="photoPath-label"><g:fieldValue bean="${contactInstance}" field="photoPath"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${contactInstance?.social}">
 				<li class="fieldcontain">
 					<span id="social-label" class="property-label"><g:message code="contact.social.label" default="Social" /></span>

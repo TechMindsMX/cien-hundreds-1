@@ -32,7 +32,7 @@
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'other', 'error')} ">
 	<label for="other">
 		<g:message code="contact.other.label" default="Other" />
-		
+
 	</label>
 	<g:textField name="other" maxlength="50" value="${contactInstance?.other}"/>
 
@@ -41,7 +41,7 @@
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'nationality', 'error')} ">
 	<label for="nationality">
 		<g:message code="contact.nationality.label" default="Nationality" />
-		
+
 	</label>
 	<g:textField name="nationality" maxlength="50" value="${contactInstance?.nationality}"/>
 
@@ -50,7 +50,7 @@
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'biography', 'error')} ">
 	<label for="biography">
 		<g:message code="contact.biography.label" default="Biography" />
-		
+
 	</label>
 	<g:textArea name="biography" cols="40" rows="5" maxlength="1000" value="${contactInstance?.biography}"/>
 
@@ -59,16 +59,25 @@
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'style', 'error')} ">
 	<label for="style">
 		<g:message code="contact.style.label" default="Style" />
-		
+
 	</label>
 	<g:textArea name="style" cols="40" rows="5" maxlength="1000" value="${contactInstance?.style}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'photoPath', 'error')} ">
+	<label for="photoPath">
+		<g:message code="contact.photoPath.label" default="Photo Path" />
+
+	</label>
+	<g:textField name="photoPath" value="${contactInstance?.photoPath}"/>
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'social', 'error')} ">
 	<label for="social">
 		<g:message code="contact.social.label" default="Social" />
-		
+
 	</label>
 	<g:select id="social" name="social.id" from="${com.tim.hundreds.Social.list()}" optionKey="id" value="${contactInstance?.social?.id}" class="many-to-one" noSelection="['null': '']"/>
 
@@ -86,7 +95,7 @@
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'emails', 'error')} ">
 	<label for="emails">
 		<g:message code="contact.emails.label" default="Emails" />
-		
+
 	</label>
 	<g:select name="emails" from="${com.tim.hundreds.Email.list()}" multiple="multiple" optionKey="id" size="5" value="${contactInstance?.emails*.id}" class="many-to-many"/>
 
@@ -122,7 +131,7 @@
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'telephones', 'error')} ">
 	<label for="telephones">
 		<g:message code="contact.telephones.label" default="Telephones" />
-		
+
 	</label>
 	<g:select name="telephones" from="${com.tim.hundreds.Telephone.list()}" multiple="multiple" optionKey="id" size="5" value="${contactInstance?.telephones*.id}" class="many-to-many"/>
 
@@ -137,3 +146,11 @@
 
 </div>
 
+
+<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'photo', 'error')} ">
+ <label for="photo">
+   <g:message code="contact.photo.label" default="Photo" />
+
+   </label>
+   <input type="file" id="photo" name="photo" />
+</div>

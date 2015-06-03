@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class ContactController {
+    def photoStorerService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -34,12 +35,19 @@ class ContactController {
         }
 
         if (command.hasErrors()) {
-            respond contactInstance.errors, view:'create'
+            respond command.errors, view:'create'
             return
+        }
+
+        if(params.photo){
+          def photoPath = photoStorerService.storeFile(request.getFile('photo'))
+          command.photoPath = photoPath
         }
 
         Contact contactInstance = new Contact()
         bindData(contactInstance, command)
+        contactInstance.musician = Musician.findById(params.musician.id)
+        log.info "contactInstance: ${contactInstance.dump()}"
 
         contactInstance.save flush:true
 
