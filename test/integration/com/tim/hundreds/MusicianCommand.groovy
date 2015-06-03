@@ -20,8 +20,8 @@ class MusicianCommandSpec extends Specification {
     then:"We validate command"
       result == musician.validate()
     where:"We have the next cases"
-    name             | history  | web                             | notes   | hasManger || result
-    'Above & Beyond' | ''       | 'http://www.aboveandbeyond.nu/' | 'notes' | true      || true
+    name             | history   | web                             | notes   | tags   | hasManger | formed            || result
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags' | true      |  new Date()       || true
   }
 
 
