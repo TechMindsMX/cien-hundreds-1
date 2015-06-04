@@ -14,7 +14,7 @@
 			</ul>
 		</div>
 		<div id="create-musician" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+			<h1>Datos de Contacto</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -28,10 +28,16 @@
 			<g:form url="[resource:musicianInstance, action:'save']" >
 				<fieldset class="form">
 					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				</fieldset>
+				</fieldset>			
+
+				<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
+				  <label for="buttons">				    
+				  </label>
+				   <g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<button class="btn btn-danger" type="reset">Cancelar</button>
+				</div>
+
+					
 			</g:form>
 		</div>
 	</body>
