@@ -37,6 +37,8 @@ class Contact {
     photoPath nullable:true
     social nullable:true
     address nullable:true
+    telephones maxSize: ApplicationState.MAX_TELEPHONES
+    emails maxSize: ApplicationState.MAX_EMAILS
   }
 
 }

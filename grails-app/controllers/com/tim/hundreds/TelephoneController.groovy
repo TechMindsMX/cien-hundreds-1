@@ -7,10 +7,8 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class TelephoneController {
     def telephoneService
-    def contactId
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -24,13 +22,14 @@ class TelephoneController {
     }
 
     def create() {
-      contactId = params.contactId
+      [
+        contactId : params.contactId
+      ]
       respond new Telephone(params)
     }
 
-    @Transactional
     def save(Telephone telephoneInstance) {
-        log.info "contactId: ${contactId}"
+        log.info "contactId: ${params.contactId}"
         if (telephoneInstance == null) {
             notFound()
             return
@@ -41,20 +40,19 @@ class TelephoneController {
             return
         }
 
-        telephoneInstance.save flush:true
-        def contact = Contact.findById(contactId)
-
+        def contact = Contact.findById(params.contactId)
         try{
-          telephoneService.save(telephoneInstance, contact)
+          def instance = telephoneService.save(telephoneInstance, contact)
           request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'telephone.label', default: 'Telephone'), telephoneInstance.id])
-                redirect telephoneInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'telephone.label', default: 'Telephone'), instance.id])
+                redirect instance
             }
-            '*' { respond telephoneInstance, [status: CREATED] }
+            '*' { respond instance, [status: CREATED] }
+
           }
-        }catch (BusinessException be){
-          log.info "${be.message}"
+        }catch (Exception ve){
+          log.info "Errors ${ve.errors}"
           respond telephoneInstance
         }
     }

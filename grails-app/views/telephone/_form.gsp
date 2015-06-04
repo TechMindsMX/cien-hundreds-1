@@ -5,7 +5,7 @@
 <div class="fieldcontain ${hasErrors(bean: telephoneInstance, field: 'phone', 'error')} ">
 	<label for="phone">
 		<g:message code="telephone.phone.label" default="Phone" />
-		
+
 	</label>
 	<g:textField name="phone" maxlength="10" pattern="${telephoneInstance.constraints.phone.matches}" value="${telephoneInstance?.phone}"/>
 
@@ -20,3 +20,4 @@
 
 </div>
 
+<g:hiddenField name="contactId" value="${params?.contactId}"/>
