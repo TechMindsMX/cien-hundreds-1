@@ -32,9 +32,12 @@
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-				</fieldset>
+				<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
+				  <label for="buttons">				    
+				  </label>
+				    <g:actionSubmit class="btn btn-success" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+					<button class="btn btn-danger" type="reset">Cancelar</button>
+				</div>									
 			</g:form>
 		</div>
 	</body>

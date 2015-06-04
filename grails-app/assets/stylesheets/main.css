@@ -74,7 +74,7 @@ a:hover, a:active {
 }
 
 h1 {
-	color: #48802c;
+	color: #5990de;
 	font-weight: normal;
 	font-size: 1.25em;
 	margin: 0.8em 0 0.3em 0;
@@ -96,6 +96,7 @@ img {
 }
 
 .content {
+	margin-bottom: 15px;
 }
 
 .content h1 {
@@ -203,11 +204,9 @@ img {
 
 fieldset,
 .property-list {
-	margin: 0.6em 1.25em 0 1.25em;
-	padding: 0.3em 1.8em 1.25em;
-	position: relative;
-	zoom: 1;
-	border: none;
+	border: medium none;
+    margin: auto;
+    position: relative;
 }
 
 .property-list .fieldcontain {
@@ -223,8 +222,8 @@ fieldset,
 .fieldcontain label,
 .fieldcontain .property-label {
 	color: #666666;
-	text-align: right;
-	width: 25%;
+    text-align: left;
+    width: 47%;
 }
 
 .fieldcontain .property-label {
@@ -443,7 +442,7 @@ th a {
 }
 
 th a:link, th a:visited {
-	color: #666666;
+	color: #337ab7;
 }
 
 th a:hover, th a:focus {
@@ -588,4 +587,22 @@ th.desc a {
 a.skip {
 	position: absolute;
 	left: -9999px;
+}
+
+.hide {
+	display: none;
+	visibility: hidden;
+}
+
+.not-active {
+   pointer-events: none;
+   cursor: default;
+}
+
+.aling-center{
+	text-align: center;
+}
+
+.blank{
+	color: white !important;
 }

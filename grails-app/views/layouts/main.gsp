@@ -23,10 +23,23 @@
 		<asset:javascript src="application.js"/>
 		<g:layoutHead/>
 	</head>
-	<body>
-		<div id="grailsLogo" role="banner"><a href="#"><asset:image src="cien_logo.gif" alt="Grails"/></a></div>
-		<g:layoutBody/>
-		<div class="footer text-right" role="contentinfo"> <p class="text-right">&copy; 2015 100 Hundreds.</p></div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+	<body>	
+		<div class="container theme-showcase">
+            <div class="well">
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                        <a href="#"><asset:image src="cien_logo.gif" alt="Grails"/></a>
+                    </div>
+                    <div class="col-xs-6 col-md-4 text-right">
+                        <button class="btn btn-default" type="button">Ingresar</button>
+                    </div>
+                </div>
+            </div>
+            <g:layoutBody/>           
+        
+            <div class="well">
+                <p>Copyright 2015 100 Hundreds.</p>
+            </div>            
+        </div>
 	</body>
 </html>
