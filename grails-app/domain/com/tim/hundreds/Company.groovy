@@ -18,7 +18,7 @@ class Company {
 
   static constraints = {
     name blank:false,size:1..100
-    description blank:false,size:1..1000
+    description blank:false,size:1..10000
     web nullable:true,blank:false,size:1..100
     address nullable:true
     social nullable:true
