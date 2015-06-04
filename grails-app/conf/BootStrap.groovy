@@ -3,12 +3,16 @@ import com.tim.hundreds.User
 import com.tim.hundreds.Profile
 import com.tim.hundreds.UserRole
 
+import grails.util.Environment
+
 class BootStrap {
   def init = { servletContext ->
-    createUserRole()
-    createAdminRole()
-    createFacilitatorRole()
-    createBuyerRole()
+    if(Environment.current == Environment.DEVELOPMENT) {
+      createUserRole()
+      createAdminRole()
+      createFacilitatorRole()
+      createBuyerRole()
+    }
   }
   def destroy = {
   }

@@ -16,11 +16,6 @@ class UserController {
 
   def save(UserCommand command){
     log.info "Creating user: ${command?.dump()}"
-    if(command == null){
-      notFound()
-      return
-    }
-
     if(command.hasErrors()){
       respond command.errors, view: 'save'
       return

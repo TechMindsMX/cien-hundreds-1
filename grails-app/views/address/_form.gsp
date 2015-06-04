@@ -54,5 +54,6 @@
 	</label>
 	<g:textField name="country" maxlength="100" required="" value="${addressInstance?.country}"/>
 
+	<g:hiddenField name="musicianId" value="${params?.musicianId}"/>
 </div>
 

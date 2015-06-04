@@ -7,7 +7,6 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class VideoController {
     def videoService
 
@@ -26,7 +25,6 @@ class VideoController {
         respond new Video(params)
     }
 
-    @Transactional
     def save(Video videoInstance) {
         if (videoInstance == null) {
             notFound()
@@ -39,17 +37,17 @@ class VideoController {
         }
 
         try{
-          videoService.saveVideo(videoInstance)
+          def instance = videoService.saveVideo(videoInstance)
           request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'video.label', default: 'Video'), videoInstance.id])
-                redirect videoInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'video.label', default: 'Video'), instance.id])
+                redirect instance
             }
-            '*' { respond videoInstance, [status: CREATED] }
+            '*' { respond instance, [status: CREATED] }
           }
-        } catch (BusinessException be){
-          log.info "Message ${be.message}"
-          respond videoInstance
+        } catch (Exception ve){
+          log.info "errors ${ve.errors}"
+          respond videoInstance.musician.errors, view:'create'
         }
     }
 
@@ -57,7 +55,6 @@ class VideoController {
         respond videoInstance
     }
 
-    @Transactional
     def update(Video videoInstance) {
         if (videoInstance == null) {
             notFound()
@@ -80,7 +77,6 @@ class VideoController {
         }
     }
 
-    @Transactional
     def delete(Video videoInstance) {
 
         if (videoInstance == null) {

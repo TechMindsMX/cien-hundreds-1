@@ -27,16 +27,20 @@ class AddressController {
       log.info "datosFiscalesId: ${params.datosFiscalesId}"
       log.info "contactId: ${params.contactId}"
       log.info "musicianId: ${params.musicianId}"
-      datosFiscalesId = params.datosFiscalesId
-      contactId = params.contactId
-      musicianId = params.musicianId
+      [
+        datosFiscalesId : params.datosFiscalesId,
+        contactId : params.contactId,
+        musicianId : params.musicianId
+      ]
     }
 
     @Transactional
     def save(Address addressInstance) {
-        log.info "datosFiscalesId2: ${datosFiscalesId}"
-        log.info "contactId: ${contactId}"
-        log.info "musicianId: ${musicianId}"
+        log.info "datosFiscalesId2: ${params.datosFiscalesId}"
+        log.info "contactId: ${params.contactId}"
+        log.info "musicianId: ${params.musicianId}"
+
+        return
 
         if (addressInstance == null) {
             notFound()

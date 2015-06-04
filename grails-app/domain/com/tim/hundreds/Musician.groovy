@@ -43,6 +43,7 @@ class Musician {
     social nullable:true
     address nullable:true
     datosFiscales nullable:true
+    videos maxSize: 5
   }
 }
 

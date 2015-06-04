@@ -38,7 +38,7 @@
             </div>
             <div class="dropdown theme-dropdown clearfix">
               <g:hasErrors>
-                <g:eachError><g:message error="${it.defaultMessage}"/></g:eachError>
+                 <g:renderErrors />
               </g:hasErrors>
                 <g:form url="[resource:userInstance, action:'save']" >
                     <div class="col-xs-8 col-md-9 ">
