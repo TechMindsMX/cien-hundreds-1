@@ -7,12 +7,12 @@ class SuggestionService {
 
   def save(suggestionInstance){
     log.info "Suggestion count by musician: ${Suggestion.findByMusician(suggestionInstance.musician)?.count()}"
-    def suggestionSize = Suggestion.findByMusician(suggestionInstance.musician)?.count()
-    if(suggestionSize < ApplicationState.MAX_SUGGESTION){
-      suggestionInstance.save flush:true
-    } else {
-        throw new BusinessException()
-    }
+
+    def musician = suggestionInstance.musician
+    musician.addToSuggestions(suggestionInstance)
+    musician.save(failOnError:true)
+
+    suggestionInstance
   }
 
 }

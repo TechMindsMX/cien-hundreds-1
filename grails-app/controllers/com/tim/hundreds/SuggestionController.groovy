@@ -7,7 +7,6 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class SuggestionController {
     def suggestionService
 
@@ -26,11 +25,11 @@ class SuggestionController {
         respond new Suggestion(params)
     }
 
-    @Transactional
     def save(Suggestion suggestionInstance) {
+        log.info "Suggestion: ${suggestionInstance.dump()}"
         if (suggestionInstance == null) {
-            notFound()
-            return
+          notFound()
+          return
         }
 
         if (suggestionInstance.hasErrors()) {
@@ -39,17 +38,17 @@ class SuggestionController {
         }
 
         try{
-          suggestionService.save(suggestionInstance)
+          def instance = suggestionService.save(suggestionInstance)
           request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'suggestion.label', default: 'Suggestion'), suggestionInstance.id])
-                redirect suggestionInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'suggestion.label', default: 'Suggestion'), instance.id])
+                redirect instance
             }
-            '*' { respond suggestionInstance, [status: CREATED] }
+            '*' { respond instance, [status: CREATED] }
           }
-        } catch (BusinessException be){
-          log.info "Message ${be.message}"
-          respond suggestionInstance
+        } catch (Exception ve){
+          log.info "Errors ${ve.errors}"
+          respond suggestionInstance.musician.errors, view:'create'
         }
     }
 
