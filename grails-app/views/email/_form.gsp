@@ -20,3 +20,4 @@
 
 </div>
 
+<g:hiddenField name="contactId" value="${params?.contactId}"/>

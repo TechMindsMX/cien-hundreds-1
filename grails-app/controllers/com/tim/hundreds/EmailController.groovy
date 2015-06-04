@@ -7,10 +7,8 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class EmailController {
     def emailService
-    def contactId
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -24,13 +22,13 @@ class EmailController {
     }
 
     def create() {
-        contactId = params.contactId
-        respond new Email(params)
+      [
+        contactId : params.contactId
+      ]
     }
 
-    @Transactional
     def save(Email emailInstance) {
-        log.info "contactId: ${contactId}"
+        log.info "contactId: ${params.contactId}"
         if (emailInstance == null) {
             notFound()
             return
@@ -41,21 +39,19 @@ class EmailController {
             return
         }
 
-        emailInstance.save flush:true
-        def contact = Contact.findById(contactId)
-
+        def contact = Contact.findById(params.contactId)
         try{
-          emailService.save(emailInstance, contact)
+          def instance = emailService.save(emailInstance, contact)
           request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'email.label', default: 'Email'), emailInstance.id])
-                redirect emailInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'email.label', default: 'Email'), instance.id])
+                redirect instance
             }
-            '*' { respond emailInstance, [status: CREATED] }
+            '*' { respond instance, [status: CREATED] }
           }
-        } catch (BusinessException be){
-          log.info "${be.message}"
-          respond emailInstance
+        } catch (Exception ve){
+          log.info "Errors ${ve.errors}"
+          respond contact.errors, view:'create'
         }
     }
 

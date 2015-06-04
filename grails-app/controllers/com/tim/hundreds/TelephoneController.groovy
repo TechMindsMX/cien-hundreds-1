@@ -53,7 +53,7 @@ class TelephoneController {
           }
         }catch (Exception ve){
           log.info "Errors ${ve.errors}"
-          respond telephoneInstance
+          respond contact.errors, view:'create'
         }
     }
 
