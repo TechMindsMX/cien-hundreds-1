@@ -46,7 +46,7 @@ class VideoController {
             '*' { respond instance, [status: CREATED] }
           }
         } catch (Exception ve){
-          log.info "errors ${ve.errors}"
+          log.info "Errors ${ve.errors}"
           respond videoInstance.musician.errors, view:'create'
         }
     }

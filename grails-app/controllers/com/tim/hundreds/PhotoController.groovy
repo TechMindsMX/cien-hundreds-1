@@ -7,7 +7,6 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class PhotoController {
     def photoStorerService
     def photoService
@@ -27,14 +26,8 @@ class PhotoController {
         respond new Photo(params)
     }
 
-    @Transactional
     def save(PhotoCommand command) {
         log.info "command: ${command.dump()}"
-        if (command == null) {
-            notFound()
-            return
-        }
-
         if (command.hasErrors()) {
             respond command.errors, view:'create'
             return
@@ -48,17 +41,17 @@ class PhotoController {
         bindData(photoInstance, command)
 
         try{
-          photoService.savePhoto(photoInstance)
+          def instance = photoService.savePhoto(photoInstance)
           request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'photo.label', default: 'Photo'), photoInstance.id])
-                redirect photoInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'photo.label', default: 'Photo'), instance.id])
+                redirect instance
             }
-            '*' { respond photoInstance, [status: CREATED] }
+            '*' { respond instance, [status: CREATED] }
           }
-        } catch (BusinessException be){
-          log.info "Message ${be.message}"
-          respond photoInstance
+        } catch (Exception ve){
+          log.info "Errors ${ve.errors}"
+          respond photoInstance.musician.errors, view:'create'
         }
     }
 

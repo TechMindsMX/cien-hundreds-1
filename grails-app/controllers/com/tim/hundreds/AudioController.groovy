@@ -7,7 +7,6 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class AudioController {
     def audioService
 
@@ -26,7 +25,6 @@ class AudioController {
         respond new Audio(params)
     }
 
-    @Transactional
     def save(Audio audioInstance) {
         if (audioInstance == null) {
             notFound()
@@ -39,17 +37,17 @@ class AudioController {
         }
 
         try{
-          audioService.saveAudio(audioInstance)
+          def instance = audioService.saveAudio(audioInstance)
           request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'audio.label', default: 'Audio'), audioInstance.id])
-                redirect audioInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'audio.label', default: 'Audio'), instance.id])
+                redirect instance
             }
-    '*'   { respond audioInstance, [status: CREATED] }
+            '*' { respond instance, [status: CREATED] }
           }
-        } catch (BusinessException be){
-          log.info "Message ${be.message}"
-          respond audioInstance
+        } catch (Exception ve){
+          log.info "Errors ${ve.errors}"
+          respond audioInstance.musician.errors, view:'create'
         }
     }
 

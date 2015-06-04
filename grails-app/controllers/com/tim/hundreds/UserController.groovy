@@ -4,6 +4,9 @@ import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['permitAll'])
 class UserController {
+
+  static defaultAction = "create"
+
   def userService
 
   def index(){

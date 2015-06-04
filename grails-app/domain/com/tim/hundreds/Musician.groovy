@@ -43,7 +43,9 @@ class Musician {
     social nullable:true
     address nullable:true
     datosFiscales nullable:true
-    videos maxSize: 5
+    videos maxSize: ApplicationState.MAX_VIDEOS
+    photos maxSize: ApplicationState.MAX_PHOTOS
+    audios maxSize: ApplicationState.MAX_AUDIOS
   }
 }
 
