@@ -65,4 +65,5 @@
 
 </div>
 
-<input type="hidden" name="musicianId" value="${musicianId}"/>
+<g:hiddenField name="musicianId" value="${params?.musicianId}"/>
+<g:hiddenField name="contactId" value="${params?.contactId}"/>

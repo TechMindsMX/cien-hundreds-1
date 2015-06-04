@@ -23,7 +23,7 @@
 <div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'address', 'error')} ">
 	<label for="address">
 		<g:message code="datosFiscales.address.label" default="Address" />
-		
+
 	</label>
 	<g:select id="address" name="address.id" from="${com.tim.hundreds.Address.list()}" optionKey="id" value="${datosFiscalesInstance?.address?.id}" class="many-to-one" noSelection="['null': '']"/>
 
@@ -32,7 +32,7 @@
 <div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'personaMoral', 'error')} ">
 	<label for="personaMoral">
 		<g:message code="datosFiscales.personaMoral.label" default="Persona Moral" />
-		
+
 	</label>
 	<g:checkBox name="personaMoral" value="${datosFiscalesInstance?.personaMoral}" />
 
@@ -41,7 +41,7 @@
 <div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'personaFisica', 'error')} ">
 	<label for="personaFisica">
 		<g:message code="datosFiscales.personaFisica.label" default="Persona Fisica" />
-		
+
 	</label>
 	<g:checkBox name="personaFisica" value="${datosFiscalesInstance?.personaFisica}" />
 
