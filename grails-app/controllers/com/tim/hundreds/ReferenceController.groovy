@@ -7,8 +7,8 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class ReferenceController {
+    def referenceService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -25,8 +25,8 @@ class ReferenceController {
         respond new Reference(params)
     }
 
-    @Transactional
     def save(Reference referenceInstance) {
+        log.info "reference: ${referenceInstance.dump()}"
         if (referenceInstance == null) {
             notFound()
             return
@@ -37,14 +37,18 @@ class ReferenceController {
             return
         }
 
-        referenceInstance.save flush:true
-
-        request.withFormat {
+        try{
+          def instance = referenceService.saveReference(referenceInstance)
+          request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'reference.label', default: 'Reference'), referenceInstance.id])
-                redirect referenceInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'reference.label', default: 'Reference'), instance.id])
+                redirect instance
             }
-            '*' { respond referenceInstance, [status: CREATED] }
+            '*' { respond instance, [status: CREATED] }
+          }
+        }catch(Exception ex){
+          log.info "Errors ${ex.errors}"
+          respond referenceInstance.company.errors, view:'create'
         }
     }
 

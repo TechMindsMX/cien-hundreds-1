@@ -56,6 +56,24 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'references', 'error')} ">
+	<label for="references">
+		<g:message code="company.references.label" default="References" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${companyInstance?.references?}" var="r">
+    <li><g:link controller="reference" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="reference" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'reference.label', default: 'Reference')])}</g:link>
+</li>
+</ul>
+
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'collaborators', 'error')} ">
 	<label for="collaborators">
 		<g:message code="company.collaborators.label" default="Collaborators" />
@@ -104,24 +122,6 @@
 </g:each>
 <li class="add">
 <g:link controller="product" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'product.label', default: 'Product')])}</g:link>
-</li>
-</ul>
-
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'references', 'error')} ">
-	<label for="references">
-		<g:message code="company.references.label" default="References" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${companyInstance?.references?}" var="r">
-    <li><g:link controller="reference" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="reference" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'reference.label', default: 'Reference')])}</g:link>
 </li>
 </ul>
 

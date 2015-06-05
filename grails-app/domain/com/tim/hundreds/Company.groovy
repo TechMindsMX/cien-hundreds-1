@@ -25,5 +25,6 @@ class Company {
     address nullable:true
     social nullable:true
     datosFiscales nullable:true
+    references maxSize: ApplicationState.MAX_REFERENCES
   }
 }

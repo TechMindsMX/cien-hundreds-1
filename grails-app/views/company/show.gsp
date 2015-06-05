@@ -77,6 +77,17 @@
 				</li>
 				</g:if>
 
+				<g:if test="${companyInstance?.references}">
+				<li class="fieldcontain">
+					<span id="references-label" class="property-label"><g:message code="company.references.label" default="References" /></span>
+
+						<g:each in="${companyInstance.references}" var="r">
+						<span class="property-value" aria-labelledby="references-label"><g:link controller="reference" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
+						</g:each>
+
+				</li>
+				</g:if>
+
 				<g:if test="${companyInstance?.collaborators}">
 				<li class="fieldcontain">
 					<span id="collaborators-label" class="property-label"><g:message code="company.collaborators.label" default="Collaborators" /></span>
@@ -110,17 +121,6 @@
 				</li>
 				</g:if>
 
-				<g:if test="${companyInstance?.references}">
-				<li class="fieldcontain">
-					<span id="references-label" class="property-label"><g:message code="company.references.label" default="References" /></span>
-
-						<g:each in="${companyInstance.references}" var="r">
-						<span class="property-value" aria-labelledby="references-label"><g:link controller="reference" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
-						</g:each>
-
-				</li>
-				</g:if>
-
 				<g:if test="${companyInstance?.type}">
 				<li class="fieldcontain">
 					<span id="type-label" class="property-label"><g:message code="company.type.label" default="Type" /></span>
@@ -133,6 +133,7 @@
 			</ol>
 
       <g:if test="${companyInstance?.address == null}" >
+
       <g:link controller="address" action="create" params='[companyId : "${companyInstance.id}"]'>Agregar Dirección</g:link>
       </g:if>
       <br/>
@@ -144,8 +145,7 @@
       <g:link controller="datosFiscales" action="create" params='[companyId : "${companyInstance.id}"]'>Agregar Datos Fiscales</g:link>
       </g:if>
       <br/>
-      <g:link controller="reference" action="create" params='[companyId: "${companyInstance.id}"]'>Contactos</g:link>
-
+      <g:link controller="reference" action="create" params='[companyId: "${companyInstance.id}"]'>Recomendaciones</g:link>
 
 			<g:form url="[resource:companyInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

@@ -34,7 +34,7 @@
 		<g:message code="reference.phone.label" default="Phone" />
 		
 	</label>
-	<g:textField name="phone" maxlength="10" pattern="${referenceInstance.constraints.phone.matches}" value="${referenceInstance?.phone}"/>
+	<g:textField name="phone" maxlength="10" value="${referenceInstance?.phone}"/>
 
 </div>
 
