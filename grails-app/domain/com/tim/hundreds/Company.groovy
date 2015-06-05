@@ -7,6 +7,7 @@ class Company {
 
   Address address
   Social social
+  DatosFiscales datosFiscales
 
   ActivityType type
 

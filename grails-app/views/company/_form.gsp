@@ -65,6 +65,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'datosFiscales', 'error')} required">
+	<label for="datosFiscales">
+		<g:message code="company.datosFiscales.label" default="Datos Fiscales" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="datosFiscales" name="datosFiscales.id" from="${com.tim.hundreds.DatosFiscales.list()}" optionKey="id" required="" value="${companyInstance?.datosFiscales?.id}" class="many-to-one"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'events', 'error')} ">
 	<label for="events">
 		<g:message code="company.events.label" default="Events" />

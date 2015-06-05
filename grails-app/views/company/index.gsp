@@ -34,7 +34,7 @@
 					
 						<th><g:message code="company.social.label" default="Social" /></th>
 					
-						<g:sortableColumn property="type" title="${message(code: 'company.type.label', default: 'Type')}" />
+						<th><g:message code="company.datosFiscales.label" default="Datos Fiscales" /></th>
 					
 					</tr>
 				</thead>
@@ -52,7 +52,7 @@
 					
 						<td>${fieldValue(bean: companyInstance, field: "social")}</td>
 					
-						<td>${fieldValue(bean: companyInstance, field: "type")}</td>
+						<td>${fieldValue(bean: companyInstance, field: "datosFiscales")}</td>
 					
 					</tr>
 				</g:each>

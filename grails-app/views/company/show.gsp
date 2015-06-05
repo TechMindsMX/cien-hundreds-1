@@ -79,6 +79,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${companyInstance?.datosFiscales}">
+				<li class="fieldcontain">
+					<span id="datosFiscales-label" class="property-label"><g:message code="company.datosFiscales.label" default="Datos Fiscales" /></span>
+					
+						<span class="property-value" aria-labelledby="datosFiscales-label"><g:link controller="datosFiscales" action="show" id="${companyInstance?.datosFiscales?.id}">${companyInstance?.datosFiscales?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${companyInstance?.events}">
 				<li class="fieldcontain">
 					<span id="events-label" class="property-label"><g:message code="company.events.label" default="Events" /></span>
