@@ -68,15 +68,6 @@
 				</li>
 				</g:if>
 
-				<g:if test="${datosFiscalesInstance?.musician}">
-				<li class="fieldcontain">
-					<span id="musician-label" class="property-label"><g:message code="datosFiscales.musician.label" default="Musician" /></span>
-
-						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${datosFiscalesInstance?.musician?.id}">${datosFiscalesInstance?.musician?.encodeAsHTML()}</g:link></span>
-
-				</li>
-				</g:if>
-
         <g:if test="${datosFiscalesInstance.address == null}">
         <li>
         <g:link controller="address" action="create" params='[datosFiscalesId: "${datosFiscalesInstance.id}"]'>Add Address</g:link>

@@ -34,8 +34,6 @@
 					
 						<g:sortableColumn property="personaFisica" title="${message(code: 'datosFiscales.personaFisica.label', default: 'Persona Fisica')}" />
 					
-						<th><g:message code="datosFiscales.musician.label" default="Musician" /></th>
-					
 					</tr>
 				</thead>
 				<tbody>
@@ -51,8 +49,6 @@
 						<td><g:formatBoolean boolean="${datosFiscalesInstance.personaMoral}" /></td>
 					
 						<td><g:formatBoolean boolean="${datosFiscalesInstance.personaFisica}" /></td>
-					
-						<td>${fieldValue(bean: datosFiscalesInstance, field: "musician")}</td>
 					
 					</tr>
 				</g:each>

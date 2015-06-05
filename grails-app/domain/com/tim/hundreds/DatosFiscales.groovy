@@ -8,8 +8,6 @@ class DatosFiscales {
 
   Address address
 
-  static belongsTo = [ musician : Musician ]
-
   static constraints = {
     razonSocial blank:false,size:1..100
     rfc blank:false,size:1..50

@@ -17,10 +17,7 @@ class Musician {
   Genre genre
   Social social
   Address address
-
-  static hasOne = [
-    datosFiscales : DatosFiscales
-  ]
+  DatosFiscales datosFiscales
 
   static hasMany = [
     photos : Photo,

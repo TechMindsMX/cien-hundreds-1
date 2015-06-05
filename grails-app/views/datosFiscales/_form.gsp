@@ -47,12 +47,4 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'musician', 'error')} required">
-	<label for="musician">
-		<g:message code="datosFiscales.musician.label" default="Musician" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionKey="id" required="" value="${datosFiscalesInstance?.musician?.id}" class="many-to-one"/>
-
-</div>
-
+<g:hiddenField name="musicianId" value="${params?.musicianId}"/>

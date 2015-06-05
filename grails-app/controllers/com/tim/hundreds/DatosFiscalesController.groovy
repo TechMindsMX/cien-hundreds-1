@@ -23,7 +23,7 @@ class DatosFiscalesController {
     }
 
     def create() {
-        respond new DatosFiscales(params)
+      [musicianId : params.musicianId]
     }
 
     @Transactional
@@ -39,7 +39,7 @@ class DatosFiscalesController {
             return
         }
 
-        datosFiscalesService.save(datosFiscalesInstance, params.musician.id)
+        datosFiscalesService.save(datosFiscalesInstance, params.musicianId)
 
         request.withFormat {
             form multipartForm {
