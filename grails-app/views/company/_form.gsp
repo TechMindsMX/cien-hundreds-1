@@ -47,6 +47,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'datosFiscales', 'error')} ">
+	<label for="datosFiscales">
+		<g:message code="company.datosFiscales.label" default="Datos Fiscales" />
+		
+	</label>
+	<g:select id="datosFiscales" name="datosFiscales.id" from="${com.tim.hundreds.DatosFiscales.list()}" optionKey="id" value="${companyInstance?.datosFiscales?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'collaborators', 'error')} ">
 	<label for="collaborators">
 		<g:message code="company.collaborators.label" default="Collaborators" />
@@ -62,15 +71,6 @@
 </li>
 </ul>
 
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'datosFiscales', 'error')} required">
-	<label for="datosFiscales">
-		<g:message code="company.datosFiscales.label" default="Datos Fiscales" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="datosFiscales" name="datosFiscales.id" from="${com.tim.hundreds.DatosFiscales.list()}" optionKey="id" required="" value="${companyInstance?.datosFiscales?.id}" class="many-to-one"/>
 
 </div>
 

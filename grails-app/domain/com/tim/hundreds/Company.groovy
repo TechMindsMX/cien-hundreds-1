@@ -24,5 +24,6 @@ class Company {
     web nullable:true,blank:false,size:1..100
     address nullable:true
     social nullable:true
+    datosFiscales nullable:true
   }
 }

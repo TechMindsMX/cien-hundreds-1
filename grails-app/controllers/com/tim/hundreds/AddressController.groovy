@@ -24,15 +24,14 @@ class AddressController {
       [
         datosFiscalesId : params.datosFiscalesId,
         contactId : params.contactId,
-        musicianId : params.musicianId
+        musicianId : params.musicianId,
+        companyId : params.companyId
       ]
     }
 
     @Transactional
     def save(Address addressInstance) {
-        log.info "datosFiscalesId: ${params.datosFiscalesId}"
-        log.info "contactId: ${params.contactId}"
-        log.info "musicianId: ${params.musicianId}"
+        log.info "companyId: ${params.companyId}"
 
         if (addressInstance == null) {
             notFound()
@@ -55,6 +54,10 @@ class AddressController {
         if(params.contactId){
           def contact = Contact.findById(params.contactId)
           addressService.saveAddressToInstance(addressInstance, contact)
+        }
+        if(params.companyId){
+          def company = Company.findById(params.companyId)
+          addressService.saveAddressToInstance(addressInstance, company)
         }
 
         request.withFormat {
