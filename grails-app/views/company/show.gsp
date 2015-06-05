@@ -135,6 +135,11 @@
       <g:if test="${companyInstance?.address == null}" >
       <g:link controller="address" action="create" params='[companyId : "${companyInstance.id}"]'>Agregar Dirección</g:link>
       </g:if>
+      <br/>
+      <g:if test="${companyInstance?.social == null}" >
+      <g:link controller="social" action="create" params='[companyId : "${companyInstance.id}"]'>Agregar Redes Sociales</g:link>
+      </g:if>
+
 
 			<g:form url="[resource:companyInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

@@ -25,15 +25,15 @@ class SocialController {
     def create() {
       [
         contactId : params.contactId,
-        musicianId : params.musicianId
+        musicianId : params.musicianId,
+        companyId : params.companyId
       ]
     }
 
     @Transactional
     def save(Social socialInstance) {
-        log.info "socialInstance: ${socialInstance.dump()}"
-        log.info "musicianId: ${params.musicianId}"
-        log.info "contactId: ${params.contactId}"
+        log.info "companyId: ${params.companyId}"
+
         if (socialInstance == null) {
             notFound()
             return
@@ -51,6 +51,10 @@ class SocialController {
         if(params.contactId){
           def contact = Contact.findById(params.contactId)
           socialService.saveSocialToInstance(socialInstance, contact)
+        }
+        if(params.companyId){
+          def company = Company.findById(params.companyId)
+          socialService.saveSocialToInstance(socialInstance, company)
         }
 
         request.withFormat {

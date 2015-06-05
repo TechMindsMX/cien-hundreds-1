@@ -67,3 +67,4 @@
 
 <g:hiddenField name="musicianId" value="${params?.musicianId}"/>
 <g:hiddenField name="contactId" value="${params?.contactId}"/>
+<g:hiddenField name="companyId" value="${params?.companyId}"/>
