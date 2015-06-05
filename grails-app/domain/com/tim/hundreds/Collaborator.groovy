@@ -14,6 +14,6 @@ class Collaborator {
     middleName blank:false,size:1..100
     lastName blank:false,size:1..100
     lastName blank:false,size:1..100
-    notes nullable:true,blank:false,size:1..1000
+    notes nullable:true,blank:false,size:1..10000
   }
 }
