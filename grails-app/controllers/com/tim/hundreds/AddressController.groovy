@@ -50,7 +50,6 @@ class AddressController {
                 redirect addressInstance
             }
             '*' { respond addressInstance, [status: CREATED] }
-        }
     }
 
     def edit(Address addressInstance) {

@@ -9,7 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class DatosFiscalesController {
-    def datosFiscalesService
+    def datosFiscalesContextService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -23,7 +23,10 @@ class DatosFiscalesController {
     }
 
     def create() {
-      [musicianId : params.musicianId]
+      [
+        musicianId : params.musicianId,
+        companyId : params.companyId
+      ]
     }
 
     @Transactional
@@ -39,7 +42,7 @@ class DatosFiscalesController {
             return
         }
 
-        datosFiscalesService.save(datosFiscalesInstance, params.musicianId)
+        datosFiscalesContextService.saveInstance(datosFiscalesInstance, params)
 
         request.withFormat {
             form multipartForm {

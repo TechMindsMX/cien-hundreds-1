@@ -6,7 +6,7 @@ import grails.transaction.Transactional
 class AddressService {
 
   def saveAddressToInstance(addressInstance, instance){
-    addressInstance.save flush:true
+    addressInstance.save flush: true
     instance.address = addressInstance
     instance.save()
   }
