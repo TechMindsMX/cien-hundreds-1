@@ -22,10 +22,9 @@ class TelephoneController {
     }
 
     def create() {
-      [
-        contactId : params.contactId
-      ]
-      respond new Telephone(params)
+        [
+          contactId : params.contactId
+        ]
     }
 
     def save(Telephone telephoneInstance) {
@@ -49,12 +48,12 @@ class TelephoneController {
                 redirect instance
             }
             '*' { respond instance, [status: CREATED] }
-
           }
-        }catch (Exception ve){
-          log.info "Errors ${ve.errors}"
+        }catch(Exception ex){
+          log.info "Errors: ${ex.message}"
           respond contact.errors, view:'create'
         }
+
     }
 
     def edit(Telephone telephoneInstance) {

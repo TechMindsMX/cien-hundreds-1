@@ -6,7 +6,7 @@ class Telephone {
   TelephoneType type
 
   static constraints = {
-    phone nullable:true,blank:false,matches:/^[0-9]*$/,size:10..10
+    phone nullable:true,blank:false,size:10..10
   }
 
 }

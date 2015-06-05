@@ -7,7 +7,7 @@
 		<g:message code="telephone.phone.label" default="Phone" />
 
 	</label>
-	<g:textField name="phone" maxlength="10" pattern="${telephoneInstance.constraints.phone.matches}" value="${telephoneInstance?.phone}"/>
+	<g:textField name="phone" maxlength="10" value="${telephoneInstance?.phone}"/>
 
 </div>
 
@@ -20,4 +20,5 @@
 
 </div>
 
-<g:hiddenField name="contactId" value="${params?.contactId}"/>
+<g:hiddenField name="contactId" value="${params.contactId}" />
+
