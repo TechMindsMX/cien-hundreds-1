@@ -9,7 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class SocialController {
-    def socialService
+    def socialContextService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -44,18 +44,7 @@ class SocialController {
             return
         }
 
-        if(params.musicianId){
-          def musician = Musician.findById(params.musicianId)
-          socialService.saveSocialToInstance(socialInstance, musician)
-        }
-        if(params.contactId){
-          def contact = Contact.findById(params.contactId)
-          socialService.saveSocialToInstance(socialInstance, contact)
-        }
-        if(params.companyId){
-          def company = Company.findById(params.companyId)
-          socialService.saveSocialToInstance(socialInstance, company)
-        }
+        socialContextService.saveInstance(socialInstance, params)
 
         request.withFormat {
             form multipartForm {
