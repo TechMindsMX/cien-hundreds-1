@@ -30,7 +30,6 @@ class Product {
 
   static hasMany = [
     videos : Video,
-    complements : Complement
   ]
 
   static constraints = {
