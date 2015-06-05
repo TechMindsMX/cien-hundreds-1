@@ -1,10 +1,13 @@
 package com.tim.hundreds
 
-class Company {
+import grails.validation.Validateable
+
+@Validateable
+class CompanyCommand {
   String name
   String description
   String web
-  String logo
+  String logoPath
 
   Address address
   Social social
@@ -23,10 +26,9 @@ class Company {
     name blank:false,size:1..100
     description blank:false,size:1..10000
     web nullable:true,blank:false,size:1..100
-    logo nullable:true
+    logoPath nullable:true
     address nullable:true
     social nullable:true
     datosFiscales nullable:true
-    references maxSize: ApplicationState.MAX_REFERENCES
   }
 }

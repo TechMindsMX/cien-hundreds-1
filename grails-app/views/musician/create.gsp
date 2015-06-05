@@ -25,20 +25,20 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:musicianInstance, action:'save']" >
+			<g:uploadForm url="[resource:musicianInstance, action:'save']" >
 				<fieldset class="form">
 					<g:render template="form"/>
-				</fieldset>			
+				</fieldset>
 
 				<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
-				  <label for="buttons">				    
+				  <label for="buttons">
 				  </label>
 				   <g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 					<button class="btn btn-danger" type="reset">Cancelar</button>
 				</div>
 
-					
-			</g:form>
+
+			</g:uploadForm>
 		</div>
 	</body>
 </html>

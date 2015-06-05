@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class CompanyController {
+    def logoStorerService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -26,17 +27,20 @@ class CompanyController {
     }
 
     @Transactional
-    def save(Company companyInstance) {
-        if (companyInstance == null) {
-            notFound()
+    def save(CompanyCommand command) {
+        log.info "${command.dump()}"
+        if (command.hasErrors()) {
+            respond command.errors, view:'create'
             return
         }
 
-        if (companyInstance.hasErrors()) {
-            respond companyInstance.errors, view:'create'
-            return
+        if(params.logo){
+          def logoPath = logoStorerService.storeFile(request.getFile('logo'))
+          command.logoPath = logoPath
         }
 
+        Company companyInstance = new Company()
+        bindData(companyInstance, command)
         companyInstance.save flush:true
 
         request.withFormat {

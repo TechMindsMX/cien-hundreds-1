@@ -231,5 +231,5 @@
   <label for="logo">
     <g:message code="musician.logo.label" default="Logo" />
   </label>
-   <g:textField name="logo" maxlength="100" id="logo" value="${musicianInstance?.name}"/>
+    <input type="file" id="logo" name="logo" />
 </div>

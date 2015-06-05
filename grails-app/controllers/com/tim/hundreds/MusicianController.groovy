@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class MusicianController {
+    def logoStorerService
     def musicianService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
