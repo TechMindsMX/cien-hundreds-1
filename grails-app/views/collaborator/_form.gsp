@@ -32,9 +32,9 @@
 <div class="fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'notes', 'error')} ">
 	<label for="notes">
 		<g:message code="collaborator.notes.label" default="Notes" />
-		
+
 	</label>
-	<g:textArea name="notes" cols="40" rows="5" maxlength="1000" value="${collaboratorInstance?.notes}"/>
+	<g:textArea name="notes" cols="40" rows="5" maxlength="10000" value="${collaboratorInstance?.notes}"/>
 
 </div>
 

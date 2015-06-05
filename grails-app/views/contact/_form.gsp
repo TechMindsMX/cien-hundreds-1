@@ -52,7 +52,7 @@
 		<g:message code="contact.biography.label" default="Biography" />
 
 	</label>
-	<g:textArea name="biography" cols="40" rows="5" maxlength="1000" value="${contactInstance?.biography}"/>
+	<g:textArea name="biography" cols="40" rows="5" maxlength="10000" value="${contactInstance?.biography}"/>
 
 </div>
 
@@ -61,7 +61,7 @@
 		<g:message code="contact.style.label" default="Style" />
 
 	</label>
-	<g:textArea name="style" cols="40" rows="5" maxlength="1000" value="${contactInstance?.style}"/>
+	<g:textArea name="style" cols="40" rows="5" maxlength="10000" value="${contactInstance?.style}"/>
 
 </div>
 

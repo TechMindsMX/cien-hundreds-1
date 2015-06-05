@@ -16,14 +16,14 @@
 		<g:message code="company.description.label" default="Description" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textArea name="description" cols="40" rows="5" maxlength="1000" required="" value="${companyInstance?.description}"/>
+	<g:textArea name="description" cols="40" rows="5" maxlength="10000" required="" value="${companyInstance?.description}"/>
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'web', 'error')} ">
 	<label for="web">
 		<g:message code="company.web.label" default="Web" />
-		
+
 	</label>
 	<g:textField name="web" maxlength="100" value="${companyInstance?.web}"/>
 
@@ -32,7 +32,7 @@
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'address', 'error')} ">
 	<label for="address">
 		<g:message code="company.address.label" default="Address" />
-		
+
 	</label>
 	<g:select id="address" name="address.id" from="${com.tim.hundreds.Address.list()}" optionKey="id" value="${companyInstance?.address?.id}" class="many-to-one" noSelection="['null': '']"/>
 
@@ -41,7 +41,7 @@
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'social', 'error')} ">
 	<label for="social">
 		<g:message code="company.social.label" default="Social" />
-		
+
 	</label>
 	<g:select id="social" name="social.id" from="${com.tim.hundreds.Social.list()}" optionKey="id" value="${companyInstance?.social?.id}" class="many-to-one" noSelection="['null': '']"/>
 
@@ -50,9 +50,9 @@
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'collaborators', 'error')} ">
 	<label for="collaborators">
 		<g:message code="company.collaborators.label" default="Collaborators" />
-		
+
 	</label>
-	
+
 <ul class="one-to-many">
 <g:each in="${companyInstance?.collaborators?}" var="c">
     <li><g:link controller="collaborator" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
@@ -68,9 +68,9 @@
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'events', 'error')} ">
 	<label for="events">
 		<g:message code="company.events.label" default="Events" />
-		
+
 	</label>
-	
+
 <ul class="one-to-many">
 <g:each in="${companyInstance?.events?}" var="e">
     <li><g:link controller="event" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
@@ -86,9 +86,9 @@
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'references', 'error')} ">
 	<label for="references">
 		<g:message code="company.references.label" default="References" />
-		
+
 	</label>
-	
+
 <ul class="one-to-many">
 <g:each in="${companyInstance?.references?}" var="r">
     <li><g:link controller="reference" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
