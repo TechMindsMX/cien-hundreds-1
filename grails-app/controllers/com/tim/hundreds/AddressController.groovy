@@ -7,7 +7,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class AddressController {
-    def addressService
+    def addressContextService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -43,25 +43,9 @@ class AddressController {
             return
         }
 
-        if(params.musicianId){
-          def musician = Musician.findById(params.musicianId)
-          addressService.saveAddressToInstance(addressInstance, musician)
-        }
-        if(params.datosFiscalesId){
-          def datosFiscales = DatosFiscales.findById(params.datosFiscalesId)
-          addressService.saveAddressToInstance(addressInstance, datosFiscales)
-        }
-        if(params.contactId){
-          def contact = Contact.findById(params.contactId)
-          addressService.saveAddressToInstance(addressInstance, contact)
-        }
-        if(params.companyId){
-          def company = Company.findById(params.companyId)
-          addressService.saveAddressToInstance(addressInstance, company)
-        }
+        addressContextService.saveInstance(addressInstance, params)
 
-        request.withFormat {
-            form multipartForm {
+        form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'address.label', default: 'Address'), addressInstance.id])
                 redirect addressInstance
             }

@@ -1,0 +1,28 @@
+package com.tim.hundreds
+
+import grails.transaction.Transactional
+
+@Transactional
+class AddressContextService {
+  def addressService
+
+  def saveInstance(addressInstance, params) {
+    if(params.musicianId){
+      def musician = Musician.findById(params.musicianId)
+      addressService.saveAddressToInstance(addressInstance, musician)
+    }
+    if(params.datosFiscalesId){
+      def datosFiscales = DatosFiscales.findById(params.datosFiscalesId)
+      addressService.saveAddressToInstance(addressInstance, datosFiscales)
+    }
+    if(params.contactId){
+      def contact = Contact.findById(params.contactId)
+      addressService.saveAddressToInstance(addressInstance, contact)
+    }
+    if(params.companyId){
+      def company = Company.findById(params.companyId)
+      addressService.saveAddressToInstance(addressInstance, company)
+    }
+  }
+
+}
