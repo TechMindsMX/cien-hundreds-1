@@ -90,6 +90,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${companyInstance?.products}">
+				<li class="fieldcontain">
+					<span id="products-label" class="property-label"><g:message code="company.products.label" default="Products" /></span>
+					
+						<g:each in="${companyInstance.products}" var="p">
+						<span class="property-value" aria-labelledby="products-label"><g:link controller="product" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${companyInstance?.references}">
 				<li class="fieldcontain">
 					<span id="references-label" class="property-label"><g:message code="company.references.label" default="References" /></span>
