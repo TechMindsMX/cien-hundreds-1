@@ -29,6 +29,42 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'notes', 'error')} ">
+	<label for="notes">
+		<g:message code="company.notes.label" default="Notes" />
+
+	</label>
+	<g:textArea name="notes" cols="40" rows="5" maxlength="10000" value="${companyInstance?.notes}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'tags', 'error')} ">
+	<label for="tags">
+		<g:message code="company.tags.label" default="Tags" />
+
+	</label>
+	<g:textArea name="tags" cols="40" rows="5" maxlength="10000" value="${companyInstance?.tags}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'logo', 'error')} ">
+	<label for="logo">
+		<g:message code="company.logo.label" default="Logo" />
+
+	</label>
+	<g:textField name="logo" value="${companyInstance?.logo}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'corporatePress', 'error')} ">
+	<label for="corporatePress">
+		<g:message code="company.corporatePress.label" default="Corporate Press" />
+
+	</label>
+	<g:textField name="corporatePress" value="${companyInstance?.corporatePress}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'address', 'error')} ">
 	<label for="address">
 		<g:message code="company.address.label" default="Address" />
@@ -136,6 +172,7 @@
 	<g:select name="type" from="${com.tim.hundreds.ActivityType?.values()}" keys="${com.tim.hundreds.ActivityType.values()*.name()}" required="" value="${companyInstance?.type?.name()}" />
 
 </div>
+
 
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'logo', 'error')} ">
   <label for="logo">

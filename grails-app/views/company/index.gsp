@@ -30,11 +30,11 @@
 					
 						<g:sortableColumn property="web" title="${message(code: 'company.web.label', default: 'Web')}" />
 					
-						<th><g:message code="company.address.label" default="Address" /></th>
+						<g:sortableColumn property="notes" title="${message(code: 'company.notes.label', default: 'Notes')}" />
 					
-						<th><g:message code="company.social.label" default="Social" /></th>
+						<g:sortableColumn property="tags" title="${message(code: 'company.tags.label', default: 'Tags')}" />
 					
-						<th><g:message code="company.datosFiscales.label" default="Datos Fiscales" /></th>
+						<g:sortableColumn property="logo" title="${message(code: 'company.logo.label', default: 'Logo')}" />
 					
 					</tr>
 				</thead>
@@ -48,11 +48,11 @@
 					
 						<td>${fieldValue(bean: companyInstance, field: "web")}</td>
 					
-						<td>${fieldValue(bean: companyInstance, field: "address")}</td>
+						<td>${fieldValue(bean: companyInstance, field: "notes")}</td>
 					
-						<td>${fieldValue(bean: companyInstance, field: "social")}</td>
+						<td>${fieldValue(bean: companyInstance, field: "tags")}</td>
 					
-						<td>${fieldValue(bean: companyInstance, field: "datosFiscales")}</td>
+						<td>${fieldValue(bean: companyInstance, field: "logo")}</td>
 					
 					</tr>
 				</g:each>

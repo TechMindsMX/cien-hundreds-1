@@ -50,6 +50,42 @@
 				</li>
 				</g:if>
 
+				<g:if test="${companyInstance?.notes}">
+				<li class="fieldcontain">
+					<span id="notes-label" class="property-label"><g:message code="company.notes.label" default="Notes" /></span>
+
+						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${companyInstance}" field="notes"/></span>
+
+				</li>
+				</g:if>
+
+				<g:if test="${companyInstance?.tags}">
+				<li class="fieldcontain">
+					<span id="tags-label" class="property-label"><g:message code="company.tags.label" default="Tags" /></span>
+
+						<span class="property-value" aria-labelledby="tags-label"><g:fieldValue bean="${companyInstance}" field="tags"/></span>
+
+				</li>
+				</g:if>
+
+				<g:if test="${companyInstance?.logo}">
+				<li class="fieldcontain">
+					<span id="logo-label" class="property-label"><g:message code="company.logo.label" default="Logo" /></span>
+
+						<span class="property-value" aria-labelledby="logo-label"><g:fieldValue bean="${companyInstance}" field="logo"/></span>
+
+				</li>
+				</g:if>
+
+				<g:if test="${companyInstance?.corporatePress}">
+				<li class="fieldcontain">
+					<span id="corporatePress-label" class="property-label"><g:message code="company.corporatePress.label" default="Corporate Press" /></span>
+
+						<span class="property-value" aria-labelledby="corporatePress-label"><g:fieldValue bean="${companyInstance}" field="corporatePress"/></span>
+
+				</li>
+				</g:if>
+
 				<g:if test="${companyInstance?.address}">
 				<li class="fieldcontain">
 					<span id="address-label" class="property-label"><g:message code="company.address.label" default="Address" /></span>
@@ -133,7 +169,6 @@
 			</ol>
 
       <g:if test="${companyInstance?.address == null}" >
-
       <g:link controller="address" action="create" params='[companyId : "${companyInstance.id}"]'>Agregar Dirección</g:link>
       </g:if>
       <br/>
