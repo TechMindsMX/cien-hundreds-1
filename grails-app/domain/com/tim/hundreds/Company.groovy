@@ -13,7 +13,8 @@ class Company {
   static hasMany = [
     references : Reference,
     collaborators : Collaborator,
-    events : Event
+    events : Event,
+    products : Product
   ]
 
   static constraints = {

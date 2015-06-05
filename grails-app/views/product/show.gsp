@@ -1,0 +1,262 @@
+
+<%@ page import="com.tim.hundreds.Product" %>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="layout" content="main">
+		<g:set var="entityName" value="${message(code: 'product.label', default: 'Product')}" />
+		<title><g:message code="default.show.label" args="[entityName]" /></title>
+	</head>
+	<body>
+		<a href="#show-product" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		<div class="nav" role="navigation">
+			<ul>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+			</ul>
+		</div>
+		<div id="show-product" class="content scaffold-show" role="main">
+			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<g:if test="${flash.message}">
+			<div class="message" role="status">${flash.message}</div>
+			</g:if>
+			<ol class="property-list product">
+			
+				<g:if test="${productInstance?.name}">
+				<li class="fieldcontain">
+					<span id="name-label" class="property-label"><g:message code="product.name.label" default="Name" /></span>
+					
+						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${productInstance}" field="name"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.description}">
+				<li class="fieldcontain">
+					<span id="description-label" class="property-label"><g:message code="product.description.label" default="Description" /></span>
+					
+						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${productInstance}" field="description"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.benefits}">
+				<li class="fieldcontain">
+					<span id="benefits-label" class="property-label"><g:message code="product.benefits.label" default="Benefits" /></span>
+					
+						<span class="property-value" aria-labelledby="benefits-label"><g:fieldValue bean="${productInstance}" field="benefits"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.target}">
+				<li class="fieldcontain">
+					<span id="target-label" class="property-label"><g:message code="product.target.label" default="Target" /></span>
+					
+						<span class="property-value" aria-labelledby="target-label"><g:fieldValue bean="${productInstance}" field="target"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.competence}">
+				<li class="fieldcontain">
+					<span id="competence-label" class="property-label"><g:message code="product.competence.label" default="Competence" /></span>
+					
+						<span class="property-value" aria-labelledby="competence-label"><g:fieldValue bean="${productInstance}" field="competence"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.videoLink}">
+				<li class="fieldcontain">
+					<span id="videoLink-label" class="property-label"><g:message code="product.videoLink.label" default="Video Link" /></span>
+					
+						<span class="property-value" aria-labelledby="videoLink-label"><g:fieldValue bean="${productInstance}" field="videoLink"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.discountModel}">
+				<li class="fieldcontain">
+					<span id="discountModel-label" class="property-label"><g:message code="product.discountModel.label" default="Discount Model" /></span>
+					
+						<span class="property-value" aria-labelledby="discountModel-label"><g:fieldValue bean="${productInstance}" field="discountModel"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.clients}">
+				<li class="fieldcontain">
+					<span id="clients-label" class="property-label"><g:message code="product.clients.label" default="Clients" /></span>
+					
+						<span class="property-value" aria-labelledby="clients-label"><g:fieldValue bean="${productInstance}" field="clients"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.distributionModel}">
+				<li class="fieldcontain">
+					<span id="distributionModel-label" class="property-label"><g:message code="product.distributionModel.label" default="Distribution Model" /></span>
+					
+						<span class="property-value" aria-labelledby="distributionModel-label"><g:fieldValue bean="${productInstance}" field="distributionModel"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.salesModel}">
+				<li class="fieldcontain">
+					<span id="salesModel-label" class="property-label"><g:message code="product.salesModel.label" default="Sales Model" /></span>
+					
+						<span class="property-value" aria-labelledby="salesModel-label"><g:fieldValue bean="${productInstance}" field="salesModel"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.customerModel}">
+				<li class="fieldcontain">
+					<span id="customerModel-label" class="property-label"><g:message code="product.customerModel.label" default="Customer Model" /></span>
+					
+						<span class="property-value" aria-labelledby="customerModel-label"><g:fieldValue bean="${productInstance}" field="customerModel"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.postSaleModel}">
+				<li class="fieldcontain">
+					<span id="postSaleModel-label" class="property-label"><g:message code="product.postSaleModel.label" default="Post Sale Model" /></span>
+					
+						<span class="property-value" aria-labelledby="postSaleModel-label"><g:fieldValue bean="${productInstance}" field="postSaleModel"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.notes}">
+				<li class="fieldcontain">
+					<span id="notes-label" class="property-label"><g:message code="product.notes.label" default="Notes" /></span>
+					
+						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${productInstance}" field="notes"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.webDescription}">
+				<li class="fieldcontain">
+					<span id="webDescription-label" class="property-label"><g:message code="product.webDescription.label" default="Web Description" /></span>
+					
+						<span class="property-value" aria-labelledby="webDescription-label"><g:fieldValue bean="${productInstance}" field="webDescription"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.telephoneDescription}">
+				<li class="fieldcontain">
+					<span id="telephoneDescription-label" class="property-label"><g:message code="product.telephoneDescription.label" default="Telephone Description" /></span>
+					
+						<span class="property-value" aria-labelledby="telephoneDescription-label"><g:fieldValue bean="${productInstance}" field="telephoneDescription"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.campaingDescription}">
+				<li class="fieldcontain">
+					<span id="campaingDescription-label" class="property-label"><g:message code="product.campaingDescription.label" default="Campaing Description" /></span>
+					
+						<span class="property-value" aria-labelledby="campaingDescription-label"><g:fieldValue bean="${productInstance}" field="campaingDescription"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.eventDescription}">
+				<li class="fieldcontain">
+					<span id="eventDescription-label" class="property-label"><g:message code="product.eventDescription.label" default="Event Description" /></span>
+					
+						<span class="property-value" aria-labelledby="eventDescription-label"><g:fieldValue bean="${productInstance}" field="eventDescription"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.otherDescription}">
+				<li class="fieldcontain">
+					<span id="otherDescription-label" class="property-label"><g:message code="product.otherDescription.label" default="Other Description" /></span>
+					
+						<span class="property-value" aria-labelledby="otherDescription-label"><g:fieldValue bean="${productInstance}" field="otherDescription"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.campaing}">
+				<li class="fieldcontain">
+					<span id="campaing-label" class="property-label"><g:message code="product.campaing.label" default="Campaing" /></span>
+					
+						<span class="property-value" aria-labelledby="campaing-label"><g:formatBoolean boolean="${productInstance?.campaing}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.company}">
+				<li class="fieldcontain">
+					<span id="company-label" class="property-label"><g:message code="product.company.label" default="Company" /></span>
+					
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${productInstance?.company?.id}">${productInstance?.company?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.complements}">
+				<li class="fieldcontain">
+					<span id="complements-label" class="property-label"><g:message code="product.complements.label" default="Complements" /></span>
+					
+						<g:each in="${productInstance.complements}" var="c">
+						<span class="property-value" aria-labelledby="complements-label"><g:link controller="complement" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.event}">
+				<li class="fieldcontain">
+					<span id="event-label" class="property-label"><g:message code="product.event.label" default="Event" /></span>
+					
+						<span class="property-value" aria-labelledby="event-label"><g:formatBoolean boolean="${productInstance?.event}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.other}">
+				<li class="fieldcontain">
+					<span id="other-label" class="property-label"><g:message code="product.other.label" default="Other" /></span>
+					
+						<span class="property-value" aria-labelledby="other-label"><g:formatBoolean boolean="${productInstance?.other}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.telephone}">
+				<li class="fieldcontain">
+					<span id="telephone-label" class="property-label"><g:message code="product.telephone.label" default="Telephone" /></span>
+					
+						<span class="property-value" aria-labelledby="telephone-label"><g:formatBoolean boolean="${productInstance?.telephone}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.web}">
+				<li class="fieldcontain">
+					<span id="web-label" class="property-label"><g:message code="product.web.label" default="Web" /></span>
+					
+						<span class="property-value" aria-labelledby="web-label"><g:formatBoolean boolean="${productInstance?.web}" /></span>
+					
+				</li>
+				</g:if>
+			
+			</ol>
+			<g:form url="[resource:productInstance, action:'delete']" method="DELETE">
+				<fieldset class="buttons">
+					<g:link class="edit" action="edit" resource="${productInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+				</fieldset>
+			</g:form>
+		</div>
+	</body>
+</html>

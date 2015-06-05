@@ -4,9 +4,7 @@ package com.tim.hundreds
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class CollaboratorController {
 
