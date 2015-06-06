@@ -3,11 +3,9 @@ package com.tim.hundreds
 
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class MusicianController {
     def logoStorerService
     def musicianService
@@ -27,9 +25,7 @@ class MusicianController {
         respond new Musician(params)
     }
 
-    @Transactional
     def save(MusicianCommand command) {
-        log.info "command: ${command.dump()}"
         if (command == null) {
             notFound()
             return
@@ -40,10 +36,12 @@ class MusicianController {
             return
         }
 
-        if(params.logo){
+
+        if(!params.logo.isEmpty()){
           def logoPath = logoStorerService.storeFile(request.getFile('logo'))
           command.logoPath = logoPath
         }
+
         Musician musicianInstance = new Musician()
         bindData(musicianInstance, command)
 
@@ -62,7 +60,6 @@ class MusicianController {
         respond musicianInstance
     }
 
-    @Transactional
     def update(Musician musicianInstance) {
         if (musicianInstance == null) {
             notFound()
@@ -85,7 +82,6 @@ class MusicianController {
         }
     }
 
-    @Transactional
     def delete(Musician musicianInstance) {
 
         if (musicianInstance == null) {
