@@ -33,10 +33,10 @@ class Musician {
   static constraints = {
     name blank:false,size:1..100
     history blank:false,size:1..10000
-    web nullable:true,blank:false,size:1..100
+    web nullable:true,blank:false,size:10..100
     notes nullable:true,blank:false,size:1..10000
     tags nullable:true,blank:false,size:1..10000
-    logoPath nullable:true
+    logoPath nullable:true,blank:false,size:32..32
     social nullable:true
     address nullable:true
     datosFiscales nullable:true

@@ -34,11 +34,11 @@ class MusicianCommand {
 
   static constraints = {
     name blank:false,size:1..100
-    history blank:false,size:1..1000
-    web nullable:true,blank:false,size:1..100
-    notes nullable:true,blank:false,size:1..1000
-    tags nullable:true,blank:false,size:1..1000
-    logoPath nullable:true
+    history blank:false,size:1..10000
+    web nullable:true,blank:false,size:10..100
+    notes nullable:true,blank:false,size:1..10000
+    tags nullable:true,blank:false,size:1..10000
+    logoPath nullable:true,blank:false,size:32..32
     social nullable:true
     address nullable:true
     datosFiscales nullable:true
