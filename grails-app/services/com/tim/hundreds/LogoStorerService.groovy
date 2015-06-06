@@ -4,10 +4,11 @@ import grails.transaction.Transactional
 
 @Transactional
 class LogoStorerService implements StorerService {
+  def tokenService
   def directoryDestination = new File(System.getProperty("java.io.tmpdir"))
 
   String storeFile(def multipartFile){
-    def fileName = "logo.png"
+    def fileName = tokenService.generateToken() + ApplicationState.IMAGE_EXTENSION
     File fileDestination = new File(directoryDestination,fileName)
     multipartFile.transferTo(fileDestination)
     fileName

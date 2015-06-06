@@ -11,4 +11,6 @@ interface ApplicationState {
   static final Integer MAX_EVENTS = 1000
   static final Integer MAX_COLLABORATORS = 1000
   static final Integer MAX_PRODUCTS = 1000
+
+  static final String IMAGE_EXTENSION = '.png'
 }
