@@ -180,8 +180,9 @@
       <g:link controller="datosFiscales" action="create" params='[companyId : "${companyInstance.id}"]'>Agregar Datos Fiscales</g:link>
       </g:if>
       <br/>
-      <g:link controller="reference" action="create" params='[companyId: "${companyInstance.id}"]'>Agregar recomendaciones</g:link>
-      <g:link controller="event" action="create" params='[companyId: "${companyInstance.id}"]'>Agregar actividades</g:link>
+      <g:link controller="reference" action="create" params='[companyId: "${companyInstance.id}"]'>Agregar recomendaciones</g:link><br/>
+      <g:link controller="event" action="create" params='[companyId: "${companyInstance.id}"]'>Agregar actividades</g:link><br/>
+      <g:link controller="collaborator" action="create" params='[companyId: "${companyInstance.id}"]'>Agregar Contactos</g:link>
 
 			<g:form url="[resource:companyInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

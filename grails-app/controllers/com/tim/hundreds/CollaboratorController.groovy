@@ -7,8 +7,8 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class CollaboratorController {
+    def collaboratorService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -25,8 +25,8 @@ class CollaboratorController {
         respond new Collaborator(params)
     }
 
-    @Transactional
     def save(Collaborator collaboratorInstance) {
+        log.info "collaboratorInstance: ${collaboratorInstance.dump()}"
         if (collaboratorInstance == null) {
             notFound()
             return
@@ -37,14 +37,18 @@ class CollaboratorController {
             return
         }
 
-        collaboratorInstance.save flush:true
-
-        request.withFormat {
+        try{
+          def instance = collaboratorService.save(collaboratorInstance)
+          request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'collaborator.label', default: 'Collaborator'), collaboratorInstance.id])
-                redirect collaboratorInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'collaborator.label', default: 'Collaborator'), instance.id])
+                redirect instance
             }
-            '*' { respond collaboratorInstance, [status: CREATED] }
+            '*' { respond instance, [status: CREATED] }
+          }
+        }catch(Exception ex){
+          log.info "Errors: ${ex.message}"
+          respond collaboratorInstance.company.errors, view:'create'
         }
     }
 
