@@ -1,45 +1,121 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title><g:layoutTitle default="Grails"/></title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="${assetPath(src: 'favicon.png')}" type="image/x-icon">
-		<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
-		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
-		<!-- Bootstrap core CSS -->
-        <link href="/cien-hundreds/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <!-- Bootstrap theme -->
-        <link href="/cien-hundreds/assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="/cien-hundreds/assets/theme.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  		<asset:stylesheet src="application.css"/>
-		<asset:javascript src="application.js"/>
-		<g:layoutHead/>
-	</head>
-	<body>	
-		<div class="container theme-showcase">
-            <div class="well">
-                <div class="row">
-                    <div class="col-xs-12 col-md-8">
-                        <a href="#"><asset:image src="cien_logo.gif" alt="Grails"/></a>
-                    </div>
-                    <div class="col-xs-6 col-md-4 text-right">
-                        <button class="btn btn-default" type="button">Ingresar</button>
-                    </div>
-                </div>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Dashboard</title>
+    
+    <asset:stylesheet src="css/bootstrap.min.css"/>
+    <asset:stylesheet src="font-awesome/css/font-awesome.css"/>
+    <!--link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"-->
+
+    <!-- Toastr style -->
+    <asset:stylesheet src="css/plugins/toastr/toastr.min.css"/>
+
+    <!--link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"-->
+
+    <!-- Gritter -->
+    <asset:javascript src="js/plugins/gritter/jquery.gritter.css"/>
+    <!--link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet"-->
+    <asset:stylesheet src="css/animate.css"/>
+    <asset:stylesheet src="css/style.css"/>
+    
+    <!--link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet"-->
+    <g:layoutHead/>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element"> <span>
+                            <asset:image src="cien_logo.gif"/>
+                             </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
+                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="contacts.html">Contacts</a></li>
+                                <li><a href="mailbox.html">Mailbox</a></li>
+                                <li class="divider"></li>
+                                <li><a href="login.html">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            IN+
+                        </div>
+                    </li>
+                    <li class="active">
+                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                          <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
+                            <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
+                          </g:each>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span> <span class="label label-primary pull-right">NEW</span></a>
+                    </li>
+                    
+                </ul>
+
             </div>
-            <g:layoutBody/>           
-        
-            <div class="well">
-                <p>Copyright 2015 100 Hundreds.</p>
-            </div>            
-        </div>
-	</body>
+        </nav>
+    
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <g:layoutBody/>  
+    </div>
+    
+
+    <!-- Mainly scripts -->
+    <asset:javascript src="js/jquery-2.1.1.js" />
+    <asset:javascript src="js/bootstrap.min.js" />
+    <asset:javascript src="js/plugins/metisMenu/jquery.metisMenu.js" />
+    <asset:javascript src="js/plugins/slimscroll/jquery.slimscroll.min.js" />
+
+    <!-- Flot -->
+    <asset:javascript src="js/plugins/flot/jquery.flot.js" />
+    <asset:javascript src="js/plugins/flot/jquery.flot.tooltip.min.js" />
+    <asset:javascript src="js/plugins/flot/jquery.flot.spline.js" />
+    <asset:javascript src="js/plugins/flot/jquery.flot.resize.js" />
+    <asset:javascript src="js/plugins/flot/jquery.flot.pie.js" />
+
+    <!-- Peity -->
+    <asset:javascript src="js/plugins/peity/jquery.peity.min.js" />
+    <asset:javascript src="js/demo/peity-demo.js" />
+
+    <!-- Custom and plugin javascript -->
+    <asset:javascript src="js/inspinia.js" />
+    <asset:javascript src="js/plugins/pace/pace.min.js" />
+
+    <!-- jQuery UI -->
+    <asset:javascript src="js/plugins/jquery-ui/jquery-ui.min.js" />
+
+    <!-- GITTER -->
+    <asset:javascript src="js/plugins/gritter/jquery.gritter.min.js" />
+
+    <!-- Sparkline -->
+    <asset:javascript src="js/plugins/sparkline/jquery.sparkline.min.js" />
+
+    <!-- Sparkline demo data  -->
+    <asset:javascript src="js/demo/sparkline-demo.js" />
+
+    <!-- ChartJS-->
+    <asset:javascript src="js/plugins/chartJs/Chart.min.js" />
+
+    <!-- Toastr -->
+    <asset:javascript src="js/plugins/toastr/toastr.min.js" />
+
+
+
+</body>
 </html>
