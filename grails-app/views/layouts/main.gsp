@@ -98,22 +98,17 @@
     <asset:javascript src="js/plugins/pace/pace.min.js" />
 
     <!-- jQuery UI -->
-    <asset:javascript src="js/plugins/jquery-ui/jquery-ui.min.js" />
 
     <!-- GITTER -->
-    <asset:javascript src="js/plugins/gritter/jquery.gritter.min.js" />
 
     <!-- Sparkline -->
-    <asset:javascript src="js/plugins/sparkline/jquery.sparkline.min.js" />
+
 
     <!-- Sparkline demo data  -->
-    <asset:javascript src="js/demo/sparkline-demo.js" />
 
     <!-- ChartJS-->
-    <asset:javascript src="js/plugins/chartJs/Chart.min.js" />
 
     <!-- Toastr -->
-    <asset:javascript src="js/plugins/toastr/toastr.min.js" />
 
 
 
