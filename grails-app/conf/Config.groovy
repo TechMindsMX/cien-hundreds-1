@@ -129,7 +129,12 @@ log4j.main = {
          'org.apache',
          'org.apache.naming',
          'grails.plugin',
-         'org.codehaus.groovy'
+         'org.codehaus.groovy',
+         'org.grails.datastore',
+         'asset.pipeline',
+         'grails.spring',
+         'org.jboss',
+         'net.sf.ehcache'
 }
 
 
