@@ -52,10 +52,10 @@ class Product {
     customerModel blank:false,size:1..10000
     postSaleModel nullable:true,blank:false,size:1..10000
     notes nullable:true,blank:false,size:1..10000
-    webDescription blank:false,size:1..10000
-    telephoneDescription blank:false,size:1..10000
-    campaingDescription blank:false,size:1..10000
-    eventDescription blank:false,size:1..10000
-    otherDescription blank:false,size:1..10000
+    webDescription nullable:true,blank:false,size:1..10000
+    telephoneDescription nullable:true,blank:false,size:1..10000
+    campaingDescription nullable:true,blank:false,size:1..10000
+    eventDescription nullable:true,blank:false,size:1..10000
+    otherDescription nullable:true,blank:false,size:1..10000
   }
 }

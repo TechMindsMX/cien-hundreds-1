@@ -35,5 +35,7 @@ class Company {
     datosFiscales nullable:true
     references maxSize: ApplicationState.MAX_REFERENCES
     events maxSize: ApplicationState.MAX_EVENTS
+    collaborators maxSize: ApplicationState.MAX_COLLABORATORS
+    products maxSize: ApplicationState.MAX_PRODUCTS
   }
 }

@@ -7,8 +7,8 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class ProductController {
+    def productService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -25,8 +25,8 @@ class ProductController {
         respond new Product(params)
     }
 
-    @Transactional
     def save(Product productInstance) {
+        log.info "Product: ${productInstance.dump()}"
         if (productInstance == null) {
             notFound()
             return
@@ -37,14 +37,18 @@ class ProductController {
             return
         }
 
-        productInstance.save flush:true
-
-        request.withFormat {
+        try{
+          def instance = productService.save(productInstance)
+          request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'product.label', default: 'Product'), productInstance.id])
-                redirect productInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'product.label', default: 'Product'), instance.id])
+                redirect instance
             }
-            '*' { respond productInstance, [status: CREATED] }
+            '*' { respond instance, [status: CREATED] }
+          }
+        }catch(Exception ex){
+          log.info "Errors: ${ex.message}"
+          respond productInstance.company.errors, view:'create'
         }
     }
 

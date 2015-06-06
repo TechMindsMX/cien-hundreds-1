@@ -9,4 +9,6 @@ interface ApplicationState {
   static final Integer MAX_EMAILS = 3
   static final Integer MAX_REFERENCES = 3
   static final Integer MAX_EVENTS = 1000
+  static final Integer MAX_COLLABORATORS = 1000
+  static final Integer MAX_PRODUCTS = 1000
 }
