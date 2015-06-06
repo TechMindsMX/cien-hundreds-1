@@ -7,7 +7,7 @@ class MusicianService {
   def springSecurityService
 
   def save(musicianInstance){
-    musicianInstance.save flush:true
+    musicianInstance.save()
     def user = springSecurityService.currentUser
     user.addToMusicians(musicianInstance)
     user.save()
