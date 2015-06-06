@@ -13,4 +13,5 @@ interface ApplicationState {
   static final Integer MAX_PRODUCTS = 1000
 
   static final String IMAGE_EXTENSION = '.png'
+  static final String RESUME_EXTENSION = '.pdf'
 }
