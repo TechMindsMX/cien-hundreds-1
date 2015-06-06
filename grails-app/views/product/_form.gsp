@@ -119,48 +119,48 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'webDescription', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'webDescription', 'error')} ">
 	<label for="webDescription">
 		<g:message code="product.webDescription.label" default="Web Description" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:textArea name="webDescription" cols="40" rows="5" maxlength="10000" required="" value="${productInstance?.webDescription}"/>
+	<g:textArea name="webDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.webDescription}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'telephoneDescription', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'telephoneDescription', 'error')} ">
 	<label for="telephoneDescription">
 		<g:message code="product.telephoneDescription.label" default="Telephone Description" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:textArea name="telephoneDescription" cols="40" rows="5" maxlength="10000" required="" value="${productInstance?.telephoneDescription}"/>
+	<g:textArea name="telephoneDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.telephoneDescription}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'campaingDescription', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'campaingDescription', 'error')} ">
 	<label for="campaingDescription">
 		<g:message code="product.campaingDescription.label" default="Campaing Description" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:textArea name="campaingDescription" cols="40" rows="5" maxlength="10000" required="" value="${productInstance?.campaingDescription}"/>
+	<g:textArea name="campaingDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.campaingDescription}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'eventDescription', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'eventDescription', 'error')} ">
 	<label for="eventDescription">
 		<g:message code="product.eventDescription.label" default="Event Description" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:textArea name="eventDescription" cols="40" rows="5" maxlength="10000" required="" value="${productInstance?.eventDescription}"/>
+	<g:textArea name="eventDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.eventDescription}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'otherDescription', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'otherDescription', 'error')} ">
 	<label for="otherDescription">
 		<g:message code="product.otherDescription.label" default="Other Description" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:textArea name="otherDescription" cols="40" rows="5" maxlength="10000" required="" value="${productInstance?.otherDescription}"/>
+	<g:textArea name="otherDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.otherDescription}"/>
 
 </div>
 

@@ -181,7 +181,7 @@
       </g:if>
       <br/>
       <g:link controller="reference" action="create" params='[companyId: "${companyInstance.id}"]'>Agregar recomendaciones</g:link><br/>
-      <g:link controller="event" action="create" params='[companyId: "${companyInstance.id}"]'>Agregar actividades</g:link><br/>
+      <g:link controller="event" action="create" params='[companyId: "${companyInstance.id}"]'>Agregar Actividades</g:link><br/>
       <g:link controller="collaborator" action="create" params='[companyId: "${companyInstance.id}"]'>Agregar Contactos</g:link><br/>
       <g:link controller="product" action="create" params='[companyId: "${companyInstance.id}"]'>Agregar Productos</g:link>
 
