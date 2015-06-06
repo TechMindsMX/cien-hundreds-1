@@ -7,8 +7,8 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class EventController {
+    def eventService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -25,8 +25,8 @@ class EventController {
         respond new Event(params)
     }
 
-    @Transactional
     def save(Event eventInstance) {
+        log.info "event: ${eventInstance.dump()}"
         if (eventInstance == null) {
             notFound()
             return
@@ -37,14 +37,18 @@ class EventController {
             return
         }
 
-        eventInstance.save flush:true
-
-        request.withFormat {
+        try{
+          def instance = eventService.saveEvent(eventInstance)
+          request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), eventInstance.id])
-                redirect eventInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), instance.id])
+                redirect instance
             }
-            '*' { respond eventInstance, [status: CREATED] }
+            '*' { respond instance, [status: CREATED] }
+          }
+        }catch(Exception ex){
+          log.info "Errors: ${ex.message}"
+          respond eventInstance.company.errors, view:'create'
         }
     }
 
