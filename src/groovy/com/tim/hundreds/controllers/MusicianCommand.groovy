@@ -27,9 +27,7 @@ class MusicianCommand {
     audios : Audio,
     suggestions : Suggestion,
     contacts : Contact,
-    activities : Activity,
-    telephones : Telephone,
-    emails: Email
+    activities : Activity
   ]
 
   static constraints = {
