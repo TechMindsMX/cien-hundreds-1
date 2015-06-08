@@ -162,3 +162,5 @@
  </label>
    <input type="file" id="photo" name="photo" />
 </div>
+
+<g:hiddenField name="musicianId" value="${params?.musicianId}" />

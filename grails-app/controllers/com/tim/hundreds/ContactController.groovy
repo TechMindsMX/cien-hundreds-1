@@ -23,7 +23,9 @@ class ContactController {
     }
 
     def create() {
-        respond new Contact(params)
+      [
+        musicianId : params.musicianId
+      ]
     }
 
     def save(ContactCommand command) {
@@ -44,8 +46,11 @@ class ContactController {
 
         Contact contactInstance = new Contact()
         bindData(contactInstance, command)
+        Musician musician = Musician.findById(params.musicianId)
+        contactInstance.musician = musician
 
         try{
+          println "ContactInstance: ${contactInstance.dump()}"
           def instance = contactService.save(contactInstance)
           request.withFormat {
             form multipartForm {
