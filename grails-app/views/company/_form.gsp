@@ -64,7 +64,7 @@
 		
 		<div class="hr-line-dashed"></div>
 
-		<div class="form-group ${hasErrors(bean: companyInstance, field: 'logo', 'error')} ">
+		<div class="hide form-group ${hasErrors(bean: companyInstance, field: 'logo', 'error')} ">
 			<label class="col-sm-2 control-label" for="logo">
 				<g:message code="company.logo.label" default="Logo" />
 
@@ -74,7 +74,7 @@
 			</div>
 		</div>
 		
-		<div class="hr-line-dashed"></div>
+	
 
 		<div class="form-group ${hasErrors(bean: companyInstance, field: 'corporatePress', 'error')} ">
 			<label class="col-sm-2 control-label" for="corporatePress">
