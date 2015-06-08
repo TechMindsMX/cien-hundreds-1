@@ -12,6 +12,7 @@ interface ApplicationState {
   static final Integer MAX_COLLABORATORS = 1000
   static final Integer MAX_PRODUCTS = 1000
   static final Integer MAX_CONTACTS = 1000
+  static final Integer MAX_ACTIVITIES = 1000
 
   static final String IMAGE_EXTENSION = '.png'
   static final String RESUME_EXTENSION = '.pdf'

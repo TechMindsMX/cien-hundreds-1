@@ -7,8 +7,8 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class ActivityController {
+    def activityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -25,7 +25,6 @@ class ActivityController {
         respond new Activity(params)
     }
 
-    @Transactional
     def save(Activity activityInstance) {
         if (activityInstance == null) {
             notFound()
@@ -37,14 +36,18 @@ class ActivityController {
             return
         }
 
-        activityInstance.save flush:true
-
-        request.withFormat {
+        try{
+          def instance = activityService.save(activityInstance)
+          request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'activity.label', default: 'Activity'), activityInstance.id])
-                redirect activityInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'activity.label', default: 'Activity'), instance.id])
+                redirect instance
             }
-            '*' { respond activityInstance, [status: CREATED] }
+            '*' { respond instance, [status: CREATED] }
+          }
+        }catch(Exception ex){
+          log.info "${ex.errors}"
+          respond activityInstance.musician.errors, view:'create'
         }
     }
 

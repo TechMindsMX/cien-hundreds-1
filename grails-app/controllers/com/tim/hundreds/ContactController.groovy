@@ -50,7 +50,6 @@ class ContactController {
         contactInstance.musician = musician
 
         try{
-          println "ContactInstance: ${contactInstance.dump()}"
           def instance = contactService.save(contactInstance)
           request.withFormat {
             form multipartForm {

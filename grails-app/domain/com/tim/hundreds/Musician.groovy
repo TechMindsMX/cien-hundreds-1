@@ -43,6 +43,7 @@ class Musician {
     audios maxSize: ApplicationState.MAX_AUDIOS
     suggestions maxSize: ApplicationState.MAX_SUGGESTIONS
     contacts maxSize: ApplicationState.MAX_CONTACTS
+    activities maxSize: ApplicationState.MAX_ACTIVITIES
   }
 }
 
