@@ -134,15 +134,6 @@
 
 </div>
 
-<div class="hide fieldcontain ${hasErrors(bean: musicianInstance, field: 'emails', 'error')} ">
-	<label for="emails">
-		<g:message code="musician.emails.label" default="Emails" />
-
-	</label>
-	<g:select name="emails" from="${com.tim.hundreds.Email.list()}" multiple="multiple" optionKey="id" size="5" value="${musicianInstance?.emails*.id}" class="many-to-many"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'formed', 'error')} required">
 	<label for="formed">
 		<g:message code="musician.formed.label" default="Fecha de creación" />
@@ -200,15 +191,6 @@
 </li>
 </ul>
 
-
-</div>
-
-<div class="hide fieldcontain ${hasErrors(bean: musicianInstance, field: 'telephones', 'error')} ">
-	<label for="telephones">
-		<g:message code="musician.telephones.label" default="Telephones" />
-
-	</label>
-	<g:select name="telephones" from="${com.tim.hundreds.Telephone.list()}" multiple="multiple" optionKey="id" size="5" value="${musicianInstance?.telephones*.id}" class="many-to-many"/>
 
 </div>
 

@@ -35,10 +35,10 @@
 		</div>
         <div class="container theme-showcase">
             <div class="page-header">
-                <h2 class="text-head-color">Datos de Músico</h2>                
+                <h2 class="text-head-color">Datos de Músico</h2>
             </div>
             <div class="dropdown theme-dropdown clearfix">
-	        <div class="col-xs-12 ">		       
+	        <div class="col-xs-12 ">
 		 	<div class="col-md-4">
                 <ul class="property-list musician">
 
@@ -102,24 +102,13 @@
 						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${musicianInstance?.address?.id}">${musicianInstance?.address?.encodeAsHTML()}</g:link></span>
 
 				</li>
-				</g:if>							
+				</g:if>
 
 				<g:if test="${musicianInstance?.dateCreated}">
 				<li class="fieldcontain">
 					<span id="dateCreated-label" class="property-label"><b>Fecha de Creación:</b></span>
 
 						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${musicianInstance?.dateCreated}" /></span>
-
-				</li>
-				</g:if>
-
-				<g:if test="${musicianInstance?.emails}">
-				<li class="fieldcontain">
-					<span id="emails-label" class="property-label"><b>Correo:</b></span>
-
-						<g:each in="${musicianInstance.emails}" var="e">
-						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
-						</g:each>
 
 				</li>
 				</g:if>
@@ -162,22 +151,10 @@
 
 
 
-				<g:if test="${musicianInstance?.telephones}">
-				<li class="fieldcontain">
-					<span id="telephones-label" class="property-label"><b>Teléfonos:</b></span>
-
-						<g:each in="${musicianInstance.telephones}" var="t">
-						<span class="property-value" aria-labelledby="telephones-label"><g:link controller="telephone" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
-						</g:each>
-
-				</li>
-				</g:if>
-
-
       </ul>
-    </div>  
+    </div>
 
-       <div class="col-md-8">       	       			
+       <div class="col-md-8">
 					<table class="table table-striped">
 				       		<tbody>
 				       			<tr>
@@ -194,14 +171,14 @@
 					       				<g:if test="${musicianInstance?.videos}">
 											<ol>
 												<g:each in="${musicianInstance.videos}" var="v">
-													<li>									
-															<g:link controller="video" action="show" id="${v.id}">${v.path}</g:link>										
-													</li>	
+													<li>
+															<g:link controller="video" action="show" id="${v.id}">${v.path}</g:link>
+													</li>
 												</g:each>
 											<ol>
 										</g:if>
 				       				</th>
-				       				
+
 				       				</tr>
 
 					                <tr>
@@ -212,7 +189,7 @@
 				       					<g:elseif test="${musicianInstance.photos.size() >= 5}">
 						                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="photo" action="create" params='[musicianId: "${musicianInstance.id}"]'> Fotos</g:link>
 						                </g:elseif>
-						                	
+
 						                </th>
 						                <th>
 							                <g:if test="${musicianInstance?.photos}">
@@ -235,7 +212,7 @@
 					       					</g:if>
 					       					<g:elseif test="${musicianInstance.audios.size() >= 5}">
 							                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="audio" action="create" params='[musicianId: "${musicianInstance.id}"]'> Audio</g:link>
-							                </g:elseif>											
+							                </g:elseif>
 										</th>
 										<th>
 											<g:if test="${musicianInstance?.audios}">
@@ -253,22 +230,22 @@
 					                <tr>
 					                	<th>
 					                		<g:if test="${musicianInstance.suggestions == null || musicianInstance.suggestions.size() < 3 }">
-				       							<g:link class="glyphicon glyphicon-floppy-disk" controller="suggestion" action="create" params='[musicianId: "${musicianInstance.id}"]'> Sugerencias</g:link>					  				
+				       							<g:link class="glyphicon glyphicon-floppy-disk" controller="suggestion" action="create" params='[musicianId: "${musicianInstance.id}"]'> Sugerencias</g:link>
 					       					</g:if>
 					       					<g:elseif test="${musicianInstance.suggestions.size() >= 3}">
-							                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="suggestion" action="create" params='[musicianId: "${musicianInstance.id}"]'> Sugerencias</g:link>					  				
-							                </g:elseif>						                		
-				       						
+							                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="suggestion" action="create" params='[musicianId: "${musicianInstance.id}"]'> Sugerencias</g:link>
+							                </g:elseif>
+
 			       						</th>
 					                	<th>
-											<g:if test="${musicianInstance?.suggestions}">											
-												<ol>	
+											<g:if test="${musicianInstance?.suggestions}">
+												<ol>
 													<g:each in="${musicianInstance.suggestions}" var="s">
 														<li>
 															<g:link controller="suggestion" action="show" id="${s.id}">${s.name}</g:link>
 														</li>
 													</g:each>
-												</ol>												
+												</ol>
 											</g:if>
 					                	</th>
 									</tr>
@@ -277,9 +254,9 @@
 									    	<g:link class="glyphicon glyphicon-floppy-disk" controller="contact" action="create" params='[musicianId: "${musicianInstance.id}"]'> Contactos</g:link>
 									    </th>
 									    <th>
-									    	<g:if test="${musicianInstance?.activities}">																								
+									    	<g:if test="${musicianInstance?.activities}">
 										    	<ol>
-										    		<li>				
+										    		<li>
 										    			<a target="_self" href="http://localhost:8080/cien-hundreds/contact/index">Listado de Contactos</a>
 										    		</li>
 										    	</ol>
@@ -291,12 +268,12 @@
 					                		<g:link class="glyphicon glyphicon-floppy-disk" controller="activity" action="create" params='[musicianId: "${musicianInstance.id}"]'> Actividades</g:link>
 					                	</th>
 					                	<th>
-											<g:if test="${musicianInstance?.activities}">														
-												<ol>													
+											<g:if test="${musicianInstance?.activities}">
+												<ol>
 														<li>
 															<a targuet="_self" href="http://localhost:8080/cien-hundreds/contact/index">Listado de Actividades</a>
 														</li>
-													
+
 												</ol>
 											</g:if>
 					                	</th>
@@ -304,15 +281,15 @@
 									<tr>
 						                <th>
 							                <g:if test="${musicianInstance.social == null}">
-							                	<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="create" params='[musicianId: "${musicianInstance.id}"]'> Redes Sociales</g:link>		                
+							                	<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="create" params='[musicianId: "${musicianInstance.id}"]'> Redes Sociales</g:link>
 						                	</g:if>
 						                	<g:elseif test="${musicianInstance.social != null}">
 							                	<g:link class="glyphicon glyphicon-floppy-remove not-active" disable controller="social" action="create" params='[musicianId: "${musicianInstance.id}"]'>  Redes Sociales</g:link>
-							                </g:elseif>	
+							                </g:elseif>
 						                </th>
 						                <th>
-						                	<g:if test="${musicianInstance?.social}">											
-												<ol>														
+						                	<g:if test="${musicianInstance?.social}">
+												<ol>
 														<li>
 															<g:link controller="social" action="show" id="${musicianInstance?.social.id}">Facebook: ${musicianInstance?.social.facebook}</g:link>
 														</li>
@@ -333,9 +310,9 @@
 														</li>
 														<li>
 															<g:link controller="social" action="show" id="${musicianInstance?.social.id}">Otra: ${musicianInstance?.social.other}</g:link>
-														</li>													
-												</ol>												
-											</g:if>						                	
+														</li>
+												</ol>
+											</g:if>
 						                </th>
 					                </tr>
 					                <tr>
@@ -357,30 +334,30 @@
 					                <th>
 					                	<g:if test="${musicianInstance?.datosFiscales}">
 											<ol>
-												<li class="fieldcontain">										
+												<li class="fieldcontain">
 														<g:link controller="datosFiscales" action="show" id="${musicianInstance?.datosFiscales?.id}">${musicianInstance?.datosFiscales?.razonSocial}</g:link>
 
 												</li>
-											</ol>	
+											</ol>
 										</g:if>
 					                </th>
-				       				</tr>       	       					       	
+				       				</tr>
 				       		</tbody>
 				       	</table>
-       	</div>   
+       	</div>
 
-            
-              
-        		<g:form url="[resource:musicianInstance, action:'delete']" method="DELETE">					
-					<div class="aling-center">	
+
+
+        		<g:form url="[resource:musicianInstance, action:'delete']" method="DELETE">
+					<div class="aling-center">
 						<g:link class="btn btn-success blank" action="edit" resource="${musicianInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-						<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />					
+						<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 					</div>
 				</g:form>
-				</div>         
 				</div>
 				</div>
-	    <!-- /container --> 
+				</div>
+	    <!-- /container -->
         <!-- Bootstrap core JavaScript
     ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
