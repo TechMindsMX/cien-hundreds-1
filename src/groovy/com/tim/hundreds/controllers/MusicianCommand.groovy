@@ -38,7 +38,7 @@ class MusicianCommand {
     web nullable:true,blank:false,size:10..100
     notes nullable:true,blank:false,size:1..10000
     tags nullable:true,blank:false,size:1..10000
-    logoPath nullable:true,blank:false,size:32..32
+    logoPath nullable:true,blank:false,size:36..36
     social nullable:true
     address nullable:true
     datosFiscales nullable:true

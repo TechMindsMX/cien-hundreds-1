@@ -28,11 +28,11 @@ class CompanyCommand {
   static constraints = {
     name blank:false,size:1..100
     description blank:false,size:1..10000
-    web nullable:true,blank:false,size:1..100
-    notes nullable:true
+    web nullable:true,blank:false,size:10..100
+    notes nullable:true,blank:false,size:1..10000
     tags nullable:true,blank:false,size:1..10000
-    logoPath nullable:true
-    corporatePress nullable:true
+    logoPath nullable:true,blank:false,size:36..36
+    corporatePress nullable:true,blank:false,size:36..36
     address nullable:true
     social nullable:true
     datosFiscales nullable:true
