@@ -10,12 +10,12 @@ class Social {
   String other
 
   static constraints = {
-    facebook nullable:true,blank:false,size:1..100
-    twitter nullable:true,blank:false,size:1..100
-    googlePlus nullable:true,blank:false,size:1..100
-    instagram nullable:true,blank:false,size:1..100
-    youtube nullable:true,blank:false,size:1..100
-    linkedin nullable:true,blank:false,size:1..100
-    other nullable:true,blank:false,size:1..100
+    facebook nullable:true,blank:false,size:10..100
+    twitter nullable:true,blank:false,size:10..100
+    googlePlus nullable:true,blank:false,size:10..100
+    instagram nullable:true,blank:false,size:10..100
+    youtube nullable:true,blank:false,size:10..100
+    linkedin nullable:true,blank:false,size:10..100
+    other nullable:true,blank:false,size:10..100
   }
 }

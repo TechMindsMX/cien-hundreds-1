@@ -25,8 +25,15 @@ class SocialSpec extends Specification {
   then: "We validate social"
     result == social.validate()
   where: "We have next cases"
-  facebook                                  | twitter                               | googlePlus                                | instagram | youtube | linkedin | other || result
-  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond-consulting-and-brand-imaging' | 'https://www.other.com/' || true
+  facebook                                  | twitter                               | googlePlus                                | instagram                              | youtube                                         | linkedin                                          | other                    || result
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' || true
+  ''                                        | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' || false
+  'https://www.facebook.com/aboveandbeyond' | ''                                    | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' || false
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | ''                                        | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' || false
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | ''                                     | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' || false
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | ''                                              | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' || false
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | ''                             | 'https://www.other.com/'                    || false
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | ''                       || false
   }
 
 }
