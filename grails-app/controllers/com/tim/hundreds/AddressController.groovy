@@ -45,11 +45,13 @@ class AddressController {
 
         addressContextService.saveInstance(addressInstance, params)
 
-        form multipartForm {
+        request.withFormat {
+          form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'address.label', default: 'Address'), addressInstance.id])
                 redirect addressInstance
             }
             '*' { respond addressInstance, [status: CREATED] }
+        }
     }
 
     def edit(Address addressInstance) {
