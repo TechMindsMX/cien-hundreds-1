@@ -1,48 +1,120 @@
 <%@ page import="com.tim.hundreds.Musician" %>
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'name', 'error')} required">
-	<label for="name">
-		<g:message code="musician.name.label" default="Nombre(s)" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="name" maxlength="100" required="" value="${musicianInstance?.name}"/>
+<div class="col-xs-8 col-md-9 ">
+			    <table class="table">
+			        <thead>
+			            <tr style="display: table-row;">
+			                <th class="text-head-color">
+			                
+			                </th>
+			                <th></th>
+			            </tr>
+			        </thead>	
+	<tbody class="borderless">
+            <tr>
+                <td class="text-right">
+                	<b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'name', 'error')} required">	   
+						<g:message code="musician.name.label" class="text-right" data-pg-id="34" default="Nombre(s)" />
+						<span class="required-indicator">*</span>						
+					</div></b>
+				</td>
+				<td>
+					<g:textField name="name" maxlength="100" class="form-control" placeholder="Ingrese su Nombre completo" required="" value="${musicianInstance?.name}"/>
+				<td/>	
+			</tr>
+ 			<tr>
+                <td class="text-right">
+                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'history', 'error')} required">					
+						<g:message code="musician.history.label" default="Biografía" />
+						<span class="required-indicator">*</span>						
+					</div></b>
+                </td>
+                <td>
+                <g:textArea name="history" class="form-control" placeholder="Ingrese su Biografía" cols="40" rows="5" maxlength="10000" required="" value="${musicianInstance?.history}"/>                    
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'web', 'error')} ">
+						<g:message code="musician.web.label" default="Página Web" />
+					</div>
+                </td></b>
+                <td>
+					<g:textField class="form-control" placeholder="Ingrese la dirección de su pagina Web" name="web" maxlength="100" value="${musicianInstance?.web}"/>
+                    <br>
+                </td>
+            </tr>     
+            <tr>
+                <td class="text-right">
+                   <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'notes', 'error')} ">
+						<g:message code="musician.notes.label" default="Notas" />
 
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'history', 'error')} required">
-	<label for="history">
-		<g:message code="musician.history.label" default="Biografía" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textArea name="history" cols="40" rows="5" maxlength="10000" required="" value="${musicianInstance?.history}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'web', 'error')} ">
-	<label for="web">
-		<g:message code="musician.web.label" default="Página Web" />
-
-	</label>
-	<g:textField name="web" maxlength="100" value="${musicianInstance?.web}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'notes', 'error')} ">
-	<label for="notes">
-		<g:message code="musician.notes.label" default="Notas" />
-
-	</label>
-	<g:textArea name="notes" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.notes}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'tags', 'error')} ">
-	<label for="tags">
-		<g:message code="musician.tags.label" default="Tags" />
-
-	</label>
-	<g:textArea name="tags" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.tags}"/>
-
-</div>
+					</div>	</b>
+                </td>
+                <td>
+					<g:textArea name="notes" class="form-control" placeholder="Ingrese sus notas" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.notes}"/>
+                    <br>
+                </td>
+            </tr>
+			<tr>
+                <td class="text-right">
+                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'tags', 'error')} ">
+							<g:message code="musician.tags.label" default="Tags" />
+					</div>
+                </td></b>
+                <td>
+					<g:textArea name="tags" class="form-control" placeholder="Ingrese sus Tags" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.tags}"/>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'formed', 'error')} required">
+							<g:message code="musician.formed.label" default="Fecha de creación" />
+							<span class="required-indicator">*</span>
+					</div></b>
+                </td>
+                <td>
+					<g:datePicker name="formed" class="form-control" precision="day"  value="${musicianInstance?.formed}"  />
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'genre', 'error')} required">
+							<g:message code="musician.genre.label" default="Genero" />
+							<span class="required-indicator">*</span>
+					</div></b>
+                </td>
+                <td>
+					<g:select name="genre" from="${com.tim.hundreds.Genre?.values()}" keys="${com.tim.hundreds.Genre.values()*.name()}" required="" value="${musicianInstance?.genre?.name()}" class="form-control"/>               
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'hasManager', 'error')} ">
+							<g:message code="musician.hasManager.label" default="Es Manager" />
+					</div>
+                </td></b>
+                <td>
+                	<g:checkBox class="text-left" name="hasManager" value="${musicianInstance?.hasManager}" />
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
+					    <g:message code="musician.logo.label" default="Logo" />
+					</div>
+                </td></b>
+                <td>
+				    <input type="file" id="logo" name="logo" class="form-control" placeholder="Ingrese su logo"/>
+   	                <br>
+                </td>
+            </tr>
+ 	</tbody>
+   </table>
 
 <div class=" hide fieldcontain ${hasErrors(bean: musicianInstance, field: 'logoPath', 'error')} ">
 	<label for="logoPath">
@@ -143,32 +215,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'formed', 'error')} required">
-	<label for="formed">
-		<g:message code="musician.formed.label" default="Fecha de creación" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="formed" precision="day"  value="${musicianInstance?.formed}"  />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'genre', 'error')} required">
-	<label for="genre">
-		<g:message code="musician.genre.label" default="Genero" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select name="genre" from="${com.tim.hundreds.Genre?.values()}" keys="${com.tim.hundreds.Genre.values()*.name()}" required="" value="${musicianInstance?.genre?.name()}" />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'hasManager', 'error')} ">
-	<label for="hasManager">
-		<g:message code="musician.hasManager.label" default="Es Manager" />
-
-	</label>
-	<g:checkBox name="hasManager" value="${musicianInstance?.hasManager}" />
-
-</div>
 
 <div class="hide fieldcontain ${hasErrors(bean: musicianInstance, field: 'photos', 'error')} ">
 	<label for="photos">
@@ -227,9 +273,4 @@
 </li>
 </ul>
 </div>
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
-  <label for="logo">
-    <g:message code="musician.logo.label" default="Logo" />
-  </label>
-    <input type="file" id="logo" name="logo" />
-</div>
+
