@@ -10,7 +10,6 @@ import spock.lang.Unroll
 @TestFor(Collaborator)
 class CollaboratorSpec extends Specification {
 
-<<<<<<< HEAD
   @Unroll
   void """When we have an collaborator with firstName: #firstName, middleName: #middleName, lastName: #lastName, position: #position, notes: #notes and we validate we expect result: #result"""() {
   given: "An collaborator"
