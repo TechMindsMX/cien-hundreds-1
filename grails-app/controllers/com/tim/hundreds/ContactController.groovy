@@ -7,7 +7,6 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class ContactController {
     def photoStorerService
     def contactService
@@ -27,7 +26,6 @@ class ContactController {
         respond new Contact(params)
     }
 
-    @Transactional
     def save(ContactCommand command) {
         if (command == null) {
             notFound()
@@ -46,15 +44,21 @@ class ContactController {
 
         Contact contactInstance = new Contact()
         bindData(contactInstance, command)
-        contactService.save(contactInstance, params.musician.id)
 
-        request.withFormat {
+        try{
+          def instance = contactService.save(contactInstance)
+          request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'contact.label', default: 'Contact'), contactInstance.id])
-                redirect contactInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'contact.label', default: 'Contact'), instance.id])
+                redirect instance
             }
-            '*' { respond contactInstance, [status: CREATED] }
+            '*' { respond instance, [status: CREATED] }
+          }
+        }catch(Exception ex){
+          log.info "Errors: ${ex.message}"
+          respond contactInstance.musician.errors, view:'create'
         }
+
     }
 
     def edit(Contact contactInstance) {
