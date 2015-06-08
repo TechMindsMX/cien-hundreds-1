@@ -1,0 +1,28 @@
+
+
+
+.theme-dropdown .dropdown-menu
+{
+    display: block;
+    position: static;
+    margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn
+{
+    margin: 5px 0;
+}
+
+.text-head-color
+{
+    color: #5990de;
+}
+
+tbody th
+{
+}
+
+
+.table > tbody > tr > td {
+    border-top: medium none;
+}
