@@ -9,6 +9,8 @@ class AddressService {
     addressInstance.save flush: true
     instance.address = addressInstance
     instance.save()
+
+    instance
   }
 
 }
