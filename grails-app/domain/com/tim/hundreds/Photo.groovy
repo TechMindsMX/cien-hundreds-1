@@ -9,7 +9,7 @@ class Photo {
   ]
 
   static constraints = {
-    path blank:false,size:1..100
+    path blank:false,size:36..36
   }
 
 }
