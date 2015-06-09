@@ -9,7 +9,7 @@ class Video {
   ]
 
   static constraints = {
-    url blank:false,size:1..100
+    url blank:false,size:10..100
   }
 
 }
