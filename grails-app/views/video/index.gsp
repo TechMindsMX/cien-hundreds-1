@@ -24,7 +24,7 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="path" title="${message(code: 'video.path.label', default: 'Path')}" />
+						<g:sortableColumn property="url" title="${message(code: 'video.url.label', default: 'Url')}" />
 					
 						<th><g:message code="video.musician.label" default="Musician" /></th>
 					
@@ -34,7 +34,7 @@
 				<g:each in="${videoInstanceList}" status="i" var="videoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${videoInstance.id}">${fieldValue(bean: videoInstance, field: "path")}</g:link></td>
+						<td><g:link action="show" id="${videoInstance.id}">${fieldValue(bean: videoInstance, field: "url")}</g:link></td>
 					
 						<td>${fieldValue(bean: videoInstance, field: "musician")}</td>
 					

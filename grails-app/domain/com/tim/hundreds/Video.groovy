@@ -2,14 +2,14 @@ package com.tim.hundreds
 
 class Video {
 
-  String path
+  String url
 
   static belongsTo = [
     musician : Musician
   ]
 
   static constraints = {
-    path blank:false,size:1..100
+    url blank:false,size:1..100
   }
 
 }

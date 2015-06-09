@@ -2,12 +2,12 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: videoInstance, field: 'path', 'error')} required">
-	<label for="path">
-		<g:message code="video.path.label" default="Path" />
+<div class="fieldcontain ${hasErrors(bean: videoInstance, field: 'url', 'error')} required">
+	<label for="url">
+		<g:message code="video.url.label" default="Url" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="path" maxlength="100" required="" value="${videoInstance?.path}"/>
+	<g:textField name="url" maxlength="100" required="" value="${videoInstance?.url}"/>
 
 </div>
 

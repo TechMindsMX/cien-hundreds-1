@@ -1,3 +1,4 @@
+
 <%@ page import="com.tim.hundreds.Video" %>
 <!DOCTYPE html>
 <html>
@@ -22,11 +23,11 @@
 			</g:if>
 			<ol class="property-list video">
 			
-				<g:if test="${videoInstance?.path}">
+				<g:if test="${videoInstance?.url}">
 				<li class="fieldcontain">
-					<span id="path-label" class="property-label"><g:message code="video.path.label" default="Path" /></span>
+					<span id="url-label" class="property-label"><g:message code="video.url.label" default="Url" /></span>
 					
-						<span class="property-value" aria-labelledby="path-label"><g:fieldValue bean="${videoInstance}" field="path"/></span>
+						<span class="property-value" aria-labelledby="url-label"><g:fieldValue bean="${videoInstance}" field="url"/></span>
 					
 				</li>
 				</g:if>
