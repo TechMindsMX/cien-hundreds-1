@@ -9,6 +9,8 @@ class DatosFiscalesService {
     datosFiscalesInstance.save flush: true
     instance.datosFiscales = datosFiscalesInstance
     instance.save()
+
+    instance
   }
 
 }
