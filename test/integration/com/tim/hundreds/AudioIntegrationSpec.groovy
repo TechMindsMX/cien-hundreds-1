@@ -21,7 +21,7 @@ class AudioIntegrationSpec extends Specification {
     and: "We save musician"
       musician.save(flush: true)
     and: "We create an Audio"
-      def audioInstance = new Audio(link:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
+      def audioInstance = new Audio(url:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
       audioInstance.musician = musician
     when: "We save video"
       def result = audioService.saveAudio(audioInstance)
@@ -42,17 +42,17 @@ class AudioIntegrationSpec extends Specification {
     and: "We save musician"
       musician.save(flush: true)
     and: "We create an Audio"
-      def audioInstance1 = new Audio(link:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
+      def audioInstance1 = new Audio(url:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
       audioInstance1.musician = musician
-      def audioInstance2 = new Audio(link:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
+      def audioInstance2 = new Audio(url:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
       audioInstance2.musician = musician
-      def audioInstance3 = new Audio(link:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
+      def audioInstance3 = new Audio(url:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
       audioInstance3.musician = musician
-      def audioInstance4 = new Audio(link:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
+      def audioInstance4 = new Audio(url:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
       audioInstance4.musician = musician
-      def audioInstance5 = new Audio(link:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
+      def audioInstance5 = new Audio(url:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
       audioInstance5.musician = musician
-      def audioInstance6 = new Audio(link:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
+      def audioInstance6 = new Audio(url:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
       audioInstance6.musician = musician
     when: "We save audio"
       audioService.saveAudio(audioInstance1)

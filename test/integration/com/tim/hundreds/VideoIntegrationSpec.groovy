@@ -21,7 +21,7 @@ class VideoIntegrationSpec extends Specification {
     and: "We save musician"
       musician.save(flush: true)
     and: "We create an Video"
-      def videoInstance = new Video(path:'https://www.youtube.com/watch?v=LKckM5gq7VU')
+      def videoInstance = new Video(url:'https://www.youtube.com/watch?v=LKckM5gq7VU')
       videoInstance.musician = musician
     when: "We save video"
       def result = videoService.saveVideo(videoInstance)
@@ -42,17 +42,17 @@ class VideoIntegrationSpec extends Specification {
     and: "We save musician"
       musician.save(flush: true)
     and: "We create an Video"
-      def videoInstance1 = new Video(path:'https://www.youtube.com/watch?v=LKckM5gq7VU')
+      def videoInstance1 = new Video(url:'https://www.youtube.com/watch?v=LKckM5gq7VU')
       videoInstance1.musician = musician
-      def videoInstance2 = new Video(path:'https://www.youtube.com/watch?v=LKckM5gq7VU')
+      def videoInstance2 = new Video(url:'https://www.youtube.com/watch?v=LKckM5gq7VU')
       videoInstance2.musician = musician
-      def videoInstance3 = new Video(path:'https://www.youtube.com/watch?v=LKckM5gq7VU')
+      def videoInstance3 = new Video(url:'https://www.youtube.com/watch?v=LKckM5gq7VU')
       videoInstance3.musician = musician
-      def videoInstance4 = new Video(path:'https://www.youtube.com/watch?v=LKckM5gq7VU')
+      def videoInstance4 = new Video(url:'https://www.youtube.com/watch?v=LKckM5gq7VU')
       videoInstance4.musician = musician
-      def videoInstance5 = new Video(path:'https://www.youtube.com/watch?v=LKckM5gq7VU')
+      def videoInstance5 = new Video(url:'https://www.youtube.com/watch?v=LKckM5gq7VU')
       videoInstance5.musician = musician
-      def videoInstance6 = new Video(path:'https://www.youtube.com/watch?v=LKckM5gq7VU')
+      def videoInstance6 = new Video(url:'https://www.youtube.com/watch?v=LKckM5gq7VU')
       videoInstance6.musician = musician
     when: "We save video"
       videoService.saveVideo(videoInstance1)
