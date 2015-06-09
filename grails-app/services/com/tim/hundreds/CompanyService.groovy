@@ -11,5 +11,7 @@ class CompanyService {
     def user = springSecurityService.currentUser
     user.addToCompanies(companyInstance)
     user.save()
+
+    companyInstance
   }
 }

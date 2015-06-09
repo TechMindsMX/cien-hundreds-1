@@ -11,5 +11,7 @@ class MusicianService {
     def user = springSecurityService.currentUser
     user.addToMusicians(musicianInstance)
     user.save()
+
+    musicianInstance
   }
 }
