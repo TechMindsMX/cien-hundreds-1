@@ -10,7 +10,7 @@ class DatosFiscales {
 
   static constraints = {
     razonSocial blank:false,size:1..100
-    rfc blank:false,size:1..50
+    rfc blank:false,size:10..50
     address nullable:true
     personaMoral nullable:true
     personaFisica nullable:true
