@@ -6,7 +6,7 @@ import grails.transaction.Transactional
 class TelephoneService {
 
   def save(telephoneInstance, contact) {
-    log.info "Telephone count by contact: ${contact.telephones.size()}"
+    log.info "Telephone count by contact: ${contact.telephones?.size()}"
 
     contact.addToTelephones(telephoneInstance)
     contact.save(failOnError:true)
