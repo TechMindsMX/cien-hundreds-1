@@ -21,8 +21,8 @@ class Product {
   Boolean telephone
   String telephoneDescription
 
-  Boolean campaing
-  String campaingDescription
+  Boolean campaign
+  String campaignDescription
 
   Boolean event
   String eventDescription
@@ -44,7 +44,7 @@ class Product {
     benefits blank:false,size:1..10000
     target blank:false,size:1..10000
     competence blank:false,size:1..10000
-    videoLink blank:false,size:1..100
+    videoLink blank:false,size:10..100
     discountModel nullable:true,blank:false,size:1..10000
     clients blank:false,size:1..10000
     distributionModel nullable:true,blank:false,size:1..10000
@@ -54,8 +54,9 @@ class Product {
     notes nullable:true,blank:false,size:1..10000
     webDescription nullable:true,blank:false,size:1..10000
     telephoneDescription nullable:true,blank:false,size:1..10000
-    campaingDescription nullable:true,blank:false,size:1..10000
+    campaignDescription nullable:true,blank:false,size:1..10000
     eventDescription nullable:true,blank:false,size:1..10000
     otherDescription nullable:true,blank:false,size:1..10000
+    complements maxSize: ApplicationState.MAX_COMPLEMENTS
   }
 }
