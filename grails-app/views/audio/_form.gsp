@@ -2,12 +2,12 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: audioInstance, field: 'link', 'error')} required">
-	<label for="link">
-		<g:message code="audio.link.label" default="Link" />
+<div class="fieldcontain ${hasErrors(bean: audioInstance, field: 'url', 'error')} required">
+	<label for="url">
+		<g:message code="audio.url.label" default="Url" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="link" maxlength="100" required="" value="${audioInstance?.link}"/>
+	<g:textField name="url" maxlength="100" required="" value="${audioInstance?.url}"/>
 
 </div>
 

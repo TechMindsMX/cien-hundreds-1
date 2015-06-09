@@ -24,7 +24,7 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="link" title="${message(code: 'audio.link.label', default: 'Link')}" />
+						<g:sortableColumn property="url" title="${message(code: 'audio.url.label', default: 'Url')}" />
 					
 						<th><g:message code="audio.musician.label" default="Musician" /></th>
 					
@@ -34,7 +34,7 @@
 				<g:each in="${audioInstanceList}" status="i" var="audioInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${audioInstance.id}">${fieldValue(bean: audioInstance, field: "link")}</g:link></td>
+						<td><g:link action="show" id="${audioInstance.id}">${fieldValue(bean: audioInstance, field: "url")}</g:link></td>
 					
 						<td>${fieldValue(bean: audioInstance, field: "musician")}</td>
 					
