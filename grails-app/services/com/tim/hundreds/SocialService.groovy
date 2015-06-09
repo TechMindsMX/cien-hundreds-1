@@ -9,6 +9,8 @@ class SocialService {
     socialInstance.save flush:true
     instance.social = socialInstance
     instance.save()
+
+    instance
   }
 
 }
