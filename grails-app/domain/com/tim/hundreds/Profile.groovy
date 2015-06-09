@@ -10,6 +10,8 @@ class Profile {
   String photoPath
   String resumePath
 
+  static belongsTo = [User]
+
   static constraints = {
     firstName blank:false,size:1..100
     middleName blank:false,size:1..100

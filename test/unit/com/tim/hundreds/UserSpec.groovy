@@ -26,12 +26,12 @@ class UserSpec extends Specification {
     then:"We validate command"
       result == user.validate()
     where:"We have the next cases"
-    email           | emailCheck      |firstName|middleName|lastName|username|password| passwordCheck| phone        | role      || result
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | "5512345678" | "ROLE_USER" || true
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" || true
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" || true
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "M"       | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" || true
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "jos"    | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" || true
+    email              | emailCheck         |firstName |middleName |lastName   |username  |password      | passwordCheck | phone        | role        || result
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | "5512345678" | "ROLE_USER" || true
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" || true
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" || true
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "M"       | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" || true
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "Morales" | "jos"    | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" || true
   }
 
   @Unroll
@@ -52,33 +52,33 @@ class UserSpec extends Specification {
     then:"We validate command"
       result == user.validate()
     where:"We have the next cases"
-    email           | emailCheck |firstName| middleName   | lastName  | username | password     | passwordCheck | phone | role      || result
-    null            | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    ""              | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    "josdem"        | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    "jos@gmail"     | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | null| "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | ""  | "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | null  | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | ""    | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | null      | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | ""        | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | null     | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | ""       | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | null         | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | ""           | "aA12345678" | "5512345678" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678" | ""           | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "1"          | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "55123456789"| "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "551234567"  | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "ABCDEFGHIJ" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "12345678"   | "12345678"   | "ABCDEFGHIJ" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "a012345678" | "a012345678" | "ABCDEFGHIJ" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "0A12345678" | "0A12345678" | "ABCDEFGHIJ" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA123456789"| "aA123456789"| "ABCDEFGHIJ" | "ROLE_USER" || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA123456789"| "aA123456789"| "5512345678" | ""          || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA123456789"| "aA123456789"| "5512345678" | null        || false
-    "jos@gmail.com" | "jos@gmail.com" | "J" | "DLC" | "Morales" | "josdem" | "aA123456789"| "aA123456789"| "5512345678" | "ROLE_"     || false
+    email              | emailCheck         |firstName | middleName   | lastName  | username | password     | passwordCheck| phone        | role        || result
+    null               | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    ""                 | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    "josdem"           | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    "jos@gmail"        | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | null     | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | ""       | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | null         | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | ""           | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | null      | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | ""        | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | null     | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | ""       | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | null         | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | ""           | "aA12345678" | "5512345678" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | ""           | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "1"          | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "55123456789"| "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "551234567"  | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "ABCDEFGHIJ" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "12345678"   | "12345678"   | "ABCDEFGHIJ" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "a012345678" | "a012345678" | "ABCDEFGHIJ" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "0A12345678" | "0A12345678" | "ABCDEFGHIJ" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA123456789"| "aA123456789"| "ABCDEFGHIJ" | "ROLE_USER" || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA123456789"| "aA123456789"| "5512345678" | ""          || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA123456789"| "aA123456789"| "5512345678" | null        || false
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA123456789"| "aA123456789"| "5512345678" | "ROLE_"     || false
   }
 
 }
