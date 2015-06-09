@@ -10,6 +10,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class CompanyController {
     def logoStorerService
+    def companyService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -41,7 +42,7 @@ class CompanyController {
 
         Company companyInstance = new Company()
         bindData(companyInstance, command)
-        companyInstance.save flush:true
+        companyService.save(companyInstance)
 
         request.withFormat {
             form multipartForm {
