@@ -14,8 +14,8 @@ class Contact {
   Date entryDate
 
   GenderType type
-
   RoleType role
+
   Social social
   Address address
 
