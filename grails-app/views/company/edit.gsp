@@ -16,7 +16,9 @@
 			</ul>
 		</div>
 		<div id="edit-company" class="content scaffold-edit" role="main">
-			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+			<div class="ibox-title text-head-color">
+                <h1>Edición de Copañía</h>
+            </div>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -29,12 +31,14 @@
 			</g:hasErrors>
 			<g:form url="[resource:companyInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${companyInstance?.version}" />
-				<fieldset class="form">
+				<div class="form-horizontal">
 					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-				</fieldset>
+				
+					<div class="ibox-content text-center ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">					  
+						<g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+						<button class="btn btn-danger" type="reset">Cancelar</button>
+					</div>
+				</div>
 			</g:form>
 		</div>
 	</body>

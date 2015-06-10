@@ -14,7 +14,7 @@
 			</ul>
 		</div>
 		<div id="create-musician" class="content scaffold-create" role="main">
-			<h1>Datos de Contacto</h1>
+			<h1 class="text-head-color">Formulario de Músico</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>

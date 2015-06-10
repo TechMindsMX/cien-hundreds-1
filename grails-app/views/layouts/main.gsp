@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>INSPINIA | Dashboard</title>
+    <title>100Hundreds</title>
     
     <asset:stylesheet src="css/bootstrap.min.css"/>
     <asset:stylesheet src="font-awesome/css/font-awesome.css"/>
@@ -23,7 +23,7 @@
     <!--link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet"-->
     <asset:stylesheet src="css/animate.css"/>
     <asset:stylesheet src="css/style.css"/>
-    
+    <asset:stylesheet src="theme.css"/>
     <!--link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet"-->
     <g:layoutHead/>

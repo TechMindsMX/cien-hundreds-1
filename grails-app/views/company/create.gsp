@@ -14,7 +14,9 @@
 			</ul>
 		</div>
 		<div id="create-company" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+			<div class="ibox-title text-head-color">
+                <h1>Creación de Copañía</h1>
+            </div>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -26,12 +28,16 @@
 			</ul>
 			</g:hasErrors>
 			<g:uploadForm url="[resource:companyInstance, action:'save']" >
-				<fieldset class="form">
+				
+				<div class="form-horizontal">
 					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				</fieldset>
+				
+					<div class="ibox-content text-center ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">					  
+						<g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+						<button class="btn btn-danger" type="reset">Cancelar</button>
+					</div>
+				</div>
+
 			</g:uploadForm>
 		</div>
 	</body>
