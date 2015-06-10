@@ -15,7 +15,7 @@
 		</div>
 		<div id="create-company" class="content scaffold-create" role="main">
 			<div class="ibox-title text-head-color">
-                <h1>Creación de Copañía</h>
+                <h1>Creación de Copañía</h1>
             </div>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>

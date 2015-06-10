@@ -18,7 +18,9 @@
 		<div id="list-company" class="ibox float-e-margins" role="main">
 			
 			<div class="ibox-title">
-				<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+				<div class="ibox-title text-head-color">
+                	<h1>Listado de Copañías</h>
+            	</div>
 				<g:if test="${flash.message}">
 					<div class="message" role="status">${flash.message}</div>
 				</g:if>
