@@ -1,9 +1,12 @@
 package com.tim.hundreds
 
 import grails.transaction.Transactional
+import grails.plugins.rest.client.RestBuilder
+import grails.converters.JSON
 
 @Transactional
 class RecoveryService {
+  def rest = new RestBuilder()
 
   def generateRegistrationCodeForEmail(String email) {
     def profile = Profile.findByEmail(email)
@@ -13,7 +16,11 @@ class RecoveryService {
 
     def registration = new RegistrationCode(email:email)
     registration.save()
-    //TODO: enviar al correo del usuario la url para cambiarla
+    def resp = rest.post("http://localhost:8082/web/services/email/send"){
+      contentType "application/vnd.org.jfrog.artifactory.security.Group+json"
+      body email:'joseluis.delacruz@gmail.com'
+    }
+    log.info "resp: ${resp.dump()}"
     registration
   }
 
