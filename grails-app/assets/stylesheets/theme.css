@@ -21,3 +21,8 @@
 .table > tbody > tr > td {
     border-top: medium none;
 }
+
+.max900, .loginscreen.middle-box.max900 {
+	width: 90%;
+	max-width: 900px;
+}

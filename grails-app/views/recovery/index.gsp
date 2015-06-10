@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+x<!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="layout" content="main">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="">
     <title><g:message code="recovery.password.label" /></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="${assetPath(src: 'favicon.png')}" type="image/x-icon">
     <link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
     <link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
@@ -37,6 +37,10 @@
           <div class="page-header">
             <h1><g:message code="recovery.password.title" /></h1>
           </div>
+
+          <p>
+            <g:message code="recovery.password.intro" />
+          </p>
 
           <g:form name="recovery" action="save" class="form-signin">
             <div class="form-group">

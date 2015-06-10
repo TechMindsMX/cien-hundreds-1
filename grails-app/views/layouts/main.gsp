@@ -72,7 +72,16 @@
         </nav>
     
     <div id="page-wrapper" class="gray-bg dashbard-1">
+        <g:if test="${flash.message}">
+            <div class="alert alert-info" style="display: block">${flash.message}</div>
+        </g:if>
+
+        <g:if test="${flash.error}">
+            <div class="alert alert-danger" style="display: block">${flash.error}</div>
+        </g:if>
+
         <g:layoutBody/>
+
         <div class="well">
             <p>Copyright 2015 100 Hundreds.</p>
         </div>
