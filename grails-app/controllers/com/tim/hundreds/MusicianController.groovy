@@ -26,6 +26,7 @@ class MusicianController {
     }
 
     def save(MusicianCommand command) {
+        log.info "${command.dump()}"
         if (command == null) {
             notFound()
             return
