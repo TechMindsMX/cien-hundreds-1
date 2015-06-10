@@ -21,7 +21,7 @@ class BootStrap {
     def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
 
     def user = new User(username: 'cien', password: '12345678')
-    def  profile = new Profile(email:'me@techminds.com.mx', firstName:'me', middleName:'middleName', lastName:'lastName').save(validation: false)
+    def  profile = new Profile(email:'joseluis.delacruz@gmail.com', firstName:'me', middleName:'middleName', lastName:'lastName').save(validation: false)
     user.profile = profile
     user.save(flush: true)
 

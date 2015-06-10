@@ -11,10 +11,10 @@ class RecoveryService {
 
     if(!user) throw new BusinessException("User not found")
 
-      def registration = new RegistrationCode(email:email)
-      registration.save()
-      //TODO: enviar al correo del usuario la url para cambiarla
-      registration
+    def registration = new RegistrationCode(email:email)
+    registration.save()
+    //TODO: enviar al correo del usuario la url para cambiarla
+    registration
   }
 
   def changePasswordForToken(token, password) {
