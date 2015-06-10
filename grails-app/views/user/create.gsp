@@ -1,62 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>100 Hundreds</title>
-        <!-- Bootstrap core CSS -->
-        <link href="/cien-hundreds/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <!-- Bootstrap theme -->
-        <link href="/cien-hundreds/assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="/cien-hundreds/assets/theme.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-        <!-- Metadata -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- CSS Files -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+        <meta name="layout" content="main">
+        <g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
+        <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
         <!-- Fixed navbar -->
         <div class="container theme-showcase">
-            <div class="well">
-                <div class="row">
-                    <div class="col-xs-12 col-md-8">
-                        <h4>100 Hundreds</h4>
-                    </div>
-                    <div class="col-xs-6 col-md-4 text-right">
-                        <button type="button" class="btn btn-default">Ingresar</button>
-                    </div>
-                </div>
-            </div>
             <div class="page-header">
                 <h2>Registro de usuarios</h2>
-                <p>Por favor ingrese los datos de este formulario par crear una cuenta de usuario en la plataforma 100  Hundreds</p>
+                <p><g:message code="user.create.intro" /></p>
             </div>
             <div class="dropdown theme-dropdown clearfix">
                 <g:form url="[resource:userInstance, action:'save']" >
-                    <div class="col-xs-8 col-md-9 ">
+                    <div class="col-xs-12 col-md-9 ">
+                        <h4 class="text-head-color">Datos de Ingreso</h4>
                         <table class="table">
-                            <thead>
-                                <tr style="display: table-row;">
-                                    <th class="text-head-color">
-                                        <h4>Datos de Ingreso</h4>
-                                    </th>
-                                    <th></th>
-                                </tr>
-                            </thead>
                             <tbody class="borderless">
                                 <tr>
                                     <td class="text-right">
@@ -88,16 +48,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-xs-8 col-md-9 ">
+                    <div class="col-xs-12 col-md-9 ">
+                        <h4 class="text-head-color">Datos de contacto</h4>
                         <table class="table">
-                            <thead>
-                                <tr style="display: table-row;">
-                                    <th class="text-head-color">
-                                        <h4>Datos de contacto</h4>
-                                    </th>
-                                    <th></th>
-                                </tr>
-                            </thead>
                             <tbody class="borderless">
                                 <tr>
                                     <td class="text-right">
@@ -155,17 +108,17 @@
                                 </tr>
                                 <tr>
                                     <td class="text-right">
-</td>
-                                    <td style="display: table-cell;">
+                                    </td>
+                                    <td>
                                         <label class="control-label">
                                             <input class="control-label" type="checkbox" value="">                                                                                                &nbsp;
                                         </label>
                                         Acepto los
-                                        <a href="#">Términos y condiciones</a>
+                                        <g:link controller="musician" action="index" target="_blank">Términos y condiciones</g:link>
                                         <div>
                                         <g:hiddenField name="role" value="ROLE_USER"/>
                                         <g:submitButton name="create" placeholder="Salvar" class="btn btn-success" value="Enviar"/>
-                                        <button type="button" class="btn btn-danger">Cancelar</button>
+                                        <button type="reset" class="btn btn-danger"><g:message code="cancel.label" /></button>
                                         </div>
                                         <br>
                                         <br>
@@ -175,9 +128,6 @@
                         </table>
                     </div>
                 </g:form>
-            </div>
-            <div class="well">
-                <p>Copyright 2015 100 Hundreds.</p>
             </div>
         </div>
         <!-- /container -->
