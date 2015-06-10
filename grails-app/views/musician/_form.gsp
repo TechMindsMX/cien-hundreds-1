@@ -4,7 +4,7 @@
 			        <thead>
 			            <tr style="display: table-row;">
 			                <th class="text-head-color">
-			                
+			                    <h4>Datos de Ingreso</h4>
 			                </th>
 			                <th></th>
 			            </tr>
@@ -98,7 +98,7 @@
 					</div>
                 </td></b>
                 <td>
-                	<g:checkBox class="text-left" name="hasManager" value="${musicianInstance?.hasManager}" />
+                	<g:checkBox class="form-control" name="hasManager" value="${musicianInstance?.hasManager}" />
                     <br>
                 </td>
             </tr>
@@ -206,41 +206,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'formed', 'error')} required">
-	<label for="formed">
-		<g:message code="musician.formed.label" default="Fecha de creación" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="formed" precision="day"  value="${musicianInstance?.formed}"  />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'genre', 'error')} required">
-	<label for="genre">
-		<g:message code="musician.genre.label" default="Genero" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select name="genre" from="${com.tim.hundreds.Genre?.values()}" keys="${com.tim.hundreds.Genre.values()*.name()}" required="" value="${musicianInstance?.genre?.name()}" />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'hasManager', 'error')} ">
-	<label for="hasManager">
-		<g:message code="musician.hasManager.label" default="Es Manager" />
-
-	</label>
-	<g:checkBox name="hasManager" value="${musicianInstance?.hasManager}" />
-
-</div>
-
-<div class="hide fieldcontain ${hasErrors(bean: musicianInstance, field: 'emails', 'error')} ">
-	<label for="emails">
-		<g:message code="musician.emails.label" default="Emails" />
-
-	</label>
-	<g:select name="emails" from="${com.tim.hundreds.Email.list()}" multiple="multiple" optionKey="id" size="5" value="${musicianInstance?.emails*.id}" class="many-to-many"/>
-
-</div>
 
 <div class="hide fieldcontain ${hasErrors(bean: musicianInstance, field: 'photos', 'error')} ">
 	<label for="photos">
@@ -272,8 +237,8 @@
 </li>
 </ul>
 
-
 </div>
+
 
 <div class="hide fieldcontain ${hasErrors(bean: musicianInstance, field: 'videos', 'error')} ">
 	<label for="videos">
