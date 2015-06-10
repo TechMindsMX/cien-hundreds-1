@@ -172,7 +172,7 @@
 											<ol>
 												<g:each in="${musicianInstance.videos}" var="v">
 													<li>
-															<g:link controller="video" action="show" id="${v.id}">${v.path}</g:link>
+															<g:link controller="video" action="show" id="${v.id}">${v.url}</g:link>
 													</li>
 												</g:each>
 											<ol>
@@ -219,7 +219,7 @@
 												<ol>
 													<g:each in="${musicianInstance.audios}" var="a">
 														<li>
-															<g:link controller="audio" action="show" id="${a.id}">${a.link}</g:link>
+															<g:link controller="audio" action="show" id="${a.id}">${a.url}</g:link>
 														</li>
 													</g:each>
 												</ol>

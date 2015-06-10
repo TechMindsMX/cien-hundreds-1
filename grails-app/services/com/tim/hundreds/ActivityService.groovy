@@ -5,7 +5,7 @@ import grails.transaction.Transactional
 @Transactional
 class ActivityService {
 
-  def service(activityInstance) {
+  def save(activityInstance) {
     log.info "Activity count by user: ${Activity.findByMusician(activityInstance.musician)?.count()}"
 
     def musician = activityInstance.musician
