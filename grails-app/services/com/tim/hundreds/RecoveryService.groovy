@@ -17,11 +17,10 @@ class RecoveryService {
     def registration = new RegistrationCode(email:email)
     registration.save()
 
-    def json = new MessageCommand(email:'joseluis.delacruz@gmail.com')
-
+    def message = new MessageCommand(email:email)
     def resp = rest.post("http://localhost:8082/web/services/email/send"){
       contentType "application/vnd.org.jfrog.artifactory.security.Group+json"
-      body json
+      body message
     }
     log.info "resp: ${resp.dump()}"
     registration
