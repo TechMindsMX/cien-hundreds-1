@@ -72,7 +72,10 @@
         </nav>
     
     <div id="page-wrapper" class="gray-bg dashbard-1">
-        <g:layoutBody/>  
+        <g:layoutBody/>
+        <div class="well">
+            <p>Copyright 2015 100 Hundreds.</p>
+        </div>
     </div>
     
 
