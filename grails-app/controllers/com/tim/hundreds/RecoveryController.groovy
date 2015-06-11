@@ -18,6 +18,15 @@ class RecoveryController {
     }
   }
 
+  def confirm() {
+    try {
+      recoveryService.confirmAccountForToken(params.token)
+      respond OK
+    }catch(BusinessException be) {
+      render status:NOT_FOUND
+    }
+  }
+
   def save() {
     def email = params.email
     try {

@@ -26,27 +26,7 @@
 
       <g:renderErrors />
 
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="page-header">
-            <h1><g:message code="change.password.title" /></h1>
-          </div>
-
-          <g:form name="recovery" action="update" id="${params.token}" class="form-signin">
-            <div class="form-group">
-              <label for="password"><g:message code="recovery.password.label" /></label>
-              <input type="password" class="form-control" name="password">
-            </div>
-
-            <div class="form-group">
-              <label for="confirmPassword"><g:message code="recovery.confirm.password.label" /></label>
-              <input type="password" class="form-control" name="confirmPassword">
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-block btn-lg"><g:message code="change.password.button.label" /></button>
-          </g:form>
-        </div>
-      </div>
+      ${recovery.confirm.message}
 
       <footer class="footer">
       </footer>
