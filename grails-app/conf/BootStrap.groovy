@@ -37,6 +37,7 @@ class BootStrap {
     def user = new User(username: 'admin', password: '12345678')
     def  profile = new Profile(email:'admin@techminds.com.mx', firstName:'admin', middleName:'middleName', lastName:'lastName').save()
     user.profile = profile
+    user.enabled = true
     user.save(flush: true)
 
     UserRole.create user, adminRole, true
@@ -50,6 +51,7 @@ class BootStrap {
     def user = new User(username: 'facilitator', password: '12345678')
     def  profile = new Profile(email:'facilitator@techminds.com.mx', firstName:'facilitator', middleName:'middleName', lastName:'lastName').save()
     user.profile = profile
+    user.enabled = true
     user.save(flush: true)
 
     UserRole.create user, facilitatorRole, true
