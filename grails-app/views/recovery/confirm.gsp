@@ -24,9 +24,7 @@
         </div>
       </div>
 
-      <g:renderErrors />
-
-      ${recovery.confirm.message}
+      <g:message code="recovery.confirm.message" />
 
       <footer class="footer">
       </footer>
