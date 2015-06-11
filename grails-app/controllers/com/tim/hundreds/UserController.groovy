@@ -30,6 +30,7 @@ class UserController {
     profile.save(validation: false)
     user.profile = profile
     userService.create(user)
+    sendConfirmationAccountToken(command.email)
     redirect(uri:'/')
   }
 }

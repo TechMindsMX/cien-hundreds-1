@@ -11,13 +11,8 @@ class RecoveryService {
     def user = User.findByProfile(profile)
     if(!user) throw new BusinessException("User not found")
 
-    def registration = new RegistrationCode(email:email)
-    registration.save()
-
-    def message = new ForgotPasswordCommand(email:email, token:registration.token)
-    restService.send(message)
-
-    registration
+    def message = generateToken(email)
+    restService.sendCommand(message, ApplicationState.FORGOT_PASSWORD_URL)
   }
 
   def changePasswordForToken(token, password) {
@@ -34,9 +29,22 @@ class RecoveryService {
   def obtainRegistrationCodeForToken(token) {
     def registrationCode = RegistrationCode.findByTokenAndStatus(token, VALID)
     if(!registrationCode) throw new BusinessException("User not found")
-      registrationCode.status = RegistrationCodeStatus.INVALID
-      registrationCode.save()
-      registrationCode
+    registrationCode.status = RegistrationCodeStatus.INVALID
+    registrationCode.save()
+
+    registrationCode
+  }
+
+  def sendConfirmationAccountToken(String email){
+    def message = generateToken(email)
+    restService.sendCommand(message, ApplicationState.REGISTER_URL)
+  }
+
+  def generateToken(String email){
+    def registration = new RegistrationCode(email:email)
+    registration.save()
+    def message = new TokenCommand(email:email, token:registration.token)
+    message
   }
 
 }

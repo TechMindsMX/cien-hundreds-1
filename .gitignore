@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-target
-
-=======
 .classpath
 .project
 target
->>>>>>> 3d2b12690f5a405870cd593e039b6611e249b271
+hs_err*

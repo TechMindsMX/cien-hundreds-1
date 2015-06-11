@@ -8,14 +8,15 @@ import grails.converters.JSON
 class RestService {
   def rest = new RestBuilder()
 
-  def send(MessageCommand message){
+  def sendCommand(MessageCommand message, String url){
     try{
-      def resp = rest.post(ApplicationState.FORGOT_PASSWORD_URL){
+      def resp = rest.post(url){
         contentType "application/vnd.org.jfrog.artifactory.security.Group+json"
         body message
       }
       log.info "resp: ${resp.dump()}"
     } catch(Exception ex) {
+      log.info "Error: ${ex.message}"
       flash.error = "El servicio de correo no esta disponible"
       redirect action:'index'
     }

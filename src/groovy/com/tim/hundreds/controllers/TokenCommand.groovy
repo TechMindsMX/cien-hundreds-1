@@ -1,6 +1,6 @@
 package com.tim.hundreds
 
-class ForgotPasswordCommand implements MessageCommand {
+class TokenCommand implements MessageCommand {
   String email
   String token
 }
