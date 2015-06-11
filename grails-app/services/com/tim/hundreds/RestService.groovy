@@ -9,10 +9,16 @@ class RestService {
   def rest = new RestBuilder()
 
   def send(MessageCommand message){
-    def resp = rest.post(ApplicationState.FORGOT_PASSWORD_URL){
-      contentType "application/vnd.org.jfrog.artifactory.security.Group+json"
-      body message
+    try{
+      def resp = rest.post(ApplicationState.FORGOT_PASSWORD_URL){
+        contentType "application/vnd.org.jfrog.artifactory.security.Group+json"
+        body message
+      }
+      log.info "resp: ${resp.dump()}"
+    } catch(Exception ex) {
+      flash.error = "El servicio de correo no esta disponible"
+      redirect action:'index'
     }
-    log.info "resp: ${resp.dump()}"
   }
+
 }
