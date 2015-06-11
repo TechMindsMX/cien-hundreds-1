@@ -256,7 +256,7 @@
 												<ol>
 													<g:each in="${musicianInstance.activities}" var="a">
 														<li>
-															<g:link controller="activities" action="show" id="${a.id}">${a.activity}</g:link>
+															<g:link controller="activity" action="show" id="${a.id}">${a.activity}</g:link>
 														</li>
 													</g:each>
 												</ol>
