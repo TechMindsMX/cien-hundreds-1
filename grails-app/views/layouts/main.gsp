@@ -30,6 +30,9 @@
 
 </head>
 
+<g:set var="labelWidth" scope="session" value="col-sm-2" />
+<g:set var="inputWidth" scope="session" value="col-sm-10 col-lg-6" /> 
+
 <body>
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">

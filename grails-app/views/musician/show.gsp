@@ -4,29 +4,12 @@
     <head>
     	<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'musician.label', default: 'Musician')}" />
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>100 Hundreds</title>
-        <!-- Bootstrap core CSS -->
-        <link href="/cien-hundreds/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <!-- Bootstrap theme -->
-        <link href="/cien-hundreds/assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="/cien-hundreds/assets/theme.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
     </head>
     <body>
         <!-- Fixed navbar -->
         <div class="nav" role="navigation">
 			<div class="container theme-showcase">
-				<ul>
+				<ul class="nav nav-pills">
 					<li><a class="home" href="${createLink(uri: '/')}">Inicio</a></li>
 					<li><g:link class="list" action="index">Listado de Músicos</g:link></li>
 					<li><g:link class="create" action="create">Nuevo Músico</g:link></li>
@@ -98,8 +81,7 @@
 				<g:if test="${musicianInstance?.address}">
 				<li class="fieldcontain">
 					<span id="address-label" class="property-label"><b>Dirección:</b></span>
-
-						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${musicianInstance?.address?.id}">${musicianInstance?.address?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${musicianInstance?.address?.id}"><g:message code="address.view.label" default="Ver dirección" /></g:link></span>
 
 				</li>
 				</g:if>
@@ -254,11 +236,13 @@
 									    	<g:link class="glyphicon glyphicon-floppy-disk" controller="contact" action="create" params='[musicianId: "${musicianInstance.id}"]'> Contactos</g:link>
 									    </th>
 									    <th>
-									    	<g:if test="${musicianInstance?.activities}">
+									    	<g:if test="${musicianInstance?.contacts}">
 										    	<ol>
-										    		<li>
-										    			<a target="_self" href="http://localhost:8080/cien-hundreds/contact/index">Listado de Contactos</a>
-										    		</li>
+													<g:each in="${musicianInstance.contact}" var="c">
+														<li>
+															<g:link controller="contact" action="show" id="${c.id}">${c.name}</g:link>
+														</li>
+													</g:each>
 										    	</ol>
 										    </g:if>
 									    </th>
@@ -270,10 +254,11 @@
 					                	<th>
 											<g:if test="${musicianInstance?.activities}">
 												<ol>
+													<g:each in="${musicianInstance.activities}" var="a">
 														<li>
-															<a targuet="_self" href="http://localhost:8080/cien-hundreds/contact/index">Listado de Actividades</a>
+															<g:link controller="activities" action="show" id="${a.id}">${a.activity}</g:link>
 														</li>
-
+													</g:each>
 												</ol>
 											</g:if>
 					                	</th>

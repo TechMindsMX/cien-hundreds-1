@@ -26,3 +26,11 @@
 	width: 90%;
 	max-width: 900px;
 }
+
+input[type="checkbox"], input[type="radio"] {
+	width: auto;
+}
+
+.error {
+	color: red !important;
+}
