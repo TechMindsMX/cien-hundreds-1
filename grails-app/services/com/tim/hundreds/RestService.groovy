@@ -14,9 +14,9 @@ class RestService {
         contentType "application/vnd.org.jfrog.artifactory.security.Group+json"
         body message
       }
-      log.info "resp: ${resp.dump()}"
+      log.info "Emailer response: ${resp.dump()}"
     } catch(Exception ex) {
-      log.info "Error: ${ex.message}"
+      log.warn "Error: ${ex.message}"
       throw new BusinessException(ex.message, ex)
       redirect action:'index'
     }
