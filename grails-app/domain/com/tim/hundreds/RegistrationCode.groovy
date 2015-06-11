@@ -1,8 +1,7 @@
 package com.tim.hundreds
 
 class RegistrationCode {
-
-  String token = UUID.randomUUID().toString().replaceAll('-', '')
+  String token = TokenService.generateToken()
   String email
 
   Date dateCreated

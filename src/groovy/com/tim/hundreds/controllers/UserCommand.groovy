@@ -29,7 +29,7 @@ class UserCommand {
         return false
       }
     })
-    username(blank:false,size:3..50,validator:{val, obj ->
+    username(blank:false,size:6..50,validator:{val, obj ->
       if(User.findByUsername(val)) {
         return false
       }

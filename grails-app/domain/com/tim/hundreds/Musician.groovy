@@ -1,6 +1,7 @@
 package com.tim.hundreds
 
 class Musician {
+  String uuid = TokenService.generateToken()
   String name
   String history
   String web

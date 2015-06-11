@@ -1,6 +1,7 @@
 package com.tim.hundreds
 
 class Product {
+  String uuid = TokenService.generateToken()
   String name
   String description
   String benefits

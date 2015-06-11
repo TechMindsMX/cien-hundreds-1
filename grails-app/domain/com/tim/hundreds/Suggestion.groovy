@@ -1,6 +1,7 @@
 package com.tim.hundreds
 
 class Suggestion {
+  String uuid = TokenService.generateToken()
   String name
   String contactName
   String email

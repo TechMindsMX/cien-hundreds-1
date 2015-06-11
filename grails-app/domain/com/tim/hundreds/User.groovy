@@ -1,7 +1,7 @@
 package com.tim.hundreds
 
 class User {
-
+  String uuid = TokenService.generateToken()
 	transient springSecurityService
 
 	String username

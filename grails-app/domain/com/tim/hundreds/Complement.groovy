@@ -1,6 +1,7 @@
 package com.tim.hundreds
 
 class Complement {
+  String uuid = TokenService.generateToken()
   String name
   BigDecimal price
 

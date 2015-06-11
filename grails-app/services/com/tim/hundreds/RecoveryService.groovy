@@ -5,13 +5,14 @@ import grails.transaction.Transactional
 @Transactional
 class RecoveryService {
   def restService
+  def recoveryCollaboratorService
 
   def generateRegistrationCodeForEmail(String email) {
     def profile = Profile.findByEmail(email)
     def user = User.findByProfile(profile)
     if(!user) throw new BusinessException("User not found")
 
-    def message = generateToken(email)
+    def message = recoveryCollaboratorService.generateToken(email)
     restService.sendCommand(message, ApplicationState.FORGOT_PASSWORD_URL)
   }
 
@@ -27,7 +28,7 @@ class RecoveryService {
   }
 
   def confirmAccountForToken(token){
-    def registrationCode = saveRegistrationCode(token)
+    def registrationCode = recoveryCollaboratorService.saveRegistrationCode(token)
     def profile = Profile.findByEmail(registrationCode.email)
 
     def user = User.findByProfile(profile)
@@ -40,28 +41,12 @@ class RecoveryService {
   }
 
   def obtainRegistrationCodeForToken(token) {
-    saveRegistrationCode(token)
+    recoveryCollaboratorService.saveRegistrationCode(token)
   }
 
   def sendConfirmationAccountToken(String email){
-    def message = generateToken(email)
+    def message = recoveryCollaboratorService.generateToken(email)
     restService.sendCommand(message, ApplicationState.REGISTER_URL)
-  }
-
-  def generateToken(String email){
-    def registration = new RegistrationCode(email:email)
-    registration.save()
-    def message = new TokenCommand(email:email, token:registration.token)
-    message
-  }
-
-  def saveRegistrationCode(token){
-    def registrationCode = RegistrationCode.findByTokenAndStatus(token, RegistrationCodeStatus.VALID)
-    if(!registrationCode) throw new BusinessException("User not found")
-    registrationCode.status = RegistrationCodeStatus.INVALID
-    registrationCode.save()
-
-    registrationCode
   }
 
 }

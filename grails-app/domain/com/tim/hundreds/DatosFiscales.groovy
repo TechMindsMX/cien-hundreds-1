@@ -1,6 +1,7 @@
 package com.tim.hundreds
 
 class DatosFiscales {
+  String uuid = TokenService.generateToken()
   String razonSocial
   String rfc
   Boolean personaMoral

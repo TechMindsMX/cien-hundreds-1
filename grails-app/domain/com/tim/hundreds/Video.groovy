@@ -1,7 +1,7 @@
 package com.tim.hundreds
 
 class Video {
-
+  String uuid = TokenService.generateToken()
   String url
 
   static belongsTo = [

@@ -1,6 +1,7 @@
 package com.tim.hundreds
 
 class Address {
+  String uuid = TokenService.generateToken()
   String street
   String zipcode
   String neighborhood
