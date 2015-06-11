@@ -33,6 +33,10 @@ class RecoveryService {
     def user = User.findByProfile(profile)
     user.enabled = true
     user.save()
+
+    def name = "${profile.firstName} ${profile.middleName} ${profile.lastName}"
+    def message = new NameCommand(email:registrationCode.email, name:name)
+    restService.sendCommand(message, ApplicationState.NEW_USER_URL)
   }
 
   def obtainRegistrationCodeForToken(token) {
