@@ -24,10 +24,14 @@ class RecoveryController {
       recoveryService.generateRegistrationCodeForEmail(email)
       flash.message = "Un mensaje se te ha enviado al correo"
       redirect action:'index'
-    }catch(BusinessException be) {
+    } catch(BusinessException be) {
       flash.error = "Hubo un problema con el correo indicado"
       redirect action:'index'
+    } catch(Exception ex) {
+      flash.error = "El servicio de correo no esta disponible"
+      redirect action:'index'
     }
+
   }
 
   def update(ChangePasswordCommand command) {
