@@ -4,16 +4,19 @@ import grails.transaction.Transactional
 
 @Transactional
 class RecoveryService {
+  def restService
 
   def generateRegistrationCodeForEmail(String email) {
     def profile = Profile.findByEmail(email)
     def user = User.findByProfile(profile)
-
     if(!user) throw new BusinessException("User not found")
 
     def registration = new RegistrationCode(email:email)
     registration.save()
-    //TODO: enviar al correo del usuario la url para cambiarla
+
+    def message = new ForgotPasswordCommand(email:email, token:registration.token)
+    restService.send(message)
+
     registration
   }
 
@@ -37,3 +40,4 @@ class RecoveryService {
   }
 
 }
+
