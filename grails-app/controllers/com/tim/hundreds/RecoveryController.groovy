@@ -11,7 +11,7 @@ class RecoveryController {
 
   def show() {
     try {
-      recoveryService.obtainRegistrationCodeForToken(params.id)
+      recoveryService.obtainRegistrationCodeForToken(params.token)
       respond OK
     }catch(BusinessException be) {
       render status:NOT_FOUND

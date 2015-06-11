@@ -27,12 +27,16 @@ class RecoveryService {
   }
 
   def obtainRegistrationCodeForToken(token) {
-    def registrationCode = RegistrationCode.findByTokenAndStatus(token, VALID)
+    log.info "token: ${token}"
+    def registrationCode = RegistrationCode.findByTokenAndStatus(token, RegistrationCodeStatus.VALID)
     if(!registrationCode) throw new BusinessException("User not found")
     registrationCode.status = RegistrationCodeStatus.INVALID
     registrationCode.save()
-
-    registrationCode
+    def profile = Profile.findByEmail(registrationCode.email)
+    def user = User.findByProfile(profile)
+    log.info "User: ${user.dump()}"
+    user.enabled = true
+    user.save()
   }
 
   def sendConfirmationAccountToken(String email){

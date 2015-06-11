@@ -13,6 +13,7 @@ class Profile {
   static belongsTo = [User]
 
   static constraints = {
+    email blank:false,email:true,unique:true,size:6..200
     firstName blank:false,size:1..100
     middleName blank:false,size:1..100
     lastName blank:false,size:1..100
