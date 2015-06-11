@@ -17,4 +17,7 @@ interface ApplicationState {
 
   static final String IMAGE_EXTENSION = '.png'
   static final String RESUME_EXTENSION = '.pdf'
+
+  static final String FORGOT_PASSWORD_URL = 'http://localhost:8082/web/services/email/forgotPassword'
+
 }
