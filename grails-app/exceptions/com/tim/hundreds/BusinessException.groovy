@@ -1,6 +1,6 @@
 package com.tim.hundreds
 
-class BusinessException extends Exception {
+class BusinessException extends RuntimeException {
 
   BusinessException(){
     super()

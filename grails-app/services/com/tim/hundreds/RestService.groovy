@@ -17,7 +17,7 @@ class RestService {
       log.info "resp: ${resp.dump()}"
     } catch(Exception ex) {
       log.info "Error: ${ex.message}"
-      flash.error = "El servicio de correo no esta disponible"
+      throw new BusinessException(ex.message, ex)
       redirect action:'index'
     }
   }
