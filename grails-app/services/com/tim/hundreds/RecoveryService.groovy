@@ -17,8 +17,8 @@ class RecoveryService {
     def registration = new RegistrationCode(email:email)
     registration.save()
 
-    def message = new MessageCommand(email:email)
-    def resp = rest.post("http://localhost:8082/web/services/email/send"){
+    def message = new ForgotPasswordCommand(email:email, token:registration.token)
+    def resp = rest.post("http://localhost:8082/web/services/email/forgotPassword"){
       contentType "application/vnd.org.jfrog.artifactory.security.Group+json"
       body message
     }
@@ -47,6 +47,3 @@ class RecoveryService {
 
 }
 
-class MessageCommand {
-  String email
-}
