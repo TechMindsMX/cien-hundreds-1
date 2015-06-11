@@ -27,7 +27,6 @@ class RecoveryService {
   }
 
   def confirmAccountForToken(token){
-    log.info "token : ${token}"
     def registrationCode = saveRegistrationCode(token)
     def profile = Profile.findByEmail(registrationCode.email)
 

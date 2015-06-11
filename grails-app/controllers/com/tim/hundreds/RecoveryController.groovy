@@ -21,7 +21,7 @@ class RecoveryController {
   def confirm() {
     try {
       recoveryService.confirmAccountForToken(params.token)
-      respond OK
+      redirect controller:'login', action:'auth'
     }catch(BusinessException be) {
       render status:NOT_FOUND
     }
