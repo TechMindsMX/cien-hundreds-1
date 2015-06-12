@@ -72,4 +72,35 @@ class RecoveryServiceSpec extends Specification {
     registrationHelperService.findEmailByToken(token) >> email
     thrown BusinessException
   }
+
+  void "should confirm account for token"(){
+  given: "Token and password"
+    def token = 'token'
+    def email = 'josdem@email.com'
+  and: "user"
+    def user = Mock(User)
+    def profile = new Profile(email:email, firsName:'firsName', middleName:'middleName', lastName:'lastName')
+  when: "We confirm account for token"
+    service.confirmAccountForToken(token)
+  then: "We expect user enabled"
+    user.profile >> profile
+    registrationHelperService.findEmailByToken(token) >> email
+    userHelperService.findByEmail(email) >> user
+    1 * user.setProperty('enabled',true)
+    1 * user.save()
+    1 * restService.sendCommand(_, ApplicationState.NEW_USER_URL)
+  }
+
+  void "should not confirm account for token since user not exist"(){
+  given: "Token and password"
+    def token = 'token'
+    def email = 'josdem@email.com'
+  and: "user"
+    def user = Mock(User)
+  when: "We send change password for token"
+    service.confirmAccountForToken(token)
+  then: "We expect save new password"
+    registrationHelperService.findEmailByToken(token) >> email
+    thrown BusinessException
+  }
 }

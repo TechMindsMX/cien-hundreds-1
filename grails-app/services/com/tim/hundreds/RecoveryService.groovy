@@ -27,15 +27,15 @@ class RecoveryService {
   }
 
   def confirmAccountForToken(token){
-    def registrationCode = recoveryCollaboratorService.saveRegistrationCode(token)
-    def profile = Profile.findByEmail(registrationCode.email)
+    def email = registrationHelperService.findEmailByToken(token)
+    def user = userHelperService.findByEmail(email)
+    if(!user) throw new BusinessException("User not found")
 
-    def user = User.findByProfile(profile)
     user.enabled = true
     user.save()
 
-    def name = "${profile.firstName} ${profile.middleName} ${profile.lastName}"
-    def message = new NameCommand(email:registrationCode.email, name:name)
+    def name = "${user.profile.firstName} ${user.profile.middleName} ${user.profile.lastName}"
+    def message = new NameCommand(email:email, name:name)
     restService.sendCommand(message, ApplicationState.NEW_USER_URL)
   }
 
