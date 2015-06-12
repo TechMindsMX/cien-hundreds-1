@@ -88,7 +88,7 @@ class RecoveryServiceSpec extends Specification {
     userHelperService.findByEmail(email) >> user
     1 * user.setProperty('enabled',true)
     1 * user.save()
-    1 * restService.sendCommand(_, ApplicationState.NEW_USER_URL)
+    1 * restService.sendCommand(_ as NameCommand, ApplicationState.NEW_USER_URL)
   }
 
   void "should not confirm account for token since user not exist"(){
