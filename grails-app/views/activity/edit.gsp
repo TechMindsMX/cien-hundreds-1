@@ -33,9 +33,10 @@
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-				<div class="${session.btnOffset}">
-					<g:actionSubmit class="btn btn-success save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-					<button class="btn btn-danger" type="reset"><g:message code="cancel.label" /></button>
+					<div class="${session.btnOffset}">
+						<g:actionSubmit class="btn btn-success save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+						<button class="btn btn-danger" type="reset"><g:message code="cancel.label" /></button>
+					</div>
 				</fieldset>
 			</g:form>
 		</div>
