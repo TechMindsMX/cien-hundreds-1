@@ -10,15 +10,6 @@
 	</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'middleName', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="middleName">
-		<g:message code="contact.middleName.label" default="Middle Name" />
-	</label>
-	<div class="${session.inputWidth}">
-		<g:textField class="form-control" name="middleName" maxlength="100" value="${contactInstance?.middleName}"/>
-	</div>
-</div>
-
 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'lastName', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="lastName">
 		<g:message code="contact.lastName.label" default="Last Name" />
@@ -48,12 +39,14 @@
 	</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'nationality', 'error')} ">
+
+                 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'nationality', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="nationality">
 		<g:message code="contact.nationality.label" default="Nationality" />
 	</label>
 	<div class="${session.inputWidth}">
-		<g:textField class="form-control" name="nationality" maxlength="50" value="${contactInstance?.nationality}"/>
+<g:countrySelect name="nationality" value="${contactInstance?.nationality}" noSelection="['':'-Seleccione-']"/>
+		%{-- <g:textField class="form-control" name="nationality" maxlength="50" value="${contactInstance?.nationality}"/> --}%
 	</div>
 </div>
 
@@ -138,16 +131,6 @@
 	</label>
 	<div class="${session.inputWidth}">
 		<g:datePicker class="form-control" name="entryDate" precision="day"  value="${contactInstance?.entryDate}"  />
-	</div>
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'musician', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="musician">
-		<g:message code="contact.musician.label" default="Musician" />
-		<span class="required-indicator">*</span>
-	</label>
-	<div class="${session.inputWidth}">
-		<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionKey="id" required="" value="${contactInstance?.musician?.id}" class="form-control many-to-one"/>
 	</div>
 </div>
 

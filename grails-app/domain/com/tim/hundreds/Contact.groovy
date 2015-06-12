@@ -2,8 +2,8 @@ package com.tim.hundreds
 
 class Contact {
   String firstName
-  String middleName
   String lastName
+  String motherLastName
   String other
   String nationality
   String biography
@@ -14,9 +14,10 @@ class Contact {
   Date entryDate
 
   GenderType type
-  RoleType role
 
+  RoleType role
   Social social
+
   Address address
 
   static belongsTo = [ musician : Musician ]
@@ -28,8 +29,8 @@ class Contact {
 
   static constraints = {
     firstName blank:false,size:1..100
-    middleName blank:false,size:1..100
     lastName blank:false,size:1..100
+    motherLastName blank:false,size:1..100
     other nullable:true,blank:false,size:1..50
     nationality nullable:true,blank:false,size:1..50
     biography nullable:true,blank:false,size:1..10000

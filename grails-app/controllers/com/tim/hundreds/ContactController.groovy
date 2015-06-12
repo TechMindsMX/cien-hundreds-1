@@ -35,7 +35,9 @@ class ContactController {
         }
 
         if (command.hasErrors()) {
-            respond command.errors, view:'create'
+            Contact contactInstance = new Contact(params)
+            contactInstance.errors = command.errors
+            render view:'create', [contactInstance: contactInstance]
             return
         }
 

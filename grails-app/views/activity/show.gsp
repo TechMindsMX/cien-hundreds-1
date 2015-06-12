@@ -59,7 +59,7 @@
 				</li>
 				</g:if>
 			
-			</ul>
+			</ol>
 			<g:form url="[resource:activityInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="btn btn-primary edit" action="edit" resource="${activityInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

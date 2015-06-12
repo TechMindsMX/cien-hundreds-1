@@ -238,9 +238,9 @@
 									    <th>
 									    	<g:if test="${musicianInstance?.contacts}">
 										    	<ol>
-													<g:each in="${musicianInstance.contact}" var="c">
+													<g:each in="${musicianInstance.contacts}" var="c">
 														<li>
-															<g:link controller="contact" action="show" id="${c.id}">${c.name}</g:link>
+															<g:link controller="contact" action="show" id="${c.id}">${c.firstName} ${c.lastName}</g:link>
 														</li>
 													</g:each>
 										    	</ol>
