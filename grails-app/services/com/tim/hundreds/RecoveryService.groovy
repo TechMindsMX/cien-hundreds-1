@@ -5,11 +5,11 @@ import grails.transaction.Transactional
 @Transactional
 class RecoveryService {
   def restService
+  def userHelperService
   def recoveryCollaboratorService
 
   def generateRegistrationCodeForEmail(String email) {
-    def profile = Profile.findByEmail(email)
-    def user = User.findByProfile(profile)
+    def user = userHelperService.findByEmail(email)
     if(!user) throw new BusinessException("User not found")
 
     def message = recoveryCollaboratorService.generateToken(email)

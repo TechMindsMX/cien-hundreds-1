@@ -10,4 +10,11 @@ class UserHelperService {
     UserRole.create user, userRole, true
   }
 
+  def findByEmail(String email){
+    def profile = Profile.findByEmail(email)
+    def user = User.findByProfile(profile)
+
+    user
+  }
+
 }
