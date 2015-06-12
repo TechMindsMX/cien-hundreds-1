@@ -6,6 +6,7 @@ import grails.transaction.Transactional
 class RecoveryService {
   def restService
   def userHelperService
+  def registrationHelperService
   def recoveryCollaboratorService
 
   def generateRegistrationCodeForEmail(String email) {
@@ -17,14 +18,12 @@ class RecoveryService {
   }
 
   def changePasswordForToken(token, password){
-    def registrationCode = RegistrationCode.findByToken(token)
-    def profile = Profile.findByEmail(registrationCode.email)
+    def email = registrationHelperService.findEmailByToken(token)
+    def user = userHelperService.findByEmail(email)
+    if(!user) throw new BusinessException("User not found")
 
-    def user = User.findByProfile(profile)
     user.password = password
     user.save()
-
-    user
   }
 
   def confirmAccountForToken(token){

@@ -11,11 +11,13 @@ class RecoveryServiceSpec extends Specification {
   def restService = Mock(RestService)
   def recoveryCollaboratorService = Mock(RecoveryCollaboratorService)
   def userHelperService = Mock(UserHelperService)
+  def registrationHelperService = Mock(RegistrationHelperService)
 
   def setup() {
     service.restService = restService
     service.userHelperService = userHelperService
     service.recoveryCollaboratorService = recoveryCollaboratorService
+    service.registrationHelperService = registrationHelperService
   }
 
   void "should generate registration code for email"() {
@@ -38,6 +40,36 @@ class RecoveryServiceSpec extends Specification {
   when: "We find user by email"
     service.generateRegistrationCodeForEmail(email)
   then: "We expect send message to the email service"
+    thrown BusinessException
+  }
+
+  void "should change password for token"(){
+  given: "Token and password"
+    def token = 'token'
+    def password = 'password'
+    def email = 'josdem@email.com'
+  and: "user"
+    def user = Mock(User)
+  when: "We send change password for token"
+    service.changePasswordForToken(token, password)
+  then: "We expect save new password"
+    registrationHelperService.findEmailByToken(token) >> email
+    userHelperService.findByEmail(email) >> user
+    1 * user.setProperty('password','password')
+    1 * user.save()
+  }
+
+  void "should not change password for token since user not exist"(){
+  given: "Token and password"
+    def token = 'token'
+    def password = 'password'
+    def email = 'josdem@email.com'
+  and: "user"
+    def user = Mock(User)
+  when: "We send change password for token"
+    service.changePasswordForToken(token, password)
+  then: "We expect save new password"
+    registrationHelperService.findEmailByToken(token) >> email
     thrown BusinessException
   }
 }
