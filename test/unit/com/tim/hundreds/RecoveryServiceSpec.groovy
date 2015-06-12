@@ -103,4 +103,29 @@ class RecoveryServiceSpec extends Specification {
     registrationHelperService.findEmailByToken(token) >> email
     thrown BusinessException
   }
+
+  void "should send a message to recovery an user"(){
+  given: "An email"
+    def email = 'josdem@email.com'
+  and: "And a user"
+    def user = Mock(User)
+  when: "We send change password for token"
+    service.recoveryUser(email)
+  then: "We expect save new password"
+    user.username >> 'josdem'
+    userHelperService.findByEmail(email) >> user
+    1 * restService.sendCommand(_ as NameCommand, ApplicationState.FORGOT_USERNAME_URL)
+  }
+
+  void "should not send a message to recover user since user not exist"(){
+  given: "An email"
+    def email = 'josdem@email.com'
+  and: "user"
+    def user = Mock(User)
+  when: "We send change password for token"
+    service.recoveryUser(email)
+  then: "We expect save new password"
+    thrown BusinessException
+  }
+
 }
