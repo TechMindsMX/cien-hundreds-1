@@ -276,27 +276,29 @@
 						                	<g:if test="${musicianInstance?.social}">
 												<ol>
 														<li>
-															<g:link controller="social" action="show" id="${musicianInstance?.social.id}">Facebook: ${musicianInstance?.social.facebook}</g:link>
+															Facebook: ${musicianInstance?.social.facebook}
 														</li>
 														<li>
-															<g:link controller="social" action="show" id="${musicianInstance?.social.id}">g+1: ${musicianInstance?.social.googlePlus}</g:link>
+															g+: ${musicianInstance?.social.googlePlus}
 														</li>
 														<li>
-															<g:link controller="social" action="show" id="${musicianInstance?.social.id}">Instagram: ${musicianInstance?.social.instagram}</g:link>
+															Instagram: ${musicianInstance?.social.instagram}
 														</li>
 														<li>
-															<g:link controller="social" action="show" id="${musicianInstance?.social.id}">Linkedin: ${musicianInstance?.social.linkedin}</g:link>
+															Linkedin: ${musicianInstance?.social.linkedin}
 														</li>
 														<li>
-															<g:link controller="social" action="show" id="${musicianInstance?.social.id}">Twitter: ${musicianInstance?.social.twitter}</g:link>
+															Twitter: ${musicianInstance?.social.twitter}
 														</li>
 														<li>
-															<g:link controller="social" action="show" id="${musicianInstance?.social.id}">Youtube: ${musicianInstance?.social.youtube}</g:link>
+															Youtube: ${musicianInstance?.social.youtube}
 														</li>
 														<li>
-															<g:link controller="social" action="show" id="${musicianInstance?.social.id}">Otra: ${musicianInstance?.social.other}</g:link>
+															Otra: ${musicianInstance?.social.other}
 														</li>
 												</ol>
+												<g:link controller="social" action="edit" id="${musicianInstance?.social.id}"><g:message code="default.button.edit.label"/></g:link>
+
 											</g:if>
 						                </th>
 					                </tr>

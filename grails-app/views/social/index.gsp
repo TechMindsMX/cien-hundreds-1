@@ -10,7 +10,7 @@
 	<body>
 		<a href="#list-social" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
-			<ul>
+			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
@@ -20,7 +20,7 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
+			<table class="table table-stripped">
 			<thead>
 					<tr>
 					
@@ -35,6 +35,8 @@
 						<g:sortableColumn property="youtube" title="${message(code: 'social.youtube.label', default: 'Youtube')}" />
 					
 						<g:sortableColumn property="linkedin" title="${message(code: 'social.linkedin.label', default: 'Linkedin')}" />
+
+						<th><g:message code="index.actions.label" /></th>
 					
 					</tr>
 				</thead>
@@ -42,7 +44,7 @@
 				<g:each in="${socialInstanceList}" status="i" var="socialInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${socialInstance.id}">${fieldValue(bean: socialInstance, field: "facebook")}</g:link></td>
+						<td>${fieldValue(bean: socialInstance, field: "facebook")}</td>
 					
 						<td>${fieldValue(bean: socialInstance, field: "twitter")}</td>
 					
@@ -53,6 +55,8 @@
 						<td>${fieldValue(bean: socialInstance, field: "youtube")}</td>
 					
 						<td>${fieldValue(bean: socialInstance, field: "linkedin")}</td>
+
+						<td><g:link action="edit" id="${socialInstance.id}"><g:message code="default.button.edit.label" /></g:link></td>
 					
 					</tr>
 				</g:each>
