@@ -19,6 +19,7 @@ interface ApplicationState {
   static final String RESUME_EXTENSION = '.pdf'
 
   static final String FORGOT_PASSWORD_URL = 'http://localhost:8082/web/services/email/forgotPassword'
+  static final String FORGOT_USERNAME_URL = 'http://localhost:8082/web/services/email/forgotUsername'
   static final String REGISTER_URL = 'http://localhost:8082/web/services/email/register'
   static final String NEW_USER_URL = 'http://localhost:8082/web/services/email/newUser'
 }

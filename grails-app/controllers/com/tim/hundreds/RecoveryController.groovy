@@ -9,6 +9,8 @@ class RecoveryController {
 
   def index() { }
 
+  def user() {}
+
   def show() {
     try {
       recoveryService.obtainRegistrationCodeForToken(params.token)
@@ -22,6 +24,16 @@ class RecoveryController {
     try {
       recoveryService.confirmAccountForToken(params.token)
       redirect controller:'login', action:'auth'
+    }catch(BusinessException be) {
+      render status:NOT_FOUND
+    }
+  }
+
+  def recoveryUser(){
+    try{
+      recoveryService.recoveryUser(params.email)
+      flash.message = "Un mensaje se te ha enviado al correo"
+      redirect action:'index'
     }catch(BusinessException be) {
       render status:NOT_FOUND
     }
