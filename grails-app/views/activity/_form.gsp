@@ -1,40 +1,33 @@
 <%@ page import="com.tim.hundreds.Activity" %>
 
-
-
-<div class="fieldcontain ${hasErrors(bean: activityInstance, field: 'activity', 'error')} required">
-	<label for="activity">
+<div class="form-group fieldcontain ${hasErrors(bean: activityInstance, field: 'activity', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="activity">
 		<g:message code="activity.activity.label" default="Activity" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="activity" maxlength="100" required="" value="${activityInstance?.activity}"/>
-
+	<div class="${session.inputWidth}">
+		<g:textField class="form-control" name="activity" maxlength="100" required="" value="${activityInstance?.activity}"/>
+	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: activityInstance, field: 'place', 'error')} required">
-	<label for="place">
+<div class="form-group fieldcontain ${hasErrors(bean: activityInstance, field: 'place', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="place">
 		<g:message code="activity.place.label" default="Place" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="place" maxlength="100" required="" value="${activityInstance?.place}"/>
-
+	<div class="${session.inputWidth}">
+		<g:textField class="form-control" name="place" maxlength="100" required="" value="${activityInstance?.place}"/>
+	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: activityInstance, field: 'date', 'error')} required">
-	<label for="date">
+<div class="form-group fieldcontain ${hasErrors(bean: activityInstance, field: 'date', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="date">
 		<g:message code="activity.date.label" default="Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="date" precision="day"  value="${activityInstance?.date}"  />
-
+	<div class="${session.inputWidth}">
+		<g:datePicker class="form-control" name="date" precision="day"  value="${activityInstance?.date}"  />
+	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: activityInstance, field: 'musician', 'error')} required">
-	<label for="musician">
-		<g:message code="activity.musician.label" default="Musician" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionKey="id" required="" value="${activityInstance?.musician?.id}" class="many-to-one"/>
-
-</div>
-
+<g:hiddenField name="musician.id" value="${params?.musicianId}"/>

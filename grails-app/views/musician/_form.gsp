@@ -1,18 +1,11 @@
 <%@ page import="com.tim.hundreds.Musician" %>
 <div class="col-xs-8 col-md-9 ">
-			    <table class="table">
-			        <thead>
-			            <tr style="display: table-row;">
-			                <th class="text-head-color">
-			                    <h4>Datos de Ingreso</h4>
-			                </th>
-			                <th></th>
-			            </tr>
-			        </thead>	
+	<h4>Datos de Ingreso</h4>
+    <table class="table">
 	<tbody class="borderless">
             <tr>
-                <td class="text-right">
-                	<b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'name', 'error')} required">	   
+                <td class="text-right col-lg-3">
+                	<b><div class="control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'name', 'error')} required">	   
 						<g:message code="musician.name.label" class="text-right" data-pg-id="34" default="Nombre(s)" />
 						<span class="required-indicator">*</span>						
 					</div></b>
@@ -23,7 +16,7 @@
 			</tr>
  			<tr>
                 <td class="text-right">
-                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'history', 'error')} required">					
+                    <b><div class="control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'history', 'error')} required">					
 						<g:message code="musician.history.label" default="Biografía" />
 						<span class="required-indicator">*</span>						
 					</div></b>
@@ -35,7 +28,7 @@
             </tr>
             <tr>
                 <td class="text-right">
-                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'web', 'error')} ">
+                    <b><div class="control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'web', 'error')} ">
 						<g:message code="musician.web.label" default="Página Web" />
 					</div>
                 </td></b>
@@ -46,7 +39,7 @@
             </tr>     
             <tr>
                 <td class="text-right">
-                   <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'notes', 'error')} ">
+                   <b><div class="control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'notes', 'error')} ">
 						<g:message code="musician.notes.label" default="Notas" />
 
 					</div>	</b>
@@ -58,7 +51,7 @@
             </tr>
 			<tr>
                 <td class="text-right">
-                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'tags', 'error')} ">
+                    <b><div class="control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'tags', 'error')} ">
 							<g:message code="musician.tags.label" default="Tags" />
 					</div>
                 </td></b>
@@ -69,7 +62,7 @@
             </tr>
             <tr>
                 <td class="text-right">
-                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'formed', 'error')} required">
+                    <b><div class="control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'formed', 'error')} required">
 							<g:message code="musician.formed.label" default="Fecha de creación" />
 							<span class="required-indicator">*</span>
 					</div></b>
@@ -81,7 +74,7 @@
             </tr>
             <tr>
                 <td class="text-right">
-                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'genre', 'error')} required">
+                    <b><div class="control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'genre', 'error')} required">
 							<g:message code="musician.genre.label" default="Genero" />
 							<span class="required-indicator">*</span>
 					</div></b>
@@ -93,7 +86,7 @@
             </tr>
             <tr>
                 <td class="text-right">
-                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'hasManager', 'error')} ">
+                    <b><div class="control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'hasManager', 'error')} ">
 							<g:message code="musician.hasManager.label" default="Es Manager" />
 					</div>
                 </td></b>
@@ -104,7 +97,7 @@
             </tr>
             <tr>
                 <td class="text-right">
-                    <b><div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
+                    <b><div class="control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
 					    <g:message code="musician.logo.label" default="Logo" />
 					</div>
                 </td></b>

@@ -10,7 +10,7 @@
 	<body>
 		<a href="#list-contact" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
-			<ul>
+			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
@@ -20,13 +20,13 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
+			<table class="table table-stripped">
 			<thead>
 					<tr>
 					
 						<g:sortableColumn property="firstName" title="${message(code: 'contact.firstName.label', default: 'First Name')}" />
 					
-						<g:sortableColumn property="middleName" title="${message(code: 'contact.middleName.label', default: 'Middle Name')}" />
+						<g:sortableColumn property="motherLastName" title="${message(code: 'contact.motherLastName.label', default: 'Middle Name')}" />
 					
 						<g:sortableColumn property="lastName" title="${message(code: 'contact.lastName.label', default: 'Last Name')}" />
 					
@@ -44,7 +44,7 @@
 					
 						<td><g:link action="show" id="${contactInstance.id}">${fieldValue(bean: contactInstance, field: "firstName")}</g:link></td>
 					
-						<td>${fieldValue(bean: contactInstance, field: "middleName")}</td>
+						<td>${fieldValue(bean: contactInstance, field: "motherLastName")}</td>
 					
 						<td>${fieldValue(bean: contactInstance, field: "lastName")}</td>
 					

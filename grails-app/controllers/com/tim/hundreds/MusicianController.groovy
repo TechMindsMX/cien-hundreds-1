@@ -33,7 +33,9 @@ class MusicianController {
         }
 
         if (command.hasErrors()) {
-            respond command.errors, view:'create'
+            Musician musicianInstance = new Musician(params)
+            musicianInstance.errors = command.errors
+            render view:'create', model: [musicianInstance:musicianInstance]
             return
         }
 

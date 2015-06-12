@@ -9,7 +9,7 @@
 	<body>
 		<a href="#edit-activity" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
-			<ul>
+			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
@@ -27,13 +27,16 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:activityInstance, action:'update']" method="PUT" >
+			<g:form url="[resource:activityInstance, action:'update']" method="PUT" class="form-horizontal" >
 				<g:hiddenField name="version" value="${activityInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+					<div class="${session.btnOffset}">
+						<g:actionSubmit class="btn btn-success save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+						<button class="btn btn-danger" type="reset"><g:message code="cancel.label" /></button>
+					</div>
 				</fieldset>
 			</g:form>
 		</div>
