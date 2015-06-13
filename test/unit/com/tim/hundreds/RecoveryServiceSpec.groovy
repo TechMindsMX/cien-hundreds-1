@@ -53,6 +53,7 @@ class RecoveryServiceSpec extends Specification {
   when: "We send change password for token"
     service.changePasswordForToken(token, password)
   then: "We expect save new password"
+    registrationHelperService.isValidToken(token) >> true
     registrationHelperService.findEmailByToken(token) >> email
     userHelperService.findByEmail(email) >> user
     1 * user.setProperty('password','password')
