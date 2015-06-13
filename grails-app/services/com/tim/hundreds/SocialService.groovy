@@ -13,4 +13,12 @@ class SocialService {
     instance
   }
 
+  def deleteSocialFromInstance(socialInstance, instance){
+    if(!instance) return
+    instance.social = null
+    instance.save()
+
+    socialInstance.delete()
+  }
+
 }

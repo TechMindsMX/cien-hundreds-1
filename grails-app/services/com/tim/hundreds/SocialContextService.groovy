@@ -20,4 +20,18 @@ class SocialContextService {
       socialService.saveSocialToInstance(socialInstance, company)
     }
   }
+
+
+  def deleteInstance(socialInstance) {
+    def musician = Musician.findBySocial(socialInstance)
+    socialService.deleteSocialFromInstance(socialInstance, musician)
+
+    def contact = Contact.findBySocial(socialInstance)
+    socialService.deleteSocialFromInstance(socialInstance, contact)
+
+    def company = Company.findBySocial(socialInstance)
+    socialService.deleteSocialFromInstance(socialInstance, company)
+  }
+
+
 }

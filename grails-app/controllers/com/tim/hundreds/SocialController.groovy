@@ -91,7 +91,7 @@ class SocialController {
             return
         }
 
-        musicianService.deleteSocial(socialInstance)
+        socialContextService.deleteInstance(socialInstance)
 
         request.withFormat {
             form multipartForm {

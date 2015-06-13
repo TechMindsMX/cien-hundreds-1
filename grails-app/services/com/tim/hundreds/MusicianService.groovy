@@ -15,11 +15,4 @@ class MusicianService {
     musicianInstance
   }
 
-  def deleteSocial(socialInstance){
-    def musician = Musician.findBySocial(socialInstance)
-    musician.social = null
-    musician.save()
-
-    socialInstance.delete()
-  }
 }
