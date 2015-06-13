@@ -60,8 +60,13 @@ class RecoveryController {
       respond command.errors, view:'show', id:params.id
       return
     }
-    recoveryService.changePasswordForToken(params.id, command.password)
-    redirect controller:'login', action:'auth'
+    try {
+      recoveryService.changePasswordForToken(params.id, command.password)
+      redirect controller:'login', action:'auth'
+    } catch(BusinessException be) {
+      flash.error = "El token ha expirado"
+      redirect action:'index'
+    }
   }
 
 }

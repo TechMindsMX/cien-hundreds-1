@@ -10,4 +10,9 @@ class RegistrationHelperService {
     registrationCode.email
   }
 
+  def isValidToken(String token){
+     def registrationCode = RegistrationCode.findByToken(token)
+     registrationCode.isValid()
+  }
+
 }

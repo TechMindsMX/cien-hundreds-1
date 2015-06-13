@@ -73,6 +73,20 @@ class RecoveryServiceSpec extends Specification {
     thrown BusinessException
   }
 
+  void "should not change password for token since token is expired"(){
+  given: "Token and password"
+    def token = 'token'
+    def password = 'password'
+    def email = 'josdem@email.com'
+  and: "user"
+    def user = Mock(User)
+  when: "We send change password for token"
+    service.changePasswordForToken(token, password)
+  then: "We expect save new password"
+    registrationHelperService.isValidToken(token) >> false
+    thrown BusinessException
+  }
+
   void "should confirm account for token"(){
   given: "Token and password"
     def token = 'token'

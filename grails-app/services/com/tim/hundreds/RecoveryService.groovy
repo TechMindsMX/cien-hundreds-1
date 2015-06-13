@@ -18,6 +18,8 @@ class RecoveryService {
   }
 
   def changePasswordForToken(token, password){
+    if(!registrationHelperService.isValidToken(token)) throw new BusinessException("Not valid token")
+
     def user = getUserByToken(token)
     if(!user) throw new BusinessException("User not found")
 

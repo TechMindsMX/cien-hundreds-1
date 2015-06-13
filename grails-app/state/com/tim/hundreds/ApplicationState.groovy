@@ -18,6 +18,10 @@ interface ApplicationState {
   static final String IMAGE_EXTENSION = '.png'
   static final String RESUME_EXTENSION = '.pdf'
 
+  static final Integer TIME_UNIT = 60;
+  static final Integer MILISECONDS = 1000;
+  static final Integer TIMEOUT = 20;
+
   static final String FORGOT_PASSWORD_URL = 'http://localhost:8082/web/services/email/forgotPassword'
   static final String FORGOT_USERNAME_URL = 'http://localhost:8082/web/services/email/forgotUsername'
   static final String REGISTER_URL = 'http://localhost:8082/web/services/email/register'
