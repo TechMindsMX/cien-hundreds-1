@@ -25,4 +25,15 @@ class AddressContextService {
     }
   }
 
+  def deleteInstance(addressInstance) {
+    def musician = Musician.findByAddress(addressInstance)
+    addressService.deleteAddressFromInstance(addressInstance, musician)
+
+    def contact = Contact.findByAddress(addressInstance)
+    addressService.deleteAddressFromInstance(addressInstance, contact)
+
+    def company = Company.findByAddress(addressInstance)
+    addressService.deleteAddressFromInstance(addressInstance, company)
+  }
+
 }

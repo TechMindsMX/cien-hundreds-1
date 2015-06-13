@@ -89,7 +89,7 @@ class AddressController {
             return
         }
 
-        addressInstance.delete flush:true
+        addressContextService.deleteInstance(addressInstance)
 
         request.withFormat {
             form multipartForm {

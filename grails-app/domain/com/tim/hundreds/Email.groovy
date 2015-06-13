@@ -5,7 +5,7 @@ class Email {
   String address
   EmailType type
 
-  static belongsTo = [Contact]
+  static belongsTo = [User,Contact]
 
   static constraints = {
     address blank:false,email:true,size:6..200

@@ -13,4 +13,12 @@ class AddressService {
     instance
   }
 
+  def deleteAddressFromInstance(addressInstance, instance){
+    if(!instance) return
+    instance.address = null
+    instance.save()
+
+    addressInstance.delete()
+  }
+
 }
