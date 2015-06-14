@@ -26,7 +26,7 @@ class SocialController {
     def create() {
       [
         contactId : params.contactId,
-        musicianId : params.musicianId,
+        musicianUuid : params.musicianUuid,
         companyId : params.companyId
       ]
     }

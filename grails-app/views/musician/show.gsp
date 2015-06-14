@@ -145,7 +145,7 @@
 				       						<g:link class="glyphicon glyphicon-floppy-disk" controller="video" action="create" params='[musicianId: "${musicianInstance.id}"]'> Videos</g:link>
 				       					</g:if>
 				       					<g:elseif test="${musicianInstance.videos.size() >= 5}">
-						                	<g:link class="glyphicon glyphicon-floppy-remove not-active" disable controller="social" action="create" params='[musicianId: "${musicianInstance.id}"]'>  Redes Sociales</g:link>
+						                	<g:link class="glyphicon glyphicon-floppy-remove not-active" disable controller="social" action="create" params='[musicianUuid: "${musicianInstance.uuid}"]'>  Redes Sociales</g:link>
 						                </g:elseif>
 
 				       				</th>
@@ -266,7 +266,7 @@
 									<tr>
 						                <th>
 							                <g:if test="${musicianInstance.social == null}">
-							                	<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="create" params='[musicianId: "${musicianInstance.id}"]'> Redes Sociales</g:link>
+							                	<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="create" params='[musicianUuid: "${musicianInstance.uuid}"]'> Redes Sociales</g:link>
 						                	</g:if>
 						                	<g:elseif test="${musicianInstance.social != null}">
 							                	<g:link class="glyphicon glyphicon-floppy-remove not-active" disable controller="social" action="create" params='[musicianId: "${musicianInstance.id}"]'>  Redes Sociales</g:link>
