@@ -24,7 +24,7 @@ class DatosFiscalesController {
 
     def create() {
       [
-        musicianId : params.musicianId,
+        musicianUuidd : params.musicianUuid,
         companyId : params.companyId
       ]
     }

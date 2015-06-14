@@ -312,10 +312,10 @@
 					                <tr>
 					                <th>
 						                <g:if test="${musicianInstance.datosFiscales == null}">
-						                	<g:link class="glyphicon glyphicon-floppy-disk" controller="datosFiscales" action="create" params='[musicianId: "${musicianInstance.id}"]'> Datos Fiscales</g:link>
+						                	<g:link class="glyphicon glyphicon-floppy-disk" controller="datosFiscales" action="create" params='[musicianUuid: "${musicianInstance.uuid}"]'> Datos Fiscales</g:link>
 						                </g:if>
 						                <g:else test="${musicianInstance.datosFiscales == null}">
-						                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="datosFiscales" action="create" params='[musicianId: "${musicianInstance.id}"]'> Datos Fiscales</g:link>
+						                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="datosFiscales" action="create" params='[musicianUuid: "${musicianInstance.uuid}"]'> Datos Fiscales</g:link>
 						                </g:else>
 					                </th>
 					                <th>
