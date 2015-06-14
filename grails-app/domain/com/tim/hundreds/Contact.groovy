@@ -15,10 +15,9 @@ class Contact {
   Date entryDate
 
   GenderType type
-
   RoleType role
-  Social social
 
+  Social social
   Address address
 
   static belongsTo = [ musician : Musician ]

@@ -182,7 +182,7 @@
 
         <g:if test="${contactInstance.address == null}">
           <li>
-          <g:link controller="address" action="create" params='[contactId: "${contactInstance.id}"]'>Agregar Dirección</g:link>
+          <g:link controller="address" action="create" params='[contactUuid: "${contactInstance.uuid}"]'>Agregar Dirección</g:link>
           </li>
         </g:if>
         <g:if test="${contactInstance.social == null}">
