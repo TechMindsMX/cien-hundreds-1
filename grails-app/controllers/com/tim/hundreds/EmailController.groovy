@@ -22,37 +22,33 @@ class EmailController {
     }
 
     def create() {
-      [
-        contactId : params.contactId
-      ]
+        respond new Email(params)
     }
 
     def save(Email emailInstance) {
-        log.info "contactId: ${params.contactId}"
-        if (emailInstance == null) {
-            notFound()
-            return
-        }
+      if (emailInstance == null) {
+        notFound()
+        return
+      }
 
-        if (emailInstance.hasErrors()) {
-            respond emailInstance.errors, view:'create'
-            return
-        }
+      if (emailInstance.hasErrors()) {
+        respond emailInstance.errors, view:'create'
+        return
+      }
 
-        def contact = Contact.findById(params.contactId)
-        try{
-          def instance = emailService.save(emailInstance, contact)
-          request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'email.label', default: 'Email'), instance.id])
-                redirect instance
-            }
-            '*' { respond instance, [status: CREATED] }
+      try{
+        def instance = emailService.save(emailInstance)
+        request.withFormat {
+          form multipartForm {
+            flash.message = message(code: 'default.created.message', args: [message(code: 'email.label', default: 'Email'), instance.id])
+            redirect instance
           }
-        } catch (Exception ve){
-          log.info "Errors ${ve.errors}"
-          respond contact.errors, view:'create'
+          '*' { respond instance, [status: CREATED] }
         }
+      } catch (Exception ve){
+        log.info "Errors ${ve.message}"
+        respond emailInstance.contact.errors, view:'create'
+      }
     }
 
     def edit(Email emailInstance) {
