@@ -7,8 +7,8 @@ class AddressContextService {
   def addressService
 
   def saveInstance(addressInstance, params) {
-    if(params.musicianId){
-      def musician = Musician.findById(params.musicianId)
+    if(params.musicianUuid){
+      def musician = Musician.findByUuid(params.musicianUuid)
       addressService.saveAddressToInstance(addressInstance, musician)
     }
     if(params.datosFiscalesId){

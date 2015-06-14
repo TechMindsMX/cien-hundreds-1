@@ -1,7 +1,7 @@
 <%@ page import="com.tim.hundreds.Address" %>
 
 <g:set var="labelWidth" value="col-sm-2" />
-<g:set var="inputWidth" value="col-sm-10 col-lg-6" /> 
+<g:set var="inputWidth" value="col-sm-10 col-lg-6" />
 
 <div class="form-group fieldcontain ${hasErrors(bean: addressInstance, field: 'street', 'error')} required">
 	<label for="street" class="${labelWidth} control-label">
@@ -63,7 +63,7 @@
 	</div>
 </div>
 
-<g:hiddenField name="musicianId" value="${params?.musicianId}"/>
+<g:hiddenField name="musicianUuid" value="${params?.musicianUuid}"/>
 <g:hiddenField name="contactId" value="${params?.contactId}"/>
 <g:hiddenField name="datosFiscalesId" value="${params?.datosFiscalesId}"/>
 <g:hiddenField name="companyId" value="${params?.companyId}"/>

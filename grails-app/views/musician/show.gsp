@@ -305,7 +305,7 @@
 					                <tr>
 					                <th>
 						                <g:if test="${musicianInstance.address == null}">
-						                	<g:link class="glyphicon glyphicon-floppy-disk" controller="address" action="create" params='[musicianId: "${musicianInstance.id}"]'> Dirección</g:link>
+						                	<g:link class="glyphicon glyphicon-floppy-disk" controller="address" action="create" params='[musicianUuid: "${musicianInstance.uuid}"]'> Dirección</g:link>
 						                </g:if>
 					                </th>
 					                </tr>
