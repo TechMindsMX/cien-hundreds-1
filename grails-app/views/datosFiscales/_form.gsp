@@ -48,4 +48,4 @@
 </div>
 
 <g:hiddenField name="musicianUuid" value="${params?.musicianUuid}"/>
-<g:hiddenField name="companyId" value="${params?.companyId}"/>
+<g:hiddenField name="companyUuid" value="${params?.companyUuid}"/>

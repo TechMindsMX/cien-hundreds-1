@@ -179,7 +179,7 @@
       </g:if>
       <br/>
       <g:if test="${companyInstance?.datosFiscales == null}" >
-      <g:link controller="datosFiscales" action="create" params='[companyId : "${companyInstance.id}"]'>Agregar Datos Fiscales</g:link>
+      <g:link controller="datosFiscales" action="create" params='[companyUuid : "${companyInstance.uuid}"]'>Agregar Datos Fiscales</g:link>
       </g:if>
       <br/>
       <g:link controller="reference" action="create" params='[companyId: "${companyInstance.id}"]'>Agregar recomendaciones</g:link><br/>
