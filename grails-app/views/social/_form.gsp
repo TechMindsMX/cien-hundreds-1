@@ -71,5 +71,5 @@
 </div>
 
 <g:hiddenField name="musicianUuid" value="${params?.musicianUuid}"/>
-<g:hiddenField name="contactId" value="${params?.contactId}"/>
+<g:hiddenField name="contactUuid" value="${params?.contactUuid}"/>
 <g:hiddenField name="companyUuid" value="${params?.companyUuid}"/>

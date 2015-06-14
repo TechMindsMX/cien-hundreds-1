@@ -17,8 +17,8 @@ class Contact {
   GenderType type
   RoleType role
 
-  Social social
   Address address
+  Social social
 
   static belongsTo = [ musician : Musician ]
 
