@@ -13,4 +13,20 @@ class DatosFiscalesService {
     instance
   }
 
+  def deleteDatosFiscalesFromInstance(datosFiscalesInstance, instance){
+    if(!instance) return
+    instance.datosFiscales = null
+    instance.save()
+
+    if(datosFiscalesInstance.address){
+      def address = datosFiscalesInstance.address
+      datosFiscalesInstance.address = null
+      datosFiscalesInstance.save()
+
+      address.delete()
+    }
+
+    datosFiscalesInstance.delete()
+  }
+
 }

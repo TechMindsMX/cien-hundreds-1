@@ -9,6 +9,8 @@ class DatosFiscales {
 
   Address address
 
+  static belongsTo = [Musician,Company]
+
   static constraints = {
     razonSocial blank:false,size:1..100
     rfc blank:false,size:10..50

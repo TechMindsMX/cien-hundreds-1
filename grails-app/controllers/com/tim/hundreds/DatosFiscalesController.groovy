@@ -88,7 +88,7 @@ class DatosFiscalesController {
             return
         }
 
-        datosFiscalesInstance.delete flush:true
+        datosFiscalesContextService.deleteInstance(datosFiscalesInstance)
 
         request.withFormat {
             form multipartForm {

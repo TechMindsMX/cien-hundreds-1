@@ -33,5 +33,4 @@ class SocialContextService {
     socialService.deleteSocialFromInstance(socialInstance, company)
   }
 
-
 }

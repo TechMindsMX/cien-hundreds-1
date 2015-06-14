@@ -17,4 +17,12 @@ class DatosFiscalesContextService {
     }
   }
 
+  def deleteInstance(datosFiscalesInstance) {
+    def musician = Musician.findByDatosFiscales(datosFiscalesInstance)
+    datosFiscalesService.deleteDatosFiscalesFromInstance(datosFiscalesInstance, musician)
+
+    def company = Company.findByDatosFiscales(datosFiscalesInstance)
+    datosFiscalesService.deleteDatosFiscalesFromInstance(datosFiscalesInstance, company)
+  }
+
 }
