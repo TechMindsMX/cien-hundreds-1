@@ -70,7 +70,7 @@
 
         <g:if test="${datosFiscalesInstance.address == null}">
         <li>
-        <g:link controller="address" action="create" params='[datosFiscalesId: "${datosFiscalesInstance.id}"]'>Add Address</g:link>
+        <g:link controller="address" action="create" params='[datosFiscalesUuid: "${datosFiscalesInstance.uuid}"]'>Add Address</g:link>
         </li>
         </g:if>
 

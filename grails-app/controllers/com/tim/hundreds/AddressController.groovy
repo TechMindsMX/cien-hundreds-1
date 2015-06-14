@@ -22,7 +22,7 @@ class AddressController {
 
     def create() {
       [
-        datosFiscalesId : params.datosFiscalesId,
+        datosFiscalesUuid : params.datosFiscalesUuid,
         contactUuid : params.contactUuid,
         musicianUuid : params.musicianUuid,
         companyUuid : params.companyUuid
