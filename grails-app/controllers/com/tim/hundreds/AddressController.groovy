@@ -25,7 +25,7 @@ class AddressController {
         datosFiscalesId : params.datosFiscalesId,
         contactId : params.contactId,
         musicianUuid : params.musicianUuid,
-        companyId : params.companyId
+        companyUuid : params.companyUuid
       ]
     }
 

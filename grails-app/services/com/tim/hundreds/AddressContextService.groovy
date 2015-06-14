@@ -19,8 +19,8 @@ class AddressContextService {
       def contact = Contact.findById(params.contactId)
       addressService.saveAddressToInstance(addressInstance, contact)
     }
-    if(params.companyId){
-      def company = Company.findById(params.companyId)
+    if(params.companyUuid){
+      def company = Company.findByUuid(params.companyUuid)
       addressService.saveAddressToInstance(addressInstance, company)
     }
   }

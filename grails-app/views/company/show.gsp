@@ -23,7 +23,7 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<div class="ibox-content">	
+			<div class="ibox-content">
 				<ul class="property-list company">
 
 					<g:if test="${companyInstance?.description}">
@@ -160,18 +160,18 @@
 					</li>
 					</g:if>
 				</ul>
-				<div class="form-horizontal">					
+				<div class="form-horizontal">
 					<div class="ibox-content text-center ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
 						<g:link class="btn btn-success" action="edit" resource="${companyInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 
-						<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />						
+						<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 					</div>
 				</div>
-				
+
 			</div>
 
       <g:if test="${companyInstance?.address == null}" >
-      <g:link controller="address" action="create" params='[companyId : "${companyInstance.id}"]'>Agregar Dirección</g:link>
+      <g:link controller="address" action="create" params='[companyUuid : "${companyInstance.uuid}"]'>Agregar Dirección</g:link>
       </g:if>
       <br/>
       <g:if test="${companyInstance?.social == null}" >
@@ -189,8 +189,8 @@
 
 			<g:form url="[resource:companyInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
-					
-					
+
+
 				</fieldset>
 			</g:form>
 		</div>
