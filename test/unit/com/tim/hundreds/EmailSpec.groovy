@@ -14,6 +14,9 @@ class EmailSpec extends Specification {
   void """When we have an email with: address: #address, type: #type we expect result: #result"""() {
   given: "An email"
     def email = new Email()
+  and: "A Contact"
+    def contact = new Contact()
+    email.contact = contact
   when: "We assign values"
     email.address = address
     email.type = type

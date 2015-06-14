@@ -11,7 +11,7 @@ class EmailIntegrationSpec extends Specification {
 
   void "Should save an contact with email"() {
     given: "An contact"
-      def contact = new Contact(firstName:'firstName',middleName:'middleName',lastName:'lastName')
+      def contact = new Contact(firstName:'firstName',lastName:'lastName',motherLastName:'motherLastName')
       contact.type = GenderType.MALE
       contact.role = RoleType.MANAGER
       contact.birthDate = new Date()
@@ -28,9 +28,9 @@ class EmailIntegrationSpec extends Specification {
       contact.musician = musician
       contact.save(flush: true)
     and: "We create an email"
-      def emailInstance = new Email(address:'josdem@email.com',type:EmailType.WORK)
+      def emailInstance = new Email(address:'josdem@email.com',type:EmailType.WORK,contact: contact)
     when: "We save email"
-      def result = emailService.save(emailInstance, contact)
+      def result = emailService.save(emailInstance)
     then:"We validate command"
       result
     cleanup:"We delete contact"
@@ -39,7 +39,7 @@ class EmailIntegrationSpec extends Specification {
 
   void "Should not save an contact with more than 3 emails"() {
     given: "An contact"
-      def contact = new Contact(firstName:'firstName',middleName:'middleName',lastName:'lastName')
+      def contact = new Contact(firstName:'firstName',lastName:'lastName',motherLastName:'motherLastName')
       contact.type = GenderType.MALE
       contact.role = RoleType.MANAGER
       contact.birthDate = new Date()
@@ -56,15 +56,15 @@ class EmailIntegrationSpec extends Specification {
       contact.musician = musician
       contact.save(flush: true)
     and: "We create several emails"
-      def emailInstance1 = new Email(address:'josdem@email.com',type:EmailType.WORK)
-      def emailInstance2 = new Email(address:'josdem@email.com',type:EmailType.WORK)
-      def emailInstance3 = new Email(address:'josdem@email.com',type:EmailType.WORK)
-      def emailInstance4 = new Email(address:'josdem@email.com',type:EmailType.WORK)
+      def emailInstance1 = new Email(address:'josdem@email.com',type:EmailType.WORK,contact: contact)
+      def emailInstance2 = new Email(address:'josdem@email.com',type:EmailType.WORK,contact: contact)
+      def emailInstance3 = new Email(address:'josdem@email.com',type:EmailType.WORK,contact: contact)
+      def emailInstance4 = new Email(address:'josdem@email.com',type:EmailType.WORK,contact: contact)
     when: "We save emails"
-      emailService.save(emailInstance1, contact)
-      emailService.save(emailInstance2, contact)
-      emailService.save(emailInstance3, contact)
-      emailService.save(emailInstance4, contact)
+      emailService.save(emailInstance1)
+      emailService.save(emailInstance2)
+      emailService.save(emailInstance3)
+      emailService.save(emailInstance4)
     then:"We expect exception"
       thrown ValidationException
     cleanup:"We delete contact"

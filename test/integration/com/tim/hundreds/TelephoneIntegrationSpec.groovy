@@ -11,7 +11,7 @@ class TelephoneIntegrationSpec extends Specification {
 
   void "Should save an contact with telephone"() {
     given: "An contact"
-      def contact = new Contact(firstName:'firstName',middleName:'middleName',lastName:'lastName')
+      def contact = new Contact(firstName:'firstName',lastName:'lastName',motherLastName:'motherLastName')
       contact.type = GenderType.MALE
       contact.role = RoleType.MANAGER
       contact.birthDate = new Date()
@@ -28,9 +28,9 @@ class TelephoneIntegrationSpec extends Specification {
       contact.musician = musician
       contact.save(flush: true)
     and: "We create an telephone"
-      def telephonecontact = new Telephone(phone:'1234567890',type:TelephoneType.WORK)
+      def telephonecontact = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
     when: "We save telephone"
-      def result = telephoneService.save(telephonecontact, contact)
+      def result = telephoneService.save(telephonecontact)
     then:"We validate command"
       result
     cleanup:"We delete contact"
@@ -39,7 +39,7 @@ class TelephoneIntegrationSpec extends Specification {
 
   void "Should not save an contact with more than 3 telephones"() {
     given: "An contact"
-      def contact = new Contact(firstName:'firstName',middleName:'middleName',lastName:'lastName')
+      def contact = new Contact(firstName:'firstName',lastName:'lastName',motherLastName:'motherLastName')
       contact.type = GenderType.MALE
       contact.role = RoleType.MANAGER
       contact.birthDate = new Date()
@@ -56,15 +56,15 @@ class TelephoneIntegrationSpec extends Specification {
       contact.musician = musician
       contact.save(flush: true)
     and: "We create an telephone"
-      def telephonecontact1 = new Telephone(phone:'1234567890',type:TelephoneType.WORK)
-      def telephonecontact2 = new Telephone(phone:'1234567890',type:TelephoneType.WORK)
-      def telephonecontact3 = new Telephone(phone:'1234567890',type:TelephoneType.WORK)
-      def telephonecontact4 = new Telephone(phone:'1234567890',type:TelephoneType.WORK)
+      def telephonecontact1 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
+      def telephonecontact2 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
+      def telephonecontact3 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
+      def telephonecontact4 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
     when: "We save telephone"
-      telephoneService.save(telephonecontact1, contact)
-      telephoneService.save(telephonecontact2, contact)
-      telephoneService.save(telephonecontact3, contact)
-      telephoneService.save(telephonecontact4, contact)
+      telephoneService.save(telephonecontact1)
+      telephoneService.save(telephonecontact2)
+      telephoneService.save(telephonecontact3)
+      telephoneService.save(telephonecontact4)
     then:"We expect exception"
       thrown ValidationException
     cleanup:"We delete contact"
