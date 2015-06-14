@@ -11,12 +11,12 @@ class SocialContextService {
       def musician = Musician.findByUuid(params.musicianUuid)
       socialService.saveSocialToInstance(socialInstance, musician)
     }
-    if(params.contactId){
-      def contact = Contact.findById(params.contactId)
+    if(params.contactUuid){
+      def contact = Contact.findByUuid(params.contactUuid)
       socialService.saveSocialToInstance(socialInstance, contact)
     }
-    if(params.companyId){
-      def company = Company.findById(params.companyId)
+    if(params.companyUuid){
+      def company = Company.findByUuid(params.companyUuid)
       socialService.saveSocialToInstance(socialInstance, company)
     }
   }

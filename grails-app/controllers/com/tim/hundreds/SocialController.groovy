@@ -27,7 +27,7 @@ class SocialController {
       [
         contactId : params.contactId,
         musicianUuid : params.musicianUuid,
-        companyId : params.companyId
+        companyUuid : params.companyUuid
       ]
     }
 

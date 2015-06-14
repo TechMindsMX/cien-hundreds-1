@@ -175,7 +175,7 @@
       </g:if>
       <br/>
       <g:if test="${companyInstance?.social == null}" >
-      <g:link controller="social" action="create" params='[companyId : "${companyInstance.id}"]'>Agregar Redes Sociales</g:link>
+      <g:link controller="social" action="create" params='[companyUuid : "${companyInstance.uuid}"]'>Agregar Redes Sociales</g:link>
       </g:if>
       <br/>
       <g:if test="${companyInstance?.datosFiscales == null}" >
