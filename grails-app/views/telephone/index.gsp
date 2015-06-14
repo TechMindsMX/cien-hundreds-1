@@ -26,7 +26,11 @@
 					
 						<g:sortableColumn property="phone" title="${message(code: 'telephone.phone.label', default: 'Phone')}" />
 					
+						<th><g:message code="telephone.contact.label" default="Contact" /></th>
+					
 						<g:sortableColumn property="type" title="${message(code: 'telephone.type.label', default: 'Type')}" />
+					
+						<g:sortableColumn property="uuid" title="${message(code: 'telephone.uuid.label', default: 'Uuid')}" />
 					
 					</tr>
 				</thead>
@@ -36,7 +40,11 @@
 					
 						<td><g:link action="show" id="${telephoneInstance.id}">${fieldValue(bean: telephoneInstance, field: "phone")}</g:link></td>
 					
+						<td>${fieldValue(bean: telephoneInstance, field: "contact")}</td>
+					
 						<td>${fieldValue(bean: telephoneInstance, field: "type")}</td>
+					
+						<td>${fieldValue(bean: telephoneInstance, field: "uuid")}</td>
 					
 					</tr>
 				</g:each>

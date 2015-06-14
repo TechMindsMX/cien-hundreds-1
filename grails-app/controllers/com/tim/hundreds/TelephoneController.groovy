@@ -22,38 +22,34 @@ class TelephoneController {
     }
 
     def create() {
-        [
-          contactId : params.contactId
-        ]
+        respond new Telephone(params)
     }
 
     def save(Telephone telephoneInstance) {
-        log.info "contactId: ${params.contactId}"
-        if (telephoneInstance == null) {
-            notFound()
-            return
-        }
+      log.info "contactId: ${params.contactId}"
+      if (telephoneInstance == null) {
+        notFound()
+        return
+      }
 
-        if (telephoneInstance.hasErrors()) {
-            respond telephoneInstance.errors, view:'create'
-            return
-        }
+      if (telephoneInstance.hasErrors()) {
+        respond telephoneInstance.errors, view:'create'
+        return
+      }
 
-        def contact = Contact.findById(params.contactId)
-        try{
-          def instance = telephoneService.save(telephoneInstance, contact)
-          request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'telephone.label', default: 'Telephone'), instance.id])
-                redirect instance
-            }
-            '*' { respond instance, [status: CREATED] }
+      try{
+        def instance = telephoneService.save(telephoneInstance)
+        request.withFormat {
+          form multipartForm {
+          flash.message = message(code: 'default.created.message', args: [message(code: 'telephone.label', default: 'Telephone'), instance.id])
+          redirect instance
           }
-        }catch(Exception ex){
-          log.info "Errors: ${ex.message}"
-          respond contact.errors, view:'create'
+        '*' { respond instance, [status: CREATED] }
         }
-
+      }catch(Exception ex){
+        log.info "Errors: ${ex.message}"
+        respond telephoneInstance.contact.errors, view:'create'
+      }
     }
 
     def edit(Telephone telephoneInstance) {
