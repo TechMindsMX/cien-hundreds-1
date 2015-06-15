@@ -18,7 +18,11 @@ class RecoveryService {
   }
 
   def changePasswordForToken(token, password){
+    log.info "token: ${token}"
+    log.info "valid?: ${registrationHelperService.isValidToken(token)}"
+
     if(!registrationHelperService.isValidToken(token)) throw new BusinessException("Not valid token")
+    recoveryCollaboratorService.saveRegistrationCode(token)
 
     def user = getUserByToken(token)
     if(!user) throw new BusinessException("User not found")
@@ -48,7 +52,7 @@ class RecoveryService {
   }
 
   def obtainRegistrationCodeForToken(token) {
-    recoveryCollaboratorService.saveRegistrationCode(token)
+    recoveryCollaboratorService.findRegistrationCode(token)
   }
 
   def sendConfirmationAccountToken(String email){

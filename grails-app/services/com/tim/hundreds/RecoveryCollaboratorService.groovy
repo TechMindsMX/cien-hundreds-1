@@ -13,13 +13,17 @@ class RecoveryCollaboratorService {
     message
   }
 
-  def saveRegistrationCode(token){
+  def findRegistrationCode(token){
     def registrationCode = RegistrationCode.findByTokenAndStatus(token, RegistrationCodeStatus.VALID)
     if(!registrationCode) throw new BusinessException("User not found")
-    registrationCode.status = RegistrationCodeStatus.INVALID
-    registrationCode.save()
 
     registrationCode
+  }
+
+  def saveRegistrationCode(token){
+    def registrationCode = RegistrationCode.findByTokenAndStatus(token, RegistrationCodeStatus.VALID)
+    registrationCode.status = RegistrationCodeStatus.INVALID
+    registrationCode.save()
   }
 
 }

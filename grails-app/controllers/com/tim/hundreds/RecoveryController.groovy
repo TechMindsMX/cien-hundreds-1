@@ -46,7 +46,7 @@ class RecoveryController {
       flash.message = "Un mensaje se te ha enviado al correo"
       redirect action:'index'
     } catch(BusinessException be) {
-      flash.error = "Hubo un problema con el correo indicado"
+      flash.error = "No hemos encontrado ese correo en nuestros registros"
       redirect action:'index'
     } catch(Exception ex) {
       flash.error = "El servicio de correo no esta disponible"
