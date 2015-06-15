@@ -42,7 +42,7 @@
 					
 						<td>${fieldValue(bean: activityInstance, field: "place")}</td>
 					
-						<td><g:formatDate date="${activityInstance.date}" /></td>
+						<td><g:formatDate format="dd-MM-yyyy"  date="${activityInstance.date}" /></td>
 					
 						<td>${fieldValue(bean: activityInstance, field: "musician.name")}</td>
 					

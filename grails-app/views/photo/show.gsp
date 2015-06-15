@@ -24,23 +24,16 @@
 			<ul class="property-list photo">
 
 				<g:if test="${photoInstance?.path}">
-					<g:img dir="images" file="${photoInstance.path}" height="300" />
-				<li class="fieldcontain">
-
-					<span id="path-label" class="property-label"><g:message code="photo.path.label" default="Path" /></span>
-					
-						<span class="property-value" aria-labelledby="path-label"><g:fieldValue bean="${photoInstance}" field="path"/></span>
-					
-				</li>
+					<g:img dir="images/photos" file="${photoInstance.path}" height="300" />
 				</g:if>
 			
 				<g:if test="${photoInstance?.musician}">
-				<li class="fieldcontain">
-					<span id="musician-label" class="property-label"><g:message code="photo.musician.label" default="Musician" /></span>
-					
-						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${photoInstance?.musician?.id}">${photoInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
-					
-				</li>
+					<li class="fieldcontain">
+						<span id="musician-label" class="property-label"><g:message code="photo.musician.label" default="Musician" /></span>
+						
+							<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${photoInstance?.musician?.id}">${photoInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
+						
+					</li>
 				</g:if>
 			
 			</ul>

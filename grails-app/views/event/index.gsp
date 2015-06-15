@@ -44,7 +44,7 @@
 					
 						<td>${fieldValue(bean: eventInstance, field: "company")}</td>
 					
-						<td><g:formatDate date="${eventInstance.date}" /></td>
+						<td><g:formatDate format="dd-MM-yyyy"  date="${eventInstance.date}" /></td>
 					
 					</tr>
 				</g:each>

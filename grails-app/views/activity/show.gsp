@@ -45,7 +45,7 @@
 				<li class="fieldcontain">
 					<span id="date-label" class="property-label"><g:message code="activity.date.label" default="Date" /></span>
 					
-						<span class="property-value" aria-labelledby="date-label"><g:formatDate date="${activityInstance?.date}" /></span>
+						<span class="property-value" aria-labelledby="date-label"><g:formatDate format="dd-MM-yyyy"  date="${activityInstance?.date}" /></span>
 					
 				</li>
 				</g:if>

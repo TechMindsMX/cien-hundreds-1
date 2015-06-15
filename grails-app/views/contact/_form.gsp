@@ -67,7 +67,7 @@
 	</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'social', 'error')} ">
+%{-- <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'social', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="social">
 		<g:message code="contact.social.label" default="Social" />
 	</label>
@@ -75,6 +75,27 @@
 		<g:select id="social" name="social.id" from="${com.tim.hundreds.Social.list()}" optionKey="id" value="${contactInstance?.social?.id}" class="form-control many-to-one" noSelection="['null': '']"/>
 	</div>
 </div>
+ --}%
+<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'social', 'error')} ">
+	<label class="${session.labelWidth} control-label" for="social">
+		<g:message code="contact.social.label" default="Social" />
+	</label>
+	<div class="${session.inputWidth}">
+		<g:if test="${contactInstance?.social}">
+			<g:each in="${contactInstance.social}" var="e">
+				<li>${contactInstance.social.id}<g:link controller="social" action="edit" id="${e.id}"><g:message code="default.edit.label" /></g:link></li>
+			</g:each>
+		</g:if>
+		<g:if test="${contactInstance && contactInstance?.social?.size() < 3}">
+			<g:link class="" controller="social" action="create" params='[contactUuid: "${contactInstance.id}"]'><g:message code="create.social.label" default="Nueva redes sociales" /></g:link>
+		</g:if>
+		<g:else>
+			<g:message code="contact.first.label" default="Por favor crear primero el contacto" />
+		</g:else>
+	</div>
+</div>
+
+
 
 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'address', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="address">

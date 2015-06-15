@@ -74,7 +74,7 @@
 				<li class="fieldcontain">
 					<span id="logoPath-label" class="property-label"><b>Logo:</b></span>
 
-						<span class="property-value" aria-labelledby="logoPath-label"><g:fieldValue bean="${musicianInstance}" field="logoPath"/></span>
+						<span class="property-value" aria-labelledby="logoPath-label"><g:img dir="images/logos" file="${musicianInstance.logoPath}"/></span>
 
 				</li>
 				</g:if>
@@ -90,7 +90,7 @@
 				<li class="fieldcontain">
 					<span id="dateCreated-label" class="property-label"><b>Fecha de Creación:</b></span>
 
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="dd-MM-yyyy" date="${musicianInstance?.dateCreated}" /></span>
+						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="dd-MM-yyyy"  format="dd-MM-yyyy" date="${musicianInstance?.dateCreated}" /></span>
 
 				</li>
 				</g:if>
@@ -99,7 +99,7 @@
 				<li class="fieldcontain">
 					<span id="formed-label" class="property-label"><b>Creado:</b></span>
 
-						<span class="property-value" aria-labelledby="formed-label"><g:formatDate format="dd-MM-yyyy" date="${musicianInstance?.formed}" /></span>
+						<span class="property-value" aria-labelledby="formed-label"><g:formatDate format="dd-MM-yyyy"  format="dd-MM-yyyy" date="${musicianInstance?.formed}" /></span>
 
 				</li>
 				</g:if>
@@ -126,7 +126,7 @@
 				<li class="fieldcontain">
 					<span id="lastUpdated-label" class="property-label"><b>Última Actualización</b></span>
 
-						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate format="dd-MM-yyyy" date="${musicianInstance?.lastUpdated}" /></span>
+						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate format="dd-MM-yyyy"  format="dd-MM-yyyy" date="${musicianInstance?.lastUpdated}" /></span>
 
 				</li>
 				</g:if>

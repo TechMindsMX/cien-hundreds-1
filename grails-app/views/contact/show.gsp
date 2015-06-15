@@ -117,7 +117,7 @@
 				<li class="fieldcontain">
 					<span id="birthDate-label" class="property-label"><g:message code="contact.birthDate.label" default="Birth Date" /></span>
 
-						<span class="property-value" aria-labelledby="birthDate-label"><g:formatDate date="${contactInstance?.birthDate}" /></span>
+						<span class="property-value" aria-labelledby="birthDate-label"><g:formatDate format="dd-MM-yyyy"  date="${contactInstance?.birthDate}" /></span>
 
 				</li>
 				</g:if>
@@ -137,7 +137,7 @@
 				<li class="fieldcontain">
 					<span id="entryDate-label" class="property-label"><g:message code="contact.entryDate.label" default="Entry Date" /></span>
 
-						<span class="property-value" aria-labelledby="entryDate-label"><g:formatDate date="${contactInstance?.entryDate}" /></span>
+						<span class="property-value" aria-labelledby="entryDate-label"><g:formatDate format="dd-MM-yyyy"  date="${contactInstance?.entryDate}" /></span>
 
 				</li>
 				</g:if>
