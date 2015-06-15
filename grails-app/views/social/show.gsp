@@ -25,7 +25,7 @@
 			
 				<g:if test="${socialInstance?.facebook}">
 				<li class="fieldcontain">
-					<span id="facebook-label" class="property-label"><g:message code="social.facebook.label" default="Facebook" /></span>
+					<span id="facebook-label" class="${session.labelWidth} property-label"><g:message code="social.facebook.label" default="Facebook" /></span>
 					
 						<span class="property-value" aria-labelledby="facebook-label"><g:fieldValue bean="${socialInstance}" field="facebook"/></span>
 					
@@ -34,7 +34,7 @@
 			
 				<g:if test="${socialInstance?.twitter}">
 				<li class="fieldcontain">
-					<span id="twitter-label" class="property-label"><g:message code="social.twitter.label" default="Twitter" /></span>
+					<span id="twitter-label" class="${session.labelWidth} property-label"><g:message code="social.twitter.label" default="Twitter" /></span>
 					
 						<span class="property-value" aria-labelledby="twitter-label"><g:fieldValue bean="${socialInstance}" field="twitter"/></span>
 					
@@ -43,7 +43,7 @@
 			
 				<g:if test="${socialInstance?.googlePlus}">
 				<li class="fieldcontain">
-					<span id="googlePlus-label" class="property-label"><g:message code="social.googlePlus.label" default="Google Plus" /></span>
+					<span id="googlePlus-label" class="${session.labelWidth} property-label"><g:message code="social.googlePlus.label" default="Google Plus" /></span>
 					
 						<span class="property-value" aria-labelledby="googlePlus-label"><g:fieldValue bean="${socialInstance}" field="googlePlus"/></span>
 					
@@ -52,7 +52,7 @@
 			
 				<g:if test="${socialInstance?.instagram}">
 				<li class="fieldcontain">
-					<span id="instagram-label" class="property-label"><g:message code="social.instagram.label" default="Instagram" /></span>
+					<span id="instagram-label" class="${session.labelWidth} property-label"><g:message code="social.instagram.label" default="Instagram" /></span>
 					
 						<span class="property-value" aria-labelledby="instagram-label"><g:fieldValue bean="${socialInstance}" field="instagram"/></span>
 					
@@ -61,7 +61,7 @@
 			
 				<g:if test="${socialInstance?.youtube}">
 				<li class="fieldcontain">
-					<span id="youtube-label" class="property-label"><g:message code="social.youtube.label" default="Youtube" /></span>
+					<span id="youtube-label" class="${session.labelWidth} property-label"><g:message code="social.youtube.label" default="Youtube" /></span>
 					
 						<span class="property-value" aria-labelledby="youtube-label"><g:fieldValue bean="${socialInstance}" field="youtube"/></span>
 					
@@ -70,7 +70,7 @@
 			
 				<g:if test="${socialInstance?.linkedin}">
 				<li class="fieldcontain">
-					<span id="linkedin-label" class="property-label"><g:message code="social.linkedin.label" default="Linkedin" /></span>
+					<span id="linkedin-label" class="${session.labelWidth} property-label"><g:message code="social.linkedin.label" default="Linkedin" /></span>
 					
 						<span class="property-value" aria-labelledby="linkedin-label"><g:fieldValue bean="${socialInstance}" field="linkedin"/></span>
 					
@@ -79,7 +79,7 @@
 			
 				<g:if test="${socialInstance?.other}">
 				<li class="fieldcontain">
-					<span id="other-label" class="property-label"><g:message code="social.other.label" default="Other" /></span>
+					<span id="other-label" class="${session.labelWidth} property-label"><g:message code="social.other.label" default="Other" /></span>
 					
 						<span class="property-value" aria-labelledby="other-label"><g:fieldValue bean="${socialInstance}" field="other"/></span>
 					

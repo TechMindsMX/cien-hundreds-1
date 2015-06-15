@@ -25,7 +25,7 @@
 			
 				<g:if test="${referenceInstance?.name}">
 				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="reference.name.label" default="Name" /></span>
+					<span id="name-label" class="${session.labelWidth} property-label"><g:message code="reference.name.label" default="Name" /></span>
 					
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${referenceInstance}" field="name"/></span>
 					
@@ -34,7 +34,7 @@
 			
 				<g:if test="${referenceInstance?.contactName}">
 				<li class="fieldcontain">
-					<span id="contactName-label" class="property-label"><g:message code="reference.contactName.label" default="Contact Name" /></span>
+					<span id="contactName-label" class="${session.labelWidth} property-label"><g:message code="reference.contactName.label" default="Contact Name" /></span>
 					
 						<span class="property-value" aria-labelledby="contactName-label"><g:fieldValue bean="${referenceInstance}" field="contactName"/></span>
 					
@@ -43,7 +43,7 @@
 			
 				<g:if test="${referenceInstance?.email}">
 				<li class="fieldcontain">
-					<span id="email-label" class="property-label"><g:message code="reference.email.label" default="Email" /></span>
+					<span id="email-label" class="${session.labelWidth} property-label"><g:message code="reference.email.label" default="Email" /></span>
 					
 						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${referenceInstance}" field="email"/></span>
 					
@@ -52,7 +52,7 @@
 			
 				<g:if test="${referenceInstance?.phone}">
 				<li class="fieldcontain">
-					<span id="phone-label" class="property-label"><g:message code="reference.phone.label" default="Phone" /></span>
+					<span id="phone-label" class="${session.labelWidth} property-label"><g:message code="reference.phone.label" default="Phone" /></span>
 					
 						<span class="property-value" aria-labelledby="phone-label"><g:fieldValue bean="${referenceInstance}" field="phone"/></span>
 					
@@ -61,7 +61,7 @@
 			
 				<g:if test="${referenceInstance?.company}">
 				<li class="fieldcontain">
-					<span id="company-label" class="property-label"><g:message code="reference.company.label" default="Company" /></span>
+					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="reference.company.label" default="Company" /></span>
 					
 						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${referenceInstance?.company?.id}">${referenceInstance?.company?.encodeAsHTML()}</g:link></span>
 					
@@ -70,7 +70,7 @@
 			
 				<g:if test="${referenceInstance?.type}">
 				<li class="fieldcontain">
-					<span id="type-label" class="property-label"><g:message code="reference.type.label" default="Type" /></span>
+					<span id="type-label" class="${session.labelWidth} property-label"><g:message code="reference.type.label" default="Type" /></span>
 					
 						<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${referenceInstance}" field="type"/></span>
 					

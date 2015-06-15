@@ -25,7 +25,7 @@
 			
 				<g:if test="${eventInstance?.activity}">
 				<li class="fieldcontain">
-					<span id="activity-label" class="property-label"><g:message code="event.activity.label" default="Activity" /></span>
+					<span id="activity-label" class="${session.labelWidth} property-label"><g:message code="event.activity.label" default="Activity" /></span>
 					
 						<span class="property-value" aria-labelledby="activity-label"><g:fieldValue bean="${eventInstance}" field="activity"/></span>
 					
@@ -34,7 +34,7 @@
 			
 				<g:if test="${eventInstance?.place}">
 				<li class="fieldcontain">
-					<span id="place-label" class="property-label"><g:message code="event.place.label" default="Place" /></span>
+					<span id="place-label" class="${session.labelWidth} property-label"><g:message code="event.place.label" default="Place" /></span>
 					
 						<span class="property-value" aria-labelledby="place-label"><g:fieldValue bean="${eventInstance}" field="place"/></span>
 					
@@ -43,7 +43,7 @@
 			
 				<g:if test="${eventInstance?.company}">
 				<li class="fieldcontain">
-					<span id="company-label" class="property-label"><g:message code="event.company.label" default="Company" /></span>
+					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="event.company.label" default="Company" /></span>
 					
 						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${eventInstance?.company?.id}">${eventInstance?.company?.encodeAsHTML()}</g:link></span>
 					
@@ -52,9 +52,9 @@
 			
 				<g:if test="${eventInstance?.date}">
 				<li class="fieldcontain">
-					<span id="date-label" class="property-label"><g:message code="event.date.label" default="Date" /></span>
+					<span id="date-label" class="${session.labelWidth} property-label"><g:message code="event.date.label" default="Date" /></span>
 					
-						<span class="property-value" aria-labelledby="date-label"><g:formatDate date="${eventInstance?.date}" /></span>
+						<span class="property-value" aria-labelledby="date-label"><g:formatDate format="dd-MM-yyyy"  date="${eventInstance?.date}" /></span>
 					
 				</li>
 				</g:if>

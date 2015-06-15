@@ -25,7 +25,7 @@
 			
 				<g:if test="${activityInstance?.activity}">
 				<li class="fieldcontain">
-					<span id="activity-label" class="property-label"><g:message code="activity.activity.label" default="Activity" /></span>
+					<span id="activity-label" class="${session.labelWidth} property-label"><g:message code="activity.activity.label" default="Activity" /></span>
 					
 						<span class="property-value" aria-labelledby="activity-label"><g:fieldValue bean="${activityInstance}" field="activity"/></span>
 					
@@ -34,7 +34,7 @@
 			
 				<g:if test="${activityInstance?.place}">
 				<li class="fieldcontain">
-					<span id="place-label" class="property-label"><g:message code="activity.place.label" default="Place" /></span>
+					<span id="place-label" class="${session.labelWidth} property-label"><g:message code="activity.place.label" default="Place" /></span>
 					
 						<span class="property-value" aria-labelledby="place-label"><g:fieldValue bean="${activityInstance}" field="place"/></span>
 					
@@ -43,16 +43,16 @@
 			
 				<g:if test="${activityInstance?.date}">
 				<li class="fieldcontain">
-					<span id="date-label" class="property-label"><g:message code="activity.date.label" default="Date" /></span>
+					<span id="date-label" class="${session.labelWidth} property-label"><g:message code="activity.date.label" default="Date" /></span>
 					
-						<span class="property-value" aria-labelledby="date-label"><g:formatDate date="${activityInstance?.date}" /></span>
+						<span class="property-value" aria-labelledby="date-label"><g:formatDate format="dd-MM-yyyy"  date="${activityInstance?.date}" /></span>
 					
 				</li>
 				</g:if>
 			
 				<g:if test="${activityInstance?.musician}">
 				<li class="fieldcontain">
-					<span id="musician-label" class="property-label"><g:message code="activity.musician.label" default="Musician" /></span>
+					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="activity.musician.label" default="Musician" /></span>
 					
 						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${activityInstance?.musician?.id}">${activityInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
 					

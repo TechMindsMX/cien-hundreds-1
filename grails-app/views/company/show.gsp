@@ -28,7 +28,7 @@
 
 					<g:if test="${companyInstance?.description}">
 					<li class="fieldcontain">
-						<strong><span id="description-label" class="property-label"><g:message code="company.description.label" default="Descripción" /></span>
+						<strong><span id="description-label" class="${session.labelWidth} property-label"><g:message code="company.description.label" default="Descripción" /></span>
 							: </strong>
 							<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${companyInstance}" field="description"/></span>
 
@@ -37,7 +37,7 @@
 
 					<g:if test="${companyInstance?.web}">
 					<li class="fieldcontain">
-						<strong><span id="web-label" class="property-label"><g:message code="company.web.label" default="Web" /></span>
+						<strong><span id="web-label" class="${session.labelWidth} property-label"><g:message code="company.web.label" default="Web" /></span>
 							: </strong>
 							<span class="property-value" aria-labelledby="web-label"><g:fieldValue bean="${companyInstance}" field="web"/></span>
 
@@ -46,7 +46,7 @@
 
 					<g:if test="${companyInstance?.notes}">
 					<li class="fieldcontain">
-						<strong><span id="notes-label" class="property-label"><g:message code="company.notes.label" default="Notas Adicionales" /></span>
+						<strong><span id="notes-label" class="${session.labelWidth} property-label"><g:message code="company.notes.label" default="Notas Adicionales" /></span>
 							: </strong>
 							<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${companyInstance}" field="notes"/></span>
 
@@ -55,7 +55,7 @@
 
 					<g:if test="${companyInstance?.tags}">
 					<li class="fieldcontain">
-						<strong><span id="tags-label" class="property-label"><g:message code="company.tags.label" default="Tags" /></span>
+						<strong><span id="tags-label" class="${session.labelWidth} property-label"><g:message code="company.tags.label" default="Tags" /></span>
 							: </strong>
 							<span class="property-value" aria-labelledby="tags-label"><g:fieldValue bean="${companyInstance}" field="tags"/></span>
 
@@ -64,7 +64,7 @@
 
 					<g:if test="${companyInstance?.logo}">
 					<li class="fieldcontain">
-						<strong><span id="logo-label" class="property-label"><g:message code="company.logo.label" default="Logo" /></span>
+						<strong><span id="logo-label" class="${session.labelWidth} property-label"><g:message code="company.logo.label" default="Logo" /></span>
 							: </strong>
 							<span class="property-value" aria-labelledby="logo-label"><g:fieldValue bean="${companyInstance}" field="logo"/></span>
 
@@ -73,7 +73,7 @@
 
 					<g:if test="${companyInstance?.corporatePress}">
 					<li class="fieldcontain">
-						<strong><span id="corporatePress-label" class="property-label"><g:message code="company.corporatePress.label" default="Presentación Corporativa" /></span>
+						<strong><span id="corporatePress-label" class="${session.labelWidth} property-label"><g:message code="company.corporatePress.label" default="Presentación Corporativa" /></span>
 							: </strong>
 							<span class="property-value" aria-labelledby="corporatePress-label"><g:fieldValue bean="${companyInstance}" field="corporatePress"/></span>
 
@@ -82,7 +82,7 @@
 
 					<g:if test="${companyInstance?.address}">
 					<li class="fieldcontain">
-						<strong><span id="address-label" class="property-label"><g:message code="company.address.label" default="Address" /></span>
+						<strong><span id="address-label" class="${session.labelWidth} property-label"><g:message code="company.address.label" default="Address" /></span>
 							: </strong>
 							<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${companyInstance?.address?.id}">${companyInstance?.address?.encodeAsHTML()}</g:link></span>
 
@@ -91,7 +91,7 @@
 
 					<g:if test="${companyInstance?.social}">
 					<li class="fieldcontain">
-						<strong><span id="social-label" class="property-label"><g:message code="company.social.label" default="Social" /></span>
+						<strong><span id="social-label" class="${session.labelWidth} property-label"><g:message code="company.social.label" default="Social" /></span>
 							: </strong>
 							<span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" id="${companyInstance?.social?.id}">${companyInstance?.social?.encodeAsHTML()}</g:link></span>
 
@@ -100,7 +100,7 @@
 
 					<g:if test="${companyInstance?.datosFiscales}">
 					<li class="fieldcontain">
-						<strong><span id="datosFiscales-label" class="property-label"><g:message code="company.datosFiscales.label" default="Datos Fiscales" /></span>
+						<strong><span id="datosFiscales-label" class="${session.labelWidth} property-label"><g:message code="company.datosFiscales.label" default="Datos Fiscales" /></span>
 							: </strong>
 							<span class="property-value" aria-labelledby="datosFiscales-label"><g:link controller="datosFiscales" action="show" id="${companyInstance?.datosFiscales?.id}">${companyInstance?.datosFiscales?.encodeAsHTML()}</g:link></span>
 
@@ -109,7 +109,7 @@
 
 					<g:if test="${companyInstance?.references}">
 					<li class="fieldcontain">
-						<strong><span id="references-label" class="property-label"><g:message code="company.references.label" default="References" /></span>
+						<strong><span id="references-label" class="${session.labelWidth} property-label"><g:message code="company.references.label" default="References" /></span>
 
 							<g:each in="${companyInstance.references}" var="r">
 													</strong	<span class="property-value" aria-labelledby="references-label"><g:link controller="reference" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
@@ -120,7 +120,7 @@
 
 					<g:if test="${companyInstance?.collaborators}">
 					<li class="fieldcontain">
-						<strong><span id="collaborators-label" class="property-label"><g:message code="company.collaborators.label" default="Collaborators" /></span>
+						<strong><span id="collaborators-label" class="${session.labelWidth} property-label"><g:message code="company.collaborators.label" default="Collaborators" /></span>
 
 							<g:each in="${companyInstance.collaborators}" var="c">
 													</strong	<span class="property-value" aria-labelledby="collaborators-label"><g:link controller="collaborator" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
@@ -131,7 +131,7 @@
 
 					<g:if test="${companyInstance?.events}">
 					<li class="fieldcontain">
-						<strong><span id="events-label" class="property-label"><g:message code="company.events.label" default="Events" /></span>
+						<strong><span id="events-label" class="${session.labelWidth} property-label"><g:message code="company.events.label" default="Events" /></span>
 
 							<g:each in="${companyInstance.events}" var="e">
 													</strong	<span class="property-value" aria-labelledby="events-label"><g:link controller="event" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
@@ -142,7 +142,7 @@
 
 					<g:if test="${companyInstance?.products}">
 					<li class="fieldcontain">
-						<strong><span id="products-label" class="property-label"><g:message code="company.products.label" default="Products" /></span>
+						<strong><span id="products-label" class="${session.labelWidth} property-label"><g:message code="company.products.label" default="Products" /></span>
 
 							<g:each in="${companyInstance.products}" var="p">
 													</strong	<span class="property-value" aria-labelledby="products-label"><g:link controller="product" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
@@ -153,7 +153,7 @@
 
 					<g:if test="${companyInstance?.type}">
 					<li class="fieldcontain">
-						<strong><span id="type-label" class="property-label"><g:message code="company.type.label" default="Giro de la Empresa" /></span>
+						<strong><span id="type-label" class="${session.labelWidth} property-label"><g:message code="company.type.label" default="Giro de la Empresa" /></span>
 							: </strong>
 							<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${companyInstance}" field="type"/></span>
 

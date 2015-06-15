@@ -25,7 +25,7 @@
 			
 				<g:if test="${complementInstance?.name}">
 				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="complement.name.label" default="Name" /></span>
+					<span id="name-label" class="${session.labelWidth} property-label"><g:message code="complement.name.label" default="Name" /></span>
 					
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${complementInstance}" field="name"/></span>
 					
@@ -34,7 +34,7 @@
 			
 				<g:if test="${complementInstance?.price}">
 				<li class="fieldcontain">
-					<span id="price-label" class="property-label"><g:message code="complement.price.label" default="Price" /></span>
+					<span id="price-label" class="${session.labelWidth} property-label"><g:message code="complement.price.label" default="Price" /></span>
 					
 						<span class="property-value" aria-labelledby="price-label"><g:fieldValue bean="${complementInstance}" field="price"/></span>
 					
@@ -43,7 +43,7 @@
 			
 				<g:if test="${complementInstance?.product}">
 				<li class="fieldcontain">
-					<span id="product-label" class="property-label"><g:message code="complement.product.label" default="Product" /></span>
+					<span id="product-label" class="${session.labelWidth} property-label"><g:message code="complement.product.label" default="Product" /></span>
 					
 						<span class="property-value" aria-labelledby="product-label"><g:link controller="product" action="show" id="${complementInstance?.product?.id}">${complementInstance?.product?.encodeAsHTML()}</g:link></span>
 					

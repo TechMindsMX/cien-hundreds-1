@@ -25,7 +25,7 @@
 
 				<g:if test="${contactInstance?.firstName}">
 				<li class="fieldcontain">
-					<span id="firstName-label" class="property-label"><g:message code="contact.firstName.label" default="First Name" /></span>
+					<span id="firstName-label" class="${session.labelWidth} property-label"><g:message code="contact.firstName.label" default="First Name" /></span>
 
 						<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${contactInstance}" field="firstName"/></span>
 
@@ -34,7 +34,7 @@
 
 				<g:if test="${contactInstance?.lastName}">
 				<li class="fieldcontain">
-					<span id="lastName-label" class="property-label"><g:message code="contact.lastName.label" default="Last Name" /></span>
+					<span id="lastName-label" class="${session.labelWidth} property-label"><g:message code="contact.lastName.label" default="Last Name" /></span>
 
 						<span class="property-value" aria-labelledby="lastName-label"><g:fieldValue bean="${contactInstance}" field="lastName"/></span>
 
@@ -43,7 +43,7 @@
 
 				<g:if test="${contactInstance?.motherLastName}">
 				<li class="fieldcontain">
-					<span id="motherLastName-label" class="property-label"><g:message code="contact.motherLastName.label" default="Middle Name" /></span>
+					<span id="motherLastName-label" class="${session.labelWidth} property-label"><g:message code="contact.motherLastName.label" default="Middle Name" /></span>
 
 						<span class="property-value" aria-labelledby="motherLastName-label"><g:fieldValue bean="${contactInstance}" field="motherLastName"/></span>
 
@@ -52,7 +52,7 @@
 
 				<g:if test="${contactInstance?.other}">
 				<li class="fieldcontain">
-					<span id="other-label" class="property-label"><g:message code="contact.other.label" default="Other" /></span>
+					<span id="other-label" class="${session.labelWidth} property-label"><g:message code="contact.other.label" default="Other" /></span>
 
 						<span class="property-value" aria-labelledby="other-label"><g:fieldValue bean="${contactInstance}" field="other"/></span>
 
@@ -61,7 +61,7 @@
 
 				<g:if test="${contactInstance?.nationality}">
 				<li class="fieldcontain">
-					<span id="nationality-label" class="property-label"><g:message code="contact.nationality.label" default="Nationality" /></span>
+					<span id="nationality-label" class="${session.labelWidth} property-label"><g:message code="contact.nationality.label" default="Nationality" /></span>
 
 						<span class="property-value" aria-labelledby="nationality-label"><g:country code="${contactInstance.nationality}" /></span>
 
@@ -70,7 +70,7 @@
 
 				<g:if test="${contactInstance?.biography}">
 				<li class="fieldcontain">
-					<span id="biography-label" class="property-label"><g:message code="contact.biography.label" default="Biography" /></span>
+					<span id="biography-label" class="${session.labelWidth} property-label"><g:message code="contact.biography.label" default="Biography" /></span>
 
 						<span class="property-value" aria-labelledby="biography-label"><g:fieldValue bean="${contactInstance}" field="biography"/></span>
 
@@ -79,7 +79,7 @@
 
 				<g:if test="${contactInstance?.style}">
 				<li class="fieldcontain">
-					<span id="style-label" class="property-label"><g:message code="contact.style.label" default="Style" /></span>
+					<span id="style-label" class="${session.labelWidth} property-label"><g:message code="contact.style.label" default="Style" /></span>
 
 						<span class="property-value" aria-labelledby="style-label"><g:fieldValue bean="${contactInstance}" field="style"/></span>
 
@@ -88,7 +88,7 @@
 
 				<g:if test="${contactInstance?.photoPath}">
 				<li class="fieldcontain">
-					<span id="photoPath-label" class="property-label"><g:message code="contact.photoPath.label" default="Photo Path" /></span>
+					<span id="photoPath-label" class="${session.labelWidth} property-label"><g:message code="contact.photoPath.label" default="Photo Path" /></span>
 
 						<span class="property-value" aria-labelledby="photoPath-label"><g:fieldValue bean="${contactInstance}" field="photoPath"/></span>
 
@@ -97,7 +97,7 @@
 
 				<g:if test="${contactInstance?.social}">
 				<li class="fieldcontain">
-					<span id="social-label" class="property-label"><g:message code="contact.social.label" default="Social" /></span>
+					<span id="social-label" class="${session.labelWidth} property-label"><g:message code="contact.social.label" default="Social" /></span>
 
 						<span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" id="${contactInstance?.social?.id}">${contactInstance?.social?.encodeAsHTML()}</g:link></span>
 
@@ -106,7 +106,7 @@
 
 				<g:if test="${contactInstance?.address}">
 				<li class="fieldcontain">
-					<span id="address-label" class="property-label"><g:message code="contact.address.label" default="Address" /></span>
+					<span id="address-label" class="${session.labelWidth} property-label"><g:message code="contact.address.label" default="Address" /></span>
 
 						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${contactInstance?.address?.id}">${contactInstance?.address?.encodeAsHTML()}</g:link></span>
 
@@ -115,16 +115,16 @@
 
 				<g:if test="${contactInstance?.birthDate}">
 				<li class="fieldcontain">
-					<span id="birthDate-label" class="property-label"><g:message code="contact.birthDate.label" default="Birth Date" /></span>
+					<span id="birthDate-label" class="${session.labelWidth} property-label"><g:message code="contact.birthDate.label" default="Birth Date" /></span>
 
-						<span class="property-value" aria-labelledby="birthDate-label"><g:formatDate date="${contactInstance?.birthDate}" /></span>
+						<span class="property-value" aria-labelledby="birthDate-label"><g:formatDate format="dd-MM-yyyy"  date="${contactInstance?.birthDate}" /></span>
 
 				</li>
 				</g:if>
 
 				<g:if test="${contactInstance?.emails}">
 				<li class="fieldcontain">
-					<span id="emails-label" class="property-label"><g:message code="contact.emails.label" default="Emails" /></span>
+					<span id="emails-label" class="${session.labelWidth} property-label"><g:message code="contact.emails.label" default="Emails" /></span>
 
 						<g:each in="${contactInstance.emails}" var="e">
 						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
@@ -135,16 +135,16 @@
 
 				<g:if test="${contactInstance?.entryDate}">
 				<li class="fieldcontain">
-					<span id="entryDate-label" class="property-label"><g:message code="contact.entryDate.label" default="Entry Date" /></span>
+					<span id="entryDate-label" class="${session.labelWidth} property-label"><g:message code="contact.entryDate.label" default="Entry Date" /></span>
 
-						<span class="property-value" aria-labelledby="entryDate-label"><g:formatDate date="${contactInstance?.entryDate}" /></span>
+						<span class="property-value" aria-labelledby="entryDate-label"><g:formatDate format="dd-MM-yyyy"  date="${contactInstance?.entryDate}" /></span>
 
 				</li>
 				</g:if>
 
 				<g:if test="${contactInstance?.musician}">
 				<li class="fieldcontain">
-					<span id="musician-label" class="property-label"><g:message code="contact.musician.label" default="Musician" /></span>
+					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="contact.musician.label" default="Musician" /></span>
 
 						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${contactInstance?.musician?.id}">${contactInstance?.musician?.name}</g:link></span>
 
@@ -153,7 +153,7 @@
 
 				<g:if test="${contactInstance?.role}">
 				<li class="fieldcontain">
-					<span id="role-label" class="property-label"><g:message code="contact.role.label" default="Role" /></span>
+					<span id="role-label" class="${session.labelWidth} property-label"><g:message code="contact.role.label" default="Role" /></span>
 
 						<span class="property-value" aria-labelledby="role-label"><g:fieldValue bean="${contactInstance}" field="role"/></span>
 
@@ -162,7 +162,7 @@
 
 				<g:if test="${contactInstance?.telephones}">
 				<li class="fieldcontain">
-					<span id="telephones-label" class="property-label"><g:message code="contact.telephones.label" default="Telephones" /></span>
+					<span id="telephones-label" class="${session.labelWidth} property-label"><g:message code="contact.telephones.label" default="Telephones" /></span>
 
 						<g:each in="${contactInstance.telephones}" var="t">
 						<span class="property-value" aria-labelledby="telephones-label"><g:link controller="telephone" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
@@ -173,7 +173,7 @@
 
 				<g:if test="${contactInstance?.type}">
 				<li class="fieldcontain">
-					<span id="type-label" class="property-label"><g:message code="contact.type.label" default="Type" /></span>
+					<span id="type-label" class="${session.labelWidth} property-label"><g:message code="contact.type.label" default="Type" /></span>
 
 						<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${contactInstance}" field="type"/></span>
 

@@ -25,7 +25,7 @@
 			
 				<g:if test="${audioInstance?.url}">
 				<li class="fieldcontain">
-					<span id="url-label" class="property-label"><g:message code="audio.url.label" default="Url" /></span>
+					<span id="url-label" class="${session.labelWidth} property-label"><g:message code="audio.url.label" default="Url" /></span>
 					
 						<span class="property-value" aria-labelledby="url-label"><g:fieldValue bean="${audioInstance}" field="url"/></span>
 					
@@ -34,7 +34,7 @@
 			
 				<g:if test="${audioInstance?.musician}">
 				<li class="fieldcontain">
-					<span id="musician-label" class="property-label"><g:message code="audio.musician.label" default="Musician" /></span>
+					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="audio.musician.label" default="Musician" /></span>
 					
 						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${audioInstance?.musician?.id}">${audioInstance?.musician?.name.encodeAsHTML()}</g:link></span>
 					

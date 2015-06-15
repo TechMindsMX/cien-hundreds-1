@@ -25,7 +25,7 @@
 			
 				<g:if test="${addressInstance?.street}">
 				<li class="fieldcontain">
-					<span id="street-label" class="property-label"><g:message code="address.street.label" default="Street" /></span>
+					<span id="street-label" class="${session.labelWidth} property-label"><g:message code="address.street.label" default="Street" /></span>
 					
 						<span class="property-value" aria-labelledby="street-label"><g:fieldValue bean="${addressInstance}" field="street"/></span>
 					
@@ -34,7 +34,7 @@
 			
 				<g:if test="${addressInstance?.zipcode}">
 				<li class="fieldcontain">
-					<span id="zipcode-label" class="property-label"><g:message code="address.zipcode.label" default="Zipcode" /></span>
+					<span id="zipcode-label" class="${session.labelWidth} property-label"><g:message code="address.zipcode.label" default="Zipcode" /></span>
 					
 						<span class="property-value" aria-labelledby="zipcode-label"><g:fieldValue bean="${addressInstance}" field="zipcode"/></span>
 					
@@ -43,7 +43,7 @@
 			
 				<g:if test="${addressInstance?.neighborhood}">
 				<li class="fieldcontain">
-					<span id="neighborhood-label" class="property-label"><g:message code="address.neighborhood.label" default="Neighborhood" /></span>
+					<span id="neighborhood-label" class="${session.labelWidth} property-label"><g:message code="address.neighborhood.label" default="Neighborhood" /></span>
 					
 						<span class="property-value" aria-labelledby="neighborhood-label"><g:fieldValue bean="${addressInstance}" field="neighborhood"/></span>
 					
@@ -52,7 +52,7 @@
 			
 				<g:if test="${addressInstance?.town}">
 				<li class="fieldcontain">
-					<span id="town-label" class="property-label"><g:message code="address.town.label" default="Town" /></span>
+					<span id="town-label" class="${session.labelWidth} property-label"><g:message code="address.town.label" default="Town" /></span>
 					
 						<span class="property-value" aria-labelledby="town-label"><g:fieldValue bean="${addressInstance}" field="town"/></span>
 					
@@ -61,7 +61,7 @@
 			
 				<g:if test="${addressInstance?.state}">
 				<li class="fieldcontain">
-					<span id="state-label" class="property-label"><g:message code="address.state.label" default="State" /></span>
+					<span id="state-label" class="${session.labelWidth} property-label"><g:message code="address.state.label" default="State" /></span>
 					
 						<span class="property-value" aria-labelledby="state-label"><g:fieldValue bean="${addressInstance}" field="state"/></span>
 					
@@ -70,7 +70,7 @@
 			
 				<g:if test="${addressInstance?.country}">
 				<li class="fieldcontain">
-					<span id="country-label" class="property-label"><g:message code="address.country.label" default="Country" /></span>
+					<span id="country-label" class="${session.labelWidth} property-label"><g:message code="address.country.label" default="Country" /></span>
 					
 						<span class="property-value" aria-labelledby="country-label"><g:fieldValue bean="${addressInstance}" field="country"/></span>
 					

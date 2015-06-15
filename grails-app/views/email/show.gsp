@@ -25,7 +25,7 @@
 			
 				<g:if test="${emailInstance?.address}">
 				<li class="fieldcontain">
-					<span id="address-label" class="property-label"><g:message code="email.address.label" default="Address" /></span>
+					<span id="address-label" class="${session.labelWidth} property-label"><g:message code="email.address.label" default="Address" /></span>
 					
 						<span class="property-value" aria-labelledby="address-label"><g:fieldValue bean="${emailInstance}" field="address"/></span>
 					
@@ -34,7 +34,7 @@
 			
 				<g:if test="${emailInstance?.contact}">
 				<li class="fieldcontain">
-					<span id="contact-label" class="property-label"><g:message code="email.contact.label" default="Contact" /></span>
+					<span id="contact-label" class="${session.labelWidth} property-label"><g:message code="email.contact.label" default="Contact" /></span>
 					
 						<span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" id="${emailInstance?.contact?.id}">${emailInstance?.contact?.encodeAsHTML()}</g:link></span>
 					
@@ -43,7 +43,7 @@
 			
 				<g:if test="${emailInstance?.type}">
 				<li class="fieldcontain">
-					<span id="type-label" class="property-label"><g:message code="email.type.label" default="Type" /></span>
+					<span id="type-label" class="${session.labelWidth} property-label"><g:message code="email.type.label" default="Type" /></span>
 					
 						<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${emailInstance}" field="type"/></span>
 					
@@ -52,7 +52,7 @@
 			
 				<g:if test="${emailInstance?.uuid}">
 				<li class="fieldcontain">
-					<span id="uuid-label" class="property-label"><g:message code="email.uuid.label" default="Uuid" /></span>
+					<span id="uuid-label" class="${session.labelWidth} property-label"><g:message code="email.uuid.label" default="Uuid" /></span>
 					
 						<span class="property-value" aria-labelledby="uuid-label"><g:fieldValue bean="${emailInstance}" field="uuid"/></span>
 					

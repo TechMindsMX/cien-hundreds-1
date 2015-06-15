@@ -25,7 +25,7 @@
 			
 				<g:if test="${suggestionInstance?.name}">
 				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="suggestion.name.label" default="Name" /></span>
+					<span id="name-label" class="${session.labelWidth} property-label"><g:message code="suggestion.name.label" default="Name" /></span>
 					
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${suggestionInstance}" field="name"/></span>
 					
@@ -34,7 +34,7 @@
 			
 				<g:if test="${suggestionInstance?.contactName}">
 				<li class="fieldcontain">
-					<span id="contactName-label" class="property-label"><g:message code="suggestion.contactName.label" default="Contact Name" /></span>
+					<span id="contactName-label" class="${session.labelWidth} property-label"><g:message code="suggestion.contactName.label" default="Contact Name" /></span>
 					
 						<span class="property-value" aria-labelledby="contactName-label"><g:fieldValue bean="${suggestionInstance}" field="contactName"/></span>
 					
@@ -43,7 +43,7 @@
 			
 				<g:if test="${suggestionInstance?.email}">
 				<li class="fieldcontain">
-					<span id="email-label" class="property-label"><g:message code="suggestion.email.label" default="Email" /></span>
+					<span id="email-label" class="${session.labelWidth} property-label"><g:message code="suggestion.email.label" default="Email" /></span>
 					
 						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${suggestionInstance}" field="email"/></span>
 					
@@ -52,7 +52,7 @@
 			
 				<g:if test="${suggestionInstance?.phone}">
 				<li class="fieldcontain">
-					<span id="phone-label" class="property-label"><g:message code="suggestion.phone.label" default="Phone" /></span>
+					<span id="phone-label" class="${session.labelWidth} property-label"><g:message code="suggestion.phone.label" default="Phone" /></span>
 					
 						<span class="property-value" aria-labelledby="phone-label"><g:fieldValue bean="${suggestionInstance}" field="phone"/></span>
 					
@@ -61,7 +61,7 @@
 			
 				<g:if test="${suggestionInstance?.musician}">
 				<li class="fieldcontain">
-					<span id="musician-label" class="property-label"><g:message code="suggestion.musician.label" default="Musician" /></span>
+					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="suggestion.musician.label" default="Musician" /></span>
 					
 						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${suggestionInstance?.musician?.id}">${suggestionInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
 				</li>
