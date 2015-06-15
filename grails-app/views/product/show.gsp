@@ -158,11 +158,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${productInstance?.campaingDescription}">
+				<g:if test="${productInstance?.campaignDescription}">
 				<li class="fieldcontain">
-					<span id="campaingDescription-label" class="property-label"><g:message code="product.campaingDescription.label" default="Campaing Description" /></span>
+					<span id="campaignDescription-label" class="property-label"><g:message code="product.campaignDescription.label" default="Campaign Description" /></span>
 					
-						<span class="property-value" aria-labelledby="campaingDescription-label"><g:fieldValue bean="${productInstance}" field="campaingDescription"/></span>
+						<span class="property-value" aria-labelledby="campaignDescription-label"><g:fieldValue bean="${productInstance}" field="campaignDescription"/></span>
 					
 				</li>
 				</g:if>
@@ -185,11 +185,22 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${productInstance?.campaing}">
+				<g:if test="${productInstance?.complements}">
 				<li class="fieldcontain">
-					<span id="campaing-label" class="property-label"><g:message code="product.campaing.label" default="Campaing" /></span>
+					<span id="complements-label" class="property-label"><g:message code="product.complements.label" default="Complements" /></span>
 					
-						<span class="property-value" aria-labelledby="campaing-label"><g:formatBoolean boolean="${productInstance?.campaing}" /></span>
+						<g:each in="${productInstance.complements}" var="c">
+						<span class="property-value" aria-labelledby="complements-label"><g:link controller="complement" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.campaign}">
+				<li class="fieldcontain">
+					<span id="campaign-label" class="property-label"><g:message code="product.campaign.label" default="Campaign" /></span>
+					
+						<span class="property-value" aria-labelledby="campaign-label"><g:formatBoolean boolean="${productInstance?.campaign}" /></span>
 					
 				</li>
 				</g:if>
@@ -199,17 +210,6 @@
 					<span id="company-label" class="property-label"><g:message code="product.company.label" default="Company" /></span>
 					
 						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${productInstance?.company?.id}">${productInstance?.company?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productInstance?.complements}">
-				<li class="fieldcontain">
-					<span id="complements-label" class="property-label"><g:message code="product.complements.label" default="Complements" /></span>
-					
-						<g:each in="${productInstance.complements}" var="c">
-						<span class="property-value" aria-labelledby="complements-label"><g:link controller="complement" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
 					
 				</li>
 				</g:if>
@@ -237,6 +237,15 @@
 					<span id="telephone-label" class="property-label"><g:message code="product.telephone.label" default="Telephone" /></span>
 					
 						<span class="property-value" aria-labelledby="telephone-label"><g:formatBoolean boolean="${productInstance?.telephone}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.uuid}">
+				<li class="fieldcontain">
+					<span id="uuid-label" class="property-label"><g:message code="product.uuid.label" default="Uuid" /></span>
+					
+						<span class="property-value" aria-labelledby="uuid-label"><g:fieldValue bean="${productInstance}" field="uuid"/></span>
 					
 				</li>
 				</g:if>

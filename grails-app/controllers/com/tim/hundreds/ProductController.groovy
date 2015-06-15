@@ -26,7 +26,6 @@ class ProductController {
     }
 
     def save(Product productInstance) {
-        log.info "Product: ${productInstance.dump()}"
         if (productInstance == null) {
             notFound()
             return

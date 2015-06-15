@@ -137,12 +137,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'campaingDescription', 'error')} ">
-	<label for="campaingDescription">
-		<g:message code="product.campaingDescription.label" default="Campaing Description" />
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'campaignDescription', 'error')} ">
+	<label for="campaignDescription">
+		<g:message code="product.campaignDescription.label" default="Campaign Description" />
 		
 	</label>
-	<g:textArea name="campaingDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.campaingDescription}"/>
+	<g:textArea name="campaignDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.campaignDescription}"/>
 
 </div>
 
@@ -164,24 +164,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'campaing', 'error')} ">
-	<label for="campaing">
-		<g:message code="product.campaing.label" default="Campaing" />
-		
-	</label>
-	<g:checkBox name="campaing" value="${productInstance?.campaing}" />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'company', 'error')} required">
-	<label for="company">
-		<g:message code="product.company.label" default="Company" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="company" name="company.id" from="${com.tim.hundreds.Company.list()}" optionKey="id" required="" value="${productInstance?.company?.id}" class="many-to-one"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: productInstance, field: 'complements', 'error')} ">
 	<label for="complements">
 		<g:message code="product.complements.label" default="Complements" />
@@ -197,6 +179,24 @@
 </li>
 </ul>
 
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'campaign', 'error')} ">
+	<label for="campaign">
+		<g:message code="product.campaign.label" default="Campaign" />
+		
+	</label>
+	<g:checkBox name="campaign" value="${productInstance?.campaign}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'company', 'error')} required">
+	<label for="company">
+		<g:message code="product.company.label" default="Company" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="company" name="company.id" from="${com.tim.hundreds.Company.list()}" optionKey="id" required="" value="${productInstance?.company?.id}" class="many-to-one"/>
 
 </div>
 
@@ -224,6 +224,15 @@
 		
 	</label>
 	<g:checkBox name="telephone" value="${productInstance?.telephone}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'uuid', 'error')} required">
+	<label for="uuid">
+		<g:message code="product.uuid.label" default="Uuid" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="uuid" required="" value="${productInstance?.uuid}"/>
 
 </div>
 
