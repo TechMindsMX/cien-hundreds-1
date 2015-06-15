@@ -126,7 +126,7 @@
 
     <!-- Toastr -->
 
-
+    <asset:javascript src="js/analytics-code.js" />
 
 </body>
 </html>

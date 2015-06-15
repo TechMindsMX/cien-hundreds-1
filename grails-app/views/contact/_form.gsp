@@ -40,13 +40,12 @@
 </div>
 
 
-                 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'nationality', 'error')} ">
+<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'nationality', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="nationality">
 		<g:message code="contact.nationality.label" default="Nationality" />
 	</label>
 	<div class="${session.inputWidth}">
-<g:countrySelect name="nationality" value="${contactInstance?.nationality}" noSelection="['':'-Seleccione-']"/>
-		%{-- <g:textField class="form-control" name="nationality" maxlength="50" value="${contactInstance?.nationality}"/> --}%
+		<g:countrySelect name="nationality" value="${contactInstance?.nationality}" noSelection="['':'-Seleccione-']" class="form-control" />
 	</div>
 </div>
 
@@ -65,15 +64,6 @@
 	</label>
 	<div class="${session.inputWidth}">
 		<g:textArea class="form-control" name="style" cols="40" rows="5" maxlength="10000" value="${contactInstance?.style}"/>
-	</div>
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'photoPath', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="photoPath">
-		<g:message code="contact.photoPath.label" default="Photo Path" />
-	</label>
-	<div class="${session.inputWidth}">
-		<g:textField class="form-control" name="photoPath" value="${contactInstance?.photoPath}"/>
 	</div>
 </div>
 
@@ -101,7 +91,27 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${session.inputWidth}">
-		<g:datePicker class="form-control" name="birthDate" precision="day"  value="${contactInstance?.birthDate}"  />
+		<g:datePicker class="form-control" name="birthDate" precision="day"  value="${contactInstance?.birthDate}" relativeYears="[-100..0]" />
+	</div>
+</div>
+
+<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'entryDate', 'error')} required" relativeYears="[-100..0]">
+	<label class="${session.labelWidth} control-label" for="entryDate">
+		<g:message code="contact.entryDate.label" default="Entry Date" />
+		<span class="required-indicator">*</span>
+	</label>
+	<div class="${session.inputWidth}">
+		<g:datePicker class="form-control" name="entryDate" precision="day"  value="${contactInstance?.entryDate}"  />
+	</div>
+</div>
+
+<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'role', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="role">
+		<g:message code="contact.role.label" default="Role" />
+		<span class="required-indicator">*</span>
+	</label>
+	<div class="${session.inputWidth}">
+		<g:select class="form-control" name="role" from="${com.tim.hundreds.RoleType?.values()}" keys="${com.tim.hundreds.RoleType.values()*.name()}" required="" value="${contactInstance?.role?.name()}" />
 	</div>
 </div>
 
@@ -121,26 +131,6 @@
 		<g:else>
 			<g:message code="contact.first.label" default="Por favor crear primero el contacto" />
 		</g:else>
-	</div>
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'entryDate', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="entryDate">
-		<g:message code="contact.entryDate.label" default="Entry Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<div class="${session.inputWidth}">
-		<g:datePicker class="form-control" name="entryDate" precision="day"  value="${contactInstance?.entryDate}"  />
-	</div>
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'role', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="role">
-		<g:message code="contact.role.label" default="Role" />
-		<span class="required-indicator">*</span>
-	</label>
-	<div class="${session.inputWidth}">
-		<g:select class="form-control" name="role" from="${com.tim.hundreds.RoleType?.values()}" keys="${com.tim.hundreds.RoleType.values()*.name()}" required="" value="${contactInstance?.role?.name()}" />
 	</div>
 </div>
 
@@ -172,6 +162,10 @@
 		<g:select class="form-control" name="type" from="${com.tim.hundreds.GenderType?.values()}" keys="${com.tim.hundreds.GenderType.values()*.name()}" required="" value="${contactInstance?.type?.name()}" />
 	</div>
 </div>
+
+<g:if test="${contactInstance?.photoPath}">
+	<g:img folder="" file="${contactInstance?.photoPath}" height="200"/>
+</g:if>
 
 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'photo', 'error')} ">
  	<label class="${session.labelWidth} control-label" for="photo">
