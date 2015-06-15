@@ -25,7 +25,7 @@
 			
 				<g:if test="${roleInstance?.authority}">
 				<li class="fieldcontain">
-					<span id="authority-label" class="property-label"><g:message code="role.authority.label" default="Authority" /></span>
+					<span id="authority-label" class="${session.labelWidth} property-label"><g:message code="role.authority.label" default="Authority" /></span>
 					
 						<span class="property-value" aria-labelledby="authority-label"><g:fieldValue bean="${roleInstance}" field="authority"/></span>
 					

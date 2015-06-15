@@ -29,7 +29,7 @@
 			
 				<g:if test="${photoInstance?.musician}">
 					<li class="fieldcontain">
-						<span id="musician-label" class="property-label"><g:message code="photo.musician.label" default="Musician" /></span>
+						<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="photo.musician.label" default="Musician" /></span>
 						
 							<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${photoInstance?.musician?.id}">${photoInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
 						

@@ -25,7 +25,7 @@
 
 				<g:if test="${datosFiscalesInstance?.razonSocial}">
 				<li class="fieldcontain">
-					<span id="razonSocial-label" class="property-label"><g:message code="datosFiscales.razonSocial.label" default="Razon Social" /></span>
+					<span id="razonSocial-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.razonSocial.label" default="Razon Social" /></span>
 
 						<span class="property-value" aria-labelledby="razonSocial-label"><g:fieldValue bean="${datosFiscalesInstance}" field="razonSocial"/></span>
 
@@ -34,7 +34,7 @@
 
 				<g:if test="${datosFiscalesInstance?.rfc}">
 				<li class="fieldcontain">
-					<span id="rfc-label" class="property-label"><g:message code="datosFiscales.rfc.label" default="Rfc" /></span>
+					<span id="rfc-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.rfc.label" default="Rfc" /></span>
 
 						<span class="property-value" aria-labelledby="rfc-label"><g:fieldValue bean="${datosFiscalesInstance}" field="rfc"/></span>
 
@@ -43,7 +43,7 @@
 
 				<g:if test="${datosFiscalesInstance?.address}">
 				<li class="fieldcontain">
-					<span id="address-label" class="property-label"><g:message code="datosFiscales.address.label" default="Address" /></span>
+					<span id="address-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.address.label" default="Address" /></span>
 
 						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${datosFiscalesInstance?.address?.id}">${datosFiscalesInstance?.address?.encodeAsHTML()}</g:link></span>
 
@@ -52,7 +52,7 @@
 
 				<g:if test="${datosFiscalesInstance?.personaMoral}">
 				<li class="fieldcontain">
-					<span id="personaMoral-label" class="property-label"><g:message code="datosFiscales.personaMoral.label" default="Persona Moral" /></span>
+					<span id="personaMoral-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.personaMoral.label" default="Persona Moral" /></span>
 
 						<span class="property-value" aria-labelledby="personaMoral-label"><g:formatBoolean boolean="${datosFiscalesInstance?.personaMoral}" /></span>
 
@@ -61,7 +61,7 @@
 
 				<g:if test="${datosFiscalesInstance?.personaFisica}">
 				<li class="fieldcontain">
-					<span id="personaFisica-label" class="property-label"><g:message code="datosFiscales.personaFisica.label" default="Persona Fisica" /></span>
+					<span id="personaFisica-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.personaFisica.label" default="Persona Fisica" /></span>
 
 						<span class="property-value" aria-labelledby="personaFisica-label"><g:formatBoolean boolean="${datosFiscalesInstance?.personaFisica}" /></span>
 

@@ -67,15 +67,6 @@
 	</div>
 </div>
 
-%{-- <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'social', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="social">
-		<g:message code="contact.social.label" default="Social" />
-	</label>
-	<div class="${session.inputWidth}">
-		<g:select id="social" name="social.id" from="${com.tim.hundreds.Social.list()}" optionKey="id" value="${contactInstance?.social?.id}" class="form-control many-to-one" noSelection="['null': '']"/>
-	</div>
-</div>
- --}%
 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'social', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="social">
 		<g:message code="contact.social.label" default="Social" />
@@ -86,25 +77,34 @@
 				<li>${contactInstance.social.id}<g:link controller="social" action="edit" id="${e.id}"><g:message code="default.edit.label" /></g:link></li>
 			</g:each>
 		</g:if>
-		<g:if test="${contactInstance && contactInstance?.social?.size() < 3}">
-			<g:link class="" controller="social" action="create" params='[contactUuid: "${contactInstance.id}"]'><g:message code="create.social.label" default="Nueva redes sociales" /></g:link>
-		</g:if>
+		<g:elseif test="${contactInstance && !contactInstance?.social}">
+			<g:link class="" controller="social" action="create" params='[contactUuid: "${contactInstance.uuid}"]'><g:message code="create.social.label" default="Nueva redes sociales" /></g:link>
+		</g:elseif>
 		<g:else>
 			<g:message code="contact.first.label" default="Por favor crear primero el contacto" />
 		</g:else>
 	</div>
 </div>
 
-
-
 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'address', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="address">
-		<g:message code="contact.address.label" default="Address" />
+		<g:message code="contact.address.label" default="address" />
 	</label>
 	<div class="${session.inputWidth}">
-		<g:select id="address" name="address.id" from="${com.tim.hundreds.Address.list()}" optionKey="id" value="${contactInstance?.address?.id}" class="form-control many-to-one" noSelection="['null': '']"/>
+		<g:if test="${contactInstance?.address}">
+			<g:each in="${contactInstance.address}" var="e">
+				<li>${contactInstance.address.id}<g:link controller="address" action="edit" id="${e.id}"><g:message code="default.edit.label" /></g:link></li>
+			</g:each>
+		</g:if>
+		<g:elseif test="${contactInstance && !contactInstance?.address}">
+			<g:link class="" controller="address" action="create" params='[contactUuid: "${contactInstance.uuid}"]'><g:message code="create.address.label" default="Nueva Dirección" /></g:link>
+		</g:elseif>
+		<g:else>
+			<g:message code="contact.first.label" default="Por favor crear primero el contacto" />
+		</g:else>
 	</div>
 </div>
+
 
 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'birthDate', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="birthDate">
@@ -184,16 +184,16 @@
 	</div>
 </div>
 
-<g:if test="${contactInstance?.photoPath}">
-	<g:img folder="" file="${contactInstance?.photoPath}" height="200"/>
-</g:if>
-
 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'photo', 'error')} ">
+
  	<label class="${session.labelWidth} control-label" for="photo">
 	 	<g:message code="contact.photo.label" default="Photo" />
 	</label>
 	<div class="${session.inputWidth}">
    		<input class="form-control" type="file" id="photo" name="photo" />
+		<g:if test="${contactInstance?.photoPath}">
+			<g:img folder="images/photos" file="${contactInstance?.photoPath}" height="200"/>
+		</g:if>
 	</div>
 </div>
 

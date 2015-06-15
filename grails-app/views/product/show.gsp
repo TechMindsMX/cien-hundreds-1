@@ -25,7 +25,7 @@
 			
 				<g:if test="${productInstance?.name}">
 				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="product.name.label" default="Name" /></span>
+					<span id="name-label" class="${session.labelWidth} property-label"><g:message code="product.name.label" default="Name" /></span>
 					
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${productInstance}" field="name"/></span>
 					
@@ -34,7 +34,7 @@
 			
 				<g:if test="${productInstance?.description}">
 				<li class="fieldcontain">
-					<span id="description-label" class="property-label"><g:message code="product.description.label" default="Description" /></span>
+					<span id="description-label" class="${session.labelWidth} property-label"><g:message code="product.description.label" default="Description" /></span>
 					
 						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${productInstance}" field="description"/></span>
 					
@@ -43,7 +43,7 @@
 			
 				<g:if test="${productInstance?.benefits}">
 				<li class="fieldcontain">
-					<span id="benefits-label" class="property-label"><g:message code="product.benefits.label" default="Benefits" /></span>
+					<span id="benefits-label" class="${session.labelWidth} property-label"><g:message code="product.benefits.label" default="Benefits" /></span>
 					
 						<span class="property-value" aria-labelledby="benefits-label"><g:fieldValue bean="${productInstance}" field="benefits"/></span>
 					
@@ -52,7 +52,7 @@
 			
 				<g:if test="${productInstance?.target}">
 				<li class="fieldcontain">
-					<span id="target-label" class="property-label"><g:message code="product.target.label" default="Target" /></span>
+					<span id="target-label" class="${session.labelWidth} property-label"><g:message code="product.target.label" default="Target" /></span>
 					
 						<span class="property-value" aria-labelledby="target-label"><g:fieldValue bean="${productInstance}" field="target"/></span>
 					
@@ -61,7 +61,7 @@
 			
 				<g:if test="${productInstance?.competence}">
 				<li class="fieldcontain">
-					<span id="competence-label" class="property-label"><g:message code="product.competence.label" default="Competence" /></span>
+					<span id="competence-label" class="${session.labelWidth} property-label"><g:message code="product.competence.label" default="Competence" /></span>
 					
 						<span class="property-value" aria-labelledby="competence-label"><g:fieldValue bean="${productInstance}" field="competence"/></span>
 					
@@ -70,7 +70,7 @@
 			
 				<g:if test="${productInstance?.videoLink}">
 				<li class="fieldcontain">
-					<span id="videoLink-label" class="property-label"><g:message code="product.videoLink.label" default="Video Link" /></span>
+					<span id="videoLink-label" class="${session.labelWidth} property-label"><g:message code="product.videoLink.label" default="Video Link" /></span>
 					
 						<span class="property-value" aria-labelledby="videoLink-label"><g:fieldValue bean="${productInstance}" field="videoLink"/></span>
 					
@@ -79,7 +79,7 @@
 			
 				<g:if test="${productInstance?.discountModel}">
 				<li class="fieldcontain">
-					<span id="discountModel-label" class="property-label"><g:message code="product.discountModel.label" default="Discount Model" /></span>
+					<span id="discountModel-label" class="${session.labelWidth} property-label"><g:message code="product.discountModel.label" default="Discount Model" /></span>
 					
 						<span class="property-value" aria-labelledby="discountModel-label"><g:fieldValue bean="${productInstance}" field="discountModel"/></span>
 					
@@ -88,7 +88,7 @@
 			
 				<g:if test="${productInstance?.clients}">
 				<li class="fieldcontain">
-					<span id="clients-label" class="property-label"><g:message code="product.clients.label" default="Clients" /></span>
+					<span id="clients-label" class="${session.labelWidth} property-label"><g:message code="product.clients.label" default="Clients" /></span>
 					
 						<span class="property-value" aria-labelledby="clients-label"><g:fieldValue bean="${productInstance}" field="clients"/></span>
 					
@@ -97,7 +97,7 @@
 			
 				<g:if test="${productInstance?.distributionModel}">
 				<li class="fieldcontain">
-					<span id="distributionModel-label" class="property-label"><g:message code="product.distributionModel.label" default="Distribution Model" /></span>
+					<span id="distributionModel-label" class="${session.labelWidth} property-label"><g:message code="product.distributionModel.label" default="Distribution Model" /></span>
 					
 						<span class="property-value" aria-labelledby="distributionModel-label"><g:fieldValue bean="${productInstance}" field="distributionModel"/></span>
 					
@@ -106,7 +106,7 @@
 			
 				<g:if test="${productInstance?.salesModel}">
 				<li class="fieldcontain">
-					<span id="salesModel-label" class="property-label"><g:message code="product.salesModel.label" default="Sales Model" /></span>
+					<span id="salesModel-label" class="${session.labelWidth} property-label"><g:message code="product.salesModel.label" default="Sales Model" /></span>
 					
 						<span class="property-value" aria-labelledby="salesModel-label"><g:fieldValue bean="${productInstance}" field="salesModel"/></span>
 					
@@ -115,7 +115,7 @@
 			
 				<g:if test="${productInstance?.customerModel}">
 				<li class="fieldcontain">
-					<span id="customerModel-label" class="property-label"><g:message code="product.customerModel.label" default="Customer Model" /></span>
+					<span id="customerModel-label" class="${session.labelWidth} property-label"><g:message code="product.customerModel.label" default="Customer Model" /></span>
 					
 						<span class="property-value" aria-labelledby="customerModel-label"><g:fieldValue bean="${productInstance}" field="customerModel"/></span>
 					
@@ -124,7 +124,7 @@
 			
 				<g:if test="${productInstance?.postSaleModel}">
 				<li class="fieldcontain">
-					<span id="postSaleModel-label" class="property-label"><g:message code="product.postSaleModel.label" default="Post Sale Model" /></span>
+					<span id="postSaleModel-label" class="${session.labelWidth} property-label"><g:message code="product.postSaleModel.label" default="Post Sale Model" /></span>
 					
 						<span class="property-value" aria-labelledby="postSaleModel-label"><g:fieldValue bean="${productInstance}" field="postSaleModel"/></span>
 					
@@ -133,7 +133,7 @@
 			
 				<g:if test="${productInstance?.notes}">
 				<li class="fieldcontain">
-					<span id="notes-label" class="property-label"><g:message code="product.notes.label" default="Notes" /></span>
+					<span id="notes-label" class="${session.labelWidth} property-label"><g:message code="product.notes.label" default="Notes" /></span>
 					
 						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${productInstance}" field="notes"/></span>
 					
@@ -142,7 +142,7 @@
 			
 				<g:if test="${productInstance?.webDescription}">
 				<li class="fieldcontain">
-					<span id="webDescription-label" class="property-label"><g:message code="product.webDescription.label" default="Web Description" /></span>
+					<span id="webDescription-label" class="${session.labelWidth} property-label"><g:message code="product.webDescription.label" default="Web Description" /></span>
 					
 						<span class="property-value" aria-labelledby="webDescription-label"><g:fieldValue bean="${productInstance}" field="webDescription"/></span>
 					
@@ -151,7 +151,7 @@
 			
 				<g:if test="${productInstance?.telephoneDescription}">
 				<li class="fieldcontain">
-					<span id="telephoneDescription-label" class="property-label"><g:message code="product.telephoneDescription.label" default="Telephone Description" /></span>
+					<span id="telephoneDescription-label" class="${session.labelWidth} property-label"><g:message code="product.telephoneDescription.label" default="Telephone Description" /></span>
 					
 						<span class="property-value" aria-labelledby="telephoneDescription-label"><g:fieldValue bean="${productInstance}" field="telephoneDescription"/></span>
 					
@@ -160,7 +160,7 @@
 			
 				<g:if test="${productInstance?.campaignDescription}">
 				<li class="fieldcontain">
-					<span id="campaignDescription-label" class="property-label"><g:message code="product.campaignDescription.label" default="Campaign Description" /></span>
+					<span id="campaignDescription-label" class="${session.labelWidth} property-label"><g:message code="product.campaignDescription.label" default="Campaign Description" /></span>
 					
 						<span class="property-value" aria-labelledby="campaignDescription-label"><g:fieldValue bean="${productInstance}" field="campaignDescription"/></span>
 					
@@ -169,7 +169,7 @@
 			
 				<g:if test="${productInstance?.eventDescription}">
 				<li class="fieldcontain">
-					<span id="eventDescription-label" class="property-label"><g:message code="product.eventDescription.label" default="Event Description" /></span>
+					<span id="eventDescription-label" class="${session.labelWidth} property-label"><g:message code="product.eventDescription.label" default="Event Description" /></span>
 					
 						<span class="property-value" aria-labelledby="eventDescription-label"><g:fieldValue bean="${productInstance}" field="eventDescription"/></span>
 					
@@ -178,7 +178,7 @@
 			
 				<g:if test="${productInstance?.otherDescription}">
 				<li class="fieldcontain">
-					<span id="otherDescription-label" class="property-label"><g:message code="product.otherDescription.label" default="Other Description" /></span>
+					<span id="otherDescription-label" class="${session.labelWidth} property-label"><g:message code="product.otherDescription.label" default="Other Description" /></span>
 					
 						<span class="property-value" aria-labelledby="otherDescription-label"><g:fieldValue bean="${productInstance}" field="otherDescription"/></span>
 					
@@ -187,7 +187,7 @@
 			
 				<g:if test="${productInstance?.complements}">
 				<li class="fieldcontain">
-					<span id="complements-label" class="property-label"><g:message code="product.complements.label" default="Complements" /></span>
+					<span id="complements-label" class="${session.labelWidth} property-label"><g:message code="product.complements.label" default="Complements" /></span>
 					
 						<g:each in="${productInstance.complements}" var="c">
 						<span class="property-value" aria-labelledby="complements-label"><g:link controller="complement" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
@@ -198,7 +198,7 @@
 			
 				<g:if test="${productInstance?.campaign}">
 				<li class="fieldcontain">
-					<span id="campaign-label" class="property-label"><g:message code="product.campaign.label" default="Campaign" /></span>
+					<span id="campaign-label" class="${session.labelWidth} property-label"><g:message code="product.campaign.label" default="Campaign" /></span>
 					
 						<span class="property-value" aria-labelledby="campaign-label"><g:formatBoolean boolean="${productInstance?.campaign}" /></span>
 					
@@ -207,7 +207,7 @@
 			
 				<g:if test="${productInstance?.company}">
 				<li class="fieldcontain">
-					<span id="company-label" class="property-label"><g:message code="product.company.label" default="Company" /></span>
+					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="product.company.label" default="Company" /></span>
 					
 						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${productInstance?.company?.id}">${productInstance?.company?.encodeAsHTML()}</g:link></span>
 					
@@ -216,7 +216,7 @@
 			
 				<g:if test="${productInstance?.event}">
 				<li class="fieldcontain">
-					<span id="event-label" class="property-label"><g:message code="product.event.label" default="Event" /></span>
+					<span id="event-label" class="${session.labelWidth} property-label"><g:message code="product.event.label" default="Event" /></span>
 					
 						<span class="property-value" aria-labelledby="event-label"><g:formatBoolean boolean="${productInstance?.event}" /></span>
 					
@@ -225,7 +225,7 @@
 			
 				<g:if test="${productInstance?.other}">
 				<li class="fieldcontain">
-					<span id="other-label" class="property-label"><g:message code="product.other.label" default="Other" /></span>
+					<span id="other-label" class="${session.labelWidth} property-label"><g:message code="product.other.label" default="Other" /></span>
 					
 						<span class="property-value" aria-labelledby="other-label"><g:formatBoolean boolean="${productInstance?.other}" /></span>
 					
@@ -234,7 +234,7 @@
 			
 				<g:if test="${productInstance?.telephone}">
 				<li class="fieldcontain">
-					<span id="telephone-label" class="property-label"><g:message code="product.telephone.label" default="Telephone" /></span>
+					<span id="telephone-label" class="${session.labelWidth} property-label"><g:message code="product.telephone.label" default="Telephone" /></span>
 					
 						<span class="property-value" aria-labelledby="telephone-label"><g:formatBoolean boolean="${productInstance?.telephone}" /></span>
 					
@@ -243,7 +243,7 @@
 			
 				<g:if test="${productInstance?.uuid}">
 				<li class="fieldcontain">
-					<span id="uuid-label" class="property-label"><g:message code="product.uuid.label" default="Uuid" /></span>
+					<span id="uuid-label" class="${session.labelWidth} property-label"><g:message code="product.uuid.label" default="Uuid" /></span>
 					
 						<span class="property-value" aria-labelledby="uuid-label"><g:fieldValue bean="${productInstance}" field="uuid"/></span>
 					
@@ -252,7 +252,7 @@
 			
 				<g:if test="${productInstance?.web}">
 				<li class="fieldcontain">
-					<span id="web-label" class="property-label"><g:message code="product.web.label" default="Web" /></span>
+					<span id="web-label" class="${session.labelWidth} property-label"><g:message code="product.web.label" default="Web" /></span>
 					
 						<span class="property-value" aria-labelledby="web-label"><g:formatBoolean boolean="${productInstance?.web}" /></span>
 					
