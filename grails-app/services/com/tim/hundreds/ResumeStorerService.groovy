@@ -5,7 +5,8 @@ import grails.transaction.Transactional
 @Transactional
 class ResumeStorerService implements StorerService {
   def tokenService
-  def directoryDestination = new File(System.getProperty("java.io.tmpdir"))
+  def resumePath = "${System.getProperty('user.home')}" + ApplicationState.RESUME_DIRECTORY
+  def directoryDestination = new File(resumePath)
 
   String storeFile(def multipartFile){
     def fileName = tokenService.generateToken() + ApplicationState.RESUME_EXTENSION
