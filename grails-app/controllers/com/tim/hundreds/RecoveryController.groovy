@@ -33,9 +33,10 @@ class RecoveryController {
     try{
       recoveryService.recoveryUser(params.email)
       flash.message = "Un mensaje se te ha enviado al correo"
-      redirect action:'index'
+      redirect controller:'login', action:'auth'
     }catch(BusinessException be) {
-      render status:NOT_FOUND
+      flash.error = "No hemos encontrado ese correo en nuestros registros"
+      redirect action:'user'
     }
   }
 

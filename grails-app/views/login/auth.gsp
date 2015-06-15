@@ -30,7 +30,7 @@
             </div>
             <div class="col-xm-12 col-md-6 well">
                 <p>
-                    <g:link controller="recovery" action="index" class="btn btn-block btn-warning">Recuperar usuario</g:link>
+                    <g:link controller="recovery" action="user" class="btn btn-block btn-warning">Recuperar usuario</g:link>
                 </p>
                 <p>
                     <g:link controller="recovery" action="index" class="btn btn-block btn-warning">Recuperar contraseña</g:link>
