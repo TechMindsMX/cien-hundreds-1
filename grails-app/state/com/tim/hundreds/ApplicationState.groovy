@@ -22,8 +22,8 @@ interface ApplicationState {
   static final Integer MILISECONDS = 1000;
   static final Integer TIMEOUT = 20;
 
-  static final String CONFIGURATION_DIRECTORY = '${System.getProperty('user.home')}/.cienhundreds/'
-  static final String LOGO_PATH = CONFIGURATION_DIRECTORY + 'logos/'
+  static final String CIENHUNDREDS_DIRECTORY = '/.cienhundreds/'
+  static final String LOGO_PATH = CIENHUNDREDS_DIRECTORY + 'logos/'
 
   static final String FORGOT_PASSWORD_URL = 'http://localhost:8082/web/services/email/forgotPassword'
   static final String FORGOT_USERNAME_URL = 'http://localhost:8082/web/services/email/forgotUsername'
