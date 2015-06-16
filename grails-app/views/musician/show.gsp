@@ -27,7 +27,7 @@
 
 				<g:if test="${musicianInstance?.name}">
 				<li class="fieldcontain">
-					<span id="name-label" class="${session.labelWidth} property-label"><b>Nombre:</b></span>
+					<span id="name-label" class="property-label"><b>Nombre:</b></span>
 
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${musicianInstance}" field="name"/></span>
 
@@ -36,7 +36,7 @@
 
 				<g:if test="${musicianInstance?.history}">
 				<li class="fieldcontain">
-					<span id="history-label" class="${session.labelWidth} property-label"><b>Historia:</b></span>
+					<span id="history-label" class="property-label"><b>Historia:</b></span>
 
 						<span class="property-value" aria-labelledby="history-label"><g:fieldValue bean="${musicianInstance}" field="history"/></span>
 
@@ -45,7 +45,7 @@
 
 				<g:if test="${musicianInstance?.web}">
 				<li class="fieldcontain">
-					<span id="web-label" class="${session.labelWidth} property-label"><b>Web:</b></span>
+					<span id="web-label" class="property-label"><b>Web:</b></span>
 
 						<span class="property-value" aria-labelledby="web-label"><g:fieldValue bean="${musicianInstance}" field="web"/></span>
 
@@ -54,7 +54,7 @@
 
 				<g:if test="${musicianInstance?.notes}">
 				<li class="fieldcontain">
-					<span id="notes-label" class="${session.labelWidth} property-label"><b>Notas:</b></span>
+					<span id="notes-label" class="property-label"><b>Notas:</b></span>
 
 						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${musicianInstance}" field="notes"/></span>
 
@@ -63,7 +63,7 @@
 
 				<g:if test="${musicianInstance?.tags}">
 				<li class="fieldcontain">
-					<span id="tags-label" class="${session.labelWidth} property-label"><g:message code="musician.tags.label" default="Tags" /></span>
+					<span id="tags-label" class="property-label"><g:message code="musician.tags.label" default="Tags" /></span>
 
 						<span class="property-value" aria-labelledby="tags-label"><g:fieldValue bean="${musicianInstance}" field="tags"/></span>
 
@@ -72,7 +72,7 @@
 
 				<g:if test="${musicianInstance?.logoPath}">
 				<li class="fieldcontain">
-					<span id="logoPath-label" class="${session.labelWidth} property-label"><b>Logo:</b></span>
+					<span id="logoPath-label" class="property-label"><b>Logo:</b></span>
 
 						<span class="property-value" aria-labelledby="logoPath-label"><g:img dir="images/logos" file="${musicianInstance.logoPath}"/></span>
 
@@ -80,7 +80,7 @@
 				</g:if>
 				<g:if test="${musicianInstance?.address}">
 				<li class="fieldcontain">
-					<span id="address-label" class="${session.labelWidth} property-label"><b>Dirección:</b></span>
+					<span id="address-label" class="property-label"><b>Dirección:</b></span>
 						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${musicianInstance?.address?.id}"><g:message code="address.view.label" default="Ver dirección" /></g:link></span>
 
 				</li>
@@ -88,7 +88,7 @@
 
 				<g:if test="${musicianInstance?.dateCreated}">
 				<li class="fieldcontain">
-					<span id="dateCreated-label" class="${session.labelWidth} property-label"><b>Fecha de Creación:</b></span>
+					<span id="dateCreated-label" class="property-label"><b>Fecha de Creación:</b></span>
 
 						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="dd-MM-yyyy"  format="dd-MM-yyyy" date="${musicianInstance?.dateCreated}" /></span>
 
@@ -97,7 +97,7 @@
 
 				<g:if test="${musicianInstance?.formed}">
 				<li class="fieldcontain">
-					<span id="formed-label" class="${session.labelWidth} property-label"><b>Creado:</b></span>
+					<span id="formed-label" class="property-label"><b>Creado:</b></span>
 
 						<span class="property-value" aria-labelledby="formed-label"><g:formatDate format="dd-MM-yyyy"  format="dd-MM-yyyy" date="${musicianInstance?.formed}" /></span>
 
@@ -106,7 +106,7 @@
 
 				<g:if test="${musicianInstance?.genre}">
 				<li class="fieldcontain">
-					<span id="genre-label" class="${session.labelWidth} property-label"><b>Genero:</b></span>
+					<span id="genre-label" class="property-label"><b>Genero:</b></span>
 
 						<span class="property-value" aria-labelledby="genre-label"><g:fieldValue bean="${musicianInstance}" field="genre"/></span>
 
@@ -115,7 +115,7 @@
 
 				<g:if test="${musicianInstance?.hasManager}">
 				<li class="fieldcontain">
-					<span id="hasManager-label" class="${session.labelWidth} property-label"><b>Manager</b></span>
+					<span id="hasManager-label" class="property-label"><b>Manager</b></span>
 
 						<span class="property-value" aria-labelledby="hasManager-label"><g:formatBoolean boolean="${musicianInstance?.hasManager}" /></span>
 
@@ -124,7 +124,7 @@
 
 				<g:if test="${musicianInstance?.lastUpdated}">
 				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="${session.labelWidth} property-label"><b>Última Actualización</b></span>
+					<span id="lastUpdated-label" class="property-label"><b>Última Actualización</b></span>
 
 						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate format="dd-MM-yyyy"  format="dd-MM-yyyy" date="${musicianInstance?.lastUpdated}" /></span>
 
@@ -332,8 +332,6 @@
 				       		</tbody>
 				       	</table>
        	</div>
-
-
 
         		<g:form url="[resource:musicianInstance, action:'delete']" method="DELETE">
 					<div class="aling-center">

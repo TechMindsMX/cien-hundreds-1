@@ -11,27 +11,32 @@ import spock.lang.Unroll
 class DatosFiscalesSpec extends Specification {
 
   @Unroll
-  void """When we have datos fiscales with razonSocial: #razonSocial, rfc: #rfc, personaMoral #personaMoral, personaFisica: #personaFisica we expect result: #result"""() {
+  void """When we have datos fiscales with razonSocial: #razonSocial, rfc: #rfc, personaJuridica #personaJuridica we expect result: #result"""() {
   given: "A datos ficales"
     def datosFiscales = new DatosFiscales()
   when: "We assign values"
     datosFiscales.razonSocial = razonSocial
     datosFiscales.rfc = rfc
-    datosFiscales.personaMoral = personaMoral
-    datosFiscales.personaFisica = personaFisica
+    datosFiscales.personaJuridica = personaJuridica
   then: "We validate result"
     result == datosFiscales.validate()
   where: "We have next values"
-  razonSocial           | rfc            | personaMoral | personaFisica || result
-  'Above & Beyond Inc.' | 'ABO8012028D3' | true         | true          || true
-  'A'                   | 'ABO8012028D3' | true         | true          || true
-  'Above & Beyond Inc.' | 'ABO8012028D3' | false        | true          || true
-  'Above & Beyond Inc.' | 'ABO8012028D3' | true         | false         || true
-  'Above & Beyond Inc.' | 'ABO8012028D3' | true         | true          || true
-  'Above & Beyond Inc.' | 'ABO8012028D3' | true         | true          || true
-  ''                    | 'ABO8012028D3' | true         | true          || false
-  null                  | 'ABO8012028D3' | true         | true          || false
-  'Above & Beyond Inc.' | ''             | true         | true          || false
-  'Above & Beyond Inc.' | null           | true         | true          || false
+  razonSocial           | rfc             | personaJuridica             || result
+  'Above & Beyond Inc.' | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   || true
+  'A'                   | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   || true
+  'Above & Beyond Inc.' | 'AABO8012028D3' | PersonaJuridicaType.MORAL   || false
+  'A'                   | 'AABO8012028D3' | PersonaJuridicaType.MORAL   || false
+  ''                    | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   || false
+  null                  | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   || false
+  'Above & Beyond Inc.' | ''              | PersonaJuridicaType.MORAL   || false
+  'Above & Beyond Inc.' | null            | PersonaJuridicaType.MORAL   || false
+  'Above & Beyond Inc.' | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  || true
+  'A'                   | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  || true
+  'Above & Beyond Inc.' | 'AAB8012028D3'  | PersonaJuridicaType.FISICA  || false
+  'A'                   | 'AAB8012028D3'  | PersonaJuridicaType.FISICA  || false
+  ''                    | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  || false
+  null                  | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  || false
+  'Above & Beyond Inc.' | ''              | PersonaJuridicaType.FISICA  || false
+  'Above & Beyond Inc.' | null            | PersonaJuridicaType.FISICA  || false
   }
 }

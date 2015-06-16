@@ -88,9 +88,9 @@
 
 				<g:if test="${contactInstance?.photoPath}">
 				<li class="fieldcontain">
-					<span id="photoPath-label" class="${session.labelWidth} property-label"><g:message code="contact.photoPath.label" default="Photo Path" /></span>
+					<span id="photoPath-label" class="${session.labelWidth} property-label"><g:message code="contact.photoPath.label" default="Photo" /></span>
 
-						<span class="property-value" aria-labelledby="photoPath-label"><g:fieldValue bean="${contactInstance}" field="photoPath"/></span>
+					<g:img folder="images/photos" file="${contactInstance?.photoPath}" height="200"/>
 
 				</li>
 				</g:if>
@@ -98,8 +98,7 @@
 				<g:if test="${contactInstance?.social}">
 				<li class="fieldcontain">
 					<span id="social-label" class="${session.labelWidth} property-label"><g:message code="contact.social.label" default="Social" /></span>
-
-						<span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" id="${contactInstance?.social?.id}">${contactInstance?.social?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" id="${contactInstance?.social?.id}"><g:message code="default.show.label" args=" " /></g:link></span>
 
 				</li>
 				</g:if>
@@ -108,7 +107,7 @@
 				<li class="fieldcontain">
 					<span id="address-label" class="${session.labelWidth} property-label"><g:message code="contact.address.label" default="Address" /></span>
 
-						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${contactInstance?.address?.id}">${contactInstance?.address?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${contactInstance?.address?.id}"><g:message code="default.show.label" args=" " /></g:link></span>
 
 				</li>
 				</g:if>
@@ -127,7 +126,7 @@
 					<span id="emails-label" class="${session.labelWidth} property-label"><g:message code="contact.emails.label" default="Emails" /></span>
 
 						<g:each in="${contactInstance.emails}" var="e">
-						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.address?.encodeAsHTML()}</g:link></span>
 						</g:each>
 
 				</li>
@@ -165,7 +164,7 @@
 					<span id="telephones-label" class="${session.labelWidth} property-label"><g:message code="contact.telephones.label" default="Telephones" /></span>
 
 						<g:each in="${contactInstance.telephones}" var="t">
-						<span class="property-value" aria-labelledby="telephones-label"><g:link controller="telephone" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="telephones-label"><g:link controller="telephone" action="show" id="${t.id}">${t?.phone.encodeAsHTML()}</g:link></span>
 						</g:each>
 
 				</li>
@@ -190,13 +189,16 @@
          <g:link controller="social" action="create" params='[contactUuid: "${contactInstance.uuid}"]'>Agregar Redes Sociales</g:link>
          </li>
         </g:if>
+		<g:if test="${!contactInstance.telephones && contactInstance.telephones.count() < 3}">
         <li>
           <g:link controller="telephone" action="create" params='[contactId: "${contactInstance.id}"]'>Agregar Teléfono</g:link>
         </li>
+        </g:if>
+        <g:if test="${!contactInstance.emails && contactInstance.emails.count() < 3}">
         <li>
           <g:link controller="email" action="create" params='[contactId: "${contactInstance.id}"]'>Agregar Email</g:link>
         </li>
-
+        </g:if>
 
 			</ul>
 			<g:form url="[resource:contactInstance, action:'delete']" method="DELETE">

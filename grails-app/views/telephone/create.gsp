@@ -8,7 +8,7 @@
 	<body>
 		<a href="#create-telephone" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
-			<ul>
+			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 			</ul>
@@ -18,19 +18,22 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<g:hasErrors>
+			<g:hasErrors bean="${telephoneInstance}">
 			<ul class="errors" role="alert">
-				<g:eachError var="error">
+				<g:eachError bean="${telephoneInstance}" var="error">
 				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:telephoneInstance, action:'save']" >
+			<g:form url="[resource:telephoneInstance, action:'save']"  class="form-horizontal">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<div class="${session.btnOffset}">
+						<g:submitButton name="create" class="btn btn-success save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+						<button class="btn btn-danger" type="reset"><g:message code="cancel.label" /></button>
+					</div>
 				</fieldset>
 			</g:form>
 		</div>

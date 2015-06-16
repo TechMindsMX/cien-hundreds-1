@@ -67,45 +67,6 @@
 	</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'social', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="social">
-		<g:message code="contact.social.label" default="Social" />
-	</label>
-	<div class="${session.inputWidth}">
-		<g:if test="${contactInstance?.social}">
-			<g:each in="${contactInstance.social}" var="e">
-				<li>${contactInstance.social.id}<g:link controller="social" action="edit" id="${e.id}"><g:message code="default.edit.label" /></g:link></li>
-			</g:each>
-		</g:if>
-		<g:elseif test="${contactInstance && !contactInstance?.social}">
-			<g:link class="" controller="social" action="create" params='[contactUuid: "${contactInstance.uuid}"]'><g:message code="create.social.label" default="Nueva redes sociales" /></g:link>
-		</g:elseif>
-		<g:else>
-			<g:message code="contact.first.label" default="Por favor crear primero el contacto" />
-		</g:else>
-	</div>
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'address', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="address">
-		<g:message code="contact.address.label" default="address" />
-	</label>
-	<div class="${session.inputWidth}">
-		<g:if test="${contactInstance?.address}">
-			<g:each in="${contactInstance.address}" var="e">
-				<li>${contactInstance.address.id}<g:link controller="address" action="edit" id="${e.id}"><g:message code="default.edit.label" /></g:link></li>
-			</g:each>
-		</g:if>
-		<g:elseif test="${contactInstance && !contactInstance?.address}">
-			<g:link class="" controller="address" action="create" params='[contactUuid: "${contactInstance.uuid}"]'><g:message code="create.address.label" default="Nueva Dirección" /></g:link>
-		</g:elseif>
-		<g:else>
-			<g:message code="contact.first.label" default="Por favor crear primero el contacto" />
-		</g:else>
-	</div>
-</div>
-
-
 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'birthDate', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="birthDate">
 		<g:message code="contact.birthDate.label" default="Birth Date" />
@@ -133,44 +94,6 @@
 	</label>
 	<div class="${session.inputWidth}">
 		<g:select class="form-control" name="role" from="${com.tim.hundreds.RoleType?.values()}" keys="${com.tim.hundreds.RoleType.values()*.name()}" required="" value="${contactInstance?.role?.name()}" />
-	</div>
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'emails', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="emails">
-		<g:message code="contact.emails.label" default="Emails" />
-	</label>
-	<div class="${session.inputWidth}">
-		<g:if test="${contactInstance?.emails?.size() > 0}">
-			<g:each in="${contactInstance.emails}" var="e">
-				<li>${contactInstance.email.address}-${contactInstance.email.type}  <g:link controller="email" action="edit" id="${e.id}"><g:message code="default.edit.label" /></g:link></li>
-			</g:each>
-		</g:if>
-		<g:if test="${contactInstance && contactInstance?.emails?.size() < 3}">
-			<g:link class="" controller="email" action="create" params='[contactId: "${contactInstance.id}"]'><g:message code="create.email.label" default="Nuevo email" /></g:link>
-		</g:if>
-		<g:else>
-			<g:message code="contact.first.label" default="Por favor crear primero el contacto" />
-		</g:else>
-	</div>
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'telephones', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="telephones">
-		<g:message code="contact.telephones.label" default="Telephones" />
-	</label>
-	<div class="${session.inputWidth}">
-		<g:if test="${contactInstance?.telephones?.size() > 0}">
-			<g:each in="${contactInstance.telephones}" var="t">
-				<li>${contactInstance.telephone.phone}-${contactInstance.telephone.type}  <g:link controller="telephone" action="edit" id="${t.id}"><g:message code="default.edit.label" /></g:link></li>
-			</g:each>
-		</g:if>
-		<g:if test="${contactInstance && contactInstance?.telephones?.size() < 3}">
-			<g:link class="" controller="telephone" action="create" params='[contactId: "${contactInstance.id}"]'><g:message code="create.phone.label" default="Nuevo teléfono" /></g:link>
-		</g:if>
-		<g:else>
-			<g:message code="contact.first.label" default="Por favor crear primero el contacto" />
-		</g:else>
 	</div>
 </div>
 
