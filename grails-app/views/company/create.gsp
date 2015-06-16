@@ -8,15 +8,13 @@
 	<body>
 		<a href="#create-company" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
-			<ul>
+			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="create-company" class="content scaffold-create" role="main">
-			<div class="ibox-title text-head-color">
-                <h1>Creación de Copañía</h1>
-            </div>
+			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -27,18 +25,17 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:uploadForm url="[resource:companyInstance, action:'save']" >
-				
-				<div class="form-horizontal">
+			<g:form url="[resource:companyInstance, action:'save']"  class="form-horizontal">
+				<fieldset class="form">
 					<g:render template="form"/>
-				
-					<div class="ibox-content text-center ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">					  
-						<g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-						<button class="btn btn-danger" type="reset">Cancelar</button>
+				</fieldset>
+				<fieldset class="buttons">
+					<div class="${session.btnOffset}">
+						<g:submitButton name="create" class="btn btn-success save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+						<button class="btn btn-danger" type="reset"><g:message code="cancel.label" /></button>
 					</div>
-				</div>
-
-			</g:uploadForm>
+				</fieldset>
+			</g:form>
 		</div>
 	</body>
 </html>
