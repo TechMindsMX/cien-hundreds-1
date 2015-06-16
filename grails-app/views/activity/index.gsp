@@ -24,18 +24,19 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="activity" title="${message(code: 'activity.activity.label', default: 'Activity')}" />
+						<g:sortableColumn property="activity" title="${message(code: 'activity.label', default: 'Activity')}" />
 					
-						<g:sortableColumn property="place" title="${message(code: 'activity.place.label', default: 'Place')}" />
+						<g:sortableColumn property="place" title="${message(code: 'place.label', default: 'Place')}" />
 					
-						<g:sortableColumn property="date" title="${message(code: 'activity.date.label', default: 'Date')}" />
+						<g:sortableColumn property="date" title="${message(code: 'date.label', default: 'Date')}" />
 					
-						<th><g:message code="activity.musician.label" default="Musician" /></th>
+						<g:sortableColumn property="musician" title="${message(code: 'musician.label', default: 'Musician')}" />
 					
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${activityInstanceList}" status="i" var="activityInstance">
+
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${activityInstance.id}">${fieldValue(bean: activityInstance, field: "activity")}</g:link></td>
