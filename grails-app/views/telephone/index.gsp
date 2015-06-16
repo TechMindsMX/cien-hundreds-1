@@ -10,7 +10,7 @@
 	<body>
 		<a href="#list-telephone" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
-			<ul>
+			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
@@ -20,7 +20,7 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
+			<table class="table table-stripped">
 			<thead>
 					<tr>
 					
@@ -30,8 +30,6 @@
 					
 						<g:sortableColumn property="type" title="${message(code: 'telephone.type.label', default: 'Type')}" />
 					
-						<g:sortableColumn property="uuid" title="${message(code: 'telephone.uuid.label', default: 'Uuid')}" />
-					
 					</tr>
 				</thead>
 				<tbody>
@@ -40,11 +38,9 @@
 					
 						<td><g:link action="show" id="${telephoneInstance.id}">${fieldValue(bean: telephoneInstance, field: "phone")}</g:link></td>
 					
-						<td>${fieldValue(bean: telephoneInstance, field: "contact")}</td>
+						<td>${fieldValue(bean: telephoneInstance, field: "contact.firstName")} ${fieldValue(bean: telephoneInstance, field: "contact.lastName")}</td>
 					
 						<td>${fieldValue(bean: telephoneInstance, field: "type")}</td>
-					
-						<td>${fieldValue(bean: telephoneInstance, field: "uuid")}</td>
 					
 					</tr>
 				</g:each>
