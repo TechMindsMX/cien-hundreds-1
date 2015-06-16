@@ -4,8 +4,8 @@ class DatosFiscales {
   String uuid = TokenService.generateToken()
   String razonSocial
   String rfc
-  Boolean personaMoral
-  Boolean personaFisica
+
+  PersonaJuridicaType personaJuridica
 
   Address address
 
@@ -13,10 +13,14 @@ class DatosFiscales {
 
   static constraints = {
     razonSocial blank:false,size:1..100
-    rfc blank:false,size:10..50
+    rfc(blank:false,size:10..50,validator: { val, obj ->
+        if(obj.personaJuridica == PersonaJuridicaType.FISICA && !(val ==~ /^[A-Z]{4}([0-9]{2})(1[0-2]|0[1-9])([0-3][0-9])([A-Z0-9]{3})$/) ) {
+          return false
+        } else if (obj.personaJuridica == PersonaJuridicaType.MORAL && !(val ==~ /^[A-Z]{3}([0-9]{2})(1[0-2]|0[1-9])([0-3][0-9])([A-Z0-9]{3})$/) ) {
+          return false
+        }
+      })
     address nullable:true
-    personaMoral nullable:true
-    personaFisica nullable:true
   }
 
 }

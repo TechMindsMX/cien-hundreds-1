@@ -10,7 +10,7 @@
 	<body>
 		<a href="#list-datosFiscales" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
-			<ul>
+			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
@@ -20,7 +20,7 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
+			<table class="table table-stripped">
 			<thead>
 					<tr>
 					
@@ -30,9 +30,9 @@
 					
 						<th><g:message code="datosFiscales.address.label" default="Address" /></th>
 					
-						<g:sortableColumn property="personaMoral" title="${message(code: 'datosFiscales.personaMoral.label', default: 'Persona Moral')}" />
+						<g:sortableColumn property="personaJuridica" title="${message(code: 'datosFiscales.personaJuridica.label', default: 'Persona Juridica')}" />
 					
-						<g:sortableColumn property="personaFisica" title="${message(code: 'datosFiscales.personaFisica.label', default: 'Persona Fisica')}" />
+						<g:sortableColumn property="uuid" title="${message(code: 'datosFiscales.uuid.label', default: 'Uuid')}" />
 					
 					</tr>
 				</thead>
@@ -46,9 +46,9 @@
 					
 						<td>${fieldValue(bean: datosFiscalesInstance, field: "address")}</td>
 					
-						<td><g:formatBoolean boolean="${datosFiscalesInstance.personaMoral}" /></td>
+						<td>${fieldValue(bean: datosFiscalesInstance, field: "personaJuridica")}</td>
 					
-						<td><g:formatBoolean boolean="${datosFiscalesInstance.personaFisica}" /></td>
+						<td>${fieldValue(bean: datosFiscalesInstance, field: "uuid")}</td>
 					
 					</tr>
 				</g:each>
