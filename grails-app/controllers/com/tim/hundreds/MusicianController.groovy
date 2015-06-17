@@ -1,4 +1,4 @@
-package com.tim.hundreds
+
 
 
 
@@ -94,9 +94,7 @@ class MusicianController {
             return
         }
 
-        musicianInstance.user = null
-        musicianInstance.save()
-        musicianInstance.delete(flush: true)
+        musicianService.delete(musicianInstance)
 
         request.withFormat {
             form multipartForm {
