@@ -1,55 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="layout" content="main">
     <title><g:message code="recovery.password.show.label" /></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="${assetPath(src: 'favicon.png')}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
-    <link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
-
-    <!-- Bootstrap core CSS -->
-    <link href="/cien-hundreds/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="/cien-hundreds/assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="/cien-hundreds/assets/theme.css" rel="stylesheet">
   </head>
   <body>
-    <div class="container">
-      <div class="well">
-        <div class="row">
-          <div class="col-xs-12 col-md-8">
-          </div>
-        </div>
-      </div>
-
-      <g:renderErrors />
-
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-md-12 col-lg-9">
           <div class="page-header">
-            <h1><g:message code="change.password.title" /></h1>
+            <h1><g:message code="recovery.password.show.title" /></h1>
           </div>
+
+          <g:renderErrors />
+
+          <p>
+            <g:message code="recovery.password.intro" />
+          </p>
 
           <g:form name="recovery" action="update" id="${params.token}" class="form-signin">
             <div class="form-group">
-              <label for="password"><g:message code="recovery.password.label" /></label>
-              <input type="password" class="form-control" name="password">
+              <label class="${session.labelWidth} form-control" for="password"><g:message code="recovery.password.label" /></label>
+              <div class="${session.inputWidth}">
+                <input class="form-control" type="password" name="password">
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="confirmPassword"><g:message code="recovery.confirm.password.label" /></label>
-              <input type="password" class="form-control" name="confirmPassword">
+              <label class="${session.labelWidth}" for="confirmPassword"><g:message code="recovery.confirm.password.label" /></label>
+              <div class="${session.inputWidth}">
+                <input class="form-control" type="password" name="confirmPassword">
+              </div>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block btn-lg"><g:message code="change.password.button.label" /></button>
           </g:form>
         </div>
       </div>
-
-      <footer class="footer">
-      </footer>
     </div>
   </body>
 </html>

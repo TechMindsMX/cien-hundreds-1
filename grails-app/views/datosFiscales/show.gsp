@@ -10,7 +10,7 @@
 	<body>
 		<a href="#show-datosFiscales" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
-			<ul>
+			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
@@ -21,64 +21,52 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<ol class="property-list datosFiscales">
-
+			<ul class="property-list datosFiscales">
+			
 				<g:if test="${datosFiscalesInstance?.razonSocial}">
 				<li class="fieldcontain">
 					<span id="razonSocial-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.razonSocial.label" default="Razon Social" /></span>
-
+					
 						<span class="property-value" aria-labelledby="razonSocial-label"><g:fieldValue bean="${datosFiscalesInstance}" field="razonSocial"/></span>
-
+					
 				</li>
 				</g:if>
-
+			
 				<g:if test="${datosFiscalesInstance?.rfc}">
 				<li class="fieldcontain">
 					<span id="rfc-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.rfc.label" default="Rfc" /></span>
-
+					
 						<span class="property-value" aria-labelledby="rfc-label"><g:fieldValue bean="${datosFiscalesInstance}" field="rfc"/></span>
-
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${datosFiscalesInstance?.personaJuridica}">
+				<li class="fieldcontain">
+					<span id="personaJuridica-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.personaJuridica.label" default="Persona Juridica" /></span>
+					
+						<span class="property-value" aria-labelledby="personaJuridica-label"><g:fieldValue bean="${datosFiscalesInstance}" field="personaJuridica"/></span>
+					
 				</li>
 				</g:if>
 
-				<g:if test="${datosFiscalesInstance?.address}">
 				<li class="fieldcontain">
 					<span id="address-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.address.label" default="Address" /></span>
-
-						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${datosFiscalesInstance?.address?.id}">${datosFiscalesInstance?.address?.encodeAsHTML()}</g:link></span>
-
-				</li>
+					
+				<g:if test="${datosFiscalesInstance?.address}">
+						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${datosFiscalesInstance?.address?.id}"><g:message code="address.view.label" default="Ver dirección" /></g:link></span>
 				</g:if>
-
-				<g:if test="${datosFiscalesInstance?.personaMoral}">
-				<li class="fieldcontain">
-					<span id="personaMoral-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.personaMoral.label" default="Persona Moral" /></span>
-
-						<span class="property-value" aria-labelledby="personaMoral-label"><g:formatBoolean boolean="${datosFiscalesInstance?.personaMoral}" /></span>
-
+				<g:else>
+                	<g:link class="glyphicon glyphicon-floppy-disk" controller="address" action="create" params='[datosFiscalesUuid: "${datosFiscalesInstance.uuid}"]'> Dirección</g:link>
+				</g:else>
 				</li>
-				</g:if>
+			
+			</ul>
 
-				<g:if test="${datosFiscalesInstance?.personaFisica}">
-				<li class="fieldcontain">
-					<span id="personaFisica-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.personaFisica.label" default="Persona Fisica" /></span>
-
-						<span class="property-value" aria-labelledby="personaFisica-label"><g:formatBoolean boolean="${datosFiscalesInstance?.personaFisica}" /></span>
-
-				</li>
-				</g:if>
-
-        <g:if test="${datosFiscalesInstance.address == null}">
-        <li>
-        <g:link controller="address" action="create" params='[datosFiscalesUuid: "${datosFiscalesInstance.uuid}"]'>Add Address</g:link>
-        </li>
-        </g:if>
-
-			</ol>
 			<g:form url="[resource:datosFiscalesInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${datosFiscalesInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:link class="btn btn-primary edit" action="edit" resource="${datosFiscalesInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
 		</div>

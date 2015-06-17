@@ -1,4 +1,4 @@
-x<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta name="layout" content="main">
@@ -11,6 +11,8 @@ x<!DOCTYPE html>
           <div class="page-header">
             <h1><g:message code="recovery.user.title" /></h1>
           </div>
+
+          <g:renderErrors />
 
           <p>
             <g:message code="recovery.user.intro" />

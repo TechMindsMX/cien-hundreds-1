@@ -2,7 +2,7 @@
 
 <div class="form-group fieldcontain ${hasErrors(bean: activityInstance, field: 'activity', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="activity">
-		<g:message code="activity.activity.label" default="Activity" />
+		<g:message code="activity.label" default="Activity" />
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${session.inputWidth}">
@@ -12,7 +12,7 @@
 
 <div class="form-group fieldcontain ${hasErrors(bean: activityInstance, field: 'place', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="place">
-		<g:message code="activity.place.label" default="Place" />
+		<g:message code="place.label" default="Place" />
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${session.inputWidth}">
@@ -22,7 +22,7 @@
 
 <div class="form-group fieldcontain ${hasErrors(bean: activityInstance, field: 'date', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="date">
-		<g:message code="activity.date.label" default="Date" />
+		<g:message code="date.label" default="Date" />
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${session.inputWidth}">

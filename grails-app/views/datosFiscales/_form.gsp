@@ -1,51 +1,37 @@
 <%@ page import="com.tim.hundreds.DatosFiscales" %>
 
 
-
-<div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'razonSocial', 'error')} required">
-	<label for="razonSocial">
+<div class="form-group fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'razonSocial', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="razonSocial">
 		<g:message code="datosFiscales.razonSocial.label" default="Razon Social" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="razonSocial" maxlength="100" required="" value="${datosFiscalesInstance?.razonSocial}"/>
-
+		<div class="${session.inputWidth}">
+			<g:textField class="form-control" name="razonSocial" maxlength="100" required="" value="${datosFiscalesInstance?.razonSocial}"/>
+		</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'rfc', 'error')} required">
-	<label for="rfc">
+<div class="form-group fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'rfc', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="rfc">
 		<g:message code="datosFiscales.rfc.label" default="Rfc" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="rfc" maxlength="50" required="" value="${datosFiscalesInstance?.rfc}"/>
-
+		<div class="${session.inputWidth}">
+			<g:textField class="form-control" name="rfc" maxlength="50" required="" value="${datosFiscalesInstance?.rfc}"/>
+		</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'address', 'error')} ">
-	<label for="address">
-		<g:message code="datosFiscales.address.label" default="Address" />
-
+<div class="form-group fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'personaJuridica', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="personaJuridica">
+		<g:message code="datosFiscales.personaJuridica.label" default="Persona Juridica" />
+		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="address" name="address.id" from="${com.tim.hundreds.Address.list()}" optionKey="id" value="${datosFiscalesInstance?.address?.id}" class="many-to-one" noSelection="['null': '']"/>
-
+		<div class="${session.inputWidth}">
+			<g:select class="form-control" name="personaJuridica" from="${com.tim.hundreds.PersonaJuridicaType?.values()}" keys="${com.tim.hundreds.PersonaJuridicaType.values()*.name()}" required="" value="${datosFiscalesInstance?.personaJuridica?.name()}" />
+		</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'personaMoral', 'error')} ">
-	<label for="personaMoral">
-		<g:message code="datosFiscales.personaMoral.label" default="Persona Moral" />
-
-	</label>
-	<g:checkBox name="personaMoral" value="${datosFiscalesInstance?.personaMoral}" />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: datosFiscalesInstance, field: 'personaFisica', 'error')} ">
-	<label for="personaFisica">
-		<g:message code="datosFiscales.personaFisica.label" default="Persona Fisica" />
-
-	</label>
-	<g:checkBox name="personaFisica" value="${datosFiscalesInstance?.personaFisica}" />
-
-</div>
+<g:hiddenField name="address.id" value="${datosFiscalesInstance?.address?.id}"/>
 
 <g:hiddenField name="musicianUuid" value="${params?.musicianUuid}"/>
 <g:hiddenField name="companyUuid" value="${params?.companyUuid}"/>
