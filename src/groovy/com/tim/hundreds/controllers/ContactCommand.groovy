@@ -31,7 +31,15 @@ class ContactCommand {
   ]
 
   static constraints = {
-    importFrom Contact
+    firstName blank:false,size:1..100
+    lastName blank:false,size:1..100
+    motherLastName blank:false,size:1..100
+    other nullable:true,blank:false,size:1..50
+    nationality nullable:true,blank:false,size:1..50
+    biography nullable:true,blank:false,size:1..1000
+    style nullable:true,blank:false,size:1..1000
+    social nullable:true
+    photoPath nullable:true
   }
 
 }
