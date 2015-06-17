@@ -49,7 +49,7 @@ class MusicianController {
         Musician musicianInstance = new Musician()
         bindData(musicianInstance, command)
 
-        tagService.saveMusicianTags(musicianInstance)
+        tagService.saveMusicianTags(musicianInstance, command.tagsComma)
         musicianService.save(musicianInstance)
 
         request.withFormat {

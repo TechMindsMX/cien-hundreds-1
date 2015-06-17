@@ -8,7 +8,7 @@ class MusicianCommand {
   String history
   String web
   String notes
-  String tags
+  String tagsComma
   String logoPath
 
   Date formed
@@ -21,7 +21,7 @@ class MusicianCommand {
   DatosFiscales datosFiscales
 
   static constraints = {
-    tags nullable:true
+    tagsComma nullable:true
     importFrom Musician
   }
 }

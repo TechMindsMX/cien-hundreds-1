@@ -6,6 +6,7 @@ class Musician {
   String history
   String web
   String notes
+  String tagsComma
   String logoPath
 
   Date dateCreated
@@ -18,6 +19,8 @@ class Musician {
   Social social
   Address address
   DatosFiscales datosFiscales
+
+  static transients = ['tagsComma']
 
   static hasMany = [
     photos : Photo,
