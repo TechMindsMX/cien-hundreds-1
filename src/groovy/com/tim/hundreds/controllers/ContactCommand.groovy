@@ -12,7 +12,6 @@ class ContactCommand {
   String biography
   String style
   String photoPath
-  String tagsComma
 
   Date birthDate
   Date entryDate
@@ -32,7 +31,6 @@ class ContactCommand {
   ]
 
   static constraints = {
-    tagsComma nullable:true
     importFrom Contact
   }
 
