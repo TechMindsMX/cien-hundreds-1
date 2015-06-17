@@ -10,6 +10,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class ContactController {
     def photoStorerService
     def contactService
+    def tagService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -50,6 +51,7 @@ class ContactController {
         bindData(contactInstance, command)
         Musician musician = Musician.findById(params.musicianId)
         contactInstance.musician = musician
+        tagService.addMusicianTags(musician, "${command.firstName},${command.lastName},${command.motherLastName},${command.tagsComma}")
 
         try{
           def instance = contactService.save(contactInstance)

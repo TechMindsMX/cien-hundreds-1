@@ -10,6 +10,7 @@ class Contact {
   String biography
   String style
   String photoPath
+  String tagsComma
 
   Date birthDate
   Date entryDate
@@ -20,6 +21,7 @@ class Contact {
   Address address
   Social social
 
+  static transients = ['tagsComma']
   static belongsTo = [ musician : Musician ]
 
   static hasMany = [
