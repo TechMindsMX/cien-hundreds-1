@@ -1,6 +1,4 @@
-
-
-
+package com.tim.hundreds
 
 import static org.springframework.http.HttpStatus.*
 import grails.plugin.springsecurity.annotation.Secured

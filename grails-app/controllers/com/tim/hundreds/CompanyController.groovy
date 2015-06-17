@@ -1,13 +1,10 @@
 package com.tim.hundreds
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER'])
-@Transactional(readOnly = true)
 class CompanyController {
     def logoStorerService
     def companyService
@@ -28,7 +25,6 @@ class CompanyController {
         respond new Company(params)
     }
 
-    @Transactional
     def save(CompanyCommand command) {
         log.info "${command.dump()}"
         if (command.hasErrors()) {
