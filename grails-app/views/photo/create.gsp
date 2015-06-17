@@ -19,13 +19,15 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<g:hasErrors>
-			<ul class="errors" role="alert">
+			<div class="alert alert-danger">
+ 				<ul class="errors" role="alert">
 				<g:eachError var="error">
 				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
 				</g:eachError>
 			</ul>
-			</g:hasErrors>
-			<g:uploadForm url="[resource:photoInstance, action:'save']" class="form-horizontal" >
+			</div>
+		</g:hasErrors>
+			<g:form url="[resource:photoInstance, action:'save']" class="form-horizontal" >
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
@@ -35,7 +37,7 @@
 						<button class="btn btn-danger" type="reset"><g:message code="cancel.label" /></button>
 					</div>
 				</fieldset>
-			</g:uploadForm>
+			</g:form>
 		</div>
 	</body>
 </html>

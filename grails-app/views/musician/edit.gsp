@@ -26,7 +26,8 @@
 				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
 				</g:eachError>
 			</ul>
-			</g:hasErrors>
+			</div>
+		</g:hasErrors>
 			<g:form url="[resource:musicianInstance, action:'update']" method="PUT" class="form-horizontal" >
 				<g:hiddenField name="version" value="${musicianInstance?.version}" />
 				<fieldset class="form">

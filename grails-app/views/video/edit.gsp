@@ -21,12 +21,14 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<g:hasErrors bean="${videoInstance}">
-			<ul class="errors" role="alert">
+			<div class="alert alert-danger">
+ 				<ul class="errors" role="alert">
 				<g:eachError bean="${videoInstance}" var="error">
 				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
 				</g:eachError>
 			</ul>
-			</g:hasErrors>
+			</div>
+		</g:hasErrors>
 			<g:form url="[resource:videoInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${videoInstance?.version}" />
 				<fieldset class="form">

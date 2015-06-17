@@ -24,7 +24,8 @@
 				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
 				</g:eachError>
 			</ul>
-			</g:hasErrors>
+			</div>
+		</g:hasErrors>
 			<g:uploadForm url="[resource:musicianInstance, action:'save']" class="form-horizontal">
 				<fieldset class="form">
 					<g:render template="form"/>

@@ -21,11 +21,13 @@
 			<div class="message" role="status">\${flash.message}</div>
 			</g:if>
 			<g:hasErrors bean="\${${propertyName}}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="\${${propertyName}}" var="error">
-				<li <g:if test="\${error in org.springframework.validation.FieldError}">data-field-id="\${error.field}"</g:if>><g:message error="\${error}"/></li>
-				</g:eachError>
-			</ul>
+			<div class="alert alert-danger">
+				<ul class="errors" role="alert">
+					<g:eachError bean="\${${propertyName}}" var="error">
+					<li <g:if test="\${error in org.springframework.validation.FieldError}">data-field-id="\${error.field}"</g:if>><g:message error="\${error}"/></li>
+					</g:eachError>
+				</ul>
+			</div>
 			</g:hasErrors>
 			<g:form url="[resource:${propertyName}, action:'update']" method="PUT" <%= multiPart ? ' enctype="multipart/form-data"' : '' %> class="form-horizontal">
 				<g:hiddenField name="version" value="\${${propertyName}?.version}" />

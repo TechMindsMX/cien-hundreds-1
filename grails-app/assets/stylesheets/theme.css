@@ -34,3 +34,8 @@ input[type="checkbox"], input[type="radio"] {
 .error {
 	color: red !important;
 }
+
+li.add {
+    list-style: none;
+    margin-left: -40px;
+}
