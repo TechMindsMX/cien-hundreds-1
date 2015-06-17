@@ -189,12 +189,12 @@
          <g:link controller="social" action="create" params='[contactUuid: "${contactInstance.uuid}"]'>Agregar Redes Sociales</g:link>
          </li>
         </g:if>
-		<g:if test="${!contactInstance.telephones && contactInstance.telephones.count() < 3}">
+		<g:if test="${!contactInstance.telephones && contactInstance?.telephones?.count() < 3}">
         <li>
           <g:link controller="telephone" action="create" params='[contactId: "${contactInstance.id}"]'>Agregar Teléfono</g:link>
         </li>
         </g:if>
-        <g:if test="${!contactInstance.emails && contactInstance.emails.count() < 3}">
+        <g:if test="${!contactInstance.emails && contactInstance?.emails?.count() < 3}">
         <li>
           <g:link controller="email" action="create" params='[contactId: "${contactInstance.id}"]'>Agregar Email</g:link>
         </li>

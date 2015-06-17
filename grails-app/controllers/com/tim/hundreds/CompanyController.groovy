@@ -11,6 +11,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class CompanyController {
     def logoStorerService
     def companyService
+    def corporatePressStorerService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -31,13 +32,19 @@ class CompanyController {
     def save(CompanyCommand command) {
         log.info "${command.dump()}"
         if (command.hasErrors()) {
-            respond command.errors, view:'create'
+            Company companyInstance = new Company(params)
+            companyInstance.errors = command.errors
+            render view:'create', model: [companyInstance:companyInstance]
             return
         }
 
         if(params.logo){
           def logoPath = logoStorerService.storeFile(request.getFile('logo'))
           command.logoPath = logoPath
+        }
+        if(params.corporatePress){
+          def corporatePressPath = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
+          command.corporatePressPath = corporatePressPath
         }
 
         Company companyInstance = new Company()
@@ -59,6 +66,7 @@ class CompanyController {
 
     @Transactional
     def update(Company companyInstance) {
+        log.info "${companyInstance.dump()}"
         if (companyInstance == null) {
             notFound()
             return

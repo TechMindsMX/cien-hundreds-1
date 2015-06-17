@@ -86,89 +86,76 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${companyInstance?.address}">
 				<li class="fieldcontain">
 					<span id="address-label" class="${session.labelWidth} property-label"><g:message code="company.address.label" default="Address" /></span>
-				<g:if test="${companyInstance?.address}">
 					
-						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${companyInstance?.address?.id}"><g:message code="default.show.label" args=" " /></g:link></span>
+						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${companyInstance?.address?.id}">${companyInstance?.address?.encodeAsHTML()}</g:link></span>
 					
-				</g:if>
-				<g:else>
-					<g:link controller="address" action="create" params="[companyUuid: companyInstance.uuid]" ><g:message code="default.new.label" args=" " /></g:link>
-				</g:else>
 				</li>
-
+				</g:if>
 			
-				<li class="fieldcontain">
-					<span id="social-label" class="${session.labelWidth} property-label"><g:message code="social.label" default="Social" /></span>
 				<g:if test="${companyInstance?.social}">
+				<li class="fieldcontain">
+					<span id="social-label" class="${session.labelWidth} property-label"><g:message code="company.social.label" default="Social" /></span>
 					
-						<span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" id="${companyInstance?.social?.id}"><g:message code="default.show.label" args=" " /></g:link></span>
-				</g:if>
-				<g:else>
-					<g:link controller="social" action="create" params="[companyUuid: companyInstance.uuid]" ><g:message code="default.new.label" args=" " /></g:link>
-				</g:else>
+						<span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" id="${companyInstance?.social?.id}">${companyInstance?.social?.encodeAsHTML()}</g:link></span>
+					
 				</li>
+				</g:if>
 			
+				<g:if test="${companyInstance?.datosFiscales}">
 				<li class="fieldcontain">
 					<span id="datosFiscales-label" class="${session.labelWidth} property-label"><g:message code="company.datosFiscales.label" default="Datos Fiscales" /></span>
-				<g:if test="${companyInstance?.datosFiscales}">
 					
-						<span class="property-value" aria-labelledby="datosFiscales-label"><g:link controller="datosFiscales" action="show" id="${companyInstance?.datosFiscales?.id}"><g:message code="default.show.label" args=" " /></g:link></span>
+						<span class="property-value" aria-labelledby="datosFiscales-label"><g:link controller="datosFiscales" action="show" id="${companyInstance?.datosFiscales?.id}">${companyInstance?.datosFiscales?.encodeAsHTML()}</g:link></span>
 					
-				</g:if>
-				<g:else>
-					<g:link controller="datosFiscales" action="create" params="[companyUuid: companyInstance.uuid]" ><g:message code="default.new.label" args=" " /></g:link>
-				</g:else>
 				</li>
+				</g:if>
 			
+				<g:if test="${companyInstance?.references}">
 				<li class="fieldcontain">
 					<span id="references-label" class="${session.labelWidth} property-label"><g:message code="company.references.label" default="References" /></span>
-				<g:if test="${companyInstance?.references}">
+					
 						<g:each in="${companyInstance.references}" var="r">
-						<span class="property-value" aria-labelledby="references-label"><g:link controller="reference" action="show" id="${r.id}">${r?.name?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="references-label"><g:link controller="reference" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
 						</g:each>
-				</g:if>
-				<g:else>
-					<g:link controller="reference" action="create" ><g:message code="default.new.label" args=" " /></g:link>
-				</g:else>
+					
 				</li>
+				</g:if>
 			
+				<g:if test="${companyInstance?.events}">
 				<li class="fieldcontain">
 					<span id="events-label" class="${session.labelWidth} property-label"><g:message code="company.events.label" default="Events" /></span>
-				<g:if test="${companyInstance?.events}">
+					
 						<g:each in="${companyInstance.events}" var="e">
-						<span class="property-value" aria-labelledby="events-label"><g:link controller="event" action="show" id="${e.id}">${e?.activity?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="events-label"><g:link controller="event" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
 						</g:each>
-				</g:if>
-				<g:else>
-					<g:link controller="event" action="create" ><g:message code="default.new.label" args=" " /></g:link>
-				</g:else>
+					
 				</li>
+				</g:if>
 			
+				<g:if test="${companyInstance?.collaborators}">
 				<li class="fieldcontain">
 					<span id="collaborators-label" class="${session.labelWidth} property-label"><g:message code="company.collaborators.label" default="Collaborators" /></span>
-				<g:if test="${companyInstance?.collaborators}">
+					
 						<g:each in="${companyInstance.collaborators}" var="c">
-						<span class="property-value" aria-labelledby="collaborators-label"><g:link controller="collaborator" action="show" id="${c.id}">${c?.firstName?.encodeAsHTML()} ${c?.lastName?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="collaborators-label"><g:link controller="collaborator" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
 						</g:each>
-				</g:if>
-				<g:else>
-					<g:link controller="collaborator" action="create" ><g:message code="default.new.label" args=" " /></g:link>
-				</g:else>
+					
 				</li>
+				</g:if>
 			
+				<g:if test="${companyInstance?.products}">
 				<li class="fieldcontain">
 					<span id="products-label" class="${session.labelWidth} property-label"><g:message code="company.products.label" default="Products" /></span>
-				<g:if test="${companyInstance?.products}">
+					
 						<g:each in="${companyInstance.products}" var="p">
-						<span class="property-value" aria-labelledby="products-label"><g:link controller="product" action="show" id="${p.id}">${p?.name?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="products-label"><g:link controller="product" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
 						</g:each>
-				</g:if>
-				<g:else>
-					<g:link controller="product" action="create" ><g:message code="default.new.label" args=" " /></g:link>
-				</g:else>
+					
 				</li>
+				</g:if>
 			
 				<g:if test="${companyInstance?.type}">
 				<li class="fieldcontain">
@@ -178,7 +165,7 @@
 					
 				</li>
 				</g:if>
-						
+			
 			</ul>
 			<g:form url="[resource:companyInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

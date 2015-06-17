@@ -56,7 +56,7 @@
 		
 	</label>
 		<div class="${session.inputWidth}">
-			<g:textField class="form-control" name="logo" value="${companyInstance?.logo}"/>
+			<input type="file" class="form-control" name="logo" value="${companyInstance?.logo}"/>
 		</div>
 </div>
 
@@ -66,7 +66,7 @@
 		
 	</label>
 		<div class="${session.inputWidth}">
-			<g:textField class="form-control" name="corporatePress" value="${companyInstance?.corporatePress}"/>
+			<input type="file" class="form-control" name="corporatePress" value="${companyInstance?.corporatePress}"/>
 		</div>
 </div>
 
@@ -75,7 +75,12 @@
 		<g:message code="company.address.label" default="Address" />
 	</label>
 		<div class="${session.inputWidth}">
-			<g:link controller="address" action="show" value="${companyInstance?.address?.id}">${message(code: 'default.show.label', args: [message(code: 'address.label')])}</g:link>
+			<g:if test="${companyInstance.address}">
+				<g:link controller="address" action="show" value="${companyInstance?.address?.id}">${message(code: 'default.show.label', args: [message(code: 'address.label')])}</g:link>
+			</g:if>
+			<g:else>
+				<g:link controller="address" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
+			</g:else>
 		</div>
 </div>
 
@@ -84,7 +89,12 @@
 		<g:message code="company.social.label" default="Social" />
 	</label>
 		<div class="${session.inputWidth}">
-			<g:link controller="social" action="show" value="${companyInstance?.social?.id}">${message(code: 'default.show.label', args: [message(code: 'social.label')])}</g:link>
+			<g:if test="${companyInstance.social}">
+				<g:link controller="social" action="show" value="${companyInstance?.social?.id}">${message(code: 'default.show.label', args: [message(code: 'social.label')])}</g:link>
+			</g:if>
+			<g:else>
+				<g:link controller="social" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'social.label')])}</g:link>
+			</g:else>
 		</div>
 </div>
 
@@ -93,7 +103,12 @@
 		<g:message code="company.datosFiscales.label" default="Datos Fiscales" />
 	</label>
 		<div class="${session.inputWidth}">
-			<g:link controller="datosFiscales" action="show" value="${companyInstance?.datosFiscales?.id}">${message(code: 'default.show.label', args: [message(code: 'datosFiscales.label')])}</g:link>
+			<g:if test="${companyInstance.datosFiscales}">
+				<g:link controller="datosFiscales" action="show" value="${companyInstance?.datosFiscales?.id}">${message(code: 'default.show.label', args: [message(code: 'datosFiscales.label')])}</g:link>
+			</g:if>
+			<g:else>
+				<g:link controller="datosFiscales" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'datosFiscales.label')])}</g:link>
+			</g:else>
 		</div>
 </div>
 
