@@ -62,11 +62,11 @@
 					</li>
 					</g:if>
 
-					<g:if test="${companyInstance?.logo}">
+					<g:if test="${companyInstance?.logoPath}">
 					<li class="fieldcontain">
-						<strong><span id="logo-label" class="${session.labelWidth} property-label"><g:message code="company.logo.label" default="Logo" /></span>
+						<strong><span id="logoPath-label" class="${session.labelWidth} property-label"><g:message code="company.logoPath.label" default="Logo" /></span>
 							: </strong>
-							<span class="property-value" aria-labelledby="logo-label"><g:fieldValue bean="${companyInstance}" field="logo"/></span>
+							<span class="property-value" aria-labelledby="logoPath-label"><g:fieldValue bean="${companyInstance}" field="logoPath"/></span>
 
 					</li>
 					</g:if>

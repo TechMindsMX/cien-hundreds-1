@@ -15,26 +15,12 @@ class CompanyCommand {
   Address address
   Social social
   DatosFiscales datosFiscales
+  User user
 
   ActivityType type
 
-  static hasMany = [
-    references : Reference,
-    collaborators : Collaborator,
-    events : Event,
-    products : Product
-  ]
-
   static constraints = {
-    name blank:false,size:1..100
-    description blank:false,size:1..10000
-    web nullable:true,blank:false,size:10..100
-    notes nullable:true,blank:false,size:1..10000
-    tags nullable:true,blank:false,size:1..10000
-    logoPath nullable:true,blank:false,size:36..36
-    corporatePress nullable:true,blank:false,size:36..36
-    address nullable:true
-    social nullable:true
-    datosFiscales nullable:true
+    user nullable:true
+    importFrom Company
   }
 }

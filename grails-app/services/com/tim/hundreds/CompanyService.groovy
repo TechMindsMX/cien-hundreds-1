@@ -7,11 +7,17 @@ class CompanyService {
   def springSecurityService
 
   def save(companyInstance) {
-    companyInstance.save()
     def user = springSecurityService.currentUser
     user.addToCompanies(companyInstance)
     user.save()
 
     companyInstance
   }
+
+  def delete(companyInstance){
+    companyInstance.user = null
+    companyInstance.save()
+    companyInstance.delete(flush: true)
+  }
+
 }

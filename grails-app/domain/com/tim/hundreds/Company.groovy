@@ -5,7 +5,7 @@ class Company {
   String name
   String description
   String web
-  String logo
+  String logoPath
   String corporatePress
   String notes
   String tags
@@ -31,7 +31,7 @@ class Company {
     web nullable:true,blank:false,size:1..100
     notes nullable:true,blank:false,size:1..10000
     tags nullable:true,blank:false,size:1..10000
-    logo nullable:true
+    logoPath nullable:true,blank:false,size:36..36
     corporatePress nullable:true
     address nullable:true
     social nullable:true

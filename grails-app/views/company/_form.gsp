@@ -1,16 +1,16 @@
 <%@ page import="com.tim.hundreds.Company" %>
 
 
-<div class="ibox-content">    
+<div class="ibox-content">
         <div class="form-group ${hasErrors(bean: companyInstance, field: 'name', 'error')} required">
 			<label class="col-sm-2 control-label" for="name">
 				<g:message code="company.name.label" default="Nombre" />
 				<span class="required-indicator">*</span>
 			</label>
-			<div class="col-sm-6">			
+			<div class="col-sm-6">
 				<g:textField name="name" maxlength="100" required="" class="form-control" value="${companyInstance?.name}"/>
-			</div>	
-			
+			</div>
+
 		</div>
 
 		<div class="hr-line-dashed"></div>
@@ -44,12 +44,12 @@
 				<g:message code="company.notes.label" default="Notas" />
 
 			</label>
-			<div class="col-sm-6">			
+			<div class="col-sm-6">
 				<g:textArea name="notes" cols="40" rows="5" maxlength="10000" class="form-control" value="${companyInstance?.notes}"/>
-			</div>	
+			</div>
 
 		</div>
-		
+
 		<div class="hr-line-dashed"></div>
 
 		<div class="form-group ${hasErrors(bean: companyInstance, field: 'tags', 'error')} ">
@@ -61,20 +61,20 @@
 				<g:textArea name="tags" cols="40" rows="5" maxlength="10000" class="form-control" value="${companyInstance?.tags}"/>
 			</div>
 		</div>
-		
+
 		<div class="hr-line-dashed"></div>
 
-		<div class="hide form-group ${hasErrors(bean: companyInstance, field: 'logo', 'error')} ">
-			<label class="col-sm-2 control-label" for="logo">
-				<g:message code="company.logo.label" default="Logo" />
+		<div class="hide form-group ${hasErrors(bean: companyInstance, field: 'logoPath', 'error')} ">
+			<label class="col-sm-2 control-label" for="logoPath">
+				<g:message code="company.logoPath.label" default="LogoPath" />
 
 			</label>
 			<div class="col-sm-6">
-				<g:textField name="logo" class="form-control" value="${companyInstance?.logo}"/>
+				<g:textField name="logoPath" class="form-control" value="${companyInstance?.logoPath}"/>
 			</div>
 		</div>
-		
-	
+
+
 
 		<div class="form-group ${hasErrors(bean: companyInstance, field: 'corporatePress', 'error')} ">
 			<label class="col-sm-2 control-label" for="corporatePress">
@@ -83,9 +83,9 @@
 			</label>
 			<div class="col-sm-6">
 				<g:textField name="corporatePress" class="form-control" value="${companyInstance?.corporatePress}"/>
-			</div>		
+			</div>
 		</div>
-		
+
 		<div class="hr-line-dashed"></div>
 
 		<div class="hide form-group ${hasErrors(bean: companyInstance, field: 'address', 'error')} ">
@@ -97,8 +97,8 @@
 				<g:select id="address" name="address.id" from="${com.tim.hundreds.Address.list()}" optionKey="id" class="form-control" value="${companyInstance?.address?.id}" class="many-to-one" noSelection="['null': '']"/>
 			</div>
 		</div>
-		
-		
+
+
 
 		<div class="hide form-group ${hasErrors(bean: companyInstance, field: 'social', 'error')} ">
 			<label class="col-sm-2 control-label" for="social">
@@ -109,8 +109,8 @@
 				<g:select id="social" name="social.id" from="${com.tim.hundreds.Social.list()}" optionKey="id" class="form-control" value="${companyInstance?.social?.id}" class="many-to-one" noSelection="['null': '']"/>
 			</div>
 		</div>
-		
-		
+
+
 
 		<div class="hide form-group ${hasErrors(bean: companyInstance, field: 'datosFiscales', 'error')} ">
 			<label class="col-sm-2 control-label" for="datosFiscales">
@@ -121,8 +121,8 @@
 				<g:select id="datosFiscales" name="datosFiscales.id" from="${com.tim.hundreds.DatosFiscales.list()}" optionKey="id" class="form-control" value="${companyInstance?.datosFiscales?.id}" class="many-to-one" noSelection="['null': '']"/>
 			</div>
 		</div>
-		
-		
+
+
 
 		<div class="hide form-group ${hasErrors(bean: companyInstance, field: 'references', 'error')} ">
 			<label class="col-sm-2 control-label" for="references">
@@ -142,8 +142,8 @@
 
 			</div>
 		</div>
-		
-		
+
+
 
 		<div class="hide form-group ${hasErrors(bean: companyInstance, field: 'collaborators', 'error')} ">
 			<label class="col-sm-2 control-label" for="collaborators">
@@ -163,8 +163,8 @@
 
 			</div>
 		</div>
-		
-		
+
+
 
 		<div class="hide form-group ${hasErrors(bean: companyInstance, field: 'events', 'error')} ">
 			<label class="col-sm-2 control-label" for="events">
@@ -184,8 +184,8 @@
 
 			</div>
 		</div>
-		
-		
+
+
 
 		<div class="hide form-group ${hasErrors(bean: companyInstance, field: 'products', 'error')} ">
 			<label class="col-sm-2 control-label" for="products">
@@ -205,8 +205,8 @@
 
 			</div>
 		</div>
-		
-		
+
+
 
 		<div class="form-group ${hasErrors(bean: companyInstance, field: 'type', 'error')} required">
 			<label class="col-sm-2 control-label" for="type">
@@ -217,7 +217,7 @@
 				<g:select name="type" from="${com.tim.hundreds.ActivityType?.values()}" keys="${com.tim.hundreds.ActivityType.values()*.name()}" required="" class="form-control" value="${companyInstance?.type?.name()}" />
 			</div>
 		</div>
-		
+
 		<div class="hr-line-dashed"></div>
 
 
@@ -227,9 +227,9 @@
 		  </label>
 		  	<div class="col-sm-6">
 		  		<input type="file" id="logo" name="logo" />
-			</div>		  	
+			</div>
 		</div>
-		
+
 		<div class="hr-line-dashed"></div>
 </div>
 
