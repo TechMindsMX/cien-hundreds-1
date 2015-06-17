@@ -22,6 +22,8 @@ class Musician {
 
   static transients = ['tagsComma']
 
+  static belongsTo = [user : User]
+
   static hasMany = [
     photos : Photo,
     videos : Video,

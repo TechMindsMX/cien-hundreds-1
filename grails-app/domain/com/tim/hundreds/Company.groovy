@@ -18,6 +18,8 @@ class Company {
 
   ActivityType type
 
+  static belongsTo = [user : User]
+
   static hasMany = [
     references : Reference,
     collaborators : Collaborator,
