@@ -19,9 +19,11 @@ class MusicianCommand {
   Social social
   Address address
   DatosFiscales datosFiscales
+  User user
 
   static constraints = {
     tagsComma nullable:true
+    user nullable:true
     importFrom Musician
   }
 }

@@ -94,7 +94,9 @@ class MusicianController {
             return
         }
 
-        musicianInstance.delete flush:true
+        musicianInstance.user = null
+        musicianInstance.save()
+        musicianInstance.delete(flush: true)
 
         request.withFormat {
             form multipartForm {
