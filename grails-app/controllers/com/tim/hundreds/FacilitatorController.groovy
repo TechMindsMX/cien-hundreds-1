@@ -9,7 +9,6 @@ class FacilitatorController {
   def resumeStorerService
 
   def index(){
-    respond new UserCommand()
   }
 
   def create(){
@@ -24,13 +23,15 @@ class FacilitatorController {
     }
 
     if(command.hasErrors()){
-      respond command.errors, view: 'save'
+      render(template:'/user/form', model:[command:command])
       return
     }
 
     def User user = new User(username: command.username, password: command.password)
-    def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName).save(validation: false)
+    def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName)
+    // profile.save(validation: false)
     profile.role = command.role
+    log.info "el profile: ${profile?.dump()}"
 
     if(params.photo){
       def photoPath = photoStorerService.storeFile(request.getFile('photo'))

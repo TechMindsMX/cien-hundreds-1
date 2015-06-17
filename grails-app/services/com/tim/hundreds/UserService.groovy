@@ -12,7 +12,7 @@ class UserService {
     if(user){
       user.save()
       userHelperService.addUserRole(user)
-      recoveryService.sendConfirmationAccountToken(user.profile?.email)
+      // recoveryService.sendConfirmationAccountToken(user.profile?.email)
     }
     user
   }
