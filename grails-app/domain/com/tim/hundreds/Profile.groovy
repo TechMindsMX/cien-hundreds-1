@@ -11,6 +11,7 @@ class Profile {
   String photoPath
   String resumePath
 
+  static transients = ['role']
   static belongsTo = [User]
 
   static constraints = {

@@ -8,7 +8,7 @@ class MusicianCommand {
   String history
   String web
   String notes
-  String tags
+  String tagsComma
   String logoPath
 
   Date formed
@@ -18,19 +18,10 @@ class MusicianCommand {
   Genre genre
   Social social
   Address address
-
-  def datosFiscales
-
-  static hasMany = [
-    photos : Photo,
-    videos : Video,
-    audios : Audio,
-    suggestions : Suggestion,
-    contacts : Contact,
-    activities : Activity
-  ]
+  DatosFiscales datosFiscales
 
   static constraints = {
+    tagsComma nullable:true
     importFrom Musician
   }
 }

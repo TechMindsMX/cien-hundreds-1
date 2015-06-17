@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class MusicianController {
     def logoStorerService
     def musicianService
+    def tagService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -48,6 +49,7 @@ class MusicianController {
         Musician musicianInstance = new Musician()
         bindData(musicianInstance, command)
 
+        tagService.addMusicianTags(musicianInstance, "${command.name},${command.genre},${command.tagsComma}")
         musicianService.save(musicianInstance)
 
         request.withFormat {
