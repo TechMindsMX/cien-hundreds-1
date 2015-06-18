@@ -22,6 +22,7 @@ interface ApplicationState {
   static final Integer MILISECONDS = 1000;
   static final Integer TIMEOUT = 20;
 
+  static final String PHOTO_URL_BASE = 'http://192.168.0.122/cienhundreds/photos/'
   static final String LOGO_DIRECTORY = '/.cienhundreds/logos/'
   static final String PHOTO_DIRECTORY = '/var/www/html/cienhundreds/photos/'
   static final String RESUME_DIRECTORY = '/.cienhundreds/resumes/'
