@@ -4,16 +4,18 @@ import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_ADMIN'])
 class FacilitatorController {
+  static defaultAction = "create"
+
   def userService
   def photoStorerService
   def resumeStorerService
 
   def index(){
-    respond new UserCommand()
   }
 
   def create(){
-    respond new UserCommand()
+    UserCommand command = new UserCommand()
+    respond command
   }
 
   def save(UserCommand command){
@@ -24,13 +26,15 @@ class FacilitatorController {
     }
 
     if(command.hasErrors()){
-      respond command.errors, view: 'save'
+      render(template:'/user/form', model:[model:command])
       return
     }
 
     def User user = new User(username: command.username, password: command.password)
-    def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName).save(validation: false)
-    profile.role = command.role
+    def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName)
+    // profile.save(validation: false)
+    profile.role = "ROLE_FACILITATOR"
+    log.info "el profile: ${profile?.dump()}"
 
     if(params.photo){
       def photoPath = photoStorerService.storeFile(request.getFile('photo'))
