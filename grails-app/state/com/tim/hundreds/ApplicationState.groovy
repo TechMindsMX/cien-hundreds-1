@@ -24,7 +24,7 @@ interface ApplicationState {
 
   static final String PHOTO_URL_BASE = 'http://192.168.0.122/cienhundreds/photos/'
   static final String LOGO_DIRECTORY = '/.cienhundreds/logos/'
-  static final String PHOTO_DIRECTORY = '/var/www/html/cienhundreds/photos/'
+  static final String PHOTO_DIRECTORY = '/var/www/html/trama/cienhundreds/photos/'
   static final String RESUME_DIRECTORY = '/.cienhundreds/resumes/'
 
   static final String FORGOT_PASSWORD_URL = 'http://emailer.timone.mx/timone/services/email/forgotPassword'
