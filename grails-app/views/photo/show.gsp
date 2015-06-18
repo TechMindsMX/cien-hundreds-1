@@ -1,6 +1,6 @@
 
 <%@ page import="com.tim.hundreds.Photo" %>
-<%@ page import="com.tim.hundreds.AppicationState" %>i
+<%@ page import="com.tim.hundreds.ApplicationState" %>
 
 <!DOCTYPE html>
 <html>
