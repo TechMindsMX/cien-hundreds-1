@@ -15,7 +15,9 @@ class User {
 
   static hasMany = [
     musicians : Musician,
-    companies : Company
+    companies : Company,
+    userEmails : UserEmail,
+    userTelephone : UserTelephone
   ]
 
 	static transients = ['springSecurityService']
