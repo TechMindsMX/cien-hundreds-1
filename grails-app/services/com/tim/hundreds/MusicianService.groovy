@@ -14,10 +14,4 @@ class MusicianService {
     musicianInstance
   }
 
-  def delete(musicianInstance){
-    musicianInstance.user = null
-    musicianInstance.save()
-    musicianInstance.delete(flush: true)
-  }
-
 }

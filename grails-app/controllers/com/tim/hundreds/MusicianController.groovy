@@ -92,7 +92,7 @@ class MusicianController {
             return
         }
 
-        musicianService.delete(musicianInstance)
+        musicianInstance.delete flush:true
 
         request.withFormat {
             form multipartForm {
