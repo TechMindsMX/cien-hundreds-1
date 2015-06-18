@@ -4,18 +4,29 @@
 <html>
     <head>
         <meta name="layout" content="main">
-        <g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
+        <g:set var="entityName" value="${message(code: 'facilitator.label', default: 'Facilitator')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function(){
+                jQuery('#role').children('option[value="ROLE_ADMIN"]').hide();
+                jQuery('#role').children('option[value="ROLE_USER"]').hide();
+                jQuery('#role').append('<option style=" display: none;"  value="..." selected="selected" disabled="disabled">Selecciona una opcion...</option>');
+                jQuery('#role option:contains("ROLE_FACILITATOR")').text('Facilitador');
+                jQuery('#role option:contains("ROLE_BUYER")').text('Comprador');            
+                });
+        </script>
+
     </head>
     <body>
-        <a href="#create-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+        <a href="#create-facilitator" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul class="nav nav-pills">
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="create-user" class="content scaffold-create" role="main">
+        <div id="create-facilitator" class="content scaffold-create" role="main">
             <h1><g:message code="default.create.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
@@ -29,9 +40,9 @@
             </ul>
             </div>
         </g:hasErrors>
-            <g:form url="[resource:model, action:'save']"  class="form-horizontal">
+            <g:uploadForm url="[resource:model, action:'save']"  class="form-horizontal">
                 <fieldset class="form">
-                    <g:render template="form" />
+                    <g:render template="form" model="[model:UserCommand]" />
                 </fieldset>
                 <fieldset class="buttons">
                     <div class="${session.btnOffset}">
@@ -39,7 +50,7 @@
                         <button class="btn btn-danger" type="reset"><g:message code="cancel.label" /></button>
                     </div>
                 </fieldset>
-            </g:form>
+            </g:uploadForm>
         </div>
     </body>
 </html>

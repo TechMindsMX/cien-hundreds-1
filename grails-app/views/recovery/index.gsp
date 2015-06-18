@@ -21,7 +21,9 @@
           <g:form name="recovery" action="save" class="form-signin">
             <div class="form-group">
               <label for="email">Correo electrónico</label>
-              <input type="email" class="form-control" name="email" placeholder="${message(code:'recovery.password.text.placeholder')}">
+              <div class="${session.labelWidth} control-label" class="${session.inputWidth}">
+                <input type="email" class="form-control" name="email" placeholder="${message(code:'recovery.password.text.placeholder')}">
+              </div>
             </div>
 
             <button type="submit" class="btn btn-primary"><g:message code="recovery.password.button.label" /></button>
