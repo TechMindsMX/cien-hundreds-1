@@ -1,5 +1,7 @@
 
 <%@ page import="com.tim.hundreds.Photo" %>
+<%@ page import="com.tim.hundreds.AppicationState" %>i
+
 <!DOCTYPE html>
 <html>
 	<head>
