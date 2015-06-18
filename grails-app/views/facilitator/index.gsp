@@ -1,56 +1,55 @@
-<%@ page import="com.tim.hundreds.Role" %>
 
+<%@ page import="com.tim.hundreds.Facilitator" %>
 <!DOCTYPE html>
+
 <html>
-    <head>
-        <meta name="layout" content="main">
-        <g:set var="entityName" value="${message(code: 'facilitator.label', default: 'Facilitator')}" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
-
-        <script type="text/javascript">
-            jQuery(document).ready(function(){
-                jQuery('#role').children('option[value="ROLE_ADMIN"]').hide();
-                jQuery('#role').children('option[value="ROLE_USER"]').hide();
-                jQuery('#role').append('<option style=" display: none;"  value="..." selected="selected" disabled="disabled">Selecciona una opcion...</option>');
-                jQuery('#role option:contains("ROLE_FACILITATOR")').text('Facilitador');
-                jQuery('#role option:contains("ROLE_BUYER")').text('Comprador');            
-                });
-        </script>
-
-    </head>
-    <body>
-        <a href="#create-facilitator" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul class="nav nav-pills">
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
-        <div id="create-facilitator" class="content scaffold-create" role="main">
-            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <g:hasErrors bean="${facilitatorInstance}">
-            <div class="alert alert-danger">
-                <ul class="errors" role="alert">
-                <g:eachError bean="${facilitatorInstance}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-                </g:eachError>
-            </ul>
-            </div>
-        </g:hasErrors>
-            <g:uploadForm url="[resource:facilitatorInstance, action:'save']"  class="form-horizontal">
-                <fieldset class="form">
-                    <g:render template="/user/form" model="[facilitatorInstance:UserCommand]" />
-                </fieldset>
-                <fieldset class="buttons">
-                    <div class="${session.btnOffset}">
-                        <g:submitButton name="create" class="btn btn-success save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-                        <button class="btn btn-danger" type="reset"><g:message code="cancel.label" /></button>
-                    </div>
-                </fieldset>
-            </g:uploadForm>
-        </div>
-    </body>
+	<head>
+		<meta name="layout" content="main">
+		<g:set var="entityName" value="${message(code: 'email.label', default: 'Facilitator')}" />
+		<title><g:message code="default.list.label" args="[entityName]" /></title>
+	</head>
+	<body>
+		<a href="#list-email" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		<div class="nav" role="navigation">
+			<ul class="nav nav-pills">
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+			</ul>
+		</div>
+		<div id="list-email" class="content scaffold-list" role="main">
+			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<g:if test="${flash.message}">
+				<div class="message" role="status">${flash.message}</div>
+			</g:if>
+			<table class="table table-stripped">
+			<thead>
+					<tr>
+					
+						<g:sortableColumn property="lastName" title="${message(code: 'model.lastName.label', default: 'Apellido')}" />
+					
+						<g:sortableColumn property="firstName" title="${message(code: 'model.firstName.label', default: 'Nombre')}" />
+					
+						<g:sortableColumn property="email" title="${message(code: 'model.middleName.label', default: 'Correo')}" />
+					
+					</tr>
+				</thead>
+				<tbody>
+				<g:each in="${modelList}" status="i" var="model">
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					
+						<td><g:link action="show" id="${model.lastName}">${fieldValue(bean: model, field: "lastName")}</g:link></td>
+					
+						<td>${fieldValue(bean: model, field: "firstName")}</td>
+					
+						<td>${fieldValue(bean: model, field: "email")}</td>
+					
+					</tr>
+				</g:each>
+				</tbody>
+			</table>
+			<div class="pagination">
+				<g:paginate total="${modelCount ?: 0}" />
+			</div>
+		</div>
+	</body>
 </html>
