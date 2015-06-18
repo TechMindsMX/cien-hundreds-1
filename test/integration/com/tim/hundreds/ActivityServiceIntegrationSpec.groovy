@@ -22,15 +22,15 @@ class ActivityServiceIntegrationSpec extends Specification {
     and: "We add musician to user"
       user.addToMusicians(musician)
       user.save()
-    and: "We create an audio"
+    and: "We create an activity"
       def activityInstance = new Activity(activity:'activity', place:'place',date:new Date())
       activityInstance.musician = musician
-    when: "We save audio"
+    when: "We save activity"
       def result = activityService.save(activityInstance)
-    then:"We validate audio"
+    then:"We validate activity"
       result
       1 == musician.activities.size()
-    cleanup:"We delete musician"
+    cleanup:"We delete user"
       user.delete()
   }
 }
