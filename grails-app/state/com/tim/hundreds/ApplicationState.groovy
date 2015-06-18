@@ -23,7 +23,7 @@ interface ApplicationState {
   static final Integer TIMEOUT = 20;
 
   static final String LOGO_DIRECTORY = '/.cienhundreds/logos/'
-  static final String PHOTO_DIRECTORY = '/.cienhundreds/photos/'
+  static final String PHOTO_DIRECTORY = '/images/photos/'
   static final String RESUME_DIRECTORY = '/.cienhundreds/resumes/'
 
   static final String FORGOT_PASSWORD_URL = 'http://emailer.timone.mx/timone/services/email/forgotPassword'
