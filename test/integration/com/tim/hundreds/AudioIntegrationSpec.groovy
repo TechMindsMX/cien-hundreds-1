@@ -3,9 +3,6 @@ package com.tim.hundreds
 import spock.lang.Specification
 import grails.validation.ValidationException
 
-/**
- *
- */
 class AudioIntegrationSpec extends Specification {
   def audioService
 
