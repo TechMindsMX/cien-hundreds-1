@@ -43,31 +43,29 @@
                         <div class="dropdown profile-element"> <span>
                             <asset:image src="cien_logo.gif"/>
                              </span>
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
-                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="profile.html">Profile</a></li>
-                                <li><a href="contacts.html">Contacts</a></li>
-                                <li><a href="mailbox.html">Mailbox</a></li>
-                                <li class="divider"></li>
-                                <li><a href="login.html">Logout</a></li>
-                            </ul>
+                             <sec:ifLoggedIn>
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><sec:loggedInUserInfo field="username"/></strong>
+                                <b class="caret"></b> </span> </span>  </a>
+                                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                    <li class="divider"></li>
+                                    <li><g:link controller="logout" >Logout</g:link></li>
+                                </ul>
+                            </sec:ifLoggedIn>
                         </div>
                         <div class="logo-element">
                             IN+
                         </div>
                     </li>
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Menu</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                           <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                            <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
+                            <g:if test="${!c.getStaticPropertyValue('hideMe', Boolean) && !(c.name == 'Dbdoc')}">
+                                <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
+                            </g:if>
                           </g:each>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span> <span class="label label-primary pull-right">NEW</span></a>
                     </li>
                     
                 </ul>

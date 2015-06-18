@@ -12,6 +12,8 @@ class SocialController {
     def musicianService
     def socialContextService
 
+    static hideMe = true /*Parametro para que NO aparezca en el menú*/
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {

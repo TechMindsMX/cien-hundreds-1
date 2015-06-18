@@ -8,6 +8,8 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class AddressController {
     def addressContextService
+    
+    static hideMe = true /*Parametro para que NO aparezca en el menú*/
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
