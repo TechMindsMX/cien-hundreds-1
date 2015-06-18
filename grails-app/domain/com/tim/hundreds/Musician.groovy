@@ -39,6 +39,7 @@ class Musician {
     history blank:false,size:1..10000
     web nullable:true,blank:false,size:10..100,url:true
     notes nullable:true,blank:false,size:1..10000
+    tagsComma nullable:true,blank:false,size:1..10000
     logoPath nullable:true,blank:false,size:36..36
     social nullable:true
     address nullable:true

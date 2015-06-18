@@ -7,7 +7,6 @@ import grails.validation.ValidationException
  *
  */
 class SuggestionIntegrationSpec extends Specification {
-
   def suggestionService
 
   void "Should save an musician with suggestion"() {
@@ -18,8 +17,14 @@ class SuggestionIntegrationSpec extends Specification {
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()
       musician.formed = new Date()
-    and: "We save musician"
-      musician.save(flush: true)
+    and: "A user"
+      def user = new User(username:'josdem',password:'password')
+      def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      user.profile = profile
+      user.save(flush: true)
+    and: "We add musician to user"
+      user.addToMusicians(musician)
+      user.save()
     and: "We create a suggestion"
       def suggestionInstance = new Suggestion(name:'name',contactName:'contactName',email:'josdem@email.com',phone:'1234567890')
       suggestionInstance.musician = musician
@@ -28,7 +33,7 @@ class SuggestionIntegrationSpec extends Specification {
     then:"We validate command"
       result
     cleanup:"We delete musician"
-      musician.delete()
+      user.delete()
   }
 
   void "Should not save an musician with more than 3 suggestions"() {
@@ -39,8 +44,14 @@ class SuggestionIntegrationSpec extends Specification {
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()
       musician.formed = new Date()
-    and: "We save musician"
-      musician.save(flush: true)
+    and: "A user"
+      def user = new User(username:'josdem',password:'password')
+      def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      user.profile = profile
+      user.save(flush: true)
+    and: "We add musician to user"
+      user.addToMusicians(musician)
+      user.save()
     and: "We create an suggestion"
       def suggestionInstance1 = new Suggestion(name:'name',contactName:'contactName',email:'josdem@email.com',phone:'1234567890')
       suggestionInstance1.musician = musician
@@ -56,9 +67,9 @@ class SuggestionIntegrationSpec extends Specification {
       suggestionService.save(suggestionInstance3)
       suggestionService.save(suggestionInstance4)
     then:"We expect exception"
-        thrown ValidationException
+      thrown ValidationException
     cleanup:"We delete musician"
-      musician.delete()
+      user.delete()
   }
 
 }

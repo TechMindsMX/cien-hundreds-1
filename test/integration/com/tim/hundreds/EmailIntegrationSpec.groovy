@@ -16,6 +16,10 @@ class EmailIntegrationSpec extends Specification {
       contact.role = RoleType.MANAGER
       contact.birthDate = new Date()
       contact.entryDate = new Date()
+    and: "A user"
+      def user = new User(username:'josdem',password:'password')
+      def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      user.profile = profile
     and: "A Musician"
       def musician = new Musician(name:'name',history:'history')
       musician.genre = Genre.TRANCE
@@ -24,9 +28,10 @@ class EmailIntegrationSpec extends Specification {
       musician.lastUpdated = new Date()
       musician.formed = new Date()
     and: "We save contact and musician"
-      musician.save(flush: true)
-      contact.musician = musician
-      contact.save(flush: true)
+      musician.addToContacts(contact)
+    and: "We add musician to user"
+      user.addToMusicians(musician)
+      user.save(flush: true)
     and: "We create an email"
       def emailInstance = new Email(address:'josdem@email.com',type:EmailType.WORK,contact: contact)
     when: "We save email"
@@ -34,7 +39,7 @@ class EmailIntegrationSpec extends Specification {
     then:"We validate command"
       result
     cleanup:"We delete contact"
-      musician.delete()
+      user.delete()
   }
 
   void "Should not save an contact with more than 3 emails"() {
@@ -44,6 +49,10 @@ class EmailIntegrationSpec extends Specification {
       contact.role = RoleType.MANAGER
       contact.birthDate = new Date()
       contact.entryDate = new Date()
+    and: "A user"
+      def user = new User(username:'josdem',password:'password')
+      def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      user.profile = profile
     and: "A Musician"
       def musician = new Musician(name:'name',history:'history')
       musician.genre = Genre.TRANCE
@@ -52,9 +61,10 @@ class EmailIntegrationSpec extends Specification {
       musician.lastUpdated = new Date()
       musician.formed = new Date()
     and: "We save contact and musician"
-      musician.save(flush: true)
-      contact.musician = musician
-      contact.save(flush: true)
+      musician.addToContacts(contact)
+    and: "We add musician to user"
+      user.addToMusicians(musician)
+      user.save(flush: true)
     and: "We create several emails"
       def emailInstance1 = new Email(address:'josdem@email.com',type:EmailType.WORK,contact: contact)
       def emailInstance2 = new Email(address:'josdem@email.com',type:EmailType.WORK,contact: contact)
@@ -68,7 +78,7 @@ class EmailIntegrationSpec extends Specification {
     then:"We expect exception"
       thrown ValidationException
     cleanup:"We delete contact"
-      musician.delete()
+      user.delete()
   }
 
 }

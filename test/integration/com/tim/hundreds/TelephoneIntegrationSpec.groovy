@@ -16,6 +16,10 @@ class TelephoneIntegrationSpec extends Specification {
       contact.role = RoleType.MANAGER
       contact.birthDate = new Date()
       contact.entryDate = new Date()
+    and: "A user"
+      def user = new User(username:'josdem',password:'password')
+      def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      user.profile = profile
     and: "A Musician"
       def musician = new Musician(name:'name',history:'history')
       musician.genre = Genre.TRANCE
@@ -24,9 +28,10 @@ class TelephoneIntegrationSpec extends Specification {
       musician.lastUpdated = new Date()
       musician.formed = new Date()
     and: "We save contact and musician"
-      musician.save(flush: true)
-      contact.musician = musician
-      contact.save(flush: true)
+      musician.addToContacts(contact)
+    and: "We add musician to user"
+      user.addToMusicians(musician)
+      user.save(flush: true)
     and: "We create an telephone"
       def telephonecontact = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
     when: "We save telephone"
@@ -34,8 +39,9 @@ class TelephoneIntegrationSpec extends Specification {
     then:"We validate command"
       result
     cleanup:"We delete contact"
-      musician.delete()
+      user.delete()
   }
+
 
   void "Should not save an contact with more than 3 telephones"() {
     given: "An contact"
@@ -44,6 +50,10 @@ class TelephoneIntegrationSpec extends Specification {
       contact.role = RoleType.MANAGER
       contact.birthDate = new Date()
       contact.entryDate = new Date()
+    and: "A user"
+      def user = new User(username:'josdem',password:'password')
+      def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      user.profile = profile
     and: "A Musician"
       def musician = new Musician(name:'name',history:'history')
       musician.genre = Genre.TRANCE
@@ -52,9 +62,10 @@ class TelephoneIntegrationSpec extends Specification {
       musician.lastUpdated = new Date()
       musician.formed = new Date()
     and: "We save contact and musician"
-      musician.save(flush: true)
-      contact.musician = musician
-      contact.save(flush: true)
+      musician.addToContacts(contact)
+    and: "We add musician to user"
+      user.addToMusicians(musician)
+      user.save(flush: true)
     and: "We create an telephone"
       def telephonecontact1 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
       def telephonecontact2 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
@@ -68,7 +79,7 @@ class TelephoneIntegrationSpec extends Specification {
     then:"We expect exception"
       thrown ValidationException
     cleanup:"We delete contact"
-      musician.delete()
+      user.delete()
   }
 
 }

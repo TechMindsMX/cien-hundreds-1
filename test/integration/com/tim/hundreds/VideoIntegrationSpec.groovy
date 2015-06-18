@@ -18,8 +18,14 @@ class VideoIntegrationSpec extends Specification {
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()
       musician.formed = new Date()
-    and: "We save musician"
-      musician.save(flush: true)
+    and: "A user"
+      def user = new User(username:'josdem',password:'password')
+      def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      user.profile = profile
+      user.save(flush: true)
+    and: "We add musician to user"
+      user.addToMusicians(musician)
+      user.save()
     and: "We create an Video"
       def videoInstance = new Video(url:'https://www.youtube.com/watch?v=LKckM5gq7VU')
       videoInstance.musician = musician
@@ -28,7 +34,7 @@ class VideoIntegrationSpec extends Specification {
     then:"We validate command"
       result
     cleanup:"We delete musician"
-      musician.delete()
+      user.delete()
   }
 
   void "Should not save an musician with more than 5 videos"() {
@@ -39,8 +45,14 @@ class VideoIntegrationSpec extends Specification {
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()
       musician.formed = new Date()
-    and: "We save musician"
-      musician.save(flush: true)
+    and: "A user"
+      def user = new User(username:'josdem',password:'password')
+      def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      user.profile = profile
+      user.save(flush: true)
+    and: "We add musician to user"
+      user.addToMusicians(musician)
+      user.save()
     and: "We create an Video"
       def videoInstance1 = new Video(url:'https://www.youtube.com/watch?v=LKckM5gq7VU')
       videoInstance1.musician = musician
@@ -62,9 +74,9 @@ class VideoIntegrationSpec extends Specification {
       videoService.saveVideo(videoInstance5)
       videoService.saveVideo(videoInstance6)
     then:"We expect exception"
-        thrown ValidationException
+      thrown ValidationException
     cleanup:"We delete musician"
-      musician.delete()
+      user.delete()
   }
 
 }
