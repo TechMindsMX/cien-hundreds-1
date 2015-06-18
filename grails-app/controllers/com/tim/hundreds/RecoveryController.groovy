@@ -7,6 +7,8 @@ import grails.plugin.springsecurity.annotation.Secured
 class RecoveryController {
   def recoveryService
 
+  static hideMe = true /*Parametro para que NO aparezca en el menú*/
+
   def index() { }
 
   def user() {}

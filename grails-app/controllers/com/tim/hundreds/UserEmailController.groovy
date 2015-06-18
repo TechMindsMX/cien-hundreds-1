@@ -10,6 +10,8 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class UserEmailController {
 
+    static hideMe = true /*Parametro para que NO aparezca en el menú*/
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
