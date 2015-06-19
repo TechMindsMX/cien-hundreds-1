@@ -14,7 +14,7 @@
 	<label class="${session.labelWidth} control-label" for="password">Contraseña</label>
 
     <div class="${session.inputWidth}">
-        <g:passwordField name="password" class="form-control" placeholder="Ingrese una contraseña" />                                       
+        <g:passwordField name="password" class="form-control" placeholder="Ingrese una contraseña" />
     </div>
 </div>
 
@@ -32,7 +32,7 @@
 	<label class="${session.labelWidth} control-label" for="firstName">Nombre(s)</label>
 
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.firstName}" name="firstName" class="form-control" placeholder="Ingrese su(s) nombre(s)" size="60"/>                                       
+        <g:textField value="${model?.firstName}" name="firstName" class="form-control" placeholder="Ingrese su(s) nombre(s)" size="60"/>
     </div>
 </div>
 
@@ -40,7 +40,7 @@
 	<label class="${session.labelWidth} control-label" for="middleName">Apellido paterno</label>
 
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.middleName}" name="middleName" class="form-control" placeholder="Ingrese su apellido paterno" />                                        
+        <g:textField value="${model?.middleName}" name="middleName" class="form-control" placeholder="Ingrese su apellido paterno" />
     </div>
 </div>
 
@@ -64,7 +64,7 @@
 	<label class="${session.labelWidth} control-label" for="email">Correo electrónico</label>
 
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.email}" name="email" class="form-control" placeholder="Ingrese su correo electrónico"/>                                       
+        <g:textField value="${model?.email}" name="email" class="form-control" placeholder="Ingrese su correo electrónico"/>
     </div>
 </div>
 
@@ -84,22 +84,18 @@
     </div>
 </div>
 
-<g:if test="${model?.hasProperty('photo')}">
-    <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'photo', 'error')} required">
-    	<label class="${session.labelWidth} control-label" for="photo">Foto(png):</label>
+<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'photo', 'error')} required">
+    <label class="${session.labelWidth} control-label" for="photo">Foto(png):</label>
 
-        <div class="${session.inputWidth}">
-            <input value="${model?.photo}" type='file' name='photo' class="form-control" placeholder="Ingrese una foto con formato png"/>                                       
-        </div>
-    </div>
-</g:if>
+      <div class="${session.inputWidth}">
+          <input value="${model?.photo}" type='file' name='photo' class="form-control" placeholder="Ingrese una foto con formato png"/>
+      </div>
+</div>
 
-<g:if test="${model?.hasProperty('resume')}">
-    <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'resume', 'error')} required">
-       <label class="${session.labelWidth} control-label" for="resume">Curriculum Personal(pdf):</label>
+<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'resume', 'error')} required">
+    <label class="${session.labelWidth} control-label" for="resume">Curriculum Personal(pdf):</label>
 
-       <div class="${session.inputWidth}">
-            <input value="${model?.resume}" type='file' name='resume' class="form-control" placeholder="Ingrese un archivo PDF"/>
-        </div>
-    </div>
-</g:if>
+     <div class="${session.inputWidth}">
+          <input value="${model?.resume}" type='file' name='resume' class="form-control" placeholder="Ingrese un archivo PDF"/>
+      </div>
+</div>
