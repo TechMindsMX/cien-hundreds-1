@@ -17,13 +17,11 @@ class AudioIntegrationSpec extends Specification {
     musician.lastUpdated = new Date()
     musician.formed = new Date()
 
-    user = new User(username:'josdem',password:'password')
-    def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+    user = new User(username:'josdemAudioIntegration',password:'password')
+    def profile = new Profile(email:'josdemAudioIntegration@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
     user.profile = profile
     user.addToMusicians(musician)
     user.save flush: true
-    user.validate()
-    println user.dump()
   }
 
   void "Should save an musician with audio"() {
