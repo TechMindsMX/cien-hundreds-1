@@ -6,8 +6,8 @@ import grails.validation.ValidationException
 
 class AudioIntegrationSpec extends Specification {
   def audioService
-  @Shared musician
   @Shared user
+  @Shared musician
 
   def setupSpec(){
     musician = new Musician(name:'name',history:'history')
@@ -29,6 +29,7 @@ class AudioIntegrationSpec extends Specification {
     given: "An audio"
       def audioInstance = new Audio(url:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
       audioInstance.musician = musician
+      assert User.count == 1
     when: "We save audio"
       def result = audioService.saveAudio(audioInstance)
     then:"We validate audio"
@@ -49,6 +50,7 @@ class AudioIntegrationSpec extends Specification {
       audioInstance5.musician = musician
       def audioInstance6 = new Audio(url:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
       audioInstance6.musician = musician
+      assert User.count == 1
     when: "We save audio"
       audioService.saveAudio(audioInstance1)
       audioService.saveAudio(audioInstance2)
