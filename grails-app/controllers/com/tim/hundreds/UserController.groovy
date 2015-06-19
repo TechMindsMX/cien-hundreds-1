@@ -30,8 +30,11 @@ class UserController {
       profile.role = "ROLE_USER"
       profile.save()
       user.profile = profile
+      log.info "user: ${user.dump()}"
+      log.info "profile: ${profile.dump()}"
+
       userService.create(user)
-      
+
       flash.message = "Su usuario ha sido creado y se ha enviado un correo electrónico"
       respond command, view: 'create'
     } catch(BusinessException be){
