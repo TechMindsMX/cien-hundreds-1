@@ -34,7 +34,7 @@ class AddressServiceIntegrationSpec extends Specification {
     company.save flush: true
   }
 
-  void "Should save addressInstance to musician"() {
+  void "Should save address to musician"() {
     given: "Above & Beyond street"
       def street = 'street'
     and: "We create an addressInstance"
@@ -46,7 +46,7 @@ class AddressServiceIntegrationSpec extends Specification {
       result.address.street == street
   }
 
-  void "Should save addressInstance to contact"() {
+  void "Should save address to contact"() {
     given: "Above & Beyond twitter"
       def street = 'street'
     and: "We create an addressInstance"
@@ -58,7 +58,7 @@ class AddressServiceIntegrationSpec extends Specification {
       result.address.street == street
   }
 
-  void "Should save addressInstance to company"() {
+  void "Should save address to company"() {
     given: "Street"
       def street = 'street'
     and: "We create an addressInstance"
@@ -70,7 +70,7 @@ class AddressServiceIntegrationSpec extends Specification {
       result.address.street == street
   }
 
-  void "Should save addressInstance to datosFiscales"() {
+  void "Should save address to datosFiscales"() {
     given: "An instance"
       def instance = new DatosFiscales(razonSocial:'Above & Beyond Inc.', rfc:'ANJ8012028D3')
     and: "Street"
