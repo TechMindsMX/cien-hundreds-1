@@ -168,11 +168,11 @@
 
 					                <tr>
 						                <th>
-						                <g:if test="${musicianInstance.photos == null || musicianInstance.photos.size() < 5 }">
-				       						<g:link class="glyphicon glyphicon-floppy-disk" controller="photo" action="create" params='[musicianId: "${musicianInstance.id}"]'> Fotos</g:link>
+						                <g:if test="${musicianInstance.photos == null || musicianInstance.photos.size() < ApplicationState.MAX_PHOTOS }">
+				       						<g:link class="glyphicon glyphicon-floppy-disk" controller="photo" action="create"> Fotos</g:link>
 				       					</g:if>
-				       					<g:elseif test="${musicianInstance.photos.size() >= 5}">
-						                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="photo" action="create" params='[musicianId: "${musicianInstance.id}"]'> Fotos</g:link>
+				       					<g:elseif test="${musicianInstance.photos.size() >= ApplicationState.MAX_PHOTOS}">
+						                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="photo" action="index" > Fotos</g:link>
 						                </g:elseif>
 
 						                </th>
