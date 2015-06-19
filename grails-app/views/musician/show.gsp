@@ -65,8 +65,9 @@
 				<li class="fieldcontain">
 					<span id="tags-label" class="property-label"><g:message code="musician.tags.label" default="Tags" /></span>
 
-						<span class="property-value" aria-labelledby="tags-label"><g:fieldValue bean="${musicianInstance}" field="tags"/></span>
-
+					<g:each in="${musicianInstance.tags}" var="t">
+						<span class="property-value" aria-labelledby="tags-label">${t?.value?.encodeAsHTML()},</span>
+					</g:each>
 				</li>
 				</g:if>
 
@@ -142,7 +143,7 @@
 				       			<tr>
 				       				<th>
 				       					<g:if test="${musicianInstance.videos == null || musicianInstance.videos.size() < 5 }">
-				       						<g:link class="glyphicon glyphicon-floppy-disk" controller="video" action="create" params='[musicianId: "${musicianInstance.id}"]'> Videos</g:link>
+				       						<g:link class="glyphicon glyphicon-floppy-disk" controller="video" action="create" > Videos</g:link>
 				       					</g:if>
 				       					<g:elseif test="${musicianInstance.videos.size() >= 5}">
 						                	<g:link class="glyphicon glyphicon-floppy-remove not-active" disable controller="social" action="create" params='[musicianUuid: "${musicianInstance.uuid}"]'>  Redes Sociales</g:link>
