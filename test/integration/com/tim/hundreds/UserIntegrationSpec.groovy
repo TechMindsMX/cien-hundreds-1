@@ -8,8 +8,8 @@ class UserIntegrationSpec extends Specification {
   @Shared user
 
   def setupSpec(){
-    user = new User(username:'josdem',password:'password')
-    def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+    user = new User(username:'josdemUserIntegrationSpec',password:'password')
+    def profile = new Profile(email:'josdemUserIntegrationSpec@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
     user.profile = profile
     user.save flush: true
     assert user.id
@@ -18,7 +18,7 @@ class UserIntegrationSpec extends Specification {
   void "Should not register other user when we want to use an taken email"() {
     given: "An user"
       def other = new User(username:'user',password:'password')
-      def profile = new Profile(email:'josdem@email.com', firstName:'user', middleName:'otherMiddleName', lastName:'otherLastName')
+      def profile = new Profile(email:'josdemUserIntegrationSpec@email.com', firstName:'user', middleName:'otherMiddleName', lastName:'otherLastName')
       other.profile = profile
     when: "We save other user"
       other.save flush: true
