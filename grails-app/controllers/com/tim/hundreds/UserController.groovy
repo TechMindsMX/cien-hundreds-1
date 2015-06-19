@@ -25,13 +25,13 @@ class UserController {
     }
 
     try{
-      def User user = new User(username: command.username, password: command.password)
+      def user = new User(username: command.username, password: command.password)
       def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName)
       profile.role = "ROLE_USER"
       profile.save()
       user.profile = profile
       userService.create(user)
-      
+
       flash.message = "Su usuario ha sido creado y se ha enviado un correo electrónico"
       respond command, view: 'create'
     } catch(BusinessException be){
