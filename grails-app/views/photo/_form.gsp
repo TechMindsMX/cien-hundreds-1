@@ -8,7 +8,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
-			<g:textField class="form-control" name="path" maxlength="36" required="" value="${photoInstance?.path}"/>
+			<input class="form-control" type="file" id="file" name="file" />
 
 		</div>
 </div>
