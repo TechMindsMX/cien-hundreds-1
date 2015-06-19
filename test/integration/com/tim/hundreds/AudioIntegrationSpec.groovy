@@ -28,7 +28,6 @@ class AudioIntegrationSpec extends Specification {
     given: "An audio"
       def audioInstance = new Audio(url:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
       audioInstance.musician = musician
-      assert User.count == 1
     when: "We save audio"
       def result = audioService.saveAudio(audioInstance)
     then:"We validate audio"
