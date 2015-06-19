@@ -1,15 +1,37 @@
-<%@ page import="com.tim.hundreds.PhotoCommand" %>
+<%@ page import="com.tim.hundreds.Photo" %>
 
-<div class="form-group fieldcontain ${hasErrors(bean: photoInstance, field: 'file', 'error')} ">
-  <label class="${session.labelWidth} control-label" for="file">
-    <g:message code="musician.file.label" default="File" />
-  </label>
 
-  <div class="${session.inputWidth}">
-  	<input class="form-control" type="file" id="file" name="file" />
-  </div>
 
+<div class="form-group fieldcontain ${hasErrors(bean: photoInstance, field: 'path', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="path">
+		<g:message code="photo.path.label" default="Path" />
+		<span class="required-indicator">*</span>
+	</label>
+		<div class="${session.inputWidth}">
+			<g:textField class="form-control" name="path" maxlength="36" required="" value="${photoInstance?.path}"/>
+
+		</div>
 </div>
 
-<g:hiddenField name="musician.id" value="${params?.musicianId}"/>
+<div class="hide form-group fieldcontain ${hasErrors(bean: photoInstance, field: 'musician', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="musician">
+		<g:message code="photo.musician.label" default="Musician" />
+		<span class="required-indicator">*</span>
+	</label>
+		<div class="${session.inputWidth}">
+			<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionKey="id" required="" value="${photoInstance?.musician?.id}" class="form-control many-to-one"/>
+
+		</div>
+</div>
+
+<div class="hide form-group fieldcontain ${hasErrors(bean: photoInstance, field: 'uuid', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="uuid">
+		<g:message code="photo.uuid.label" default="Uuid" />
+		<span class="required-indicator">*</span>
+	</label>
+		<div class="${session.inputWidth}">
+			<g:textField class="form-control" name="uuid" required="" value="${photoInstance?.uuid}"/>
+
+		</div>
+</div>
 
