@@ -25,6 +25,7 @@ class UserController {
     }
 
     try{
+      log.info "Before ALL"
       def user = new User(username: command.username, password: command.password)
       def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName)
       profile.role = "ROLE_USER"
