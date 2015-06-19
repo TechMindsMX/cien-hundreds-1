@@ -12,7 +12,6 @@ class UserIntegrationSpec extends Specification {
     def profile = new Profile(email:'josdemUserIntegrationSpec@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
     user.profile = profile
     user.save flush: true
-    assert user.id
   }
 
   void "Should not register other user when we want to use an taken email"() {
@@ -23,7 +22,8 @@ class UserIntegrationSpec extends Specification {
     when: "We save other user"
       other.save flush: true
     then:"We expect only one user"
-       User.count() == 1
+       user.id > 0
+       !other.id
   }
 
   def cleanupSpec(){
