@@ -27,8 +27,8 @@ interface ApplicationState {
   static final String PHOTO_DIRECTORY = '/var/www/html/trama/cienhundreds/photos/'
   static final String RESUME_DIRECTORY = '/.cienhundreds/resumes/'
 
-  static final String FORGOT_PASSWORD_URL = 'http://emailer.timone.mx/timone/services/email/forgotPassword'
-  static final String FORGOT_USERNAME_URL = 'http://emailer.timone.mx/timone/services/email/forgotUsername'
-  static final String REGISTER_URL = 'http://emailer.timone.mx/timone/services/email/register'
-  static final String NEW_USER_URL = 'http://emailer.timone.mx/timone/services/email/newUser'
+  static final String FORGOT_PASSWORD_URL = 'http://localhost:8082/web/services/email/forgotPassword'
+  static final String FORGOT_USERNAME_URL = 'http://localhost:8082/web/services/email/forgotUsername'
+  static final String REGISTER_URL = 'http://localhost:8082/web/services/email/register'
+  static final String NEW_USER_URL = 'http://localhost:8082/web/services/email/newUser'
 }

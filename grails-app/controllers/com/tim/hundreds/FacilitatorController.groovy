@@ -21,32 +21,34 @@ class FacilitatorController {
 
   def save(UserCommand command){
     log.info "Creating user: ${command?.dump()}"
-    if(command == null){
-      notFound()
-      return
-    }
-
     if(command.hasErrors()){
-      render(template:'/user/form', model:[model:command])
+      respond command, model:[model: command], view: 'create'
       return
     }
 
-    def User user = new User(username: command.username, password: command.password)
-    def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName)
-    // profile.save(validation: false)
-    profile.role = "ROLE_FACILITATOR"
-    log.info "el profile: ${profile?.dump()}"
+    try{
+      def user = new User(username: command.username, password: command.password)
+      def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName)
+      profile.role = "ROLE_FACILITATOR"
+      profile.save()
+      user.profile = profile
+      userService.create(user)
 
-    if(params.photo){
-      def photoPath = photoStorerService.storeFile(request.getFile('photo'))
-      profile.photoPath = photoPath
-    }
-    if(params.resume){
-      def resumePath = resumeStorerService.storeFile(request.getFile('resume'))
-      profile.resumePath = resumePath
-    }
+      if(params.photo){
+        def photoPath = photoStorerService.storeFile(request.getFile('photo'))
+        profile.photoPath = photoPath
+      }
+      if(params.resume){
+        def resumePath = resumeStorerService.storeFile(request.getFile('resume'))
+        profile.resumePath = resumePath
+      }
 
-    user.profile = profile
-    userService.create(user)
+      flash.message = "Su usuario ha sido creado y se ha enviado un correo electrónico"
+      respond command, view: 'create'
+    } catch(BusinessException be){
+      flash.error = "El servicio de correo no está disponible"
+      respond command, view: 'create'
+    }
   }
+
 }

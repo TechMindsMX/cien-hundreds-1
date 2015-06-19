@@ -84,18 +84,22 @@
     </div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'photo', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="photo">Foto(png):</label>
+<g:if test="${model?.hasProperty('photo')}">
+    <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'photo', 'error')} required">
+    	<label class="${session.labelWidth} control-label" for="photo">Foto(png):</label>
 
-    <div class="${session.inputWidth}">
-        <input value="${model?.photo}" type='file' name='photo' class="form-control" placeholder="Ingrese una foto con formato png"/>                                       
+        <div class="${session.inputWidth}">
+            <input value="${model?.photo}" type='file' name='photo' class="form-control" placeholder="Ingrese una foto con formato png"/>                                       
+        </div>
     </div>
-</div>
+</g:if>
 
-<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'resume', 'error')} required">
-   <label class="${session.labelWidth} control-label" for="resume">Curriculum Personal(pdf):</label>
+<g:if test="${model?.hasProperty('resume')}">
+    <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'resume', 'error')} required">
+       <label class="${session.labelWidth} control-label" for="resume">Curriculum Personal(pdf):</label>
 
-   <div class="${session.inputWidth}">
-        <input value="${model?.resume}" type='file' name='resume' class="form-control" placeholder="Ingrese un archivo PDF"/>
+       <div class="${session.inputWidth}">
+            <input value="${model?.resume}" type='file' name='resume' class="form-control" placeholder="Ingrese un archivo PDF"/>
+        </div>
     </div>
-</div>
+</g:if>
