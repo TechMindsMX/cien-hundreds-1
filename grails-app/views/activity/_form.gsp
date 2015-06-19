@@ -30,4 +30,11 @@
 	</div>
 </div>
 
-<g:hiddenField name="musician.id" value="${params?.musicianId}"/>
+<div class="hide fieldcontain ${hasErrors(bean: activityInstance, field: 'musician', 'error')} required">
+	<label for="musician">
+		<g:message code="video.musician.label" default="Musician" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionKey="id" required="" value="${activityInstance?.musician?.id}" class="many-to-one"/>
+
+</div>
