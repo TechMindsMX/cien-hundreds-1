@@ -23,5 +23,14 @@
 	</div>
 </div>
 
-<g:hiddenField name="contact.id" value="${params?.contactId}" />
+<div class="hide form-group fieldcontain ${hasErrors(bean: emailInstance, field: 'contact', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="contact">
+		<g:message code="email.contact.label" default="Type" />
+		<span class="required-indicator">*</span>
+	</label>
+	<div class="${session.inputWidth}">
+		<g:select class="form-control" name="contact.id" from="${com.tim.hundreds.Contact?.list()}" optionKey="id" required="" value="${emailInstance?.contact?.id}" />
+	</div>
+</div>
+
 <g:hiddenField name="uuid" value="${emailInstance?.uuid}"/>

@@ -115,9 +115,18 @@
 	<div class="${session.inputWidth}">
    		<input class="form-control" type="file" id="photo" name="photo" />
 		<g:if test="${contactInstance?.photoPath}">
-			<g:img folder="images/photos" file="${contactInstance?.photoPath}" height="200"/>
+			<img src="${ApplicationState.PHOTO_URL_BASE}${photoInstance.path}" height="300" />
 		</g:if>
 	</div>
 </div>
 
-<g:hiddenField name="musicianId" value="${params?.musicianId}" />
+<div class="hide form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'musician', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="musician">
+		<g:message code="video.musician.label" default="Musician" />
+		<span class="required-indicator">*</span>
+	</label>
+		<div class="${session.inputWidth}">
+			<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician?.list()}" optionKey="id" required="" value="${contactInstance?.musician?.id}" class="form-control many-to-one"/>
+
+		</div>
+</div>

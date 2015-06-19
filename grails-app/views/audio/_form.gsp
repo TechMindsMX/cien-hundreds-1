@@ -12,5 +12,14 @@
 
 </div>
 
-<g:hiddenField name="musician.id" value="${params?.musicianId}"/>
+<div class="hide form-group fieldcontain ${hasErrors(bean: audioInstance, field: 'musician', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="musician">
+		<g:message code="audio.musician.label" default="Musician" />
+		<span class="required-indicator">*</span>
+	</label>
+		<div class="${session.inputWidth}">
+			<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician?.list()}" optionKey="id" required="" value="${audioInstance?.musician?.id}" class="form-control many-to-one"/>
+
+		</div>
+</div>
 
