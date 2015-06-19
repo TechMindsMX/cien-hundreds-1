@@ -1,5 +1,7 @@
 
 <%@ page import="com.tim.hundreds.Contact" %>
+<%@ page import="com.tim.hundreds.ApplicationState" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -145,7 +147,7 @@
 				<li class="fieldcontain">
 					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="contact.musician.label" default="Musician" /></span>
 
-						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${contactInstance?.musician?.id}">${contactInstance?.musician?.name}</g:link></span>
+						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${contactInstance?.musician?.id}">${contactInstance?.musician?.name.encodeAsHTML()}</g:link></span>
 
 				</li>
 				</g:if>
@@ -189,14 +191,14 @@
          <g:link controller="social" action="create" params='[contactUuid: "${contactInstance.uuid}"]'>Agregar Redes Sociales</g:link>
          </li>
         </g:if>
-		<g:if test="${!contactInstance.telephones && contactInstance?.telephones?.count() < 3}">
+		<g:if test="${!contactInstance.telephones || contactInstance.telephones?.size() < ApplicationState.MAX_TELEPHONES}">
         <li>
-          <g:link controller="telephone" action="create" params='[contactId: "${contactInstance.id}"]'>Agregar Teléfono</g:link>
+          <g:link controller="telephone" action="create">Agregar Teléfono</g:link>
         </li>
         </g:if>
-        <g:if test="${!contactInstance.emails && contactInstance?.emails?.count() < 3}">
+        <g:if test="${!contactInstance.emails || contactInstance.emails?.size() < ApplicationState.MAX_EMAILS}">
         <li>
-          <g:link controller="email" action="create" params='[contactId: "${contactInstance.id}"]'>Agregar Email</g:link>
+          <g:link controller="email" action="create">Agregar Email</g:link>
         </li>
         </g:if>
 
