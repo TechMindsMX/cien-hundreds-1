@@ -31,9 +31,7 @@
 						<g:sortableColumn property="web" title="${message(code: 'musician.web.label', default: 'Web')}" />
 					
 						<g:sortableColumn property="notes" title="${message(code: 'musician.notes.label', default: 'Notes')}" />
-					
-						<g:sortableColumn property="tags" title="${message(code: 'musician.tags.label', default: 'Tags')}" />
-					
+										
 						<g:sortableColumn property="logoPath" title="${message(code: 'musician.logoPath.label', default: 'Logo Path')}" />
 					
 					</tr>
@@ -49,9 +47,7 @@
 						<td>${fieldValue(bean: musicianInstance, field: "web")}</td>
 					
 						<td>${fieldValue(bean: musicianInstance, field: "notes")}</td>
-					
-						<td>${fieldValue(bean: musicianInstance, field: "tags")}</td>
-					
+										
 						<td>${fieldValue(bean: musicianInstance, field: "logoPath")}</td>
 					
 					</tr>

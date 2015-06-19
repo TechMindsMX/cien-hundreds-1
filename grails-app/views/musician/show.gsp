@@ -1,4 +1,6 @@
 <%@ page import="com.tim.hundreds.Musician" %>
+<%@ page import="com.tim.hundreds.ApplicationState" %>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -190,11 +192,11 @@
 
 									<tr>
 										<th>
-											<g:if test="${musicianInstance.audios == null || musicianInstance.audios.size() < 5 }">
-				       							<g:link class="glyphicon glyphicon-floppy-disk" controller="audio" action="create" params='[musicianId: "${musicianInstance.id}"]'> Audio</g:link>
+											<g:if test="${musicianInstance.audios == null || musicianInstance.audios?.size() < ApplicationState.MAX_AUDIOS}">
+				       							<g:link class="glyphicon glyphicon-floppy-disk" controller="audio" action="create" params='[musicianId: "${musicianInstance.id}"]'> Audios</g:link>
 					       					</g:if>
-					       					<g:elseif test="${musicianInstance.audios.size() >= 5}">
-							                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="audio" action="create" params='[musicianId: "${musicianInstance.id}"]'> Audio</g:link>
+					       					<g:elseif test="${musicianInstance.audios.size() >= ApplicationState.MAX_AUDIOS}">
+							                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="audio" action="create" > Audios</g:link>
 							                </g:elseif>
 										</th>
 										<th>
@@ -212,11 +214,11 @@
 									</tr>
 					                <tr>
 					                	<th>
-					                		<g:if test="${musicianInstance.suggestions == null || musicianInstance.suggestions.size() < 3 }">
-				       							<g:link class="glyphicon glyphicon-floppy-disk" controller="suggestion" action="create" params='[musicianId: "${musicianInstance.id}"]'> Sugerencias</g:link>
+					                		<g:if test="${musicianInstance.suggestions == null || musicianInstance.suggestions.size() < ApplicationState.MAX_SUGGESTIONS }">
+				       							<g:link class="glyphicon glyphicon-floppy-disk" controller="suggestion" action="create" > Sugerencias</g:link>
 					       					</g:if>
-					       					<g:elseif test="${musicianInstance.suggestions.size() >= 3}">
-							                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="suggestion" action="create" params='[musicianId: "${musicianInstance.id}"]'> Sugerencias</g:link>
+					       					<g:elseif test="${musicianInstance.suggestions.size() >= ApplicationState.MAX_SUGGESTIONS}">
+							                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="suggestion" action="index" > Sugerencias</g:link>
 							                </g:elseif>
 
 			       						</th>
