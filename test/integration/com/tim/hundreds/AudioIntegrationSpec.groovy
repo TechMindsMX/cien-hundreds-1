@@ -22,7 +22,8 @@ class AudioIntegrationSpec extends Specification {
     user.profile = profile
     user.addToMusicians(musician)
     user.save flush: true
-    assert user.id
+    user.validate()
+    println user.dump()
   }
 
   void "Should save an musician with audio"() {
