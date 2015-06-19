@@ -234,7 +234,7 @@
 									</tr>
 									<tr>
 									    <th>
-									    	<g:link class="glyphicon glyphicon-floppy-disk" controller="contact" action="create" params='[musicianId: "${musicianInstance.id}"]'> Contactos</g:link>
+									    	<g:link class="glyphicon glyphicon-floppy-disk" controller="contact" action="create"> Contactos</g:link>
 									    </th>
 									    <th>
 									    	<g:if test="${musicianInstance?.contacts}">

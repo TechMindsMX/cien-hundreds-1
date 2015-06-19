@@ -90,7 +90,7 @@
 				<li class="fieldcontain">
 					<span id="photoPath-label" class="${session.labelWidth} property-label"><g:message code="contact.photoPath.label" default="Photo" /></span>
 
-					<g:img folder="images/photos" file="${contactInstance?.photoPath}" height="200"/>
+					<img src="${ApplicationState.PHOTO_URL_BASE}${photoInstance.path}" height="300" />
 
 				</li>
 				</g:if>
