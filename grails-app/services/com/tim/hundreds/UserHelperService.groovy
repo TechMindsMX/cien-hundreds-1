@@ -6,8 +6,6 @@ import grails.transaction.Transactional
 class UserHelperService {
 
   def addUserRole(def user){
-    log.info "user: ${user.dump()}"
-    log.info "profile: ${user.profile.dump()}"
     def userRole = Role.findWhere(authority: user.profile.role)
     UserRole.create user, userRole, true
   }

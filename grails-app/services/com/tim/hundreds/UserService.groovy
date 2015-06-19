@@ -10,7 +10,6 @@ class UserService {
 
   def create(def user){
     if(user){
-      log.info "user: ${user.dump()}"
       user.save()
       userHelperService.addUserRole(user)
       recoveryService.sendConfirmationAccountToken(user.profile?.email)
