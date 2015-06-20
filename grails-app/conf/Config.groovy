@@ -112,7 +112,6 @@ log4j.main = {
   }
 
   info 'grails.app.controllers.com.tim.hundreds',
-       'grails.app.controllers.grails.plugin.springsecurity',
        'grails.app.services.com.tim.hundreds',
        'grails.app.domain.com.tim.hundreds'
 
@@ -155,3 +154,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
   '/dbconsole/**':                  ['permitAll']
 ]
 
+grails.plugin.springsecurity.useSecurityEventListener = true
+grails.plugin.springsecurity.logout.handlerNames = [
+  'rememberMeServices',
+  'securityContextLogoutHandler',
+  'securityEventListener'
+]
