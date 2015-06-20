@@ -77,7 +77,8 @@
 				<li class="fieldcontain">
 					<span id="logoPath-label" class="property-label"><b>Logo:</b></span>
 
-						<span class="property-value" aria-labelledby="logoPath-label"><g:img dir="images/logos" file="${musicianInstance.logoPath}"/></span>
+						<span class="property-value" aria-labelledby="logoPath-label">
+						<img class="img-responsive" src="${ApplicationState.LOGO_URL_BASE}${musicianInstance.logoPath}" />
 
 				</li>
 				</g:if>

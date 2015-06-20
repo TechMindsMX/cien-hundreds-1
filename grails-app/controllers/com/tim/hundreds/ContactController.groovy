@@ -38,21 +38,18 @@ class ContactController {
         }
 
         if (command.hasErrors()) {
-            Contact contactInstance = new Contact(params)
-            contactInstance.errors = command.errors
-            render view:'create', [contactInstance: contactInstance]
+            respond command.errors, view: 'create'
             return
         }
 
-        if(params.photoPath){
-          def photoPath = photoStorerService.storeFile(request.getFile('photoPhoto'))
+        if(params.file){
+          def photoPath = photoStorerService.storeFile(request.getFile('file'))
           command.photoPath = photoPath
         }
 
         Contact contactInstance = new Contact()
         bindData(contactInstance, command)
         Musician musician = Musician.findById(params.musician.id)
-        log.info "MUSICIAN: ${musician.dump()}"
         contactInstance.musician = musician
         tagService.addMusicianTags(musician, "${contactInstance.firstName},${contactInstance.lastName},${contactInstance.motherLastName}")
 

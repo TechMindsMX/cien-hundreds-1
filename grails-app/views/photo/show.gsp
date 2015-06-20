@@ -26,7 +26,7 @@
 			<ul class="property-list photo">
 
 				<g:if test="${photoInstance?.path}">
-					<img src="${ApplicationState.PHOTO_URL_BASE}${photoInstance.path}" height="300" />
+					<img class="img-responsive" src="${ApplicationState.PHOTO_URL_BASE}${photoInstance.path}" />
 				</g:if>
 
 				<g:if test="${photoInstance?.musician}">

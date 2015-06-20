@@ -1,5 +1,6 @@
-
 <%@ page import="com.tim.hundreds.Musician" %>
+<%@ page import="com.tim.hundreds.ApplicationState" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -32,7 +33,7 @@
 					
 						<g:sortableColumn property="notes" title="${message(code: 'musician.notes.label', default: 'Notes')}" />
 										
-						<g:sortableColumn property="logoPath" title="${message(code: 'musician.logoPath.label', default: 'Logo Path')}" />
+						<g:sortableColumn property="logoPath" title="${message(code: 'musician.logoPath.label', default: 'Logo Path')}" class="col-sm-12 col-md-4" />
 					
 					</tr>
 				</thead>
@@ -48,7 +49,11 @@
 					
 						<td>${fieldValue(bean: musicianInstance, field: "notes")}</td>
 										
-						<td>${fieldValue(bean: musicianInstance, field: "logoPath")}</td>
+						<td>
+							<g:if test="${musicianInstance.logoPath}">
+							<img class="img-responsive" src="${ApplicationState.LOGO_URL_BASE}${musicianInstance.logoPath}" />
+							</g:if>
+						</td>
 					
 					</tr>
 				</g:each>

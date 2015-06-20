@@ -107,16 +107,13 @@
 	</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'photo', 'error')} ">
+<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'photoPath', 'error')} ">
 
- 	<label class="${session.labelWidth} control-label" for="photo">
+ 	<label class="${session.labelWidth} control-label" for="photoPath">
 	 	<g:message code="contact.photo.label" default="Photo" />
 	</label>
 	<div class="${session.inputWidth}">
-   		<input class="form-control" type="file" id="photo" name="photo" />
-		<g:if test="${contactInstance?.photoPath}">
-			<img src="${ApplicationState.PHOTO_URL_BASE}${photoInstance.path}" height="300" />
-		</g:if>
+   		<input type="file" id="file" name="file" class="form-control" />
 	</div>
 </div>
 
