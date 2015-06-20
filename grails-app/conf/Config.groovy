@@ -112,6 +112,7 @@ log4j.main = {
   }
 
   info 'grails.app.controllers.com.tim.hundreds',
+       'grails.app.controllers.grails.plugin.springsecutiry',
        'grails.app.services.com.tim.hundreds',
        'grails.app.domain.com.tim.hundreds'
 
