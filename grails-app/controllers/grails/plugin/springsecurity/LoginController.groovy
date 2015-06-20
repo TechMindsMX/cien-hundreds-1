@@ -125,13 +125,12 @@ class LoginController {
 			}
       else if (exception instanceof BadCredentialsException){
         def username = exception.authentication?.principal
-        log.info "username: ${username}"
+        log.info "Bad credentials detected: ${username}"
         if(!users.containsKey(username)){
           def attemp = new Attemp(username:username, count:0)
           users.put(username,attemp)
         } else {
           def attemp = users.get(username)
-          log.info "attemp: ${attemp.dump()}"
           attemp.count++
           if(attemp.count == ApplicationState.MAX_USER_ATTEMPS){
             def user = User.findByUsername(username)

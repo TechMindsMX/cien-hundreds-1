@@ -154,10 +154,3 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/favicon.ico':                ['permitAll'],
   '/dbconsole/**':                  ['permitAll']
 ]
-
-grails.plugin.springsecurity.useSecurityEventListener = true
-grails.plugin.springsecurity.logout.handlerNames = [
-  'rememberMeServices',
-  'securityContextLogoutHandler',
-  'securityEventListener'
-]
