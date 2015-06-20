@@ -12,15 +12,19 @@ class LoggingSecurityEventListener implements ApplicationListener<AbstractAuthen
   void onApplicationEvent(AbstractAuthenticationEvent event) {
     event.authentication.with {
       def username = principal.hasProperty('username')?.getProperty(principal) ?: principal
-      println "event=${event.class.simpleName} username=${username} " +
+      log.info "event=${event.class.simpleName} username=${username} " +
       "remoteAddress=${details.remoteAddress} sessionId=${details.sessionId}"
+
+      if(event.class.simpleName.equals('AuthenticationFailureBadCredentialsEvent')){
+        log.info 'Login Fail'
+      }
      }
    }
 
    void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
      authentication.with {
      def username = principal.hasProperty('username')?.getProperty(principal) ?: principal
-       println "event=Logout username=${username} " +
+       log.info "event=Logout username=${username} " +
        "remoteAddress=${details.remoteAddress} sessionId=${details.sessionId}"
      }
    }
