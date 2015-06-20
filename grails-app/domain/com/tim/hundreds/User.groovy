@@ -11,6 +11,8 @@ class User {
 	boolean accountLocked
 	boolean passwordExpired
 
+  Integer attemps = 0
+
   Profile profile
 
   static hasMany = [

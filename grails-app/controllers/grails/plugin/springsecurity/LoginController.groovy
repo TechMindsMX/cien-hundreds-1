@@ -28,9 +28,12 @@ import org.springframework.security.core.context.SecurityContextHolder as SCH
 import org.springframework.security.web.WebAttributes
 
 import com.tim.hundreds.User
+import com.tim.hundreds.ApplicationState
 
 @Secured('permitAll')
 class LoginController {
+
+  def users = [:]
 
 	/**
 	 * Dependency injection for the authenticationTrustResolver.
@@ -105,6 +108,7 @@ class LoginController {
 	 * Callback after a failed login. Redirects to the auth page with a warning message.
 	 */
 	def authfail() {
+    String msg = ''
 		def exception = session[WebAttributes.AUTHENTICATION_EXCEPTION]
 		if (exception) {
 			if (exception instanceof AccountExpiredException) {
@@ -120,10 +124,30 @@ class LoginController {
 				msg = g.message(code: "springSecurity.errors.login.locked")
 			}
       else if (exception instanceof BadCredentialsException){
-        log.info "authentication : ${exception.authentication.dump()}"
-        def user = User.findByUsername(exception.authentication?.principal)
-        log.info "user: ${user.dump()}"
-				msg = g.message(code: "springSecurity.errors.login.fail")
+        def username = exception.authentication?.principal
+        log.info "username: ${username}"
+        if(!users.containsKey(username)){
+          def attemp = new Attemp(username:username, count:0)
+          users.put(username,attemp)
+        } else {
+          def attemp = users.get(username)
+          log.info "attemp: ${attemp.dump()}"
+          attemp.count++
+          if(attemp.count == ApplicationState.MAX_USER_ATTEMPS){
+            def user = User.findByUsername(username)
+            if(user){
+              user.accountLocked = true
+              user.save flush:true
+				      msg = g.message(code: "springSecurity.errors.login.locked")
+            }else{
+              msg = g.message(code: "springSecurity.errors.login.fail")
+            }
+          }
+          else if(attemp.count > ApplicationState.MAX_USER_ATTEMPS){
+				    msg = g.message(code: "springSecurity.errors.login.locked")
+          }
+        }
+        msg = g.message(code: "springSecurity.errors.login.fail")
       }
 			else {
 				msg = g.message(code: "springSecurity.errors.login.fail")
@@ -152,4 +176,9 @@ class LoginController {
 	def ajaxDenied() {
 		render([error: 'access denied'] as JSON)
 	}
+}
+
+class Attemp {
+  String username
+  Integer count
 }
