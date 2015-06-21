@@ -18,9 +18,6 @@ class RecoveryService {
   }
 
   def changePasswordForToken(token, password){
-    log.info "token: ${token}"
-    log.info "valid?: ${registrationHelperService.isValidToken(token)}"
-
     if(!registrationHelperService.isValidToken(token)) throw new BusinessException("Not valid token")
     recoveryCollaboratorService.saveRegistrationCode(token)
 
@@ -28,6 +25,7 @@ class RecoveryService {
     if(!user) throw new BusinessException("User not found")
 
     user.password = password
+    user.accountLocked = false
     user.save()
   }
 

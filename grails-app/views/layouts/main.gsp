@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>100Hundreds</title>
-    
+
     <asset:stylesheet src="css/bootstrap.min.css"/>
     <asset:stylesheet src="font-awesome/css/font-awesome.css"/>
     <!--link href="css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +32,7 @@
 
 <g:set var="btnOffset" scope="session" value="col-sm-offset-2" />
 <g:set var="labelWidth" scope="session" value="col-sm-2" />
-<g:set var="inputWidth" scope="session" value="col-sm-10 col-lg-6" /> 
+<g:set var="inputWidth" scope="session" value="col-sm-10 col-lg-6" />
 
 <body>
     <div id="wrapper">
@@ -49,7 +49,7 @@
                                 <b class="caret"></b> </span> </span>  </a>
                                 <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                     <li class="divider"></li>
-                                    <li><g:link controller="logout" >Logout</g:link></li>
+                                    <li><g:remoteLink class="logout" controller="logout">${message(code: 'springSecurity.logout.link')}</g:remoteLink></li>
                                 </ul>
                             </sec:ifLoggedIn>
                         </div>
@@ -67,12 +67,12 @@
                           </g:each>
                         </ul>
                     </li>
-                    
+
                 </ul>
 
             </div>
         </nav>
-    
+
     <div id="page-wrapper" class="gray-bg dashbard-1">
         <g:if test="${flash.message}">
             <div class="alert alert-info" style="display: block">${flash.message}</div>
@@ -88,7 +88,7 @@
             <p>Copyright 2015 100 Hundreds.</p>
         </div>
     </div>
-    
+
 
     <!-- Mainly scripts -->
     <asset:javascript src="js/jquery-2.1.1.js" />

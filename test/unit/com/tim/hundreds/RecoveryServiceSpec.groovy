@@ -57,6 +57,7 @@ class RecoveryServiceSpec extends Specification {
     registrationHelperService.findEmailByToken(token) >> email
     userHelperService.findByEmail(email) >> user
     1 * user.setProperty('password','password')
+    1 * user.setProperty('accountLocked', false)
     1 * user.save()
   }
 
