@@ -27,13 +27,11 @@ import org.springframework.security.authentication.LockedException
 import org.springframework.security.core.context.SecurityContextHolder as SCH
 import org.springframework.security.web.WebAttributes
 
-import com.tim.hundreds.User
-import com.tim.hundreds.ApplicationState
+import com.tim.hundreds.LoginService
 
 @Secured('permitAll')
 class LoginController {
-
-  def users = [:]
+  def loginService
 
 	/**
 	 * Dependency injection for the authenticationTrustResolver.
@@ -126,27 +124,7 @@ class LoginController {
       else if (exception instanceof BadCredentialsException){
         def username = exception.authentication?.principal
         log.info "Bad credentials detected: ${username}"
-        if(!users.containsKey(username)){
-          def attemp = new Attemp(username:username, count:0)
-          users.put(username,attemp)
-        } else {
-          def attemp = users.get(username)
-          attemp.count++
-          if(attemp.count == ApplicationState.MAX_USER_ATTEMPS){
-            def user = User.findByUsername(username)
-            if(user){
-              user.accountLocked = true
-              user.save flush:true
-				      msg = g.message(code: "springSecurity.errors.login.locked")
-            }else{
-              msg = g.message(code: "springSecurity.errors.login.fail")
-            }
-          }
-          else if(attemp.count > ApplicationState.MAX_USER_ATTEMPS){
-				    msg = g.message(code: "springSecurity.errors.login.locked")
-          }
-        }
-        msg = g.message(code: "springSecurity.errors.login.fail")
+				msg = g.message(code: loginService.validateUsername(username))
       }
 			else {
 				msg = g.message(code: "springSecurity.errors.login.fail")
@@ -177,7 +155,3 @@ class LoginController {
 	}
 }
 
-class Attemp {
-  String username
-  Integer count
-}
