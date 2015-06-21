@@ -12,7 +12,6 @@ class LoginService {
     def attemp = users.get(username)
     if(!attemp) attemp=0
     users.put(username,++attemp)
-    log.info "attemp: ${attemp}"
     if(attemp == ApplicationState.MAX_USER_ATTEMPS){
       def user = User.findByUsername(username)
       if(user){
