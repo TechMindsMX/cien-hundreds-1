@@ -31,7 +31,7 @@ class RecoveryServiceSpec extends Specification {
     recoveryCollaboratorService.generateToken(email) >> message
     service.generateRegistrationCodeForEmail(email)
   then: "We expect send message to the email service"
-    1 * restService.sendCommand(message, ApplicationState.FORGOT_PASSWORD_URL)
+    1 * restService.sendCommand(message, _ as String)
   }
 
   void "should not generate registration code for email since user not found"() {
