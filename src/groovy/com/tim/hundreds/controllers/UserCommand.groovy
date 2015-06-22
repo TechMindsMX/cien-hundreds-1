@@ -15,6 +15,8 @@ class UserCommand {
   String photoPath
   String resumePath
 
+  String terms
+
   String emailCheck
   String passwordCheck
 
@@ -37,6 +39,10 @@ class UserCommand {
       if(User.findByUsername(val)) {
         return false
       }
+    })
+
+    terms (validator:{val, obj ->
+          return val == 'on'
     })
 
   }

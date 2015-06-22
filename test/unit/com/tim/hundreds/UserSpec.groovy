@@ -9,7 +9,7 @@ import spock.lang.Unroll
 @TestFor(User)
 class UserSpec extends Specification {
   @Unroll
-  void """When we have a user with email:  #email, emailCheck: #emailCheck, firstName: #firstName, middleName: #middleName, lastName: #lastName, username: #username, password: #password, passwordCheck: #passwordCheck, phone: #phone, role: #role, we expect the result is: #result"""() {
+  void """When we have a user with email:  #email, emailCheck: #emailCheck, firstName: #firstName, middleName: #middleName, lastName: #lastName, username: #username, password: #password, passwordCheck: #passwordCheck, phone: #phone, role: #role, terms: #terms, we expect the result is: #result"""() {
     given: "An user"
       UserCommand user = new UserCommand()
     when: "We assing values to command"
@@ -23,14 +23,16 @@ class UserSpec extends Specification {
       user.passwordCheck = passwordCheck
       user.phone = phone
       user.role = role
+      user.terms = terms
     then:"We validate command"
       result == user.validate()
     where:"We have the next cases"
-    email              | emailCheck         |firstName |middleName |lastName   |username  |password      | passwordCheck | phone        | role        || result
-    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | "5512345678" | "ROLE_USER" || true
-    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" || true
-    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" || true
-    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "M"       | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" || true
+    email              | emailCheck         |firstName |middleName |lastName   |username  |password      | passwordCheck | phone        | role        | terms || result
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | "5512345678" | "ROLE_USER" | 'on'  || true
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" | 'on'  || true
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" | 'on'  || true
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "M"       | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" | 'on'  || true
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "M"       | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" | null || false
   }
 
   @Unroll
