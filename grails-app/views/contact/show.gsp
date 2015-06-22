@@ -205,7 +205,7 @@
 			</ul>
 			<g:form url="[resource:contactInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="btn btn-primary edit" action="edit" resource="${contactInstance}" params='[musician.id: "${contactInstance.musician.id}"]'><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="btn btn-primary edit" action="edit" resource="${contactInstance}" params="['musician.id': musicianInstance?.id]" ><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
