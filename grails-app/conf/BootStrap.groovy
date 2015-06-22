@@ -7,12 +7,12 @@ import grails.util.Environment
 
 class BootStrap {
   def init = { servletContext ->
-    if(Environment.current == Environment.DEVELOPMENT) {
+  //  if(Environment.current == Environment.DEVELOPMENT) {
       createUserRole()
       createAdminRole()
       createFacilitatorRole()
       createBuyerRole()
-    }
+   // }
   }
   def destroy = {
   }
