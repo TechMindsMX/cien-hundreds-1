@@ -3,7 +3,7 @@ package com.tim.hundreds
 import static org.springframework.http.HttpStatus.*
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER'])
+@Secured(['ROLE_USER','ROLE_ADMINISTRATOR'])
 class MusicianController {
     def logoStorerService
     def musicianService

@@ -6,12 +6,12 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER'])
+@Secured(['ROLE_USER','ROLE_ADMINISTRATOR'])
 class CollaboratorController {
     def collaboratorService
 
     static hideMe = true /*Parametro para que NO aparezca en el menú*/
-    
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {

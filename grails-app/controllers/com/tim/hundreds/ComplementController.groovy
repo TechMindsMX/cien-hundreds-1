@@ -6,10 +6,11 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
+@Secured(['ROLE_USER','ROLE_ADMINISTRATOR'])
 class ComplementController {
 
     static hideMe = true /*Parametro para que NO aparezca en el menú*/
-    
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
