@@ -15,10 +15,10 @@
           <g:renderErrors />
 
           <p>
-            <g:message code="recovery.password.intro" />
+            <g:message code="recovery.password.change.intro" />
           </p>
 
-          <g:form name="recovery" action="update" id="${params.token}" class="form-signin">
+          <g:form name="recovery" action="update" id="${params.token}" class="form-signin form-horizontal">
             <div class="form-group">
               <label class="${session.labelWidth} control-label" for="password"><g:message code="recovery.password.label" /></label>
               <div class="${session.inputWidth}">
@@ -27,7 +27,7 @@
             </div>
 
             <div class="form-group">
-              <label class="${session.labelWidth} control-label" for="confirmPassword"><g:message code="recovery.confirm.password.label" /></label>
+              <label class="${session.labelWidth} control-label" for="confirmPassword"><g:message code="recovery.password.confirm.label" /></label>
               <div class="${session.inputWidth}">
                 <input class="form-control" type="password" name="confirmPassword">
               </div>

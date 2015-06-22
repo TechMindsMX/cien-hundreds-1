@@ -30,9 +30,9 @@
 
 </head>
 
-<g:set var="btnOffset" scope="session" value="col-sm-offset-2" />
-<g:set var="labelWidth" scope="session" value="col-sm-2" />
-<g:set var="inputWidth" scope="session" value="col-sm-10 col-lg-6" />
+<g:set var="btnOffset" scope="session" value="col-lg-offset-3" />
+<g:set var="labelWidth" scope="session" value="col-sm-12 col-lg-3" />
+<g:set var="inputWidth" scope="session" value="col-sm-12 col-lg-9" />
 
 <body>
     <div id="wrapper">
