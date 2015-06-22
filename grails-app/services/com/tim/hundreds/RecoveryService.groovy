@@ -8,13 +8,14 @@ class RecoveryService {
   def userHelperService
   def registrationHelperService
   def recoveryCollaboratorService
+  def grailsApplication
 
   def generateRegistrationCodeForEmail(String email) {
     def user = userHelperService.findByEmail(email)
     if(!user) throw new BusinessException("User not found")
 
     def message = recoveryCollaboratorService.generateToken(email)
-    restService.sendCommand(message, ApplicationState.FORGOT_PASSWORD_URL)
+    restService.sendCommand(message, grailsApplication.config.forgot.password.url)
   }
 
   def changePasswordForToken(token, password){
