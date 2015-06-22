@@ -14,7 +14,7 @@
 	<label class="${session.labelWidth} control-label" for="password">Contraseña</label>
 
     <div class="${session.inputWidth}">
-        <g:passwordField name="password" class="form-control" />                                       
+        <g:passwordField name="password" class="form-control" />
     </div>
 </div>
 
@@ -32,7 +32,7 @@
 	<label class="${session.labelWidth} control-label" for="firstName">Nombre(s)</label>
 
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.firstName}" name="firstName" class="form-control" size="60"/>                                       
+        <g:textField value="${model?.firstName}" name="firstName" class="form-control" size="60"/>
     </div>
 </div>
 
@@ -40,7 +40,7 @@
 	<label class="${session.labelWidth} control-label" for="middleName">Apellido paterno</label>
 
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.middleName}" name="middleName" class="form-control" />                                        
+        <g:textField value="${model?.middleName}" name="middleName" class="form-control" />
     </div>
 </div>
 
@@ -64,7 +64,7 @@
 	<label class="${session.labelWidth} control-label" for="email">Correo electrónico</label>
 
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.email}" name="email" class="form-control" />                                       
+        <g:textField value="${model?.email}" name="email" class="form-control" />
     </div>
 </div>
 
@@ -76,27 +76,20 @@
     </div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'role', 'error')} required">
+<div class="hide form-group fieldcontain ${hasErrors(bean: model, field: 'role', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="role">Tipo de Alta</label>
 
     <div class="${session.inputWidth}">
-        <g:select value="model.role" name="role" from="${Role.findAll()}" optionKey="authority" optionValue="authority" class="form-control"/>
+      <g:select value="${model?.role}" name="role" from="${Role.findAll()}" optionKey="authority" optionValue="authority" class="form-control"/>
     </div>
 </div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'role', 'terms')} required">
-    <div class="${session.inputWidth} ${session.btnOffset}">
-        <input type="checkbox" name="terms">&nbsp;Acepto los <a class="" data-toggle="modal" data-target="#terms_modal">Términos y condiciones</a>
-    <div>
-</div>
-
 
 <g:if test="${command?.hasProperty('photo')}">
     <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'photo', 'error')} required">
     	<label class="${session.labelWidth} control-label" for="photo">Foto(png):</label>
 
         <div class="${session.inputWidth}">
-            <input value="${model?.photo}" type='file' name='photo' class="form-control" />                                       
+            <input value="${model?.photo}" type='file' name='photo' class="form-control" />
         </div>
     </div>
 </g:if>
