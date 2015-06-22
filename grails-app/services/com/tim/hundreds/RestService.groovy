@@ -10,7 +10,7 @@ class RestService {
 
   def sendCommand(MessageCommand message, String url){
     try{
-      log.info "url: ${url}"
+      println "url: ${url}"
       def resp = rest.post(url){
         contentType "application/vnd.org.jfrog.artifactory.security.Group+json"
         body message

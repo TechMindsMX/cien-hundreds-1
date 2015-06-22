@@ -8,14 +8,14 @@ class RecoveryService {
   def userHelperService
   def registrationHelperService
   def recoveryCollaboratorService
-  def applicationConfig
+  def applicationConfigService
 
   def generateRegistrationCodeForEmail(String email) {
     def user = userHelperService.findByEmail(email)
     if(!user) throw new BusinessException("User not found")
 
     def message = recoveryCollaboratorService.generateToken(email)
-    restService.sendCommand(message, applicationConfig.forgot.password.url)
+    restService.sendCommand(message, applicationConfigService.forgotPasswordUrl)
   }
 
   def changePasswordForToken(token, password){
@@ -39,7 +39,7 @@ class RecoveryService {
 
     def name = "${user.profile.firstName} ${user.profile.middleName} ${user.profile.lastName}"
     def message = new NameCommand(email:user.profile.email, name:name)
-    restService.sendCommand(message, ApplicationState.NEW_USER_URL)
+    restService.sendCommand(message, applicationConfigService.newUserUrl)
   }
 
   def recoveryUser(String email){
@@ -56,7 +56,7 @@ class RecoveryService {
 
   def sendConfirmationAccountToken(String email){
     def message = recoveryCollaboratorService.generateToken(email)
-    restService.sendCommand(message, ApplicationState.REGISTER_URL)
+    restService.sendCommand(message, applicationConfigService.registerUrl)
   }
 
   def getUserByToken(String token){
