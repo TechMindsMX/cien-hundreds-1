@@ -145,11 +145,11 @@
 				       		<tbody>
 				       			<tr>
 				       				<th>
-				       					<g:if test="${musicianInstance.videos == null || musicianInstance.videos.size() < 5 }">
-				       						<g:link class="glyphicon glyphicon-floppy-disk" controller="video" action="create" > Videos</g:link>
+				       					<g:if test="${musicianInstance.videos == null || musicianInstance.videos.size() < ApplicationState.MAX_VIDEOS }">
+				       						<g:link class="glyphicon glyphicon-floppy-disk" controller="video" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Videos</g:link>
 				       					</g:if>
-				       					<g:elseif test="${musicianInstance.videos.size() >= 5}">
-						                	<g:link class="glyphicon glyphicon-floppy-remove not-active" disable controller="social" action="create" params='[musicianUuid: "${musicianInstance.uuid}"]'>  Redes Sociales</g:link>
+				       					<g:elseif test="${musicianInstance.videos.size() >= ApplicationState.MAX_VIDEOS}">
+				       						Videos
 						                </g:elseif>
 
 				       				</th>
@@ -170,10 +170,10 @@
 					                <tr>
 						                <th>
 						                <g:if test="${musicianInstance.photos == null || musicianInstance.photos.size() < ApplicationState.MAX_PHOTOS }">
-				       						<g:link class="glyphicon glyphicon-floppy-disk" controller="photo" action="create"> Fotos</g:link>
+				       						<g:link class="glyphicon glyphicon-floppy-disk" controller="photo" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Fotos</g:link>
 				       					</g:if>
 				       					<g:elseif test="${musicianInstance.photos.size() >= ApplicationState.MAX_PHOTOS}">
-						                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="photo" action="index" > Fotos</g:link>
+						                	Fotos
 						                </g:elseif>
 
 						                </th>
@@ -194,10 +194,10 @@
 									<tr>
 										<th>
 											<g:if test="${musicianInstance.audios == null || musicianInstance.audios?.size() < ApplicationState.MAX_AUDIOS}">
-				       							<g:link class="glyphicon glyphicon-floppy-disk" controller="audio" action="create" params='[musicianId: "${musicianInstance.id}"]'> Audios</g:link>
+				       							<g:link class="glyphicon glyphicon-floppy-disk" controller="audio" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Audios</g:link>
 					       					</g:if>
 					       					<g:elseif test="${musicianInstance.audios.size() >= ApplicationState.MAX_AUDIOS}">
-							                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="audio" action="create" > Audios</g:link>
+							                	Audios
 							                </g:elseif>
 										</th>
 										<th>
@@ -216,10 +216,10 @@
 					                <tr>
 					                	<th>
 					                		<g:if test="${musicianInstance.suggestions == null || musicianInstance.suggestions.size() < ApplicationState.MAX_SUGGESTIONS }">
-				       							<g:link class="glyphicon glyphicon-floppy-disk" controller="suggestion" action="create" > Sugerencias</g:link>
+				       							<g:link class="glyphicon glyphicon-floppy-disk" controller="suggestion" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Sugerencias</g:link>
 					       					</g:if>
 					       					<g:elseif test="${musicianInstance.suggestions.size() >= ApplicationState.MAX_SUGGESTIONS}">
-							                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="suggestion" action="index" > Sugerencias</g:link>
+							                	Sugerencias
 							                </g:elseif>
 
 			       						</th>
@@ -237,7 +237,7 @@
 									</tr>
 									<tr>
 									    <th>
-									    	<g:link class="glyphicon glyphicon-floppy-disk" controller="contact" action="create"> Contactos</g:link>
+									    	<g:link class="glyphicon glyphicon-floppy-disk" controller="contact" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Contactos</g:link>
 									    </th>
 									    <th>
 									    	<g:if test="${musicianInstance?.contacts}">
@@ -253,7 +253,7 @@
 									</tr>
 									<tr>
 					                	<th>
-					                		<g:link class="glyphicon glyphicon-floppy-disk" controller="activity" action="create" params='[musicianId: "${musicianInstance.id}"]'> Actividades</g:link>
+					                		<g:link class="glyphicon glyphicon-floppy-disk" controller="activity" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Actividades</g:link>
 					                	</th>
 					                	<th>
 											<g:if test="${musicianInstance?.activities}">
@@ -270,11 +270,8 @@
 									<tr>
 						                <th>
 							                <g:if test="${musicianInstance.social == null}">
-							                	<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="create" params='[musicianUuid: "${musicianInstance.uuid}"]'> Redes Sociales</g:link>
+							                	<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Redes Sociales</g:link>
 						                	</g:if>
-						                	<g:elseif test="${musicianInstance.social != null}">
-							                	<g:link class="glyphicon glyphicon-floppy-remove not-active" disable controller="social" action="create" params='[musicianId: "${musicianInstance.id}"]'>  Redes Sociales</g:link>
-							                </g:elseif>
 						                </th>
 						                <th>
 						                	<g:if test="${musicianInstance?.social}">
@@ -309,18 +306,15 @@
 					                <tr>
 					                <th>
 						                <g:if test="${musicianInstance.address == null}">
-						                	<g:link class="glyphicon glyphicon-floppy-disk" controller="address" action="create" params='[musicianUuid: "${musicianInstance.uuid}"]'> Dirección</g:link>
+						                	<g:link class="glyphicon glyphicon-floppy-disk" controller="address" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Dirección</g:link>
 						                </g:if>
 					                </th>
 					                </tr>
 					                <tr>
 					                <th>
 						                <g:if test="${musicianInstance.datosFiscales == null}">
-						                	<g:link class="glyphicon glyphicon-floppy-disk" controller="datosFiscales" action="create" params='[musicianUuid: "${musicianInstance.uuid}"]'> Datos Fiscales</g:link>
+						                	<g:link class="glyphicon glyphicon-floppy-disk" controller="datosFiscales" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Datos Fiscales</g:link>
 						                </g:if>
-						                <g:else test="${musicianInstance.datosFiscales == null}">
-						                	<g:link class="glyphicon glyphicon-floppy-remove not-active" controller="datosFiscales" action="create" params='[musicianUuid: "${musicianInstance.uuid}"]'> Datos Fiscales</g:link>
-						                </g:else>
 					                </th>
 					                <th>
 					                	<g:if test="${musicianInstance?.datosFiscales}">
