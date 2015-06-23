@@ -35,12 +35,10 @@ class CompanyController {
         }
 
         if(params.logo){
-          def logoPath = logoStorerService.storeFile(request.getFile('logo'))
-          command.logoPath = logoPath
+          command.logo = logoStorerService.storeFile(request.getFile('logo'))
         }
         if(params.corporatePress){
-          def corporatePressPath = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
-          command.corporatePressPath = corporatePressPath
+          command.corporatePress = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
         }
 
         Company companyInstance = new Company()

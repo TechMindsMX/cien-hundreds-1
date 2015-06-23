@@ -7,7 +7,7 @@ class CompanyCommand {
   String name
   String description
   String web
-  String corporatePressPath
+  String corporatePress
   String notes
   String tags
 
@@ -17,7 +17,7 @@ class CompanyCommand {
 
   ActivityType type
 
-  String logoPath
+  String logo
 
   static hasMany = [
     references : Reference,
@@ -32,8 +32,8 @@ class CompanyCommand {
     web nullable:true,blank:false,size:10..100,url:true
     notes nullable:true,blank:false,size:1..10000
     tags nullable:true,blank:false,size:1..10000
-    logoPath nullable:true,blank:false,size:36..36
-    corporatePressPath nullable:true,blank:false,size:36..36
+    logo nullable:true,blank:false,size:36..36
+    corporatePress nullable:true,blank:false,size:36..36
     address nullable:true
     social nullable:true
     datosFiscales nullable:true
