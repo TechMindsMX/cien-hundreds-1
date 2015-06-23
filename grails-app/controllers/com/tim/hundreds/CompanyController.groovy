@@ -34,15 +34,16 @@ class CompanyController {
             return
         }
 
-        if(params.logo){
-          command.logo = logoStorerService.storeFile(request.getFile('logo'))
-        }
-        if(params.corporatePress){
-          command.corporatePress = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
-        }
-
         Company companyInstance = new Company()
         bindData(companyInstance, command)
+
+        if(params.logo){
+          companyInstance.logo = logoStorerService.storeFile(request.getFile('logo'))
+        }
+        if(params.corporatePress){
+          companyInstance.corporatePress = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
+        }
+
         companyService.save(companyInstance)
 
         request.withFormat {
