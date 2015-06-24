@@ -30,9 +30,9 @@
 
 </head>
 
-<g:set var="btnOffset" scope="session" value="col-lg-offset-3" />
-<g:set var="labelWidth" scope="session" value="col-sm-12 col-lg-3" />
-<g:set var="inputWidth" scope="session" value="col-sm-12 col-lg-9" />
+<g:set var="btnOffset" scope="session" value="col-md-offset-2" />
+<g:set var="labelWidth" scope="session" value="col-sm-12 col-md-2" />
+<g:set var="inputWidth" scope="session" value="col-sm-12 col-md-6" />
 
 <body>
     <div id="wrapper">
@@ -61,7 +61,7 @@
                         <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Menu</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                           <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                            <g:if test="${!c.getStaticPropertyValue('hideMe', Boolean) && !(c.name == 'Dbdoc') && !(c.name == 'Company')}">
+                            <g:if test="${!c.getStaticPropertyValue('hideMe', Boolean) && !(c.name == 'Dbdoc')}">
                                 <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
                             </g:if>
                           </g:each>

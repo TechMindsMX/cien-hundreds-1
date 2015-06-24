@@ -4,7 +4,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER','ROLE_ADMINISTRATOR'])
+@Secured(['ROLE_USER','ROLE_ADMIN'])
 class CompanyController {
     def logoStorerService
     def companyService
@@ -34,17 +34,16 @@ class CompanyController {
             return
         }
 
-        if(params.logo){
-          def logoPath = logoStorerService.storeFile(request.getFile('logo'))
-          command.logoPath = logoPath
-        }
-        if(params.corporatePress){
-          def corporatePressPath = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
-          command.corporatePressPath = corporatePressPath
-        }
-
         Company companyInstance = new Company()
         bindData(companyInstance, command)
+
+        if(!params.logo.empty){
+          companyInstance.logo = logoStorerService.storeFile(request.getFile('logo'))
+        }
+        if(!params.corporatePress.empty){
+          companyInstance.corporatePress = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
+        }
+
         companyService.save(companyInstance)
 
         request.withFormat {

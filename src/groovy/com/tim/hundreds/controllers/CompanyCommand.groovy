@@ -7,6 +7,7 @@ class CompanyCommand {
   String name
   String description
   String web
+  String logoPath
   String corporatePressPath
   String notes
   String tags
@@ -16,8 +17,6 @@ class CompanyCommand {
   DatosFiscales datosFiscales
 
   ActivityType type
-
-  String logoPath
 
   static hasMany = [
     references : Reference,

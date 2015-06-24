@@ -32,6 +32,7 @@ class TagServiceIntegrationSpec extends Specification {
     'One,Two,Three'   || 3
     'One,Two,Three,'  || 3
     ',One,Two,Three,' || 3
+    'One,Two,null'    || 2
   }
 
 }

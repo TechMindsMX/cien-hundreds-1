@@ -75,9 +75,12 @@
 		<g:message code="company.address.label" default="Address" />
 	</label>
 		<div class="${session.inputWidth}">
-			<g:if test="${companyInstance.address}">
-				<g:link controller="address" action="show" value="${companyInstance?.address?.id}">${message(code: 'default.show.label', args: [message(code: 'address.label')])}</g:link>
+			<g:if test="${!companyInstance.id}">
+				<g:message code="default.model.first" args="[entityName]" />
 			</g:if>
+			<g:elseif test="${companyInstance.address}">
+				<g:link controller="address" action="show" value="${companyInstance?.address?.id}">${message(code: 'default.show.label', args: [message(code: 'address.label')])}</g:link>
+			</g:elseif>
 			<g:else>
 				<g:link controller="address" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
 			</g:else>
@@ -89,9 +92,12 @@
 		<g:message code="company.social.label" default="Social" />
 	</label>
 		<div class="${session.inputWidth}">
-			<g:if test="${companyInstance.social}">
-				<g:link controller="social" action="show" value="${companyInstance?.social?.id}">${message(code: 'default.show.label', args: [message(code: 'social.label')])}</g:link>
+			<g:if test="${!companyInstance.id}">
+				<g:message code="default.model.first" args="[entityName]" />
 			</g:if>
+			<g:elseif test="${companyInstance.social}">
+				<g:link controller="social" action="show" value="${companyInstance?.social?.id}">${message(code: 'default.show.label', args: [message(code: 'social.label')])}</g:link>
+			</g:elseif>
 			<g:else>
 				<g:link controller="social" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'social.label')])}</g:link>
 			</g:else>
@@ -103,9 +109,12 @@
 		<g:message code="company.datosFiscales.label" default="Datos Fiscales" />
 	</label>
 		<div class="${session.inputWidth}">
-			<g:if test="${companyInstance.datosFiscales}">
-				<g:link controller="datosFiscales" action="show" value="${companyInstance?.datosFiscales?.id}">${message(code: 'default.show.label', args: [message(code: 'datosFiscales.label')])}</g:link>
+			<g:if test="${!companyInstance.id}">
+				<g:message code="default.model.first" args="[entityName]" />
 			</g:if>
+			<g:elseif test="${companyInstance.datosFiscales}">
+				<g:link controller="datosFiscales" action="show" value="${companyInstance?.datosFiscales?.id}">${message(code: 'default.show.label', args: [message(code: 'datosFiscales.label')])}</g:link>
+			</g:elseif>
 			<g:else>
 				<g:link controller="datosFiscales" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'datosFiscales.label')])}</g:link>
 			</g:else>
@@ -118,17 +127,19 @@
 		
 	</label>
 		<div class="${session.inputWidth}">
-			
-<ul class="one-to-many">
-<g:each in="${companyInstance?.references}" var="r">
-    <li><g:link controller="reference" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="reference" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'reference.label', default: 'Reference')])}</g:link>
-</li>
-</ul>
-
-
+			<g:if test="${!companyInstance.id}">
+				<g:message code="default.model.first" args="[entityName]" />
+			</g:if>
+			<g:else>
+				<ul class="one-to-many">
+				<g:each in="${companyInstance?.references}" var="r">
+				    <li><g:link controller="reference" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+				</g:each>
+				<li class="add">
+				<g:link controller="reference" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'reference.label', default: 'Reference')])}</g:link>
+				</li>
+				</ul>
+			</g:else>
 		</div>
 </div>
 
@@ -138,17 +149,19 @@
 		
 	</label>
 		<div class="${session.inputWidth}">
-			
-<ul class="one-to-many">
-<g:each in="${companyInstance?.events}" var="e">
-    <li><g:link controller="event" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="event" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'event.label', default: 'Event')])}</g:link>
-</li>
-</ul>
-
-
+			<g:if test="${!companyInstance.id}">
+				<g:message code="default.model.first" args="[entityName]" />
+			</g:if>
+			<g:else>
+				<ul class="one-to-many">
+				<g:each in="${companyInstance?.events}" var="e">
+				    <li><g:link controller="event" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
+				</g:each>
+				<li class="add">
+				<g:link controller="event" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'event.label', default: 'Event')])}</g:link>
+				</li>
+				</ul>
+			</g:else>
 		</div>
 </div>
 
@@ -158,17 +171,19 @@
 		
 	</label>
 		<div class="${session.inputWidth}">
-			
-<ul class="one-to-many">
-<g:each in="${companyInstance?.collaborators}" var="c">
-    <li><g:link controller="collaborator" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="collaborator" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'collaborator.label', default: 'Collaborator')])}</g:link>
-</li>
-</ul>
-
-
+			<g:if test="${!companyInstance.id}">
+				<g:message code="default.model.first" args="[entityName]" />
+			</g:if>
+			<g:else>
+				<ul class="one-to-many">
+				<g:each in="${companyInstance?.collaborators}" var="c">
+				    <li><g:link controller="collaborator" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+				</g:each>
+				<li class="add">
+				<g:link controller="collaborator" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'collaborator.label', default: 'Collaborator')])}</g:link>
+				</li>
+				</ul>
+			</g:else>
 		</div>
 </div>
 
@@ -178,17 +193,19 @@
 		
 	</label>
 		<div class="${session.inputWidth}">
-			
-<ul class="one-to-many">
-<g:each in="${companyInstance?.products}" var="p">
-    <li><g:link controller="product" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="product" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'product.label', default: 'Product')])}</g:link>
-</li>
-</ul>
-
-
+			<g:if test="${!companyInstance.id}">
+				<g:message code="default.model.first" args="[entityName]" />
+			</g:if>
+			<g:else>
+				<ul class="one-to-many">
+				<g:each in="${companyInstance?.products}" var="p">
+				    <li><g:link controller="product" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
+				</g:each>
+				<li class="add">
+				<g:link controller="product" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'product.label', default: 'Product')])}</g:link>
+				</li>
+				</ul>
+			</g:else>
 		</div>
 </div>
 

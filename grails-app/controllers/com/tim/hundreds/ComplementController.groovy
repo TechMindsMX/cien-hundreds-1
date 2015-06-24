@@ -5,7 +5,7 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_USER','ROLE_ADMINISTRATOR'])
+@Secured(['ROLE_USER','ROLE_ADMIN'])
 class ComplementController {
 
     static hideMe = true /*Parametro para que NO aparezca en el menú*/

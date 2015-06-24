@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'facilitator.label', default: 'facilitator')}" />
+		<g:set var="entityName" value="${message(code: 'buyer.label', default: 'Comprador')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -18,10 +18,10 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<g:hasErrors>
+			<g:hasErrors bean="${userInstance}">
 			<div class="alert alert-danger">
 				<ul class="errors" role="alert">
-					<g:eachError var="error">
+					<g:eachError bean="${userInstance}" var="error">
 					<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
 					</g:eachError>
 				</ul>

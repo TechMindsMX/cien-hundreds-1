@@ -26,7 +26,7 @@ class CompanySpec extends Specification {
    then: "We validate command"
     result == company.validate()
    where: "We have next cases"
-   name          | description | web                           | logoPath                               | corporatePressPath                     | notes   | tags   | type                   || result
+   name          | description | web                           | logoPath                                   | corporatePressPath                         | notes   | tags   | type                   || result
    'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || true
    'A'           | 'd'         | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || true
    'Anjunabeats' | 'desc'      | null                          | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || true

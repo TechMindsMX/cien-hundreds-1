@@ -80,7 +80,7 @@
     <label class="${session.labelWidth} control-label" for="role">Tipo de Alta</label>
 
     <div class="${session.inputWidth}">
-      <g:select value="${model?.role}" name="role" from="${Role.findAll{authority=='ROLE_FACILITATOR'}}" optionKey="authority" optionValue="authority" class="form-control"/>
+      <g:select value="${model?.role}" name="role" from="${Role.findAll{authority=='ROLE_BUYER'}}" optionKey="authority" optionValue="authority" class="form-control"/>
     </div>
 </div>
 

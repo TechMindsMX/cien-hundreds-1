@@ -39,3 +39,8 @@ li.add {
     list-style: none;
     margin-left: -40px;
 }
+
+.max300 {
+    max-height: 300px;
+    max-width: 300px;
+}

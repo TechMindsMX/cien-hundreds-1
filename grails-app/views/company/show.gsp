@@ -1,5 +1,7 @@
 
 <%@ page import="com.tim.hundreds.Company" %>
+<%@ page import="com.tim.hundreds.ApplicationState" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -72,7 +74,11 @@
 				<li class="fieldcontain">
 					<span id="logo-label" class="${session.labelWidth} property-label"><g:message code="company.logo.label" default="Logo" /></span>
 					
-						<span class="property-value" aria-labelledby="logo-label"><g:fieldValue bean="${companyInstance}" field="logo"/></span>
+						<span class="property-value" aria-labelledby="logo-label">
+						<g:if test="${companyInstance?.logo}">
+							<img class="img-responsive max300" src="${ApplicationState.LOGO_URL_BASE}${companyInstance.logo}" />
+						</g:if>
+						</span>
 					
 				</li>
 				</g:if>

@@ -3,7 +3,7 @@ package com.tim.hundreds
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_ADMIN'])
-class FacilitatorController {
+class BuyerController {
 
   static defaultAction = "create"
 
@@ -20,7 +20,7 @@ class FacilitatorController {
   }
 
   def save(UserCommand command){
-    log.info "Creating facilitator(user): ${command?.dump()}"
+    log.info "Creating buyer(user): ${command?.dump()}"
     if(command.hasErrors()){
       respond command, model:[model: command], view: 'create'
       return
@@ -43,7 +43,7 @@ class FacilitatorController {
         profile.resumePath = resumePath
       }
 
-      flash.message = "Su facilitador ha sido creado y se ha enviado un correo electrónico"
+      flash.message = "Su comprador ha sido creado y se ha enviado un correo electrónico"
       respond command, view: 'create'
     } catch(BusinessException be){
       flash.error = "El servicio de correo no está disponible"

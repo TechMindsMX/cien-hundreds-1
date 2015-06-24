@@ -22,11 +22,12 @@ class AudioSpec extends Specification {
   then: "We validate data"
     result == audio.validate()
   where: "The following data"
-  url                                             || result
-  'https://soundcloud.com/aboveandbeyond/abgt100' || true
-  'h'                                             || false
-  ''                                              || false
-  null                                            || false
+  url                                                         || result
+  'https://soundcloud.com/fettywap1738-zoo/fetty-wap-again'   || true
+  'https://probando12.com/aboveandbeyond/abgt100'             || false
+  'h'                                                         || false
+  ''                                                          || false
+  null                                                        || false
   }
 
 }

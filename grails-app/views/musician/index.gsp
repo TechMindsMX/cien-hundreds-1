@@ -51,7 +51,7 @@
 										
 						<td>
 							<g:if test="${musicianInstance.logoPath}">
-							<img class="img-responsive" src="${ApplicationState.LOGO_URL_BASE}${musicianInstance.logoPath}" />
+								<img class="img-responsive max300" src="${ApplicationState.LOGO_URL_BASE}${musicianInstance.logoPath}" />
 							</g:if>
 						</td>
 					

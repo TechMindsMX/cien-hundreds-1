@@ -65,7 +65,7 @@
 
 				<g:if test="${musicianInstance?.tags}">
 				<li class="fieldcontain">
-					<span id="tags-label" class="property-label"><g:message code="musician.tags.label" default="Tags" /></span>
+					<span id="tags-label" class="property-label"><b><g:message code="musician.tags.label" default="Tags" />:</b></span>
 
 					<g:each in="${musicianInstance.tags}" var="t">
 						<span class="property-value" aria-labelledby="tags-label">${t?.value?.encodeAsHTML()},</span>
@@ -78,14 +78,8 @@
 					<span id="logoPath-label" class="property-label"><b>Logo:</b></span>
 
 						<span class="property-value" aria-labelledby="logoPath-label">
-						<img class="img-responsive" src="${ApplicationState.LOGO_URL_BASE}${musicianInstance.logoPath}" />
-
-				</li>
-				</g:if>
-				<g:if test="${musicianInstance?.address}">
-				<li class="fieldcontain">
-					<span id="address-label" class="property-label"><b>Dirección:</b></span>
-						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${musicianInstance?.address?.id}"><g:message code="address.view.label" default="Ver dirección" /></g:link></span>
+						<img class="img-responsive max300" src="${ApplicationState.LOGO_URL_BASE}${musicianInstance.logoPath}" />
+						</span>
 
 				</li>
 				</g:if>
@@ -95,15 +89,6 @@
 					<span id="dateCreated-label" class="property-label"><b>Fecha de Creación:</b></span>
 
 						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="dd-MM-yyyy"  format="dd-MM-yyyy" date="${musicianInstance?.dateCreated}" /></span>
-
-				</li>
-				</g:if>
-
-				<g:if test="${musicianInstance?.formed}">
-				<li class="fieldcontain">
-					<span id="formed-label" class="property-label"><b>Creado:</b></span>
-
-						<span class="property-value" aria-labelledby="formed-label"><g:formatDate format="dd-MM-yyyy"  format="dd-MM-yyyy" date="${musicianInstance?.formed}" /></span>
 
 				</li>
 				</g:if>
@@ -122,6 +107,15 @@
 					<span id="hasManager-label" class="property-label"><b>Manager</b></span>
 
 						<span class="property-value" aria-labelledby="hasManager-label"><g:formatBoolean boolean="${musicianInstance?.hasManager}" /></span>
+
+				</li>
+				</g:if>
+
+				<g:if test="${musicianInstance?.formed}">
+				<li class="fieldcontain">
+					<span id="formed-label" class="property-label"><b>Creado:</b></span>
+
+						<span class="property-value" aria-labelledby="formed-label"><g:formatDate format="dd-MM-yyyy"  format="dd-MM-yyyy" date="${musicianInstance?.formed}" /></span>
 
 				</li>
 				</g:if>
@@ -158,7 +152,7 @@
 											<ol>
 												<g:each in="${musicianInstance.videos}" var="v">
 													<li>
-															<g:link controller="video" action="show" id="${v.id}">${v.url}</g:link>
+														<g:link controller="video" action="show" id="${v.id}">${v.url}</g:link>
 													</li>
 												</g:each>
 											<ol>
@@ -269,52 +263,64 @@
 									</tr>
 									<tr>
 						                <th>
-							                <g:if test="${musicianInstance.social == null}">
-							                	<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Redes Sociales</g:link>
+							                <g:if test="${!musicianInstance?.social}">
+							                	<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> <g:message code="social.label" /></g:link>
 						                	</g:if>
+						                	<g:else>
+												<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="edit" id="${musicianInstance?.social.id}"> <g:message code="social.label"/> <g:message code="social.label" /></g:link>
+						                	</g:else>
 						                </th>
 						                <th>
 						                	<g:if test="${musicianInstance?.social}">
 												<ol>
+													<g:if test="${musicianInstance?.social?.facebook}">
 														<li>
 															Facebook: ${musicianInstance?.social.facebook}
 														</li>
+													</g:if>
+													<g:if test="${musicianInstance?.social?.googlePlus}">
 														<li>
 															g+: ${musicianInstance?.social.googlePlus}
 														</li>
+													</g:if>
+													<g:if test="${musicianInstance?.social?.instagram}">
 														<li>
 															Instagram: ${musicianInstance?.social.instagram}
 														</li>
+													</g:if>
+													<g:if test="${musicianInstance?.social?.linkedin}">
 														<li>
 															Linkedin: ${musicianInstance?.social.linkedin}
 														</li>
+													</g:if>
+													<g:if test="${musicianInstance?.social?.twitter}">
 														<li>
 															Twitter: ${musicianInstance?.social.twitter}
 														</li>
+													</g:if>
+													<g:if test="${musicianInstance?.social?.youtube}">
 														<li>
 															Youtube: ${musicianInstance?.social.youtube}
 														</li>
+													</g:if>
+													<g:if test="${musicianInstance?.social?.other}">
 														<li>
 															Otra: ${musicianInstance?.social.other}
 														</li>
+													</g:if>
 												</ol>
-												<g:link controller="social" action="edit" id="${musicianInstance?.social.id}"><g:message code="default.button.edit.label"/></g:link>
 
 											</g:if>
 						                </th>
 					                </tr>
 					                <tr>
 					                <th>
-						                <g:if test="${musicianInstance.address == null}">
-						                	<g:link class="glyphicon glyphicon-floppy-disk" controller="address" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Dirección</g:link>
-						                </g:if>
-					                </th>
-					                </tr>
-					                <tr>
-					                <th>
-						                <g:if test="${musicianInstance.datosFiscales == null}">
+					                	<g:if test="${!musicianInstance?.datosFiscales}">
 						                	<g:link class="glyphicon glyphicon-floppy-disk" controller="datosFiscales" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Datos Fiscales</g:link>
 						                </g:if>
+						                <g:else>
+						                	<g:link class="glyphicon glyphicon-floppy-disk" controller="datosFiscales" action="edit" id="${musicianInstance.datosFiscales?.id}"> Datos Fiscales</g:link>
+						                </g:else>
 					                </th>
 					                <th>
 					                	<g:if test="${musicianInstance?.datosFiscales}">

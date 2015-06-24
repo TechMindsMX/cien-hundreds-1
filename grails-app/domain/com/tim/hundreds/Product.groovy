@@ -39,6 +39,25 @@ class Product {
     complements : Complement
   ]
 
+  static mapping = {
+    description type:'text'
+    benefits type:'text'
+    target type:'text'
+    competence type:'text'
+    discountModel type:'text'
+    clients type:'text'
+    distributionModel type:'text'
+    salesModel type:'text'
+    customerModel type:'text'
+    postSaleModel type:'text'
+    notes type:'text'
+    webDescription type:'text'
+    telephoneDescription type:'text'
+    campaignDescription type:'text'
+    eventDescription type:'text'
+    otherDescription type:'text'
+  }
+
   static constraints = {
     name blank:false,size:1..100
     description blank:false,size:1..10000

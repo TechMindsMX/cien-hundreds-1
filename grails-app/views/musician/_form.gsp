@@ -56,7 +56,7 @@
 					</div>
                 </td></b>
                 <td>
-					<g:textArea name="tagsComma" class="form-control" placeholder="Ingrese sus Tags" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.tags}"/>
+					<g:textArea name="tagsComma" class="form-control" placeholder="${message(code: 'tags.placeholder')}" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.tags}"/>
                     <br>
                 </td>
             </tr>
