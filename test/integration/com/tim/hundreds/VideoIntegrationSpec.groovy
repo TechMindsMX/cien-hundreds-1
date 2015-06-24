@@ -13,7 +13,7 @@ class VideoIntegrationSpec extends Specification {
   void "Should save an musician with video"() {
     given: "An musician"
       def musician = new Musician(name:'name',history:'history')
-      musician.genre = Genre.TRANCE
+      musician.genre = GenreType.TRANCE
       musician.hasManager = true
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()
@@ -40,7 +40,7 @@ class VideoIntegrationSpec extends Specification {
   void "Should not save an musician with more than 5 videos"() {
     given: "An musician"
       def musician = new Musician(name:'name',history:'history')
-      musician.genre = Genre.TRANCE
+      musician.genre = GenreType.TRANCE
       musician.hasManager = true
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()

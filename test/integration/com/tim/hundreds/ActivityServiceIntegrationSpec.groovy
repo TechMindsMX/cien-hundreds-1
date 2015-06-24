@@ -9,7 +9,7 @@ class ActivityServiceIntegrationSpec extends Specification {
   void "Should save an musician with activity"() {
     given: "An musician"
       def musician = new Musician(name:'name',history:'history')
-      musician.genre = Genre.TRANCE
+      musician.genre = GenreType.TRANCE
       musician.hasManager = true
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()

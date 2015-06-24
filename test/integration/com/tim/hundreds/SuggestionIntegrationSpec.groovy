@@ -12,7 +12,7 @@ class SuggestionIntegrationSpec extends Specification {
   void "Should save an musician with suggestion"() {
     given: "An musician"
       def musician = new Musician(name:'name',history:'history')
-      musician.genre = Genre.TRANCE
+      musician.genre = GenreType.TRANCE
       musician.hasManager = true
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()
@@ -39,7 +39,7 @@ class SuggestionIntegrationSpec extends Specification {
   void "Should not save an musician with more than 3 suggestions"() {
     given: "An musician"
       def musician = new Musician(name:'name',history:'history')
-      musician.genre = Genre.TRANCE
+      musician.genre = GenreType.TRANCE
       musician.hasManager = true
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()

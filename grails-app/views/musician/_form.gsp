@@ -80,7 +80,7 @@
 					</div></b>
                 </td>
                 <td>
-					<g:select name="genre" from="${com.tim.hundreds.Genre?.values()}" keys="${com.tim.hundreds.Genre.values()*.name()}" required="" value="${musicianInstance?.genre?.name()}" class="form-control"/>
+					<g:select name="genre" from="${com.tim.hundreds.GenreType?.values()}" keys="${com.tim.hundreds.GenreType.values()*.name()}" required="" value="${musicianInstance?.genre?.name()}" class="form-control"/>
                     <br>
                 </td>
             </tr>
