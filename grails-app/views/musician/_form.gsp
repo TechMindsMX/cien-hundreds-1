@@ -76,11 +76,16 @@
                 <td class="text-right">
                     <b><div class="control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'genre', 'error')} required">
 							<g:message code="musician.genre.label" default="Genero" />
-							<span class="required-indicator">*</span>
+              <span class="required-indicator">*</span>
 					</div></b>
                 </td>
                 <td>
-					<g:select name="genre" from="${com.tim.hundreds.GenreType?.values()}" keys="${com.tim.hundreds.GenreType.values()*.name()}" required="" value="${musicianInstance?.genre?.name()}" class="form-control"/>
+                  <div class="form-group fieldcontain ${hasErrors(bean: musicianInstance, field: 'genre', 'error')} required">
+                    <div class="${session.inputWidth}">
+                    <g:select id="genre" name="genre.id" from="${com.tim.hundreds.Genre.list()}" optionValue='name' optionKey="id" required="" value="${musicianInstance?.genre?.id}" class="form-control many-to-one"/>
+
+                 </div>
+                                                </div>
                     <br>
                 </td>
             </tr>
