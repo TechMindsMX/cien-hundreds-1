@@ -2,3 +2,4 @@
 .project
 target
 hs_err*
+logs

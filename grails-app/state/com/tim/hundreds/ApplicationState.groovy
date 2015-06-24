@@ -32,9 +32,4 @@ interface ApplicationState {
   static final String LOGO_DIRECTORY = 'logos/'
   static final String RESUME_DIRECTORY = 'resumes/'
   static final String PRESS_DIRECTORY = 'press/'
-
-  static final String FORGOT_PASSWORD_URL = 'http://emailer.timone.mx/timone/services/email/forgotPassword'
-  static final String FORGOT_USERNAME_URL = 'http://emailer.timone.mx/timone/services/email/forgotUsername'
-  static final String REGISTER_URL = 'http://emailer.timone.mx/timone/services/email/register'
-  static final String NEW_USER_URL = 'http://emailer.timone.mx/timone/services/email/newUser'
 }

@@ -39,7 +39,7 @@ class RecoveryService {
 
     def name = "${user.profile.firstName} ${user.profile.middleName} ${user.profile.lastName}"
     def message = new NameCommand(email:user.profile.email, name:name)
-    restService.sendCommand(message, ApplicationState.NEW_USER_URL)
+    restService.sendCommand(message, grailsApplication.config.newuser.url)
   }
 
   def recoveryUser(String email){
@@ -47,7 +47,7 @@ class RecoveryService {
     if(!user) throw new BusinessException("User not found")
 
     def message = new NameCommand(email:email, name:"${user.username[0..2]}***")
-    restService.sendCommand(message, ApplicationState.FORGOT_USERNAME_URL)
+    restService.sendCommand(message, grailsApplication.config.forgot.username.url)
   }
 
   def obtainRegistrationCodeForToken(token) {
@@ -56,7 +56,7 @@ class RecoveryService {
 
   def sendConfirmationAccountToken(String email){
     def message = recoveryCollaboratorService.generateToken(email)
-    restService.sendCommand(message, ApplicationState.REGISTER_URL)
+    restService.sendCommand(message, grailsApplication.config.register.url)
   }
 
   def getUserByToken(String token){
