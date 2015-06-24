@@ -152,7 +152,7 @@
 											<ol>
 												<g:each in="${musicianInstance.videos}" var="v">
 													<li>
-															<g:link controller="video" action="show" id="${v.id}">${v.url}</g:link>
+														<g:link controller="video" action="show" id="${v.id}">${v.url}</g:link>
 													</li>
 												</g:each>
 											<ol>
@@ -264,10 +264,10 @@
 									<tr>
 						                <th>
 							                <g:if test="${!musicianInstance?.social}">
-							                	<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"></g:link>
+							                	<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> <g:message code="social.label" /></g:link>
 						                	</g:if>
 						                	<g:else>
-												<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="edit" id="${musicianInstance?.social.id}"> <g:message code="social.label"/></g:link>
+												<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="edit" id="${musicianInstance?.social.id}"> <g:message code="social.label"/> <g:message code="social.label" /></g:link>
 						                	</g:else>
 						                </th>
 						                <th>
