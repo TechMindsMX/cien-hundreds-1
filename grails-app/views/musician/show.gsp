@@ -18,9 +18,10 @@
 				</ul>
 			</div>
 		</div>
-        <div class="">
+
+        <div id="show-musician" class="content scaffold-show" role="main">
             <div class="page-header">
-                <h2 class="text-head-color text-center"><g:fieldValue bean="${musicianInstance}" field="name"/></h2>
+                <h2 class="text-head-color text-center"><g:message code="${musicianInstance.name}" /></h2>
             </div>
             <div class="dropdown theme-dropdown clearfix">
 	        <div class="col-xs-12 ">
