@@ -3,6 +3,7 @@ import com.tim.hundreds.User
 import com.tim.hundreds.Profile
 import com.tim.hundreds.UserRole
 import com.tim.hundreds.Genre
+import com.tim.hundreds.MusicianRole
 
 import grails.util.Environment
 

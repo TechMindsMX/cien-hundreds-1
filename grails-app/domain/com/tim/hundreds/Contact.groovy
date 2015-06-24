@@ -15,7 +15,7 @@ class Contact {
   Date entryDate
 
   GenderType type
-  RoleType role
+  MusicianRole role
 
   Address address
   Social social
