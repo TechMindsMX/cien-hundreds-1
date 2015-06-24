@@ -61,7 +61,7 @@
                         <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Menu</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                           <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                            <g:if test="${!c.getStaticPropertyValue('hideMe', Boolean) && !(c.name == 'Dbdoc') && !(c.name == 'Company')}">
+                            <g:if test="${!c.getStaticPropertyValue('hideMe', Boolean) && !(c.name == 'Dbdoc')}">
                                 <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
                             </g:if>
                           </g:each>
