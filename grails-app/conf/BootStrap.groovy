@@ -14,6 +14,7 @@ class BootStrap {
       createFacilitatorRole()
       createBuyerRole()
       createGenres()
+      createMusicianRoles()
    }
   }
   def destroy = {
@@ -74,5 +75,11 @@ class BootStrap {
     new Genre(name:'Ambient').save()
     new Genre(name:'Groove').save()
     new Genre(name:'Trance').save()
+  }
+
+  def createMusicianRoles(){
+    new MusicianRole(name:'Manager').save()
+    new MusicianRole(name:'Element').save()
+    new MusicianRole(name:'Other').save()
   }
 }
