@@ -18,7 +18,7 @@ class ContactCommand {
 
   GenderType type
 
-  RoleType role
+  MusicianRole role
   Social social
 
   static belongsTo = [
