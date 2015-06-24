@@ -34,11 +34,11 @@ class FacilitatorController {
       user.profile = profile
       userService.create(user)
 
-      if(params.photo){
+      if(!params.photo.isEmpty()){
         def photoPath = photoStorerService.storeFile(request.getFile('photo'))
         profile.photoPath = photoPath
       }
-      if(params.resume){
+      if(!params.resume.isEmpty()){
         def resumePath = resumeStorerService.storeFile(request.getFile('resume'))
         profile.resumePath = resumePath
       }

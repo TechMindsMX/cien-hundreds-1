@@ -80,22 +80,24 @@
     <label class="${session.labelWidth} control-label" for="role">Tipo de Alta</label>
 
     <div class="${session.inputWidth}">
-      <g:select value="model.role" name="role" from="${Role.findAll{authority=='ROLE_FACILITATOR'}}" optionKey="authority" optionValue="authority" class="form-control"/>
+      <g:select value="${model?.role}" name="role" from="${Role.findAll{authority=='ROLE_FACILITATOR'}}" optionKey="authority" optionValue="authority" class="form-control"/>
     </div>
 </div>
 
 <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'photo', 'error')}">
-    <label class="${session.labelWidth} control-label" for="photoPath">Foto(png):</label>
+    <label class="${session.labelWidth} control-label" for="photo">Foto(png):</label>
 
       <div class="${session.inputWidth}">
-          <input value="${model?.photoPath}" type='file' name='photoPath' class="form-control" placeholder="Ingrese una foto con formato png"/>
+          <input value="${model?.photoPath}" type='file' name='photo' class="form-control" placeholder="Ingrese una foto con formato png"/>
       </div>
 </div>
 
 <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'resume', 'error')}">
-    <label class="${session.labelWidth} control-label" for="resumePath">Curriculum Personal(pdf):</label>
+    <label class="${session.labelWidth} control-label" for="resume">Curriculum Personal(pdf):</label>
 
      <div class="${session.inputWidth}">
-          <input value="${model?.resumePath}" type='file' name='resumePath' class="form-control" placeholder="Ingrese un archivo PDF"/>
+          <input value="${model?.resumePath}" type='file' name='resume' class="form-control" placeholder="Ingrese un archivo PDF"/>
       </div>
 </div>
+
+<g:hiddenField name="terms" value="on" />
