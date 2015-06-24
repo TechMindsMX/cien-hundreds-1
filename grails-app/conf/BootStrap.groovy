@@ -2,6 +2,7 @@ import com.tim.hundreds.Role
 import com.tim.hundreds.User
 import com.tim.hundreds.Profile
 import com.tim.hundreds.UserRole
+import com.tim.hundreds.Genre
 
 import grails.util.Environment
 
@@ -12,6 +13,7 @@ class BootStrap {
       createAdminRole()
       createFacilitatorRole()
       createBuyerRole()
+      createGenres()
    }
   }
   def destroy = {
@@ -66,5 +68,11 @@ class BootStrap {
   def createBuyerRole(){
     def buyerRole = new Role(authority: 'ROLE_BUYER').save(flush: true)
     assert Role.count() == 4
+  }
+
+  def createGenres(){
+    new Genre(name:'Ambient').save()
+    new Genre(name:'Groove').save()
+    new Genre(name:'Trance').save()
   }
 }

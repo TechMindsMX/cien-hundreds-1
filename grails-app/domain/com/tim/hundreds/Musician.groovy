@@ -15,7 +15,7 @@ class Musician {
 
   Boolean hasManager
 
-  GenreType genre
+  Genre genre
   Social social
   Address address
   DatosFiscales datosFiscales
