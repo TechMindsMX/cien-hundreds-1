@@ -78,7 +78,8 @@
 					<span id="logoPath-label" class="property-label"><b>Logo:</b></span>
 
 						<span class="property-value" aria-labelledby="logoPath-label">
-						<img class="img-responsive" src="${ApplicationState.LOGO_URL_BASE}${musicianInstance.logoPath}" />
+						<img class="img-responsive max300" src="${ApplicationState.LOGO_URL_BASE}${musicianInstance.logoPath}" />
+						</span>
 
 				</li>
 				</g:if>

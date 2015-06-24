@@ -37,10 +37,10 @@ class CompanyController {
         Company companyInstance = new Company()
         bindData(companyInstance, command)
 
-        if(params.logo){
+        if(!params.logo.empty){
           companyInstance.logo = logoStorerService.storeFile(request.getFile('logo'))
         }
-        if(params.corporatePress){
+        if(!params.corporatePress.empty){
           companyInstance.corporatePress = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
         }
 
