@@ -29,7 +29,7 @@ class AddressServiceIntegrationSpec extends Specification {
     contact.save flush: true
 
     company = new Company(name:'Anjunabeats',description:'Music Production')
-    company.type = ActivityType.PRODUCTOS
+    company.type = new BusinessActivity(name:'Products')
 
     company.save flush: true
   }

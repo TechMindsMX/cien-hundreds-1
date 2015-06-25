@@ -34,7 +34,7 @@ class DatosFiscalesServiceIntegrationSpec extends Specification {
   void "Should save datosFiscalesInstance to company"() {
     given: "An instance"
       def instance = new Company(name:'Anjunabeats',description:'Music Production')
-      instance.type = ActivityType.PRODUCTOS
+      instance.type = new BusinessActivity(name:'Products')
     and: "Above & Beyond rfc"
       def rfc = 'AJU8012028D3'
     and: "We save instance"

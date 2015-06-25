@@ -54,7 +54,7 @@ class SocialServiceIntegrationSpec extends Specification {
   void "Should save socialInstance to company"() {
     given: "An instance"
       def instance = new Company(name:'Anjunabeats',description:'Music Production')
-      instance.type = ActivityType.PRODUCTOS
+      instance.type = new BusinessActivity(name:'Products')
     and: "Twitter account"
       def twitter = 'https://twitter.com/Anjunabeats'
     and: "We save instance"

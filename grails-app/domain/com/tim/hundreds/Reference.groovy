@@ -7,7 +7,7 @@ class Reference {
   String email
   String phone
 
-  ActivityType type
+  BusinessActivity type
 
   static belongsTo = [ company : Company ]
 
