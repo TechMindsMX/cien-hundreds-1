@@ -219,5 +219,6 @@
   </div>
 </div>
 
+
 <g:hiddenField name="uuid" value="${companyInstance?.uuid}"/>
 
