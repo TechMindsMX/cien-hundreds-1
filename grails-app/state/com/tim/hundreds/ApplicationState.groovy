@@ -23,11 +23,11 @@ interface ApplicationState {
   static final Integer TIMEOUT = 20;
   static final Integer MAX_USER_ATTEMPS = 5;
 
-  static final String PHOTO_URL_BASE = 'http://192.168.0.122/cienhundreds/photos/'
-  static final String LOGO_URL_BASE = 'http://192.168.0.122/cienhundreds/logos/'
-  static final String RESUME_URL_BASE = 'http://192.168.0.122/cienhundreds/resumes/'
-  static final String PRESS_URL_BASE = 'http://192.168.0.122/cienhundreds/press/'
-  static final String ATTACH_DIR = '/var/www/html/trama/cienhundreds/'
+  static final String PHOTO_URL_BASE = 'http://trama.mx/cienhundreds/photos/'
+  static final String LOGO_URL_BASE = 'http://trama.mx/cienhundreds/logos/'
+  static final String RESUME_URL_BASE = 'http://trama.mx/cienhundreds/resumes/'
+  static final String PRESS_URL_BASE = 'http://trama.mx/cienhundreds/press/'
+  static final String ATTACH_DIR = '/var/www/html/cienhundreds/'
   static final String PHOTO_DIRECTORY = 'photos/'
   static final String LOGO_DIRECTORY = 'logos/'
   static final String RESUME_DIRECTORY = 'resumes/'
