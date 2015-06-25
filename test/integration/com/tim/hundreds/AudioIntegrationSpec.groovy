@@ -62,8 +62,5 @@ class AudioIntegrationSpec extends Specification {
         thrown ValidationException
   }
 
-  def cleanupSpec(){
-    user.delete flush: true
-  }
 
 }
