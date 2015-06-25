@@ -43,7 +43,7 @@ class EmailIntegrationSpec extends Specification {
     then:"We validate command"
       result
     cleanup:"We delete contact"
-      user.delete()
+      user.delete(flush: true)
   }
 
   void "Should not save an contact with more than 3 emails"() {
@@ -86,7 +86,7 @@ class EmailIntegrationSpec extends Specification {
     then:"We expect exception"
       thrown ValidationException
     cleanup:"We delete contact"
-      user.delete()
+      user.delete(flush: true)
   }
 
 }
