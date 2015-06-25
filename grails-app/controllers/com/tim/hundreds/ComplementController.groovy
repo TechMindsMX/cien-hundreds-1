@@ -8,7 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class ComplementController {
 
-    static hideMe = true /*Parametro para que NO aparezca en el menú*/
+    static showMe = false /*Parametro para aparecer en el menú*/
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 

@@ -9,7 +9,7 @@
     </head>
     <body>
         <!-- Fixed navbar -->
-        <div class="nav" role="navigation">
+        <div class="nav nav-pills" role="navigation">
 			<div class="container theme-showcase">
 				<ul class="nav nav-pills">
 					<li><a class="home" href="${createLink(uri: '/')}">Inicio</a></li>
@@ -18,325 +18,257 @@
 				</ul>
 			</div>
 		</div>
-        <div class="container theme-showcase">
+
+        <div id="show-musician" class="content scaffold-show" role="main">
             <div class="page-header">
-                <h2 class="text-head-color">Datos de Músico</h2>
+                <h2 class="text-head-color text-center"><g:message code="${musicianInstance.name}" /></h2>
             </div>
             <div class="dropdown theme-dropdown clearfix">
 	        <div class="col-xs-12 ">
-		 	<div class="col-md-4">
-                <ul class="property-list musician">
 
-				<g:if test="${musicianInstance?.name}">
-				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><b>Nombre:</b></span>
+        	<div class="row">
+	        	<div class="col-xs-12 col-md-4">
+					<g:if test="${musicianInstance?.logoPath}">
+						<span class="property-value" aria-labelledby="logoPath-label">
+						<img class="img-responsive max300" src="${ApplicationState.LOGO_URL_BASE}${musicianInstance.logoPath}" />
+						</span>
+					</g:if>
+	        	</div>
 
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${musicianInstance}" field="name"/></span>
+	        	<div class="col-xs-12 col-md-8">
+					<g:if test="${musicianInstance?.formed}">
+					<div class="fieldcontain">
+						<span id="formed-label" class="property-label"><b>${message(code: 'musician.formed.label')}:</b></span>
+							<span class="property-value" aria-labelledby="formed-label"><g:formatDate format="dd-MM-yyyy"  format="dd-MM-yyyy" date="${musicianInstance?.formed}" /></span>
+					</div>
+					</g:if>
 
-				</li>
-				</g:if>
+					<div class="fieldcontain">
+				    	<g:link class="glyphicon" controller="contact" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Contactos</g:link>
 
-				<g:if test="${musicianInstance?.history}">
-				<li class="fieldcontain">
-					<span id="history-label" class="property-label"><b>Historia:</b></span>
+				    	<g:if test="${musicianInstance?.contacts}">
+					    	<ol>
+								<g:each in="${musicianInstance.contacts}" var="c">
+									<div>
+										<g:link controller="contact" action="show" id="${c.id}">${c.firstName} ${c.lastName}</g:link>
+									</div>
+								</g:each>
+					    	</ol>
+					    </g:if>
+				    </div>
 
+					<g:if test="${musicianInstance?.genre}">
+					<div class="fieldcontain">
+						<span id="genre-label" class="property-label"><b>Genero:</b></span>
+
+							<span class="property-value" aria-labelledby="genre-label"><g:fieldValue bean="${musicianInstance}" field="genre"/></span>
+
+					</div>
+					</g:if>
+
+					<g:if test="${musicianInstance?.web}">
+					<div class="fieldcontain">
+						<span id="web-label" class="property-label"><b>Web:</b></span>
+
+							<span class="property-value" aria-labelledby="web-label"><g:fieldValue bean="${musicianInstance}" field="web"/></span>
+
+					</div>
+					</g:if>
+
+					<div class="fieldcontain">
+		                <g:if test="${!musicianInstance?.social}">
+		                	<g:link class="glyphicon" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> <g:message code="social.label" /></g:link>
+	                	</g:if>
+	                	<g:else>
+							<g:link class="glyphicon" controller="social" action="edit" id="${musicianInstance?.social.id}"> <g:message code="social.label"/> <g:message code="social.label" /></g:link>
+	                	</g:else>
+
+	                	<g:if test="${musicianInstance?.social}">
+							<ol>
+								<g:if test="${musicianInstance?.social?.facebook}">
+									<div>
+										Facebook: ${musicianInstance?.social.facebook}
+									</div>
+								</g:if>
+								<g:if test="${musicianInstance?.social?.googlePlus}">
+									<div>
+										g+: ${musicianInstance?.social.googlePlus}
+									</div>
+								</g:if>
+								<g:if test="${musicianInstance?.social?.instagram}">
+									<div>
+										Instagram: ${musicianInstance?.social.instagram}
+									</div>
+								</g:if>
+								<g:if test="${musicianInstance?.social?.linkedin}">
+									<div>
+										Linkedin: ${musicianInstance?.social.linkedin}
+									</div>
+								</g:if>
+								<g:if test="${musicianInstance?.social?.twitter}">
+									<div>
+										Twitter: ${musicianInstance?.social.twitter}
+									</div>
+								</g:if>
+								<g:if test="${musicianInstance?.social?.youtube}">
+									<div>
+										Youtube: ${musicianInstance?.social.youtube}
+									</div>
+								</g:if>
+								<g:if test="${musicianInstance?.social?.other}">
+									<div>
+										Otra: ${musicianInstance?.social.other}
+									</div>
+								</g:if>
+							</ol>
+						</g:if>
+					</div>
+		        </div>
+
+	        </div>
+	        <div class="row">
+		        	<div class="col-xs-12">
+
+					<g:if test="${musicianInstance?.history}">
+					<div class="fieldcontain well">
+						<span id="history-label" class="property-label"><b>Historia:</b></span>
 						<span class="property-value" aria-labelledby="history-label"><g:fieldValue bean="${musicianInstance}" field="history"/></span>
+					</div>
+					</g:if>
 
-				</li>
-				</g:if>
+					<div class="fieldcontain well">
+                		<g:link class="glyphicon" controller="activity" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Actividades</g:link>
+ 
+ 						<g:if test="${musicianInstance?.activities}">
+							<ol>
+								<g:each in="${musicianInstance.activities}" var="a">
+									<li>
+										<g:link controller="activity" action="show" id="${a.id}">${a.activity}</g:link>
+									</li>
+								</g:each>
+							</ol>
+						</g:if>
+                	</div>
 
-				<g:if test="${musicianInstance?.web}">
-				<li class="fieldcontain">
-					<span id="web-label" class="property-label"><b>Web:</b></span>
+                	<div class="fieldcontain well">
+                		<div class="row">
+	       					<div class="col-xs-12">
+		       					<g:if test="${musicianInstance.videos == null || musicianInstance.videos.size() < ApplicationState.MAX_VIDEOS }">
+		       						<g:link class="glyphicon" controller="video" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Videos</g:link>
+		       					</g:if>
+		       					<g:elseif test="${musicianInstance.videos.size() >= ApplicationState.MAX_VIDEOS}">
+		       						Videos
+				                </g:elseif>
+			       				<g:if test="${musicianInstance?.videos}">
+									<ol>
+										<g:each in="${musicianInstance.videos}" var="v">
+											<div>
+												<g:link controller="video" action="show" id="${v.id}">${v.url}</g:link>
+											</div>
+										</g:each>
+									</ol>
+								</g:if>
+							</div>
+						</div>
 
-						<span class="property-value" aria-labelledby="web-label"><g:fieldValue bean="${musicianInstance}" field="web"/></span>
+						<div class="row">
+							<div class="col-xs-12">
+								<g:if test="${musicianInstance.audios == null || musicianInstance.audios?.size() < ApplicationState.MAX_AUDIOS}">
+		   							<g:link class="glyphicon" controller="audio" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Audios</g:link>
+		       					</g:if>
+		       					<g:elseif test="${musicianInstance.audios.size() >= ApplicationState.MAX_AUDIOS}">
+				                	Audios
+				                </g:elseif>
+								<g:if test="${musicianInstance?.audios}">
+									<ol>
+										<g:each in="${musicianInstance.audios}" var="a">
+											<div>
+												<g:link controller="audio" action="show" id="${a.id}">${a.url}</g:link>
+											</div>
+										</g:each>
+									</ol>
+								</g:if>
+							</div>
+						</div>
 
-				</li>
-				</g:if>
+						<div class="row">
+			                <div class="col-xs-12">
+			                	<p>
+					                <g:if test="${musicianInstance.photos == null || musicianInstance.photos.size() < ApplicationState.MAX_PHOTOS }">
+			       						<g:link class="glyphicon" controller="photo" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Fotos</g:link>
+			       					</g:if>
+			       					<g:elseif test="${musicianInstance.photos.size() >= ApplicationState.MAX_PHOTOS}">
+					                	Fotos
+					                </g:elseif>
+				                </p>
+				                <g:if test="${musicianInstance?.photos}">
+									<g:each in="${musicianInstance.photos}" var="p">
+										<div class="img-tumbnail cols-5">
+											<g:link controller="photo" action="show" id="${p.id}"><img class="img-responsive max100pct" src="${ApplicationState.PHOTO_URL_BASE}${p.path}" /></g:link>
+										</div>
+									</g:each>
+								</g:if>
+							</div>
+						</div>
+                	</div>
+
 
 				<g:if test="${musicianInstance?.notes}">
-				<li class="fieldcontain">
+				<div class="fieldcontain well">
 					<span id="notes-label" class="property-label"><b>Notas:</b></span>
 
 						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${musicianInstance}" field="notes"/></span>
 
-				</li>
+				</div>
 				</g:if>
 
-				<g:if test="${musicianInstance?.tags}">
-				<li class="fieldcontain">
-					<span id="tags-label" class="property-label"><b><g:message code="musician.tags.label" default="Tags" />:</b></span>
+  			</div>
+        </div>
 
-					<g:each in="${musicianInstance.tags}" var="t">
-						<span class="property-value" aria-labelledby="tags-label">${t?.value?.encodeAsHTML()},</span>
-					</g:each>
-				</li>
-				</g:if>
+        <div class="row">
+	       <div class="col-sm-12">
+                <div class="well">
+     				<div>
+		        		<g:if test="${musicianInstance.suggestions == null || musicianInstance.suggestions.size() < ApplicationState.MAX_SUGGESTIONS }">
+							<g:link class="glyphicon" controller="suggestion" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Sugerencias</g:link>
+						</g:if>
+						<g:elseif test="${musicianInstance.suggestions.size() >= ApplicationState.MAX_SUGGESTIONS}">
+		                	Sugerencias
+		                </g:elseif>
 
-				<g:if test="${musicianInstance?.logoPath}">
-				<li class="fieldcontain">
-					<span id="logoPath-label" class="property-label"><b>Logo:</b></span>
+						<g:if test="${musicianInstance?.suggestions}">
+							<ol>
+								<g:each in="${musicianInstance.suggestions}" var="s">
+									<div>
+										<g:link controller="suggestion" action="show" id="${s.id}">${s.name}</g:link>
+									</div>
+								</g:each>
+							</ol>
+						</g:if>
+					<div>
 
-						<span class="property-value" aria-labelledby="logoPath-label">
-						<img class="img-responsive max300" src="${ApplicationState.LOGO_URL_BASE}${musicianInstance.logoPath}" />
-						</span>
+					<div>
+		            	<g:if test="${!musicianInstance?.datosFiscales}">
+		                	<g:link class="glyphicon" controller="datosFiscales" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Datos Fiscales</g:link>
+		                </g:if>
+		                <g:else>
+		                	<g:link class="glyphicon" controller="datosFiscales" action="edit" id="${musicianInstance.datosFiscales?.id}"> Datos Fiscales</g:link>
+		                </g:else>
+		            	<g:if test="${musicianInstance?.datosFiscales}">
+							<ol>
+								<div class="fieldcontain">
+										<g:link controller="datosFiscales" action="show" id="${musicianInstance?.datosFiscales?.id}">${musicianInstance?.datosFiscales?.razonSocial}</g:link>
 
-				</li>
-				</g:if>
+								</div>
+							</ol>
+						</g:if>
+					</div>
+				</div>
 
-				<g:if test="${musicianInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><b>Fecha de Creación:</b></span>
-
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="dd-MM-yyyy"  format="dd-MM-yyyy" date="${musicianInstance?.dateCreated}" /></span>
-
-				</li>
-				</g:if>
-
-				<g:if test="${musicianInstance?.genre}">
-				<li class="fieldcontain">
-					<span id="genre-label" class="property-label"><b>Genero:</b></span>
-
-						<span class="property-value" aria-labelledby="genre-label"><g:fieldValue bean="${musicianInstance}" field="genre"/></span>
-
-				</li>
-				</g:if>
-
-				<g:if test="${musicianInstance?.hasManager}">
-				<li class="fieldcontain">
-					<span id="hasManager-label" class="property-label"><b>Manager</b></span>
-
-						<span class="property-value" aria-labelledby="hasManager-label"><g:formatBoolean boolean="${musicianInstance?.hasManager}" /></span>
-
-				</li>
-				</g:if>
-
-				<g:if test="${musicianInstance?.formed}">
-				<li class="fieldcontain">
-					<span id="formed-label" class="property-label"><b>Creado:</b></span>
-
-						<span class="property-value" aria-labelledby="formed-label"><g:formatDate format="dd-MM-yyyy"  format="dd-MM-yyyy" date="${musicianInstance?.formed}" /></span>
-
-				</li>
-				</g:if>
-
-				<g:if test="${musicianInstance?.lastUpdated}">
-				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><b>Última Actualización</b></span>
-
-						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate format="dd-MM-yyyy"  format="dd-MM-yyyy" date="${musicianInstance?.lastUpdated}" /></span>
-
-				</li>
-				</g:if>
-
-
-
-      </ul>
-    </div>
-
-       <div class="col-md-8">
-					<table class="table table-striped">
-				       		<tbody>
-				       			<tr>
-				       				<th>
-				       					<g:if test="${musicianInstance.videos == null || musicianInstance.videos.size() < ApplicationState.MAX_VIDEOS }">
-				       						<g:link class="glyphicon glyphicon-floppy-disk" controller="video" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Videos</g:link>
-				       					</g:if>
-				       					<g:elseif test="${musicianInstance.videos.size() >= ApplicationState.MAX_VIDEOS}">
-				       						Videos
-						                </g:elseif>
-
-				       				</th>
-				       				<th>
-					       				<g:if test="${musicianInstance?.videos}">
-											<ol>
-												<g:each in="${musicianInstance.videos}" var="v">
-													<li>
-														<g:link controller="video" action="show" id="${v.id}">${v.url}</g:link>
-													</li>
-												</g:each>
-											<ol>
-										</g:if>
-				       				</th>
-
-				       				</tr>
-
-					                <tr>
-						                <th>
-						                <g:if test="${musicianInstance.photos == null || musicianInstance.photos.size() < ApplicationState.MAX_PHOTOS }">
-				       						<g:link class="glyphicon glyphicon-floppy-disk" controller="photo" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Fotos</g:link>
-				       					</g:if>
-				       					<g:elseif test="${musicianInstance.photos.size() >= ApplicationState.MAX_PHOTOS}">
-						                	Fotos
-						                </g:elseif>
-
-						                </th>
-						                <th>
-							                <g:if test="${musicianInstance?.photos}">
-												<ol>
-													<g:each in="${musicianInstance.photos}" var="p">
-														<li>
-															<g:link controller="photo" action="show" id="${p.id}">${p.path}</g:link>
-														</li>
-													</g:each>
-												</ol>
-											</g:if>
-
-						                </th>
-									</tr>
-
-									<tr>
-										<th>
-											<g:if test="${musicianInstance.audios == null || musicianInstance.audios?.size() < ApplicationState.MAX_AUDIOS}">
-				       							<g:link class="glyphicon glyphicon-floppy-disk" controller="audio" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Audios</g:link>
-					       					</g:if>
-					       					<g:elseif test="${musicianInstance.audios.size() >= ApplicationState.MAX_AUDIOS}">
-							                	Audios
-							                </g:elseif>
-										</th>
-										<th>
-											<g:if test="${musicianInstance?.audios}">
-												<ol>
-													<g:each in="${musicianInstance.audios}" var="a">
-														<li>
-															<g:link controller="audio" action="show" id="${a.id}">${a.url}</g:link>
-														</li>
-													</g:each>
-												</ol>
-											</g:if>
-
-										</th>
-									</tr>
-					                <tr>
-					                	<th>
-					                		<g:if test="${musicianInstance.suggestions == null || musicianInstance.suggestions.size() < ApplicationState.MAX_SUGGESTIONS }">
-				       							<g:link class="glyphicon glyphicon-floppy-disk" controller="suggestion" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Sugerencias</g:link>
-					       					</g:if>
-					       					<g:elseif test="${musicianInstance.suggestions.size() >= ApplicationState.MAX_SUGGESTIONS}">
-							                	Sugerencias
-							                </g:elseif>
-
-			       						</th>
-					                	<th>
-											<g:if test="${musicianInstance?.suggestions}">
-												<ol>
-													<g:each in="${musicianInstance.suggestions}" var="s">
-														<li>
-															<g:link controller="suggestion" action="show" id="${s.id}">${s.name}</g:link>
-														</li>
-													</g:each>
-												</ol>
-											</g:if>
-					                	</th>
-									</tr>
-									<tr>
-									    <th>
-									    	<g:link class="glyphicon glyphicon-floppy-disk" controller="contact" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Contactos</g:link>
-									    </th>
-									    <th>
-									    	<g:if test="${musicianInstance?.contacts}">
-										    	<ol>
-													<g:each in="${musicianInstance.contacts}" var="c">
-														<li>
-															<g:link controller="contact" action="show" id="${c.id}">${c.firstName} ${c.lastName}</g:link>
-														</li>
-													</g:each>
-										    	</ol>
-										    </g:if>
-									    </th>
-									</tr>
-									<tr>
-					                	<th>
-					                		<g:link class="glyphicon glyphicon-floppy-disk" controller="activity" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Actividades</g:link>
-					                	</th>
-					                	<th>
-											<g:if test="${musicianInstance?.activities}">
-												<ol>
-													<g:each in="${musicianInstance.activities}" var="a">
-														<li>
-															<g:link controller="activity" action="show" id="${a.id}">${a.activity}</g:link>
-														</li>
-													</g:each>
-												</ol>
-											</g:if>
-					                	</th>
-									</tr>
-									<tr>
-						                <th>
-							                <g:if test="${!musicianInstance?.social}">
-							                	<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> <g:message code="social.label" /></g:link>
-						                	</g:if>
-						                	<g:else>
-												<g:link class="glyphicon glyphicon-floppy-disk" controller="social" action="edit" id="${musicianInstance?.social.id}"> <g:message code="social.label"/> <g:message code="social.label" /></g:link>
-						                	</g:else>
-						                </th>
-						                <th>
-						                	<g:if test="${musicianInstance?.social}">
-												<ol>
-													<g:if test="${musicianInstance?.social?.facebook}">
-														<li>
-															Facebook: ${musicianInstance?.social.facebook}
-														</li>
-													</g:if>
-													<g:if test="${musicianInstance?.social?.googlePlus}">
-														<li>
-															g+: ${musicianInstance?.social.googlePlus}
-														</li>
-													</g:if>
-													<g:if test="${musicianInstance?.social?.instagram}">
-														<li>
-															Instagram: ${musicianInstance?.social.instagram}
-														</li>
-													</g:if>
-													<g:if test="${musicianInstance?.social?.linkedin}">
-														<li>
-															Linkedin: ${musicianInstance?.social.linkedin}
-														</li>
-													</g:if>
-													<g:if test="${musicianInstance?.social?.twitter}">
-														<li>
-															Twitter: ${musicianInstance?.social.twitter}
-														</li>
-													</g:if>
-													<g:if test="${musicianInstance?.social?.youtube}">
-														<li>
-															Youtube: ${musicianInstance?.social.youtube}
-														</li>
-													</g:if>
-													<g:if test="${musicianInstance?.social?.other}">
-														<li>
-															Otra: ${musicianInstance?.social.other}
-														</li>
-													</g:if>
-												</ol>
-
-											</g:if>
-						                </th>
-					                </tr>
-					                <tr>
-					                <th>
-					                	<g:if test="${!musicianInstance?.datosFiscales}">
-						                	<g:link class="glyphicon glyphicon-floppy-disk" controller="datosFiscales" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Datos Fiscales</g:link>
-						                </g:if>
-						                <g:else>
-						                	<g:link class="glyphicon glyphicon-floppy-disk" controller="datosFiscales" action="edit" id="${musicianInstance.datosFiscales?.id}"> Datos Fiscales</g:link>
-						                </g:else>
-					                </th>
-					                <th>
-					                	<g:if test="${musicianInstance?.datosFiscales}">
-											<ol>
-												<li class="fieldcontain">
-														<g:link controller="datosFiscales" action="show" id="${musicianInstance?.datosFiscales?.id}">${musicianInstance?.datosFiscales?.razonSocial}</g:link>
-
-												</li>
-											</ol>
-										</g:if>
-					                </th>
-				       				</tr>
-				       		</tbody>
-				       	</table>
+			</div>
        	</div>
 
+       	<div class="clearfix">
         		<g:form url="[resource:musicianInstance, action:'delete']" method="DELETE">
 					<div class="aling-center">
 						<g:link class="btn btn-success blank" action="edit" resource="${musicianInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

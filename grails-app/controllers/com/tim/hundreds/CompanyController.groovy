@@ -12,6 +12,8 @@ class CompanyController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    static showMe = true /*Parametro para aparecer en el menú*/
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Company.list(params), model:[companyInstanceCount: Company.count()]

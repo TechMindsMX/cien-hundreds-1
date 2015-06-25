@@ -11,7 +11,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class DatosFiscalesController {
     def datosFiscalesContextService
 
-    static hideMe = true /*Parametro para que NO aparezca en el menú*/
+    static showMe = false /*Parametro para aparecer en el menú*/
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 

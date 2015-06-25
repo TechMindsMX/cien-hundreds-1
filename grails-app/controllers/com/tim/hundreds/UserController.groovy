@@ -6,6 +6,9 @@ import grails.plugin.springsecurity.annotation.Secured
 class UserController {
 
   static defaultAction = "create"
+
+  static showMe = true /*Parametro para aparecer en el menú*/
+  
   def userService
 
   def index(){
