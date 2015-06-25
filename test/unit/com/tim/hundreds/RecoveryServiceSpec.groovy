@@ -18,6 +18,9 @@ class RecoveryServiceSpec extends Specification {
     service.userHelperService = userHelperService
     service.recoveryCollaboratorService = recoveryCollaboratorService
     service.registrationHelperService = registrationHelperService
+    grailsApplication.config.forgot.password.url = 'forgotPasswordUrl'
+    grailsApplication.config.new.user.url = 'newUserUrl'
+    grailsApplication.config.forgot.username.url = 'forgotUsernameUrl'
   }
 
   void "should generate registration code for email"() {
@@ -31,7 +34,7 @@ class RecoveryServiceSpec extends Specification {
     recoveryCollaboratorService.generateToken(email) >> message
     service.generateRegistrationCodeForEmail(email)
   then: "We expect send message to the email service"
-    1 * restService.sendCommand(message, _ as String)
+    1 * restService.sendCommand(message, 'forgotPasswordUrl')
   }
 
   void "should not generate registration code for email since user not found"() {
@@ -104,7 +107,7 @@ class RecoveryServiceSpec extends Specification {
     userHelperService.findByEmail(email) >> user
     1 * user.setProperty('enabled',true)
     1 * user.save()
-    1 * restService.sendCommand(_ as NameCommand, ApplicationState.NEW_USER_URL)
+    1 * restService.sendCommand(_ as NameCommand, 'newUserUrl')
   }
 
   void "should not confirm account for token since user not exist"(){
@@ -130,7 +133,7 @@ class RecoveryServiceSpec extends Specification {
   then: "We expect save new password"
     user.username >> 'josdem'
     userHelperService.findByEmail(email) >> user
-    1 * restService.sendCommand(_ as NameCommand, ApplicationState.FORGOT_USERNAME_URL)
+    1 * restService.sendCommand(_ as NameCommand, 'forgotUsernameUrl')
   }
 
   void "should not send a message to recover user since user not exist"(){
