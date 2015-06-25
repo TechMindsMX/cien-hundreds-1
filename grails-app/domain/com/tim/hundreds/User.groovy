@@ -31,6 +31,14 @@ class User {
 		password column: '`password`'
 	}
 
+	static namedQueries = {
+		findByUserRole { String userRole ->
+			profile {
+				eq "email", userRole
+			}
+		}
+	}
+
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this).collect { it.role }
 	}

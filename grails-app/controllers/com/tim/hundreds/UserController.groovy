@@ -42,4 +42,10 @@ class UserController {
       respond command, view: 'create'
     }
   }
+
+  def admins(Integer max) {
+    params.max = Math.min(max ?: 10,100)
+    respond User.findByUserRole("cien").list(params)
+    // , model:[userInstanceCount: UserCommand.count()]
+  }
 }
