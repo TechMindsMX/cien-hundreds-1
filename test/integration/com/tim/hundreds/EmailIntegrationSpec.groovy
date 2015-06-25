@@ -19,7 +19,7 @@ class EmailIntegrationSpec extends Specification {
       contact.birthDate = new Date()
       contact.entryDate = new Date()
     and: "A user"
-      def user = new User(username:'josdem',password:'password')
+      def user = new User(username:'josdemEmailSpec1',password:'password')
       def profile = new Profile(email:'josdemEmailSpec1@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
       user.profile = profile
     and: "A genre"
@@ -56,7 +56,7 @@ class EmailIntegrationSpec extends Specification {
       contact.birthDate = new Date()
       contact.entryDate = new Date()
     and: "A user"
-      def user = new User(username:'josdem',password:'password')
+      def user = new User(username:'josdemEmailSpec2',password:'password')
       def profile = new Profile(email:'josdemEmailSpec2@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
       user.profile = profile
     and: "A genre"
