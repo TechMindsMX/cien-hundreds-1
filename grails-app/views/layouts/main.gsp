@@ -61,10 +61,16 @@
                         <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Menu</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                           <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                            <g:if test="${!c.getStaticPropertyValue('hideMe', Boolean) && !(c.name == 'Dbdoc')}">
+                            <g:if test="${c.getStaticPropertyValue('showMe', Boolean)}">
                                 <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
                             </g:if>
                           </g:each>
+                          <sec:ifLoggedIn>
+                              <li><g:remoteLink class="logout" controller="logout">${message(code: 'springSecurity.logout.link')}</g:remoteLink></li>
+                          </sec:ifLoggedIn>
+                          <sec:ifNotLoggedIn>
+                              <li><g:link controller="login">${message(code: 'springSecurity.login.link')}</g:link></li>
+                          </sec:ifNotLoggedIn>
                         </ul>
                     </li>
 
@@ -85,6 +91,38 @@
         <g:layoutBody/>
 
         <div class="well">
+        <footer>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h3>Acerca de</h3>
+                    <ul>
+                        <li>
+                            <g:link controller="static" params="[content:'what']">${message(code: 'what.label', default: 'Que son los 100 Hundreds?')}</g:link>
+                        </li>
+                        <li>
+                            <g:link controller="static" params="[content:'how']">${message(code: 'how.label', default: 'Como funciona?')}</g:link>
+                        </li>
+                        <li>
+                            <g:link controller="static" params="[content:'who']">${message(code: 'who.label', default: 'Quienes somos?')}</g:link>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <h3>Ayuda</h3>
+                    <ul>
+                        <li>
+                            <g:link controller="static" params="[content:'faq']">${message(code: 'faq.label', default: 'FAQ')}</g:link>
+                        </li>
+                        <li>
+                            <g:link controller="static" params="[content:'terms']">${message(code: 'terms.label', default: 'Términos y condiciones')}</g:link>
+                        </li>
+                        <li>
+                            <g:link controller="static" params="[content:'privacy']">${message(code: 'privacy.label', default: 'Aviso de privacidad')}</g:link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
             <p>Copyright 2015 100 Hundreds.</p>
         </div>
     </div>

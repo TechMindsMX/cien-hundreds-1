@@ -7,6 +7,8 @@ class FacilitatorController {
 
   static defaultAction = "create"
 
+  static showMe = true /*Parametro para aparecer en el menú*/
+
   def userService
   def photoStorerService
   def resumeStorerService
