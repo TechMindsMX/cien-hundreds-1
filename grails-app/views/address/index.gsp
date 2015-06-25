@@ -52,7 +52,7 @@
 					
 						<td>${fieldValue(bean: addressInstance, field: "state")}</td>
 					
-						<td>${fieldValue(bean: addressInstance, field: "country")}</td>
+						<td><g:country code="${addressInstance.country}" /></td>
 					
 					</tr>
 				</g:each>

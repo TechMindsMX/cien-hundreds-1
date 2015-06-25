@@ -3,6 +3,16 @@
 <g:set var="labelWidth" value="col-sm-2" />
 <g:set var="inputWidth" value="col-sm-10 col-lg-6" />
 
+<div class="form-group fieldcontain ${hasErrors(bean: addressInstance, field: 'country', 'error')} required">
+	<label for="country" class="${labelWidth} control-label">
+		<g:message code="address.country.label" default="Country" />
+		<span class="required-indicator">*</span>
+	</label>
+	<div class="${inputWidth}">
+		<g:countrySelect name="country" value="${addressInstance?.country}" noSelection="['':'-Seleccione-']" class="form-control" />
+	</div>
+</div>
+
 <div class="form-group fieldcontain ${hasErrors(bean: addressInstance, field: 'street', 'error')} required">
 	<label for="street" class="${labelWidth} control-label">
 		<g:message code="address.street.label" default="Street" />
@@ -50,16 +60,6 @@
 	</label>
 	<div class="${inputWidth}">
 		<g:textField name="state" maxlength="100" required="" value="${addressInstance?.state}" class="form-control" />
-	</div>
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: addressInstance, field: 'country', 'error')} required">
-	<label for="country" class="${labelWidth} control-label">
-		<g:message code="address.country.label" default="Country" />
-		<span class="required-indicator">*</span>
-	</label>
-	<div class="${inputWidth}">
-		<g:textField name="country" maxlength="100" required="" value="${addressInstance?.country}" class="form-control" />
 	</div>
 </div>
 
