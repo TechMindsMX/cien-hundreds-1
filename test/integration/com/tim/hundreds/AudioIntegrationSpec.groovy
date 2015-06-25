@@ -10,8 +10,10 @@ class AudioIntegrationSpec extends Specification {
   @Shared musician
 
   def setupSpec(){
+    def genre = new Genre(name: 'Trance').save()
+
     musician = new Musician(name:'name',history:'history')
-    musician.genre = GenreType.TRANCE
+    musician.genre = genre
     musician.hasManager = true
     musician.dateCreated = new Date()
     musician.lastUpdated = new Date()

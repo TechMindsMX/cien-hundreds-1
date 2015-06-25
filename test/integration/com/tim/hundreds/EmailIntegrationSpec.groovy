@@ -10,19 +10,23 @@ class EmailIntegrationSpec extends Specification {
   def emailService
 
   void "Should save an contact with email"() {
-    given: "An contact"
+    given: "A musician role"
+      def musicianRole = new MusicianRole(name: 'Manager').save()
+    and: "An contact"
       def contact = new Contact(firstName:'firstName',lastName:'lastName',motherLastName:'motherLastName')
       contact.type = GenderType.MALE
-      contact.role = RoleType.MANAGER
+      contact.role = musicianRole
       contact.birthDate = new Date()
       contact.entryDate = new Date()
     and: "A user"
       def user = new User(username:'josdem',password:'password')
       def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
       user.profile = profile
+    and: "A genre"
+      def genre = new Genre(name: 'Trance').save()
     and: "A Musician"
       def musician = new Musician(name:'name',history:'history')
-      musician.genre = GenreType.TRANCE
+      musician.genre = genre
       musician.hasManager = true
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()
@@ -43,19 +47,23 @@ class EmailIntegrationSpec extends Specification {
   }
 
   void "Should not save an contact with more than 3 emails"() {
-    given: "An contact"
+    given: "A musician role"
+      def musicianRole = new MusicianRole(name: 'Manager').save()
+    and: "An contact"
       def contact = new Contact(firstName:'firstName',lastName:'lastName',motherLastName:'motherLastName')
       contact.type = GenderType.MALE
-      contact.role = RoleType.MANAGER
+      contact.role = musicianRole
       contact.birthDate = new Date()
       contact.entryDate = new Date()
     and: "A user"
       def user = new User(username:'josdem',password:'password')
       def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
       user.profile = profile
+    and: "A genre"
+      def genre = new Genre(name: 'Trance').save()
     and: "A Musician"
       def musician = new Musician(name:'name',history:'history')
-      musician.genre = GenreType.TRANCE
+      musician.genre = genre
       musician.hasManager = true
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()

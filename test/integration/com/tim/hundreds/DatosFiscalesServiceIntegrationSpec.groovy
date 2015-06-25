@@ -11,9 +11,11 @@ class DatosFiscalesServiceIntegrationSpec extends Specification {
   def datosFiscalesService
 
   void "Should save datosFiscalesInstance to musician"() {
-    given: "An instance"
+    given: "An genre"
+      def genre = new Genre(name: 'Trance').save()
+    and: "An instance"
       def instance = new Musician(name:'name',history:'history')
-      instance.genre = GenreType.TRANCE
+      instance.genre = genre
       instance.hasManager = true
       instance.dateCreated = new Date()
       instance.lastUpdated = new Date()

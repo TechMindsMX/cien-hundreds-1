@@ -11,8 +11,11 @@ class AddressServiceIntegrationSpec extends Specification {
   @Shared company
 
   def setupSpec(){
+    def genre = new Genre(name: 'Trance').save()
+    def musicianRole = new MusicianRole(name: 'Manager').save()
+
     musician = new Musician(name:'name',history:'history')
-    musician.genre = GenreType.TRANCE
+    musician.genre = genre
     musician.hasManager = true
     musician.dateCreated = new Date()
     musician.lastUpdated = new Date()
@@ -22,7 +25,7 @@ class AddressServiceIntegrationSpec extends Specification {
 
     contact = new Contact(firstName:'firstName',middleName:'middleName',lastName:'lastName')
     contact.type = GenderType.MALE
-    contact.role = RoleType.MANAGER
+    contact.role = musicianRole
     contact.birthDate = new Date()
     contact.entryDate = new Date()
 
