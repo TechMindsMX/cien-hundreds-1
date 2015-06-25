@@ -6,14 +6,11 @@ import grails.validation.ValidationException
 
 class AudioIntegrationSpec extends Specification {
   def audioService
-  @Shared user
-  @Shared musician
 
-  def setupSpec(){
-    def genre = new Genre(name: 'Trance').save()
-
+  void "Should save an musician with audio"() {
+  given: "Musician"
     musician = new Musician(name:'name',history:'history')
-    musician.genre = genre
+    musician.genre = new Genre(name: 'Trance').save()
     musician.hasManager = true
     musician.dateCreated = new Date()
     musician.lastUpdated = new Date()
@@ -24,20 +21,32 @@ class AudioIntegrationSpec extends Specification {
     user.profile = profile
     user.addToMusicians(musician)
     user.save flush: true
-  }
-
-  void "Should save an musician with audio"() {
-    given: "An audio"
+    and: "An audio"
       def audioInstance = new Audio(url:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
       audioInstance.musician = musician
     when: "We save audio"
       def result = audioService.saveAudio(audioInstance)
     then:"We validate audio"
       result
+    cleanup: "Delete user"
+    user.delete()
   }
 
   void "Should not save an musician with more than 5 audios"() {
-    given: "Some audios"
+    given: "Musician"
+    musician = new Musician(name:'name',history:'history')
+    musician.genre = new Genre(name: 'Trance').save()
+    musician.hasManager = true
+    musician.dateCreated = new Date()
+    musician.lastUpdated = new Date()
+    musician.formed = new Date()
+
+    user = new User(username:'josdemAudioIntegration1',password:'password')
+    def profile = new Profile(email:'josdemAudioIntegration1@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+    user.profile = profile
+    user.addToMusicians(musician)
+    user.save flush: true
+    and: "Some audios"
       def audioInstance1 = new Audio(url:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
       audioInstance1.musician = musician
       def audioInstance2 = new Audio(url:'https://soundcloud.com/aboveandbeyond/all-over-the-world-feat-alex-vargas')
@@ -60,6 +69,8 @@ class AudioIntegrationSpec extends Specification {
       audioService.saveAudio(audioInstance6)
     then:"We expect exception"
         thrown ValidationException
+    cleanup:"Deleteuser"
+      user.delete()
   }
 
 
