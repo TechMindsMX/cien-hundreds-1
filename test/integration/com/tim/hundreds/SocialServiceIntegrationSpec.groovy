@@ -13,7 +13,7 @@ class SocialServiceIntegrationSpec extends Specification {
   void "Should save socialInstance to musician"() {
     given: "An instance"
       def instance = new Musician(name:'name',history:'history')
-      instance.genre = Genre.TRANCE
+      instance.genre = GenreType.TRANCE
       instance.hasManager = true
       instance.dateCreated = new Date()
       instance.lastUpdated = new Date()

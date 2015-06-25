@@ -11,7 +11,7 @@ class AudioIntegrationSpec extends Specification {
 
   def setupSpec(){
     musician = new Musician(name:'name',history:'history')
-    musician.genre = Genre.TRANCE
+    musician.genre = GenreType.TRANCE
     musician.hasManager = true
     musician.dateCreated = new Date()
     musician.lastUpdated = new Date()

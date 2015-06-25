@@ -87,14 +87,15 @@
 	</div>
 </div>
 
+
 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'role', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="role">
-		<g:message code="contact.role.label" default="Role" />
-		<span class="required-indicator">*</span>
-	</label>
-	<div class="${session.inputWidth}">
-		<g:select class="form-control" name="role" from="${com.tim.hundreds.RoleType?.values()}" keys="${com.tim.hundreds.RoleType.values()*.name()}" required="" value="${contactInstance?.role?.name()}" />
-	</div>
+  <label class="${session.labelWidth} control-label" for="role">
+    <g:message code="contact.role.label" default="Role" />
+    <span class="required-indicator">*</span>
+  </label>
+  <div class="${session.inputWidth}">
+    <g:select id="role" name="role.id" from="${com.tim.hundreds.MusicianRole.list()}" optionKey="id" optionValue="name" required="" value="${contactInstance?.role?.id}" class="form-control many-to-one"/>
+  </div>
 </div>
 
 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'type', 'error')} required">

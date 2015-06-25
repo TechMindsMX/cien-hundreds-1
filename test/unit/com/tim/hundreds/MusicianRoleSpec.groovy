@@ -4,10 +4,10 @@ import grails.test.mixin.TestFor
 import spock.lang.Specification
 
 /**
- * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
+ * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(RecoveryController)
-class RecoveryControllerSpec extends Specification {
+@TestFor(MusicianRole)
+class MusicianRoleSpec extends Specification {
 
     def setup() {
     }
