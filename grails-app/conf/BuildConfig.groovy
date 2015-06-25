@@ -32,6 +32,9 @@ grails.project.dependency.resolution = {
     checksums true // Whether to verify checksums on resolve
     legacyResolve false // whether to do a secondary resolve on plugin installation, not advised and here for backwards compatibility
 
+    def gebVersion = "0.10.0"
+    def seleniumVersion = "2.45.0"
+
     repositories {
         inherits true // Whether to inherit repository definitions from plugins
 
@@ -51,6 +54,14 @@ grails.project.dependency.resolution = {
         runtime 'mysql:mysql-connector-java:5.1.29'
         // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
+        test("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion")
+
+        // You usually only need one of these, but this project uses both
+        test "org.gebish:geb-spock:$gebVersion"
+        test "org.gebish:geb-junit4:$gebVersion"
+
+        compile 'org.apache.httpcomponents:httpcore:4.3'
+        compile 'org.apache.httpcomponents:httpclient:4.3'
     }
 
     plugins {
@@ -74,5 +85,6 @@ grails.project.dependency.resolution = {
         //compile ":less-asset-pipeline:1.10.0"
         //compile ":coffee-asset-pipeline:1.8.0"
         //compile ":handlebars-asset-pipeline:1.3.0.3"
+        test ":geb:$gebVersion"
     }
 }
