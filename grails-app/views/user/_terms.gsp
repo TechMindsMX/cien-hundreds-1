@@ -1,1 +1,1 @@
-<p><g:message code="term.text" /></p>
+<p><g:message code="terms.text" /></p>
