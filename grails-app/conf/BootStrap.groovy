@@ -4,6 +4,7 @@ import com.tim.hundreds.Profile
 import com.tim.hundreds.UserRole
 import com.tim.hundreds.Genre
 import com.tim.hundreds.MusicianRole
+import com.tim.hundreds.BusinessActivity
 
 import grails.util.Environment
 
@@ -16,6 +17,7 @@ class BootStrap {
       createBuyerRole()
       createGenres()
       createMusicianRoles()
+      createBusinessActivity()
    }
   }
   def destroy = {
@@ -74,7 +76,13 @@ class BootStrap {
 
   def createGenres(){
     new Genre(name:'Ambient').save()
+    new Genre(name:'Ballad').save()
+    new Genre(name:'Blues').save()
+    new Genre(name:'Jazz').save()
+    new Genre(name:'Latin').save()
     new Genre(name:'Groove').save()
+    new Genre(name:'Progressive').save()
+    new Genre(name:'Pop').save()
     new Genre(name:'Trance').save()
   }
 
@@ -83,4 +91,10 @@ class BootStrap {
     new MusicianRole(name:'Element').save()
     new MusicianRole(name:'Other').save()
   }
+
+  def createBusinessActivity(){
+    new BusinessActivity(name:'Products').save()
+    new BusinessActivity(name:'Services').save()
+  }
+
 }

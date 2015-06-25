@@ -14,7 +14,7 @@ class TagServiceIntegrationSpec extends Specification {
   void """when we have tags: #tagsComma as String we should add to the musician tags as collection"""() {
   given: "A musician"
     def musician = new Musician(name:'name',history:'history')
-    musician.genre = GenreType.TRANCE
+    musician.genre = new Genre(name: 'Trance').save()
     musician.hasManager = true
     musician.dateCreated = new Date()
     musician.lastUpdated = new Date()

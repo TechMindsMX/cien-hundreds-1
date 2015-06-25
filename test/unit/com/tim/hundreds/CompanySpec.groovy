@@ -26,16 +26,16 @@ class CompanySpec extends Specification {
    then: "We validate command"
     result == company.validate()
    where: "We have next cases"
-   name          | description | web                           | logoPath                                   | corporatePressPath                         | notes   | tags   | type                   || result
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || true
-   'A'           | 'd'         | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || true
-   'Anjunabeats' | 'desc'      | null                          | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || true
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | null                                   | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || true
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | null                                   | 'notes' | 'tags' | ActivityType.PRODUCTOS || true
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'n'     | 'tags' | ActivityType.PRODUCTOS || true
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 't'    | ActivityType.PRODUCTOS || true
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | null    | 'tags' | ActivityType.PRODUCTOS || true
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | null   | ActivityType.PRODUCTOS || true
+   name          | description | web                           | logoPath                               | corporatePressPath                     | notes   | tags   | type                                  || result
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || true
+   'A'           | 'd'         | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || true
+   'Anjunabeats' | 'desc'      | null                          | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || true
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | null                                   | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || true
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | null                                   | 'notes' | 'tags' | new BusinessActivity(name:'Products') || true
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'n'     | 'tags' | new BusinessActivity(name:'Products') || true
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 't'    | new BusinessActivity(name:'Products') || true
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | null    | 'tags' | new BusinessActivity(name:'Products') || true
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | null   | new BusinessActivity(name:'Products') || true
   }
 
   @Unroll
@@ -54,21 +54,21 @@ class CompanySpec extends Specification {
    then: "We validate command"
     result == company.validate()
    where: "We have next cases"
-   name          | description | web                           | logoPath                               | corporatePressPath                     | notes   | tags   | type                   || result
-   null          | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || false
-   ''            | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || false
-   'Anjunabeats' | null        | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || false
-   'Anjunabeats' | ''          | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || false
-   'Anjunabeats' | 'desc'      | 'http://'                     | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || false
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.pn'  | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || false
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.pngd'| '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || false
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996'     | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | ActivityType.PRODUCTOS || false
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pd'  | 'notes' | 'tags' | ActivityType.PRODUCTOS || false
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdfs'| 'notes' | 'tags' | ActivityType.PRODUCTOS || false
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.'    | 'notes' | 'tags' | ActivityType.PRODUCTOS || false
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | ''      | 'tags' | ActivityType.PRODUCTOS || false
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | ''     | ActivityType.PRODUCTOS || false
-   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | null                   || false
+   name          | description | web                           | logoPath                               | corporatePressPath                     | notes   | tags   | type                                  || result
+   null          | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
+   ''            | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
+   'Anjunabeats' | null        | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
+   'Anjunabeats' | ''          | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
+   'Anjunabeats' | 'desc'      | 'http://'                     | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.pn'  | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.pngd'| '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996'     | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pd'  | 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdfs'| 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.'    | 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | ''      | 'tags' | new BusinessActivity(name:'Products') || false
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | ''     | new BusinessActivity(name:'Products') || false
+   'Anjunabeats' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | null                                  || false
   }
 
 }

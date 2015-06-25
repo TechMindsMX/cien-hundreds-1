@@ -1,7 +1,5 @@
 package com.tim.hundreds
 
-
-
 class Company {
   String uuid = TokenService.generateToken()
   String name
@@ -15,8 +13,7 @@ class Company {
   Address address
   Social social
   DatosFiscales datosFiscales
-
-  ActivityType type
+  BusinessActivity type
 
   static belongsTo = [user : User]
 

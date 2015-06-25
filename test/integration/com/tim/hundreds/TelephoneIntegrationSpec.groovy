@@ -13,7 +13,7 @@ class TelephoneIntegrationSpec extends Specification {
     given: "An contact"
       def contact = new Contact(firstName:'firstName',lastName:'lastName',motherLastName:'motherLastName')
       contact.type = GenderType.MALE
-      contact.role = RoleType.MANAGER
+      contact.role = new MusicianRole(name: 'Manager').save()
       contact.birthDate = new Date()
       contact.entryDate = new Date()
     and: "A user"
@@ -22,7 +22,7 @@ class TelephoneIntegrationSpec extends Specification {
       user.profile = profile
     and: "A Musician"
       def musician = new Musician(name:'name',history:'history')
-      musician.genre = GenreType.TRANCE
+      musician.genre = new Genre(name: 'Trance').save()
       musician.hasManager = true
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()
@@ -47,7 +47,7 @@ class TelephoneIntegrationSpec extends Specification {
     given: "An contact"
       def contact = new Contact(firstName:'firstName',lastName:'lastName',motherLastName:'motherLastName')
       contact.type = GenderType.MALE
-      contact.role = RoleType.MANAGER
+      contact.role = new MusicianRole(name: 'Manager').save()
       contact.birthDate = new Date()
       contact.entryDate = new Date()
     and: "A user"
@@ -56,7 +56,7 @@ class TelephoneIntegrationSpec extends Specification {
       user.profile = profile
     and: "A Musician"
       def musician = new Musician(name:'name',history:'history')
-      musician.genre = GenreType.TRANCE
+      musician.genre = new Genre(name: 'Trance').save()
       musician.hasManager = true
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()
