@@ -63,7 +63,7 @@ class AudioIntegrationSpec extends Specification {
   }
 
   def cleanupSpec(){
-    user.delete()
+    user.delete flush: true
   }
 
 }
