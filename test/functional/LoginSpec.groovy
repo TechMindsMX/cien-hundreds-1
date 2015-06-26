@@ -1,6 +1,7 @@
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import page.LoginPage
+import page.HomePage
 
 @Stepwise
 class LoginSpec extends GebReportingSpec {
