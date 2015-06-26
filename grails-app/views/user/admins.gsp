@@ -1,5 +1,6 @@
-
 <%@ page import="com.tim.hundreds.User" %>
+<%@ page import="com.tim.hundreds.ApplicationState" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,17 +24,40 @@
 			<table class="table table-stripped">
 			<thead>
 					<tr>
-					
+						<th>${message(code: 'user.photo.label', default: 'Foto')}</th>
 						<g:sortableColumn property="name" title="${message(code: 'user.name.label', default: 'Name')}" />
-					
+						<g:sortableColumn property="role" title="${message(code: 'user.role.label', default: 'Rol')}" />
+						<g:sortableColumn property="userEmails" title="${message(code: 'user.userEmails.label', default: 'Correos electrónicos')}" />
+						<g:sortableColumn property="userTelephone" title="${message(code: 'user.userTelephone.label', default: 'Telefonos')}" />
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${userInstanceList}" status="i" var="userInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "username")}</g:link></td>
-					
+						<td>
+ 							<g:if test="${!userInstance?.profile?.photoPath}">
+								<img class="img-responsive max300" src="${ApplicationState.PHOTO_URL_BASE}${userInstance.profile.photoPath}" />
+							</g:if>
+						</td>
+						<td><g:link action="show" id="${userInstance.id}">
+							<g:if test="${userInstance?.profile?.firstName}">
+	 						${userInstance?.profile?.firstName?.encodeAsHTML()}
+	 						</g:if> 
+							<g:if test="${userInstance?.profile?.lastName}">
+	 						${userInstance?.profile?.lastName?.encodeAsHTML()}
+	 						</g:if>
+ 						</g:link></td>
+						<td>${userInstance?.profile?.role?.encodeAsHtml()}</td>
+						<td>
+							<g:if test="${!userInstance?.userEmails.isEmpty()}">
+							<g:each in="${userInstance?.userEmails}" var="e"><p>${e.address?.encodeAsHtml()}</p></g:each>
+							</g:if>
+						</td>
+						<td>
+							<g:if test="${!userInstance?.userTelephone.isEmpty()}">
+							<g:each in="${userInstance?.userTelephone}" var="t"><p>${t.phone?.encodeAsHtml()}</p></g:each>
+							</g:if>
+						</td>
 					</tr>
 				</g:each>
 				</tbody>
