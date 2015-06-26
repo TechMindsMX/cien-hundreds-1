@@ -13,8 +13,7 @@ class BootStrap {
   if(Environment.current == Environment.DEVELOPMENT || Environment.current == Environment.TEST) {
       createUserRole()
       createAdminRole()
-      createFacilitatorRole()
-      createBuyerRole()
+      createAllRole()
       createGenres()
       createMusicianRoles()
       createBusinessActivity()
@@ -54,24 +53,11 @@ class BootStrap {
     assert UserRole.count() == 2
   }
 
-  def createFacilitatorRole(){
-    def facilitatorRole = new Role(authority: 'ROLE_FACILITATOR').save(flush: true)
-    def user = new User(username: 'facilitator', password: '12345678')
-    def  profile = new Profile(email:'facilitator@techminds.com.mx', firstName:'facilitator', middleName:'middleName', lastName:'lastName').save()
-    user.profile = profile
-    user.enabled = true
-    user.save(flush: true)
-
-    UserRole.create user, facilitatorRole, true
-
-    assert User.count() == 3
-    assert Role.count() == 3
-    assert UserRole.count() == 3
-  }
-
-  def createBuyerRole(){
-    def buyerRole = new Role(authority: 'ROLE_BUYER').save(flush: true)
-    assert Role.count() == 4
+  def createAllRole(){
+    new Role(authority: 'ROLE_MUSICIAN_ADMIN').save(flush: true)
+    new Role(authority: 'ROLE_COMPANY_ADMIN').save(flush: true)
+    new Role(authority: 'ROLE_MUSICIAN_VIEWER').save(flush: true)
+    new Role(authority: 'ROLE_COMPANY_VIEWER').save(flush: true)
   }
 
   def createGenres(){
