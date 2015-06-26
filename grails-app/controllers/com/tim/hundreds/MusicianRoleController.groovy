@@ -1,7 +1,5 @@
 package com.tim.hundreds
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
@@ -9,6 +7,8 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_ADMIN'])
 @Transactional(readOnly = true)
 class MusicianRoleController {
+
+    static showMe = true /*Parametro para aparecer en el menú*/
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
