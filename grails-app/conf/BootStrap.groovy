@@ -10,7 +10,7 @@ import grails.util.Environment
 
 class BootStrap {
   def init = { servletContext ->
-  if(Environment.current == Environment.DEVELOPMENT) {
+  if(Environment.current == Environment.DEVELOPMENT || Environment.current == Environment.TEST) {
       createUserRole()
       createAdminRole()
       createFacilitatorRole()
