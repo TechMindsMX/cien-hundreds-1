@@ -32,7 +32,7 @@
 				<g:if test="${companyInstance?.type}">
 				<div class="fieldcontain">
 					<span id="type-label" class="${session.labelWidth} property-label"><g:message code="company.type.label" default="Type" /></span>
-					<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${companyInstance}" field="type"/></span>
+					<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${companyInstance}" field="type.name"/></span>
 				</div>
 				</g:if>
 
@@ -142,7 +142,7 @@
 					</label>
 						<div class="">
 							<g:if test="${companyInstance.address}">
-								<g:link controller="address" action="show" value="${companyInstance?.address?.id}">${message(code: 'default.show.label', args: [message(code: 'address.label')])}</g:link>
+								<g:link controller="address" action="show" id="${companyInstance?.address?.id}">${message(code: 'default.show.label', args: [message(code: 'address.label')])}</g:link>
 							</g:if>
 							<g:else>
 								<g:link controller="address" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
@@ -157,7 +157,7 @@
 					</label>
 						<div class="">
 							<g:if test="${companyInstance.datosFiscales}">
-								<g:link controller="datosFiscales" action="show" value="${companyInstance?.datosFiscales?.id}">${message(code: 'default.show.label', args: [message(code: 'datosFiscales.label')])}</g:link>
+								<g:link controller="datosFiscales" action="show" id="${companyInstance?.datosFiscales?.id}">${message(code: 'default.show.label', args: [message(code: 'datosFiscales.label')])}</g:link>
 							</g:if>
 							<g:else>
 								<g:link controller="datosFiscales" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'datosFiscales.label')])}</g:link>
@@ -172,10 +172,10 @@
 					</label>
 						<div class="">
 							<g:if test="${companyInstance.collaborators}">
-								<g:link controller="collaborators" action="show" value="${companyInstance?.collaborators?.id}">${message(code: 'default.show.label', args: [message(code: 'collaborators.label')])}</g:link>
+								<g:link controller="collaborator" action="show" id="${companyInstance?.collaborators?.id}">${message(code: 'default.show.label', args: [message(code: 'collaborator.label')])}</g:link>
 							</g:if>
 							<g:else>
-								<g:link controller="collaborators" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'collaborators.label')])}</g:link>
+								<g:link controller="collaborator" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'collaborator.label')])}</g:link>
 							</g:else>
 						</div>
 				</div>
@@ -183,6 +183,8 @@
 			</div>
 		</div>
 
+		<p></p>
+		
 		<g:form url="[resource:companyInstance, action:'delete']" method="DELETE">
 			<fieldset class="buttons">
 				<g:link class="btn btn-primary edit" action="edit" resource="${companyInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

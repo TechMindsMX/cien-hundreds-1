@@ -10,7 +10,7 @@
 	<body>
 		<a href="#list-collaborator" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
-			<ul>
+			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
@@ -20,7 +20,7 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
+			<table class="table table-stripped">
 			<thead>
 					<tr>
 					
@@ -30,11 +30,11 @@
 					
 						<g:sortableColumn property="lastName" title="${message(code: 'collaborator.lastName.label', default: 'Last Name')}" />
 					
+						<g:sortableColumn property="position" title="${message(code: 'collaborator.position.label', default: 'Position')}" />
+					
 						<g:sortableColumn property="notes" title="${message(code: 'collaborator.notes.label', default: 'Notes')}" />
 					
 						<th><g:message code="collaborator.company.label" default="Company" /></th>
-					
-						<g:sortableColumn property="position" title="${message(code: 'collaborator.position.label', default: 'Position')}" />
 					
 					</tr>
 				</thead>
@@ -48,11 +48,11 @@
 					
 						<td>${fieldValue(bean: collaboratorInstance, field: "lastName")}</td>
 					
+						<td>${fieldValue(bean: collaboratorInstance, field: "position")}</td>
+					
 						<td>${fieldValue(bean: collaboratorInstance, field: "notes")}</td>
 					
 						<td>${fieldValue(bean: collaboratorInstance, field: "company")}</td>
-					
-						<td>${fieldValue(bean: collaboratorInstance, field: "position")}</td>
 					
 					</tr>
 				</g:each>
