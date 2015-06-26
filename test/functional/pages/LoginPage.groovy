@@ -6,7 +6,7 @@ class LoginPage extends Page {
 
   static url = "login/auth"
 
-  static at = { title == "Login" }
+  static at = { title == "100Hundreds" }
 
   static content = {
     loginForm { $("#loginForm") }
