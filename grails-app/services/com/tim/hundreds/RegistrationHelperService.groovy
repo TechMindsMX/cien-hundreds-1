@@ -7,6 +7,7 @@ class RegistrationHelperService {
 
   def findEmailByToken(String token) {
     def registrationCode = RegistrationCode.findByToken(token)
+    if(!registrationCode)throw new BusinessException('Could not find token: ${token}')
     registrationCode.email
   }
 
