@@ -29,18 +29,19 @@
 						<g:sortableColumn property="role" title="${message(code: 'user.role.label', default: 'Rol')}" />
 						<g:sortableColumn property="userEmails" title="${message(code: 'user.userEmails.label', default: 'Correos electrónicos')}" />
 						<g:sortableColumn property="userTelephone" title="${message(code: 'user.userTelephone.label', default: 'Telefonos')}" />
+						<g:sortableColumn property="enabled" title="${message(code: 'user.enabled.label', default: 'Habilitado')}" />
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${userInstanceList}" status="i" var="userInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 						<td>
- 							<g:if test="${!userInstance?.profile?.photoPath}">
+ 							<g:if test="${!userInstance?.profile?.photoPath}">	
 								<img class="img-responsive max300" src="${ApplicationState.PHOTO_URL_BASE}${userInstance.profile.photoPath}" />
 							</g:if>
 						</td>
 						<td><g:link action="show" id="${userInstance.id}">
-							<g:if test="${userInstance?.profile?.firstName}">
+							<g:if test="${userInstance?.profile?.firstName}">	
 	 						${userInstance?.profile?.firstName?.encodeAsHTML()}
 	 						</g:if> 
 							<g:if test="${userInstance?.profile?.lastName}">
@@ -57,6 +58,9 @@
 							<g:if test="${!userInstance?.userTelephone.isEmpty()}">
 							<g:each in="${userInstance?.userTelephone}" var="t"><p>${t.phone?.encodeAsHtml()}</p></g:each>
 							</g:if>
+						</td>
+						<td>
+							<g:each in="${userInstance?.enabled}" var="t"><p>${userInstance?.enabled}</p></g:each>
 						</td>
 					</tr>
 				</g:each>
