@@ -106,6 +106,6 @@
 
 <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'role', 'terms')} required">
     <div class="${session.inputWidth} ${session.btnOffset}">
-        <input type="checkbox" name="terms">&nbsp;Acepto los <a class="" data-toggle="modal" data-target="#terms_modal">Términos y condiciones</a>
+        <input id="terms" type="checkbox" name="terms">&nbsp;Acepto los <a class="" data-toggle="modal" data-target="#terms_modal">Términos y condiciones</a>
     <div>
 </div>

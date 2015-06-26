@@ -1,6 +1,7 @@
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import page.UserPage
+import page.HomePage
 
 @Stepwise
 class UserFunctionalSpec extends GebReportingSpec {
@@ -17,9 +18,10 @@ class UserFunctionalSpec extends GebReportingSpec {
     userForm.lastName = 'Morales'
     userForm.email = 'josdem@email.com'
     userForm.emailCheck = 'josdem@email.com'
+    $("#terms").click()
     $("#create").click()
   then: "I am being redirected to the homepage"
-    at UserPage
+    at HomePage
   }
 
 }
