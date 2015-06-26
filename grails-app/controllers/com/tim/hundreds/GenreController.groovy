@@ -8,6 +8,8 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class GenreController {
 
+    static showMe = true
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
