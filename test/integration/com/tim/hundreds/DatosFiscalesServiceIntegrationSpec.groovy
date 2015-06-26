@@ -11,9 +11,11 @@ class DatosFiscalesServiceIntegrationSpec extends Specification {
   def datosFiscalesService
 
   void "Should save datosFiscalesInstance to musician"() {
-    given: "An instance"
+    given: "An genre"
+      def genre = new Genre(name: 'Trance').save()
+    and: "An instance"
       def instance = new Musician(name:'name',history:'history')
-      instance.genre = GenreType.TRANCE
+      instance.genre = genre
       instance.hasManager = true
       instance.dateCreated = new Date()
       instance.lastUpdated = new Date()
@@ -34,7 +36,7 @@ class DatosFiscalesServiceIntegrationSpec extends Specification {
   void "Should save datosFiscalesInstance to company"() {
     given: "An instance"
       def instance = new Company(name:'Anjunabeats',description:'Music Production')
-      instance.type = ActivityType.PRODUCTOS
+      instance.type = new BusinessActivity(name:'Products')
     and: "Above & Beyond rfc"
       def rfc = 'AJU8012028D3'
     and: "We save instance"

@@ -7,21 +7,24 @@ class ActivityServiceIntegrationSpec extends Specification {
   def activityService
 
   void "Should save an musician with activity"() {
-    given: "An musician"
+    given: "An Genre"
+      def genre = new Genre(name:'Trance').save()
+    and: "An musician"
       def musician = new Musician(name:'name',history:'history')
-      musician.genre = GenreType.TRANCE
+      musician.genre = genre
       musician.hasManager = true
       musician.dateCreated = new Date()
       musician.lastUpdated = new Date()
       musician.formed = new Date()
     and: "A user"
       def user = new User(username:'josdem',password:'password')
-      def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def profile = new Profile(email:'josdemActivityService@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
       user.profile = profile
-      user.save(flush: true)
     and: "We add musician to user"
       user.addToMusicians(musician)
-      user.save()
+      user.save(flush: true)
+      musician.validate()
+      println musician.dump()
     and: "We create an activity"
       def activityInstance = new Activity(activity:'activity', place:'place',date:new Date())
       activityInstance.musician = musician
@@ -31,6 +34,6 @@ class ActivityServiceIntegrationSpec extends Specification {
       result
       1 == musician.activities.size()
     cleanup:"We delete user"
-      user.delete()
+      user.delete(flush: true)
   }
 }

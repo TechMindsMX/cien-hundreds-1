@@ -24,7 +24,7 @@
                         <label for="j_password">Contraseña</label>
                         <input type="password" name='j_password' class="form-control" placeholder="Contraseña" id='password' >
                     </div>
-                    <button type="submit" class="btn btn-success">Ingresar</button>
+                    <button id="btn-success" type="submit" class="btn btn-success">Ingresar</button>
                     <button type="reset" class="btn btn-danger"><g:message code="cancel.label" /></button>
                </form>
             </div>

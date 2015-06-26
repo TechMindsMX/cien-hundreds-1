@@ -15,8 +15,7 @@ class CompanyCommand {
   Address address
   Social social
   DatosFiscales datosFiscales
-
-  ActivityType type
+  BusinessActivity type
 
   static hasMany = [
     references : Reference,
