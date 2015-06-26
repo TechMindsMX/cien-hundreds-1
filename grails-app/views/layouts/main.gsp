@@ -62,7 +62,7 @@
                         <ul class="nav nav-second-level">
                           <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
                             <g:if test="${c.getStaticPropertyValue('showMe', Boolean)}">
-                                <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
+                                <li class="controller"><g:link controller="${c.logicalPropertyName}"><g:message code="controller.${c.name}.label" /></g:link></li>
                             </g:if>
                           </g:each>
                           <sec:ifLoggedIn>

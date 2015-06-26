@@ -9,8 +9,6 @@ class MusicianController {
     def musicianService
     def tagService
 
-    static linkMe = true /*Parametro para que aparezca en el menú*/
-
     static showMe = true /*Parametro para aparecer en el menú*/
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
