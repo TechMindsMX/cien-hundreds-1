@@ -45,7 +45,7 @@ class FacilitatorController {
         profile.resumePath = resumePath
       }
 
-      flash.message = "Su facilitador ha sido creado y se ha enviado un correo electrónico"
+      flash.message = "El usuario ha sido creado y se ha enviado un correo electrónico"
       respond command, view: 'create'
     } catch(BusinessException be){
       flash.error = "El servicio de correo no está disponible"
