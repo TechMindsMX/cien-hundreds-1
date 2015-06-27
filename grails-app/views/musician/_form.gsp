@@ -1,10 +1,12 @@
 <%@ page import="com.tim.hundreds.Musician" %>
+
+<div class="row">
 <div class="col-xs-8 col-md-9 ">
 	<h4>Datos de Ingreso</h4>
     <table class="table">
 	<tbody class="borderless">
             <tr>
-                <td class="text-right col-lg-3">
+                <td class="text-right ${session.labelWidth} ">
                 	<b><div class="control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'name', 'error')} required">
 						<g:message code="musician.name.label" class="text-right" data-pg-id="34" default="Nombre(s)" />
 						<span class="required-indicator">*</span>
@@ -22,7 +24,7 @@
 					</div></b>
                 </td>
                 <td>
-                <g:textArea name="history" class="form-control" placeholder="Ingrese su Biografía" cols="40" rows="5" maxlength="10000" required="" value="${musicianInstance?.history}"/>
+                <g:textArea name="history" class="form-control" cols="40" rows="5" maxlength="10000" required="" value="${musicianInstance?.history}" placeholder="${message(code:'history.placeholder')}"/>
                     <br>
                 </td>
             </tr>
@@ -33,7 +35,7 @@
 					</div>
                 </td></b>
                 <td>
-					<g:textField class="form-control" placeholder="Ingrese la dirección de su pagina Web" name="web" maxlength="100" value="${musicianInstance?.web}"/>
+					<g:textField class="form-control" name="web" maxlength="100" value="${musicianInstance?.web}" placeholder="${message(code:'web.placeholder')}"/>
                     <br>
                 </td>
             </tr>
@@ -45,14 +47,14 @@
 					</div>	</b>
                 </td>
                 <td>
-					<g:textArea name="notes" class="form-control" placeholder="Ingrese sus notas" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.notes}"/>
+					<g:textArea name="notes" class="form-control" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.notes}" placeholder="${message(code:'notes.placeholder')}"/>
                     <br>
                 </td>
             </tr>
 			<tr>
                 <td class="text-right">
                     <b><div class="control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'tags', 'error')} ">
-							<g:message code="musician.tags.label" default="Tags" />
+							<g:message code="musician.tags.label" default="Etiquetas" />
 					</div>
                 </td></b>
                 <td>
@@ -107,7 +109,7 @@
 					</div>
                 </td></b>
                 <td>
-				    <input type="file" id="logo" name="logo" class="form-control" placeholder="Ingrese su logo"/>
+				    <input type="file" id="logo" name="logo" class="form-control"/>
    	                <br>
                 </td>
             </tr>
@@ -254,3 +256,4 @@
 </ul>
 </div>
 
+</div>

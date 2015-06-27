@@ -33,7 +33,7 @@
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
-				<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
+				<div class="${session.btnOffset} fieldcontain ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
 				  <label for="buttons">				    
 				  </label>
 				    <g:actionSubmit class="btn btn-success" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />

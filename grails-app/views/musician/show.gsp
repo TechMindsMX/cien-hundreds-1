@@ -61,7 +61,7 @@
 					<div class="fieldcontain">
 						<span id="genre-label" class="property-label"><b>Genero:</b></span>
 
-							<span class="property-value" aria-labelledby="genre-label"><g:fieldValue bean="${musicianInstance}" field="genre"/></span>
+							<span class="property-value" aria-labelledby="genre-label"><g:fieldValue bean="${musicianInstance}" field="genre.name"/></span>
 
 					</div>
 					</g:if>

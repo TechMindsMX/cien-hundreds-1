@@ -31,13 +31,12 @@
 					<g:render template="form"/>
 				</fieldset>
 
-				<div class="fieldcontain ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
+				<div class="${session.btnOffset} fieldcontain ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
 				  <label for="buttons">
 				  </label>
 				   <g:submitButton name="create" class="btn btn-success" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 					<button class="btn btn-danger" type="reset"><g:message code="cancel.label" /></button>
 				</div>
-
 
 			</g:uploadForm>
 		</div>

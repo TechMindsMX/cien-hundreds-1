@@ -25,15 +25,15 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="name" title="${message(code: 'musician.name.label', default: 'Name')}" />
+						<g:sortableColumn property="name" title="${message(code: 'musician.name.label', default: 'Nombre(s)')}" />
 					
-						<g:sortableColumn property="history" title="${message(code: 'musician.history.label', default: 'History')}" />
+						<g:sortableColumn property="history" title="${message(code: 'musician.history.label', default: 'Biografía')}" />
 					
-						<g:sortableColumn property="web" title="${message(code: 'musician.web.label', default: 'Web')}" />
+						<g:sortableColumn property="web" title="${message(code: 'musician.web.label', default: 'Página Web')}" />
 					
-						<g:sortableColumn property="notes" title="${message(code: 'musician.notes.label', default: 'Notes')}" />
+						<g:sortableColumn property="notes" title="${message(code: 'musician.notes.label', default: 'Notas')}" />
 										
-						<g:sortableColumn property="logoPath" title="${message(code: 'musician.logoPath.label', default: 'Logo Path')}" class="col-sm-12 col-md-4" />
+						<g:sortableColumn property="logoPath" title="${message(code: 'musician.logoPath.label', default: 'Logo')}" class="col-sm-12 col-md-4" />
 					
 					</tr>
 				</thead>

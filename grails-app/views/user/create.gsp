@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta name="layout" content="main">
-        <g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
+        <g:set var="entityName" value="${message(code: 'user.label', default: 'Usuario')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -29,7 +29,7 @@
             </ul>
             </div>
         </g:hasErrors>
-            <g:form id="userForm" url="[resource:model, action:'save']"  class="form-horizontal">
+            <g:form id="userForm" url="[resource:user, action:'save']"  class="form-horizontal">
                 <fieldset class="form">
                     <g:render template="form" />
                 </fieldset>

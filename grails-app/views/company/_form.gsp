@@ -2,57 +2,57 @@
 
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'name', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="name">
-		<g:message code="company.name.label" default="Name" />
+		<g:message code="name.label" default="Name" />
 		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
-			<g:textField class="form-control" name="name" maxlength="100" required="" value="${companyInstance?.name}"/>
+			<g:textField class="form-control" name="name" maxlength="100" required="" value="${companyInstance?.name}" placeholder="${message(code:'name.placeholder')}"/>
 		</div>
 </div>
 
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'description', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="description">
-		<g:message code="company.description.label" default="Description" />
+		<g:message code="description.label" default="Description" />
 		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
-			<g:textArea class="form-control" name="description" cols="40" rows="5" maxlength="10000" required="" value="${companyInstance?.description}"/>
+			<g:textArea class="form-control" name="description" cols="40" rows="5" maxlength="10000" required="" value="${companyInstance?.description}" placeholder="${message(code:'description.placeholder')}"/>
 		</div>
 </div>
 
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'web', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="web">
-		<g:message code="company.web.label" default="Web" />
+		<g:message code="web.label" default="Web" />
 
 	</label>
 		<div class="${session.inputWidth}">
-			<g:textField class="form-control" name="web" maxlength="100" value="${companyInstance?.web}"/>
+			<g:textField class="form-control" name="web" maxlength="100" value="${companyInstance?.web}" placeholder="${message(code:'web.placeholder')}"/>
 		</div>
 </div>
 
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'notes', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="notes">
-		<g:message code="company.notes.label" default="Notes" />
+		<g:message code="notes.label" default="Notes" />
 
 	</label>
 		<div class="${session.inputWidth}">
-			<g:textArea class="form-control" name="notes" cols="40" rows="5" maxlength="10000" value="${companyInstance?.notes}"/>
+			<g:textArea class="form-control" name="notes" cols="40" rows="5" maxlength="10000" value="${companyInstance?.notes}" placeholder="${message(code:'notes.placeholder')}"/>
 		</div>
 </div>
 
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'tags', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="tags">
-		<g:message code="company.tags.label" default="Tags" />
+		<g:message code="tags.label" default="Tags" />
 
 	</label>
 		<div class="${session.inputWidth}">
-			<g:textArea class="form-control" name="tags" cols="40" rows="5" maxlength="10000" value="${companyInstance?.tags}"/>
+			<g:textArea class="form-control" name="tags" cols="40" rows="5" maxlength="10000" value="${companyInstance?.tags}" placeholder="${message(code:'tags.placeholder')}"/>
 		</div>
 </div>
 
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'logo', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="logo">
-		<g:message code="company.logo.label" default="Logo" />
+		<g:message code="logo.label" default="Logo" />
 
 	</label>
 		<div class="${session.inputWidth}">
@@ -62,7 +62,7 @@
 
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'corporatePress', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="corporatePress">
-		<g:message code="company.corporatePress.label" default="Corporate Press" />
+		<g:message code="corporatePress.label" default="Corporate Press" />
 
 	</label>
 		<div class="${session.inputWidth}">
@@ -74,7 +74,7 @@
 <g:if test="${companyInstance?.id}">
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'address', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="address">
-		<g:message code="company.address.label" default="Address" />
+		<g:message code="address.label" default="Address" />
 	</label>
 	<div class="${session.inputWidth}">
 		<g:if test="${companyInstance.address}">
@@ -90,7 +90,7 @@
 <g:if test="${companyInstance.id}">
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'social', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="social">
-		<g:message code="company.social.label" default="Social" />
+		<g:message code="social.label" default="Social" />
 	</label>
 	<div class="${session.inputWidth}">
 		<g:if test="${companyInstance.social}">
@@ -106,7 +106,7 @@
 <g:if test="${companyInstance.id}">
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'datosFiscales', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="datosFiscales">
-		<g:message code="company.datosFiscales.label" default="Datos Fiscales" />
+		<g:message code="datosFiscales.label" default="Datos Fiscales" />
 	</label>
 	<div class="${session.inputWidth}">
 		<g:if test="${companyInstance.datosFiscales}">
@@ -122,7 +122,7 @@
 <g:if test="${companyInstance.id}">
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'references', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="references">
-		<g:message code="company.references.label" default="References" />
+		<g:message code="references.label" default="References" />
 	</label>
 	<div class="${session.inputWidth}">
 		<ul class="one-to-many">
@@ -140,7 +140,7 @@
 <g:if test="${companyInstance.id}">
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'events', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="events">
-		<g:message code="company.events.label" default="Events" />
+		<g:message code="events.label" default="Events" />
 	</label>
 	<div class="${session.inputWidth}">
 		<ul class="one-to-many">
@@ -158,7 +158,7 @@
 <g:if test="${companyInstance.id}">
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'collaborators', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="collaborators">
-		<g:message code="company.collaborators.label" default="Collaborators" />
+		<g:message code="collaborators.label" default="Collaborators" />
 	</label>
 	<div class="${session.inputWidth}">
 		<ul class="one-to-many">
@@ -176,7 +176,7 @@
 <g:if test="${companyInstance.id}">
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'products', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="products">
-		<g:message code="company.products.label" default="Products" />
+		<g:message code="products.label" default="Products" />
 	</label>
 	<div class="${session.inputWidth}">
 		<ul class="one-to-many">
@@ -193,7 +193,7 @@
 
 <div class="form-group fieldcontain ${hasErrors(bean: companyInstance, field: 'type', 'error')} required">
   <label class="${session.labelWidth} control-label" for="type">
-    <g:message code="company.type.label" default="Type" />
+    <g:message code="type.label" default="Type" />
     <span class="required-indicator">*</span>
   </label>
   <div class="${session.inputWidth}">

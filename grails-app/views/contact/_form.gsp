@@ -120,7 +120,7 @@
 
 <div class="hide form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'musician', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="musician">
-		<g:message code="video.musician.label" default="Musician" />
+		<g:message code="contact.musician.label" default="Musician" />
 		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
