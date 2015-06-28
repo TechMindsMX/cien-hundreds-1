@@ -6,9 +6,9 @@ import grails.plugin.springsecurity.annotation.Secured
 class UserController {
 
   static defaultAction = "create"
+  static allowedMethods = [save:'POST']
+  static showMe = true
 
-  static showMe = true /*Parametro para aparecer en el menú*/
-  
   def userService
 
   def index(){
@@ -23,7 +23,7 @@ class UserController {
   def save(UserCommand command){
     log.info "Creating user: ${command?.dump()}"
     if(command.hasErrors()){
-      respond command, [model: [command: command], view: 'create']
+      respond command, [view: 'create']
       return
     }
 
