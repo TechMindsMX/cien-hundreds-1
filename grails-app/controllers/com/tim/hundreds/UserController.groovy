@@ -11,10 +11,6 @@ class UserController {
 
   def userService
 
-  def index(){
-    respond new UserCommand()
-  }
-
   def create(){
     UserCommand command = new UserCommand()
     respond command

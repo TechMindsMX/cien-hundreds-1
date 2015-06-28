@@ -6,15 +6,12 @@ import grails.plugin.springsecurity.annotation.Secured
 class FacilitatorController {
 
   static defaultAction = "create"
-
-  static showMe = true /*Parametro para aparecer en el menú*/
+  static allowedMethods = [save:'POST']
+  static showMe = true
 
   def userService
   def photoStorerService
   def resumeStorerService
-
-  def index(){
-  }
 
   def create(){
     UserCommand command = new UserCommand()
@@ -22,9 +19,9 @@ class FacilitatorController {
   }
 
   def save(UserCommand command){
-    log.info "Creating facilitator(user): ${command?.dump()}"
+    log.info "Creating user: ${command?.dump()}"
     if(command.hasErrors()){
-      respond command, model:[model: command], view: 'create'
+      respond command, [view: 'create']
       return
     }
 
