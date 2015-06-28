@@ -23,7 +23,7 @@ class UserController {
   def save(UserCommand command){
     log.info "Creating user: ${command?.dump()}"
     if(command.hasErrors()){
-      render view:'create', model:[model:command]
+      respond command, [view: 'create']
       return
     }
 
