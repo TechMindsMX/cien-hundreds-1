@@ -12,9 +12,9 @@ class CollaboratorTelephoneSpec extends Specification {
 	@Unroll
     void "when we have a collaboratorTelephone with: telephone #phone and a type #type, we expect #result"() {
     	given: "a telephone number and type"
-    		collaboratorTelephone = new CollaboratorTelephone()
+    		def collaboratorTelephone = new CollaboratorTelephone()
     	and: "a collaborator"
-    		collaborator = new Collaborator()
+    		def collaborator = new Collaborator()
     		collaboratorTelephone.collaborator = collaborator
     	when: "we assign the values"
 		    collaboratorTelephone.phone = phone
