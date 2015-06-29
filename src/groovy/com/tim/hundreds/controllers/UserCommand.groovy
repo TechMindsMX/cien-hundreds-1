@@ -25,7 +25,6 @@ class UserCommand {
     firstName blank:false,size:1..100
     middleName blank:false,size:1..100
     lastName blank:false,size:1..100
-    email blank:false,email:true,unique:true,size:1..200
     phone nullable:true,blank:false,matches:/^[0-9]*$/,size:10..10
     role blank:false,size:6..20
     photoPath nullable:true
@@ -36,12 +35,16 @@ class UserCommand {
         return false
       }
     })
+    email(blank:false,email:true,unique:true,size:6..200,validator:{val, obj ->
+      if(!val.equalsIgnoreCase(obj.emailCheck)) {
+        return false
+      }
+    })
     username(blank:false,size:6..50,validator:{val, obj ->
       if(User.findByUsername(val)) {
         return false
       }
     })
-
     terms (validator:{val, obj ->
           return val == 'on'
     })
