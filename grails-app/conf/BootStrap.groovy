@@ -10,14 +10,14 @@ import grails.util.Environment
 
 class BootStrap {
   def init = { servletContext ->
-//  if(Environment.current == Environment.DEVELOPMENT || Environment.current == Environment.TEST) {
-    //  createUserRole()
-    //  createAdminRole()
+  if(Environment.current == Environment.DEVELOPMENT || Environment.current == Environment.TEST) {
+      createUserRole()
+      createAdminRole()
       createAllRole()
-    //  createGenres()
-     // createMusicianRoles()
-     // createBusinessActivity()
-  // }
+      createGenres()
+      createMusicianRoles()
+      createBusinessActivity()
+   }
   }
 
   def destroy = {
@@ -55,8 +55,8 @@ class BootStrap {
   }
 
   def createAllRole(){
-    //new Role(authority: 'ROLE_FACILITATOR').save(flush: true)
-   // new Role(authority: 'ROLE_BUYER').save(flush: true)
+    new Role(authority: 'ROLE_FACILITATOR').save(flush: true)
+    new Role(authority: 'ROLE_BUYER').save(flush: true)
     new Role(authority: 'ROLE_MUSICIAN_ADMIN').save(flush: true)
     new Role(authority: 'ROLE_COMPANY_ADMIN').save(flush: true)
     new Role(authority: 'ROLE_MUSICIAN_VIEWER').save(flush: true)
