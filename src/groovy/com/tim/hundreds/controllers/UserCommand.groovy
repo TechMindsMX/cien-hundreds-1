@@ -15,6 +15,7 @@ class UserCommand {
   String photoPath
   String resumePath
 
+  Boolean status
   String terms
 
   String emailCheck
