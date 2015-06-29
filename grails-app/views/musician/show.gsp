@@ -55,7 +55,7 @@
 					    	<ol>
 								<g:each in="${musicianInstance.contacts}" var="c">
 									<div>
-										<g:link controller="contact" action="show" id="${c.id}">${c.firstName} ${c.lastName}</g:link>
+										<g:link controller="contact" action="show" id="${c.id}">${c.firstName} ${c.lastName} (${c.role.name})</g:link>
 									</div>
 								</g:each>
 					    	</ol>

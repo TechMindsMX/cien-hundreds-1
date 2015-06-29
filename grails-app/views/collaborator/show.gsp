@@ -78,35 +78,35 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${collaboratorInstance?.emails}">
+				<g:if test="${collaboratorInstance?.collaboratorEmails}">
 				<li class="fieldcontain">
-					<span id="emails-label" class="${session.labelWidth} property-label"><g:message code="collaborator.emails.label" default="Emails" /></span>
+					<span id="collaboratorEmails-label" class="${session.labelWidth} property-label"><g:message code="email.label" default="Emails" /></span>
 					
-						<g:each in="${collaboratorInstance.emails}" var="e">
-						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.email?.encodeAsHTML()}</g:link></span>
+						<g:each in="${collaboratorInstance.collaboratorEmails}" var="e">
+						<span class="property-value" aria-labelledby="collaboratorEmails-label"><g:link controller="collaboratorEmail" action="show" id="${e.id}">${e?.address.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
 				</g:if>
-				<g:if test="${collaboratorInstance?.emails.size() < ApplicationState.MAX_EMAILS}">
+				<g:if test="${collaboratorInstance?.collaboratorEmails.size() < ApplicationState.MAX_EMAILS}">
 					<div>
-						<g:link controller="email" action="create" >${message(code: 'default.add.label', args: [message(code: 'email.label')])}</g:link>
+						<g:link controller="collaboratorEmail" action="create" >${message(code: 'default.add.label', args: [message(code: 'email.label')])}</g:link>
 					</div>
 				</g:if> 
 			
-				<g:if test="${collaboratorInstance?.telephones}">
+				<g:if test="${collaboratorInstance?.collaboratorTelephones}">
 				<li class="fieldcontain">
-					<span id="telephones-label" class="${session.labelWidth} property-label"><g:message code="collaborator.telephones.label" default="Telephones" /></span>
+					<span id="collaboratorTelephones-label" class="${session.labelWidth} property-label"><g:message code="telephones.label" default="Telephones" /></span>
 					
-						<g:each in="${collaboratorInstance.telephones}" var="t">
-						<span class="property-value" aria-labelledby="telephones-label"><g:link controller="telephone" action="show" id="${t.id}">${t?.phone?.encodeAsHTML()}</g:link></span>
+						<g:each in="${collaboratorInstance.collaboratorTelephones}" var="t">
+						<span class="property-value" aria-labelledby="collaboratorTelephones-label"><g:link controller="collaboratorTelephone" action="show" id="${t.id}">${t?.phone?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
 				</g:if>
-				<g:if test="${collaboratorInstance?.telephones.size() < ApplicationState.MAX_TELEPHONES}">
+				<g:if test="${collaboratorInstance?.collaboratorTelephones.size() < ApplicationState.MAX_TELEPHONES}">
 					<div>
-						<g:link controller="telephone" action="create" >${message(code: 'default.add.label', args: [message(code: 'telephone.label')])}</g:link>
+						<g:link controller="collaboratorTelephone" action="create" >${message(code: 'default.add.label', args: [message(code: 'telephone.label')])}</g:link>
 					</div>
 				</g:if> 
 			
