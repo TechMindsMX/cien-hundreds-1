@@ -21,7 +21,7 @@ class FacilitatorController {
   def save(UserCommand command){
     log.info "Creating user: ${command?.dump()}"
     if(command.hasErrors()){
-      respond command, [view: 'create']
+      render(view:'create', model:[model:command])
       return
     }
 
