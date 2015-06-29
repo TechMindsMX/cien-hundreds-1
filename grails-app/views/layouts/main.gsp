@@ -49,7 +49,7 @@
                                 <b class="caret"></b> </span> </span>  </a>
                                 <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                     <li class="divider"></li>
-                                    <li><g:remoteLink class="logout" controller="logout">${message(code: 'springSecurity.logout.link')}</g:remoteLink></li>
+                                    <li><g:link class="logout" controller="logout"><g:message code="springSecurity.logout.link"/></g:link></li>
                                 </ul>
                             </sec:ifLoggedIn>
                         </div>
@@ -66,7 +66,7 @@
                             </g:if>
                           </g:each>
                           <sec:ifLoggedIn>
-                              <li><g:remoteLink class="logout" controller="logout">${message(code: 'springSecurity.logout.link')}</g:remoteLink></li>
+                          <li><g:link class="logout" controller="logout"><g:message code="springSecurity.logout.link"/></g:link></li>
                           </sec:ifLoggedIn>
                           <sec:ifNotLoggedIn>
                               <li><g:link controller="login">${message(code: 'springSecurity.login.link')}</g:link></li>
