@@ -9,7 +9,7 @@ import spock.lang.Unroll
 @TestFor(User)
 class UserSpec extends Specification {
   @Unroll
-  void """When we have a user with email:  #email, emailCheck: #emailCheck, firstName: #firstName, middleName: #middleName, lastName: #lastName, username: #username, password: #password, passwordCheck: #passwordCheck, phone: #phone, role: #role, terms: #terms, we expect the result is: #result"""() {
+  void """When we have a user with email:  #email, emailCheck: #emailCheck, firstName: #firstName, middleName: #middleName, lastName: #lastName, username: #username, password: #password, passwordCheck: #passwordCheck, phone: #phone, role: #role, terms: #terms we expect the result is: #result"""() {
     given: "An user"
       UserCommand user = new UserCommand()
     when: "We assing values to command"
@@ -24,6 +24,7 @@ class UserSpec extends Specification {
       user.phone = phone
       user.role = role
       user.terms = terms
+      user.status = true
     then:"We validate command"
       result == user.validate()
     where:"We have the next cases"
@@ -36,7 +37,7 @@ class UserSpec extends Specification {
   }
 
   @Unroll
-   void """When we have a user with email: #email, emailCheck: #emailCheck, firstName: #firstName, middleName: #middleName, lastName: #lastName, username: #username, password: #password, passwordCheck: #passwordCheck, phone: #phone, role: #role, we expect the result is: #result"""() {
+   void """When we have a user with email: #email, emailCheck: #emailCheck, firstName: #firstName, middleName: #middleName, lastName: #lastName, username: #username, password: #password, passwordCheck: #passwordCheck, phone: #phone, role: #role we expect the result is: #result"""() {
     given: "An user"
       UserCommand user = new UserCommand()
     when: "We assing values to command"
@@ -50,6 +51,7 @@ class UserSpec extends Specification {
       user.passwordCheck = passwordCheck
       user.phone = phone
       user.role = role
+      user.status = true
     then:"We validate command"
       result == user.validate()
     where:"We have the next cases"
