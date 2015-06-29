@@ -28,6 +28,7 @@ class FacilitatorController {
     try{
       def user = new User(username: command.username, password: command.password)
       def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName)
+      user.accountExpired = !command.status
       profile.role = command.role
       profile.save()
       user.profile = profile

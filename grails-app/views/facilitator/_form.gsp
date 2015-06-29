@@ -4,7 +4,7 @@
     <label class="${session.labelWidth} control-label" for="status"><g:message code="status.label" default="Estado"/></label>
 
     <div class="${session.inputWidth}">
-        <g:select value="${model?.status}" name="status" class="form-control" from="${['1': 'Hablilitado', 'o': 'Deshabilitado']}" optionKey="key" optionValue="value" />
+        <g:select value="${model?.status}" name="status" class="form-control" from="${['true': 'Hablilitado', 'false': 'Deshabilitado']}" optionKey="key" optionValue="value" />
     </div>
 </div>
 
