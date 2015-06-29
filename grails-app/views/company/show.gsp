@@ -167,16 +167,14 @@
 
 				<div class="fieldcontain">
 					<label for="collaborators">
-						<g:message code="company.collaborators.label" default="Collaborators" />
+						<g:message code="collaborators.label" default="Collaborators" />
 						
 					</label>
 						<div class="">
-							<g:if test="${companyInstance.collaborators}">
-								<g:link controller="collaborator" action="show" id="${companyInstance?.collaborators?.id}">${message(code: 'default.show.label', args: [message(code: 'collaborator.label')])}</g:link>
-							</g:if>
-							<g:else>
-								<g:link controller="collaborator" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'collaborator.label')])}</g:link>
-							</g:else>
+							<g:each in="${companyInstance.collaborators}" var="c">
+								<g:link controller="collaborator" action="show" id="${companyInstance?.collaborators?.id}">${c.firstName} ${c.lastName}</g:link>
+							</g:each>
+							<g:link controller="collaborator" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'collaborator.label')])}</g:link>
 						</div>
 				</div>
 
