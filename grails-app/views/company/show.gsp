@@ -171,10 +171,16 @@
 						
 					</label>
 						<div class="">
-							<g:each in="${companyInstance.collaborators}" var="c">
-								<g:link controller="collaborator" action="show" id="${companyInstance?.collaborators?.id}">${c.firstName} ${c.lastName}</g:link>
-							</g:each>
-							<g:link controller="collaborator" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'collaborator.label')])}</g:link>
+							<ul>
+								<g:each in="${companyInstance.collaborators}" var="c">
+									<li>
+									<g:link controller="collaborator" action="show" id="${companyInstance?.collaborators?.id}">${c.firstName} ${c.lastName}</g:link>
+									</li>
+								</g:each>
+							</ul>
+							<div>
+								<g:link controller="collaborator" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'collaborator.label')])}</g:link>
+							</div>
 						</div>
 				</div>
 

@@ -1,5 +1,6 @@
 
 <%@ page import="com.tim.hundreds.Collaborator" %>
+<%@ page import="com.tim.hundreds.ApplicationState" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -25,7 +26,7 @@
 			
 				<g:if test="${collaboratorInstance?.firstName}">
 				<li class="fieldcontain">
-					<span id="firstName-label" class="${session.labelWidth} property-label"><g:message code="collaborator.firstName.label" default="First Name" /></span>
+					<span id="firstName-label" class="${session.labelWidth} property-label"><g:message code="contact.firstName.label" default="First Name" /></span>
 					
 						<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${collaboratorInstance}" field="firstName"/></span>
 					
@@ -43,7 +44,7 @@
 			
 				<g:if test="${collaboratorInstance?.lastName}">
 				<li class="fieldcontain">
-					<span id="lastName-label" class="${session.labelWidth} property-label"><g:message code="collaborator.lastName.label" default="Last Name" /></span>
+					<span id="lastName-label" class="${session.labelWidth} property-label"><g:message code="contact.lastName.label" default="Last Name" /></span>
 					
 						<span class="property-value" aria-labelledby="lastName-label"><g:fieldValue bean="${collaboratorInstance}" field="lastName"/></span>
 					
@@ -61,7 +62,7 @@
 			
 				<g:if test="${collaboratorInstance?.notes}">
 				<li class="fieldcontain">
-					<span id="notes-label" class="${session.labelWidth} property-label"><g:message code="collaborator.notes.label" default="Notes" /></span>
+					<span id="notes-label" class="${session.labelWidth} property-label"><g:message code="contact.notes.label" default="Notes" /></span>
 					
 						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${collaboratorInstance}" field="notes"/></span>
 					
@@ -70,7 +71,7 @@
 			
 				<g:if test="${collaboratorInstance?.company}">
 				<li class="fieldcontain">
-					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="collaborator.company.label" default="Company" /></span>
+					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="company.label" default="Company" /></span>
 					
 						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${collaboratorInstance?.company?.id}">${collaboratorInstance?.company?.name?.encodeAsHTML()}</g:link></span>
 					
@@ -87,6 +88,11 @@
 					
 				</li>
 				</g:if>
+				<g:if test="${collaboratorInstance?.emails.size() < ApplicationState.MAX_EMAILS}">
+					<div>
+						<g:link controller="email" action="create" >${message(code: 'default.add.label', args: [message(code: 'email.label')])}</g:link>
+					</div>
+				</g:if> 
 			
 				<g:if test="${collaboratorInstance?.telephones}">
 				<li class="fieldcontain">
@@ -98,6 +104,11 @@
 					
 				</li>
 				</g:if>
+				<g:if test="${collaboratorInstance?.telephones.size() < ApplicationState.MAX_TELEPHONES}">
+					<div>
+						<g:link controller="telephone" action="create" >${message(code: 'default.add.label', args: [message(code: 'telephone.label')])}</g:link>
+					</div>
+				</g:if> 
 			
 			
 			</ul>
