@@ -96,7 +96,7 @@
 				<g:if test="${companyInstance?.events}">
 					<ul>
 						<g:each in="${companyInstance?.events}" var="e"> 
-						<li>${e.date}  ${e.activity} ${e.place}</li>
+						<li><g:formatDate format="dd-MM-yyyy" date="${e.date}"/> ${e.activity} ${e.place}</li>
 						</g:each>
 					</ul>
 				</g:if>

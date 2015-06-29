@@ -33,6 +33,11 @@
 						<img class="img-responsive max300" src="${ApplicationState.LOGO_URL_BASE}${musicianInstance.logoPath}" />
 						</span>
 					</g:if>
+					<g:if test="${musicianInstance?.photos}">
+						<span class="property-value" aria-labelledby="photos-label">
+						<img class="img-responsive max300" src="${ApplicationState.PHOTO_URL_BASE}${musicianInstance.photos[0].path}" />
+						</span>
+					</g:if>
 	        	</div>
 
 	        	<div class="col-xs-12 col-md-8">
@@ -80,7 +85,7 @@
 		                	<g:link class="glyphicon" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> <g:message code="social.label" /></g:link>
 	                	</g:if>
 	                	<g:else>
-							<g:link class="glyphicon" controller="social" action="edit" id="${musicianInstance?.social.id}"> <g:message code="social.label"/> <g:message code="social.label" /></g:link>
+							<g:link class="glyphicon" controller="social" action="edit" id="${musicianInstance?.social.id}"> <g:message code="social.label"/></g:link>
 	                	</g:else>
 
 	                	<g:if test="${musicianInstance?.social}">
