@@ -13,7 +13,7 @@
 					</div></b>
 				</td>
 				<td>
-					<g:textField name="name" maxlength="100" class="form-control" placeholder="Ingrese su Nombre completo" required="" value="${musicianInstance?.name}"/>
+					<g:textField name="name" maxlength="100" class="form-control" placeholder="${message(code:'musician.name.placeholder')}" required="" value="${musicianInstance?.name}"/>
 				<td/>
 			</tr>
  			<tr>
@@ -24,7 +24,7 @@
 					</div></b>
                 </td>
                 <td>
-                <g:textArea name="history" class="form-control" cols="40" rows="5" maxlength="10000" required="" value="${musicianInstance?.history}" placeholder="${message(code:'history.placeholder')}"/>
+                <g:textArea name="history" class="form-control" cols="40" rows="5" maxlength="10000" required="" value="${musicianInstance?.history}" placeholder="${message(code:'musician.history.placeholder')}"/>
                     <br>
                 </td>
             </tr>
@@ -35,7 +35,7 @@
 					</div>
                 </td></b>
                 <td>
-					<g:textField class="form-control" name="web" maxlength="100" value="${musicianInstance?.web}" placeholder="${message(code:'web.placeholder')}"/>
+					<g:textField class="form-control" name="web" maxlength="100" value="${musicianInstance?.web}" placeholder="${message(code:'musician.web.placeholder')}"/>
                     <br>
                 </td>
             </tr>
@@ -47,7 +47,7 @@
 					</div>	</b>
                 </td>
                 <td>
-					<g:textArea name="notes" class="form-control" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.notes}" placeholder="${message(code:'notes.placeholder')}"/>
+					<g:textArea name="notes" class="form-control" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.notes}" placeholder="${message(code:'musician.notes.placeholder')}"/>
                     <br>
                 </td>
             </tr>
@@ -57,8 +57,7 @@
 							<g:message code="musician.tags.label" default="Etiquetas" />
 					</div>
                 </td></b>
-                <td>
-					<g:textArea name="tagsComma" class="form-control" placeholder="${message(code: 'tags.placeholder')}" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.tags}"/>
+                <td>                  <g:textArea name="tagsComma" class="form-control" placeholder="${message(code: 'musician.tags.placeholder')}" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.tags*.value}"/>
                     <br>
                 </td>
             </tr>
