@@ -28,35 +28,12 @@ class UserSpec extends Specification {
     then:"We validate command"
       result == user.validate()
     where:"We have the next cases"
-    email              | emailCheck         |firstName |middleName |lastName   |username  |password      | passwordCheck | phone        | role        | terms || result
-    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | "5512345678" | "ROLE_USER" | 'on'  || true
-    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" | 'on'  || true
-    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "Morales" | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" | 'on'  || true
-    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "M"       | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" | 'on'  || true
-    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"     | "M"       | "josdem" | "aA12345678" | "aA12345678"  | null         | "ROLE_USER" | null  || false
-  }
-
-  @Unroll
-   void """When we have a user with email: #email, emailCheck: #emailCheck, firstName: #firstName, middleName: #middleName, lastName: #lastName, username: #username, password: #password, passwordCheck: #passwordCheck, phone: #phone, role: #role we expect the result is: #result"""() {
-    given: "An user"
-      UserCommand user = new UserCommand()
-    when: "We assing values to command"
-      user.email = email
-      user.emailCheck = emailCheck
-      user.firstName = firstName
-      user.middleName = middleName
-      user.lastName = lastName
-      user.username = username
-      user.password = password
-      user.passwordCheck = passwordCheck
-      user.phone = phone
-      user.role = role
-      user.terms = terms
-      user.status = true
-    then:"We validate command"
-      result == user.validate()
-    where:"We have the next cases"
-    email              | emailCheck         |firstName | middleName   | lastName  | username | password     | passwordCheck| phone        | role        | terms || result
+    email              | emailCheck         |firstName |middleName    |lastName   |username  |password      | passwordCheck| phone        | role        | terms || result
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" | 'on'  || true
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | null         | "ROLE_USER" | 'on'  || true
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | null         | "ROLE_USER" | 'on'  || true
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "M"       | "josdem" | "aA12345678" | "aA12345678" | null         | "ROLE_USER" | 'on'  || true
+    "josdem@email.com" | "josdem@email.com" | "J"      | "DLC"        | "M"       | "josdem" | "aA12345678" | "aA12345678" | null         | "ROLE_USER" | null  || false
     null               | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" | 'on'  || false
     ""                 | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" | 'on'  || false
     "josdem"           | "josdem@email.com" | "J"      | "DLC"        | "Morales" | "josdem" | "aA12345678" | "aA12345678" | "5512345678" | "ROLE_USER" | 'on'  || false
