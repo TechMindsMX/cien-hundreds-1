@@ -34,11 +34,11 @@
 					<g:render template="form"/>
 				</fieldset>
 				<div class="${session.btnOffset} fieldcontain ${hasErrors(bean: musicianInstance, field: 'logo', 'error')} ">
-				  <label for="buttons">				    
+				  <label for="buttons">
 				  </label>
 				    <g:actionSubmit class="btn btn-success" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					<button class="btn btn-danger" type="reset">Cancelar</button>
-				</div>									
+				</div>
 			</g:form>
 		</div>
 	</body>
