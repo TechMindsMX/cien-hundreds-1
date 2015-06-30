@@ -41,7 +41,7 @@
 					<g:if test="${companyInstance?.products}">
 						<ul class="one-to-many">
 						<g:each in="${companyInstance?.products}" var="p">
-						    <li><g:link controller="product" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
+						    <li><g:link controller="product" action="show" id="${p.id}">${p?name?.encodeAsHTML()}</g:link></li>
 						</g:each>
 						</ul>
 					</g:if>
@@ -113,7 +113,7 @@
 				<g:if test="${companyInstance?.references}">
 					<ul>
 						<g:each in="${companyInstance?.references}" var="r"> 
-						<li><g:link controller="activity" action="edit" id="${r.id}" >${r.name}  ${r.contactName} ${r.type.name} ${r.email} ${r.phone}</g:link></li>
+						<li><g:link controller="reference" action="edit" id="${r.id}" >${r.name}  ${r.contactName} ${r.type.name} ${r.email} ${r.phone}</g:link></li>
 						</g:each>
 					</ul>
 				</g:if>

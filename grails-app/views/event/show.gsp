@@ -54,7 +54,7 @@
 				<li class="fieldcontain">
 					<span id="date-label" class="${session.labelWidth} property-label"><g:message code="event.date.label" default="Date" /></span>
 					
-						<span class="property-value" aria-labelledby="date-label"><g:formatDate date="${eventInstance?.date}" /></span>
+						<span class="property-value" aria-labelledby="date-label"><g:formatDate format="dd-MM-yyyy" date="${eventInstance?.date}" /></span>
 					
 				</li>
 				</g:if>

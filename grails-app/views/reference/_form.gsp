@@ -63,7 +63,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
-			<g:select id="type" name="type.id" from="${com.tim.hundreds.BusinessActivity.list()}" optionKey="id" required="" value="${referenceInstance?.type?.id}" class="form-control many-to-one"/>
+			<g:select id="type" name="type.id" from="${com.tim.hundreds.BusinessActivity.list()}" optionKey="id" optionValue="name" required="" value="${referenceInstance?.type?.id}" class="form-control many-to-one"/>
 
 		</div>
 </div>
