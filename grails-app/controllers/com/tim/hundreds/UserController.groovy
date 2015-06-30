@@ -39,16 +39,4 @@ class UserController {
     }
   }
 
-  def admins(Integer max) {
-    params.max = Math.min(max ?: 10,100)
-    def userList = []
-    def tmp = User.findAll().each {
-      def tmpRole = it.getAuthorities().toString()
-      if (tmpRole == '[com.tim.hundreds.Role : 2]') {
-        userList << it
-      }
-    }
-    respond userList, model:[userInstanceCount: userInstance.size()]
-  }
-
 }
