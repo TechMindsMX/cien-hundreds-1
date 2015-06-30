@@ -9,9 +9,9 @@ class TagService {
     def tags = tagsComma?.tokenize(',')
     tags.each {
       if(it != 'null'){
-        if(!musicianInstance.tags.contains(it)){
+          it = it.replaceAll('\\[','')
+          it = it.replaceAll('\\]','')
           musicianInstance.addToTags(new Tag(value:it))
-        }
       }
     }
   }

@@ -23,7 +23,7 @@ class TagServiceIntegrationSpec extends Specification {
   when: "We add tags using service"
     tagService.addMusicianTags(musician, tagsComma)
   then: "We expect following result"
-    result == musician.tags.size()
+    result == musician.tags*.value.size()
   where: "We have next values"
     tagsComma         || result
     'One, Two'        || 2
@@ -33,6 +33,7 @@ class TagServiceIntegrationSpec extends Specification {
     'One,Two,Three,'  || 3
     ',One,Two,Three,' || 3
     'One,Two,null'    || 2
+    '[One, Two]'      || 2
   }
 
 }
