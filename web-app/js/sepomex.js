@@ -11,8 +11,6 @@ function cambio() {
     var estado 		= $('#state');
 
     if(pais == 'mex') {
-        calle.val('');
-        cp.val('');
         colonia.parent().html('<select name="' + colonia.prop('name') + '" id="' + colonia.prop('id') + '"></select>');
         delegacion.parent().html('<select name="' + delegacion.prop('name') + '" id="' + delegacion.prop('id') + '"></select>');
         ciudad.parent().html('<select name="' + ciudad.prop('name') + '" id="' + ciudad.prop('id') + '"></select>');
@@ -36,7 +34,7 @@ function llenarcampos() {
         var codigoPostal = $(this).val();
 
         var ajax = $.ajax({
-            url: "http://api.timone-sepomex.mx/sepomexes/" + codigoPostal,
+            url: "http://sepomex.trama.mx/sepomexes/" + codigoPostal,
             dataType: 'json',
             crossDomain: true
         });
@@ -78,8 +76,6 @@ function llenarcampos() {
 }
 
 function error() {
-    alert('Error en el codigo postal favor de verificar');
-
     $('#street').val('');
     $('#zipcode').val('');
     $('#neighborhood').find('option').remove();
@@ -91,4 +87,7 @@ function error() {
 $(document).ready(function(){
     $('#country').on('change',cambio);
     $('#zipcode').on('change',llenarcampos);
+
+    $('#country').trigger('change');
+    $('#zipcode').trigger('change');
 });

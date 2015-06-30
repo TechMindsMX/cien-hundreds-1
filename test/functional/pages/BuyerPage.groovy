@@ -9,7 +9,7 @@ class BuyerPage extends Page {
     static at = { title == "100Hundreds" }
 
     static content = {
-        buyerForm { $('#aqui') }
+        buyerForm { $('#buyerForm') }
         submitButton { buyerForm.find('.save') }
         cancelButton { $("#btnCancel") }
         logout { $('.nav-header').find('.logout') }
