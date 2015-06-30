@@ -100,3 +100,5 @@
         <input id="terms" type="checkbox" name="terms">&nbsp;Acepto los <a class="" data-toggle="modal" data-target="#terms_modal">Términos y condiciones</a>
     <div>
 </div>
+
+<g:hiddenField name="status" value="true" />
