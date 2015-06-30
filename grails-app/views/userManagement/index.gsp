@@ -38,8 +38,10 @@
 						<td>${userInstance.getAuthorities().authority}</td>
 						<td>${fieldValue(bean: userInstance, field: "profile.email")}</td>
 						<td>${fieldValue(bean: userInstance, field: "profile.phone")}</td>
-						<td>${userInstance.accountExpired ? 'habilitado' : 'deshabilitado'}</td>
-										
+						<td>
+							<g:if test="${userInstance.accountExpired}"><g:message code="general.disabled.label" /></g:if>
+							<g:else><g:message code="general.enabled.label"/></g:else>
+						</td>
 					</tr>
 				</g:each>
 				</tbody>

@@ -64,7 +64,7 @@
 <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'emailCheck', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="emailCheck">Confirme su correo electrónico<span class="required-indicator">*</span></label>
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.emailCheck}" name="emailCheck" class="form-control" />
+        <g:textField value="" name="emailCheck" class="form-control" />
     </div>
 </div>
 
