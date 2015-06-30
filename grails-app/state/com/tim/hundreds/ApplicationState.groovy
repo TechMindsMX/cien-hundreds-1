@@ -33,7 +33,6 @@ interface ApplicationState {
   static final String LOGO_URL_BASE = 'http://localhost/cienhundreds/logos/'
   static final String RESUME_URL_BASE = 'http://localhost/cienhundreds/resumes/'
   static final String PRESS_URL_BASE = 'http://localhost/cienhundreds/press/'
-  static final String ATTACH_DIR = '/var/www/html/cienhundreds/'
   // ATTACH WINDOWS
   static final String ATTACH_DIR = '/wamp/www/cienhundreds/'
   // ATTACH LINUX
