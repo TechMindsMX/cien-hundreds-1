@@ -113,7 +113,7 @@
 				<g:if test="${companyInstance?.references}">
 					<ul>
 						<g:each in="${companyInstance?.references}" var="r"> 
-						<li>${r.name}  ${r.contactName} ${r.type} ${r.email} ${r.phone}</li>
+						<li><g:link controller="activity" action="edit" id="${r.id}" >${r.name}  ${r.contactName} ${r.type.name} ${r.email} ${r.phone}</g:link></li>
 						</g:each>
 					</ul>
 				</g:if>
@@ -179,7 +179,7 @@
 								</g:each>
 							</ul>
 							<div>
-								<g:link controller="collaborator" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'collaborator.label')])}</g:link>
+								<g:link controller="collaborator" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'collaborator.label')])}</g:link>
 							</div>
 						</div>
 				</div>
