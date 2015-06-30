@@ -2,6 +2,9 @@
 
 <g:set var="labelWidth" value="col-sm-2" />
 <g:set var="inputWidth" value="col-sm-10 col-lg-6" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<g:javascript src="sepomex.js" />
 
 <div class="form-group fieldcontain ${hasErrors(bean: addressInstance, field: 'country', 'error')} required">
 	<label for="country" class="${labelWidth} control-label">
@@ -9,7 +12,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${inputWidth}">
-		<g:countrySelect name="country" value="${addressInstance?.country}" noSelection="['':'-Seleccione-']" class="form-control" />
+		<g:countrySelect name="country" id="country" value="${addressInstance?.country}" noSelection="['':'-Seleccione-']" class="form-control" />
 	</div>
 </div>
 
@@ -19,7 +22,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${inputWidth}">
-		<g:textField name="street" maxlength="200" required="" value="${addressInstance?.street}" class="form-control" />
+		<g:textField name="street" id="street" maxlength="200" required="" value="${addressInstance?.street}" class="form-control" />
 	</div>
 </div>
 
@@ -29,7 +32,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${inputWidth}">
-		<g:textField name="zipcode" maxlength="5" required="" value="${addressInstance?.zipcode}" class="form-control" />
+		<g:textField name="zipcode" id="zipcode" maxlength="5" required="" value="${addressInstance?.zipcode}" class="form-control" />
 	</div>
 </div>
 
@@ -39,7 +42,16 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${inputWidth}">
-		<g:textField name="neighborhood" maxlength="100" required="" value="${addressInstance?.neighborhood}" class="form-control" />
+		<g:textField name="neighborhood" id="neighborhood" maxlength="100" required="" value="${addressInstance?.neighborhood}" class="form-control" />
+	</div>
+</div>
+
+<div class="form-group fieldcontain ${hasErrors(bean: addressInstance, field: 'county', 'error')} required">
+	<label for="county" class="${labelWidth} control-label">
+		<g:message code="address.county.label" default="County" />
+	</label>
+	<div class="${inputWidth}">
+		<g:textField name="county" id="county" maxlength="100" required="" value="${addressInstance?.county}" class="form-control" />
 	</div>
 </div>
 
@@ -49,7 +61,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${inputWidth}">
-		<g:textField name="town" maxlength="100" required="" value="${addressInstance?.town}" class="form-control" />
+		<g:textField name="town" id="town" maxlength="100" required="" value="${addressInstance?.town}" class="form-control" />
 	</div>
 </div>
 
@@ -59,7 +71,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${inputWidth}">
-		<g:textField name="state" maxlength="100" required="" value="${addressInstance?.state}" class="form-control" />
+		<g:textField name="state" id="state" maxlength="100" required="" value="${addressInstance?.state}" class="form-control" />
 	</div>
 </div>
 
