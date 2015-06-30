@@ -11,7 +11,7 @@ class TagService {
       if(it != 'null'){
           it = it.replaceAll('\\[','')
           it = it.replaceAll('\\]','')
-          musicianInstance.addToTags(new Tag(value:it))
+          musicianInstance.addToTags(new Tag(value:it.trim()))
       }
     }
   }
