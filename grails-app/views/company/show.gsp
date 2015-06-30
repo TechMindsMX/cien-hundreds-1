@@ -96,7 +96,7 @@
 				<g:if test="${companyInstance?.events}">
 					<ul>
 						<g:each in="${companyInstance?.events}" var="e"> 
-						<li><g:formatDate format="dd-MM-yyyy" date="${e.date}"/> ${e.activity} ${e.place}</li>
+						<li><g:link controller="activity" action="edit" id="${e.id}" params="['company.id': companyInstance?.id]"><g:formatDate format="dd-MM-yyyy" date="${e.date}"/> ${e.activity} ${e.place}</g:link></li>
 						</g:each>
 					</ul>
 				</g:if>
@@ -108,7 +108,7 @@
 	        		<div class="col-sm-12">
 				<div class="fieldcontain well">
 				<p id="references-label" class="">
-					<g:link controller="references" action="create" params="['company.id': companyInstance?.id]">${message(code: 'references.label', default: 'Recomendaciones')}</g:link>
+					<g:link controller="reference" action="create" params="['company.id': companyInstance?.id]">${message(code: 'references.label', default: 'Recomendaciones')}</g:link>
 				</p>
 				<g:if test="${companyInstance?.references}">
 					<ul>
