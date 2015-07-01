@@ -20,6 +20,7 @@ class Musician {
   Social social
   Address address
   DatosFiscales datosFiscales
+  User assigned
 
   static transients = ['tagsComma']
 
