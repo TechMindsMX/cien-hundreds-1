@@ -27,7 +27,7 @@
 				</ul>
 			</div>
 			</g:hasErrors>
-			<g:form url="[resource:videoInstance, action:'save']"  class="form-horizontal">
+			<g:form url="[resource:videoInstance, action:'save']"  class="form-horizontal" id="videoForm">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
