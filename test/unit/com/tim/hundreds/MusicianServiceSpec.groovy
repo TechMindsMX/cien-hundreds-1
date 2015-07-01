@@ -8,13 +8,16 @@ import spock.lang.Specification
  */
 @TestFor(MusicianService)
 class MusicianServiceSpec extends Specification {
+  def springSecurityService = Mock(SpringSecurityService)
 
-    def setup() {
-    }
+  def setup() {
+    service.springSecurityService = springSecurityService
+  }
 
   void "should save an musician"() {
   given: "An user"
    def user = new User()
   and: "And musician"
+   def musician = new Musician()
   }
 }
