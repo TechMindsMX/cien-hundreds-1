@@ -6,7 +6,9 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
+@Secured(['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN'])
 class MusicianValidationController {
+    def musicianService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -35,7 +37,7 @@ class MusicianValidationController {
             return
         }
 
-        musicianValidationInstance.save flush:true
+        musicianService.assignMusicianToFacilitator(musicianValidationInstance)
 
         request.withFormat {
             form multipartForm {
