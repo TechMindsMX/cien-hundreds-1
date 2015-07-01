@@ -14,6 +14,7 @@ class MusicianCommand {
   Date formed
 
   Boolean hasManager
+  Boolean active = true
 
   Genre genre
   Social social
