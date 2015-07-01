@@ -1,6 +1,7 @@
 package com.tim.hundreds
 
 class ValidationMessage {
+  String uuid = TokenService.generateToken()
   String message
 
   static belongsTo = [
