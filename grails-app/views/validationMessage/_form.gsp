@@ -19,7 +19,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
-			<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionKey="id" required="" value="${validationMessageInstance?.musician?.id}" class="form-control many-to-one"/>
+			<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionValue="name" optionKey="id" required="" value="${validationMessageInstance?.musician?.id}" class="form-control many-to-one"/>
 
 		</div>
 </div>
@@ -30,7 +30,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
-			<g:select id="user" name="user.id" from="${com.tim.hundreds.User.list()}" optionKey="id" required="" value="${validationMessageInstance?.user?.id}" class="form-control many-to-one"/>
+      <g:select id="user" name="user.id" from="${com.tim.hundreds.User.list()}" optionValue="username" optionKey="id" required="" value="${validationMessageInstance?.user?.id}" class="form-control many-to-one"/>
 
 		</div>
 </div>
