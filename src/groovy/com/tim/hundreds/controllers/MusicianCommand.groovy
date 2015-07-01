@@ -14,16 +14,20 @@ class MusicianCommand {
   Date formed
 
   Boolean hasManager
+  Boolean active = true
 
   Genre genre
   Social social
   Address address
   DatosFiscales datosFiscales
+  MusicianValidation musicianValidation
   User user
+  User assigned
 
   static constraints = {
     tagsComma nullable:true
     user nullable:true
+    musicianValidation nullable:true
     formed(validator: {val, obj ->
        val?.before(new Date())
     })

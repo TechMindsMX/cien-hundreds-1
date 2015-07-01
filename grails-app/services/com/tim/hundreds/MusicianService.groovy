@@ -14,4 +14,11 @@ class MusicianService {
     musicianInstance
   }
 
+  def assignMusicianToFacilitator(musicianValidationInstance){
+    def musician = musicianValidationInstance.musician
+    musician.assigned = musicianValidationInstance.user
+    musician.save()
+    musicianValidationInstance.save()
+  }
+
 }
