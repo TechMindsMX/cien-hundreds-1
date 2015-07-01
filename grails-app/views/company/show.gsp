@@ -96,7 +96,7 @@
 				<g:if test="${companyInstance?.events}">
 					<ul>
 						<g:each in="${companyInstance?.events}" var="e"> 
-						<li><g:link controller="activity" action="edit" id="${e.id}" params="['company.id': companyInstance?.id]"><g:formatDate format="dd-MM-yyyy" date="${e.date}"/> ${e.activity} ${e.place}</g:link></li>
+						<li><g:link controller="event" action="edit" id="${e.id}" params="['company.id': companyInstance?.id]"><g:formatDate format="dd-MM-yyyy" date="${e.date}"/> ${e.activity} ${e.place}</g:link></li>
 						</g:each>
 					</ul>
 				</g:if>
