@@ -48,7 +48,7 @@ class Musician {
     social nullable:true
     address nullable:true
     datosFiscales nullable:true
-    validationMessage nullable:true
+    musicianValidation nullable:true
     assigned nullable:true
     videos maxSize: ApplicationState.MAX_VIDEOS
     photos maxSize: ApplicationState.MAX_PHOTOS
