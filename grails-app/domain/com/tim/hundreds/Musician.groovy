@@ -24,7 +24,7 @@ class Musician {
 
   static transients = ['tagsComma']
 
-  static hasOne = [ validationMessage : ValidationMessage ]
+  static hasOne = [ musicianValidation : MusicianValidation ]
 
   static belongsTo = [user : User]
 
