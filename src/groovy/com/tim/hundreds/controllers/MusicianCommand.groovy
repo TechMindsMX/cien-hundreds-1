@@ -25,7 +25,7 @@ class MusicianCommand {
     tagsComma nullable:true
     user nullable:true
     formed(validator: {val, obj ->
-       val?.before(obj.new Date())
+       val?.before(new Date())
     })
     importFrom Musician
   }
