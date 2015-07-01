@@ -22,6 +22,7 @@ class MusicianCommand {
   DatosFiscales datosFiscales
   ValidationMessage validationMessage
   User user
+  User assigned
 
   static constraints = {
     tagsComma nullable:true
