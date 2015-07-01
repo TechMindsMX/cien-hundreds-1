@@ -2,7 +2,6 @@
 
 <g:set var="labelWidth" value="col-sm-2" />
 <g:set var="inputWidth" value="col-sm-10 col-lg-6" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <g:javascript src="sepomex.js" />
 
