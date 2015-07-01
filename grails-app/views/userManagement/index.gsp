@@ -12,6 +12,7 @@
 		<div class="nav" role="navigation">
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<sec:access expression="hasRole('ROLE_ADMIN')"><li><g:link action="admins"><g:message code="userManagement.adminList.label"/></g:link></li></sec:access>
 			</ul>
 		</div>
 		<div id="list-user" class="content scaffold-list" role="main">
