@@ -37,7 +37,7 @@
 						<button class="btn btn-danger" type="reset"><g:message code="cancel.label" /></button>
 					</div>
 				</fieldset>
-			</g:uploadform>
+			</g:uploadForm>
 		</div>
 	</body>
 </html>
