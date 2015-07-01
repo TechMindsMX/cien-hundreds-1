@@ -27,7 +27,7 @@
 			</ul>
 			</div>
 		</g:hasErrors>
-			<g:form url="[resource:audioInstance, action:'save']" class="form-horizontal" >
+			<g:form url="[resource:audioInstance, action:'save']" class="form-horizontal" id="audioForm" >
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
