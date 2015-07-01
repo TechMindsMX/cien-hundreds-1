@@ -221,9 +221,6 @@
                 cp.attributes.each { k, v ->
                     sb << "${k}=\"${v}\" "
                 }
-                if (!cp.attributes.precision) {
-                    sb << "precision=\"${precision}\" "
-                }
                 sb << " minDate=\"-10Y\" maxDate=\"-0D\" value=\"\${${domainInstance}?.${property.name}}\" ${renderNoSelection(property)} />"
 
                 return sb.toString()

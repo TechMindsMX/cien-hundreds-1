@@ -4,7 +4,7 @@ class TIMDatepickerTagLib {
         def out = out
         def name = attrs.name //The name attribute is required for the tag to work seamlessly with grails
         def id = attrs.id ?: name
-        def value = attrs.initValue
+        def value = attrs.value
         def displayFormat = attrs.displayFormat
         def datepickerFormat = attrs.datepickerFormat
         def minDate = attrs.minDate
