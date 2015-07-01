@@ -35,7 +35,7 @@
 		</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: validationMessageInstance, field: 'uuid', 'error')} required">
+<div class="hide form-group fieldcontain ${hasErrors(bean: validationMessageInstance, field: 'uuid', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="uuid">
 		<g:message code="validationMessage.uuid.label" default="Uuid" />
 		<span class="required-indicator">*</span>
