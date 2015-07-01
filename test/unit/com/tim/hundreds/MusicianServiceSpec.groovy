@@ -12,9 +12,9 @@ class MusicianServiceSpec extends Specification {
     def setup() {
     }
 
-    def cleanup() {
-    }
-
-    void "test something"() {
-    }
+  void "should save an musician"() {
+  given: "An user"
+   def user = new User()
+  and: "And musician"
+  }
 }
