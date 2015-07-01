@@ -49,6 +49,15 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${addressInstance?.county}">
+					<li class="fieldcontain">
+						<span id="county-label" class="${session.labelWidth} property-label"><g:message code="address.county.label" default="County" /></span>
+
+						<span class="property-value" aria-labelledby="county-label"><g:fieldValue bean="${addressInstance}" field="county"/></span>
+
+					</li>
+				</g:if>
 			
 				<g:if test="${addressInstance?.town}">
 				<li class="fieldcontain">

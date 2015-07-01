@@ -18,30 +18,33 @@ class AddressSpec extends Specification {
     address.street = street
     address.zipcode = zipcode
     address.neighborhood = neighborhood
+    address.county = county
     address.town = town
     address.state = state
     address.country = country
   then: "We validate address values"
     result == address.validate()
   where: "We have next cases"
-  street   | zipcode   | neighborhood   | town   | state   | country   || result
-  "street" | "12345"   | "neighborhood" | "town" | "state" | "country" || true
-  ""       | "12345"   | "neighborhood" | "town" | "state" | "country" || false
-  null     | "12345"   | "neighborhood" | "town" | "state" | "country" || false
-  "street" | "1234"    | "neighborhood" | "town" | "state" | "country" || false
-  "street" | "123456"  | "neighborhood" | "town" | "state" | "country" || false
-  "street" | "123"     | "neighborhood" | "town" | "state" | "country" || false
-  "street" | "12"      | "neighborhood" | "town" | "state" | "country" || false
-  "street" | "1"       | "neighborhood" | "town" | "state" | "country" || false
-  "street" | ""        | "neighborhood" | "town" | "state" | "country" || false
-  "street" | null      | "neighborhood" | "town" | "state" | "country" || false
-  "street" | "12345"   | ""             | "town" | "state" | "country" || false
-  "street" | "12345"   | null           | "town" | "state" | "country" || false
-  "street" | "12345"   | "neighborhood" | ""     | "state" | "country" || false
-  "street" | "12345"   | "neighborhood" | null   | "state" | "country" || false
-  "street" | "12345"   | "neighborhood" | "town" | ""      | "country" || false
-  "street" | "12345"   | "neighborhood" | "town" | null    | "country" || false
-  "street" | "12345"   | "neighborhood" | "town" | "state" | ""        || false
-  "street" | "12345"   | "neighborhood" | "town" | "state" | null      || false
+  street   | zipcode   | neighborhood   | county   | town   | state   | country   || result
+  "street" | "12345"   | "neighborhood" | 'county' | "town" | "state" | "country" || true
+  "street" | "12345"   | "neighborhood" | ''       | "town" | "state" | "country" || true
+  "street" | "12345"   | "neighborhood" | null     | "town" | "state" | "country" || true
+  ""       | "12345"   | "neighborhood" | 'county' | "town" | "state" | "country" || false
+  null     | "12345"   | "neighborhood" | 'county' | "town" | "state" | "country" || false
+  "street" | "1234"    | "neighborhood" | 'county' | "town" | "state" | "country" || false
+  "street" | "123456"  | "neighborhood" | 'county' | "town" | "state" | "country" || false
+  "street" | "123"     | "neighborhood" | 'county' | "town" | "state" | "country" || false
+  "street" | "12"      | "neighborhood" | 'county' | "town" | "state" | "country" || false
+  "street" | "1"       | "neighborhood" | 'county' | "town" | "state" | "country" || false
+  "street" | ""        | "neighborhood" | 'county' | "town" | "state" | "country" || false
+  "street" | null      | "neighborhood" | 'county' | "town" | "state" | "country" || false
+  "street" | "12345"   | ""             | 'county' | "town" | "state" | "country" || false
+  "street" | "12345"   | null           | 'county' | "town" | "state" | "country" || false
+  "street" | "12345"   | "neighborhood" | 'county' | ""     | "state" | "country" || false
+  "street" | "12345"   | "neighborhood" | 'county' | null   | "state" | "country" || false
+  "street" | "12345"   | "neighborhood" | 'county' | "town" | ""      | "country" || false
+  "street" | "12345"   | "neighborhood" | 'county' | "town" | null    | "country" || false
+  "street" | "12345"   | "neighborhood" | 'county' | "town" | "state" | ""        || false
+  "street" | "12345"   | "neighborhood" | 'county' | "town" | "state" | null      || false
   }
 }

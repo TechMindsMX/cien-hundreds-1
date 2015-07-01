@@ -10,7 +10,7 @@ class LoginPage extends Page {
 
   static content = {
     loginForm { $("#loginForm") }
-    loginButton { $("#loginButton") }
+    loginButton { $("#btn-success") }
     registerLink { $("a[href*='register/index']") }
   }
 }
