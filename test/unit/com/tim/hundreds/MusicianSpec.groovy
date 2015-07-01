@@ -31,28 +31,28 @@ class MusicianSpec extends Specification {
     then:"We validate command"
       result == musician.validate()
     where:"We have the next cases"
-    name             | history   | web                             | notes   | tagsComma | logoPath                               | hasManager  | formed       | genre                    || result
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date()  | new Genre(name:'Trance') || true
-    'A'              | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date()  | new Genre(name:'Trance') || true
-    'Above & Beyond' | 'h'       | null                            | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date()  | new Genre(name:'Trance') || true
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | null    | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date()  | new Genre(name:'Trance') || true
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | null      | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date()  | new Genre(name:'Trance') || true
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | null                                   | true        |  new Date()  | new Genre(name:'Trance') || true
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | false       |  new Date()  | new Genre(name:'Trance') || true
-    null             | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'     | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date()  | new Genre(name:'Trance') || false
-    'Above & Beyond' | null      | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'     | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date()  | new Genre(name:'Trance') || false
-    'Above & Beyond' | 'history' | 'http://'                       | 'notes' | 'tags'     | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date()  | new Genre(name:'Trance') || false
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | ''      | 'tags'     | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date()  | new Genre(name:'Trance') || false
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | ''         | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date()  | new Genre(name:'Trance') || false
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'     | '5c7f5fdfd9a34af3abb28302efb4599.png'  | true        |  new Date()  | new Genre(name:'Trance') || false
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'     | '5c7f5fdfd9a34af3abb28302efb45996.png6'| true        |  new Date()  | new Genre(name:'Trance') || false
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'     | ''                                     | true        |  new Date()  | new Genre(name:'Trance') || false
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'     | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  null        | new Genre(name:'Trance') || false
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'     | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date()  | null                     || false
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date(nextMinute)  | new Genre(name:'Trance') || false
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date(nextHour)  | new Genre(name:'Trance') || false
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date(nextDay)  | new Genre(name:'Trance') || false
-    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true        |  new Date(aboveAndBeyond)  | new Genre(name:'Trance') || false
+    name             | history   | web                             | notes   | tagsComma | logoPath                               | hasManager | formed              | genre                    || result
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date()          | new Genre(name:'Trance') || true
+    'A'              | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date()          | new Genre(name:'Trance') || true
+    'Above & Beyond' | 'h'       | null                            | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date()          | new Genre(name:'Trance') || true
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | null    | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date()          | new Genre(name:'Trance') || true
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | null      | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date()          | new Genre(name:'Trance') || true
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | null                                   | true       | new Date()          | new Genre(name:'Trance') || true
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | false      | new Date()          | new Genre(name:'Trance') || true
+    null             | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date()          | new Genre(name:'Trance') || false
+    'Above & Beyond' | null      | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date()          | new Genre(name:'Trance') || false
+    'Above & Beyond' | 'history' | 'http://'                       | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date()          | new Genre(name:'Trance') || false
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | ''      | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date()          | new Genre(name:'Trance') || false
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | ''        | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date()          | new Genre(name:'Trance') || false
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb4599.png'  | true       | new Date()          | new Genre(name:'Trance') || false
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png6'| true       | new Date()          | new Genre(name:'Trance') || false
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | ''                                     | true       | new Date()          | new Genre(name:'Trance') || false
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | null                | new Genre(name:'Trance') || false
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date()          | null                     || false
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date(nextMinute)| new Genre(name:'Trance') || false
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date(nextHour)  | new Genre(name:'Trance') || false
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date(nextDay)   | new Genre(name:'Trance') || false
+    'Above & Beyond' | 'history' | 'http://www.aboveandbeyond.nu/' | 'notes' | 'tags'    | '5c7f5fdfd9a34af3abb28302efb45996.png' | true       | new Date(aboveAndBeyond)  | new Genre(name:'Trance') || false
 
 
 
