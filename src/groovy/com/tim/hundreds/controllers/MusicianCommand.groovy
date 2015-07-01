@@ -20,6 +20,7 @@ class MusicianCommand {
   Social social
   Address address
   DatosFiscales datosFiscales
+  ValidationMessage validationMessage
   User user
 
   static constraints = {

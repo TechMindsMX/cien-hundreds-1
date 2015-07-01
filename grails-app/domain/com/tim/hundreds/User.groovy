@@ -16,6 +16,7 @@ class User {
   static hasMany = [
     musicians : Musician,
     companies : Company,
+    validationMessage : ValidationMessage,
     userEmails : UserEmail,
     userTelephone : UserTelephone
   ]

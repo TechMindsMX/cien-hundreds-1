@@ -23,6 +23,8 @@ class Musician {
 
   static transients = ['tagsComma']
 
+  static hasOne = [ validationMessage : ValidationMessage ]
+
   static belongsTo = [user : User]
 
   static hasMany = [
@@ -45,6 +47,7 @@ class Musician {
     social nullable:true
     address nullable:true
     datosFiscales nullable:true
+    validationMessage nullable:true
     videos maxSize: ApplicationState.MAX_VIDEOS
     photos maxSize: ApplicationState.MAX_PHOTOS
     audios maxSize: ApplicationState.MAX_AUDIOS
