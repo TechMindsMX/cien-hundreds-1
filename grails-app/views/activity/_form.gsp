@@ -26,7 +26,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${session.inputWidth}">
-		<g:datePicker class="form-control" name="date" precision="day"  value="${activityInstance?.date}"  />
+		<g:timDatePicker name="date" minDate="-10Y" maxDate="-0D" initValue="${activityInstance?.date}"></g:timDatePicker>
 	</div>
 </div>
 

@@ -210,12 +210,12 @@
     private renderDateEditor(domainClass, property) {
         def precision = (property.type == Date || property.type == java.sql.Date || property.type == Calendar) ? "day" : "minute";
         if (!cp) {
-            return "<g:datePicker class=\"form-control\" name=\"${property.name}\" precision=\"${precision}\" value=\"\${${domainInstance}?.${property.name}}\" />"
+            return "<g:timDatePicker name=\"${property.name}\" minDate=\"-10Y\" maxDate=\"-0D\" value=\"\${${domainInstance}?.${property.name}}\"></g:timDatePicker>"
         } else {
             if (!cp.editable) {
                 return "\${${domainInstance}?.${property.name}?.toString()}"
             } else {
-                def sb = new StringBuilder("<g:datePicker class=\"form-control\" name=\"${property.name}\" ")
+                def sb = new StringBuilder("<g:timDatePicker class=\"form-control\" name=\"${property.name}\" ")
                 if (cp.format) sb << "format=\"${cp.format}\" "
                 if (cp.widget) sb << "widget=\"${cp.widget}\" "
                 cp.attributes.each { k, v ->
@@ -224,7 +224,7 @@
                 if (!cp.attributes.precision) {
                     sb << "precision=\"${precision}\" "
                 }
-                sb << " value=\"\${${domainInstance}?.${property.name}}\" ${renderNoSelection(property)} />"
+                sb << " minDate=\"-10Y\" maxDate=\"-0D\" value=\"\${${domainInstance}?.${property.name}}\" ${renderNoSelection(property)} />"
 
                 return sb.toString()
             }

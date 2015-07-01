@@ -69,7 +69,7 @@
 					</div></b>
                 </td>
                 <td>
-					<g:datePicker name="formed" class="form-control" precision="day"  value="${musicianInstance?.formed}"  />
+                    <g:timDatePicker name="formed" minDate="-10Y" maxDate="-0D" initValue="${musicianInstance?.formed}"></g:timDatePicker>
                     <br>
                 </td>
             </tr>

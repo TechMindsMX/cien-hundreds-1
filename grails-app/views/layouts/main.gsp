@@ -26,8 +26,14 @@
     <asset:stylesheet src="theme.css"/>
     <!--link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet"-->
+  
+    <asset:javascript src="js/jquery-2.1.1.js" />
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
     <g:layoutHead/>
 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
 </head>
 
 <g:set var="btnOffset" scope="session" value="col-md-offset-2" />
@@ -129,7 +135,6 @@
 
 
     <!-- Mainly scripts -->
-    <asset:javascript src="js/jquery-2.1.1.js" />
     <asset:javascript src="js/bootstrap.min.js" />
     <asset:javascript src="js/plugins/metisMenu/jquery.metisMenu.js" />
     <asset:javascript src="js/plugins/slimscroll/jquery.slimscroll.min.js" />
@@ -162,7 +167,7 @@
 
     <!-- Toastr -->
 
-    <asset:javascript src="js/analytics-code.js" />
+    %{-- <asset:javascript src="js/analytics-code.js" /> --}%
 
 </body>
 </html>
