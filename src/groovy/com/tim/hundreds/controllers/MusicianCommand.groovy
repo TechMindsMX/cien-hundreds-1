@@ -24,6 +24,9 @@ class MusicianCommand {
   static constraints = {
     tagsComma nullable:true
     user nullable:true
+    formed(validator: {val, obj ->
+       val?.before(new Date())
+    })
     importFrom Musician
   }
 }
