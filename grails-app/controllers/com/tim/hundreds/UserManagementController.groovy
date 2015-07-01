@@ -17,4 +17,9 @@ class UserManagementController {
         [userInstanceList: userList, userInstanceCount: userList.size()]
     }
 
+    def admins() {
+    	def userList = userHelperService.findListByRole('ROLE_ADMIN')
+        render view: 'index', model:[userInstanceList: userList, userInstanceCount: userList.size()]
+
+    }
 }
