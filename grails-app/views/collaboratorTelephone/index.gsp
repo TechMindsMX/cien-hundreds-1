@@ -25,12 +25,8 @@
 					<tr>
 					
 						<g:sortableColumn property="phone" title="${message(code: 'collaboratorTelephone.phone.label', default: 'Phone')}" />
-					
 						<th><g:message code="collaboratorTelephone.collaborator.label" default="Collaborator" /></th>
-					
 						<g:sortableColumn property="type" title="${message(code: 'collaboratorTelephone.type.label', default: 'Type')}" />
-					
-						<g:sortableColumn property="uuid" title="${message(code: 'collaboratorTelephone.uuid.label', default: 'Uuid')}" />
 					
 					</tr>
 				</thead>
@@ -39,12 +35,8 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${collaboratorTelephoneInstance.id}">${fieldValue(bean: collaboratorTelephoneInstance, field: "phone")}</g:link></td>
-					
-						<td>${fieldValue(bean: collaboratorTelephoneInstance, field: "collaborator")}</td>
-					
+						<td>${collaboratorEmailInstance?.collaborator?.firstName} ${collaboratorEmailInstance?.collaborator?.lastName}</td>
 						<td>${fieldValue(bean: collaboratorTelephoneInstance, field: "type")}</td>
-					
-						<td>${fieldValue(bean: collaboratorTelephoneInstance, field: "uuid")}</td>
 					
 					</tr>
 				</g:each>

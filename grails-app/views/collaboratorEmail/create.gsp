@@ -27,7 +27,7 @@
 				</ul>
 			</div>
 			</g:hasErrors>
-			<g:uploadForm url="[resource:userInstance, action:'save']"  class="form-horizontal" id="buyerForm">
+			<g:uploadForm url="[resource:userInstance, action:'save']" class="form-horizontal" id="collaboratorEmailForm">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
@@ -37,7 +37,7 @@
 						<button class="btn btn-danger" type="reset"><g:message code="cancel.label" /></button>
 					</div>
 				</fieldset>
-			</g:form>
+			</g:uploadForm>
 		</div>
 	</body>
 </html>

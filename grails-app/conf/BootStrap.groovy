@@ -11,9 +11,15 @@ import grails.util.Environment
 class BootStrap {
   def init = { servletContext ->
   if(Environment.current == Environment.DEVELOPMENT || Environment.current == Environment.TEST) {
-      createUserRole()
-      createAdminRole()
       createAllRole()
+      createUserWithRole('ROLE_USER',             'cien',           'me@techminds.com.mx')
+      createUserWithRole('ROLE_ADMIN',            'admin',          'remy.ochoa@techminds.com.mx')
+      createUserWithRole('ROLE_FACILITATOR',      'facilitator',    'facilitator@techminds.com.mx')
+      createUserWithRole('ROLE_BUYER',            'buyer',          'buyer@techminds.com.mx')
+      createUserWithRole('ROLE_MUSICIAN_ADMIN',   'musicicanAdmin', 'musicicanAdmin@techminds.com.mx')
+      createUserWithRole('ROLE_COMPANY_ADMIN',    'companyAdmin',   'companyAdmin@techminds.com.mx')
+      createUserWithRole('ROLE_MUSICIAN_VIEWER',  'musicianViewer', 'musicianViewer@techminds.com.mx')
+      createUserWithRole('ROLE_COMPANY_VIEWER',   'companyViewer',  'com@techminds.com.mx')
       createGenres()
       createMusicianRoles()
       createBusinessActivity()
@@ -23,44 +29,31 @@ class BootStrap {
   def destroy = {
   }
 
-  def createUserRole(){
-    def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
-
-    def user = new User(username: 'cien', password: '12345678')
-    def  profile = new Profile(email:'me@techminds.com.mx', firstName:'me', middleName:'middleName', lastName:'lastName').save()
-    user.profile = profile
-    user.enabled = true
-    user.save(flush: true)
-
-    UserRole.create user, userRole, true
-
-    assert User.count() == 1
-    assert Role.count() == 1
-    assert UserRole.count() == 1
-  }
-
-  def createAdminRole(){
-    def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
-    def user = new User(username: 'admin', password: '12345678')
-    def  profile = new Profile(email:'remy.ochoa@techminds.com.mx', firstName:'admin', middleName:'middleName', lastName:'lastName').save()
-    user.profile = profile
-    user.enabled = true
-    user.save(flush: true)
-
-    UserRole.create user, adminRole, true
-
-    assert User.count() == 2
-    assert Role.count() == 2
-    assert UserRole.count() == 2
-  }
-
   def createAllRole(){
+    new Role(authority: 'ROLE_USER').save(flush: true)
+    new Role(authority: 'ROLE_ADMIN').save(flush: true)
     new Role(authority: 'ROLE_FACILITATOR').save(flush: true)
     new Role(authority: 'ROLE_BUYER').save(flush: true)
     new Role(authority: 'ROLE_MUSICIAN_ADMIN').save(flush: true)
     new Role(authority: 'ROLE_COMPANY_ADMIN').save(flush: true)
     new Role(authority: 'ROLE_MUSICIAN_VIEWER').save(flush: true)
     new Role(authority: 'ROLE_COMPANY_VIEWER').save(flush: true)
+    assert Role.count() == 8
+  }
+
+  def createUserWithRole(String authority,String name,String email) {
+    def userCount = User.count()
+
+    def userRole = Role.findByAuthority(authority)
+    def user = new User(username: name, password: '12345678')
+    def  profile = new Profile(email: email, firstName: name, middleName:'middleName', lastName:'lastName').save()
+    user.profile = profile
+    user.enabled = true
+    user.save(flush: true)
+
+    UserRole.create user, userRole, true
+
+    assert User.count() == (userCount + 1)
   }
 
   def createGenres(){

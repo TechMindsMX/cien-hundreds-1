@@ -90,7 +90,7 @@
 				</g:if>
 				<g:if test="${collaboratorInstance?.collaboratorEmails.size() < ApplicationState.MAX_EMAILS}">
 					<div>
-						<g:link controller="collaboratorEmail" action="create" >${message(code: 'default.add.label', args: [message(code: 'email.label')])}</g:link>
+						<g:link controller="collaboratorEmail" action="create" params="['collaborator.id': collaboratorInstance.id]">${message(code: 'default.add.label', args: [message(code: 'email.label')])}</g:link>
 					</div>
 				</g:if> 
 			
@@ -106,7 +106,7 @@
 				</g:if>
 				<g:if test="${collaboratorInstance?.collaboratorTelephones.size() < ApplicationState.MAX_TELEPHONES}">
 					<div>
-						<g:link controller="collaboratorTelephone" action="create" >${message(code: 'default.add.label', args: [message(code: 'telephone.label')])}</g:link>
+						<g:link controller="collaboratorTelephone" action="create" params="['collaborator.id': collaboratorInstance.id]">${message(code: 'default.add.label', args: [message(code: 'telephone.label')])}</g:link>
 					</div>
 				</g:if> 
 			

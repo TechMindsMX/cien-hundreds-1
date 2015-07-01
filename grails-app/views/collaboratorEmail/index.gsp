@@ -12,7 +12,6 @@
 		<div class="nav" role="navigation">
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="list-collaboratorEmail" class="content scaffold-list" role="main">
@@ -25,12 +24,8 @@
 					<tr>
 					
 						<g:sortableColumn property="address" title="${message(code: 'collaboratorEmail.address.label', default: 'Address')}" />
-					
 						<th><g:message code="collaboratorEmail.collaborator.label" default="Collaborator" /></th>
-					
 						<g:sortableColumn property="type" title="${message(code: 'collaboratorEmail.type.label', default: 'Type')}" />
-					
-						<g:sortableColumn property="uuid" title="${message(code: 'collaboratorEmail.uuid.label', default: 'Uuid')}" />
 					
 					</tr>
 				</thead>
@@ -39,12 +34,8 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${collaboratorEmailInstance.id}">${fieldValue(bean: collaboratorEmailInstance, field: "address")}</g:link></td>
-					
-						<td>${fieldValue(bean: collaboratorEmailInstance, field: "collaborator")}</td>
-					
+						<td>${collaboratorEmailInstance?.collaborator?.firstName} ${collaboratorEmailInstance?.collaborator?.lastName}</td>
 						<td>${fieldValue(bean: collaboratorEmailInstance, field: "type")}</td>
-					
-						<td>${fieldValue(bean: collaboratorEmailInstance, field: "uuid")}</td>
 					
 					</tr>
 				</g:each>
