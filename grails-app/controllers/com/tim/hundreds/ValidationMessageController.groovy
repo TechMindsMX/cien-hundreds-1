@@ -36,6 +36,9 @@ class ValidationMessageController {
             return
         }
 
+        def musician = validationMessageInstance.musician
+        musician.assigned = validationMessageInstance.user
+        musician.save()
         validationMessageInstance.save flush:true
 
         request.withFormat {
