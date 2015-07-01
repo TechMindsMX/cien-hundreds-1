@@ -7,6 +7,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 @Secured(['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN'])
 class ValidationMessageController {
+    def musicianService
 
     static showMe = true
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -36,10 +37,7 @@ class ValidationMessageController {
             return
         }
 
-        def musician = validationMessageInstance.musician
-        musician.assigned = validationMessageInstance.user
-        musician.save()
-        validationMessageInstance.save flush:true
+        musicianService.assignMusicianToFacilitator(validationMessageInstance)
 
         request.withFormat {
             form multipartForm {
