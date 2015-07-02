@@ -24,16 +24,15 @@
     <asset:stylesheet src="css/animate.css"/>
     <asset:stylesheet src="css/style.css"/>
     <asset:stylesheet src="theme.css"/>
+    <asset:stylesheet src="jquery-ui.css"/>
     <!--link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet"-->
   
     <asset:javascript src="js/jquery-2.1.1.js" />
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <asset:javascript src="js/jquery-ui-1.10.4.min.js" />
 
     <g:layoutHead/>
 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
 </head>
 
 <g:set var="btnOffset" scope="session" value="col-md-offset-2" />
