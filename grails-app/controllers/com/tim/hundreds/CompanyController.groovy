@@ -4,7 +4,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['ROLE_ADMIN','ROLE_COMPANY_ADMIN'])
 class CompanyController {
     def logoStorerService
     def companyService
@@ -14,6 +14,7 @@ class CompanyController {
 
     static showMe = true /*Parametro para aparecer en el menú*/
 
+    @Secured(['ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Company.list(params), model:[companyInstanceCount: Company.count()]

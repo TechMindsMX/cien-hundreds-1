@@ -1,7 +1,9 @@
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import spock.lang.Unroll
+
 import page.LoginPage
+import page.LogoutPage
 import page.HomePage
 import page.CompanyListPage
 
@@ -27,18 +29,17 @@ class CompanyAclSpec extends GebReportingSpec {
         where: "We have the next cases"
         username            || result
         'admin'             || true
-        // 'buyer'             || true
-        // 'companyAdmin'      || true
-        // 'companyViewer'     || true
-        // 'cien'              || false
-        // 'facilitator'       || false
-        // 'musicicanAdmin'    || false
-        // 'musicianViewer'    || false
+        'buyer'             || true
+        'companyAdmin'      || true
+        'companyViewer'     || true
+        'cien'              || false
+        'facilitator'       || false
+        'musicicanAdmin'    || false
+        'musicianViewer'    || false
 
     }
 
-    def cleanupSpec() {
-        logout.click()
-        to HomePage
+    def cleanup() {
+        to LogoutPage
     }
 }
