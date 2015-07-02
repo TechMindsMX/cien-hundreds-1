@@ -7,7 +7,7 @@ class ValidationService {
   def restService
   def grailsApplication
 
-  def validate(musicianValidationInstance) {
+  def validateMusician(musicianValidationInstance) {
     def musician = musicianValidationInstance.musician
     def facilitator = musicianValidationInstance.user
     def active = musicianValidationInstance.type == ValidationType.ACCEPTED ? true : false
@@ -21,6 +21,13 @@ class ValidationService {
       def message = new FacilitatorCommand(email:profile.email, facilitator:"${profile.firstName} ${profile.middleName} ${profile.lastName}", musician:musician.name)
       restService.sendCommand(message, grailsApplication.config.musician.refused.url)
     }
+  }
+
+  def validateCompany(companyValidationInstance) {
+    def company = companyValidationInstance.company
+    def buyer = companyValidationInstance.user
+    def active = companyValidationInstance.type == ValidationType.ACCEPTED ? true : false
+    company.active = active
   }
 
 }

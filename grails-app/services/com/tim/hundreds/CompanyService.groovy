@@ -18,7 +18,7 @@ class CompanyService {
   def assignCompanyToBuyer(companyValidationInstance){
     def company = companyValidationInstance.company
     company.assigned = companyValidationInstance.user
-    validationService.validate(companyValidationInstance)
+    validationService.validateCompany(companyValidationInstance)
     company.save()
     companyValidationInstance.save()
   }
