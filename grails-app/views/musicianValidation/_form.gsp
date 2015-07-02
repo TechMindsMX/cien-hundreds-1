@@ -30,7 +30,7 @@
 
 	</label>
 		<div class="${session.inputWidth}">
-			<g:checkBox class="form-control" name="status" value="${musicianValidationInstance?.status}" />
+			<g:checkBox class="form-control" name="status" checked="true" value="${musicianValidationInstance?.status}" />
 
 		</div>
 </div>
