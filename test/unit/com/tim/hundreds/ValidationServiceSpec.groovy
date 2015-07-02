@@ -13,20 +13,21 @@ class ValidationServiceSpec extends Specification {
   def setup() {
     service.restService = restService
     grailsApplication.config.facilitator.assigned.url = 'facilitatorAssignedUrl'
+    grailsApplication.config.musician.refused.url = 'musicianRefusedUrl'
   }
 
   void "should validate an musician"() {
   given: "An musician validation"
     def musicianValidation = Mock(MusicianValidation)
   and: "Musician, user and profile"
-    def user = Mock(User)
+    def facilitator = Mock(User)
     def musician = Mock(Musician)
     def profile = Mock(Profile)
   when: "We validate musician"
     musicianValidation.type >> ValidationType.ACCEPTED
-    musicianValidation.user >> user
+    musicianValidation.user >> facilitator
     musicianValidation.musician >> musician
-    user.profile >> profile
+    facilitator.profile >> profile
     service.validate(musicianValidation)
   then: "We expect musician validated"
     1 * musician.setProperty('active', true)
@@ -42,13 +43,13 @@ class ValidationServiceSpec extends Specification {
     def profile = Mock(Profile)
   when: "We validate musician"
     musicianValidation.type >> ValidationType.REFUSED
-    musicianValidation.user >> user
     musicianValidation.musician >> musician
+    musician.user >> user
     user.profile >> profile
     service.validate(musicianValidation)
   then: "We expect musician validated"
     1 * musician.setProperty('active', false)
-    0 * restService.sendCommand(_ as FacilitatorCommand, 'facilitatorAssignedUrl')
+    1 * restService.sendCommand(_ as FacilitatorCommand, 'musicianRefusedUrl')
   }
 
 
