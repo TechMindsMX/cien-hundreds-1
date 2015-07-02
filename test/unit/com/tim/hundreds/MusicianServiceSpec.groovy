@@ -9,7 +9,7 @@ import spock.lang.Specification
 @TestFor(MusicianService)
 class MusicianServiceSpec extends Specification {
 
-  void "should assign musician to facilitator"() {
+  void "should assign musician to facilitator and active musician"() {
   given: "An musician validation"
    def musicianValidationInstance = Mock(MusicianValidation)
   and: "And musician and user"
@@ -26,4 +26,23 @@ class MusicianServiceSpec extends Specification {
    1 * musician.save()
    1 * musicianValidationInstance.save()
   }
+
+  void "should assign musician to facilitator and reject musician"() {
+  given: "An musician validation"
+   def musicianValidationInstance = Mock(MusicianValidation)
+  and: "And musician and user"
+   def musician = Mock(Musician)
+   def user = Mock(User)
+   musicianValidationInstance.musician >> musician
+   musicianValidationInstance.user >> user
+   musicianValidationInstance.type >> ValidationType.REJECTED
+   when: "We assign values to the user"
+   service.assignMusicianToFacilitator(musicianValidationInstance)
+   then: "We expect musician is save"
+   1 * musician.setProperty('assigned', user)
+   1 * musician.setProperty('active', false)
+   1 * musician.save()
+   1 * musicianValidationInstance.save()
+  }
+
 }
