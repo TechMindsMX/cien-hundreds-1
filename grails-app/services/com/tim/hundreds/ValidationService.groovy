@@ -28,6 +28,11 @@ class ValidationService {
     def buyer = companyValidationInstance.user
     def active = companyValidationInstance.type == ValidationType.ACCEPTED ? true : false
     company.active = active
+    if(active){
+      def profile = buyer.profile
+      def message = new FacilitatorCommand(email:profile.email, facilitator:"${profile.firstName} ${profile.middleName} ${profile.lastName}", musician:company.name)
+      restService.sendCommand(message, grailsApplication.config.buyer.assigned.url)
+    }
   }
 
 }
