@@ -20,6 +20,7 @@ class CompanyController {
         respond Company.list(params), model:[companyInstanceCount: Company.count()]
     }
 
+    @Secured(['ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Company companyInstance) {
         respond companyInstance
     }
