@@ -17,10 +17,12 @@ class MusicianServiceSpec extends Specification {
    def user = Mock(User)
    musicianValidationInstance.musician >> musician
    musicianValidationInstance.user >> user
+   musicianValidationInstance.type >> ValidationType.ACCEPTED
    when: "We assign values to the user"
    service.assignMusicianToFacilitator(musicianValidationInstance)
    then: "We expect musician is save"
-   1 * musician.setProperty('assigned',user)
+   1 * musician.setProperty('assigned', user)
+   1 * musician.setProperty('active', true)
    1 * musician.save()
    1 * musicianValidationInstance.save()
   }

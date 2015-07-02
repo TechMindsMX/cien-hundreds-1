@@ -17,6 +17,7 @@ class MusicianService {
   def assignMusicianToFacilitator(musicianValidationInstance){
     def musician = musicianValidationInstance.musician
     musician.assigned = musicianValidationInstance.user
+    musician.active = musicianValidationInstance.type == ValidationType.ACCEPTED ? true : false
     musician.save()
     musicianValidationInstance.save()
   }
