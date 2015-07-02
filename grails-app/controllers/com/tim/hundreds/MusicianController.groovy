@@ -13,6 +13,7 @@ class MusicianController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Secured(['ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Musician.list(params), model:[musicianInstanceCount: Musician.count()]

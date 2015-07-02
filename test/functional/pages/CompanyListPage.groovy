@@ -9,6 +9,6 @@ class CompanyListPage extends Page {
     static at = { title == "100Hundreds" }
 
     static content = {
-    	logout       { $('.nav-header').find('.logout') }
+    	listContainer ( required: false ) { $('#list-company') }
     }
 }

@@ -5,38 +5,37 @@ import spock.lang.Unroll
 import page.LoginPage
 import page.LogoutPage
 import page.HomePage
-import page.CompanyListPage
+import page.MusicianListPage
 
 @Stepwise
-class CompanyAclSpec extends GebReportingSpec {
+class MusicianListAclSpec extends GebReportingSpec {
 
     def setupSpec() {
 
     }
 
     @Unroll
-    def "Fill Form for Company"() {
+    def "Fill Form for Musician"() {
         given:"A user login with authority #authority"
         to LoginPage
         loginForm.j_username = username
         loginForm.j_password = "12345678"
         loginButton.click()
-        when: "navigate to Company list"
-        to CompanyListPage
-        then: "I am being redirected to the same page with errors"
-        at CompanyListPage
+        when: "navigate to Musician list"
+        to MusicianListPage
+        then: "I should see the list"
+        listContainer.present == result
 
         where: "We have the next cases"
         username            || result
         'admin'             || true
-        'buyer'             || true
-        'companyAdmin'      || true
-        'companyViewer'     || true
+        'musicicanAdmin'    || true
+        'facilitator'       || true
+        'musicianViewer'    || true
         'cien'              || false
-        'facilitator'       || false
-        'musicicanAdmin'    || false
-        'musicianViewer'    || false
-
+        'buyer'             || false
+        'companyAdmin'      || false
+        'companyViewer'     || false
     }
 
     def cleanup() {
