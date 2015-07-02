@@ -14,7 +14,7 @@ class BootStrap {
       createAllRole()
       createUserWithRole('ROLE_USER',             'cien',           'me@techminds.com.mx')
       createUserWithRole('ROLE_ADMIN',            'admin',          'remy.ochoa@techminds.com.mx')
-      createUserWithRole('ROLE_FACILITATOR',      'facilitator',    'joseluis.delacruz@techminds.com.mx')
+      createUserWithRole('ROLE_FACILITATOR',      'facilitator',    'facilitator@techminds.com.mx')
       createUserWithRole('ROLE_BUYER',            'buyer',          'buyer@techminds.com.mx')
       createUserWithRole('ROLE_MUSICIAN_ADMIN',   'musicicanAdmin', 'musicicanAdmin@techminds.com.mx')
       createUserWithRole('ROLE_COMPANY_ADMIN',    'companyAdmin',   'companyAdmin@techminds.com.mx')
