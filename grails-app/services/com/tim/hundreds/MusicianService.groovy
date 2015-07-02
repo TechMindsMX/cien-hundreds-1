@@ -5,6 +5,7 @@ import grails.transaction.Transactional
 @Transactional
 class MusicianService {
   def springSecurityService
+  def validationService
 
   def save(musicianInstance){
     def user = springSecurityService.currentUser
@@ -17,7 +18,7 @@ class MusicianService {
   def assignMusicianToFacilitator(musicianValidationInstance){
     def musician = musicianValidationInstance.musician
     musician.assigned = musicianValidationInstance.user
-    musician.active = musicianValidationInstance.type == ValidationType.ACCEPTED ? true : false
+    validationService.validate(musicianValidationInstance)
     musician.save()
     musicianValidationInstance.save()
   }
