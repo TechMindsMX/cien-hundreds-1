@@ -1,7 +1,17 @@
 package com.tim.hundreds
 
 class CompanyValidation {
+  String uuid = TokenService.generateToken()
+  String message
+  ValidationType type
 
-    static constraints = {
-    }
+  static belongsTo = [
+    user: User,
+    company: Company
+  ]
+
+  static constraints = {
+    message nullable:true,blank:false,size:1..10000
+  }
+
 }
