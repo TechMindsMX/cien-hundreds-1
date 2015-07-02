@@ -29,8 +29,15 @@ class CompanySpec extends GebReportingSpec {
         submitButton.click()
 
         where: "We have the next cases"
-        name | description | web | notes | tags || result
-        ''   | ''          | ''  | ''    | ''   ||CompanyPage
+        name   | description | web                      | notes  | tags          | logo | corporatePress || result
+        ''     | ''          | ''                       | ''     | ''            | ''   |  ''            ||CompanyPage
+        'Test' | ''          | ''                       | ''     | ''            | ''   |  ''            ||CompanyPage
+        'Test' | 'test'      | ''                       | ''     | ''            | ''   |  ''            ||CompanyPage
+        'Test' | 'test'      | 'http://www.susitio.com' | ''     | ''            | ''   |  ''            ||CompanyPage
+        'Test' | 'test'      | 'www.susitio.com'        | ''     | ''            | ''   |  ''            ||CompanyPage
+        'Test' | 'test'      | 'http://susitio.com'     | ''     | ''            | ''   |  ''            ||CompanyPage
+        'Test' | 'test'      | 'http://www.susitio.com' | 'test' | ''            | ''   |  ''            ||CompanyPage
+        'Test' | 'test'      | 'http://www.susitio.com' | 'test' | 'test,prueba' | ''   |  ''            ||CompanyPage
 
     }
 
