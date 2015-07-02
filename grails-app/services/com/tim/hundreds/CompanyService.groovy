@@ -5,6 +5,7 @@ import grails.transaction.Transactional
 @Transactional
 class CompanyService {
   def springSecurityService
+  def validationService
 
   def save(companyInstance) {
     def user = springSecurityService.currentUser
@@ -13,4 +14,13 @@ class CompanyService {
 
     companyInstance
   }
+
+  def assignCompanyToBuyer(companyValidationInstance){
+    def company = companyValidationInstance.company
+    company.assigned = companyValidationInstance.user
+    validationService.validate(companyValidationInstance)
+    company.save()
+    companyValidationInstance.save()
+  }
+
 }
