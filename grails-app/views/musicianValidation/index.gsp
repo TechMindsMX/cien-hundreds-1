@@ -28,7 +28,7 @@
 					
 						<th><g:message code="musicianValidation.musician.label" default="Musician" /></th>
 					
-						<g:sortableColumn property="status" title="${message(code: 'musicianValidation.status.label', default: 'Status')}" />
+						<g:sortableColumn property="type" title="${message(code: 'musicianValidation.type.label', default: 'Type')}" />
 					
 						<th><g:message code="musicianValidation.user.label" default="User" /></th>
 					
@@ -44,7 +44,7 @@
 					
 						<td>${fieldValue(bean: musicianValidationInstance, field: "musician")}</td>
 					
-						<td><g:formatBoolean boolean="${musicianValidationInstance.status}" /></td>
+						<td>${fieldValue(bean: musicianValidationInstance, field: "type")}</td>
 					
 						<td>${fieldValue(bean: musicianValidationInstance, field: "user")}</td>
 					

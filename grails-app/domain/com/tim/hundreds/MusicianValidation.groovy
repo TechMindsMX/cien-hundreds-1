@@ -3,7 +3,7 @@ package com.tim.hundreds
 class MusicianValidation {
   String uuid = TokenService.generateToken()
   String message
-  Boolean status
+  ValidationType type
 
   static belongsTo = [
     user: User,
