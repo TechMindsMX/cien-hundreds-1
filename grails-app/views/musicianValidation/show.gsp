@@ -41,11 +41,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${musicianValidationInstance?.status}">
+				<g:if test="${musicianValidationInstance?.type}">
 				<li class="fieldcontain">
-					<span id="status-label" class="${session.labelWidth} property-label"><g:message code="musicianValidation.status.label" default="Status" /></span>
+					<span id="type-label" class="${session.labelWidth} property-label"><g:message code="musicianValidation.type.label" default="Type" /></span>
 					
-						<span class="property-value" aria-labelledby="status-label"><g:formatBoolean boolean="${musicianValidationInstance?.status}" /></span>
+						<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${musicianValidationInstance}" field="type"/></span>
 					
 				</li>
 				</g:if>
