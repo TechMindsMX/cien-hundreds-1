@@ -38,6 +38,7 @@ interface ApplicationState {
   // static final String ATTACH_DIR = '/wamp/www/cienhundreds/'
   */
 
+
   // STAGE
   static final String PHOTO_URL_BASE = 'http://192.168.0.122/cienhundreds/photos/'
   static final String LOGO_URL_BASE = 'http://192.168.0.122/cienhundreds/logos/'
