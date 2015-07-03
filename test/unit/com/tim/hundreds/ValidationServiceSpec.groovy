@@ -28,10 +28,10 @@ class ValidationServiceSpec extends Specification {
     musicianValidation.user >> facilitator
     musicianValidation.musician >> musician
     facilitator.profile >> profile
-    service.validate(musicianValidation)
+    service.validateMusician(musicianValidation)
   then: "We expect musician validated"
     1 * musician.setProperty('active', true)
-    1 * restService.sendCommand(_ as FacilitatorCommand, 'musicianAssignedFacilitatorUrl')
+    1 * restService.sendCommand(_ as AssignationCommand, 'musicianAssignedFacilitatorUrl')
   }
 
   void "should refuse an musician"() {
@@ -46,10 +46,10 @@ class ValidationServiceSpec extends Specification {
     musicianValidation.musician >> musician
     musician.user >> user
     user.profile >> profile
-    service.validate(musicianValidation)
+    service.validateMusician(musicianValidation)
   then: "We expect musician validated"
     1 * musician.setProperty('active', false)
-    1 * restService.sendCommand(_ as FacilitatorCommand, 'musicianRefusedUrl')
+    1 * restService.sendCommand(_ as AssignationCommand, 'musicianRefusedUrl')
   }
 
 

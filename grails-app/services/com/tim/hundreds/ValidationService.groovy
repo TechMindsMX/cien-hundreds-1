@@ -15,7 +15,7 @@ class ValidationService {
     if(active){
       def profile = name.profile
       def message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:musician.name)
-      restService.sendCommand(message, grailsApplication.config.musician.assigned.name.url)
+      restService.sendCommand(message, grailsApplication.config.musician.assigned.facilitator.url)
     } else {
       def profile = musician.user.profile
       def message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:musician.name)
