@@ -13,7 +13,7 @@ class BootStrap {
   if(Environment.current == Environment.DEVELOPMENT || Environment.current == Environment.TEST) {
       createAllRole()
       createUserWithRole('ROLE_USER',             'cien',           'me@techminds.com.mx')
-      createUserWithRole('ROLE_ADMIN',            'admin',          'administrator@trama.mx')
+      createUserWithRole('ROLE_ADMIN',            'admin',          'joseluis.delacruz@trama.mx')
       createUserWithRole('ROLE_FACILITATOR',      'facilitator',    'usuario1@trama.mx')
       createUserWithRole('ROLE_BUYER',            'buyer',          'usuario2@trama.mx')
       createUserWithRole('ROLE_MUSICIAN_ADMIN',   'musicicanAdmin', 'QA@trama.mx')

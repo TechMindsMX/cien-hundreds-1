@@ -32,7 +32,12 @@ class ValidationService {
       def profile = buyer.profile
       def message = new FacilitatorCommand(email:profile.email, facilitator:"${profile.firstName} ${profile.middleName} ${profile.lastName}", musician:company.name)
       restService.sendCommand(message, grailsApplication.config.buyer.assigned.url)
+    } else {
+      def profile = company.user.profile
+      def message = new FacilitatorCommand(email:profile.email, facilitator:"${profile.firstName} ${profile.middleName} ${profile.lastName}", musician:company.name)
+      restService.sendCommand(message, grailsApplication.config.company.refused.url)
     }
+
   }
 
 }
