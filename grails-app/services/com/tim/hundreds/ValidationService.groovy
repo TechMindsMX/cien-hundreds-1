@@ -15,7 +15,7 @@ class ValidationService {
     if(active){
       def profile = facilitator.profile
       def message = new FacilitatorCommand(email:profile.email, facilitator:"${profile.firstName} ${profile.middleName} ${profile.lastName}", musician:musician.name)
-      restService.sendCommand(message, grailsApplication.config.facilitator.assigned.url)
+      restService.sendCommand(message, grailsApplication.config.musician.assigned.facilitator.url)
     } else {
       def profile = musician.user.profile
       def message = new FacilitatorCommand(email:profile.email, facilitator:"${profile.firstName} ${profile.middleName} ${profile.lastName}", musician:musician.name)
@@ -31,7 +31,7 @@ class ValidationService {
     if(active){
       def profile = buyer.profile
       def message = new FacilitatorCommand(email:profile.email, facilitator:"${profile.firstName} ${profile.middleName} ${profile.lastName}", musician:company.name)
-      restService.sendCommand(message, grailsApplication.config.buyer.assigned.url)
+      restService.sendCommand(message, grailsApplication.config.company.assigned.buyer.url)
     } else {
       def profile = company.user.profile
       def message = new FacilitatorCommand(email:profile.email, facilitator:"${profile.firstName} ${profile.middleName} ${profile.lastName}", musician:company.name)

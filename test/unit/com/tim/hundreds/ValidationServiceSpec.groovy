@@ -12,7 +12,7 @@ class ValidationServiceSpec extends Specification {
 
   def setup() {
     service.restService = restService
-    grailsApplication.config.facilitator.assigned.url = 'facilitatorAssignedUrl'
+    grailsApplication.config.musician.assigned.facilitator.url = 'musicianAssignedFacilitatorUrl'
     grailsApplication.config.musician.refused.url = 'musicianRefusedUrl'
   }
 
@@ -31,7 +31,7 @@ class ValidationServiceSpec extends Specification {
     service.validate(musicianValidation)
   then: "We expect musician validated"
     1 * musician.setProperty('active', true)
-    1 * restService.sendCommand(_ as FacilitatorCommand, 'facilitatorAssignedUrl')
+    1 * restService.sendCommand(_ as FacilitatorCommand, 'musicianAssignedFacilitatorUrl')
   }
 
   void "should refuse an musician"() {
