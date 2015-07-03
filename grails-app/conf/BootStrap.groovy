@@ -10,12 +10,12 @@ import grails.util.Environment
 
 class BootStrap {
   def init = { servletContext ->
-  if(Environment.current == Environment.DEVELOPMENT || Environment.current == Environment.TEST) {
+ // if(Environment.current == Environment.DEVELOPMENT || Environment.current == Environment.TEST) {
       createAllRole()
       createUserWithRole('ROLE_USER',             'cien',           'me@techminds.com.mx')
       createUserWithRole('ROLE_ADMIN',            'admin',          'administrator@trama.mx')
       createUserWithRole('ROLE_FACILITATOR',      'facilitator',    'usuario1@trama.mx')
-      createUserWithRole('ROLE_BUYER',            'buyer',          'usuario2trama.mx')
+      createUserWithRole('ROLE_BUYER',            'buyer',          'usuario2@trama.mx')
       createUserWithRole('ROLE_MUSICIAN_ADMIN',   'musicicanAdmin', 'QA@trama.mx')
       createUserWithRole('ROLE_COMPANY_ADMIN',    'companyAdmin',   'remy.ochoa@trama.mx')
       createUserWithRole('ROLE_MUSICIAN_VIEWER',  'musicianViewer', 'aleister.r@gmail.com')
@@ -23,7 +23,7 @@ class BootStrap {
       createGenres()
       createMusicianRoles()
       createBusinessActivity()
-    }
+   // }
   }
 
   def destroy = {
