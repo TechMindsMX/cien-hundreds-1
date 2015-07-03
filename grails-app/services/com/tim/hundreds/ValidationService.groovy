@@ -18,7 +18,7 @@ class ValidationService {
       restService.sendCommand(message, grailsApplication.config.musician.assigned.facilitator.url)
 
       profile = musician.user.profile
-      message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:musician.name, emailOptional:user.profile.email)
+      message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:musician.name, emailOptional:musician.user.profile.email)
       restService.sendCommand(message, grailsApplication.config.musician.assigned.user.url)
 
     } else {
@@ -39,7 +39,7 @@ class ValidationService {
       restService.sendCommand(message, grailsApplication.config.company.assigned.buyer.url)
 
       profile = company.user.profile
-      message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:musician.name, emailOptional:user.profile.email)
+      message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:musician.name, emailOptional:company.user.profile.email)
       restService.sendCommand(message, grailsApplication.config.company.assigned.user.url)
 
     } else {
