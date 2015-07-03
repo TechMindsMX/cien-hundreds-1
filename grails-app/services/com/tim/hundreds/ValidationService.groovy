@@ -9,16 +9,16 @@ class ValidationService {
 
   def validateMusician(musicianValidationInstance) {
     def musician = musicianValidationInstance.musician
-    def facilitator = musicianValidationInstance.user
+    def name = musicianValidationInstance.user
     def active = musicianValidationInstance.type == ValidationType.ACCEPTED ? true : false
     musician.active = active
     if(active){
-      def profile = facilitator.profile
-      def message = new FacilitatorCommand(email:profile.email, facilitator:"${profile.firstName} ${profile.middleName} ${profile.lastName}", musician:musician.name)
-      restService.sendCommand(message, grailsApplication.config.musician.assigned.facilitator.url)
+      def profile = name.profile
+      def message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:musician.name)
+      restService.sendCommand(message, grailsApplication.config.musician.assigned.name.url)
     } else {
       def profile = musician.user.profile
-      def message = new FacilitatorCommand(email:profile.email, facilitator:"${profile.firstName} ${profile.middleName} ${profile.lastName}", musician:musician.name)
+      def message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:musician.name)
       restService.sendCommand(message, grailsApplication.config.musician.refused.url)
     }
   }
@@ -30,11 +30,11 @@ class ValidationService {
     company.active = active
     if(active){
       def profile = buyer.profile
-      def message = new FacilitatorCommand(email:profile.email, facilitator:"${profile.firstName} ${profile.middleName} ${profile.lastName}", musician:company.name)
+      def message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:company.name)
       restService.sendCommand(message, grailsApplication.config.company.assigned.buyer.url)
     } else {
       def profile = company.user.profile
-      def message = new FacilitatorCommand(email:profile.email, facilitator:"${profile.firstName} ${profile.middleName} ${profile.lastName}", musician:company.name)
+      def message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:company.name)
       restService.sendCommand(message, grailsApplication.config.company.refused.url)
     }
 
