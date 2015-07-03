@@ -41,7 +41,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
-			<g:select id="user" name="user.id" from="${com.tim.hundreds.User.list()}" optionValue="username" optionKey="id" required="" value="${companyValidationInstance?.user?.id}" class="form-control many-to-one"/>
+			<g:select id="user" name="user.id" from="${buyers}" optionValue="username" optionKey="id" required="" value="${companyValidationInstance?.user?.id}" class="form-control many-to-one"/>
 
 		</div>
 </div>

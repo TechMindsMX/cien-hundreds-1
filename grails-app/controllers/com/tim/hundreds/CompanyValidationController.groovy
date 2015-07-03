@@ -22,7 +22,9 @@ class CompanyValidationController {
     }
 
     def create() {
-        respond new CompanyValidation(params)
+      def roleBuyer = Role.findByAuthority("ROLE_BUYER")
+      def users = UserRole.findAllByRole(roleBuyer)
+      respond new CompanyValidation(params), [model:[buyers:users*.user]]
     }
 
     @Transactional
