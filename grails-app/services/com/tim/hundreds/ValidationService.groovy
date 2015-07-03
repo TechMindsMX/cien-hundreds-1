@@ -9,13 +9,18 @@ class ValidationService {
 
   def validateMusician(musicianValidationInstance) {
     def musician = musicianValidationInstance.musician
-    def name = musicianValidationInstance.user
+    def facilitator = musicianValidationInstance.user
     def active = musicianValidationInstance.type == ValidationType.ACCEPTED ? true : false
     musician.active = active
     if(active){
-      def profile = name.profile
+      def profile = facilitator.profile
       def message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:musician.name)
       restService.sendCommand(message, grailsApplication.config.musician.assigned.facilitator.url)
+
+      profile = musician.user.profile
+      message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:musician.name, emailOptional:user.profile.email)
+      restService.sendCommand(message, grailsApplication.config.musician.assigned.user.url)
+
     } else {
       def profile = musician.user.profile
       def message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:musician.name)
@@ -32,6 +37,11 @@ class ValidationService {
       def profile = buyer.profile
       def message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:company.name)
       restService.sendCommand(message, grailsApplication.config.company.assigned.buyer.url)
+
+      profile = company.user.profile
+      message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:musician.name, emailOptional:user.profile.email)
+      restService.sendCommand(message, grailsApplication.config.company.assigned.user.url)
+
     } else {
       def profile = company.user.profile
       def message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:company.name)
