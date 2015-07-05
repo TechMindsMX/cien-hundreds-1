@@ -12,19 +12,22 @@ class ValidationService {
     def target = instanceValidation.user
     def active = instanceValidation.type == ValidationType.ACCEPTED ? true : false
     domain.active = active
+    def targetProfile = target.profile
+    def userProfile = domain.user.profile
     if(active){
-      def profile = target.profile
-      def message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:"${instance}".name)
-      restService.sendCommand(message, grailsApplication.config."${instance}".assigned.facilitator.url)
+      log.info "profile user: ${targetProfile.dump()}"
+      def targetMessage = new AssignationCommand(email:targetProfile.email, name:"${targetProfile.firstName} ${targetProfile.middleName} ${targetProfile.lastName}", reference:domain.name)
+      restService.sendCommand(targetMessage, grailsApplication.config."${instance}".assigned.facilitator.url)
+      log.info "profile domain: ${userProfile.dump()}"
+      log.info "user email: ${userProfile.email}"
+      log.info "facilitator email: ${targetProfile.email}"
 
-      profile = musician.user.profile
-      message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:musician.name, emailOptional:musician.user.profile.email)
-      restService.sendCommand(message, grailsApplication.config."${instance}".assigned.user.url)
-
+      def userMessage = new AssignationCommand(email:userProfile.email, name:"${userProfile.firstName} ${userProfile.middleName} ${userProfile.lastName}", reference:domain.name, emailOptional:targetProfile.email)
+      log.info "message: ${userMessage.dump()}"
+      restService.sendCommand(userMessage, grailsApplication.config."${instance}".assigned.user.url)
     } else {
-      def profile = "${instance}".user.profile
-      def message = new AssignationCommand(email:profile.email, name:"${profile.firstName} ${profile.middleName} ${profile.lastName}", reference:"${instance}".name)
-      restService.sendCommand(message, grailsApplication.config."${instance}".refused.url)
+      def refusedMessage = new AssignationCommand(email:profile.email, name:"${userProfile.firstName} ${userProfile.middleName} ${userProfile.lastName}", reference:domain.name)
+      restService.sendCommand(refusedMessage, grailsApplication.config."${instance}".refused.url)
     }
   }
 
