@@ -25,16 +25,9 @@
 					<tr>
 					
 						<g:sortableColumn property="name" title="${message(code: 'company.name.label', default: 'Name')}" />
-					
 						<g:sortableColumn property="description" title="${message(code: 'company.description.label', default: 'Description')}" />
-					
 						<g:sortableColumn property="web" title="${message(code: 'company.web.label', default: 'Web')}" />
-					
-						<g:sortableColumn property="notes" title="${message(code: 'company.notes.label', default: 'Notes')}" />
-					
-						<g:sortableColumn property="tags" title="${message(code: 'company.tags.label', default: 'Tags')}" />
-					
-						<g:sortableColumn property="logo" title="${message(code: 'company.logo.label', default: 'Logo')}" />
+						<g:sortableColumn property="dateCreated" title="${message(code: 'default.dateCreated.label', default: 'Fecha de creación')}" />
 					
 					</tr>
 				</thead>
@@ -43,17 +36,10 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${companyInstance.id}">${fieldValue(bean: companyInstance, field: "name")}</g:link></td>
-					
 						<td>${fieldValue(bean: companyInstance, field: "description")}</td>
-					
 						<td>${fieldValue(bean: companyInstance, field: "web")}</td>
-					
-						<td>${fieldValue(bean: companyInstance, field: "notes")}</td>
-					
-						<td>${fieldValue(bean: companyInstance, field: "tags")}</td>
-					
-						<td>${fieldValue(bean: companyInstance, field: "logo")}</td>
-					
+						<td><g:formatDate format="dd-MM-yyyy" date="${companyInstance.dateCreated}" /></td>
+						
 					</tr>
 				</g:each>
 				</tbody>

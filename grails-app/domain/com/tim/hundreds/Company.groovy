@@ -20,6 +20,9 @@ class Company {
 
   static hasOne = [ companyValidation : CompanyValidation ]
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [user : User]
 
   static hasMany = [

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>100Hundreds</title>
+    <title><g:layoutTitle default="100Hundreds" /></title>
 
     <asset:stylesheet src="css/bootstrap.min.css"/>
     <asset:stylesheet src="font-awesome/css/font-awesome.css"/>
