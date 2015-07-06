@@ -10,21 +10,20 @@ import page.MusicianListPage
 @Stepwise
 class MusicianListAclSpec extends GebReportingSpec {
 
-    def setupSpec() {
-
+    def setup() {
+        to LoginPage
     }
 
     @Unroll
-    def "Fill Form for Musician"() {
+    void """When we authenticate with the username #username, we expect to be able to access the Musician list"""() {
         given:"A user login with authority #authority"
-        to LoginPage
         loginForm.j_username = username
         loginForm.j_password = "12345678"
         loginButton.click()
         when: "navigate to Musician list"
         to MusicianListPage
         then: "I should see the list"
-        listContainer.present == result
+        listContainer.present
 
         where: "We have the next cases"
         username            || result

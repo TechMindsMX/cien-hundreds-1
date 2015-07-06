@@ -6,7 +6,7 @@ class MusicianPage extends Page {
 
     static url = "musician/create"
 
-    static at = { title == "100Hundreds" }
+    static at = { title ==~ "Mostrar" }
 
     static content = {
         musicianForm { $('form.form-horizontal') }

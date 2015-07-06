@@ -41,10 +41,10 @@ class CompanyAclShowFirstSpec extends GebReportingSpec {
         'buyer'             || true
         'companyAdmin'      || true
         'companyViewer'     || true
-        'cien'              || false
-        'facilitator'       || false
-        'musicicanAdmin'    || false
-        'musicianViewer'    || false
+        'cien'              || true
+        'facilitator'       || true
+        'musicicanAdmin'    || true
+        'musicianViewer'    || true
 
     }
 
