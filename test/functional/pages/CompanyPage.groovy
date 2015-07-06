@@ -13,5 +13,7 @@ class CompanyPage extends Page {
         submitButton { $('#create') }
         cancelButton { $('form').find('button.btn') }
         logout { $('.nav-header').find('.logout') }
+
+        companyName { $() }
     }
 }

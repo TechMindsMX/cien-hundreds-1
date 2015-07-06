@@ -15,6 +15,9 @@ class Company {
   DatosFiscales datosFiscales
   BusinessActivity type
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [user : User]
 
   static hasMany = [

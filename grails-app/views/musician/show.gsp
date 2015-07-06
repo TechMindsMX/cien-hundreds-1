@@ -6,6 +6,7 @@
     <head>
     	<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'musician.label', default: 'Musician')}" />
+		<title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
         <!-- Fixed navbar -->
