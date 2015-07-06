@@ -164,7 +164,7 @@
                         <g:link controller="static" params="[content:'faq']">${message(code: 'faq.label', default: 'FAQ')}</g:link>
                     </li>
                     <li>
-                        <g:link controller="static" params="[content:'terms']">${message(code: 'terms.label', default: 'TÃ©rminos y condiciones')}</g:link>
+                        <g:link controller="static" params="[content:'terms']">${message(code: 'terms.label', default: 'Términos y condiciones')}</g:link>
                     </li>
                     <li>
                         <g:link controller="static" params="[content:'privacy']">${message(code: 'privacy.label', default: 'Aviso de privacidad')}</g:link>
@@ -197,6 +197,9 @@
 %{-- <asset:javascript src="js/plugins/pace/pace.min.js" /> --}%
 
 <!-- jQuery UI -->
+    <asset:javascript src="js/file_validation.js" />
+
+    <!-- jQuery UI -->
 
 <!-- GITTER -->
 
