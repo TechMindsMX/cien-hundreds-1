@@ -3,7 +3,7 @@ package com.tim.hundreds
 import static org.springframework.http.HttpStatus.*
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
+@Secured(['ROLE_USER'])
 class MusicianController {
     def logoStorerService
     def musicianService
@@ -13,11 +13,13 @@ class MusicianController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Musician.list(params), model:[musicianInstanceCount: Musician.count()]
     }
 
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def show(Musician musicianInstance) {
         respond musicianInstance
     }
@@ -87,6 +89,7 @@ class MusicianController {
         }
     }
 
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_MUSICIAN_ADMIN'])
     def delete(Musician musicianInstance) {
 
         if (musicianInstance == null) {

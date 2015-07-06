@@ -23,7 +23,7 @@ class MusicianListAclSpec extends GebReportingSpec {
         when: "navigate to Musician list"
         to MusicianListPage
         then: "I should see the list"
-        listContainer.present
+        listContainer.present == result
 
         where: "We have the next cases"
         username            || result
@@ -31,7 +31,7 @@ class MusicianListAclSpec extends GebReportingSpec {
         'musicicanAdmin'    || true
         'facilitator'       || true
         'musicianViewer'    || true
-        'cien'              || false
+        'cien'              || true
         'buyer'             || false
         'companyAdmin'      || false
         'companyViewer'     || false
