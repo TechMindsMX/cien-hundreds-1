@@ -36,7 +36,7 @@
 				<li class="fieldcontain">
 					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musicianValidation.musician.label" default="Musician" /></span>
 					
-						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${musicianValidationInstance?.musician?.id}">${musicianValidationInstance?.musician?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${musicianValidationInstance?.musician?.id}">${musicianValidationInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -54,16 +54,7 @@
 				<li class="fieldcontain">
 					<span id="user-label" class="${session.labelWidth} property-label"><g:message code="musicianValidation.user.label" default="User" /></span>
 					
-						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${musicianValidationInstance?.user?.id}">${musicianValidationInstance?.user?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${musicianValidationInstance?.uuid}">
-				<li class="fieldcontain">
-					<span id="uuid-label" class="${session.labelWidth} property-label"><g:message code="musicianValidation.uuid.label" default="Uuid" /></span>
-					
-						<span class="property-value" aria-labelledby="uuid-label"><g:fieldValue bean="${musicianValidationInstance}" field="uuid"/></span>
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${musicianValidationInstance?.user?.id}">${musicianValidationInstance?.user?.profile?.firstName?.encodeAsHTML()} ${musicianValidationInstance?.user?.profile?.lastName?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

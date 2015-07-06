@@ -51,7 +51,9 @@ class MusicianValidationController {
     }
 
     def edit(MusicianValidation musicianValidationInstance) {
-        respond musicianValidationInstance
+        def roleFacilitator = Role.findByAuthority("ROLE_FACILITATOR")
+        def users = UserRole.findAllByRole(roleFacilitator)
+        respond musicianValidationInstance, [model:[facilitators:users*.user]]
     }
 
     @Transactional
