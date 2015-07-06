@@ -27,7 +27,7 @@
 				</ul>
 			</div>
 			</g:hasErrors>
-			<g:form url="[resource:userTelephoneInstance, action:'save']"  class="form-horizontal">
+			<g:form url="[resource:userTelephoneInstance, action:'save']"  class="form-horizontal" id="userTelephoneForm">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>

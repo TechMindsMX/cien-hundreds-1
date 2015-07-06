@@ -14,13 +14,17 @@ class Musician {
   Date formed
 
   Boolean hasManager
+  Boolean active = false
 
   Genre genre
   Social social
   Address address
   DatosFiscales datosFiscales
+  User assigned
 
   static transients = ['tagsComma']
+
+  static hasOne = [ musicianValidation : MusicianValidation ]
 
   static belongsTo = [user : User]
 
@@ -44,6 +48,8 @@ class Musician {
     social nullable:true
     address nullable:true
     datosFiscales nullable:true
+    musicianValidation nullable:true
+    assigned nullable:true
     videos maxSize: ApplicationState.MAX_VIDEOS
     photos maxSize: ApplicationState.MAX_PHOTOS
     audios maxSize: ApplicationState.MAX_AUDIOS

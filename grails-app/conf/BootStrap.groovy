@@ -12,18 +12,18 @@ class BootStrap {
   def init = { servletContext ->
   if(Environment.current == Environment.DEVELOPMENT || Environment.current == Environment.TEST) {
       createAllRole()
-      createUserWithRole('ROLE_USER',             'cien',           'me@techminds.com.mx')
-      createUserWithRole('ROLE_ADMIN',            'admin',          'remy.ochoa@techminds.com.mx')
-      createUserWithRole('ROLE_FACILITATOR',      'facilitator',    'facilitator@techminds.com.mx')
-      createUserWithRole('ROLE_BUYER',            'buyer',          'buyer@techminds.com.mx')
-      createUserWithRole('ROLE_MUSICIAN_ADMIN',   'musicicanAdmin', 'musicicanAdmin@techminds.com.mx')
-      createUserWithRole('ROLE_COMPANY_ADMIN',    'companyAdmin',   'companyAdmin@techminds.com.mx')
-      createUserWithRole('ROLE_MUSICIAN_VIEWER',  'musicianViewer', 'musicianViewer@techminds.com.mx')
-      createUserWithRole('ROLE_COMPANY_VIEWER',   'companyViewer',  'com@techminds.com.mx')
+      createUserWithRole('ROLE_USER',             'cien',           'joseluis.delacruz@techminds.com.mx')
+      createUserWithRole('ROLE_ADMIN',            'admin',          'joseluis.delacruz@trama.mx')
+      createUserWithRole('ROLE_FACILITATOR',      'facilitator',    'joseluis.delacruz@gmail.com')
+      createUserWithRole('ROLE_BUYER',            'buyer',          'usuario2@trama.mx')
+      createUserWithRole('ROLE_MUSICIAN_ADMIN',   'musicicanAdmin', 'QA@trama.mx')
+      createUserWithRole('ROLE_COMPANY_ADMIN',    'companyAdmin',   'remy.ochoa@trama.mx')
+      createUserWithRole('ROLE_MUSICIAN_VIEWER',  'musicianViewer', 'aleister.r@gmail.com')
+      createUserWithRole('ROLE_COMPANY_VIEWER',   'companyViewer',  'demonio.r@gmail.com')
       createGenres()
       createMusicianRoles()
       createBusinessActivity()
-   }
+    }
   }
 
   def destroy = {

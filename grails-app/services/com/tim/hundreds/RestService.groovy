@@ -10,12 +10,11 @@ class RestService {
 
   def sendCommand(MessageCommand message, String url){
     try{
-      log.info "url: ${url}"
+      log.info "email url: ${url}"
       def resp = rest.post(url){
         contentType "application/vnd.org.jfrog.artifactory.security.Group+json"
         body message
       }
-      log.info "Emailer response: ${resp.dump()}"
     } catch(Exception ex) {
       log.warn "Error: ${ex.message}"
       throw new BusinessException(ex.message, ex)
