@@ -17,9 +17,6 @@
 		</div>
 		<div id="list-musicianValidation" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
 			<table class="table table-stripped">
 			<thead>
 					<tr>
@@ -32,8 +29,6 @@
 					
 						<th><g:message code="musicianValidation.user.label" default="User" /></th>
 					
-						<g:sortableColumn property="uuid" title="${message(code: 'musicianValidation.uuid.label', default: 'Uuid')}" />
-					
 					</tr>
 				</thead>
 				<tbody>
@@ -42,13 +37,11 @@
 					
 						<td><g:link action="show" id="${musicianValidationInstance.id}">${fieldValue(bean: musicianValidationInstance, field: "message")}</g:link></td>
 					
-						<td>${fieldValue(bean: musicianValidationInstance, field: "musician")}</td>
+						<td>${musicianValidationInstance?.musician?.name?.encodeAsHTML()}</td>
 					
 						<td>${fieldValue(bean: musicianValidationInstance, field: "type")}</td>
 					
-						<td>${fieldValue(bean: musicianValidationInstance, field: "user")}</td>
-					
-						<td>${fieldValue(bean: musicianValidationInstance, field: "uuid")}</td>
+						<td>${musicianValidationInstance?.user?.profile?.firstName?.encodeAsHTML()} ${musicianValidationInstance?.user?.profile?.lastName?.encodeAsHTML()}</td>
 					
 					</tr>
 				</g:each>
