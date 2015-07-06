@@ -32,7 +32,7 @@ class CompanyListAclSpec extends GebReportingSpec {
         'buyer'             || true
         'companyAdmin'      || true
         'companyViewer'     || true
-        'cien'              || false
+        'cien'              || true
         'facilitator'       || false
         'musicicanAdmin'    || false
         'musicianViewer'    || false
