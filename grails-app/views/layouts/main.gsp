@@ -154,6 +154,8 @@
     <asset:javascript src="js/inspinia.js" />
     <asset:javascript src="js/plugins/pace/pace.min.js" />
 
+    <asset:javascript src="js/file_validation.js" />
+
     <!-- jQuery UI -->
 
     <!-- GITTER -->
