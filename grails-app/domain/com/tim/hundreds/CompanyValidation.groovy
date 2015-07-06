@@ -1,13 +1,13 @@
 package com.tim.hundreds
 
-class MusicianValidation {
+class CompanyValidation {
   String uuid = TokenService.generateToken()
   String message
   ValidationType type
 
   static belongsTo = [
     user: User,
-    musician: Musician
+    company: Company
   ]
 
   static constraints = {

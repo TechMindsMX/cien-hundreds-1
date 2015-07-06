@@ -22,7 +22,9 @@ class MusicianValidationController {
     }
 
     def create() {
-        respond new MusicianValidation(params)
+      def roleFacilitator = Role.findByAuthority("ROLE_FACILITATOR")
+      def users = UserRole.findAllByRole(roleFacilitator)
+      respond new MusicianValidation(params), [model:[facilitators:users*.user]]
     }
 
     @Transactional

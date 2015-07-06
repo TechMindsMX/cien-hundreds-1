@@ -28,6 +28,7 @@ class AudioSpec extends GebReportingSpec {
 
         where: "We have the next cases"
         url                                                                  || result
+        ''                                                                   || AudioPage //Error
         'https://www.youtube.com/watch?v=RgKAFK5djSk'                        || AudioPage //Error
         'https://soundcloud.com/metalbladerecords/act-of-defiance-throwback' || AudioPage //Pass
     }

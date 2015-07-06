@@ -14,7 +14,7 @@ class Musician {
   Date formed
 
   Boolean hasManager
-  Boolean active = true
+  Boolean active = false
 
   Genre genre
   Social social

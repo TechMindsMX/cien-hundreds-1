@@ -10,10 +10,15 @@ class Company {
   String notes
   String tags
 
+  Boolean active = false
+
   Address address
   Social social
   DatosFiscales datosFiscales
   BusinessActivity type
+  User assigned
+
+  static hasOne = [ companyValidation : CompanyValidation ]
 
   Date dateCreated
   Date lastUpdated
@@ -38,6 +43,8 @@ class Company {
     address nullable:true
     social nullable:true
     datosFiscales nullable:true
+    companyValidation nullable:true
+    assigned nullable:true
     references maxSize: ApplicationState.MAX_REFERENCES
     events maxSize: ApplicationState.MAX_EVENTS
     collaborators maxSize: ApplicationState.MAX_COLLABORATORS

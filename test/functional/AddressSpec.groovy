@@ -35,9 +35,16 @@ class AddressSpec extends GebReportingSpec {
         at AddressPage
 
         where: "We have the next cases"
-        country | street            | zipcode | neighborhood  | county | town   | state     || result
-        ''      | ''                | ''      | ''            | ''     | ''     | ''        || AddressPage
-        'mex'   | 'San Itario #666' | '43904' | 'Azteca'      | 'Apan' | 'Apan' | 'Hidalgo' || AddressPage
+        country | street            | zipcode | neighborhood | county | town   | state     || result
+        ''      | ''                | ''      | ''           | ''     | ''     | ''        || AddressPage
+        'ago'   | ''                | ''      | ''           | ''     | ''     | ''        || AddressPage
+        'aia'   | 'San Itario #666' | ''      | ''           | ''     | ''     | ''        || AddressPage
+        'arm'   | 'San Itario #666' | '43904' | ''           | ''     | ''     | ''        || AddressPage
+        'abw'   | 'San Itario #666' | '43904' | 'Azteca'     | ''     | ''     | ''        || AddressPage
+        'dza'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | ''     | ''        || AddressPage
+        'aia'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | 'Apan' | ''        || AddressPage
+        'aus'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | 'Apan' | 'Hidalgo' || AddressPage
+        'mex'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | 'Apan' | 'Hidalgo' || AddressPage
     }
 
     def cleanupSpec() {}

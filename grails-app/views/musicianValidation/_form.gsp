@@ -24,13 +24,13 @@
 		</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: musicianValidationInstance, field: 'status', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="status">
-		<g:message code="musicianValidation.status.label" default="Status" />
-
+<div class="form-group fieldcontain ${hasErrors(bean: musicianValidationInstance, field: 'type', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="type">
+		<g:message code="musicianValidation.type.label" default="Type" />
+		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
-			<g:checkBox class="form-control" name="status" value="${musicianValidationInstance?.status}" />
+			<g:select class="form-control" name="type" from="${com.tim.hundreds.ValidationType?.values()}" keys="${com.tim.hundreds.ValidationType.values()*.name()}" required="" value="${musicianValidationInstance?.type?.name()}" />
 
 		</div>
 </div>
@@ -41,7 +41,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
-			<g:select id="user" name="user.id" from="${com.tim.hundreds.User.list()}" optionValue="username" optionKey="id" required="" value="${musicianValidationInstance?.user?.id}" class="form-control many-to-one"/>
+			<g:select id="user" name="user.id" from="${facilitators}" optionValue="username" optionKey="id" required="" value="${musicianValidationInstance?.user?.id}" class="form-control many-to-one"/>
 
 		</div>
 </div>
