@@ -36,7 +36,7 @@
 				<li class="fieldcontain">
 					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="companyValidation.company.label" default="Company" /></span>
 					
-						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${companyValidationInstance?.company?.id}">${companyValidationInstance?.company?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${companyValidationInstance?.company?.id}">${companyValidationInstance?.company?.name?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -54,19 +54,11 @@
 				<li class="fieldcontain">
 					<span id="user-label" class="${session.labelWidth} property-label"><g:message code="companyValidation.user.label" default="User" /></span>
 					
-						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${companyValidationInstance?.user?.id}">${companyValidationInstance?.user?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${companyValidationInstance?.user?.id}">${companyValidationInstance?.user?.profile?.firstName?.encodeAsHTML()} ${companyValidationInstance?.user?.profile?.lastName?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${companyValidationInstance?.uuid}">
-				<li class="fieldcontain">
-					<span id="uuid-label" class="${session.labelWidth} property-label"><g:message code="companyValidation.uuid.label" default="Uuid" /></span>
-					
-						<span class="property-value" aria-labelledby="uuid-label"><g:fieldValue bean="${companyValidationInstance}" field="uuid"/></span>
-					
-				</li>
-				</g:if>
 			
 			</ul>
 			<g:form url="[resource:companyValidationInstance, action:'delete']" method="DELETE">

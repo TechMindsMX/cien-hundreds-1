@@ -51,7 +51,9 @@ class CompanyValidationController {
     }
 
     def edit(CompanyValidation companyValidationInstance) {
-        respond companyValidationInstance
+      def roleBuyer = Role.findByAuthority("ROLE_BUYER")
+      def users = UserRole.findAllByRole(roleBuyer)
+      respond companyValidationInstance, [model:[buyers:users*.user]]
     }
 
     @Transactional

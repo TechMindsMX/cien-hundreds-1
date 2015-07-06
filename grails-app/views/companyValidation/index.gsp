@@ -32,8 +32,6 @@
 					
 						<th><g:message code="companyValidation.user.label" default="User" /></th>
 					
-						<g:sortableColumn property="uuid" title="${message(code: 'companyValidation.uuid.label', default: 'Uuid')}" />
-					
 					</tr>
 				</thead>
 				<tbody>
@@ -42,13 +40,11 @@
 					
 						<td><g:link action="show" id="${companyValidationInstance.id}">${fieldValue(bean: companyValidationInstance, field: "message")}</g:link></td>
 					
-						<td>${fieldValue(bean: companyValidationInstance, field: "company")}</td>
+						<td>${companyValidationInstance?.company?.name?.encodeAsHTML()}</td>
 					
 						<td>${fieldValue(bean: companyValidationInstance, field: "type")}</td>
 					
-						<td>${fieldValue(bean: companyValidationInstance, field: "user")}</td>
-					
-						<td>${fieldValue(bean: companyValidationInstance, field: "uuid")}</td>
+						<td>${companyValidationInstance?.user?.profile?.firstName?.encodeAsHTML()} ${companyValidationInstance?.user?.profile?.lastName?.encodeAsHTML()}</td>
 					
 					</tr>
 				</g:each>
