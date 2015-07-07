@@ -1,7 +1,6 @@
 <%@ page import="com.tim.hundreds.MusicianValidation" %>
 
 
-
 <div class="form-group fieldcontain ${hasErrors(bean: musicianValidationInstance, field: 'message', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="message">
 		<g:message code="musicianValidation.message.label" default="Message" />
@@ -13,17 +12,6 @@
 		</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: musicianValidationInstance, field: 'musician', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="musician">
-		<g:message code="musicianValidation.musician.label" default="Musician" />
-		<span class="required-indicator">*</span>
-	</label>
-		<div class="${session.inputWidth}">
-			<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionValue="name" optionKey="id" required="" value="${musicianValidationInstance?.musician?.id}" class="form-control many-to-one"/>
-
-		</div>
-</div>
-
 <div class="form-group fieldcontain ${hasErrors(bean: musicianValidationInstance, field: 'type', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="type">
 		<g:message code="musicianValidation.type.label" default="Type" />
@@ -31,29 +19,51 @@
 	</label>
 		<div class="${session.inputWidth}">
 			<g:select class="form-control" name="type" from="${com.tim.hundreds.ValidationType?.values()}" keys="${com.tim.hundreds.ValidationType.values()*.name()}" required="" value="${musicianValidationInstance?.type?.name()}" />
-
 		</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: musicianValidationInstance, field: 'user', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="user">
-		<g:message code="musicianValidation.user.label" default="User" />
-		<span class="required-indicator">*</span>
-	</label>
-		<div class="${session.inputWidth}">
-			<g:select id="user" name="user.id" from="${facilitators}" optionValue="username" optionKey="id" required="" value="${musicianValidationInstance?.user?.id}" class="form-control many-to-one"/>
+<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_MUSICIAN_ADMIN')" >
+	<div class="form-group fieldcontain ${hasErrors(bean: musicianValidationInstance, field: 'musician', 'error')} required">
+		<label class="${session.labelWidth} control-label" for="musician">
+			<g:message code="musicianValidation.musician.label" default="Musician" />
+			<span class="required-indicator">*</span>
+		</label>
+			<div class="${session.inputWidth}">
+				<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionValue="name" optionKey="id" required="" value="${musicianValidationInstance?.musician?.id}" class="form-control many-to-one"/>
+			</div>
+	</div>
 
+	<div class="form-group fieldcontain ${hasErrors(bean: musicianValidationInstance, field: 'user', 'error')} required">
+		<label class="${session.labelWidth} control-label" for="user">
+			<g:message code="musicianValidation.user.label" default="User" />
+			<span class="required-indicator">*</span>
+		</label>
+			<div class="${session.inputWidth}">
+				<g:select id="user" name="user.id" from="${facilitators}" optionValue="username" optionKey="id" required="" value="${musicianValidationInstance?.user?.id}" class="form-control many-to-one"/>
+			</div>
+	</div>
+</sec:access>
+<sec:access expression="hasRole('ROLE_FACILITATOR')" >
+	<g:if test="${musicianValidationInstance?.musician?.id}">
+		<div class="form-group">
+			<label class="${session.labelWidth} control-label" for="musician-name" ><g:message code="musician.label" /></label>
+			<div class="${session.inputWidth}">
+				<span class="form-control">${musicianValidationInstance?.musician?.name?.encodeAsHTML()}</span>
+			</div>
 		</div>
-</div>
+	</g:if>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: musicianValidationInstance, field: 'uuid', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="uuid">
-		<g:message code="musicianValidation.uuid.label" default="Uuid" />
-		<span class="required-indicator">*</span>
-	</label>
-		<div class="${session.inputWidth}">
-			<g:textField class="form-control" name="uuid" id="uuid" required="" value="${musicianValidationInstance?.uuid}"/>
+	<g:hiddenField id="musician" name="musician.id" required="" value="${musicianValidationInstance?.musician?.id}" class="form-control many-to-one"/>
+	<g:hiddenField id="user" name="user.id" required="" value="${musicianValidationInstance?.user?.id}" class="form-control many-to-one"/>
+</sec:access>
 
-		</div>
-</div>
+	<div class="hide form-group fieldcontain ${hasErrors(bean: musicianValidationInstance, field: 'uuid', 'error')} required">
+		<label class="${session.labelWidth} control-label" for="uuid">
+			<g:message code="musicianValidation.uuid.label" default="Uuid" />
+			<span class="required-indicator">*</span>
+		</label>
+			<div class="${session.inputWidth}">
+				<g:textField class="form-control" name="uuid" id="uuid" required="" value="${musicianValidationInstance?.uuid}"/>
 
+			</div>
+	</div>

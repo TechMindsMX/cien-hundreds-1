@@ -17,6 +17,7 @@ class MusicianValidationController {
         respond MusicianValidation.list(params), model:[musicianValidationInstanceCount: MusicianValidation.count()]
     }
 
+    @Secured(['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN','ROLE_FACILITATOR'])
     def show(MusicianValidation musicianValidationInstance) {
         respond musicianValidationInstance
     }
@@ -50,12 +51,14 @@ class MusicianValidationController {
         }
     }
 
+    @Secured(['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN','ROLE_FACILITATOR'])
     def edit(MusicianValidation musicianValidationInstance) {
         def roleFacilitator = Role.findByAuthority("ROLE_FACILITATOR")
         def users = UserRole.findAllByRole(roleFacilitator)
         respond musicianValidationInstance, [model:[facilitators:users*.user]]
     }
 
+    @Secured(['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN','ROLE_FACILITATOR'])
     @Transactional
     def update(MusicianValidation musicianValidationInstance) {
         if (musicianValidationInstance == null) {

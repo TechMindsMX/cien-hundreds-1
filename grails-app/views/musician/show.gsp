@@ -263,8 +263,7 @@
 		            	<g:if test="${musicianInstance?.datosFiscales}">
 							<ol>
 								<div class="fieldcontain">
-										<g:link controller="datosFiscales" action="show" id="${musicianInstance?.datosFiscales?.id}">${musicianInstance?.datosFiscales?.razonSocial}</g:link>
-
+									<g:link controller="datosFiscales" action="show" id="${musicianInstance?.datosFiscales?.id}">${musicianInstance?.datosFiscales?.razonSocial}</g:link>
 								</div>
 							</ol>
 						</g:if>
@@ -278,6 +277,18 @@
         		<g:form url="[resource:musicianInstance, action:'delete']" method="DELETE">
 					<div class="aling-center">
 						<g:link class="btn btn-success blank" action="edit" resource="${musicianInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+
+						<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_MUSICIAN_ADMIN')">
+							<g:if test="${!musicianInstance?.musicianValidation}" >
+								<g:link class="btn btn-success" controller="musicianValidation" action="create" params="['musician.id': musicianInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'musicianValidation.label')])}</g:link>
+							</g:if>
+						</sec:access>
+						<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_MUSICIAN_ADMIN') || hasRole('ROLE_FACILITATOR')">
+							<g:if test="${musicianInstance?.musicianValidation}" >
+								<g:link class="btn btn-success" controller="musicianValidation" action="edit" id="${musicianInstance?.musicianValidation?.id}">${message(code: 'default.edit.label', args: [message(code: 'musicianValidation.label')])}</g:link>
+							</g:if>
+						</sec:access>
+
 						<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 					</div>
 				</g:form>
