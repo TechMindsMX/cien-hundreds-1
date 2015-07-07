@@ -4,7 +4,8 @@ import geb.Page
 class VideoPage extends Page{
 
     static url = "video/create"
-    static at = { title == "100Hundreds" }
+
+    static at = { driver.currentUrl.contains('video/create') }
 
     static content = {
         videoForm { $('#videoForm') }

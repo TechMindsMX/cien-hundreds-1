@@ -12,7 +12,7 @@ class AddressPage extends Page {
 
     static url = "address/create"
 
-    static at = { title == "100Hundreds" }
+    static at = { driver.currentUrl.contains('address/create') }
 
     static content = {
         addressForm  { $('#addressForm') }

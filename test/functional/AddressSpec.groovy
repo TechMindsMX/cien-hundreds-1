@@ -2,6 +2,7 @@ import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import spock.lang.Unroll
 import page.AddressPage
+import page.AddressSavePage
 import page.LoginPage
 
 @Stepwise
@@ -30,21 +31,16 @@ class AddressSpec extends GebReportingSpec {
         addressForm.town         = town
         addressForm.state        = state
 
-        then: "I am being redirected to the same page with errors"
         submitButton.click()
-        at AddressPage
+
+        then: "I am being redirected to the same page with errors"
+        at result
+        alertSuccess
 
         where: "We have the next cases"
         country | street            | zipcode | neighborhood | county | town   | state     || result
-        ''      | ''                | ''      | ''           | ''     | ''     | ''        || AddressPage
-        'ago'   | ''                | ''      | ''           | ''     | ''     | ''        || AddressPage
-        'aia'   | 'San Itario #666' | ''      | ''           | ''     | ''     | ''        || AddressPage
-        'arm'   | 'San Itario #666' | '43904' | ''           | ''     | ''     | ''        || AddressPage
-        'abw'   | 'San Itario #666' | '43904' | 'Azteca'     | ''     | ''     | ''        || AddressPage
-        'dza'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | ''     | ''        || AddressPage
-        'aia'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | 'Apan' | ''        || AddressPage
-        'aus'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | 'Apan' | 'Hidalgo' || AddressPage
-        'mex'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | 'Apan' | 'Hidalgo' || AddressPage
+        'aus'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | 'Apan' | 'Hidalgo' || AddressSavePage
+        'mex'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | 'Apan' | 'Hidalgo' || AddressSavePage
     }
 
     def cleanupSpec() {}

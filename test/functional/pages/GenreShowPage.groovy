@@ -6,7 +6,7 @@ class GenreShowPage extends Page {
 
     static url = "activity/create"
 
-    static at = { title == "100Hundreds" }
+    static at = { driver.currentUrl.contains('activity/create') }
 
     static content = {
         spanDato { $('.property-value') }

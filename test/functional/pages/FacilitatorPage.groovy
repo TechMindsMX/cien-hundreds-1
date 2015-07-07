@@ -6,7 +6,7 @@ class FacilitatorPage extends Page {
 
     static url = "facilitator/create"
 
-    static at = { title == "100Hundreds" }
+    static at = { driver.currentUrl.contains('facilitator/create') }
 
     static content = {
         facilitatorForm { $('form.form-horizontal') }

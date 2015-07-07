@@ -6,7 +6,7 @@ class GenrePage extends Page {
 
     static url = "genre/create"
 
-    static at = { title == "100Hundreds" }
+    static at = { driver.currentUrl.contains('genre/create') }
 
     static content = {
         genreForm    { $('#genreForm') }
