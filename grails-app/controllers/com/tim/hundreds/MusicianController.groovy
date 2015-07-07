@@ -25,7 +25,8 @@ class MusicianController {
     }
 
     def create() {
-        respond new Musician(params)
+      //  respond new Musician(params)
+        respond new MusicianCommand(params)
     }
 
     def save(MusicianCommand command) {

@@ -28,7 +28,6 @@ interface ApplicationState {
   static final String PRESS_DIRECTORY = 'press/'
 
   // LOCAL
-  /*
   static final String PHOTO_URL_BASE = 'http://localhost/cienhundreds/photos/'
   static final String LOGO_URL_BASE = 'http://localhost/cienhundreds/logos/'
   static final String RESUME_URL_BASE = 'http://localhost/cienhundreds/resumes/'
@@ -36,15 +35,16 @@ interface ApplicationState {
   static final String ATTACH_DIR = '/var/www/html/cienhundreds/'
   // ATTACH WINDOWS
   // static final String ATTACH_DIR = '/wamp/www/cienhundreds/'
-*/
+
 
   // STAGE
+  /*
   static final String PHOTO_URL_BASE = 'http://192.168.0.122/cienhundreds/photos/'
   static final String LOGO_URL_BASE = 'http://192.168.0.122/cienhundreds/logos/'
   static final String RESUME_URL_BASE = 'http://192.168.0.122/cienhundreds/resumes/'
   static final String PRESS_URL_BASE = 'http://192.168.0.122/cienhundreds/press/'
   static final String ATTACH_DIR = '/var/www/html/trama/cienhundreds/'
-
+*/
 
   /* PRODUCTION
   static final String PHOTO_URL_BASE = 'http://trama.mx/cienhundreds/photos/'

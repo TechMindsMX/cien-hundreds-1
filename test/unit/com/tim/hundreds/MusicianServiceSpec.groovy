@@ -26,7 +26,7 @@ class MusicianServiceSpec extends Specification {
    service.assignMusicianToFacilitator(musicianValidationInstance)
    then: "We expect musician is save"
    1 * musician.setProperty('assigned', user)
-   1 * validationService.validate(musicianValidationInstance)
+   1 * validationService.validate(musicianValidationInstance, 'musician')
    1 * musician.save()
    1 * musicianValidationInstance.save()
   }

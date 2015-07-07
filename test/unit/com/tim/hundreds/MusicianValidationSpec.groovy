@@ -19,17 +19,17 @@ class MusicianValidationSpec extends Specification {
       musicianValidation.musician = musician
     when: "We assign values"
       musicianValidation.message = message
-      musicianValidation.status = true
+      musicianValidation.type = type
     then: "We validate"
       result == musicianValidation.validate()
     where:"We have next values"
-      message   | status || result
-    'message'   | true   || true
-    'message'   | false  || true
-    'm'         | true   || true
-    null        | true   || false
-    ''          | true   || false
-    'message'   | null   || false
+      message   | type || result
+    'message'   | ValidationType.ACCEPTED     || true
+    'message'   | ValidationType.REFUSED      || true
+    'm'         | ValidationType.ACCEPTED     || true
+    null        | ValidationType.ACCEPTED     || true
+    ''          | ValidationType.ACCEPTED     || false
+    'message'   | null                        || false
   }
 
 }
