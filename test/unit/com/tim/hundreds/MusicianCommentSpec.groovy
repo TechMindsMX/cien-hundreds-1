@@ -28,5 +28,29 @@ class MusicianCommentSpec extends Specification {
   where: "We have next values"
     general   | history   | datosFiscales   | activities   | medias   | notes   | suggestions   | contacts   || result
     'general' | 'history' | 'datosFiscales' | 'activities' | 'medias' | 'notes' | 'suggestions' | 'contacts' || true
+    null      | 'history' | 'datosFiscales' | 'activities' | 'medias' | 'notes' | 'suggestions' | 'contacts' || true
+    'general' | null      | 'datosFiscales' | 'activities' | 'medias' | 'notes' | 'suggestions' | 'contacts' || true
+    'general' | 'history' | null            | 'activities' | 'medias' | 'notes' | 'suggestions' | 'contacts' || true
+    'general' | 'history' | 'datosFiscales' | null         | 'medias' | 'notes' | 'suggestions' | 'contacts' || true
+    'general' | 'history' | 'datosFiscales' | 'activities' | null     | 'notes' | 'suggestions' | 'contacts' || true
+    'general' | 'history' | 'datosFiscales' | 'activities' | 'medias' | null    | 'suggestions' | 'contacts' || true
+    'general' | 'history' | 'datosFiscales' | 'activities' | 'medias' | 'notes' | null          | 'contacts' || true
+    'general' | 'history' | 'datosFiscales' | 'activities' | 'medias' | 'notes' | 'suggestions' | null       || true
+    'g'       | 'history' | 'datosFiscales' | 'activities' | 'medias' | 'notes' | 'suggestions' | 'contacts' || true
+    'general' | 'h'       | 'datosFiscales' | 'activities' | 'medias' | 'notes' | 'suggestions' | 'contacts' || true
+    'general' | 'history' | 'd'             | 'activities' | 'medias' | 'notes' | 'suggestions' | 'contacts' || true
+    'general' | 'history' | 'datosFiscales' | 'a'          | 'medias' | 'notes' | 'suggestions' | 'contacts' || true
+    'general' | 'history' | 'datosFiscales' | 'activities' | 'm'      | 'notes' | 'suggestions' | 'contacts' || true
+    'general' | 'history' | 'datosFiscales' | 'activities' | 'medias' | 'n'     | 'suggestions' | 'contacts' || true
+    'general' | 'history' | 'datosFiscales' | 'activities' | 'medias' | 'notes' | 's'           | 'contacts' || true
+    'general' | 'history' | 'datosFiscales' | 'activities' | 'medias' | 'notes' | 'suggestions' | 'c'        || true
+    ''        | 'history' | 'datosFiscales' | 'activities' | 'medias' | 'notes' | 'suggestions' | 'contacts' || false
+    'general' | ''        | 'datosFiscales' | 'activities' | 'medias' | 'notes' | 'suggestions' | 'contacts' || false
+    'general' | 'history' | ''              | 'activities' | 'medias' | 'notes' | 'suggestions' | 'contacts' || false
+    'general' | 'history' | 'datosFiscales' | ''           | 'medias' | 'notes' | 'suggestions' | 'contacts' || false
+    'general' | 'history' | 'datosFiscales' | 'activities' | ''       | 'notes' | 'suggestions' | 'contacts' || false
+    'general' | 'history' | 'datosFiscales' | 'activities' | 'medias' | ''      | 'suggestions' | 'contacts' || false
+    'general' | 'history' | 'datosFiscales' | 'activities' | 'medias' | 'notes' | ''            | 'contacts' || false
+    'general' | 'history' | 'datosFiscales' | 'activities' | 'medias' | 'notes' | 'suggestions' | ''         || false
   }
 }
