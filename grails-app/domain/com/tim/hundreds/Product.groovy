@@ -16,6 +16,8 @@ class Product {
   String postSaleModel
   String notes
 
+  ProductComment productComment
+
   Boolean web
   String webDescription
 
@@ -77,6 +79,7 @@ class Product {
     campaignDescription nullable:true,blank:false,size:1..10000
     eventDescription nullable:true,blank:false,size:1..10000
     otherDescription nullable:true,blank:false,size:1..10000
+    productComment nullable:true
     complements maxSize: ApplicationState.MAX_COMPLEMENTS
   }
 }
