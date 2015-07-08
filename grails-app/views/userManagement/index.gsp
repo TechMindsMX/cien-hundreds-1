@@ -13,6 +13,12 @@
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<sec:access expression="hasRole('ROLE_ADMIN')"><li><g:link action="admins"><g:message code="userManagement.adminList.label"/></g:link></li></sec:access>
+				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN"><li><g:link action="mucicianAdmins"><g:message code="userManagement.mucicianAdminsList.label"/></g:link></li></sec:ifAnyGranted>
+				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN"><li><g:link action="companyAdmins"><g:message code="userManagement.companyAdminsList.label"/></g:link></li></sec:ifAnyGranted>
+				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN"><li><g:link action="musicianViewers"><g:message code="userManagement.musicianViewersList.label"/></g:link></li></sec:ifAnyGranted>
+				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN"><li><g:link action="companyViewers"><g:message code="userManagement.companyViewersList.label"/></g:link></li></sec:ifAnyGranted>
+				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN"><li><g:link action="facilitator"><g:message code="userManagement.facilitatorList.label"/></g:link></li></sec:ifAnyGranted>
+				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN"><li><g:link action="buyer"><g:message code="userManagement.buyerList.label"/></g:link></li></sec:ifAnyGranted>
 			</ul>
 		</div>
 		<div id="list-user" class="content scaffold-list" role="main">
@@ -23,12 +29,12 @@
 			<table class="table table-stripped">
 			<thead>
 					<tr>
-						<g:sortableColumn property="place" title="${message(code: 'user.place.label', default: 'Foto')}" />
-						<g:sortableColumn property="place" title="${message(code: 'user.place.label', default: 'Nombre completo')}" />
-						<g:sortableColumn property="place" title="${message(code: 'user.place.label', default: 'rol')}" />
-						<g:sortableColumn property="date" title="${message(code: 'user.date.label', default: 'Correos electrónicos')}" />
-						<g:sortableColumn property="date" title="${message(code: 'user.date.label', default: 'Teléfonos')}" />
-						<g:sortableColumn property="date" title="${message(code: 'user.date.label', default: 'Estatus')}" />
+						<th>${message(code: 'user.place.label', default: 'Foto')}</th>
+						<g:sortableColumn property="profile.firstName" title="${message(code: 'user.name.label', default: 'Nombre completo')}" />
+						<th>${message(code: 'user.place.label', default: 'rol')}</th>
+						<g:sortableColumn property="profile.firstName" title="${message(code: 'user.date.label', default: 'Correos electrónicos')}" />
+						<th>${message(code: 'user.date.label', default: 'Teléfonos')}</th>
+						<th>${message(code: 'user.date.label', default: 'Estatus')}</th>
 					</tr>
 				</thead>
 				<tbody>
