@@ -31,12 +31,12 @@
 	        	<div class="col-xs-12 col-md-4">
 					<g:if test="${musicianInstance?.logoPath}">
 						<span class="property-value" aria-labelledby="logoPath-label">
-						<img class="img-responsive max300" src="${ApplicationState.LOGO_URL_BASE}${musicianInstance.logoPath}" />
+						<img class="img-responsive max300" src="${grailsApplication.config.logo.url.base}${musicianInstance.logoPath}" />
 						</span>
 					</g:if>
 					<g:if test="${musicianInstance?.photos}">
 						<span class="property-value" aria-labelledby="photos-label">
-						<img class="img-responsive max300" src="${ApplicationState.PHOTO_URL_BASE}${musicianInstance.photos[0].path}" />
+						<img class="img-responsive max300" src="${grailsApplication.config.photo.url.base}${musicianInstance.photos[0].path}" />
 						</span>
 					</g:if>
 	        	</div>
@@ -210,7 +210,7 @@
 				                <g:if test="${musicianInstance?.photos}">
 									<g:each in="${musicianInstance.photos}" var="p">
 										<div class="img-tumbnail cols-5">
-											<g:link controller="photo" action="show" id="${p.id}"><img class="img-responsive max100pct" src="${ApplicationState.PHOTO_URL_BASE}${p.path}" /></g:link>
+											<g:link controller="photo" action="show" id="${p.id}"><img class="img-responsive max100pct" src="${grailsApplication.config.photo.url.base}${p.path}" /></g:link>
 										</div>
 									</g:each>
 								</g:if>

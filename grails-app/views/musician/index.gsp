@@ -1,5 +1,4 @@
 <%@ page import="com.tim.hundreds.Musician" %>
-<%@ page import="com.tim.hundreds.ApplicationState" %>
 
 <!DOCTYPE html>
 <html>
@@ -44,7 +43,7 @@
 										
 						<td>
 							<g:if test="${musicianInstance.logoPath}">
-								<img class="img-responsive max300" src="${ApplicationState.LOGO_URL_BASE}${musicianInstance.logoPath}" />
+								<img class="img-responsive max300" src="${grailsApplication.logo.url.base}${musicianInstance.logoPath}" />
 							</g:if>
 						</td>
 					

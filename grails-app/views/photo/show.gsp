@@ -1,6 +1,5 @@
 
 <%@ page import="com.tim.hundreds.Photo" %>
-<%@ page import="com.tim.hundreds.ApplicationState" %>
 
 <!DOCTYPE html>
 <html>
@@ -25,7 +24,7 @@
 			<ul class="property-list photo">
 
 				<g:if test="${photoInstance?.path}">
-					<img class="img-responsive max300" src="${ApplicationState.PHOTO_URL_BASE}${photoInstance.path}" />
+					<img class="img-responsive max300" src="${grailsApplication.config.photo.url.base}${photoInstance.path}" />
 				</g:if>
 
 				<g:if test="${photoInstance?.musician}">
