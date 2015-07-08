@@ -1,7 +1,7 @@
 package com.tim.hundreds
 
 class RegistrationCode {
-  String token = TokenService.generateToken()
+  String token = TokenGenerator.generateToken()
   Long timestamp = new Date().getTime()
   String email
 

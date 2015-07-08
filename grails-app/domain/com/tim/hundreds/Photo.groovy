@@ -1,7 +1,7 @@
 package com.tim.hundreds
 
 class Photo {
-  String uuid = TokenService.generateToken()
+  String uuid = TokenGenerator.generateToken()
   String path
 
   static belongsTo = [

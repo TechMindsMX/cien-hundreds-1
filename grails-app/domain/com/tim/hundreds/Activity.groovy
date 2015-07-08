@@ -1,7 +1,7 @@
 package com.tim.hundreds
 
 class Activity {
-  String uuid = TokenService.generateToken()
+  String uuid = TokenGenerator.generateToken()
   String activity
   String place
   Date date

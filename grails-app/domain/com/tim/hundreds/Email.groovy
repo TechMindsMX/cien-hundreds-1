@@ -1,7 +1,7 @@
 package com.tim.hundreds
 
 class Email {
-  String uuid = TokenService.generateToken()
+  String uuid = TokenGenerator.generateToken()
   String address
   EmailType type
 

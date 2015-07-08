@@ -1,7 +1,7 @@
 package com.tim.hundreds
 
 class Contact {
-  String uuid = TokenService.generateToken()
+  String uuid = TokenGenerator.generateToken()
   String firstName
   String lastName
   String motherLastName

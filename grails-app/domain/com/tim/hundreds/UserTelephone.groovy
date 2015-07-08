@@ -1,7 +1,7 @@
 package com.tim.hundreds
 
 class UserTelephone {
-  String uuid = TokenService.generateToken()
+  String uuid = TokenGenerator.generateToken()
   String phone
   TelephoneType type
 

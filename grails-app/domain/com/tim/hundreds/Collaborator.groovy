@@ -1,7 +1,7 @@
 package com.tim.hundreds
 
 class Collaborator {
-  String uuid = TokenService.generateToken()
+  String uuid = TokenGenerator.generateToken()
   String firstName
   String middleName
   String lastName

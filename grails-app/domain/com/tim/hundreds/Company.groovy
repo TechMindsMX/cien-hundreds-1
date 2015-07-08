@@ -1,7 +1,7 @@
 package com.tim.hundreds
 
 class Company {
-  String uuid = TokenService.generateToken()
+  String uuid = TokenGenerator.generateToken()
   String name
   String description
   String web

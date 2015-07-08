@@ -1,7 +1,7 @@
 package com.tim.hundreds
 
 class MusicianValidation {
-  String uuid = TokenService.generateToken()
+  String uuid = TokenGenerator.generateToken()
   String message
   ValidationType type
 

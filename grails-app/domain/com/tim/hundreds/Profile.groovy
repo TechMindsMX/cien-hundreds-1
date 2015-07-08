@@ -1,7 +1,7 @@
 package com.tim.hundreds
 
 class Profile {
-  String uuid = TokenService.generateToken()
+  String uuid = TokenGenerator.generateToken()
   String email
   String firstName
   String middleName

@@ -1,7 +1,7 @@
 package com.tim.hundreds
 
 class Social {
-  String uuid = TokenService.generateToken()
+  String uuid = TokenGenerator.generateToken()
   String facebook
   String twitter
   String googlePlus
