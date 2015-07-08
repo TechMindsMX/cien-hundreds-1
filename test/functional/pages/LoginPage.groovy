@@ -6,7 +6,7 @@ class LoginPage extends Page {
 
   static url = "login/auth"
 
-  static at = { title == "100Hundreds" }
+  static at = { driver.currentUrl.contains('login/auth') }
 
   static content = {
     loginForm { $("#loginForm") }

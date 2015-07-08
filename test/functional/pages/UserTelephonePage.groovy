@@ -4,7 +4,8 @@ import geb.Page
 class UserTelephonePage extends Page {
 
     static url = "userTelephone/create"
-    static at = { title == "100Hundreds" }
+
+    static at = { driver.currentUrl.contains('userTelephone/create') }
 
     static content = {
         userTelephoneForm { $('#userTelephoneForm') }

@@ -71,7 +71,7 @@
                             </g:if>
                           </g:each>
                           <sec:ifLoggedIn>
-                          <li><g:link class="logout" controller="logout"><g:message code="springSecurity.logout.link"/></g:link></li>
+                              <li><g:link class="logout" controller="logout"><g:message code="springSecurity.logout.link"/></g:link></li>
                           </sec:ifLoggedIn>
                           <sec:ifNotLoggedIn>
                               <li><g:link controller="login">${message(code: 'springSecurity.login.link')}</g:link></li>

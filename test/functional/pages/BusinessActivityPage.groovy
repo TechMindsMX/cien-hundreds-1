@@ -6,7 +6,7 @@ class BusinessActivityPage extends Page {
 
     static url = "businessActivity/create"
 
-    static at = { title == "100Hundreds" }
+    static at = { driver.currentUrl.contains('businessActivity/create') }
 
     static content = {
         businessActivityForm { $('#businessActivityForm') }

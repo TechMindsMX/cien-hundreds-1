@@ -6,7 +6,7 @@ class CollaboratorPage extends Page {
 
     static url = "collaborator/create"
 
-    static at = { title == "100Hundreds" }
+    static at = { driver.currentUrl.contains('collaborator/create') }
 
     static content = {
         collaboratorForm { $('#collaboratorForm') }

@@ -6,7 +6,7 @@ class ContactPage extends Page {
 
     static url = "contact/create"
 
-    static at = { title == "100Hundreds" }
+    static at = { driver.currentUrl.contains('contact/create') }
 
     static content = {
         contactForm { $('#contactForm') }

@@ -6,7 +6,7 @@ class CompanyShowFirstPage extends Page {
 
     static url = "company/show/1"
 
-    static at = { title == "100Hundreds" }
+    static at = { driver.currentUrl.contains('company/show/1') }
 
     static content = {
     	logout       { $('.nav-header').find('.logout') }

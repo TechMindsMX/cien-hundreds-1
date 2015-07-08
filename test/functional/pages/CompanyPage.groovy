@@ -6,7 +6,7 @@ class CompanyPage extends Page {
 
     static url = "company/create"
 
-    static at = { title == "100Hundreds" }
+    static at = { driver.currentUrl.contains('company/create') }
 
     static content = {
         companyForm { $('form') }

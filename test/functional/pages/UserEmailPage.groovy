@@ -4,7 +4,8 @@ import geb.Page
 class UserEmailPage extends Page {
 
     static url = "userEmail/create"
-    static at = { title == "100Hundreds" }
+
+    static at = { driver.currentUrl.contains('userEmail/create') }
 
     static content = {
         userEmailForm { $('#userEmail') }
