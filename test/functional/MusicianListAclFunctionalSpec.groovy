@@ -8,7 +8,7 @@ import page.HomePage
 import page.MusicianListPage
 
 @Stepwise
-class MusicianListAclSpec extends GebReportingSpec {
+class MusicianListAclFunctionalSpec extends GebReportingSpec {
 
     def setup() {
         to LoginPage

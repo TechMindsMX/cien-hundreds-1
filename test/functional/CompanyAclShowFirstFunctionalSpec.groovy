@@ -9,7 +9,7 @@ import page.CompanyPage
 import page.CompanyShowFirstPage
 
 @Stepwise
-class CompanyAclShowFirstSpec extends GebReportingSpec {
+class CompanyAclShowFunctionalFirstSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage

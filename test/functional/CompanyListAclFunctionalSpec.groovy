@@ -8,7 +8,7 @@ import page.HomePage
 import page.CompanyListPage
 
 @Stepwise
-class CompanyListAclSpec extends GebReportingSpec {
+class CompanyListAclFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
 

@@ -6,7 +6,7 @@ import page.AddressSavePage
 import page.LoginPage
 
 @Stepwise
-class AddressSpec extends GebReportingSpec {
+class AddressFunctionalSpec extends GebReportingSpec {
     def setupSpec() {
         to LoginPage
         loginForm.j_username = "admin"

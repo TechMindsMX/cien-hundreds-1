@@ -7,7 +7,7 @@ import page.GenrePage
 import page.GenreShowPage
 
 @Stepwise
-class GenreSpec extends GebReportingSpec {
+class GenreFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
@@ -25,7 +25,7 @@ class GenreSpec extends GebReportingSpec {
         genreForm.name = name
         submitButton.click()
 
-        then: "I am being redirected to the same page whit errors"
+        then: "I am being redirected to the same page with errors"
         at result
         if(result == GenreShowPage){
             spanDato.text() == 'algo'

@@ -5,7 +5,7 @@ import page.LoginPage
 import page.FacilitatorPage
 
 @Stepwise
-class FacilitatorSpec extends GebReportingSpec {
+class FacilitatorFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
@@ -18,7 +18,7 @@ class FacilitatorSpec extends GebReportingSpec {
     def "Fill Form for Facilitator"() {
         given:"Create Facilitator Form"
         to FacilitatorPage
-        when: "I do fill fields form whith"
+        when: "I do fill fields form with"
         facilitatorForm.username      = username
         facilitatorForm.password      = password
         facilitatorForm.passwordCheck = passwordCheck
@@ -29,7 +29,7 @@ class FacilitatorSpec extends GebReportingSpec {
         facilitatorForm.email         = email
         facilitatorForm.emailCheck    = emailCheck
 
-        then: "I am being redirected to the same page whit errors"
+        then: "I am being redirected to the same page with errors"
         submitButton.click()
         where: "We have the next cases"
         username | password | passwordCheck | firstName | middleName | lastName | phone | email | emailCheck || result
