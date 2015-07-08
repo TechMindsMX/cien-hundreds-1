@@ -21,6 +21,7 @@ class ProductCommentSpec extends Specification {
     productComment.target = target
     productComment.competence = competence
     productComment.discountModel = discountModel
+    productComment.distributionModel = distributionModel
     productComment.customerModel = customerModel
     productComment.notes = notes
   then: "We validate product"
