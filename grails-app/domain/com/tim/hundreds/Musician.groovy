@@ -51,6 +51,7 @@ class Musician {
     datosFiscales nullable:true
     musicianValidation nullable:true
     assigned nullable:true
+    musicianComment nullable:true
     videos maxSize: ApplicationState.MAX_VIDEOS
     photos maxSize: ApplicationState.MAX_PHOTOS
     audios maxSize: ApplicationState.MAX_AUDIOS
