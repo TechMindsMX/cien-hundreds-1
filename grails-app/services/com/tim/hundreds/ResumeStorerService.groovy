@@ -4,11 +4,11 @@ import grails.transaction.Transactional
 
 @Transactional
 class ResumeStorerService implements StorerService {
-  def resumePath = ApplicationState.ATTACH_DIR + ApplicationState.RESUME_DIRECTORY
-  def directoryDestination = new File(resumePath)
+  def grailsApplication
 
   String storeFile(def multipartFile){
-    def fileName = TokenGenerator.generateToken() + ApplicationState.RESUME_EXTENSION
+    def directoryDestination = new File(grailsApplication.config.attachments.home + ApplicationState.RESUME_DIRECTORY)
+    def fileName = TokenGenerator.generateToken() + ApplicationState.IMAGE_EXTENSION
     File fileDestination = new File(directoryDestination,fileName)
     multipartFile.transferTo(fileDestination)
     fileName

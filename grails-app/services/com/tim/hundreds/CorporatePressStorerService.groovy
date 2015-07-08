@@ -4,12 +4,11 @@ import grails.transaction.Transactional
 
 @Transactional
 class CorporatePressStorerService implements StorerService {
-  def tokenService
-  def corporatePressPath = ApplicationState.ATTACH_DIR + ApplicationState.PHOTO_DIRECTORY
-  def directoryDestination = new File(corporatePressPath)
+  def grailsApplication
 
   String storeFile(def multipartFile){
-    def fileName = tokenService.generateToken() + ApplicationState.IMAGE_EXTENSION
+    def directoryDestination = new File(grailsApplication.config.attachments.home + ApplicationState.PRESS_DIRECTORY)
+    def fileName = TokenGenerator.generateToken() + ApplicationState.RESUME_EXTENSION
     File fileDestination = new File(directoryDestination,fileName)
     multipartFile.transferTo(fileDestination)
     fileName

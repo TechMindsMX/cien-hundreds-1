@@ -26,6 +26,4 @@ interface ApplicationState {
   static final String LOGO_DIRECTORY = 'logos/'
   static final String RESUME_DIRECTORY = 'resumes/'
   static final String PRESS_DIRECTORY = 'press/'
-
-  static final String ATTACH_DIR = '/var/www/html/cienhundreds/'
 }
