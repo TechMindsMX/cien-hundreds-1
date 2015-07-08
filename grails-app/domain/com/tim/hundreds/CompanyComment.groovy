@@ -2,7 +2,7 @@ package com.tim.hundreds
 
 class CompanyComment {
   String general
-  String desciption
+  String description
   String datosFiscales
   String events
   String notes
