@@ -13,7 +13,6 @@ class MusicianComment {
   static belongsTo = [ musician : Musician ]
 
   static mapping = {
-    description type:'text'
     general type:'text'
     history type:'text'
     datosFiscales type:'text'

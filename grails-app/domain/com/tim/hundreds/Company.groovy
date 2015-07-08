@@ -16,6 +16,7 @@ class Company {
   Social social
   DatosFiscales datosFiscales
   BusinessActivity type
+  CompanyComment companyComment
   User assigned
 
   static hasOne = [ companyValidation : CompanyValidation ]
@@ -45,6 +46,7 @@ class Company {
     datosFiscales nullable:true
     companyValidation nullable:true
     assigned nullable:true
+    companyComment nullable:true
     references maxSize: ApplicationState.MAX_REFERENCES
     events maxSize: ApplicationState.MAX_EVENTS
     collaborators maxSize: ApplicationState.MAX_COLLABORATORS
