@@ -5,7 +5,6 @@ import org.openqa.selenium.JavascriptExecutor
 
 class AddressPage extends Page {
 
-
     def js( String script ){
         (driver as JavascriptExecutor).executeScript( script )
     }
