@@ -19,8 +19,8 @@ class VideoIntegrationSpec extends Specification {
       musician.lastUpdated = new Date()
       musician.formed = new Date()
     and: "A user"
-      def user = new User(username:'josdem',password:'password')
-      def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def user = new User(username:'videoIntegration1',password:'password')
+      def profile = new Profile(email:'videoIntegration1@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
       user.profile = profile
       user.save(flush: true)
     and: "We add musician to user"
@@ -46,8 +46,8 @@ class VideoIntegrationSpec extends Specification {
       musician.lastUpdated = new Date()
       musician.formed = new Date()
     and: "A user"
-      def user = new User(username:'josdem',password:'password')
-      def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def user = new User(username:'videoIntegration2',password:'password')
+      def profile = new Profile(email:'videoIntegration2@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
       user.profile = profile
       user.save(flush: true)
     and: "We add musician to user"

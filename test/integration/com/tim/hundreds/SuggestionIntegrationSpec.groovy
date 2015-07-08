@@ -18,8 +18,8 @@ class SuggestionIntegrationSpec extends Specification {
       musician.lastUpdated = new Date()
       musician.formed = new Date()
     and: "A user"
-      def user = new User(username:'josdem',password:'password')
-      def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def user = new User(username:'suggestionIntegration1',password:'password')
+      def profile = new Profile(email:'suggestionIntegration1@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
       user.profile = profile
       user.save(flush: true)
     and: "We add musician to user"
@@ -45,8 +45,8 @@ class SuggestionIntegrationSpec extends Specification {
       musician.lastUpdated = new Date()
       musician.formed = new Date()
     and: "A user"
-      def user = new User(username:'josdem',password:'password')
-      def profile = new Profile(email:'josdem@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def user = new User(username:'suggestionIntegration2',password:'password')
+      def profile = new Profile(email:'suggestionIntegration2@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
       user.profile = profile
       user.save(flush: true)
     and: "We add musician to user"

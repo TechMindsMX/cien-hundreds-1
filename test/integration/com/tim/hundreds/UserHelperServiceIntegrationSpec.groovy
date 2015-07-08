@@ -4,19 +4,9 @@ import grails.test.mixin.TestFor
 import spock.lang.Specification
 import spock.lang.Unroll
 
-/**
- * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
- */
-@TestFor(UserHelperService)
 class UserHelperServiceIntegrationSpec extends Specification {
 
 	def userHelperService
-
-    def setup() {
-    }
-
-    def cleanup() {
-    }
 
     @Unroll
     void """Should get a list of users filtered by role: #role"""() {
