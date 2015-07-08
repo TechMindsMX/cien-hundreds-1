@@ -4,7 +4,7 @@ import page.LoginPage
 import page.HomePage
 
 @Stepwise
-class LoginSpec extends GebReportingSpec {
+class LoginFunctionalSpec extends GebReportingSpec {
 
   def "Invalid admin login"() {
     given:"Login page"

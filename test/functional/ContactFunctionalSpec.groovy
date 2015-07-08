@@ -6,7 +6,7 @@ import page.ContactPage
 import page.LoginPage
 
 @Stepwise
-class ContactSpec extends GebReportingSpec {
+class ContactFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
@@ -34,7 +34,7 @@ class ContactSpec extends GebReportingSpec {
         contactForm.type           = type
         contactForm.file           = file
 
-        then: "I am being redirected to the same page whit errors"
+        then: "I am being redirected to the same page with errors"
         submitButton.click()
 
         where: "We have the next cases"

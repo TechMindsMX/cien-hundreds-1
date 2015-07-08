@@ -6,7 +6,7 @@ import page.BusinessActivityPage
 import page.LoginPage
 
 @Stepwise
-class BusinessActivitySpec extends GebReportingSpec {
+class BusinessActivityFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
@@ -23,7 +23,7 @@ class BusinessActivitySpec extends GebReportingSpec {
         when: "I do not fill form fields "
         businessActivityForm.name = name
 
-        then: "I am being redirected to the same page whit errors"
+        then: "I am being redirected to the same page with errors"
         submitButton.click()
 
         where: "We have the next cases"

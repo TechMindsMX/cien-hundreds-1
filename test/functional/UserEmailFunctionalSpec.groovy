@@ -5,7 +5,7 @@ import page.UserEmailPage
 import page.LoginPage
 
 @Stepwise
-class UserEmailSpec extends GebReportingSpec {
+class UserEmailFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
@@ -26,7 +26,7 @@ class UserEmailSpec extends GebReportingSpec {
         userEmailForm.uuid        = uuid
 
 
-        then: "I am being redirected to the same page whit errors"
+        then: "I am being redirected to the same page with errors"
         submitButton.click()
 
         where: "We have the next cases"

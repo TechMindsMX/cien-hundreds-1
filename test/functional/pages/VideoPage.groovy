@@ -3,7 +3,7 @@ import geb.Page
 
 class VideoPage extends Page{
 
-    static url = "video/create"
+    static url = "video/create?musician.id=1"
 
     static at = { driver.currentUrl.contains('video/create') }
 

@@ -5,7 +5,7 @@ import page.VideoPage
 import page.LoginPage
 
 @Stepwise
-class VideoSpec extends GebReportingSpec {
+class VideoFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
@@ -23,14 +23,13 @@ class VideoSpec extends GebReportingSpec {
         videoForm.url = siteUrl
 
 
-        then: "I am being redirected to the same page whit errors"
+        then: "I am being redirected to the same page with errors"
         submitButton.click()
 
         where: "We have the next cases"
         siteUrl                                       || result
         ''                                            || VideoPage
         'No video'                                    || VideoPage
-        'C:\\Users\\dev-ismael\\Videos\\vlc-record-2015-06-07-15h19m45s-dshow___-.avi' || VideoPage
         'https://www.youtube.com/watch?v=wP1zAyibHm8' || VideoPage
     }
 
