@@ -4,7 +4,8 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+
+
 	<meta name="layout" content="main">
 	<g:set var="entityName" value="${message(code: 'contact.label', default: 'Contact')}" />
 	<title><g:message code="default.show.label" args="[entityName]" /></title>
@@ -89,7 +90,7 @@
 <div class="fieldcontain">
 	<span id="photoPath-label" class="${session.labelWidth} property-label"><g:message code="contact.photo.label" default="Photo" /></span>
 
-	<img class="img-responsive max300" src="${ApplicationState.PHOTO_URL_BASE}${contactInstance.photoPath}" />
+	<img class="img-responsive max300" src="${grailsApplication.config.photo.url.base}${contactInstance.photoPath}" />
 
 </div>
 </g:if>
