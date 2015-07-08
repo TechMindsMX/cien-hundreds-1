@@ -1,5 +1,4 @@
 <%@ page import="com.tim.hundreds.Company" %>
-<%@ page import="com.tim.hundreds.ApplicationState" %>
 
 <!DOCTYPE html>
 <html>
@@ -26,7 +25,7 @@
 	        <div class="col-xs-12 ">
 	        	<div class="row">
 		        	<div class="col-xs-12 col-md-4">
-						<img class="img-responsive max300" src="${ApplicationState.LOGO_URL_BASE}${companyInstance.logo}" />
+						<img class="img-responsive max300" src="${grailsApplication.config.logo.url.base}${companyInstance.logo}" />
 		        	</div>
 		        	<div class="col-xs-12 col-md-8">
 				<g:if test="${companyInstance?.type}">
