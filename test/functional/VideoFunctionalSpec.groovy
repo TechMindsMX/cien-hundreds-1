@@ -30,7 +30,6 @@ class VideoFunctionalSpec extends GebReportingSpec {
         siteUrl                                       || result
         ''                                            || VideoPage
         'No video'                                    || VideoPage
-        'C:\\Users\\dev-ismael\\Videos\\vlc-record-2015-06-07-15h19m45s-dshow___-.avi' || VideoPage
         'https://www.youtube.com/watch?v=wP1zAyibHm8' || VideoPage
     }
 

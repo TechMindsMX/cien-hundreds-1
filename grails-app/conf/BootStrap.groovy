@@ -5,6 +5,7 @@ import com.tim.hundreds.UserRole
 import com.tim.hundreds.Genre
 import com.tim.hundreds.MusicianRole
 import com.tim.hundreds.BusinessActivity
+import com.tim.hundreds.MusicianCommand
 
 import grails.util.Environment
 
@@ -24,7 +25,11 @@ class BootStrap {
       createMusicianRoles()
       createBusinessActivity()
     }
+    if(Environment.current == Environment.TEST) {
+      createMusician()
+    }
   }
+
 
   def destroy = {
   }
@@ -77,6 +82,20 @@ class BootStrap {
   def createBusinessActivity(){
     new BusinessActivity(name:'Products').save()
     new BusinessActivity(name:'Services').save()
+  }
+
+  def createMusician() {
+    MusicianCommand musician = new MusicianCommand()
+    musician.name = 'Above & Beyond'
+    musician.history = 'history'
+    musician.web = 'http://www.aboveandbeyond.nu/'
+    musician.notes = 'notes'
+    musician.tagsComma = 'tags'
+    musician.logoPath = '5c7f5fdfd9a34af3abb28302efb45996.png'
+    musician.hasManager = true
+    musician.formed = new Date()
+    musician.genre = new Genre(name:'Trance')
+    musician.save()
   }
 
 }
