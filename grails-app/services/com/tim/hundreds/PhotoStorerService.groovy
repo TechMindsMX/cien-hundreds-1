@@ -4,10 +4,10 @@ import grails.transaction.Transactional
 
 @Transactional
 class PhotoStorerService implements StorerService {
-  def photoPath = ApplicationState.ATTACH_DIR + ApplicationState.PHOTO_DIRECTORY
-  def directoryDestination = new File(photoPath)
+  def grailsApplication
 
   String storeFile(def multipartFile){
+    def directoryDestination = new File(grailsApplication.config.attachments.home + ApplicationState.PHOTO_DIRECTORY)
     def fileName = TokenGenerator.generateToken() + ApplicationState.IMAGE_EXTENSION
     File fileDestination = new File(directoryDestination,fileName)
     multipartFile.transferTo(fileDestination)
