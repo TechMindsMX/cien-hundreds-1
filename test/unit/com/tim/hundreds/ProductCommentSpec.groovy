@@ -28,5 +28,32 @@ class ProductCommentSpec extends Specification {
   where: "We have next values"
   general   | description   | benefits   | target   | competence   | discountModel   | distributionModel   | customerModel   | notes   || result
   'general' | 'description' | 'benefits' | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || true
+  'g'       | 'description' | 'benefits' | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || true
+  'general' | 'd'           | 'benefits' | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || true
+  'general' | 'description' | 'b'        | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || true
+  'general' | 'description' | 'benefits' | 't'      | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || true
+  'general' | 'description' | 'benefits' | 'target' | 'c'          | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || true
+  'general' | 'description' | 'benefits' | 'target' | 'competence' | 'd'             | 'distributionModel' | 'customerModel' | 'notes' || true
+  'general' | 'description' | 'benefits' | 'target' | 'competence' | 'discountModel' | 'd'                 | 'customerModel' | 'notes' || true
+  'general' | 'description' | 'benefits' | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'c'             | 'notes' || true
+  'general' | 'description' | 'benefits' | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'n'     || true
+  null      | 'description' | 'benefits' | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || true
+  'general' | null          | 'benefits' | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || true
+  'general' | 'description' | null       | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || true
+  'general' | 'description' | 'benefits' | null     | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || true
+  'general' | 'description' | 'benefits' | 'target' | null         | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || true
+  'general' | 'description' | 'benefits' | 'target' | 'competence' | null            | 'distributionModel' | 'customerModel' | 'notes' || true
+  'general' | 'description' | 'benefits' | 'target' | 'competence' | 'discountModel' | null                | 'customerModel' | 'notes' || true
+  'general' | 'description' | 'benefits' | 'target' | 'competence' | 'discountModel' | 'distributionModel' | null            | 'notes' || true
+  'general' | 'description' | 'benefits' | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | null    || true
+  ''        | 'description' | 'benefits' | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || false
+  'general' | ''            | 'benefits' | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || false
+  'general' | 'description' | ''         | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || false
+  'general' | 'description' | 'benefits' | ''       | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || false
+  'general' | 'description' | 'benefits' | 'target' | ''           | 'discountModel' | 'distributionModel' | 'customerModel' | 'notes' || false
+  'general' | 'description' | 'benefits' | 'target' | 'competence' | ''              | 'distributionModel' | 'customerModel' | 'notes' || false
+  'general' | 'description' | 'benefits' | 'target' | 'competence' | 'discountModel' | ''                  | 'customerModel' | 'notes' || false
+  'general' | 'description' | 'benefits' | 'target' | 'competence' | 'discountModel' | 'distributionModel' | ''              | 'notes' || false
+  'general' | 'description' | 'benefits' | 'target' | 'competence' | 'discountModel' | 'distributionModel' | 'customerModel' | ''      || false
   }
 }
