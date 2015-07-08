@@ -6,7 +6,7 @@ import page.CollaboratorEmailPage
 import page.LoginPage
 
 @Stepwise
-class CollaboratorEmailSpec extends GebReportingSpec {
+class CollaboratorEmailFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
@@ -24,7 +24,7 @@ class CollaboratorEmailSpec extends GebReportingSpec {
         collaboratorEmailForm.address = address
         collaboratorEmailForm.type    = type
 
-        then: "I am being redirected to the same page whit errors"
+        then: "I am being redirected to the same page with errors"
         submitButton.click()
 
         where: "We have the next cases"

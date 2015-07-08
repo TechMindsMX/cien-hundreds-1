@@ -5,7 +5,7 @@ import page.ActivityPage
 import page.LoginPage
 
 @Stepwise
-class ActivitySpec extends GebReportingSpec {
+class ActivityFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
@@ -23,7 +23,7 @@ class ActivitySpec extends GebReportingSpec {
         activityForm.activity = activity
         activityForm.place    = place
 
-        then: "I am being redirected to the same page whit errors"
+        then: "I am being redirected to the same page with errors"
         submitButton.click()
 
         where: "We have the next cases"

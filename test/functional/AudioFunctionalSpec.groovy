@@ -6,7 +6,7 @@ import page.AudioPage
 import page.LoginPage
 
 @Stepwise
-class AudioSpec extends GebReportingSpec {
+class AudioFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
@@ -23,7 +23,7 @@ class AudioSpec extends GebReportingSpec {
         when: "I fill the Audio form"
         audioForm.url = url
 
-        then: "I am being redirected to the same page whit errors or redirect to view Audio page."
+        then: "I am being redirected to the same page with errors or redirect to view Audio page."
         submitButton.click()
 
         where: "We have the next cases"

@@ -4,12 +4,16 @@ import spock.lang.Unroll
 import page.LoginPage
 import page.MusicianPage
 
+import page.AddressPage
+import page.AddressSavePage
+
+
 @Stepwise
-class MusicianSpec extends GebReportingSpec {
+class MusicianFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
-        loginForm.j_username = "admin"
+        loginForm.j_username = "cien"
         loginForm.j_password = "12345678"
         loginButton.click()
     }
@@ -27,7 +31,7 @@ class MusicianSpec extends GebReportingSpec {
         musicianForm.formed    = formed
         musicianForm.logo      = logo
         select                 = genre
-        then: "I am being redirected to the same page whit errors"
+        then: "I am being redirected to the same page with errors"
         submitButton.click()
         at MusicianPage
         where: "We have the next cases"
@@ -59,7 +63,7 @@ class MusicianSpec extends GebReportingSpec {
         musicianForm.find('[name="hasManager"]').click()
         musicianForm.logo      = logo
 
-        then: "I am being redirected to the same page whit errors"
+        then: "I am being redirected to the same page with errors"
         submitButton.click()
 
         where: "We have the next cases"
@@ -67,6 +71,36 @@ class MusicianSpec extends GebReportingSpec {
         'luis7' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '30-06-2015' | '2'  | 'C:\\Users\\lutek\\Pictures\\2015_ford_shelby_gt350_mustang-1920x1080.jpg' || MusicianPage
 
     }
+
+    @Unroll
+    def "Fill Address form"() {
+        given:"form Address create"
+        to AddressPage
+
+        when: "I fill the form fields"
+        addressForm.country      = country
+        addressForm.street       = street
+        addressForm.zipcode      = zipcode
+
+        js('jQuery("#zipcode").trigger("change")')
+
+        addressForm.neighborhood = neighborhood
+        addressForm.county       = county
+        addressForm.town         = town
+        addressForm.state        = state
+
+        submitButton.click()
+
+        then: "I am being redirected to the same page with errors"
+        at result
+        alertSuccess
+
+        where: "We have the next cases"
+        country | street            | zipcode | neighborhood | county | town   | state     || result
+        'aus'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | 'Apan' | 'Hidalgo' || AddressSavePage
+        'mex'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | 'Apan' | 'Hidalgo' || AddressSavePage
+    }
+
 
     def cleanupSpec() {}
 }

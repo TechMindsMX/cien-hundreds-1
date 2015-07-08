@@ -5,7 +5,7 @@ import page.LoginPage
 import page.CompanyPage
 
 @Stepwise
-class CompanySpec extends GebReportingSpec {
+class CompanyFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
@@ -18,14 +18,14 @@ class CompanySpec extends GebReportingSpec {
     def "Fill Form for Campany"() {
         given:"Create Company Form"
         to CompanyPage
-        when: "I do fill fields form whith"
+        when: "I do fill fields form with"
         companyForm.name        = name
         companyForm.description = description
         companyForm.web         = web
         companyForm.notes       = notes
         companyForm.tags        = tags
 
-        then: "I am being redirected to the same page whit errors"
+        then: "I am being redirected to the same page with errors"
         submitButton.click()
 
         where: "We have the next cases"

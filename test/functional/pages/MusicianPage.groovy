@@ -6,7 +6,7 @@ class MusicianPage extends Page {
 
     static url = "musician/create"
 
-    static at = { title ==~ "Mostrar" }
+    static at = { driver.currentUrl.contains('musician/create') }
 
     static content = {
         musicianForm { $('form.form-horizontal') }

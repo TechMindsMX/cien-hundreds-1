@@ -5,7 +5,7 @@ import page.CollaboratorTelephonePage
 import page.LoginPage
 
 @Stepwise
-class CollaboratorTelephoneSpec extends GebReportingSpec {
+class CollaboratorTelephoneFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
@@ -23,7 +23,7 @@ class CollaboratorTelephoneSpec extends GebReportingSpec {
         collaboratorPhoneForm.phone = phone
         collaboratorPhoneForm.type  = type
 
-        then: "I am being redirected to the same page whit errors"
+        then: "I am being redirected to the same page with errors"
         submitButton.click()
 
         where: "We have the next cases"
