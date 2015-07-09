@@ -30,18 +30,12 @@ class MusicianController {
 
     def save(MusicianCommand command) {
         log.info "${command.dump()}"
-        if (command == null) {
-            notFound()
-            return
-        }
-
         if (command.hasErrors()) {
             Musician musicianInstance = new Musician(params)
             musicianInstance.errors = command.errors
             render view:'create', model: [musicianInstance:musicianInstance]
             return
         }
-
 
         if(!params.logo.isEmpty()){
           def logoPath = logoStorerService.storeFile(request.getFile('logo'))
