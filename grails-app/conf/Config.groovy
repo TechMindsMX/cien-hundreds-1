@@ -3,12 +3,11 @@ import grails.util.Environment
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
 
-//  grails.config.locations = [ "classpath:${appName}-config.properties",
-//                             "classpath:${appName}-config.groovy",
-//                             "file:${userHome}/.grails/${appName}-config.properties",
-//                             "file:${userHome}/.grails/${appName}-config.groovy"]
+log.debug "nombre de app: ${appName}"
+grails.config.locations = [ "file:${userHome}/.cienhundreds/${appName}-${Environment.current}-config.groovy" ]
 
-grails.config.locations = [ "file:${userHome}/.cienhundreds/${Environment.current}-config.properties" ]
+log.debug "locations: ${grails.config.locations}"
+//grails.config.locations = [ "file:${userHome}/.cienhundreds/${Environment.current}-config.properties" ]
 
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
@@ -159,5 +158,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/favicon.ico':                ['permitAll'],
   '/dbconsole/**':                  ['permitAll']
 ]
+
+grails.plugin.databasemigration.updateOnStart = true
+grails.plugin.databasemigration.changelogFileName = 'changelog.groovy'
 
 grails.databinding.dateFormats = ['dd-MM-yyyy', 'yyyy-MM-dd HH:mm:ss.S', "yyyy-MM-dd'T'hh:mm:ss'Z'"]

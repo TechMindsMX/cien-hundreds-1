@@ -15,15 +15,8 @@ interface ApplicationState {
   static final Integer MAX_ACTIVITIES = 1000
   static final Integer MAX_COMPLEMENTS = 1000
 
-  static final String IMAGE_EXTENSION = '.png'
-  static final String RESUME_EXTENSION = '.pdf'
-
   static final Integer TIME_UNIT = 60;
   static final Integer MILISECONDS = 1000;
   static final Integer TIMEOUT = 20;
   static final Integer MAX_USER_ATTEMPS = 5;
-  static final String PHOTO_DIRECTORY = 'photos/'
-  static final String LOGO_DIRECTORY = 'logos/'
-  static final String RESUME_DIRECTORY = 'resumes/'
-  static final String PRESS_DIRECTORY = 'press/'
 }

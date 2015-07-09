@@ -90,7 +90,7 @@
 <div class="fieldcontain">
 	<span id="photoPath-label" class="${session.labelWidth} property-label"><g:message code="contact.photo.label" default="Photo" /></span>
 
-	<img class="img-responsive max300" src="${grailsApplication.config.photo.url.base}${contactInstance.photoPath}" />
+	<img class="img-responsive max300" src="${grailsApplication.config.base.photo.url}${contactInstance.photoPath}" />
 
 </div>
 </g:if>
