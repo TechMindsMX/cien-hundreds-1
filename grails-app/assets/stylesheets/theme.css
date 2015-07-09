@@ -1,6 +1,3 @@
-
-
-
 .theme-dropdown .dropdown-menu
 {
     display: block;
@@ -27,6 +24,11 @@
 	max-width: 900px;
 }
 
+.nav-pills > li > a {
+    color: #677182;
+    background-color: white;
+}
+
 input[type="checkbox"], input[type="radio"] {
 	width: auto;
 }
@@ -41,8 +43,8 @@ li.add {
 }
 
 img.max300 {
-    max-height: 300px;
-    max-width: 300px;
+    max-height: 200px;
+    max-width: 200px;
 }
 img.max100pct {
     max-height: 100%;

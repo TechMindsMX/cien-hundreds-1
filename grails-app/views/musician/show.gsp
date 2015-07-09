@@ -169,7 +169,8 @@
 									<ol>
 										<g:each in="${musicianInstance.videos}" var="v">
 											<div>
-												<g:link controller="video" action="show" id="${v.id}">${v.url}</g:link>
+												<a href="${v.url}" target="_blank">${v.url}</a>
+												<g:link controller="video" action="edit" id="${v.id}" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">${message(code:'default.edit.label', args: [message(code:'video.label')] )}</g:link>
 											</div>
 										</g:each>
 									</ol>
