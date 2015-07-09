@@ -40,7 +40,7 @@ class BootStrap {
 
   def createUserWithRole(String authority, String name, String email) {
     def userRole = Role.findByAuthority(authority)
-    def defaultUser = User.findByUsername(username: name)
+    def defaultUser = User.findByUsername(name)
 
     if(!defaultUser){
       def user = new User(username: name, password: 'T3chminds2015')
