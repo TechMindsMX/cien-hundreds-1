@@ -11,6 +11,10 @@ class UserController {
 
   def userService
 
+  def show(User userInstance) {
+    respond userInstance
+  }
+
   def create(){
     UserCommand command = new UserCommand()
     respond command
