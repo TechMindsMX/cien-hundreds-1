@@ -28,14 +28,14 @@ class BootStrap {
   }
 
   def createAllRole(){
-    new Role.findOrCreateWhere(authority: 'ROLE_USER')
-    new Role.findOrCreateWhere(authority: 'ROLE_ADMIN')
-    new Role.findOrCreateWhere(authority: 'ROLE_FACILITATOR')
-    new Role.findOrCreateWhere(authority: 'ROLE_BUYER')
-    new Role.findOrCreateWhere(authority: 'ROLE_MUSICIAN_ADMIN')
-    new Role.findOrCreateWhere(authority: 'ROLE_COMPANY_ADMIN')
-    new Role.findOrCreateWhere(authority: 'ROLE_MUSICIAN_VIEWER')
-    new Role.findOrCreateWhere(authority: 'ROLE_COMPANY_VIEWER')
+    Role.findOrCreateWhere(authority: 'ROLE_USER')
+    Role.findOrCreateWhere(authority: 'ROLE_ADMIN')
+    Role.findOrCreateWhere(authority: 'ROLE_FACILITATOR')
+    Role.findOrCreateWhere(authority: 'ROLE_BUYER')
+    Role.findOrCreateWhere(authority: 'ROLE_MUSICIAN_ADMIN')
+    Role.findOrCreateWhere(authority: 'ROLE_COMPANY_ADMIN')
+    Role.findOrCreateWhere(authority: 'ROLE_MUSICIAN_VIEWER')
+    Role.findOrCreateWhere(authority: 'ROLE_COMPANY_VIEWER')
   }
 
   def createUserWithRole(String authority, String name, String email) {
@@ -52,26 +52,26 @@ class BootStrap {
   }
 
   def createGenres(){
-    new Genre.findOrCreateWhere(name:'Ambient')
-    new Genre.findOrCreateWhere(name:'Ballad')
-    new Genre.findOrCreateWhere(name:'Blues')
-    new Genre.findOrCreateWhere(name:'Jazz')
-    new Genre.findOrCreateWhere(name:'Latin')
-    new Genre.findOrCreateWhere(name:'Groove')
-    new Genre.findOrCreateWhere(name:'Progressive')
-    new Genre.findOrCreateWhere(name:'Pop')
-    new Genre.findOrCreateWhere(name:'Trance')
+    Genre.findOrCreateWhere(name:'Ambient')
+    Genre.findOrCreateWhere(name:'Ballad')
+    Genre.findOrCreateWhere(name:'Blues')
+    Genre.findOrCreateWhere(name:'Jazz')
+    Genre.findOrCreateWhere(name:'Latin')
+    Genre.findOrCreateWhere(name:'Groove')
+    Genre.findOrCreateWhere(name:'Progressive')
+    Genre.findOrCreateWhere(name:'Pop')
+    Genre.findOrCreateWhere(name:'Trance')
   }
 
   def createMusicianRoles(){
-    new MusicianRole.findOrCreateWhere(name:'Manager').save()
-    new MusicianRole.findOrCreateWhere(name:'Element').save()
-    new MusicianRole.findOrCreateWhere(name:'Other').save()
+    MusicianRole.findOrCreateWhere(name:'Manager')
+    MusicianRole.findOrCreateWhere(name:'Element')
+    MusicianRole.findOrCreateWhere(name:'Other')
   }
 
   def createBusinessActivity(){
-    new BusinessActivity.findOrCreateWhere(name:'Products')
-    new BusinessActivity.findOrCreateWhere(name:'Services')
+    BusinessActivity.findOrCreateWhere(name:'Products')
+    BusinessActivity.findOrCreateWhere(name:'Services')
   }
 
 }
