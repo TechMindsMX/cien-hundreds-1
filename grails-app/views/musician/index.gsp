@@ -28,7 +28,7 @@
 						<g:sortableColumn property="name" title="${message(code: 'musician.name.label', default: 'Nombre(s)')}" />
 						<g:sortableColumn property="history" title="${message(code: 'musician.history.label', default: 'Biografía')}" />
 						<g:sortableColumn property="web" title="${message(code: 'musician.web.label', default: 'Página Web')}" />
-						<g:sortableColumn property="notes" title="${message(code: 'musician.notes.label', default: 'Notas')}" />
+						<g:sortableColumn property="formed" title="${message(code: 'musician.formed.label', default: 'Fecha de formación del grupo')}" />
 						<g:sortableColumn property="logoPath" title="${message(code: 'musician.logoPath.label', default: 'Logo')}" class="col-sm-12 col-md-4" />
 					
 					</tr>
