@@ -28,6 +28,7 @@ class BootStrap {
   }
 
   def createAllRole(){
+    log.info "Creando los roles"
     Role.findOrCreateWhere(authority: 'ROLE_USER')
     Role.findOrCreateWhere(authority: 'ROLE_ADMIN')
     Role.findOrCreateWhere(authority: 'ROLE_FACILITATOR')
