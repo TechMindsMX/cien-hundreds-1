@@ -43,7 +43,7 @@
 										
 						<td>
 							<g:if test="${musicianInstance.logoPath}">
-								<img class="img-responsive max300" src="${grailsApplication.logo.url.base}${musicianInstance.logoPath}" />
+								<img class="img-responsive max300" src="${grailsApplication.config.base.logo.url}${musicianInstance.logoPath}" />
 							</g:if>
 						</td>
 					
