@@ -19,7 +19,7 @@ class RecoveryServiceSpec extends Specification {
     service.recoveryCollaboratorService = recoveryCollaboratorService
     service.registrationHelperService = registrationHelperService
     grailsApplication.config.forgot.password.url = 'forgotPasswordUrl'
-    grailsApplication.config.new.user.url = 'newUserUrl'
+    grailsApplication.config.newUser.url = 'newUserUrl'
     grailsApplication.config.forgot.username.url = 'forgotUsernameUrl'
   }
 

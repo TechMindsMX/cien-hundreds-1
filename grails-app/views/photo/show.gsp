@@ -24,7 +24,7 @@
 			<ul class="property-list photo">
 
 				<g:if test="${photoInstance?.path}">
-					<img class="img-responsive max300" src="${grailsApplication.config.photo.url.base}${photoInstance.path}" />
+					<img class="img-responsive max300" src="${grailsApplication.config.base.photo.url}${photoInstance.path}" />
 				</g:if>
 
 				<g:if test="${photoInstance?.musician}">

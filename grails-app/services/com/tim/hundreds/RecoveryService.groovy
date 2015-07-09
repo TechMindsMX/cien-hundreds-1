@@ -39,7 +39,7 @@ class RecoveryService {
 
     def name = "${user.profile.firstName} ${user.profile.middleName} ${user.profile.lastName}"
     def message = new NameCommand(email:user.profile.email, name:name)
-    restService.sendCommand(message, grailsApplication.config.new.user.url)
+    restService.sendCommand(message, grailsApplication.config.newUser.url)
   }
 
   def recoveryUser(String email){
