@@ -41,9 +41,10 @@ class BootStrap {
 
   def createUserWithRole(String authority, String name, String email) {
     def userRole = Role.findByAuthority(authority)
-    def user = new User(username: name, password: 'T3chminds2015')
+    def defaultUser = User.findWhere(username: name, password: 'T3chminds2015')
 
-    if(!user){
+    if(!defaultUser){
+      def user = new User(username: name, password: 'T3chminds2015')
       def  profile = new Profile(email: email, firstName: name, middleName:'middleName', lastName:'lastName').save()
       user.profile = profile
       user.enabled = true
