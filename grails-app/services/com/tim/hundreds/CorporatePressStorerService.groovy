@@ -7,7 +7,7 @@ class CorporatePressStorerService implements StorerService {
   def grailsApplication
 
   String storeFile(def multipartFile){
-    def directoryDestination = new File(grailsApplication.config.attachments.home + ApplicationState.PRESS_DIRECTORY)
+    def directoryDestination = new File(grailsApplication.config.attachments.home + grailsApplication.config.base.press.directory)
     def fileName = TokenGenerator.generateToken() + ApplicationState.RESUME_EXTENSION
     File fileDestination = new File(directoryDestination,fileName)
     multipartFile.transferTo(fileDestination)

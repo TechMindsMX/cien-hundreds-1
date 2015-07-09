@@ -22,8 +22,4 @@ interface ApplicationState {
   static final Integer MILISECONDS = 1000;
   static final Integer TIMEOUT = 20;
   static final Integer MAX_USER_ATTEMPS = 5;
-  static final String PHOTO_DIRECTORY = 'photos/'
-  static final String LOGO_DIRECTORY = 'logos/'
-  static final String RESUME_DIRECTORY = 'resumes/'
-  static final String PRESS_DIRECTORY = 'press/'
 }

@@ -7,7 +7,7 @@ class PhotoStorerService implements StorerService {
   def grailsApplication
 
   String storeFile(def multipartFile){
-    def directoryDestination = new File(grailsApplication.config.attachments.home + ApplicationState.PHOTO_DIRECTORY)
+    def directoryDestination = new File(grailsApplication.config.attachments.home + grailsApplication.config.base.photo.directory)
     def fileName = TokenGenerator.generateToken() + ApplicationState.IMAGE_EXTENSION
     File fileDestination = new File(directoryDestination,fileName)
     multipartFile.transferTo(fileDestination)
