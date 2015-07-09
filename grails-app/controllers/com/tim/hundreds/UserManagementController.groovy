@@ -18,6 +18,12 @@ class UserManagementController {
     }
 
     @Secured(['ROLE_ADMIN'])
+    def allAdmins() {
+        def userList = userHelperService.findListByRole(['ROLE_ADMIN','ROLE_COMPANY_ADMIN','ROLE_MUSICIAN_ADMIN'])
+        renderView(userList)
+    }
+
+    @Secured(['ROLE_ADMIN'])
     def admins() {
         def userList = userHelperService.findListByRole('ROLE_ADMIN')
         renderView(userList)

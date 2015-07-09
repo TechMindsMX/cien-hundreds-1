@@ -39,9 +39,10 @@
 				<tbody>
 				<g:each in="${userInstanceList}" status="i" var="userInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					${userInstance.dump()}<br /><br /><br />
 						<td><img class="img-responsive max300" src="${grailsApplication.config.photo.url.base}${userInstance.profile?.photoPath}" /></td>
 						<td>${fieldValue(bean: userInstance, field: "profile.firstName")} ${fieldValue(bean: userInstance, field: "profile.lastName")}</td>
-						<td>${userInstance.getAuthorities().authority}</td>
+						<td>%{-- ${userInstance.getAuthorities().authority} --}%</td>
 						<td>${fieldValue(bean: userInstance, field: "profile.email")}</td>
 						<td>${fieldValue(bean: userInstance, field: "profile.phone")}</td>
 						<td>

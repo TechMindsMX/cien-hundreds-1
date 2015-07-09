@@ -14,5 +14,7 @@ class MusicianPage extends Page {
         cancelButton { musicianForm.find(".btn-danger") }
         select       { $('#genre') }
         logout { $('.nav-header').find('.logout') }
+
+        contactCreate { $('a[href*="contact/create"]') }
     }
 }
