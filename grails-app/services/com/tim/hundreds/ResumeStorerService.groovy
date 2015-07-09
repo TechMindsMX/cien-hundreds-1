@@ -8,7 +8,7 @@ class ResumeStorerService implements StorerService {
 
   String storeFile(def multipartFile){
     def directoryDestination = new File(grailsApplication.config.attachments.home + grailsApplication.config.base.resume.directory)
-    def fileName = TokenGenerator.generateToken() + ApplicationState.IMAGE_EXTENSION
+    def fileName = TokenGenerator.generateToken() + grailsApplication.config.extension.resume
     File fileDestination = new File(directoryDestination,fileName)
     multipartFile.transferTo(fileDestination)
     fileName
