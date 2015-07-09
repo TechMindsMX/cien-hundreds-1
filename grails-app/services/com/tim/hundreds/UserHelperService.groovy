@@ -21,7 +21,7 @@ class UserHelperService {
   def findListByRole(List roles) {
     def userList = []
     def tmp = User.findAll().each {
-      if (roles.each() in it.getAuthorities().authority) {
+      if (it.getAuthorities().authority.findAll {it in roles}) {
         userList << it
       }
     }

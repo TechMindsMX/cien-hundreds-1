@@ -25,43 +25,43 @@ class UserManagementController {
 
     @Secured(['ROLE_ADMIN'])
     def admins() {
-        def userList = userHelperService.findListByRole('ROLE_ADMIN')
+        def userList = userHelperService.findListByRole(['ROLE_ADMIN'])
         renderView(userList)
     }
 
     @Secured(['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN'])
     def mucicianAdmins() {
-        def userList = userHelperService.findListByRole('ROLE_MUSICIAN_ADMIN')
+        def userList = userHelperService.findListByRole(['ROLE_MUSICIAN_ADMIN'])
         renderView(userList)
     }
 
     @Secured(['ROLE_ADMIN','ROLE_COMPANY_ADMIN'])
     def companyAdmins() {
-        def userList = userHelperService.findListByRole('ROLE_COMPANY_ADMIN')
+        def userList = userHelperService.findListByRole(['ROLE_COMPANY_ADMIN'])
         renderView(userList)
     }
 
     @Secured(['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN'])
     def musicianViewers() {
-        def userList = userHelperService.findListByRole('ROLE_MUSICIAN_VIEWER')
+        def userList = userHelperService.findListByRole(['ROLE_MUSICIAN_VIEWER'])
         renderView(userList)
     }
 
     @Secured(['ROLE_ADMIN','ROLE_COMPANY_ADMIN'])
     def companyViewers() {
-        def userList = userHelperService.findListByRole('ROLE_COMPANY_VIEWER')
+        def userList = userHelperService.findListByRole(['ROLE_COMPANY_VIEWER'])
         renderView(userList)
     }
 
     @Secured(['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN'])
     def facilitator() {
-        def userList = userHelperService.findListByRole('ROLE_FACILITATOR')
+        def userList = userHelperService.findListByRole(['ROLE_FACILITATOR'])
         renderView(userList)
     }
 
     @Secured(['ROLE_ADMIN','ROLE_COMPANY_ADMIN'])
     def buyer() {
-    	def userList = userHelperService.findListByRole('ROLE_BUYER')
+    	def userList = userHelperService.findListByRole(['ROLE_BUYER'])
         renderView(userList)
     }
 
