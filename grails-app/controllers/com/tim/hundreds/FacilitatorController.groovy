@@ -13,6 +13,10 @@ class FacilitatorController {
   def photoStorerService
   def resumeStorerService
 
+  def index() {
+    redirect(controller: "userManagement", action: "index")
+  }
+
   def create(){
     UserCommand command = new UserCommand()
     respond command
