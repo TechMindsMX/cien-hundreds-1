@@ -4,6 +4,7 @@ class TIMDatepickerTagLib {
         def out = out
         def name = attrs.name //The name attribute is required for the tag to work seamlessly with grails
         def id = attrs.id ?: name
+        def className = attrs.class ?: null
         def value = attrs.value
         def displayFormat = attrs.displayFormat
         def datepickerFormat = attrs.datepickerFormat
@@ -14,7 +15,7 @@ class TIMDatepickerTagLib {
         def datepickerFormatString = datepickerFormat ? datepickerFormat : "dd-MM-yyyy"
         def dateString = value ? value.format(datepickerFormatString) : ""
 
-        out.println "<input type=\"text\" name=\"${name}\" id=\"${id}\" value=\"${dateString}\" class=\"form-control\" />"
+        out.println "<input type=\"text\" name=\"${name}\" id=\"${id}\" value=\"${dateString}\" class=\"form-control ${className}\" />"
 
         out.println "<script type=\"text/javascript\"> \$(document).ready(function(){"
         out.println "\$(\"#${name}\").datepicker({"
