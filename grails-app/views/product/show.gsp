@@ -282,6 +282,16 @@
 			<g:form url="[resource:productInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="btn btn-primary edit" action="edit" resource="${productInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+
+						<sec:ifAnyGranted roles="ROLE_BUYER">
+							<g:if test="${!productInstance?.productComment}">
+								<g:link class="btn btn-success" controller="productComment" action="create" params="['product.id': productInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'productComment.label')])}</g:link>
+							</g:if>
+							<g:else>
+								<g:link class="btn btn-success" controller="productComment" action="edit" id="['product.id': productInstance.productComment.id]" >${message(code: 'default.add.label', args: [message(code: 'productComment.label')])}</g:link>
+							</g:else>
+						</sec:ifAnyGranted>
+
 					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
