@@ -25,8 +25,8 @@
 					<tr>
 					
 						<g:sortableColumn property="name" title="${message(code: 'musician.name.label', default: 'Nombre(s)')}" />
-						<g:sortableColumn property="history" title="${message(code: 'musician.history.label', default: 'Biografía')}" />
-						<g:sortableColumn property="web" title="${message(code: 'musician.web.label', default: 'Página Web')}" />
+						<th>${message(code: 'telephone.label', default: 'Teléfonoooo')}</th>
+						<th>${message(code: 'email.label', default: 'Correo')}</th>
 						<g:sortableColumn property="dateCreated" title="${message(code: 'musician.dateCreated.label', default: 'Fecha de creación')}" />
 						<g:sortableColumn property="logoPath" title="${message(code: 'musician.logoPath.label', default: 'Logo')}" class="col-sm-12 col-md-4" />
 					
@@ -37,8 +37,12 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${musicianInstance.id}">${fieldValue(bean: musicianInstance, field: "name")}</g:link></td>
-						<td>${fieldValue(bean: musicianInstance, field: "history")}</td>
-						<td>${fieldValue(bean: musicianInstance, field: "web")}</td>
+						<td>
+							<g:each in="${musicianInstance.contacts?.telephones}" var="v"><% v.phone.each {println it} %></g:each>
+						</td>
+						<td>
+							<g:each in="${musicianInstance.contacts?.emails}" var="v"><% v.phone.each {println it} %></g:each>
+						</td>
 						<td><g:formatDate format="dd-MM-yyyy" date="${musicianInstance.dateCreated}" /></td>
 										
 						<td>
