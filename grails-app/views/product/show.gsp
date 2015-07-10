@@ -184,17 +184,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${productInstance?.complements}">
-				<li class="fieldcontain">
-					<span id="complements-label" class="${session.labelWidth} property-label"><g:message code="product.complements.label" default="Complements" /></span>
-					
-						<g:each in="${productInstance.complements}" var="c">
-						<span class="property-value" aria-labelledby="complements-label"><g:link controller="complement" action="show" id="${c.id}">${c?.name?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${productInstance?.campaign}">
 				<li class="fieldcontain">
 					<span id="campaign-label" class="${session.labelWidth} property-label"><g:message code="product.campaign.label" default="Campaign" /></span>
