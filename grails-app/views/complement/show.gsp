@@ -44,7 +44,7 @@
 					<li class="fieldcontain">
 						<span id="product-label" class="${session.labelWidth} property-label"><g:message code="complement.product.label" default="Product" /></span>
 
-						<span class="property-value" aria-labelledby="product-label"><g:link controller="product" action="show" id="${complementInstance?.product?.id}">${complementInstance?.product?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="product-label"><g:link controller="product" action="show" id="${complementInstance?.product?.id}">${complementInstance?.product?.name?.encodeAsHTML()}</g:link></span>
 
 					</li>
 				</g:if>
