@@ -34,7 +34,7 @@ class VideoIntegrationSpec extends Specification {
     then:"We validate command"
       result
     cleanup:"We delete musician"
-      user.delete()
+      user.delete(flush: true)
   }
 
   void "Should not save an musician with more than 5 videos"() {
@@ -76,7 +76,7 @@ class VideoIntegrationSpec extends Specification {
     then:"We expect exception"
       thrown ValidationException
     cleanup:"We delete musician"
-      user.delete()
+      user.delete(flush: true)
   }
 
 }
