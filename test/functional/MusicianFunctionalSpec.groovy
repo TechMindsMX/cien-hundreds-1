@@ -15,10 +15,12 @@ import page.AddressSavePage
 @Stepwise
 class MusicianFunctionalSpec extends GebReportingSpec {
 
+    def grailsApplication
+
     def setupSpec() {
         to LoginPage
         loginForm.j_username = "cien"
-        loginForm.j_password = "12345678"
+        loginForm.j_password = grailsApplication.config.password
         loginButton.click()
     }
 
