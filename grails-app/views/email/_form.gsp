@@ -29,7 +29,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${session.inputWidth}">
-		<g:select class="form-control" name="contact.id" from="${com.tim.hundreds.Contact?.list()}" optionKey="id" required="" value="${emailInstance?.contact?.id}" />
+		<g:select class="form-control" name="contact.id" from="${com.tim.hundreds.Contact?.list()}" optionKey="id" required="" value="${emailInstance?.contact?.id ?: params.contact?.id}" />
 	</div>
 </div>
 

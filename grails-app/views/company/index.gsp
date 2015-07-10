@@ -25,8 +25,8 @@
 					<tr>
 					
 						<g:sortableColumn property="name" title="${message(code: 'company.name.label', default: 'Name')}" />
-						<g:sortableColumn property="description" title="${message(code: 'company.description.label', default: 'Description')}" />
-						<g:sortableColumn property="web" title="${message(code: 'company.web.label', default: 'Web')}" />
+						<th>${message(code: 'telephone.label', default: 'Teléfonoooo')}</th>
+						<th>${message(code: 'email.label', default: 'Correo')}</th>
 						<g:sortableColumn property="dateCreated" title="${message(code: 'default.dateCreated.label', default: 'Fecha de creación')}" />
 					
 					</tr>
@@ -36,8 +36,12 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${companyInstance.id}">${fieldValue(bean: companyInstance, field: "name")}</g:link></td>
-						<td>${fieldValue(bean: companyInstance, field: "description")}</td>
-						<td>${fieldValue(bean: companyInstance, field: "web")}</td>
+						<td>
+							<g:each in="${musicianInstance.contacts?.telephones}" var="v"><% v.phone.each {println it} %></g:each>
+						</td>
+						<td>
+							<g:each in="${musicianInstance.contacts?.emails}" var="v"><% v.phone.each {println it} %></g:each>
+						</td>
 						<td><g:formatDate format="dd-MM-yyyy" date="${companyInstance.dateCreated}" /></td>
 						
 					</tr>

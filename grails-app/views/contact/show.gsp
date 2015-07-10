@@ -190,12 +190,12 @@
 </g:if>
 <g:if test="${!contactInstance.telephones || contactInstance.telephones?.size() < ApplicationState.MAX_TELEPHONES}">
 <div>
-	<g:link controller="telephone" action="create">Agregar Teléfono</g:link>
+	<g:link controller="telephone" action="create" params="['contact.id': contactInstance?.id]">Agregar Teléfono</g:link>
 </div>
 </g:if>
 <g:if test="${!contactInstance.emails || contactInstance.emails?.size() < ApplicationState.MAX_EMAILS}">
 <div>
-	<g:link controller="email" action="create">Agregar Email</g:link>
+	<g:link controller="email" action="create" params="['contact.id': contactInstance?.id]">Agregar Email</g:link>
 </div>
 </g:if>
 
