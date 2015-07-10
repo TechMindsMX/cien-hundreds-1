@@ -25,7 +25,7 @@
 					<tr>
 					
 						<g:sortableColumn property="name" title="${message(code: 'company.name.label', default: 'Name')}" />
-						<th>${message(code: 'telephone.label', default: 'Teléfonoooo')}</th>
+						<th>${message(code: 'telephone.label', default: 'Teléfono')}</th>
 						<th>${message(code: 'email.label', default: 'Correo')}</th>
 						<g:sortableColumn property="dateCreated" title="${message(code: 'default.dateCreated.label', default: 'Fecha de creación')}" />
 					

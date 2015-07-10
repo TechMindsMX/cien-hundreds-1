@@ -132,19 +132,20 @@
 	        		</div>
 	        	</div>
 
-	        	<div class="row">
-	        		<div class="col-sm-12">
-						<div class="fieldcontain well">
-							<p id="notes-label" class=""><g:message code="company.message.label" default="Reviews" /></p>
-							<g:if test="${companyInstance?.companyValidation}">				
-								<g:each in="${companyInstance?.companyValidation}" var="cv"> 
-									<span class="property-value" aria-labelledby="companyValidation-label">${cv.message}</span>
-								</g:each>
-							</g:if>
-						</div>
-	        		</div>
-	        	</div>
-
+	        	<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_COMPANY_ADMIN') || hasRole('ROLE_BUYER')">
+		        	<div class="row">
+		        		<div class="col-sm-12">
+							<div class="fieldcontain well">
+								<p id="notes-label" class=""><g:message code="company.message.label" default="Reviews" /></p>
+								<g:if test="${companyInstance?.companyValidation}">				
+									<g:each in="${companyInstance?.companyValidation}" var="cv"> 
+										<span class="property-value" aria-labelledby="companyValidation-label">${cv.message}</span>
+									</g:each>
+								</g:if>
+							</div>
+		        		</div>
+		        	</div>
+		        </sec:access>	
     	</div>
 			
 		<div class="row">
