@@ -1,7 +1,12 @@
 <%@ page import="com.tim.hundreds.ProductComment" %>
 
-
-
+<div class="${session.btnOffset}">
+	<ul>
+		<li>
+			${productCommentInstance.product?.name}
+		</li>
+	</ul>
+</div>
 <div class="form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'general', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="general">
 		<g:message code="productComment.general.label" default="General" />
@@ -13,6 +18,13 @@
 		</div>
 </div>
 
+<div class="${session.btnOffset}">
+	<ul>
+		<li>
+			${productCommentInstance.product?.description}
+		</li>
+	</ul>
+</div>
 <div class="form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'description', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="description">
 		<g:message code="productComment.description.label" default="Description" />
@@ -24,6 +36,13 @@
 		</div>
 </div>
 
+<div class="${session.btnOffset}">
+	<ul>
+		<li>
+			${productCommentInstance.product?.benefits}
+		</li>
+	</ul>
+</div>
 <div class="form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'benefits', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="benefits">
 		<g:message code="productComment.benefits.label" default="Benefits" />
@@ -35,6 +54,13 @@
 		</div>
 </div>
 
+<div class="${session.btnOffset}">
+	<ul>
+		<li>
+			${productCommentInstance.product?.target}
+		</li>
+	</ul>
+</div>
 <div class="form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'target', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="target">
 		<g:message code="productComment.target.label" default="Target" />
@@ -46,6 +72,13 @@
 		</div>
 </div>
 
+<div class="${session.btnOffset}">
+	<ul>
+		<li>
+			${productCommentInstance.product?.competence}
+		</li>
+	</ul>
+</div>
 <div class="form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'competence', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="competence">
 		<g:message code="productComment.competence.label" default="Competence" />
@@ -57,6 +90,13 @@
 		</div>
 </div>
 
+<div class="${session.btnOffset}">
+	<ul>
+		<li>
+			${productCommentInstance.product?.discountModel}
+		</li>
+	</ul>
+</div>
 <div class="form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'discountModel', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="discountModel">
 		<g:message code="productComment.discountModel.label" default="Discount Model" />
@@ -68,6 +108,13 @@
 		</div>
 </div>
 
+<div class="${session.btnOffset}">
+	<ul>
+		<li>
+			${productCommentInstance.product?.distributionModel}
+		</li>
+	</ul>
+</div>
 <div class="form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'distributionModel', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="distributionModel">
 		<g:message code="productComment.distributionModel.label" default="Distribution Model" />
@@ -79,6 +126,13 @@
 		</div>
 </div>
 
+<div class="${session.btnOffset}">
+	<ul>
+		<li>
+			${productCommentInstance.product?.customerModel}
+		</li>
+	</ul>
+</div>
 <div class="form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'customerModel', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="customerModel">
 		<g:message code="productComment.customerModel.label" default="Customer Model" />
@@ -90,6 +144,13 @@
 		</div>
 </div>
 
+<div class="${session.btnOffset}">
+	<ul>
+		<li>
+			${productCommentInstance.product?.notes}
+		</li>
+	</ul>
+</div>
 <div class="form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'notes', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="notes">
 		<g:message code="productComment.notes.label" default="Notes" />
@@ -101,7 +162,7 @@
 		</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'product', 'error')} required">
+<div class="hide form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'product', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="product">
 		<g:message code="productComment.product.label" default="Product" />
 		<span class="required-indicator">*</span>

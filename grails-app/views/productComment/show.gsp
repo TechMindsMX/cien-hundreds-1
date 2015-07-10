@@ -103,7 +103,7 @@
 					
 				</li>
 				</g:if>
-			
+${productCommentInstance.dump()}			
 				<g:if test="${productCommentInstance?.product}">
 				<li class="fieldcontain">
 					<span id="product-label" class="${session.labelWidth} property-label"><g:message code="productComment.product.label" default="Product" /></span>

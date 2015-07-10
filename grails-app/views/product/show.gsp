@@ -288,7 +288,7 @@
 								<g:link class="btn btn-success" controller="productComment" action="create" params="['product.id': productInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'productComment.label')])}</g:link>
 							</g:if>
 							<g:else>
-								<g:link class="btn btn-success" controller="productComment" action="edit" id="['product.id': productInstance.productComment.id]" >${message(code: 'default.add.label', args: [message(code: 'productComment.label')])}</g:link>
+								<g:link class="btn btn-success" controller="productComment" action="edit" id="${productInstance.productComment.id}" >${message(code: 'default.edit.label', args: [message(code: 'productComment.label')])}</g:link>
 							</g:else>
 						</sec:ifAnyGranted>
 
