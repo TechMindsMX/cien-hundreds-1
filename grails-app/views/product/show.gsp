@@ -189,7 +189,7 @@
 					<span id="complements-label" class="${session.labelWidth} property-label"><g:message code="product.complements.label" default="Complements" /></span>
 					
 						<g:each in="${productInstance.complements}" var="c">
-						<span class="property-value" aria-labelledby="complements-label"><g:link controller="complement" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="complements-label"><g:link controller="complement" action="show" id="${c.id}">${c?.name?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
@@ -208,58 +208,57 @@
 				<li class="fieldcontain">
 					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="product.company.label" default="Company" /></span>
 					
-						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${productInstance?.company?.id}">${productInstance?.company?.encodeAsHTML()}</g:link></span>
-					
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${productInstance?.company?.id}">${productInstance?.company?.name?.encodeAsHTML()}</g:link></span>
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${productInstance?.event}">
 				<li class="fieldcontain">
 					<span id="event-label" class="${session.labelWidth} property-label"><g:message code="product.event.label" default="Event" /></span>
-					
+
 						<span class="property-value" aria-labelledby="event-label"><g:formatBoolean boolean="${productInstance?.event}" /></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${productInstance?.other}">
 				<li class="fieldcontain">
 					<span id="other-label" class="${session.labelWidth} property-label"><g:message code="product.other.label" default="Other" /></span>
-					
+
 						<span class="property-value" aria-labelledby="other-label"><g:formatBoolean boolean="${productInstance?.other}" /></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${productInstance?.telephone}">
 				<li class="fieldcontain">
 					<span id="telephone-label" class="${session.labelWidth} property-label"><g:message code="product.telephone.label" default="Telephone" /></span>
-					
+
 						<span class="property-value" aria-labelledby="telephone-label"><g:formatBoolean boolean="${productInstance?.telephone}" /></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${productInstance?.uuid}">
 				<li class="fieldcontain">
 					<span id="uuid-label" class="${session.labelWidth} property-label"><g:message code="product.uuid.label" default="Uuid" /></span>
-					
+
 						<span class="property-value" aria-labelledby="uuid-label"><g:fieldValue bean="${productInstance}" field="uuid"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${productInstance?.web}">
 				<li class="fieldcontain">
 					<span id="web-label" class="${session.labelWidth} property-label"><g:message code="product.web.label" default="Web" /></span>
-					
+
 						<span class="property-value" aria-labelledby="web-label"><g:formatBoolean boolean="${productInstance?.web}" /></span>
-					
+
 				</li>
 				</g:if>
-			
+
 			</ul>
-			%{--aqui--}%
 			<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'complements', 'error')} ">
 				<label class="${session.labelWidth} control-label" for="complements">
 					<g:message code="product.complements.label" default="Complements" />
@@ -269,7 +268,7 @@
 
 					<ul class="one-to-many">
 						<g:each in="${productInstance?.complements}" var="c">
-							<li><g:link controller="complement" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+							<li><g:link controller="complement" action="show" id="${c.id}">${c?.name?.encodeAsHTML()}</g:link></li>
 						</g:each>
 						<li class="add">
 							<g:link controller="complement" action="create" params="['product.id': productInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'complement.label', default: 'Complement')])}</g:link>
