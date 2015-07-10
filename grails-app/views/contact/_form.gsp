@@ -124,7 +124,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
-			<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician?.list()}" optionKey="id" required="" value="${contactInstance?.musician?.id}" class="form-control many-to-one"/>
+			<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician?.list()}" optionKey="id" required="" value="${contactInstance?.musician?.id ?: params?.musician?.id}" class="form-control many-to-one"/>
 
 		</div>
 </div>

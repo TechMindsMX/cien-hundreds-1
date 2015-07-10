@@ -4,8 +4,7 @@
 
 <!DOCTYPE html>
 <html>
-
-
+<head>
 	<meta name="layout" content="main">
 	<g:set var="entityName" value="${message(code: 'contact.label', default: 'Contact')}" />
 	<title><g:message code="default.show.label" args="[entityName]" /></title>
