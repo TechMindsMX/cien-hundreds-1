@@ -18,5 +18,4 @@ interface ApplicationState {
   static final Integer TIME_UNIT = 60;
   static final Integer MILISECONDS = 1000;
   static final Integer TIMEOUT = 20;
-  static final Integer MAX_USER_ATTEMPS = 5;
 }
