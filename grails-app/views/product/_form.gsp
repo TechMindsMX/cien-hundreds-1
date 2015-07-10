@@ -145,62 +145,7 @@
 		</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'webDescription', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="webDescription">
-		<g:message code="product.webDescription.label" default="Web Description" />
-		
-	</label>
-		<div class="${session.inputWidth}">
-			<g:textArea class="form-control" name="webDescription" id="webDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.webDescription}"/>
-
-		</div>
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'telephoneDescription', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="telephoneDescription">
-		<g:message code="product.telephoneDescription.label" default="Telephone Description" />
-		
-	</label>
-		<div class="${session.inputWidth}">
-			<g:textArea class="form-control" name="telephoneDescription" id="telephoneDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.telephoneDescription}"/>
-
-		</div>
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'campaignDescription', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="campaignDescription">
-		<g:message code="product.campaignDescription.label" default="Campaign Description" />
-		
-	</label>
-		<div class="${session.inputWidth}">
-			<g:textArea class="form-control" name="campaignDescription" id="campaignDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.campaignDescription}"/>
-
-		</div>
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'eventDescription', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="eventDescription">
-		<g:message code="product.eventDescription.label" default="Event Description" />
-		
-	</label>
-		<div class="${session.inputWidth}">
-			<g:textArea class="form-control" name="eventDescription" id="eventDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.eventDescription}"/>
-
-		</div>
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'otherDescription', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="otherDescription">
-		<g:message code="product.otherDescription.label" default="Other Description" />
-		
-	</label>
-		<div class="${session.inputWidth}">
-			<g:textArea class="form-control" name="otherDescription" id="otherDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.otherDescription}"/>
-
-		</div>
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'complements', 'error')} ">
+<div class="hide form-group fieldcontain ${hasErrors(bean: productInstance, field: 'complements', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="complements">
 		<g:message code="product.complements.label" default="Complements" />
 		
@@ -208,7 +153,7 @@
 		<div class="${session.inputWidth}">
 			
 <ul class="one-to-many">
-<g:each in="${productInstance?.complements?}" var="c">
+<g:each in="${productInstance?.complements}" var="c">
     <li><g:link controller="complement" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
@@ -216,6 +161,17 @@
 </li>
 </ul>
 
+
+		</div>
+</div>
+
+<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'company', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="company">
+		<g:message code="product.company.label" default="Company" />
+		<span class="required-indicator">*</span>
+	</label>
+		<div class="${session.inputWidth}">
+			<g:select id="company" name="company.id" from="${com.tim.hundreds.Company.list()}" optionKey="id" optionValue="name" required="" value="${productInstance?.company?.id}" class="form-control many-to-one"/>
 
 		</div>
 </div>
@@ -230,17 +186,17 @@
 
 		</div>
 </div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'company', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="company">
-		<g:message code="product.company.label" default="Company" />
-		<span class="required-indicator">*</span>
+<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'campaignDescription', 'error')} ">
+	<label class="${session.labelWidth} control-label" for="campaignDescription">
+		<g:message code="product.campaignDescription.label" default="Campaign Description" />
+		
 	</label>
 		<div class="${session.inputWidth}">
-			<g:select id="company" name="company.id" from="${com.tim.hundreds.Company.list()}" optionKey="id" required="" value="${productInstance?.company?.id}" class="form-control many-to-one"/>
+			<g:textArea class="form-control" name="campaignDescription" id="campaignDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.campaignDescription}"/>
 
 		</div>
 </div>
+
 
 <div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'event', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="event">
@@ -252,6 +208,17 @@
 
 		</div>
 </div>
+<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'eventDescription', 'error')} ">
+	<label class="${session.labelWidth} control-label" for="eventDescription">
+		<g:message code="product.eventDescription.label" default="Event Description" />
+		
+	</label>
+		<div class="${session.inputWidth}">
+			<g:textArea class="form-control" name="eventDescription" id="eventDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.eventDescription}"/>
+
+		</div>
+</div>
+
 
 <div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'other', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="other">
@@ -260,6 +227,16 @@
 	</label>
 		<div class="${session.inputWidth}">
 			<g:checkBox class="form-control" name="other" value="${productInstance?.other}" />
+
+		</div>
+</div>
+<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'otherDescription', 'error')} ">
+	<label class="${session.labelWidth} control-label" for="otherDescription">
+		<g:message code="product.otherDescription.label" default="Other Description" />
+		
+	</label>
+		<div class="${session.inputWidth}">
+			<g:textArea class="form-control" name="otherDescription" id="otherDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.otherDescription}"/>
 
 		</div>
 </div>
@@ -274,8 +251,19 @@
 
 		</div>
 </div>
+<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'telephoneDescription', 'error')} ">
+	<label class="${session.labelWidth} control-label" for="telephoneDescription">
+		<g:message code="product.telephoneDescription.label" default="Telephone Description" />
+		
+	</label>
+		<div class="${session.inputWidth}">
+			<g:textArea class="form-control" name="telephoneDescription" id="telephoneDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.telephoneDescription}"/>
 
-<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'uuid', 'error')} required">
+		</div>
+</div>
+
+
+<div class="hide form-group fieldcontain ${hasErrors(bean: productInstance, field: 'uuid', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="uuid">
 		<g:message code="product.uuid.label" default="Uuid" />
 		<span class="required-indicator">*</span>
@@ -296,4 +284,15 @@
 
 		</div>
 </div>
+<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'webDescription', 'error')} ">
+	<label class="${session.labelWidth} control-label" for="webDescription">
+		<g:message code="product.webDescription.label" default="Web Description" />
+		
+	</label>
+		<div class="${session.inputWidth}">
+			<g:textArea class="form-control" name="webDescription" id="webDescription" cols="40" rows="5" maxlength="10000" value="${productInstance?.webDescription}"/>
+
+		</div>
+</div>
+
 

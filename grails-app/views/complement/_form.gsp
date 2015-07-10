@@ -20,12 +20,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: complementInstance, field: 'product', 'error')} required">
+<div class="hide fieldcontain ${hasErrors(bean: complementInstance, field: 'product', 'error')} required">
 	<label for="product">
 		<g:message code="complement.product.label" default="Product" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="product" name="product.id" from="${com.tim.hundreds.Product.list()}" optionKey="id" required="" value="${complementInstance?.product?.id}" class="many-to-one"/>
+	<g:select id="product" name="product.id" from="${com.tim.hundreds.Product.list()}" optionKey="id" required="" value="${complementInstance?.product?.id || params?.product?.id}" class="many-to-one"/>
 
 </div>
 
