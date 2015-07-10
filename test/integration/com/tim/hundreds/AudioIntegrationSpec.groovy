@@ -16,8 +16,8 @@ class AudioIntegrationSpec extends Specification {
     musician.lastUpdated = new Date()
     musician.formed = new Date()
 
-    def user = new User(username:'audioIntegration',password:'password')
-    def profile = new Profile(email:'audioIntegration@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+    def user = new User(username:'audioIntegration1',password:'password')
+    def profile = new Profile(email:'audioIntegration1@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
     user.profile = profile
     user.addToMusicians(musician)
     user.save flush: true
@@ -29,7 +29,7 @@ class AudioIntegrationSpec extends Specification {
     then:"We validate audio"
       result
     cleanup: "Delete user"
-    user.delete()
+    user.delete flush: true
   }
 
   void "Should not save an musician with more than 5 audios"() {
@@ -69,7 +69,7 @@ class AudioIntegrationSpec extends Specification {
     then:"We expect exception"
         thrown ValidationException
     cleanup:"Deleteuser"
-      user.delete()
+      user.delete flush: true
   }
 
 }

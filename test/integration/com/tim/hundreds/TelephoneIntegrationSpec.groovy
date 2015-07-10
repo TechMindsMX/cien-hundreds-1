@@ -39,7 +39,7 @@ class TelephoneIntegrationSpec extends Specification {
     then:"We validate command"
       result
     cleanup:"We delete contact"
-      user.delete()
+      user.delete(flush: true)
   }
 
 
@@ -79,7 +79,7 @@ class TelephoneIntegrationSpec extends Specification {
     then:"We expect exception"
       thrown ValidationException
     cleanup:"We delete contact"
-      user.delete()
+      user.delete(flush: true)
   }
 
 }
