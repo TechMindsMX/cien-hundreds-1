@@ -161,7 +161,7 @@
 	</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'company', 'error')} required">
+<div class="hide form-group fieldcontain ${hasErrors(bean: productInstance, field: 'company', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="company">
 		<g:message code="product.company.label" default="Company" />
 		<span class="required-indicator">*</span>
