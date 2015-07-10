@@ -205,7 +205,7 @@
 		<g:form url="[resource:companyInstance, action:'delete']" method="DELETE">
 			<fieldset class="buttons">
 				<g:link class="btn btn-primary edit" action="edit" resource="${companyInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-				<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_COMPANY_ADMIN')|| hasRole('ROLE_BUYER')">
+				<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_COMPANY_ADMIN')">
 					<g:if test="${!companyInstance?.companyValidation}" >
 						<g:link class="btn btn-success" controller="companyValidation" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'companyValidation.label')])}</g:link>
 					</g:if>
@@ -222,4 +222,3 @@
 	</div>
 	</body>
 </html>
-|| hasRole('ROLE_BUYER'
