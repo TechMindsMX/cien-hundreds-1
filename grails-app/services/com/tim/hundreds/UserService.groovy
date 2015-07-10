@@ -10,6 +10,8 @@ class UserService {
 
   def create(def user){
     if(user){
+      if(Profile.findByEmail(user.profile?.email))
+        throw new DuplicatedEmailException('This email already exist')
       user.save()
       userHelperService.addUserRole(user)
       recoveryService.sendConfirmationAccountToken(user.profile?.email)
