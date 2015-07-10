@@ -21,11 +21,15 @@ class UserServiceSpec extends Specification {
     def user = Mock(User)
     def email = 'josdem@email.com'
   and: "A profile"
-    def profile = new Profile(email:email, firsName:'firsName', middleName:'middleName', lastName:'lastName')
+    def profile = Mock(Profile)
+    profile.email >> email
+    user.profile >> profile
+    Profile.metaClass.static.findByEmail = { null }
   when: "We assing values to command"
     service.create(user)
   then:"We validate command"
     user.profile >> profile
+    1 * user.save()
     1 * userHelperService.addUserRole(user)
     1 * recoveryService.sendConfirmationAccountToken(email)
   }
@@ -36,5 +40,21 @@ class UserServiceSpec extends Specification {
   then:"We validate command"
     !result
   }
+
+  void "should not create an user since email is already taken"() {
+  given: "An user and email"
+    def user = Mock(User)
+    def email = 'josdem@email.com'
+  and: "A profile"
+    def profile = Mock(Profile)
+    profile.email >> email
+    user.profile >> profile
+    Profile.metaClass.static.findByEmail = { user }
+  when: "We assing values to command"
+    def result = service.create(user)
+  then:"We get exception"
+    thrown DuplicatedEmailException
+  }
+
 
 }

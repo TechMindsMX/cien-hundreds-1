@@ -3,3 +3,9 @@
 target
 hs_err*
 logs
+.idea/.name
+.idea/compiler.xml
+*.iml
+.idea/copyright/profiles_settings.xml
+*.xml
+cien-hundreds-DEVELOPMENT-config.groovy

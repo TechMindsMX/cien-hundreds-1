@@ -2,8 +2,8 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: complementInstance, field: 'name', 'error')} required">
-	<label for="name">
+<div class="form-group fieldcontain ${hasErrors(bean: complementInstance, field: 'name', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="name">
 		<g:message code="complement.name.label" default="Name" />
 		<span class="required-indicator">*</span>
 	</label>
@@ -11,8 +11,8 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: complementInstance, field: 'price', 'error')} required">
-	<label for="price">
+<div class="form-group fieldcontain ${hasErrors(bean: complementInstance, field: 'price', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="price">
 		<g:message code="complement.price.label" default="Price" />
 		<span class="required-indicator">*</span>
 	</label>
@@ -25,7 +25,7 @@
 		<g:message code="complement.product.label" default="Product" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="product" name="product.id" from="${com.tim.hundreds.Product.list()}" optionKey="id" required="" value="${complementInstance?.product?.id || params?.product?.id}" class="many-to-one"/>
+	<g:select id="product" name="product.id" from="${com.tim.hundreds.Product.list()}" optionKey="id" required="" value="${complementInstance?.product?.id ?: params?.product?.id}" class="many-to-one"/>
 
 </div>
 

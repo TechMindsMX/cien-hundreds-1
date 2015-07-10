@@ -5,18 +5,19 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_ADMIN','ROLE_COMPANY_ADMIN'])
+@Secured(['ROLE_ADMIN','ROLE_COMPANY_ADMIN', 'ROLE_BUYER'])
 class CompanyValidationController {
     def companyService
 
     static showMe = true
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETEs"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond CompanyValidation.list(params), model:[companyValidationInstanceCount: CompanyValidation.count()]
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_COMPANY_ADMIN','ROLE_BUYER'])
     def show(CompanyValidation companyValidationInstance) {
         respond companyValidationInstance
     }
@@ -50,12 +51,14 @@ class CompanyValidationController {
         }
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_COMPANY_ADMIN','ROLE_BUYER'])
     def edit(CompanyValidation companyValidationInstance) {
       def roleBuyer = Role.findByAuthority("ROLE_BUYER")
       def users = UserRole.findAllByRole(roleBuyer)
       respond companyValidationInstance, [model:[buyers:users*.user]]
     }
 
+    @Secured(['ROLE_ADMIN', 'ROLE_COMPANY_ADMIN','ROLE_BUYER'])
     @Transactional
     def update(CompanyValidation companyValidationInstance) {
         if (companyValidationInstance == null) {

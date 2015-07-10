@@ -259,6 +259,27 @@
 				</g:if>
 			
 			</ul>
+			%{--aqui--}%
+			<div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'complements', 'error')} ">
+				<label class="${session.labelWidth} control-label" for="complements">
+					<g:message code="product.complements.label" default="Complements" />
+
+				</label>
+				<div class="${session.inputWidth}">
+
+					<ul class="one-to-many">
+						<g:each in="${productInstance?.complements}" var="c">
+							<li><g:link controller="complement" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+						</g:each>
+						<li class="add">
+							<g:link controller="complement" action="create" params="['product.id': productInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'complement.label', default: 'Complement')])}</g:link>
+						</li>
+					</ul>
+
+
+				</div>
+			</div>
+			<div class="clearfix"> </div>
 			<g:form url="[resource:productInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="btn btn-primary edit" action="edit" resource="${productInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

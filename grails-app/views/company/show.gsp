@@ -191,9 +191,21 @@
 		<g:form url="[resource:companyInstance, action:'delete']" method="DELETE">
 			<fieldset class="buttons">
 				<g:link class="btn btn-primary edit" action="edit" resource="${companyInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+				<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_COMPANY_ADMIN')|| hasRole('ROLE_BUYER')">
+					<g:if test="${!companyInstance?.companyValidation}" >
+						<g:link class="btn btn-success" controller="companyValidation" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'companyValidation.label')])}</g:link>
+					</g:if>
+				</sec:access>
+				<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_COMPANY_ADMIN') || hasRole('ROLE_BUYER')">
+					<g:if test="${companyInstance?.companyValidation}" >
+						<g:link class="btn btn-success" controller="companyValidation" action="edit" id="${companyInstance?.companyValidation?.id}">${message(code: 'default.edit.label', args: [message(code: 'companyValidation.label')])}</g:link>
+					</g:if>
+				</sec:access>
+
 				<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 			</fieldset>
 		</g:form>
 	</div>
 	</body>
 </html>
+|| hasRole('ROLE_BUYER'
