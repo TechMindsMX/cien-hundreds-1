@@ -1,5 +1,6 @@
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
+import spock.lang.Shared
 import spock.lang.Unroll
 import page.LoginPage
 import page.MusicianPage
@@ -15,12 +16,14 @@ import page.AddressSavePage
 @Stepwise
 class MusicianFunctionalSpec extends GebReportingSpec {
 
-    def grailsApplication
+    @Shared
+    def grailsApplication = new org.codehaus.groovy.grails.commons.DefaultGrailsApplication()
 
     def setupSpec() {
         to LoginPage
+
         loginForm.j_username = "cien"
-        loginForm.j_password = grailsApplication.config.password
+        loginForm.j_password = grailsApplication.config.tests.userPassword
         loginButton.click()
     }
 
@@ -41,14 +44,14 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         submitButton.click()
         where: "We have the next cases"
         name    | history | web                           | notes  | tagsComma                    | formed       | genre| logo               || result
-        // ''      | ''      | ''                            | ''     | ''                           | ''           | '1'  | ''                 || MusicianPage
-        // 'luis'  | ''      | ''                            | ''     | ''                           | ''           | '1'  | ''                 || MusicianPage
-        // 'luis1' | 'test'  | ''                            | ''     | ''                           | ''           | '1'  | ''                 || MusicianSavePage
-        // 'luis2' | 'test'  | 'https://www.ironmaiden.com/' | ''     | ''                           | ''           | '1'  | ''                 || MusicianSavePage
-        // 'luis3' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | ''           | '1'  | ''                 || MusicianSavePage
-        // 'luis4' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '27-06-2015' | '1'  | ''                 || MusicianShowPage
-        // 'luis5' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '28-06-2015' | '2'  | ''                 || MusicianShowPage
-        'luis6' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '29-06-2015' | '3'  | 'images/test.jpg' || MusicianShowPage
+        ''      | ''      | ''                            | ''     | ''                           | ''           | '1'  | ''                 || MusicianPage
+        'luis'  | ''      | ''                            | ''     | ''                           | ''           | '1'  | ''                 || MusicianPage
+        'luis1' | 'test'  | ''                            | ''     | ''                           | ''           | '1'  | ''                 || MusicianSavePage
+        'luis2' | 'test'  | 'https://www.ironmaiden.com/' | ''     | ''                           | ''           | '1'  | ''                 || MusicianSavePage
+        'luis3' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | ''           | '1'  | ''                 || MusicianSavePage
+        'luis4' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '27-06-2015' | '1'  | ''                 || MusicianShowPage
+        'luis5' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '28-06-2015' | '2'  | ''                 || MusicianShowPage
+        'luis6' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '29-06-2015' | '3'  | 'images/test.jpg'  || MusicianShowPage
 
     }
 
@@ -80,9 +83,11 @@ class MusicianFunctionalSpec extends GebReportingSpec {
     @Unroll
     def "Fill Contact form"() {
         given:"form Contact create"
+        to MusicianPage
         contactCreate.click()
 
         when: "I fill the form fields"
+        at ContactPage
         contactForm.firstName      = firstName
         contactForm.lastName       = lastName
         contactForm.motherLastName = motherLastName
@@ -101,17 +106,17 @@ class MusicianFunctionalSpec extends GebReportingSpec {
 
         where: "We have the next cases"
         firstName | lastName   | motherLastName    | other   | nationality | biography   | style   | birthDate    | entryDate   | role | type   | file || result
-        // ''        | ''         | ''                | ''      | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | ''         | ''                | ''      | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | ''                | ''      | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | ''      | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'alb'       | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'ago'       | 'biography' | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'ata'       | 'biography' | 'style' | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'bmu'       | 'biography' | 'style' | '28-03-1981' | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'vgb'       | 'biography' | 'style' | '28-03-1981' | '20-06-2015'| '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'cxr'       | 'biography' | 'style' | '28-03-1981' | '20-06-2015'| '1'  | 'MALE' | ''   || ContactPage
+        ''        | ''         | ''                | ''      | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
+        'Luis'    | ''         | ''                | ''      | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
+        'Luis'    | 'lastName' | ''                | ''      | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
+        'Luis'    | 'lastName' | 'motherlastnname' | ''      | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
+        'Luis'    | 'lastName' | 'motherlastnname' | 'other' | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
+        'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'alb'       | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
+        'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'ago'       | 'biography' | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
+        'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'ata'       | 'biography' | 'style' | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
+        'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'bmu'       | 'biography' | 'style' | '28-03-1981' | ''          | '1'  | 'MALE' | ''   || ContactPage
+        'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'vgb'       | 'biography' | 'style' | '28-03-1981' | '20-06-2015'| '1'  | 'MALE' | ''   || ContactPage
+        'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'cxr'       | 'biography' | 'style' | '28-03-1981' | '20-06-2015'| '1'  | 'MALE' | ''   || ContactPage
         'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'mex'       | 'biography' | 'style' | '28-03-1981' | '20-06-2015'| '1'  | 'MALE' | ''   || ContactPage
     }
 
