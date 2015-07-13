@@ -17,8 +17,8 @@ class User {
     musicians : Musician,
     companies : Company,
     musicianValidation : MusicianValidation,
-    userEmails : UserEmail,
-    userTelephone : UserTelephone
+    emails : Email,
+    telephones : Telephone
   ]
 
 	static transients = ['springSecurityService']
