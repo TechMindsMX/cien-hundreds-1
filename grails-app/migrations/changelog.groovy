@@ -1733,4 +1733,6 @@ databaseChangeLog = {
 	changeSet(author: "josdem (generated)", id: "1436401660288-87") {
 		addForeignKeyConstraint(baseColumnNames: "musician_id", baseTableName: "video", constraintName: "FK_s0eh4ylgywtxpqxhjk73yf0e6", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "musician", referencesUniqueColumn: "false")
 	}
+
+	include file: 'remove-duplicated-email-and-telephone-changelog.groovy'
 }
