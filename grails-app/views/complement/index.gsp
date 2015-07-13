@@ -19,15 +19,17 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
+			<table class="table table-stripped">
 			<thead>
 					<tr>
 					
 						<g:sortableColumn property="name" title="${message(code: 'complement.name.label', default: 'Name')}" />
 					
 						<g:sortableColumn property="price" title="${message(code: 'complement.price.label', default: 'Price')}" />
-					
-						<th><g:message code="complement.product.label" default="Product" /></th>
+
+						<g:sortableColumn property="product.name" title="${message(code: 'complement.product.label', default: 'Product')}" />
+
+						%{--<th><g:message code="complement.product.label" default="Product" /></th>--}%
 					
 					</tr>
 				</thead>
@@ -39,7 +41,7 @@
 					
 						<td>${fieldValue(bean: complementInstance, field: "price")}</td>
 					
-						<td>${fieldValue(bean: complementInstance, field: "product")}</td>
+						<td>${fieldValue(bean: complementInstance, field: "product.name")}</td>
 					
 					</tr>
 				</g:each>
