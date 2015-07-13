@@ -32,7 +32,7 @@
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<div class="${session.btnOffset}">
+					<div class="">
 						<g:submitButton name="create" class="btn btn-success save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 						<button class="btn btn-danger" type="reset"><g:message code="cancel.label" /></button>
 					</div>
