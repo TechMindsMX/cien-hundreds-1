@@ -11,7 +11,8 @@
 		<div class="nav" role="navigation">
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<sec:access expression="hasRole('ROLE_ADMIN')"><li><g:link action="admins"><g:message code="userManagement.adminList.label"/></g:link></li></sec:access>
+				<sec:ifAnyGranted roles="ROLE_ADMIN"><li><g:link action="allAdmins"><g:message code="userManagement.mucicianAllAdminsList.label"/></g:link></li></sec:ifAnyGranted>
+				<sec:ifAnyGranted roles="ROLE_ADMIN"><li><g:link action="admins"><g:message code="userManagement.adminList.label"/></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN"><li><g:link action="mucicianAdmins"><g:message code="userManagement.mucicianAdminsList.label"/></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN"><li><g:link action="companyAdmins"><g:message code="userManagement.companyAdminsList.label"/></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN"><li><g:link action="musicianViewers"><g:message code="userManagement.musicianViewersList.label"/></g:link></li></sec:ifAnyGranted>
@@ -39,8 +40,16 @@
 				<tbody>
 				<g:each in="${userInstanceList}" status="i" var="userInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-						<td><img class="img-responsive max300" src="${grailsApplication.config.base.photo.url}${userInstance.profile?.photoPath}" /></td>
-						<td>${fieldValue(bean: userInstance, field: "profile.firstName")} ${fieldValue(bean: userInstance, field: "profile.lastName")}</td>
+						<td>
+						<g:if test="${userInstance.profile?.photoPath}">
+							<img class="img-responsive max300" src="${grailsApplication.config.base.photo.url}${userInstance.profile?.photoPath}" />
+						</g:if>
+						</td>
+						<td>
+							<g:link controller="user" action="show" id="${userInstance.id}">
+							${fieldValue(bean: userInstance, field: "profile.firstName")} ${fieldValue(bean: userInstance, field: "profile.lastName")}
+							</g:link>
+						</td>
 						<td>${userInstance.getAuthorities().authority}</td>
 						<td>${fieldValue(bean: userInstance, field: "profile.email")}</td>
 						<td>${fieldValue(bean: userInstance, field: "profile.phone")}</td>
