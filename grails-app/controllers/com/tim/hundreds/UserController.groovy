@@ -31,7 +31,6 @@ class UserController {
       def user = new User(username: command.username, password: command.password)
       def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName, phone:command.phone)
       profile.role = "ROLE_USER"
-      profile.save()
       user.profile = profile
       userService.create(user)
 

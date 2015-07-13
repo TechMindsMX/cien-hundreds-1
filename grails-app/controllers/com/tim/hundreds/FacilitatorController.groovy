@@ -34,7 +34,6 @@ class FacilitatorController {
       def profile = new Profile(email:command.email, firstName:command.firstName, middleName:command.middleName, lastName:command.lastName)
       user.accountExpired = !command.status
       profile.role = command.role
-      profile.save()
       user.profile = profile
       userService.create(user)
 
@@ -48,6 +47,9 @@ class FacilitatorController {
       }
 
       flash.message = "El usuario ha sido creado y se ha enviado un correo electrónico"
+      respond command, view: 'create'
+    } catch(DuplicatedEmailException de){
+      flash.error = "El correo ya pertenece a otro usuario"
       respond command, view: 'create'
     } catch(BusinessException be){
       flash.error = "El servicio de correo no está disponible"
