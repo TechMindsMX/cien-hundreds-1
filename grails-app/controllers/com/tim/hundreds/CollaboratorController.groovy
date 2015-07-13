@@ -6,11 +6,9 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
+@Transactional(readOnly = true)
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class CollaboratorController {
-    def collaboratorService
-
-    static showMe = false /*Parametro para aparecer en el menú*/
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -27,8 +25,8 @@ class CollaboratorController {
         respond new Collaborator(params)
     }
 
+    @Transactional
     def save(Collaborator collaboratorInstance) {
-        log.info "collaboratorInstance: ${collaboratorInstance.dump()}"
         if (collaboratorInstance == null) {
             notFound()
             return
@@ -39,18 +37,14 @@ class CollaboratorController {
             return
         }
 
-        try{
-          def instance = collaboratorService.save(collaboratorInstance)
-          request.withFormat {
+        collaboratorInstance.save flush:true
+
+        request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'collaborator.label', default: 'Collaborator'), instance.id])
-                redirect instance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'collaborator.label', default: 'Collaborator'), collaboratorInstance.id])
+                redirect collaboratorInstance
             }
-            '*' { respond instance, [status: CREATED] }
-          }
-        }catch(Exception ex){
-          log.info "Errors: ${ex.message}"
-          respond collaboratorInstance.company.errors, view:'create'
+            '*' { respond collaboratorInstance, [status: CREATED] }
         }
     }
 

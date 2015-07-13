@@ -11,8 +11,8 @@ class Collaborator {
   static belongsTo = [ company : Company ]
 
   static hasMany = [
-    collaboratorTelephones : CollaboratorTelephone,
-    collaboratorEmails : CollaboratorEmail
+    telephones : Telephone,
+    emails : Email
   ]
 
   static constraints = {

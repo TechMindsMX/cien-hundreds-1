@@ -49,7 +49,7 @@
 <div class="form-group fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'notes', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="notes">
 		<g:message code="collaborator.notes.label" default="Notes" />
-		
+
 	</label>
 		<div class="${session.inputWidth}">
 			<g:textArea class="form-control" name="notes" id="notes" cols="40" rows="5" maxlength="10000" value="${collaboratorInstance?.notes}"/>
@@ -68,24 +68,24 @@
 		</div>
 </div>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'collaboratorEmails', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="collaboratorEmails">
-		<g:message code="collaborator.collaboratorEmails.label" default="collaboratorEmails" />
-		
+<div class="form-group fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'emails', 'error')} ">
+	<label class="${session.labelWidth} control-label" for="emails">
+		<g:message code="collaborator.emails.label" default="Emails" />
+
 	</label>
 		<div class="${session.inputWidth}">
-			<g:select name="collaboratorEmails" id="collaboratorEmails" from="${com.tim.hundreds.CollaboratorEmail.list()}" multiple="multiple" optionKey="id" size="5" value="${collaboratorInstance?.collaboratorEmails*.id}" class="form-control one-to-many"/>
+			<g:select name="emails" id="emails" from="${com.tim.hundreds.Email.list()}" multiple="multiple" optionKey="id" size="5" value="${collaboratorInstance?.emails*.id}" class="form-control many-to-many"/>
 
 		</div>
 </div>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'collaboratorTelephones', 'error')} ">
-	<label class="${session.labelWidth} control-label" for="collaboratorTelephones">
-		<g:message code="collaborator.collaboratorTelephones.label" default="collaboratorTelephones" />
-		
+<div class="form-group fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'telephones', 'error')} ">
+	<label class="${session.labelWidth} control-label" for="telephones">
+		<g:message code="collaborator.telephones.label" default="Telephones" />
+
 	</label>
 		<div class="${session.inputWidth}">
-			<g:select name="collaboratorTelephones" id="collaboratorTelephones" from="${com.tim.hundreds.CollaboratorTelephone.list()}" multiple="multiple" optionKey="id" size="5" value="${collaboratorInstance?.collaboratorTelephones*.id}" class="form-control one-to-many"/>
+			<g:select name="telephones" id="telephones" from="${com.tim.hundreds.Telephone.list()}" multiple="multiple" optionKey="id" size="5" value="${collaboratorInstance?.telephones*.id}" class="form-control many-to-many"/>
 
 		</div>
 </div>

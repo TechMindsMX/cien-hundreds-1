@@ -27,7 +27,7 @@
 				</ul>
 			</div>
 			</g:hasErrors>
-			<g:form url="[resource:collaboratorInstance, action:'save']"  class="form-horizontal" id="collaboratorForm">
+			<g:form url="[resource:collaboratorInstance, action:'save']"  class="form-horizontal">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
