@@ -24,7 +24,7 @@
 			<ul class="property-list productComment">
 			
 				<g:if test="${productCommentInstance?.general}">
-				<li class="fieldcontain">
+				<li class="row fieldcontain">
 					<span id="general-label" class="${session.labelWidth} property-label"><g:message code="productComment.general.label" default="General" /></span>
 					
 						<span class="property-value" aria-labelledby="general-label"><g:fieldValue bean="${productCommentInstance}" field="general"/></span>
@@ -33,7 +33,7 @@
 				</g:if>
 			
 				<g:if test="${productCommentInstance?.description}">
-				<li class="fieldcontain">
+				<li class="row fieldcontain">
 					<span id="description-label" class="${session.labelWidth} property-label"><g:message code="productComment.description.label" default="Description" /></span>
 					
 						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${productCommentInstance}" field="description"/></span>
@@ -42,7 +42,7 @@
 				</g:if>
 			
 				<g:if test="${productCommentInstance?.benefits}">
-				<li class="fieldcontain">
+				<li class="row fieldcontain">
 					<span id="benefits-label" class="${session.labelWidth} property-label"><g:message code="productComment.benefits.label" default="Benefits" /></span>
 					
 						<span class="property-value" aria-labelledby="benefits-label"><g:fieldValue bean="${productCommentInstance}" field="benefits"/></span>
@@ -51,7 +51,7 @@
 				</g:if>
 			
 				<g:if test="${productCommentInstance?.target}">
-				<li class="fieldcontain">
+				<li class="row fieldcontain">
 					<span id="target-label" class="${session.labelWidth} property-label"><g:message code="productComment.target.label" default="Target" /></span>
 					
 						<span class="property-value" aria-labelledby="target-label"><g:fieldValue bean="${productCommentInstance}" field="target"/></span>
@@ -60,7 +60,7 @@
 				</g:if>
 			
 				<g:if test="${productCommentInstance?.competence}">
-				<li class="fieldcontain">
+				<li class="row fieldcontain">
 					<span id="competence-label" class="${session.labelWidth} property-label"><g:message code="productComment.competence.label" default="Competence" /></span>
 					
 						<span class="property-value" aria-labelledby="competence-label"><g:fieldValue bean="${productCommentInstance}" field="competence"/></span>
@@ -69,7 +69,7 @@
 				</g:if>
 			
 				<g:if test="${productCommentInstance?.discountModel}">
-				<li class="fieldcontain">
+				<li class="row fieldcontain">
 					<span id="discountModel-label" class="${session.labelWidth} property-label"><g:message code="productComment.discountModel.label" default="Discount Model" /></span>
 					
 						<span class="property-value" aria-labelledby="discountModel-label"><g:fieldValue bean="${productCommentInstance}" field="discountModel"/></span>
@@ -78,7 +78,7 @@
 				</g:if>
 			
 				<g:if test="${productCommentInstance?.distributionModel}">
-				<li class="fieldcontain">
+				<li class="row fieldcontain">
 					<span id="distributionModel-label" class="${session.labelWidth} property-label"><g:message code="productComment.distributionModel.label" default="Distribution Model" /></span>
 					
 						<span class="property-value" aria-labelledby="distributionModel-label"><g:fieldValue bean="${productCommentInstance}" field="distributionModel"/></span>
@@ -87,7 +87,7 @@
 				</g:if>
 			
 				<g:if test="${productCommentInstance?.customerModel}">
-				<li class="fieldcontain">
+				<li class="row fieldcontain">
 					<span id="customerModel-label" class="${session.labelWidth} property-label"><g:message code="productComment.customerModel.label" default="Customer Model" /></span>
 					
 						<span class="property-value" aria-labelledby="customerModel-label"><g:fieldValue bean="${productCommentInstance}" field="customerModel"/></span>
@@ -96,19 +96,18 @@
 				</g:if>
 			
 				<g:if test="${productCommentInstance?.notes}">
-				<li class="fieldcontain">
+				<li class="row fieldcontain">
 					<span id="notes-label" class="${session.labelWidth} property-label"><g:message code="productComment.notes.label" default="Notes" /></span>
 					
 						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${productCommentInstance}" field="notes"/></span>
 					
 				</li>
 				</g:if>
-${productCommentInstance.dump()}			
 				<g:if test="${productCommentInstance?.product}">
-				<li class="fieldcontain">
+				<li class="row fieldcontain">
 					<span id="product-label" class="${session.labelWidth} property-label"><g:message code="productComment.product.label" default="Product" /></span>
 					
-						<span class="property-value" aria-labelledby="product-label"><g:link controller="product" action="show" id="${productCommentInstance?.product?.id}">${productCommentInstance?.product?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="product-label"><g:link controller="product" action="show" id="${productCommentInstance?.product?.id}">${productCommentInstance?.product?.name.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
