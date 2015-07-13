@@ -103,4 +103,10 @@ class CollaboratorController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def saveEmail(Collaborator collaboratorInstance){
+      def emailInstance = new Email()
+      emailInstance.collaborator = collaboratorInstance
+      render (view: "/email/create", model: [emailInstance: emailInstance])
+    }
 }

@@ -23,37 +23,37 @@
 			<table class="table table-stripped">
 			<thead>
 					<tr>
-					
+
 						<g:sortableColumn property="firstName" title="${message(code: 'collaborator.firstName.label', default: 'First Name')}" />
-					
+
 						<g:sortableColumn property="middleName" title="${message(code: 'collaborator.middleName.label', default: 'Middle Name')}" />
-					
+
 						<g:sortableColumn property="lastName" title="${message(code: 'collaborator.lastName.label', default: 'Last Name')}" />
-					
+
 						<g:sortableColumn property="position" title="${message(code: 'collaborator.position.label', default: 'Position')}" />
-					
+
 						<g:sortableColumn property="notes" title="${message(code: 'collaborator.notes.label', default: 'Notes')}" />
-					
+
 						<th><g:message code="collaborator.company.label" default="Company" /></th>
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${collaboratorInstanceList}" status="i" var="collaboratorInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
+
 						<td><g:link action="show" id="${collaboratorInstance.id}">${fieldValue(bean: collaboratorInstance, field: "firstName")}</g:link></td>
-					
+
 						<td>${fieldValue(bean: collaboratorInstance, field: "middleName")}</td>
-					
+
 						<td>${fieldValue(bean: collaboratorInstance, field: "lastName")}</td>
-					
+
 						<td>${fieldValue(bean: collaboratorInstance, field: "position")}</td>
-					
+
 						<td>${fieldValue(bean: collaboratorInstance, field: "notes")}</td>
-					
-						<td>${fieldValue(bean: collaboratorInstance, field: "company")}</td>
-					
+
+						<td>${fieldValue(bean: collaboratorInstance, field: "company.name")}</td>
+
 					</tr>
 				</g:each>
 				</tbody>

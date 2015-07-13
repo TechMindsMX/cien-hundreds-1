@@ -22,92 +22,85 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ul class="property-list collaborator">
-			
+
 				<g:if test="${collaboratorInstance?.firstName}">
 				<li class="fieldcontain">
 					<span id="firstName-label" class="${session.labelWidth} property-label"><g:message code="collaborator.firstName.label" default="First Name" /></span>
-					
+
 						<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${collaboratorInstance}" field="firstName"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${collaboratorInstance?.middleName}">
 				<li class="fieldcontain">
 					<span id="middleName-label" class="${session.labelWidth} property-label"><g:message code="collaborator.middleName.label" default="Middle Name" /></span>
-					
+
 						<span class="property-value" aria-labelledby="middleName-label"><g:fieldValue bean="${collaboratorInstance}" field="middleName"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${collaboratorInstance?.lastName}">
 				<li class="fieldcontain">
 					<span id="lastName-label" class="${session.labelWidth} property-label"><g:message code="collaborator.lastName.label" default="Last Name" /></span>
-					
+
 						<span class="property-value" aria-labelledby="lastName-label"><g:fieldValue bean="${collaboratorInstance}" field="lastName"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${collaboratorInstance?.position}">
 				<li class="fieldcontain">
 					<span id="position-label" class="${session.labelWidth} property-label"><g:message code="collaborator.position.label" default="Position" /></span>
-					
+
 						<span class="property-value" aria-labelledby="position-label"><g:fieldValue bean="${collaboratorInstance}" field="position"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${collaboratorInstance?.notes}">
 				<li class="fieldcontain">
 					<span id="notes-label" class="${session.labelWidth} property-label"><g:message code="collaborator.notes.label" default="Notes" /></span>
-					
+
 						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${collaboratorInstance}" field="notes"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${collaboratorInstance?.company}">
 				<li class="fieldcontain">
 					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="collaborator.company.label" default="Company" /></span>
-					
-						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${collaboratorInstance?.company?.id}">${collaboratorInstance?.company?.encodeAsHTML()}</g:link></span>
-					
+
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${collaboratorInstance?.company?.id}">${collaboratorInstance?.company?.name.encodeAsHTML()}</g:link></span>
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${collaboratorInstance?.emails}">
 				<li class="fieldcontain">
 					<span id="emails-label" class="${session.labelWidth} property-label"><g:message code="collaborator.emails.label" default="Emails" /></span>
-					
+
 						<g:each in="${collaboratorInstance.emails}" var="e">
 						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${collaboratorInstance?.telephones}">
 				<li class="fieldcontain">
 					<span id="telephones-label" class="${session.labelWidth} property-label"><g:message code="collaborator.telephones.label" default="Telephones" /></span>
-					
+
 						<g:each in="${collaboratorInstance.telephones}" var="t">
 						<span class="property-value" aria-labelledby="telephones-label"><g:link controller="telephone" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
+
 				</li>
 				</g:if>
-			
-				<g:if test="${collaboratorInstance?.uuid}">
-				<li class="fieldcontain">
-					<span id="uuid-label" class="${session.labelWidth} property-label"><g:message code="collaborator.uuid.label" default="Uuid" /></span>
-					
-						<span class="property-value" aria-labelledby="uuid-label"><g:fieldValue bean="${collaboratorInstance}" field="uuid"/></span>
-					
-				</li>
-				</g:if>
-			
+
+        <g:link controller="collaborator" action="saveEmail">${message(code: 'default.add.label', args: [message(code: 'email.label')])}</g:link>
+
 			</ul>
 			<g:form url="[resource:collaboratorInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
