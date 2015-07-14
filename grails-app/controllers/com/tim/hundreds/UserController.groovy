@@ -46,4 +46,30 @@ class UserController {
 
   }
 
+  def status(User userInstance) {
+    respond userInstance
+  }
+
+  def statusUpdate(User userInstance) {
+      if (userInstance == null) {
+          notFound()
+          return
+      }
+
+      if (userInstance.hasErrors()) {
+          respond userInstance.errors, view:'status'
+          return
+      }
+
+      userInstance.save flush:true
+
+      request.withFormat {
+          form multipartForm {
+              flash.message = message(code: 'default.updated.message', args: [message(code: 'User.label', default: 'Usuario'), userInstance.id])
+              redirect userInstance
+          }
+          '*'{ respond userInstance, [status: OK] }
+      }
+  }
+
 }
