@@ -105,6 +105,7 @@ class CollaboratorController {
     }
 
     def prepareEmailForCollaborator(Collaborator collaboratorInstance){
+      log.info "${collaboratorInstance.dump()}"
       render (view: "/email/create", model: [emailInstance: new Email()])
     }
 

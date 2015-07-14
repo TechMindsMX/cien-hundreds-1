@@ -10,7 +10,12 @@ class Address {
   String state
   String country
 
-  static belongsTo = [musician: Musician, company: Company, contact: Contact, datosFiscales: DatosFiscales]
+  static belongsTo = [
+    musician: Musician,
+    company: Company,
+    contact: Contact,
+    datosFiscales: DatosFiscales
+  ]
 
   static constraints = {
     street blank:false,size:1..200

@@ -12,14 +12,16 @@ class Company {
 
   Boolean active = false
 
-  Address address
-  Social social
-  DatosFiscales datosFiscales
   BusinessActivity type
-  CompanyComment companyComment
   User assigned
 
-  static hasOne = [ companyValidation : CompanyValidation ]
+  static hasOne = [
+    companyValidation : CompanyValidation,
+    companyComment: CompanyComment,
+    address: Address,
+    social: Social,
+    datosFiscales: DatosFiscales
+  ]
 
   Date dateCreated
   Date lastUpdated

@@ -17,14 +17,17 @@ class Musician {
   Boolean active = false
 
   Genre genre
-  Social social
-  DatosFiscales datosFiscales
-  MusicianComment musicianComment
   User assigned
 
   static transients = ['tagsComma']
 
-  static hasOne = [ musicianValidation : MusicianValidation, address: Address ]
+  static hasOne = [
+    musicianValidation : MusicianValidation,
+    musicianComment: MusicianComment,
+    datosFiscales: DatosFiscales,
+    address: Address,
+    social: Social
+  ]
 
   static belongsTo = [user : User]
 

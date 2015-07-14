@@ -17,10 +17,12 @@ class Contact {
   GenderType type
   MusicianRole role
 
-  Address address
-  Social social
-
   static belongsTo = [ musician : Musician ]
+
+  static hasOne = [
+    address: Address,
+    social: Social
+  ]
 
   static hasMany = [
     emails : Email,
