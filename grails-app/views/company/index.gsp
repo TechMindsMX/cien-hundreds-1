@@ -40,7 +40,7 @@
 							<g:each in="${companyInstance.collaborators?.telephones}" var="v"><% v.phone.each {println it} %></g:each>
 						</td>
 						<td>
-							<g:each in="${companyInstance.collaborators?.emails}" var="v"><% v.phone.each {println it} %></g:each>
+							<g:each in="${companyInstance.collaborators?.emails}" var="v"><% v.address.each {println it} %></g:each>
 						</td>
 						<td><g:formatDate format="dd-MM-yyyy" date="${companyInstance.dateCreated}" /></td>
 						
