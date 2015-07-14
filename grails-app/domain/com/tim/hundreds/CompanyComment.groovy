@@ -6,7 +6,7 @@ class CompanyComment {
   String datosFiscales
   String events
   String notes
-  String references
+  String refs
   String collaborators
 
   static belongsTo = [ company : Company ]
@@ -17,7 +17,7 @@ class CompanyComment {
     datosFiscales type:'text'
     events type:'text'
     notes type:'text'
-    references type:'text'
+    refs type:'text'
     collaborators type:'text'
   }
 
@@ -27,7 +27,7 @@ class CompanyComment {
     datosFiscales nullable:true,blank:false,size:1..10000
     events nullable:true,blank:false,size:1..10000
     notes nullable:true,blank:false,size:1..10000
-    references nullable:true,blank:false,size:1..10000
+    refs nullable:true,blank:false,size:1..10000
     collaborators nullable:true,blank:false,size:1..10000
   }
 

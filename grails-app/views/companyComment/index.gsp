@@ -34,7 +34,7 @@
 					
 						<g:sortableColumn property="notes" title="${message(code: 'companyComment.notes.label', default: 'Notes')}" />
 					
-						<g:sortableColumn property="references" title="${message(code: 'companyComment.references.label', default: 'References')}" />
+						<g:sortableColumn property="refs" title="${message(code: 'companyComment.refs.label', default: 'refs')}" />
 					
 					</tr>
 				</thead>
@@ -52,7 +52,7 @@
 					
 						<td>${fieldValue(bean: companyCommentInstance, field: "notes")}</td>
 					
-						<td>${fieldValue(bean: companyCommentInstance, field: "references")}</td>
+						<td>${fieldValue(bean: companyCommentInstance, field: "refs")}</td>
 					
 					</tr>
 				</g:each>
