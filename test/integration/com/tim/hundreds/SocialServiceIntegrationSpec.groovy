@@ -2,7 +2,9 @@ package com.tim.hundreds
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification
+import spock.lang.Ignore
 
+@Ignore
 class SocialServiceIntegrationSpec extends Specification {
   def socialService
 
