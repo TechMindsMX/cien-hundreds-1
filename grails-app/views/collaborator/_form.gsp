@@ -57,7 +57,6 @@
 		</div>
 </div>
 
-${collaboratorInstance.dump()}
 <div class="hide form-group fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'company', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="company">
 		<g:message code="collaborator.company.label" default="Company" />
