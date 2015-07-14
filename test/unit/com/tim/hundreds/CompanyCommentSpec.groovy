@@ -20,12 +20,12 @@ class CompanyCommentSpec extends Specification {
     companyComment.datosFiscales = datosFiscales
     companyComment.events = events
     companyComment.notes = notes
-    companyComment.references = references
+    companyComment.refs = refs
     companyComment.collaborators = collaborators
   then:"We validate"
     result == companyComment.validate()
   where:"We have next values"
-    general   | description   | datosFiscales   | events   | notes   | references   | collaborators   || result
+    general   | description   | datosFiscales   | events   | notes   | refs         | collaborators   || result
     'general' | 'description' | 'datosFiscales' | 'events' | 'notes' | 'references' | 'collaborators' || true
     'g'       | 'description' | 'datosFiscales' | 'events' | 'notes' | 'references' | 'collaborators' || true
     'general' | 'd'           | 'datosFiscales' | 'events' | 'notes' | 'references' | 'collaborators' || true

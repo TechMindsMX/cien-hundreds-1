@@ -18,6 +18,8 @@ class DatosFiscalesSpec extends Specification {
     datosFiscales.razonSocial = razonSocial
     datosFiscales.rfc = rfc
     datosFiscales.personaJuridica = personaJuridica
+    datosFiscales.validate()
+    print datosFiscales.dump()
   then: "We validate result"
     result == datosFiscales.validate()
   where: "We have next values"
