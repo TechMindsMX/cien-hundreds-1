@@ -104,8 +104,9 @@ class CollaboratorController {
         }
     }
 
-    def prepareEmailForCollaborator(Collaborator collaboratorInstance){
-      log.info "${collaboratorInstance.dump()}"
+    def prepareEmailForCollaborator(){
+      def collaborator = Collaborator.findByUuid(params.collaboratorUuid)
+      log.info "${collaborator.dump()}"
       render (view: "/email/create", model: [emailInstance: new Email()])
     }
 
