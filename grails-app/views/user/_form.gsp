@@ -32,17 +32,17 @@
     </div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'middleName', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="middleName">Apellido paterno<span class="required-indicator">*</span></label>
+<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'lastName', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="lastName">Apellido paterno<span class="required-indicator">*</span></label>
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.middleName}" name="middleName" class="form-control" />
+        <g:textField value="${model?.lastName}" name="lastName" class="form-control" />
     </div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'lastName', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="lastName">Apellido materno<span class="required-indicator">*</span></label>
+<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'middleName', 'error')} required">
+    <label class="${session.labelWidth} control-label" for="middleName">Apellido materno<span class="required-indicator">*</span></label>
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.lastName}" name="lastName" class="form-control" />
+        <g:textField value="${model?.middleName}" name="middleName" class="form-control" />
     </div>
 </div>
 

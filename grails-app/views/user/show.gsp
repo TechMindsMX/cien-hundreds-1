@@ -62,6 +62,11 @@
 					<span class="property-value" aria-labelledby="resumePath-label"><g:fieldValue bean="${userInstance}" field="profile.resumePath"/></span>
 				</li>
 			</g:if>
+
+			<li class="fieldcontain">
+				<span id="accountExpired-label" class="${session.labelWidth} property-label"><g:message code="user.status.isEnabled.label" default="accountExpired" /></span>
+				<span class="property-value" aria-labelledby="accountExpired-label"><g:message code="default.boolean.${userInstance.accountExpired}"/></span>
+			</li>
 			
 			</ul>
 			<g:form url="[resource:userInstance, action:'delete']" method="DELETE">

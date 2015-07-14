@@ -56,6 +56,9 @@
 						<td>
 							<g:if test="${userInstance.accountExpired}"><g:message code="general.disabled.label" /></g:if>
 							<g:else><g:message code="general.enabled.label"/></g:else>
+							<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN" >
+								<g:link controller="user" action="status" id="${userInstance.id}">${message(code: 'default.edit.label', args:[message(code:'status.label')])}</g:link>
+							</sec:ifAnyGranted>
 						</td>
 					</tr>
 				</g:each>
