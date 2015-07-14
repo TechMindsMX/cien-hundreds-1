@@ -30,5 +30,4 @@ class CompanyComment {
     refs nullable:true,blank:false,size:1..10000
     collaborators nullable:true,blank:false,size:1..10000
   }
-
 }

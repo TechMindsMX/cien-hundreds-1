@@ -305,6 +305,16 @@
 							</g:if>
 						</sec:access>
 
+						<sec:ifAnyGranted roles="ROLE_FACILITATOR">
+							<g:if test="${!musicianInstance?.musicianComment}">
+								<g:link class="btn btn-success" controller="musicianComment" action="create" params="['musician.id': musicianInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'musicianComment.label')])}</g:link>
+								
+							</g:if>
+							<g:else>
+								<g:link class="btn btn-success" controller="musicianComment" action="edit" id="${musicianInstance.musicianComment.id}" >${message(code: 'default.edit.label', args: [message(code: 'musicianComment.label')])}</g:link>
+							</g:else>
+						</sec:ifAnyGranted>
+
 						<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 					</div>
 				</g:form>
