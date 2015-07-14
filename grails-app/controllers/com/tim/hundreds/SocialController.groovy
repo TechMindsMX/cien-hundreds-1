@@ -7,7 +7,6 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER','ROLE_ADMIN'])
-@Transactional(readOnly = true)
 class SocialController {
     def musicianService
     def socialContextService
@@ -35,7 +34,7 @@ class SocialController {
 
     @Transactional
     def save(Social socialInstance) {
-        log.info "companyId: ${params.companyId}"
+        log.info "companyId: ${params.dump()}"
 
         if (socialInstance == null) {
             notFound()
