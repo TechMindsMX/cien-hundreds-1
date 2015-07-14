@@ -1,6 +1,9 @@
 <%@ page import="com.tim.hundreds.CompanyComment" %>
 
 
+<h4>
+	<g:message code="companyComment.general.label" default="General" />
+</h4>
 <div class="row">
 	<div class="col-md-4">
 		<ul>
@@ -21,6 +24,9 @@
 	</div>
 </div>
 
+<h4>
+	<g:message code="companyComment.description.label" default="Description" />
+</h4>
 <div class="row">
 	<div class="col-md-4">
 		<ul>
@@ -41,6 +47,9 @@
 	</div>
 </div>
 
+<h4>
+	<g:message code="companyComment.datosFiscales.label" default="Datos Fiscales" />
+</h4>
 <div class="row">
 	<div class="col-md-4">
 		<ul>
@@ -61,6 +70,9 @@
 	</div>
 </div>
 
+<h4>
+	<g:message code="companyComment.events.label" default="Events" />
+</h4>
 <div class="row">
 	<div class="col-md-4">
 		<ul>
@@ -83,6 +95,9 @@
 	</div>
 </div>
 
+<h4>
+	<g:message code="companyComment.notes.label" default="Notes" />
+</h4>
 <div class="row">
 	<div class="col-md-4">
 		<ul>
@@ -103,10 +118,13 @@
 	</div>
 </div>
 
+<h4>
+	<g:message code="companyComment.refs.label" default="References" />
+</h4>
 <div class="row">
 	<div class="col-md-4">
 		<ul>
-			<g:each in="${companyCommentInstance?.company?.refs}" var="i">
+			<g:each in="${companyCommentInstance?.company?.references}" var="i">
 			<li>
 				${i?.name}
 			</li>
@@ -115,7 +133,7 @@
 	</div>
 	<div class="col-md-8 form-group fieldcontain ${hasErrors(bean: companyCommentInstance, field: 'refs', 'error')} ">
 		<label class="${session.labelWidth} control-label" for="refs">
-			<g:message code="companyComment.refs.label" default="refs" />
+			<g:message code="companyComment.refs.label" default="References" />
 			
 		</label>
 		<div class="${session.inputWidth}">
@@ -125,6 +143,9 @@
 	</div>
 </div>
 
+<h4>
+	<g:message code="companyComment.collaborators.label" default="Collaborators" />
+</h4>
 <div class="row">
 	<div class="col-md-4">
 		<ul>
