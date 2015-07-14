@@ -144,7 +144,7 @@
 
 					<div class="fieldcontain well">
                 		<g:link class="glyphicon" controller="activity" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Actividades</g:link>
- 
+
  						<g:if test="${musicianInstance?.activities}">
 							<ol>
 								<g:each in="${musicianInstance.activities}" var="a">
@@ -228,20 +228,20 @@
 				</div>
 				</g:if>
 
-				<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_MUSICIAN_ADMIN') || hasRole('ROLE_FACILITATOR')">
+				<sec:access expression="hasRole('ROLE_FACILITATOR')">
 		        	<div class="row">
 		        		<div class="col-sm-12">
 							<div class="fieldcontain well">
 								<p id="notes-label" class=""><g:message code="musician.message.label" default="Reviews" /></p>
-								<g:if test="${musicianInstance?.musicianValidation}">				
-									<g:each in="${musicianInstance?.musicianValidation}" var="m"> 
+								<g:if test="${musicianInstance?.musicianValidation}">
+									<g:each in="${musicianInstance?.musicianValidation}" var="m">
 										<span class="property-value" aria-labelledby="musicianValidation-label">${m.message}</span>
 									</g:each>
 								</g:if>
 							</div>
 		        		</div>
 		        	</div>
-		        </sec:access>	
+		        </sec:access>
 
 
   			</div>
