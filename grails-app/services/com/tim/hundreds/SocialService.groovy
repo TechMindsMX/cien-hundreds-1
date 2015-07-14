@@ -6,7 +6,6 @@ import grails.transaction.Transactional
 class SocialService {
 
   def saveSocialToInstance(socialInstance, instance){
-    socialInstance.save flush:true
     instance.social = socialInstance
     instance.save()
 

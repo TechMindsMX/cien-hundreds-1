@@ -1,10 +1,8 @@
 package com.tim.hundreds
 
 import spock.lang.Specification
-import spock.lang.Ignore
 import grails.validation.ValidationException
 
-@Ignore
 class EmailIntegrationSpec extends Specification {
   def emailService
 
@@ -38,7 +36,7 @@ class EmailIntegrationSpec extends Specification {
     and: "We create an email"
       def emailInstance = new Email(address:'josdem@email.com',type:EmailType.WORK)
     when: "We save email"
-      def result = emailService.save(emailInstance)
+      def result = emailService.save(emailInstance, contact)
     then:"We validate command"
       result
     cleanup:"We delete contact"
@@ -78,10 +76,10 @@ class EmailIntegrationSpec extends Specification {
       def emailInstance3 = new Email(address:'josdem@email.com',type:EmailType.WORK)
       def emailInstance4 = new Email(address:'josdem@email.com',type:EmailType.WORK)
     when: "We save emails"
-      emailService.save(emailInstance1)
-      emailService.save(emailInstance2)
-      emailService.save(emailInstance3)
-      emailService.save(emailInstance4)
+      emailService.save(emailInstance1, contact)
+      emailService.save(emailInstance2, contact)
+      emailService.save(emailInstance3, contact)
+      emailService.save(emailInstance4, contact)
     then:"We expect exception"
       thrown ValidationException
     cleanup:"We delete contact"
