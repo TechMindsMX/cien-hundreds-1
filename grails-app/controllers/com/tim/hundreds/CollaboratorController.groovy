@@ -6,9 +6,10 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Transactional(readOnly = true)
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class CollaboratorController {
+
+    def collaboratorService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -106,10 +107,12 @@ class CollaboratorController {
 
     def prepareEmailForCollaborator(){
       def collaborator = Collaborator.findByUuid(params.collaboratorUuid)
-      log.info "${collaborator.dump()}"
-      render (view: "/email/create", model: [emailInstance: new Email()])
+      render (view: "prepareEmailForCollaborator", model: [collaboratorInstance: collaborator, emailInstance: new Email()])
     }
 
-    def saveEmail(Email emailInstance){
+    def saveEmail(String collaboratorUuid, Email emailInstance){
+      def collaborator = Collaborator.findByUuid(collaboratorUuid)
+      collaboratorService.saveEmail(collaborator, emailInstance)
+      redirect(uri: "/email/index")
     }
 }

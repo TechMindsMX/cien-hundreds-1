@@ -15,4 +15,12 @@ class CollaboratorService {
     collaboratorInstance
   }
 
+  def saveEmail(collaborator, email) {
+    collaborator.addToEmails(email)
+    collaborator.save()
+
+    collaborator
+  }
+
+
 }
