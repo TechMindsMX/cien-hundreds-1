@@ -10,6 +10,7 @@ class UserController {
   static showMe = true
 
   def userService
+  def springSecurityService
 
   def show(User userInstance) {
     respond userInstance
@@ -46,30 +47,49 @@ class UserController {
 
   }
 
+  @Secured(['ROLE_ADMIN', 'ROLE_MUSICIAN_ADMIN', 'ROLE_COMPANY_ADMIN'])
   def status(User userInstance) {
+    try {
+      checkAccess(userInstance, ['ROLE_BUYER'], springSecurityService.currentUser, ['ROLE_ADMIN','ROLE_COMPANY_ADMIN'])
+    } catch (CheckAccessException ae) {
+      flash.error = message(code: 'access.denied.label', args: [message(code: ae.message)])
+      redirect url:'/'
+    }
+
     respond userInstance
   }
 
+  @Secured(['ROLE_ADMIN', 'ROLE_MUSICIAN_ADMIN', 'ROLE_COMPANY_ADMIN'])
   def statusUpdate(User userInstance) {
-      if (userInstance == null) {
-          notFound()
-          return
-      }
 
-      if (userInstance.hasErrors()) {
-          respond userInstance.errors, view:'status'
-          return
-      }
+    if (userInstance == null) {
+        notFound()
+        return
+    }
 
-      userInstance.save flush:true
+    if (userInstance.hasErrors()) {
+        respond userInstance.errors, view:'status'
+        return
+    }
 
-      request.withFormat {
-          form multipartForm {
-              flash.message = message(code: 'default.updated.message', args: [message(code: 'User.label', default: 'Usuario'), userInstance.id])
-              redirect userInstance
-          }
-          '*'{ respond userInstance, [status: OK] }
-      }
+    userInstance.save flush:true
+
+    request.withFormat {
+        form multipartForm {
+            flash.message = message(code: 'default.updated.message', args: [message(code: 'User.label', default: 'Usuario'), userInstance.id])
+            redirect userInstance
+        }
+        '*'{ respond userInstance, [status: OK] }
+    }
+  }
+
+  def checkAccess(User userInstance, userAuths, User currUser, currUserAuths) {
+    def curruserInstanceAuths = currUser.getAuthorities().authority
+    def userInstanceAuths = userInstance.getAuthorities().authority
+
+    if (curruserInstanceAuths.findAll{it in userAuths}.isEmpty() || userInstanceAuths.findAll{it in currUserAuths}.isEmpty()) {
+      throw new CheckAccessException ('Not authorized to see this resource')
+    }
   }
 
 }
