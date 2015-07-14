@@ -74,7 +74,7 @@
 
 <div class="form-group">
     <label class="${session.labelWidth} control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'hasManager', 'error')} ">
-     <g:message code="musician.hasManager.label" default="Es Manager" />
+     <g:message code="musician.hasManager.label" default="tiene Manager" />
  </label>
  <div class="${session.inputWidth}">
    <g:checkBox class="form-control" name="hasManager" value="${musicianInstance?.hasManager}" />
