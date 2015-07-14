@@ -26,6 +26,8 @@ class DatosFiscales {
         }
       })
     address nullable:true
+    musician nullable:true
+    company nullable:true
   }
 
 }

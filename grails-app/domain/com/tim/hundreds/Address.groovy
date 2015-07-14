@@ -25,5 +25,10 @@ class Address {
     town blank:false,size:1..100
     state blank:false,size:1..100
     country blank:false,size:1..100
+    musician nullable:true
+    company nullable:true
+    contact nullable:true
+    datosFiscales nullable:true
+
   }
 }

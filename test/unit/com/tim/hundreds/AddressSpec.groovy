@@ -13,7 +13,7 @@ class AddressSpec extends Specification {
   @Unroll
   void """When we have an address with: street: #street, zipcode: #zipcode, neighborhood: #neighborhood, town: #town, state: #state, country: #country, and we validate we expect result #result"""() {
   given: "An address"
-    Address address = new Address()
+    def address = new Address()
   when: "We assign values to the address"
     address.street = street
     address.zipcode = zipcode

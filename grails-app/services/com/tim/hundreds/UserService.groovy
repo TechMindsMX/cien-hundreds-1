@@ -20,16 +20,5 @@ class UserService {
     user
   }
 
-  def expireAccount(User user) {
-
-     try {
-        user.accountExpired = true
-        user.save(flush: true)
-        userCache.removeUserFromCache user.username
-     }
-     catch (e) {
-        log.error "problem expiring acount for user $user.username : $e.message", e
-     }
-  }
 }
 

@@ -24,5 +24,8 @@ class Social {
     youtube nullable:true,blank:false,size:10..100
     linkedin nullable:true,blank:false,size:10..100
     other nullable:true,blank:false,size:10..100
+    musician nullable:true
+    company nullable:true
+    contact nullable:true
   }
 }
