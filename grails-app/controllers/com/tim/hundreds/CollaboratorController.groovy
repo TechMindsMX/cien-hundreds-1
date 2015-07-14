@@ -104,9 +104,10 @@ class CollaboratorController {
         }
     }
 
-    def saveEmail(Collaborator collaboratorInstance){
-      def emailInstance = new Email()
-      emailInstance.collaborator = collaboratorInstance
-      render (view: "/email/create", model: [emailInstance: emailInstance])
+    def prepareEmailForCollaborator(Collaborator collaboratorInstance){
+      render (view: "/email/create", model: [emailInstance: new Email()])
+    }
+
+    def saveEmail(Email emailInstance){
     }
 }
