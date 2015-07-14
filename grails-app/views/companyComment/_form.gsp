@@ -106,20 +106,20 @@
 <div class="row">
 	<div class="col-md-4">
 		<ul>
-			<g:each in="${companyCommentInstance?.company?.references}" var="i">
+			<g:each in="${companyCommentInstance?.company?.refs}" var="i">
 			<li>
 				${i?.name}
 			</li>
 			</g:each>
 		</ul>
 	</div>
-	<div class="col-md-8 form-group fieldcontain ${hasErrors(bean: companyCommentInstance, field: 'references', 'error')} ">
-		<label class="${session.labelWidth} control-label" for="references">
-			<g:message code="companyComment.references.label" default="References" />
+	<div class="col-md-8 form-group fieldcontain ${hasErrors(bean: companyCommentInstance, field: 'refs', 'error')} ">
+		<label class="${session.labelWidth} control-label" for="refs">
+			<g:message code="companyComment.refs.label" default="refs" />
 			
 		</label>
 		<div class="${session.inputWidth}">
-			<g:textArea class="form-control" name="references" id="references" cols="40" rows="5" maxlength="10000" value="${companyCommentInstance?.references}"/>
+			<g:textArea class="form-control" name="refs" id="refs" cols="40" rows="5" maxlength="10000" value="${companyCommentInstance?.refs}"/>
 
 		</div>
 	</div>
@@ -130,7 +130,7 @@
 		<ul>
 			<g:each in="${companyCommentInstance?.company?.collaborators}" var="i">
 			<li>
-				${i?.name}
+				${i?.firstName} ${i?.lastName}
 			</li>
 			</g:each>
 		</ul>

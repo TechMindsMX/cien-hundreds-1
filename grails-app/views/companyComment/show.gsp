@@ -68,11 +68,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${companyCommentInstance?.references}">
+				<g:if test="${companyCommentInstance?.refs}">
 				<li class="fieldcontain">
-					<span id="references-label" class="${session.labelWidth} property-label"><g:message code="companyComment.references.label" default="References" /></span>
+					<span id="refs-label" class="${session.labelWidth} property-label"><g:message code="companyComment.refs.label" default="refs" /></span>
 					
-						<span class="property-value" aria-labelledby="references-label"><g:fieldValue bean="${companyCommentInstance}" field="references"/></span>
+						<span class="property-value" aria-labelledby="refs-label"><g:fieldValue bean="${companyCommentInstance}" field="refs"/></span>
 					
 				</li>
 				</g:if>
