@@ -19,6 +19,11 @@
 			<label><g:message code="businessActivity.label" /></label>
 				${companyCommentInstance?.company?.type?.name}
 			</li>
+    		<g:if test="${companyInstance?.logo}">
+    		<li>
+				<img class="img-responsive max300" src="${grailsApplication.config.base.logo.url}${companyCommentInstance?.company?.logo}" />
+			</li>
+			</g:if>
 		</ul>
 	</div>
 	<div class="col-md-8 form-group fieldcontain ${hasErrors(bean: companyCommentInstance, field: 'general', 'error')} ">
