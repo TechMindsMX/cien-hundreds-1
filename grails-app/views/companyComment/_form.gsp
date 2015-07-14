@@ -8,7 +8,16 @@
 	<div class="col-md-4">
 		<ul>
 			<li>
+			<label><g:message code="name.label" /></label>
 				${companyCommentInstance?.company?.name}
+			</li>
+			<li>
+			<label><g:message code="web.label" /></label>
+				${companyCommentInstance?.company?.web}
+			</li>
+			<li>
+			<label><g:message code="businessActivity.label" /></label>
+				${companyCommentInstance?.company?.type?.name}
 			</li>
 		</ul>
 	</div>
