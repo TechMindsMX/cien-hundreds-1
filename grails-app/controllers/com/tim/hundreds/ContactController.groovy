@@ -132,7 +132,11 @@ class ContactController {
 
     def saveEmail(String contactUuid, Email emailInstance){
       def contact = Contact.findByUuid(contactUuid)
-      contactService.saveEmail(contact, emailInstance)
+      try{
+        contactService.saveEmail(contact, emailInstance)
+      } catch (ValidationException ve){
+        flash.error = g.message(code: 'error.email.limit')
+      }
       redirect(uri: "/email/index")
     }
 
@@ -143,7 +147,11 @@ class ContactController {
 
     def saveTelephone(String contactUuid, Telephone telephoneInstance){
       def contact = Contact.findByUuid(contactUuid)
-      contactService.saveTelephone(contact, telephoneInstance)
+      try{
+        contactService.saveTelephone(contact, telephoneInstance)
+      } catch (ValidationException ve){
+        flash.error = g.message(code: 'error.telephone.limit')
+      }
       redirect(uri: "/telephone/index")
     }
 
