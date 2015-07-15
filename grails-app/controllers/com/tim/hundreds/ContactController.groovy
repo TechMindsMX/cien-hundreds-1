@@ -1,10 +1,9 @@
 package com.tim.hundreds
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
+import grails.validation.ValidationException
 
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class ContactController {
