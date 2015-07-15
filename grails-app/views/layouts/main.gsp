@@ -14,15 +14,13 @@
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet"-->
 
     <!-- Toastr style -->
-    <asset:stylesheet src="css/plugins/toastr/toastr.min.css"/>
+    %{-- <asset:stylesheet src="css/plugins/toastr/toastr.min.css"/> --}%
 
     <!--link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"-->
 
     <!-- Gritter -->
-    <asset:javascript src="js/plugins/gritter/jquery.gritter.css"/>
+    %{-- <asset:javascript src="js/plugins/gritter/jquery.gritter.css"/> --}%
     <!--link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet"-->
-    <asset:stylesheet src="css/animate.css"/>
-    <asset:stylesheet src="css/style.css"/>
     <asset:stylesheet src="theme.css"/>
     <asset:stylesheet src="jquery-ui.css"/>
     <!--link href="css/animate.css" rel="stylesheet">
@@ -39,14 +37,80 @@
 <g:set var="labelWidth" scope="session" value="col-sm-12 col-md-2" />
 <g:set var="inputWidth" scope="session" value="col-sm-12 col-md-6" />
 
-<body>
+<body role="document">
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><asset:image src="cien_logo.gif"/></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            %{-- <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
+            <g:if test="${c.getStaticPropertyValue('showMe', Boolean)}">
+                <li class="controller"><g:link controller="${c.logicalPropertyName}"><g:message code="controller.${c.name}.label" /></g:link></li>
+            </g:if>
+          </g:each> --}%
+
+            <li class="active"><a href="/">Home</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'musician.label')} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><g:link controller="musician" action="index"><g:message code="list.label" default="Listado" /></g:link></li>
+                <li role="separator" class="divider"></li>
+                <li><g:link controller="musician" action="create">${message(code: 'default.add.label', args: [message(code: 'musician.label')])}</g:link></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'company.label')} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><g:link controller="company" action="index"><g:message code="list.label" default="Listado" /></g:link></li>
+                <li role="separator" class="divider"></li>
+                <li><g:link controller="company" action="create">${message(code: 'default.add.label', args: [message(code: 'company.label')])}</g:link></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'users.label')} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><g:link controller="users" action="index"><g:message code="list.label" default="Listado" /></g:link></li>
+                <li role="separator" class="divider"></li>
+                <li><g:link controller="users" action="create">${message(code: 'default.add.label', args: [message(code: 'users.label')])}</g:link></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong class="font-bold"><sec:loggedInUserInfo field="username"/></strong> <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <sec:ifLoggedIn>
+                        <li><g:link class="logout" controller="logout"><g:message code="springSecurity.logout.link"/></g:link></li>
+                    </sec:ifLoggedIn>
+                    <sec:ifNotLoggedIn>
+                        <li><g:link controller="login">${message(code: 'springSecurity.login.link')}</g:link></li>
+                    </sec:ifNotLoggedIn>
+                </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+
+%{--                                   --}%
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element"> <span>
-                            <asset:image src="cien_logo.gif"/>
+                            
                              </span>
                              <sec:ifLoggedIn>
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -135,23 +199,21 @@
 
     <!-- Mainly scripts -->
     <asset:javascript src="js/bootstrap.min.js" />
-    <asset:javascript src="js/plugins/metisMenu/jquery.metisMenu.js" />
-    <asset:javascript src="js/plugins/slimscroll/jquery.slimscroll.min.js" />
+    %{-- <asset:javascript src="js/plugins/slimscroll/jquery.slimscroll.min.js" /> --}%
 
     <!-- Flot -->
-    <asset:javascript src="js/plugins/flot/jquery.flot.js" />
-    <asset:javascript src="js/plugins/flot/jquery.flot.tooltip.min.js" />
-    <asset:javascript src="js/plugins/flot/jquery.flot.spline.js" />
-    <asset:javascript src="js/plugins/flot/jquery.flot.resize.js" />
-    <asset:javascript src="js/plugins/flot/jquery.flot.pie.js" />
+    %{-- <asset:javascript src="js/plugins/flot/jquery.flot.js" /> --}%
+    %{-- <asset:javascript src="js/plugins/flot/jquery.flot.tooltip.min.js" /> --}%
+    %{-- <asset:javascript src="js/plugins/flot/jquery.flot.spline.js" /> --}%
+    %{-- <asset:javascript src="js/plugins/flot/jquery.flot.resize.js" /> --}%
+    %{-- <asset:javascript src="js/plugins/flot/jquery.flot.pie.js" /> --}%
 
     <!-- Peity -->
-    <asset:javascript src="js/plugins/peity/jquery.peity.min.js" />
-    <asset:javascript src="js/demo/peity-demo.js" />
+    %{-- <asset:javascript src="js/plugins/peity/jquery.peity.min.js" /> --}%
+    %{-- <asset:javascript src="js/demo/peity-demo.js" /> --}%
 
     <!-- Custom and plugin javascript -->
-    <asset:javascript src="js/inspinia.js" />
-    <asset:javascript src="js/plugins/pace/pace.min.js" />
+    %{-- <asset:javascript src="js/plugins/pace/pace.min.js" /> --}%
 
     <!-- jQuery UI -->
 
