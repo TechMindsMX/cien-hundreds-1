@@ -19,15 +19,4 @@
 	</div>
 </div>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: emailInstance, field: 'contact', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="contact">
-		<g:message code="email.contact.label" default="Type" />
-		<span class="required-indicator">*</span>
-	</label>
-	<div class="${session.inputWidth}">
-		<g:select class="form-control" name="contact.uuid" from="${com.tim.hundreds.Contact?.list()}" optionKey="uuid" required="" value="${emailInstance?.contact?.uuid ?: params.contact?.uuid}" />
-	</div>
-</div>
-
 <g:hiddenField name="uuid" value="${telephoneInstance?.uuid}" />
-
