@@ -45,7 +45,7 @@
       <g:message code="musician.tags.label" default="Etiquetas" />
   </label>
   <div class="${session.inputWidth}">
-    <g:textArea name="tagsComma" class="form-control" placeholder="${message(code: 'musician.tags.placeholder')}" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.tags*.value}"/>
+    <g:textArea name="tagsComma" class="form-control" placeholder="${message(code: 'musician.tags.placeholder')}" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.tags.join(", ")}"/>
 </div>
 </div>
 
