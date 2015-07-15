@@ -35,6 +35,12 @@ class Company {
     products : Product
   ]
 
+  static mapping = {
+    description type:'text'
+    notes type:'text'
+    tags type:'text'
+  }
+
   static constraints = {
     name blank:false,size:1..100
     description blank:false,size:1..10000
