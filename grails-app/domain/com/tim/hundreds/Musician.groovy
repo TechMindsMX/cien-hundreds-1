@@ -1,6 +1,8 @@
 package com.tim.hundreds
 
-class Musician {
+import org.grails.taggable.*
+
+class Musician implements Taggable {
   String uuid = TokenGenerator.generateToken()
   String name
   String history
@@ -37,8 +39,7 @@ class Musician {
     audios : Audio,
     suggestions : Suggestion,
     contacts : Contact,
-    activities : Activity,
-    tags : Tag
+    activities : Activity
   ]
 
   static constraints = {
