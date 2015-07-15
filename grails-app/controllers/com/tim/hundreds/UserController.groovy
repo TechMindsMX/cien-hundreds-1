@@ -11,6 +11,7 @@ class UserController {
 
   def userService
   def springSecurityService
+  def userPermissionsService
 
   def show(User userInstance) {
     respond userInstance
@@ -49,8 +50,24 @@ class UserController {
 
   @Secured(['ROLE_ADMIN', 'ROLE_MUSICIAN_ADMIN', 'ROLE_COMPANY_ADMIN'])
   def status(User userInstance) {
+
+    ArrayList currUserAuths
+
+    def auth = userInstance.getAuthorities().authority
+    switch(auth) {
+      case ['ROLE_BUYER']:
+        currUserAuths = ['ROLE_ADMIN','ROLE_COMPANY_ADMIN']
+      break
+      case ['ROLE_FACILITATOR']:
+        currUserAuths = ['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN']
+      break
+      default:
+        currUserAuths = ['ROLE_ADMIN']
+      break
+    }
+
     try {
-      checkAccess(userInstance, ['ROLE_BUYER'], springSecurityService.currentUser, ['ROLE_ADMIN','ROLE_COMPANY_ADMIN'])
+      userPermissionsService.canAccessByRoles(springSecurityService.currentUser, currUserAuths)
     } catch (CheckAccessException ae) {
       flash.error = message(code: 'access.denied.label', args: [message(code: ae.message)])
       redirect url:'/'
@@ -80,15 +97,6 @@ class UserController {
             redirect userInstance
         }
         '*'{ respond userInstance, [status: OK] }
-    }
-  }
-
-  def checkAccess(User userInstance, userAuths, User currUser, currUserAuths) {
-    def curruserInstanceAuths = currUser.getAuthorities().authority
-    def userInstanceAuths = userInstance.getAuthorities().authority
-
-    if (curruserInstanceAuths.findAll{it in userAuths}.isEmpty() || userInstanceAuths.findAll{it in currUserAuths}.isEmpty()) {
-      throw new CheckAccessException ('Not authorized to see this resource')
     }
   }
 
