@@ -29,6 +29,9 @@ class CollaboratorServiceIntegrationSpec extends Specification {
   then: "We expect"
      1 == result.emails.size()
      result
+   cleanup:"We delete collaborator"
+     user.delete(flush: true)
+
   }
 
   void "should save an telephone"() {
@@ -53,6 +56,9 @@ class CollaboratorServiceIntegrationSpec extends Specification {
   then: "We expect"
      1 == result.telephones.size()
      result
+   cleanup:"We delete collaborator"
+     user.delete(flush: true)
+
   }
 
   void "Should not save an collaborator with more than 3 emails"() {
