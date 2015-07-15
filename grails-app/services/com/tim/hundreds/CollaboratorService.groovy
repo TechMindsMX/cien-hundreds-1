@@ -22,5 +22,13 @@ class CollaboratorService {
     collaborator
   }
 
+  def saveTelephone(collaborator, telephone) {
+    collaborator.addToTelephones(telephone)
+    collaborator.save()
+
+    collaborator
+  }
+
+
 
 }

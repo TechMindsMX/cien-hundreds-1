@@ -4,9 +4,6 @@ import grails.test.mixin.TestFor
 import spock.lang.Specification
 import spock.lang.Unroll
 
-/**
- * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
- */
 @TestFor(Telephone)
 class TelephoneSpec extends Specification {
 
@@ -33,6 +30,8 @@ class TelephoneSpec extends Specification {
   'ABCDEFGHIJ'  | TelephoneType.WORK            || false
   'ABCDE12345'  | TelephoneType.WORK            || false
   'abcde12345'  | TelephoneType.WORK            || false
+  ''            | TelephoneType.WORK            || false
+  null          | TelephoneType.WORK            || false
   }
 
 }

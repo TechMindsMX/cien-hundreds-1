@@ -115,4 +115,16 @@ class CollaboratorController {
       collaboratorService.saveEmail(collaborator, emailInstance)
       redirect(uri: "/email/index")
     }
+
+    def prepareTelephoneForCollaborator(){
+      def collaborator = Collaborator.findByUuid(params.collaboratorUuid)
+      render (view: "prepareTelephoneForCollaborator", model: [collaboratorInstance: collaborator,telephoneInstance: new Telephone()])
+    }
+
+    def saveTelephone(String collaboratorUuid, Telephone telephoneInstance){
+      def collaborator = Collaborator.findByUuid(collaboratorUuid)
+      collaboratorService.saveTelephone(collaborator, telephoneInstance)
+      redirect(uri: "/telephone/index")
+    }
+
 }
