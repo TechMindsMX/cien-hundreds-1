@@ -20,20 +20,29 @@ class TagServiceIntegrationSpec extends Specification {
     musician.lastUpdated = new Date()
     musician.formed = new Date()
     musician.save flush: true
+  and: "A user"
+    def user = new User(username:'tagServiceIntegration',password:'password')
+    def profile = new Profile(email:'tagServiceIntegration@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+    user.profile = profile
+  and: "We add musician to user"
+    user.addToMusicians(musician)
+    user.save(flush: true)
   when: "We add tags using service"
     tagService.addMusicianTags(musician, tagsComma)
   then: "We expect following result"
-    result == musician.tags*.value.size()
+    result == musician.tags
+    println result
+  cleanup:"We delete contact"
+    user.delete flush: true
   where: "We have next values"
     tagsComma         || result
-    'One, Two'        || 2
-    'One'             || 1
-    'One,Two'         || 2
-    'One,Two,Three'   || 3
-    'One,Two,Three,'  || 3
-    ',One,Two,Three,' || 3
-    'One,Two,null'    || 2
-    '[One, Two]'      || 2
+    'One, Two'        || ['One', 'Two']
+    'One'             || ['One']
+    'One,Two'         || ['One', 'Two']
+    'One,Two,Three'   || ['One', 'Two', 'Three']
+    'One,Two,Three,'  || ['One', 'Two', 'Three']
+    ',One,Two,Three,' || ['One', 'Two', 'Three']
+    'One,Two,null'    || ['One', 'Two']
   }
 
 }

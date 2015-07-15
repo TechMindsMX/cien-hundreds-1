@@ -18,11 +18,9 @@ class ContactServiceIntegrationSpec extends Specification {
     def user = new User(username:'contactServiceIntegration1',password:'password')
     def profile = new Profile(email:'contactServiceIntegration1@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
     user.profile = profile
-  and: "A genre"
-    def genre = new Genre(name: 'Trance').save()
   and: "A Musician"
     def musician = new Musician(name:'name',history:'history')
-    musician.genre = genre
+    musician.genre = new Genre(name: 'Trance').save()
     musician.hasManager = true
     musician.dateCreated = new Date()
     musician.lastUpdated = new Date()
@@ -39,6 +37,9 @@ class ContactServiceIntegrationSpec extends Specification {
   then: "We expect"
      1 == result.emails.size()
      result
+  cleanup:"We delete contact"
+    user.delete(flush: true)
+
   }
 
   void "should save an telephone"() {
@@ -73,6 +74,9 @@ class ContactServiceIntegrationSpec extends Specification {
   then: "We expect"
      1 == result.telephones.size()
      result
+  cleanup:"We delete contact"
+      user.delete(flush: true)
+
   }
 
   void "Should not save an contact with more than 3 emails"() {
