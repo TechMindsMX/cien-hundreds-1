@@ -25,7 +25,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${session.inputWidth}">
-		<g:select class="form-control" name="contact.id" from="${com.tim.hundreds.Contact?.list()}" optionKey="id" required="" value="${emailInstance?.contact?.id ?: params.contact?.id}" />
+		<g:select class="form-control" name="contact.uuid" from="${com.tim.hundreds.Contact?.list()}" optionKey="uuid" required="" value="${emailInstance?.contact?.uuid ?: params.contact?.uuid}" />
 	</div>
 </div>
 
