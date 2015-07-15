@@ -58,21 +58,24 @@ class MusicianController {
     }
 
     def edit(Musician musicianInstance) {
+        log.info "${musicianInstance.dump()}"
         respond musicianInstance
     }
 
-    def update(Musician musicianInstance) {
-        if (musicianInstance == null) {
-            notFound()
+    def update(MusicianCommand command) {
+        log.info "${command.dump()}"
+
+        if (command.hasErrors()) {
+            Musician musicianInstance = new Musician(params)
+            musicianInstance.errors = command.errors
+            render view:'edit', model: [musicianInstance:musicianInstance]
             return
         }
 
-        if (musicianInstance.hasErrors()) {
-            respond musicianInstance.errors, view:'edit'
-            return
-        }
-
-        musicianInstance.save flush:true
+        Musician musicianInstance = new Musician()
+        bindData(musicianInstance, command)
+        musicianInstance.id = command.id
+        musicianService.save(musicianInstance)
 
         request.withFormat {
             form multipartForm {

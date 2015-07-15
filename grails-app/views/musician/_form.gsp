@@ -231,3 +231,6 @@
     </li>
     </ul>
 </div>
+
+<g:hiddenField name="uuid" value="${musicianInstance.uuid}"/>
+<g:hiddenField name="id" value="${musicianInstance.id}"/>
