@@ -24,6 +24,8 @@ class Musician implements Taggable {
   Social social
   User assigned
 
+  SortedSet photos
+
   static transients = ['tagsComma']
 
   static hasOne = [
