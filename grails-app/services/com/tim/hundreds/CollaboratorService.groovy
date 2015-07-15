@@ -17,14 +17,14 @@ class CollaboratorService {
 
   def saveEmail(collaborator, email) {
     collaborator.addToEmails(email)
-    collaborator.save()
+    collaborator.save(failOnError: true)
 
     collaborator
   }
 
   def saveTelephone(collaborator, telephone) {
     collaborator.addToTelephones(telephone)
-    collaborator.save()
+    collaborator.save(failOnError: true)
 
     collaborator
   }

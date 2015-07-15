@@ -5,6 +5,7 @@ package com.tim.hundreds
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
+import grails.validation.ValidationException
 
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class CollaboratorController {
@@ -112,7 +113,11 @@ class CollaboratorController {
 
     def saveEmail(String collaboratorUuid, Email emailInstance){
       def collaborator = Collaborator.findByUuid(collaboratorUuid)
-      collaboratorService.saveEmail(collaborator, emailInstance)
+      try{
+        collaboratorService.saveEmail(collaborator, emailInstance)
+      } catch (ValidationException ve){
+        flash.error = g.message(code: 'error.email.limit')
+      }
       redirect(uri: "/email/index")
     }
 
@@ -123,7 +128,11 @@ class CollaboratorController {
 
     def saveTelephone(String collaboratorUuid, Telephone telephoneInstance){
       def collaborator = Collaborator.findByUuid(collaboratorUuid)
-      collaboratorService.saveTelephone(collaborator, telephoneInstance)
+      try{
+        collaboratorService.saveTelephone(collaborator, telephoneInstance)
+      } catch (ValidationException ve){
+        flash.error = g.message(code: 'error.telephone.limit')
+      }
       redirect(uri: "/telephone/index")
     }
 

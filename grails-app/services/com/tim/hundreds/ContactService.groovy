@@ -17,14 +17,14 @@ class ContactService {
 
   def saveEmail(contact, email) {
     contact.addToEmails(email)
-    contact.save()
+    contact.save(failOnError: true)
 
     contact
   }
 
   def saveTelephone(contact, telephone) {
     contact.addToTelephones(telephone)
-    contact.save()
+    contact.save(failOnError: true)
 
     contact
   }
