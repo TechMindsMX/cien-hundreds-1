@@ -105,9 +105,9 @@ class CollaboratorController {
         }
     }
 
-    def prepareEmailForCollaborator(){
+    def prepareEmail(){
       def collaborator = Collaborator.findByUuid(params.collaboratorUuid)
-      render (view: "prepareEmailForCollaborator", model: [collaboratorInstance: collaborator, emailInstance: new Email()])
+      render (view: "prepareEmail", model: [collaboratorInstance: collaborator, emailInstance: new Email()])
     }
 
     def saveEmail(String collaboratorUuid, Email emailInstance){
@@ -116,9 +116,9 @@ class CollaboratorController {
       redirect(uri: "/email/index")
     }
 
-    def prepareTelephoneForCollaborator(){
+    def prepareTelephone(){
       def collaborator = Collaborator.findByUuid(params.collaboratorUuid)
-      render (view: "prepareTelephoneForCollaborator", model: [collaboratorInstance: collaborator,telephoneInstance: new Telephone()])
+      render (view: "prepareTelephone", model: [collaboratorInstance: collaborator,telephoneInstance: new Telephone()])
     }
 
     def saveTelephone(String collaboratorUuid, Telephone telephoneInstance){
