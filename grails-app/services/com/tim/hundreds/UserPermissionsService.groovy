@@ -25,7 +25,7 @@ class UserPermissionsService {
 		def currUserInstanceAuths = currentUser.getAuthorities().authority
 
 		if (currUserInstanceAuths.findAll{it in currUserAuths}.isEmpty()) {
-			throw new CheckAccessException ('Not authorized to see this resource')
+			throw new InvalidPermissionsException ('Not authorized to see this resource')
 		}
 	}
 
