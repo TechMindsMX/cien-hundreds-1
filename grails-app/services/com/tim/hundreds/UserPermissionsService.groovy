@@ -21,7 +21,7 @@ class UserPermissionsService {
 		canAccessByRoles(currentUser, currUserAuths)
 	}
 
-	def canAccessByRoles(User currentUser, ArrayList currUserAuths) {
+	private def canAccessByRoles(User currentUser, ArrayList currUserAuths) {
 		def currUserInstanceAuths = currentUser.getAuthorities().authority
 
 		if (currUserInstanceAuths.findAll{it in currUserAuths}.isEmpty()) {
