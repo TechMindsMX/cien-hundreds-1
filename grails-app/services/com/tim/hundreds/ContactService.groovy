@@ -15,4 +15,19 @@ class ContactService {
     contactInstance
   }
 
+  def saveEmail(contact, email) {
+    contact.addToEmails(email)
+    contact.save()
+
+    contact
+  }
+
+  def saveTelephone(contact, telephone) {
+    contact.addToTelephones(telephone)
+    contact.save()
+
+    contact
+  }
+
+
 }

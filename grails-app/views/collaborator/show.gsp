@@ -99,10 +99,9 @@
 				</li>
 				</g:if>
 
-        <g:link controller="collaborator" action="prepareEmailForCollaborator" params="[collaboratorUuid: collaboratorInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'email.label')])}</g:link>
+        <g:link controller="collaborator" action="prepareEmail" params="[collaboratorUuid: collaboratorInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'email.label')])}</g:link>
         <br/>
-        <g:link controller="collaborator" action="prepareTelephoneForCollaborator" params="[collaboratorUuid: collaboratorInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'telephone.label')])}</g:link>
-
+        <g:link controller="collaborator" action="prepareTelephone" params="[collaboratorUuid: collaboratorInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'telephone.label')])}</g:link>
 
 			</ul>
 			<g:form url="[resource:collaboratorInstance, action:'delete']" method="DELETE">

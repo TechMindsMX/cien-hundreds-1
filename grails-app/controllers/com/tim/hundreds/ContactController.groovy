@@ -126,23 +126,23 @@ class ContactController {
     }
 
     def prepareEmail(){
-      def contact = contact.findByUuid(params.contactUuid)
+      def contact = Contact.findByUuid(params.contactUuid)
       render (view: "prepareEmail", model: [contactInstance: contact, emailInstance: new Email()])
     }
 
     def saveEmail(String contactUuid, Email emailInstance){
-      def contact = contact.findByUuid(contactUuid)
+      def contact = Contact.findByUuid(contactUuid)
       contactService.saveEmail(contact, emailInstance)
       redirect(uri: "/email/index")
     }
 
     def prepareTelephone(){
-      def contact = contact.findByUuid(params.contactUuid)
+      def contact = Contact.findByUuid(params.contactUuid)
       render (view: "prepareTelephone", model: [contactInstance: contact,telephoneInstance: new Telephone()])
     }
 
     def saveTelephone(String contactUuid, Telephone telephoneInstance){
-      def contact = contact.findByUuid(contactUuid)
+      def contact = Contact.findByUuid(contactUuid)
       contactService.saveTelephone(contact, telephoneInstance)
       redirect(uri: "/telephone/index")
     }
