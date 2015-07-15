@@ -6,15 +6,9 @@ class DatosFiscales {
   String rfc
 
   PersonaJuridicaType personaJuridica
+  Address address
 
-  static hasOne = [
-    address: Address
-  ]
-
-  static belongsTo = [
-    musician: Musician,
-    company: Company
-  ]
+  static belongsTo = [ Musician, Company ]
 
   static constraints = {
     razonSocial blank:false,size:1..100
@@ -26,8 +20,6 @@ class DatosFiscales {
         }
       })
     address nullable:true
-    musician nullable:true
-    company nullable:true
   }
 
 }

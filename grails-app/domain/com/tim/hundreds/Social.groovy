@@ -10,11 +10,7 @@ class Social {
   String linkedin
   String other
 
-  static belongsTo = [
-    musician: Musician,
-    company: Company,
-    contact: Contact
-  ]
+  static belongsTo = [ Musician, Company, Contact ]
 
   static constraints = {
     facebook nullable:true,blank:false,size:10..100
@@ -24,8 +20,5 @@ class Social {
     youtube nullable:true,blank:false,size:10..100
     linkedin nullable:true,blank:false,size:10..100
     other nullable:true,blank:false,size:10..100
-    musician nullable:true
-    company nullable:true
-    contact nullable:true
   }
 }

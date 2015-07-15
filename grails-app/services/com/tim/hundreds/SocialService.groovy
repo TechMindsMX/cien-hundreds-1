@@ -7,7 +7,7 @@ class SocialService {
 
   def saveSocialToInstance(socialInstance, instance){
     instance.social = socialInstance
-    instance.save()
+    instance.save flush:true
 
     instance
   }
