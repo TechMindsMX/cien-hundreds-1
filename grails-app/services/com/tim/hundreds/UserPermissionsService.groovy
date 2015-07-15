@@ -2,13 +2,31 @@ package com.tim.hundreds
 
 class UserPermissionsService {
 
-  def canAccessByRoles(User currUser, ArrayList currUserAuths) {
-    def currUserInstanceAuths = currUser.getAuthorities().authority
+	def canEditUserStatus(User currentUser, User userInstance) {
+		ArrayList currUserAuths
 
-log.info "currUserAuths: ${currUserAuths.dump()} -- ${currUserInstanceAuths.dump()} -- ${currUserInstanceAuths.findAll{it in currUserAuths}.isEmpty()}"
-    if (currUserInstanceAuths.findAll{it in currUserAuths}.isEmpty()) {
-      throw new CheckAccessException ('Not authorized to see this resource')
-    }
-  }
+		def auth = userInstance.getAuthorities().authority
+		switch(auth) {
+			case '[ROLE_BUYER]':
+			currUserAuths = ['ROLE_ADMIN','ROLE_COMPANY_ADMIN']
+			break
+			case '[ROLE_FACILITATOR]':
+			currUserAuths = ['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN']
+			break
+			default:
+			currUserAuths = ['ROLE_ADMIN']
+			break
+		}
+
+		canAccessByRoles(currentUser, currUserAuths)
+	}
+
+	def canAccessByRoles(User currentUser, ArrayList currUserAuths) {
+		def currUserInstanceAuths = currentUser.getAuthorities().authority
+
+		if (currUserInstanceAuths.findAll{it in currUserAuths}.isEmpty()) {
+			throw new CheckAccessException ('Not authorized to see this resource')
+		}
+	}
 
 }

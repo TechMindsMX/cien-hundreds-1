@@ -51,23 +51,8 @@ class UserController {
   @Secured(['ROLE_ADMIN', 'ROLE_MUSICIAN_ADMIN', 'ROLE_COMPANY_ADMIN'])
   def status(User userInstance) {
 
-    ArrayList currUserAuths
-
-    def auth = userInstance.getAuthorities().authority
-    switch(auth) {
-      case ['ROLE_BUYER']:
-        currUserAuths = ['ROLE_ADMIN','ROLE_COMPANY_ADMIN']
-      break
-      case ['ROLE_FACILITATOR']:
-        currUserAuths = ['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN']
-      break
-      default:
-        currUserAuths = ['ROLE_ADMIN']
-      break
-    }
-
     try {
-      userPermissionsService.canAccessByRoles(springSecurityService.currentUser, currUserAuths)
+      userPermissionsService.canEditUserStatus(springSecurityService.currentUser, userInstance)
     } catch (CheckAccessException ae) {
       flash.error = message(code: 'access.denied.label', args: [message(code: ae.message)])
       redirect url:'/'
@@ -78,6 +63,13 @@ class UserController {
 
   @Secured(['ROLE_ADMIN', 'ROLE_MUSICIAN_ADMIN', 'ROLE_COMPANY_ADMIN'])
   def statusUpdate(User userInstance) {
+
+    try {
+      userPermissionsService.canEditUserStatus(springSecurityService.currentUser, userInstance)
+    } catch (CheckAccessException ae) {
+      flash.error = message(code: 'access.denied.label', args: [message(code: ae.message)])
+      redirect url:'/'
+    }
 
     if (userInstance == null) {
         notFound()
