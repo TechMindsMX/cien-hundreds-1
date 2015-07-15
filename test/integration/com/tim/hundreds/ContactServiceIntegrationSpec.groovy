@@ -1,0 +1,117 @@
+package com.tim.hundreds
+
+import grails.test.mixin.TestFor
+import spock.lang.Specification
+
+class ContactServiceIntegrationSpec extends Specification {
+  def contactService
+
+  void "should save an email"() {
+  given: "An contact"
+    def contact = new Contact(firstName: 'firstName', middleName: 'middleName', lastName: 'lastName', position: 'position')
+  and: "An email"
+    def email = new Email(address: 'josdem@email.com', type: EmailType.PERSONAL)
+  when: "We save an email"
+     assert contact.emails.isEmpty()
+     result = contactService.saveEmail(contact, email)
+  then: "We expect"
+     1 == result.emails.size()
+     result
+  }
+
+  void "should save an telephone"() {
+  given: "An contact"
+    def contact = new Contact(firstName: 'firstName', middleName: 'middleName', lastName: 'lastName', position: 'position')
+  and: "An telephone"
+    def telephone = new Telephone(phone: '5512345678', type: TelephoneType.WORK)
+  when: "We save an email"
+     assert contact.telephones.isEmpty()
+     result = contactService.saveTelephone(contact, email)
+  then: "We expect"
+     1 == result.emails.size()
+     result
+  }
+
+  void "Should not save an contact with more than 3 emails"() {
+    given: "A musician role"
+      def musicianRole = new MusicianRole(name: 'Manager').save()
+    and: "An contact"
+      def contact = new Contact(firstName:'firstName',lastName:'lastName',motherLastName:'motherLastName')
+      contact.type = GenderType.MALE
+      contact.role = musicianRole
+      contact.birthDate = new Date()
+      contact.entryDate = new Date()
+    and: "A user"
+      def user = new User(username:'contactServiceIntegration1',password:'password')
+      def profile = new Profile(email:'contactServiceIntegration1@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      user.profile = profile
+    and: "A genre"
+      def genre = new Genre(name: 'Trance').save()
+    and: "A Musician"
+      def musician = new Musician(name:'name',history:'history')
+    musician.genre = genre
+      musician.hasManager = true
+      musician.dateCreated = new Date()
+      musician.lastUpdated = new Date()
+      musician.formed = new Date()
+    and: "We save contact and musician"
+      musician.addToContacts(contact)
+    and: "We add musician to user"
+      user.addToMusicians(musician)
+      user.save(flush: true)
+    and: "We create several emails"
+      def emailInstance1 = new Email(address:'josdem@email.com',type:EmailType.WORK)
+      def emailInstance2 = new Email(address:'josdem@email.com',type:EmailType.WORK)
+      def emailInstance3 = new Email(address:'josdem@email.com',type:EmailType.WORK)
+      def emailInstance4 = new Email(address:'josdem@email.com',type:EmailType.WORK)
+    when: "We save emails"
+      contactService.save(contact, emailInstance1)
+      contactService.save(contact, emailInstance2)
+      contactService.save(contact, emailInstance3)
+      contactService.save(contact, emailInstance4)
+    then:"We expect exception"
+      thrown ValidationException
+    cleanup:"We delete contact"
+      user.delete(flush: true)
+  }
+
+  void "Should not save an contact with more than 3 telephones"() {
+    given: "An contact"
+      def contact = new Contact(firstName:'firstName',lastName:'lastName',motherLastName:'motherLastName')
+      contact.type = GenderType.MALE
+      contact.role = new MusicianRole(name: 'Manager').save()
+      contact.birthDate = new Date()
+      contact.entryDate = new Date()
+    and: "A user"
+      def user = new User(username:'contactServiceIntegration2',password:'password')
+      def profile = new Profile(email:'contactServiceIntegration2@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      user.profile = profile
+    and: "A Musician"
+      def musician = new Musician(name:'name',history:'history')
+      musician.genre = new Genre(name: 'Trance').save()
+      musician.hasManager = true
+      musician.dateCreated = new Date()
+      musician.lastUpdated = new Date()
+      musician.formed = new Date()
+    and: "We save contact and musician"
+      musician.addToContacts(contact)
+    and: "We add musician to user"
+      user.addToMusicians(musician)
+      user.save(flush: true)
+    and: "We create an telephone"
+      def telephonecontact1 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
+      def telephonecontact2 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
+      def telephonecontact3 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
+      def telephonecontact4 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
+    when: "We save telephone"
+      contactService.save(contact, telephonecontact1)
+      contactService.save(contact, telephonecontact2)
+      contactService.save(contact, telephonecontact3)
+      contactService.save(contact, telephonecontact4)
+    then:"We expect exception"
+      thrown ValidationException
+    cleanup:"We delete contact"
+      user.delete(flush: true)
+  }
+
+}

@@ -21,5 +21,7 @@ class Collaborator {
     lastName blank:false,size:1..100
     position blank:false,size:1..100
     notes nullable:true,blank:false,size:1..10000
+    telephones maxSize: ApplicationState.MAX_TELEPHONES
+    emails maxSize: ApplicationState.MAX_EMAILS
   }
 }
