@@ -44,9 +44,9 @@ class MusicianController {
 
         Musician musicianInstance = new Musician()
         bindData(musicianInstance, command)
+        musicianService.save(musicianInstance)
 
         tagService.addMusicianTags(musicianInstance, "${command.name},${command.genre.name},${command.tagsComma}")
-        musicianService.save(musicianInstance)
 
         request.withFormat {
             form multipartForm {
