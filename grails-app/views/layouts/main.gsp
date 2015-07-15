@@ -64,7 +64,6 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'musician.label')} <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><g:link controller="musician" action="index"><g:message code="list.label" default="Listado" /></g:link></li>
-                <li role="separator" class="divider"></li>
                 <li><g:link controller="musician" action="create">${message(code: 'default.add.label', args: [message(code: 'musician.label')])}</g:link></li>
               </ul>
             </li>
@@ -72,7 +71,6 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'company.label')} <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><g:link controller="company" action="index"><g:message code="list.label" default="Listado" /></g:link></li>
-                <li role="separator" class="divider"></li>
                 <li><g:link controller="company" action="create">${message(code: 'default.add.label', args: [message(code: 'company.label')])}</g:link></li>
               </ul>
             </li>
@@ -80,10 +78,27 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'users.label')} <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><g:link controller="users" action="index"><g:message code="list.label" default="Listado" /></g:link></li>
-                <li role="separator" class="divider"></li>
                 <li><g:link controller="users" action="create">${message(code: 'default.add.label', args: [message(code: 'users.label')])}</g:link></li>
               </ul>
             </li>
+
+            <sec:ifAnyGranted roles="ROLE_ADMIN">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'admin.label', default: 'Admin')} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><g:link controller="musicianRole" action="index">${message(code: 'default.list.label', args: [message(code: 'MusicianRole.label')])}</g:link></li>
+                <li><g:link controller="musicianRole" action="create">${message(code: 'default.add.label', args: [message(code: 'MusicianRole.label')])}</g:link></li>
+                <li role="separator" class="divider"></li>
+                <li><g:link controller="genre" action="index">${message(code: 'default.list.label', args: [message(code: 'genre.label')])}</g:link></li>
+                <li><g:link controller="genre" action="create">${message(code: 'default.add.label', args: [message(code: 'genre.label')])}</g:link></li>
+                <li role="separator" class="divider"></li>
+                <li><g:link controller="businessActivity" action="index">${message(code: 'default.list.label', args: [message(code: 'businessActivity.label')])}</g:link></li>
+                <li><g:link controller="businessActivity" action="create">${message(code: 'default.add.label', args: [message(code: 'businessActivity.label')])}</g:link></li>
+              </ul>
+            </li>
+            </sec:ifAnyGranted>
+                
+
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong class="font-bold"><sec:loggedInUserInfo field="username"/></strong> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
