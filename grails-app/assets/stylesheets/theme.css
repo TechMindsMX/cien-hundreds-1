@@ -1,5 +1,9 @@
 
+body { padding-top: 70px; }
 
+#content-wrapper {
+    padding-bottom: 30px;
+}
 
 .theme-dropdown .dropdown-menu
 {
