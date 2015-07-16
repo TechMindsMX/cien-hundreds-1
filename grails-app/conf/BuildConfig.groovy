@@ -78,7 +78,7 @@ grails.project.dependency.resolution = {
         compile ":rest-client-builder:2.1.1"
         compile ":taggable:1.1.0"
 
-        // compile ":localizations:1.4.4.14"
+        compile ":localizations:1.4.4.14"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.8.1" // or ":hibernate:3.6.10.18"
