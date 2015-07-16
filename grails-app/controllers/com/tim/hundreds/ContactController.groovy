@@ -136,7 +136,7 @@ class ContactController {
       } catch (ValidationException ve){
         flash.error = g.message(code: 'error.email.limit')
       }
-      redirect(uri: "/email/index")
+      redirect(uri: "/contact/show/${contact.id}")
     }
 
     def prepareTelephone(){
@@ -151,7 +151,7 @@ class ContactController {
       } catch (ValidationException ve){
         flash.error = g.message(code: 'error.telephone.limit')
       }
-      redirect(uri: "/telephone/index")
+      redirect(uri: "/contact/show/${contact.id}")
     }
 
 }
