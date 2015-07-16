@@ -8,6 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class CompanyController {
     def logoStorerService
     def companyService
+    def messengineService
     def corporatePressStorerService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
@@ -81,6 +82,8 @@ class CompanyController {
         def companyInstance = Company.findByUuid(command.uuid)
         bindData(companyInstance, command)
         companyService.save(companyInstance)
+
+        messengineService.sendInstanceEditedMessage(companyInstance, 'company')
 
         request.withFormat {
             form multipartForm {

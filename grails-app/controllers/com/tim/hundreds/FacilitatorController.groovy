@@ -38,12 +38,10 @@ class FacilitatorController {
       userService.create(user)
 
       if(!params.photo.isEmpty()){
-        def photoPath = photoStorerService.storeFile(request.getFile('photo'))
-        profile.photoPath = photoPath
+        profile.photoPath = photoStorerService.storeFile(request.getFile('photo'))
       }
       if(!params.resume.isEmpty()){
-        def resumePath = resumeStorerService.storeFile(request.getFile('resume'))
-        profile.resumePath = resumePath
+        profile.resumePath = resumeStorerService.storeFile(request.getFile('resume'))
       }
 
       flash.message = "El usuario ha sido creado y se ha enviado un correo electrónico"
