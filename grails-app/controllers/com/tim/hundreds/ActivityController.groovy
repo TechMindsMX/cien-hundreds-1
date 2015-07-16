@@ -1,7 +1,5 @@
 package com.tim.hundreds
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
@@ -9,6 +7,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class ActivityController {
     def activityService
+    def messengineService
 
     static showMe = false /*Parametro para aparecer en el menú*/
 
@@ -70,6 +69,7 @@ class ActivityController {
         }
 
         activityInstance.save flush:true
+        messengineService.sendInstanceEditedMessage(activityInstance.musician, 'musician')
 
         request.withFormat {
             form multipartForm {

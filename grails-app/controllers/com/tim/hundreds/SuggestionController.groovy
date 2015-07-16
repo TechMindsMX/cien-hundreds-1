@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class SuggestionController {
     def suggestionService
+    def messengineService
 
     static showMe = false /*Parametro para aparecer en el menú*/
 
@@ -71,6 +72,7 @@ class SuggestionController {
         }
 
         suggestionInstance.save flush:true
+        messengineService.sendInstanceEditedMessage(suggestionInstance.musician, 'musician')
 
         request.withFormat {
             form multipartForm {

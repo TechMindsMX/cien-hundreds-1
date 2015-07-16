@@ -9,6 +9,7 @@ import grails.validation.ValidationException
 class ContactController {
     def photoStorerService
     def contactService
+    def messengineService
     def tagService
 
     static showMe = false /*Parametro para aparecer en el menú*/
@@ -85,6 +86,7 @@ class ContactController {
         }
 
         contactInstance.save flush:true
+        messengineService.sendInstanceEditedMessage(contactInstance.musician, 'musician')
 
         request.withFormat {
             form multipartForm {
