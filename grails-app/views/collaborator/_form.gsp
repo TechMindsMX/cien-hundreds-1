@@ -13,17 +13,6 @@
 		</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'middleName', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="middleName">
-		<g:message code="collaborator.middleName.label" default="Middle Name" />
-		<span class="required-indicator">*</span>
-	</label>
-		<div class="${session.inputWidth}">
-			<g:textField class="form-control" name="middleName" id="middleName" maxlength="100" required="" value="${collaboratorInstance?.middleName}"/>
-
-		</div>
-</div>
-
 <div class="form-group fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'lastName', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="lastName">
 		<g:message code="collaborator.lastName.label" default="Last Name" />
@@ -31,6 +20,17 @@
 	</label>
 		<div class="${session.inputWidth}">
 			<g:textField class="form-control" name="lastName" id="lastName" maxlength="100" required="" value="${collaboratorInstance?.lastName}"/>
+
+		</div>
+</div>
+
+<div class="form-group fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'motherLastName', 'error')} required">
+	<label class="${session.labelWidth} control-label" for="motherLastName">
+		<g:message code="collaborator.motherLastName.label" default="Middle Name" />
+		<span class="required-indicator">*</span>
+	</label>
+		<div class="${session.inputWidth}">
+			<g:textField class="form-control" name="motherLastName" id="motherLastName" maxlength="100" required="" value="${collaboratorInstance?.motherLastName}"/>
 
 		</div>
 </div>

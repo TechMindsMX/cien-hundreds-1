@@ -44,19 +44,19 @@
     </div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'middleName', 'error')} required">
-    <label class="${session.labelWidth} control-label" for="middleName"><g:message code="middleName.label" default="Apellido paterno"/><span class="required-indicator">*</span></label>
-
-    <div class="${session.inputWidth}">
-        <g:textField value="${model?.middleName}" name="middleName" class="form-control" />
-    </div>
-</div>
-
 <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'lastName', 'error')} required">
     <label class="${session.labelWidth} control-label" for="lastName"><g:message code="lastName.label" default="Apellido materno"/><span class="required-indicator">*</span></label>
 
     <div class="${session.inputWidth}">
         <g:textField value="${model?.lastName}" name="lastName" class="form-control" />
+    </div>
+</div>
+
+<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'motherLastName', 'error')} required">
+    <label class="${session.labelWidth} control-label" for="motherLastName"><g:message code="motherLastName.label" default="Apellido paterno"/><span class="required-indicator">*</span></label>
+
+    <div class="${session.inputWidth}">
+        <g:textField value="${model?.motherLastName}" name="motherLastName" class="form-control" />
     </div>
 </div>
 

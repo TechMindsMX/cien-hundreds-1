@@ -5,7 +5,7 @@ class Telephone {
   String phone
   TelephoneType type
 
-  static belongsTo = [ contact : Contact ]
+  static belongsTo = [User,Contact,Collaborator]
 
   static constraints = {
     phone blank:false,matches:/^[0-9]*$/,size:10..10

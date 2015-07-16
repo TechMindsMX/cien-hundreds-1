@@ -119,7 +119,7 @@ class CollaboratorController {
       } catch (ValidationException ve){
         flash.error = g.message(code: 'error.email.limit')
       }
-      redirect(uri: "/email/index")
+      redirect(uri: "/collaborator/show/${collaborator.id}")
     }
 
     def prepareTelephone(){
@@ -129,12 +129,13 @@ class CollaboratorController {
 
     def saveTelephone(String collaboratorUuid, Telephone telephoneInstance){
       def collaborator = Collaborator.findByUuid(collaboratorUuid)
+      log.info "${collaborator.dump()} -- ${telephoneInstance.dump()}"
       try{
         collaboratorService.saveTelephone(collaborator, telephoneInstance)
       } catch (ValidationException ve){
         flash.error = g.message(code: 'error.telephone.limit')
       }
-      redirect(uri: "/telephone/index")
+      redirect(uri: "/collaborator/show/${collaborator.id}")
     }
 
 }

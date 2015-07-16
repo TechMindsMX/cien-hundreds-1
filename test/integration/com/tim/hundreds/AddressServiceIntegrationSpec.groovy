@@ -23,7 +23,7 @@ class AddressServiceIntegrationSpec extends Specification {
 
     musician.save flush: true
 
-    contact = new Contact(firstName:'firstName',middleName:'middleName',lastName:'lastName')
+    contact = new Contact(firstName:'firstName',motherLastName:'motherLastName',lastName:'lastName')
     contact.type = GenderType.MALE
     contact.role = musicianRole
     contact.birthDate = new Date()

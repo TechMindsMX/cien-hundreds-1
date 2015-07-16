@@ -92,7 +92,7 @@
 		<ul>
 			<g:each in="${companyCommentInstance?.company?.events}" var="i">
 			<li>
-				${i?.name}
+				${i?.activity}
 			</li>
 			</g:each>
 		</ul>

@@ -9,10 +9,10 @@ class CollaboratorServiceIntegrationSpec extends Specification {
 
   void "should save an email"() {
   given: "An collaborator"
-    def collaborator = new Collaborator(firstName: 'firstName', middleName: 'middleName', lastName: 'lastName', position: 'position')
+    def collaborator = new Collaborator(firstName: 'firstName', motherLastName: 'motherLastName', lastName: 'lastName', position: 'position')
   and: "A user"
     def user = new User(username:'collaboratorServiceIntegration1',password:'password')
-    def profile = new Profile(email:'collaboratorServiceIntegration1@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+    def profile = new Profile(email:'collaboratorServiceIntegration1@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
     user.profile = profile
   and: "A Company"
     def company = new Company(name:'Anjunabeats',description:'Music Production')
@@ -36,10 +36,10 @@ class CollaboratorServiceIntegrationSpec extends Specification {
 
   void "should save an telephone"() {
   given: "An collaborator"
-    def collaborator = new Collaborator(firstName: 'firstName', middleName: 'middleName', lastName: 'lastName', position: 'position')
+    def collaborator = new Collaborator(firstName: 'firstName', motherLastName: 'motherLastName', lastName: 'lastName', position: 'position')
   and: "A user"
     def user = new User(username:'collaboratorServiceIntegration2',password:'password')
-    def profile = new Profile(email:'collaboratorServiceIntegration2@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+    def profile = new Profile(email:'collaboratorServiceIntegration2@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
     user.profile = profile
   and: "A Company"
     def company = new Company(name:'Anjunabeats',description:'Music Production')
@@ -63,10 +63,10 @@ class CollaboratorServiceIntegrationSpec extends Specification {
 
   void "Should not save an collaborator with more than 3 emails"() {
     given: "An collaborator"
-      def collaborator = new Collaborator(firstName:'firstName',middleName:'middleName',lastName:'lastName', position:'position')
+      def collaborator = new Collaborator(firstName:'firstName',motherLastName:'motherLastName',lastName:'lastName', position:'position')
     and: "A user"
       def user = new User(username:'collaboratorServiceIntegration3',password:'password')
-      def profile = new Profile(email:'collaboratorServiceIntegration3@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def profile = new Profile(email:'collaboratorServiceIntegration3@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
       user.profile = profile
     and: "A Company"
       def company = new Company(name:'Anjunabeats',description:'Music Production')
@@ -94,10 +94,10 @@ class CollaboratorServiceIntegrationSpec extends Specification {
 
   void "Should not save an collaborator with more than 3 telephones"() {
     given: "An collaborator"
-      def collaborator = new Collaborator(firstName:'firstName',middleName:'middleName',lastName:'lastName', position:'position')
+      def collaborator = new Collaborator(firstName:'firstName',motherLastName:'motherLastName',lastName:'lastName', position:'position')
     and: "A user"
       def user = new User(username:'collaboratorServiceIntegration4',password:'password')
-      def profile = new Profile(email:'collaboratorServiceIntegration4@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def profile = new Profile(email:'collaboratorServiceIntegration4@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
       user.profile = profile
     and: "A Company"
       def company = new Company(name:'Anjunabeats',description:'Music Production')

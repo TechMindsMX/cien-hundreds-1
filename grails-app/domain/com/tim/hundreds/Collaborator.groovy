@@ -3,8 +3,8 @@ package com.tim.hundreds
 class Collaborator {
   String uuid = TokenGenerator.generateToken()
   String firstName
-  String middleName
   String lastName
+  String motherLastName
   String position
   String notes
 
@@ -17,8 +17,8 @@ class Collaborator {
 
   static constraints = {
     firstName blank:false,size:1..100
-    middleName blank:false,size:1..100
     lastName blank:false,size:1..100
+    motherLastName blank:false,size:1..100
     position blank:false,size:1..100
     notes nullable:true,blank:false,size:1..10000
     telephones maxSize: ApplicationState.MAX_TELEPHONES

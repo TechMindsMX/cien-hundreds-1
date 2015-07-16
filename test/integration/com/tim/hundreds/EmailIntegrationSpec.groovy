@@ -17,7 +17,7 @@ class EmailIntegrationSpec extends Specification {
       contact.entryDate = new Date()
     and: "A user"
       def user = new User(username:'emailIntegration1',password:'password')
-      def profile = new Profile(email:'emailIntegration1@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def profile = new Profile(email:'emailIntegration1@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
       user.profile = profile
     and: "A genre"
       def genre = new Genre(name: 'Trance').save()
@@ -54,7 +54,7 @@ class EmailIntegrationSpec extends Specification {
       contact.entryDate = new Date()
     and: "A user"
       def user = new User(username:'emailIntegration2',password:'password')
-      def profile = new Profile(email:'emailIntegration2@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def profile = new Profile(email:'emailIntegration2@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
       user.profile = profile
     and: "A genre"
       def genre = new Genre(name: 'Trance').save()

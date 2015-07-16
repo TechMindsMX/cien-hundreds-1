@@ -17,7 +17,7 @@ class AudioIntegrationSpec extends Specification {
     musician.formed = new Date()
 
     def user = new User(username:'audioIntegration1',password:'password')
-    def profile = new Profile(email:'audioIntegration1@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+    def profile = new Profile(email:'audioIntegration1@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
     user.profile = profile
     user.addToMusicians(musician)
     user.save flush: true
@@ -42,7 +42,7 @@ class AudioIntegrationSpec extends Specification {
     musician.formed = new Date()
 
     def user = new User(username:'audioIntegration1',password:'password')
-    def profile = new Profile(email:'audioIntegration1@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+    def profile = new Profile(email:'audioIntegration1@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
     user.profile = profile
     user.addToMusicians(musician)
     user.save flush: true

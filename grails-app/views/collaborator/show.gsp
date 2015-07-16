@@ -32,20 +32,20 @@
 				</li>
 				</g:if>
 
-				<g:if test="${collaboratorInstance?.middleName}">
-				<li class="fieldcontain">
-					<span id="middleName-label" class="${session.labelWidth} property-label"><g:message code="collaborator.middleName.label" default="Middle Name" /></span>
-
-						<span class="property-value" aria-labelledby="middleName-label"><g:fieldValue bean="${collaboratorInstance}" field="middleName"/></span>
-
-				</li>
-				</g:if>
-
 				<g:if test="${collaboratorInstance?.lastName}">
 				<li class="fieldcontain">
 					<span id="lastName-label" class="${session.labelWidth} property-label"><g:message code="collaborator.lastName.label" default="Last Name" /></span>
 
 						<span class="property-value" aria-labelledby="lastName-label"><g:fieldValue bean="${collaboratorInstance}" field="lastName"/></span>
+
+				</li>
+				</g:if>
+
+				<g:if test="${collaboratorInstance?.motherLastName}">
+				<li class="fieldcontain">
+					<span id="motherLastName-label" class="${session.labelWidth} property-label"><g:message code="collaborator.motherLastName.label" default="Middle Name" /></span>
+
+						<span class="property-value" aria-labelledby="motherLastName-label"><g:fieldValue bean="${collaboratorInstance}" field="motherLastName"/></span>
 
 				</li>
 				</g:if>
@@ -82,7 +82,7 @@
 					<span id="emails-label" class="${session.labelWidth} property-label"><g:message code="collaborator.emails.label" default="Emails" /></span>
 
 						<g:each in="${collaboratorInstance.emails}" var="e">
-						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.address.encodeAsHTML()}</g:link></span>
 						</g:each>
 
 				</li>
@@ -93,7 +93,7 @@
 					<span id="telephones-label" class="${session.labelWidth} property-label"><g:message code="collaborator.telephones.label" default="Telephones" /></span>
 
 						<g:each in="${collaboratorInstance.telephones}" var="t">
-						<span class="property-value" aria-labelledby="telephones-label"><g:link controller="telephone" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="telephones-label"><g:link controller="telephone" action="show" id="${t.id}">${t?.phone.encodeAsHTML()}</g:link></span>
 						</g:each>
 
 				</li>

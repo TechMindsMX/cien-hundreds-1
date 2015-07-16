@@ -18,7 +18,7 @@ class ActivityServiceIntegrationSpec extends Specification {
       musician.formed = new Date()
     and: "A user"
       def user = new User(username:'activityService',password:'password')
-      def profile = new Profile(email:'activityService@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def profile = new Profile(email:'activityService@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
       user.profile = profile
     and: "We add musician to user"
       user.addToMusicians(musician)

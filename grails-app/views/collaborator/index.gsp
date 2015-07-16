@@ -26,9 +26,9 @@
 
 						<g:sortableColumn property="firstName" title="${message(code: 'collaborator.firstName.label', default: 'First Name')}" />
 
-						<g:sortableColumn property="middleName" title="${message(code: 'collaborator.middleName.label', default: 'Middle Name')}" />
-
 						<g:sortableColumn property="lastName" title="${message(code: 'collaborator.lastName.label', default: 'Last Name')}" />
+
+						<g:sortableColumn property="motherLastName" title="${message(code: 'collaborator.motherLastName.label', default: 'Middle Name')}" />
 
 						<g:sortableColumn property="position" title="${message(code: 'collaborator.position.label', default: 'Position')}" />
 
@@ -44,9 +44,9 @@
 
 						<td><g:link action="show" id="${collaboratorInstance.id}">${fieldValue(bean: collaboratorInstance, field: "firstName")}</g:link></td>
 
-						<td>${fieldValue(bean: collaboratorInstance, field: "middleName")}</td>
-
 						<td>${fieldValue(bean: collaboratorInstance, field: "lastName")}</td>
+
+						<td>${fieldValue(bean: collaboratorInstance, field: "motherLastName")}</td>
 
 						<td>${fieldValue(bean: collaboratorInstance, field: "position")}</td>
 

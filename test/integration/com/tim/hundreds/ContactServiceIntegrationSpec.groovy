@@ -16,7 +16,7 @@ class ContactServiceIntegrationSpec extends Specification {
     contact.entryDate = new Date()
   and: "A user"
     def user = new User(username:'contactServiceIntegration1',password:'password')
-    def profile = new Profile(email:'contactServiceIntegration1@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+    def profile = new Profile(email:'contactServiceIntegration1@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
     user.profile = profile
   and: "A Musician"
     def musician = new Musician(name:'name',history:'history')
@@ -51,7 +51,7 @@ class ContactServiceIntegrationSpec extends Specification {
     contact.entryDate = new Date()
   and: "A user"
     def user = new User(username:'contactServiceIntegration2',password:'password')
-    def profile = new Profile(email:'contactServiceIntegration2@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+    def profile = new Profile(email:'contactServiceIntegration2@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
     user.profile = profile
   and: "A genre"
     def genre = new Genre(name: 'Trance').save()
@@ -88,7 +88,7 @@ class ContactServiceIntegrationSpec extends Specification {
       contact.entryDate = new Date()
     and: "A user"
       def user = new User(username:'contactServiceIntegration3',password:'password')
-      def profile = new Profile(email:'contactServiceIntegration3@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def profile = new Profile(email:'contactServiceIntegration3@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
       user.profile = profile
     and: "A genre"
       def genre = new Genre(name: 'Trance').save()
@@ -129,7 +129,7 @@ class ContactServiceIntegrationSpec extends Specification {
       contact.entryDate = new Date()
     and: "A user"
       def user = new User(username:'contactServiceIntegration4',password:'password')
-      def profile = new Profile(email:'contactServiceIntegration4@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def profile = new Profile(email:'contactServiceIntegration4@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
       user.profile = profile
     and: "A Musician"
       def musician = new Musician(name:'name',history:'history')
