@@ -11,7 +11,7 @@ class MusicianController {
 
     static showMe = true /*Parametro para aparecer en el menú*/
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def index(Integer max) {
@@ -70,6 +70,11 @@ class MusicianController {
             musicianInstance.errors = command.errors
             render view:'edit', model: [musicianInstance:musicianInstance]
             return
+        }
+
+       if(!params.logo.isEmpty()){
+          def logoPath = logoStorerService.storeFile(request.getFile('logo'))
+          command.logoPath = logoPath
         }
 
         def musicianInstance = Musician.findByUuid(command.uuid)
