@@ -15,6 +15,5 @@ class MusicianPage extends Page {
         select       { $('#genre') }
         logout { $('.nav-header').find('.logout') }
 
-        contactCreate { $('a[href*="contact/create"]') }
     }
 }

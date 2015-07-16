@@ -3,15 +3,15 @@ import geb.Page
 
 class UserTelephonePage extends Page {
 
-    static url = "userTelephone/create"
+    static url = "prepareTelephone"
 
-    static at = { driver.currentUrl.contains('userTelephone/create') }
+    static at = { driver.currentUrl.contains('prepareTelephone') }
 
     static content = {
-        userTelephoneForm { $('#userTelephoneForm') }
+        userTelephoneForm { $('.telephone-form') }
         submitButton { userTelephoneForm.find('.save') }
         cancelButton { $("#btnCancel") }
-        user         { $("#user") }
+        uuid         { $("#uuid") }
         type         { $("#type")}
         logout       { $('.nav-header').find('.logout') }
     }

@@ -23,7 +23,7 @@ class FacilitatorFunctionalSpec extends GebReportingSpec {
         facilitatorForm.password      = password
         facilitatorForm.passwordCheck = passwordCheck
         facilitatorForm.firstName     = firstName
-        facilitatorForm.middleName    = middleName
+        facilitatorForm.motherLastName    = motherLastName
         facilitatorForm.lastName      = lastName
         facilitatorForm.phone         = phone
         facilitatorForm.email         = email
@@ -32,7 +32,7 @@ class FacilitatorFunctionalSpec extends GebReportingSpec {
         then: "I am being redirected to the same page with errors"
         submitButton.click()
         where: "We have the next cases"
-        username | password | passwordCheck | firstName | middleName | lastName | phone | email | emailCheck || result
+        username | password | passwordCheck | firstName | motherLastName | lastName | phone | email | emailCheck || result
         ''       | ''       | ''            | ''        | ''         | ''       | ''    |  ''   | ''         || FacilitatorPage
         'Luis'   | ''       | ''            | ''        | ''         | ''       | ''    |  ''   | ''         || FacilitatorPage
 
