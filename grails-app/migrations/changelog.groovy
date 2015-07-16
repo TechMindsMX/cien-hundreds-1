@@ -1,6 +1,6 @@
 databaseChangeLog = {
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-1") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-1") {
 		createTable(tableName: "activity") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "activityPK")
@@ -32,7 +32,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-2") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-2") {
 		createTable(tableName: "address") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "addressPK")
@@ -74,7 +74,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-3") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-3") {
 		createTable(tableName: "audio") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "audioPK")
@@ -98,7 +98,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-4") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-4") {
 		createTable(tableName: "business_activity") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "business_actiPK")
@@ -114,7 +114,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-5") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-5") {
 		createTable(tableName: "buyer") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "buyerPK")
@@ -126,7 +126,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-6") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-6") {
 		createTable(tableName: "collaborator") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "collaboratorPK")
@@ -164,7 +164,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-7") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-7") {
 		createTable(tableName: "collaborator_email") {
 			column(name: "collaborator_emails_id", type: "bigint")
 
@@ -172,7 +172,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-8") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-8") {
 		createTable(tableName: "collaborator_telephone") {
 			column(name: "collaborator_telephones_id", type: "bigint")
 
@@ -180,7 +180,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-9") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-9") {
 		createTable(tableName: "company") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "companyPK")
@@ -242,7 +242,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-10") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-10") {
 		createTable(tableName: "company_comment") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "company_commePK")
@@ -272,7 +272,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-11") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-11") {
 		createTable(tableName: "company_validation") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "company_validPK")
@@ -302,7 +302,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-12") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-12") {
 		createTable(tableName: "complement") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "complementPK")
@@ -330,7 +330,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-13") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-13") {
 		createTable(tableName: "contact") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "contactPK")
@@ -392,7 +392,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-14") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-14") {
 		createTable(tableName: "contact_email") {
 			column(name: "contact_emails_id", type: "bigint")
 
@@ -400,7 +400,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-15") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-15") {
 		createTable(tableName: "datos_fiscales") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "datos_fiscalePK")
@@ -430,7 +430,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-16") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-16") {
 		createTable(tableName: "email") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "emailPK")
@@ -454,7 +454,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-17") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-17") {
 		createTable(tableName: "event") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "eventPK")
@@ -486,7 +486,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-18") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-18") {
 		createTable(tableName: "facilitator") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "facilitatorPK")
@@ -498,7 +498,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-19") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-19") {
 		createTable(tableName: "genre") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "genrePK")
@@ -518,7 +518,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-20") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-20") {
 		createTable(tableName: "localization") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "localizationPK")
@@ -554,7 +554,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-21") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-21") {
 		createTable(tableName: "musician") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "musicianPK")
@@ -620,7 +620,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-22") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-22") {
 		createTable(tableName: "musician_comment") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "musician_commPK")
@@ -652,7 +652,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-23") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-23") {
 		createTable(tableName: "musician_role") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "musician_rolePK")
@@ -668,7 +668,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-24") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-24") {
 		createTable(tableName: "musician_validation") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "musician_valiPK")
@@ -698,7 +698,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-25") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-25") {
 		createTable(tableName: "photo") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "photoPK")
@@ -722,7 +722,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-26") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-26") {
 		createTable(tableName: "product") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "productPK")
@@ -816,7 +816,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-27") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-27") {
 		createTable(tableName: "product_comment") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "product_commePK")
@@ -846,7 +846,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-28") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-28") {
 		createTable(tableName: "profile") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "profilePK")
@@ -884,7 +884,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-29") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-29") {
 		createTable(tableName: "reference") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "referencePK")
@@ -922,7 +922,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-30") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-30") {
 		createTable(tableName: "registration_code") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "registration_PK")
@@ -950,7 +950,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-31") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-31") {
 		createTable(tableName: "role") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "rolePK")
@@ -966,7 +966,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-32") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-32") {
 		createTable(tableName: "social") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "socialPK")
@@ -996,7 +996,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-33") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-33") {
 		createTable(tableName: "suggestion") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "suggestionPK")
@@ -1032,7 +1032,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-34") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-34") {
 		createTable(tableName: "tag_links") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "tag_linksPK")
@@ -1056,7 +1056,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-35") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-35") {
 		createTable(tableName: "tags") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "tagsPK")
@@ -1072,7 +1072,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-36") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-36") {
 		createTable(tableName: "telephone") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "telephonePK")
@@ -1100,7 +1100,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-37") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-37") {
 		createTable(tableName: "user") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "userPK")
@@ -1144,7 +1144,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-38") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-38") {
 		createTable(tableName: "user_email") {
 			column(name: "user_emails_id", type: "bigint")
 
@@ -1152,7 +1152,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-39") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-39") {
 		createTable(tableName: "user_role") {
 			column(name: "role_id", type: "bigint") {
 				constraints(nullable: "false")
@@ -1164,7 +1164,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-40") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-40") {
 		createTable(tableName: "user_telephone") {
 			column(name: "user_telephones_id", type: "bigint")
 
@@ -1172,7 +1172,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-41") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-41") {
 		createTable(tableName: "validation_message") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "validation_mePK")
@@ -1200,7 +1200,7 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-42") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-42") {
 		createTable(tableName: "video") {
 			column(autoIncrement: "true", name: "id", type: "bigint") {
 				constraints(nullable: "false", primaryKey: "true", primaryKeyName: "videoPK")
@@ -1224,179 +1224,179 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-43") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-43") {
 		addPrimaryKey(columnNames: "role_id, user_id", constraintName: "user_rolePK", tableName: "user_role")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-96") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-96") {
 		createIndex(indexName: "FK_s4saebhlisgfv458ks5lxwfk5", tableName: "activity") {
 			column(name: "musician_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-97") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-97") {
 		createIndex(indexName: "FK_oo0qi54r09mffw0s7tdls4vnn", tableName: "audio") {
 			column(name: "musician_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-98") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-98") {
 		createIndex(indexName: "FK_apavm25dnckvwx0igxixayr5o", tableName: "collaborator") {
 			column(name: "company_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-99") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-99") {
 		createIndex(indexName: "FK_auky8gkjodx3yb2t9l23h8bb5", tableName: "collaborator_email") {
 			column(name: "email_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-100") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-100") {
 		createIndex(indexName: "FK_h7js0t8kueou4pxujy46ccs28", tableName: "collaborator_email") {
 			column(name: "collaborator_emails_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-101") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-101") {
 		createIndex(indexName: "FK_4riy8s0t2j3acc4dx29188m5g", tableName: "collaborator_telephone") {
 			column(name: "telephone_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-102") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-102") {
 		createIndex(indexName: "FK_jtq3b6cm067b8cbx0949bn1nf", tableName: "collaborator_telephone") {
 			column(name: "collaborator_telephones_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-103") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-103") {
 		createIndex(indexName: "FK_29e7kigcj3o1n1hr7xdye8rma", tableName: "company") {
 			column(name: "social_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-104") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-104") {
 		createIndex(indexName: "FK_6fame86hdykgo8wlb2nfkleju", tableName: "company") {
 			column(name: "type_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-105") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-105") {
 		createIndex(indexName: "FK_g82ixrst2tc542u5s214ggpdf", tableName: "company") {
 			column(name: "user_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-106") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-106") {
 		createIndex(indexName: "FK_h2rewspdf9bnwpbt1nauwiaww", tableName: "company") {
 			column(name: "address_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-107") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-107") {
 		createIndex(indexName: "FK_px7wpskggmaqyv5hugyhmlrh", tableName: "company") {
 			column(name: "assigned_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-108") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-108") {
 		createIndex(indexName: "FK_qs2etwu504m9iiux8g6bxnbsr", tableName: "company") {
 			column(name: "datos_fiscales_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-109") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-109") {
 		createIndex(indexName: "FK_27svoac7udkgucob8x42cgk8n", tableName: "company_comment") {
 			column(name: "company_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-110") {
-		createIndex(indexName: "company_id_uniq_1437062625653", tableName: "company_comment", unique: "true") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-110") {
+		createIndex(indexName: "company_id_uniq_1437063283892", tableName: "company_comment", unique: "true") {
 			column(name: "company_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-111") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-111") {
 		createIndex(indexName: "FK_a8s8459b3eicx6pllc4de0e3m", tableName: "company_validation") {
 			column(name: "company_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-112") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-112") {
 		createIndex(indexName: "FK_leia2q4jssj66evlfoi9u1sey", tableName: "company_validation") {
 			column(name: "user_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-113") {
-		createIndex(indexName: "company_id_uniq_1437062625657", tableName: "company_validation", unique: "true") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-113") {
+		createIndex(indexName: "company_id_uniq_1437063283892", tableName: "company_validation", unique: "true") {
 			column(name: "company_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-114") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-114") {
 		createIndex(indexName: "FK_41xvdqhy8jitwhyulfoox9aei", tableName: "complement") {
 			column(name: "product_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-115") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-115") {
 		createIndex(indexName: "FK_8rcuhh4i0uum1tryi4tkaomoq", tableName: "contact") {
 			column(name: "role_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-116") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-116") {
 		createIndex(indexName: "FK_hdhcc7238a2lwr4yjw78qvlof", tableName: "contact") {
 			column(name: "address_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-117") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-117") {
 		createIndex(indexName: "FK_iu66rh5jr753g1snpeckccpnd", tableName: "contact") {
 			column(name: "social_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-118") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-118") {
 		createIndex(indexName: "FK_qce5hi0s8xngx6abn6t5qqdh1", tableName: "contact") {
 			column(name: "musician_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-119") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-119") {
 		createIndex(indexName: "FK_cympokuqia82xrakkgmo81je", tableName: "contact_email") {
 			column(name: "contact_emails_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-120") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-120") {
 		createIndex(indexName: "FK_iarmsp0o5pw64ns9nitrnpyc1", tableName: "contact_email") {
 			column(name: "email_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-121") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-121") {
 		createIndex(indexName: "FK_pjuse4nbsyy9iapot4t48ji9c", tableName: "datos_fiscales") {
 			column(name: "address_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-122") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-122") {
 		createIndex(indexName: "FK_gpf8dt5coprxfjt3ivpoqwvd4", tableName: "event") {
 			column(name: "company_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-123") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-123") {
 		createIndex(indexName: "localizations_idx", tableName: "localization") {
 			column(name: "code")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-124") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-124") {
 		createIndex(indexName: "unique_loc", tableName: "localization", unique: "true") {
 			column(name: "code")
 
@@ -1404,409 +1404,409 @@ databaseChangeLog = {
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-125") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-125") {
 		createIndex(indexName: "FK_c6m47md1l2deho73aq1vmk2hc", tableName: "musician") {
 			column(name: "datos_fiscales_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-126") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-126") {
 		createIndex(indexName: "FK_clcuv4femydlirbpxllqabp47", tableName: "musician") {
 			column(name: "user_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-127") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-127") {
 		createIndex(indexName: "FK_ls5crp81sdo77jp2aoh4jfboo", tableName: "musician") {
 			column(name: "genre_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-128") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-128") {
 		createIndex(indexName: "FK_nxah8pk0uolulpyldcbbn61j0", tableName: "musician") {
 			column(name: "social_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-129") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-129") {
 		createIndex(indexName: "FK_sykchqeqn5e6rfa8shuan9tm8", tableName: "musician") {
 			column(name: "assigned_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-130") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-130") {
 		createIndex(indexName: "FK_tnq8ruyw7fyhilr7l9m58b3iu", tableName: "musician") {
 			column(name: "address_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-131") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-131") {
 		createIndex(indexName: "FK_o0a4t8njpy2begfa4hece9wn3", tableName: "musician_comment") {
 			column(name: "musician_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-132") {
-		createIndex(indexName: "musician_id_uniq_1437062625677", tableName: "musician_comment", unique: "true") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-132") {
+		createIndex(indexName: "musician_id_uniq_1437063283924", tableName: "musician_comment", unique: "true") {
 			column(name: "musician_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-133") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-133") {
 		createIndex(indexName: "FK_8fusjimaf8xewyyosua1cwn09", tableName: "musician_validation") {
 			column(name: "musician_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-134") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-134") {
 		createIndex(indexName: "FK_looghw1dl328qony0vspjkxxl", tableName: "musician_validation") {
 			column(name: "user_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-135") {
-		createIndex(indexName: "musician_id_uniq_1437062625678", tableName: "musician_validation", unique: "true") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-135") {
+		createIndex(indexName: "musician_id_uniq_1437063283924", tableName: "musician_validation", unique: "true") {
 			column(name: "musician_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-136") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-136") {
 		createIndex(indexName: "FK_f3hnt0xjvbddm6kdw9nlgxcqo", tableName: "photo") {
 			column(name: "musician_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-137") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-137") {
 		createIndex(indexName: "FK_45g3a4rexapplpirj3jor716p", tableName: "product") {
 			column(name: "company_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-138") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-138") {
 		createIndex(indexName: "FK_aqyrrujh6k7xk02bupabc98vq", tableName: "product") {
 			column(name: "product_comment_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-139") {
-		createIndex(indexName: "email_uniq_1437062625683", tableName: "profile", unique: "true") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-139") {
+		createIndex(indexName: "email_uniq_1437063283939", tableName: "profile", unique: "true") {
 			column(name: "email")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-140") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-140") {
 		createIndex(indexName: "FK_7ismr0wetsn4sdv1n0r55ip4a", tableName: "reference") {
 			column(name: "type_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-141") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-141") {
 		createIndex(indexName: "FK_o61ou11akolomal5ne95bpsh7", tableName: "reference") {
 			column(name: "company_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-142") {
-		createIndex(indexName: "authority_uniq_1437062625686", tableName: "role", unique: "true") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-142") {
+		createIndex(indexName: "authority_uniq_1437063283939", tableName: "role", unique: "true") {
 			column(name: "authority")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-143") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-143") {
 		createIndex(indexName: "FK_9kbb6ggcjy9kusn382c6dauwk", tableName: "suggestion") {
 			column(name: "musician_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-144") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-144") {
 		createIndex(indexName: "FK_lmil1jg72pjc8ei5p6kk5g9un", tableName: "tag_links") {
 			column(name: "tag_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-145") {
-		createIndex(indexName: "name_uniq_1437062625689", tableName: "tags", unique: "true") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-145") {
+		createIndex(indexName: "name_uniq_1437063283939", tableName: "tags", unique: "true") {
 			column(name: "name")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-146") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-146") {
 		createIndex(indexName: "FK_cgavsyoc3ot92fi9nu8mgheis", tableName: "telephone") {
 			column(name: "contact_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-147") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-147") {
 		createIndex(indexName: "FK_1mcjtpxmwom9h9bf2q0k412e0", tableName: "user") {
 			column(name: "profile_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-148") {
-		createIndex(indexName: "username_uniq_1437062625691", tableName: "user", unique: "true") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-148") {
+		createIndex(indexName: "username_uniq_1437063283939", tableName: "user", unique: "true") {
 			column(name: "username")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-149") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-149") {
 		createIndex(indexName: "FK_c6icvhh11873ab6ys4t6lmj9l", tableName: "user_email") {
 			column(name: "user_emails_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-150") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-150") {
 		createIndex(indexName: "FK_ga2lakvpd1h851gbjmv45ln0g", tableName: "user_email") {
 			column(name: "email_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-151") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-151") {
 		createIndex(indexName: "FK_apcc8lxk2xnug8377fatvbn04", tableName: "user_role") {
 			column(name: "user_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-152") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-152") {
 		createIndex(indexName: "FK_it77eq964jhfqtu54081ebtio", tableName: "user_role") {
 			column(name: "role_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-153") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-153") {
 		createIndex(indexName: "FK_kayqg2jxrv0cbqvflyjhiy41g", tableName: "user_telephone") {
 			column(name: "telephone_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-154") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-154") {
 		createIndex(indexName: "FK_o9ffnbh6gmgiqswgr7tnmd33u", tableName: "user_telephone") {
 			column(name: "user_telephones_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-155") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-155") {
 		createIndex(indexName: "FK_3ugn6wij9gp6ryqbt38qt61jb", tableName: "validation_message") {
 			column(name: "musician_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-156") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-156") {
 		createIndex(indexName: "FK_al181veet6d6uh3x3fpx7y5y7", tableName: "validation_message") {
 			column(name: "user_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-157") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-157") {
 		createIndex(indexName: "FK_s0eh4ylgywtxpqxhjk73yf0e6", tableName: "video") {
 			column(name: "musician_id")
 		}
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-44") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-44") {
 		addForeignKeyConstraint(baseColumnNames: "musician_id", baseTableName: "activity", constraintName: "FK_s4saebhlisgfv458ks5lxwfk5", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "musician", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-45") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-45") {
 		addForeignKeyConstraint(baseColumnNames: "musician_id", baseTableName: "audio", constraintName: "FK_oo0qi54r09mffw0s7tdls4vnn", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "musician", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-46") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-46") {
 		addForeignKeyConstraint(baseColumnNames: "company_id", baseTableName: "collaborator", constraintName: "FK_apavm25dnckvwx0igxixayr5o", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "company", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-47") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-47") {
 		addForeignKeyConstraint(baseColumnNames: "collaborator_emails_id", baseTableName: "collaborator_email", constraintName: "FK_h7js0t8kueou4pxujy46ccs28", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "collaborator", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-48") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-48") {
 		addForeignKeyConstraint(baseColumnNames: "email_id", baseTableName: "collaborator_email", constraintName: "FK_auky8gkjodx3yb2t9l23h8bb5", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "email", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-49") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-49") {
 		addForeignKeyConstraint(baseColumnNames: "collaborator_telephones_id", baseTableName: "collaborator_telephone", constraintName: "FK_jtq3b6cm067b8cbx0949bn1nf", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "collaborator", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-50") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-50") {
 		addForeignKeyConstraint(baseColumnNames: "telephone_id", baseTableName: "collaborator_telephone", constraintName: "FK_4riy8s0t2j3acc4dx29188m5g", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "telephone", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-51") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-51") {
 		addForeignKeyConstraint(baseColumnNames: "address_id", baseTableName: "company", constraintName: "FK_h2rewspdf9bnwpbt1nauwiaww", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "address", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-52") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-52") {
 		addForeignKeyConstraint(baseColumnNames: "assigned_id", baseTableName: "company", constraintName: "FK_px7wpskggmaqyv5hugyhmlrh", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "user", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-53") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-53") {
 		addForeignKeyConstraint(baseColumnNames: "datos_fiscales_id", baseTableName: "company", constraintName: "FK_qs2etwu504m9iiux8g6bxnbsr", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "datos_fiscales", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-54") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-54") {
 		addForeignKeyConstraint(baseColumnNames: "social_id", baseTableName: "company", constraintName: "FK_29e7kigcj3o1n1hr7xdye8rma", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "social", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-55") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-55") {
 		addForeignKeyConstraint(baseColumnNames: "type_id", baseTableName: "company", constraintName: "FK_6fame86hdykgo8wlb2nfkleju", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "business_activity", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-56") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-56") {
 		addForeignKeyConstraint(baseColumnNames: "user_id", baseTableName: "company", constraintName: "FK_g82ixrst2tc542u5s214ggpdf", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "user", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-57") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-57") {
 		addForeignKeyConstraint(baseColumnNames: "company_id", baseTableName: "company_comment", constraintName: "FK_27svoac7udkgucob8x42cgk8n", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "company", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-58") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-58") {
 		addForeignKeyConstraint(baseColumnNames: "company_id", baseTableName: "company_validation", constraintName: "FK_a8s8459b3eicx6pllc4de0e3m", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "company", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-59") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-59") {
 		addForeignKeyConstraint(baseColumnNames: "user_id", baseTableName: "company_validation", constraintName: "FK_leia2q4jssj66evlfoi9u1sey", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "user", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-60") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-60") {
 		addForeignKeyConstraint(baseColumnNames: "product_id", baseTableName: "complement", constraintName: "FK_41xvdqhy8jitwhyulfoox9aei", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "product", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-61") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-61") {
 		addForeignKeyConstraint(baseColumnNames: "address_id", baseTableName: "contact", constraintName: "FK_hdhcc7238a2lwr4yjw78qvlof", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "address", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-62") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-62") {
 		addForeignKeyConstraint(baseColumnNames: "musician_id", baseTableName: "contact", constraintName: "FK_qce5hi0s8xngx6abn6t5qqdh1", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "musician", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-63") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-63") {
 		addForeignKeyConstraint(baseColumnNames: "role_id", baseTableName: "contact", constraintName: "FK_8rcuhh4i0uum1tryi4tkaomoq", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "musician_role", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-64") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-64") {
 		addForeignKeyConstraint(baseColumnNames: "social_id", baseTableName: "contact", constraintName: "FK_iu66rh5jr753g1snpeckccpnd", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "social", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-65") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-65") {
 		addForeignKeyConstraint(baseColumnNames: "contact_emails_id", baseTableName: "contact_email", constraintName: "FK_cympokuqia82xrakkgmo81je", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "contact", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-66") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-66") {
 		addForeignKeyConstraint(baseColumnNames: "email_id", baseTableName: "contact_email", constraintName: "FK_iarmsp0o5pw64ns9nitrnpyc1", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "email", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-67") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-67") {
 		addForeignKeyConstraint(baseColumnNames: "address_id", baseTableName: "datos_fiscales", constraintName: "FK_pjuse4nbsyy9iapot4t48ji9c", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "address", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-68") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-68") {
 		addForeignKeyConstraint(baseColumnNames: "company_id", baseTableName: "event", constraintName: "FK_gpf8dt5coprxfjt3ivpoqwvd4", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "company", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-69") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-69") {
 		addForeignKeyConstraint(baseColumnNames: "address_id", baseTableName: "musician", constraintName: "FK_tnq8ruyw7fyhilr7l9m58b3iu", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "address", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-70") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-70") {
 		addForeignKeyConstraint(baseColumnNames: "assigned_id", baseTableName: "musician", constraintName: "FK_sykchqeqn5e6rfa8shuan9tm8", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "user", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-71") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-71") {
 		addForeignKeyConstraint(baseColumnNames: "datos_fiscales_id", baseTableName: "musician", constraintName: "FK_c6m47md1l2deho73aq1vmk2hc", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "datos_fiscales", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-72") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-72") {
 		addForeignKeyConstraint(baseColumnNames: "genre_id", baseTableName: "musician", constraintName: "FK_ls5crp81sdo77jp2aoh4jfboo", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "genre", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-73") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-73") {
 		addForeignKeyConstraint(baseColumnNames: "social_id", baseTableName: "musician", constraintName: "FK_nxah8pk0uolulpyldcbbn61j0", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "social", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-74") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-74") {
 		addForeignKeyConstraint(baseColumnNames: "user_id", baseTableName: "musician", constraintName: "FK_clcuv4femydlirbpxllqabp47", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "user", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-75") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-75") {
 		addForeignKeyConstraint(baseColumnNames: "musician_id", baseTableName: "musician_comment", constraintName: "FK_o0a4t8njpy2begfa4hece9wn3", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "musician", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-76") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-76") {
 		addForeignKeyConstraint(baseColumnNames: "musician_id", baseTableName: "musician_validation", constraintName: "FK_8fusjimaf8xewyyosua1cwn09", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "musician", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-77") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-77") {
 		addForeignKeyConstraint(baseColumnNames: "user_id", baseTableName: "musician_validation", constraintName: "FK_looghw1dl328qony0vspjkxxl", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "user", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-78") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-78") {
 		addForeignKeyConstraint(baseColumnNames: "musician_id", baseTableName: "photo", constraintName: "FK_f3hnt0xjvbddm6kdw9nlgxcqo", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "musician", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-79") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-79") {
 		addForeignKeyConstraint(baseColumnNames: "company_id", baseTableName: "product", constraintName: "FK_45g3a4rexapplpirj3jor716p", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "company", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-80") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-80") {
 		addForeignKeyConstraint(baseColumnNames: "product_comment_id", baseTableName: "product", constraintName: "FK_aqyrrujh6k7xk02bupabc98vq", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "product_comment", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-81") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-81") {
 		addForeignKeyConstraint(baseColumnNames: "company_id", baseTableName: "reference", constraintName: "FK_o61ou11akolomal5ne95bpsh7", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "company", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-82") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-82") {
 		addForeignKeyConstraint(baseColumnNames: "type_id", baseTableName: "reference", constraintName: "FK_7ismr0wetsn4sdv1n0r55ip4a", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "business_activity", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-83") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-83") {
 		addForeignKeyConstraint(baseColumnNames: "musician_id", baseTableName: "suggestion", constraintName: "FK_9kbb6ggcjy9kusn382c6dauwk", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "musician", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-84") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-84") {
 		addForeignKeyConstraint(baseColumnNames: "tag_id", baseTableName: "tag_links", constraintName: "FK_lmil1jg72pjc8ei5p6kk5g9un", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "tags", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-85") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-85") {
 		addForeignKeyConstraint(baseColumnNames: "contact_id", baseTableName: "telephone", constraintName: "FK_cgavsyoc3ot92fi9nu8mgheis", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "contact", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-86") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-86") {
 		addForeignKeyConstraint(baseColumnNames: "profile_id", baseTableName: "user", constraintName: "FK_1mcjtpxmwom9h9bf2q0k412e0", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "profile", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-87") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-87") {
 		addForeignKeyConstraint(baseColumnNames: "email_id", baseTableName: "user_email", constraintName: "FK_ga2lakvpd1h851gbjmv45ln0g", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "email", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-88") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-88") {
 		addForeignKeyConstraint(baseColumnNames: "user_emails_id", baseTableName: "user_email", constraintName: "FK_c6icvhh11873ab6ys4t6lmj9l", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "user", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-89") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-89") {
 		addForeignKeyConstraint(baseColumnNames: "role_id", baseTableName: "user_role", constraintName: "FK_it77eq964jhfqtu54081ebtio", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "role", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-90") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-90") {
 		addForeignKeyConstraint(baseColumnNames: "user_id", baseTableName: "user_role", constraintName: "FK_apcc8lxk2xnug8377fatvbn04", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "user", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-91") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-91") {
 		addForeignKeyConstraint(baseColumnNames: "telephone_id", baseTableName: "user_telephone", constraintName: "FK_kayqg2jxrv0cbqvflyjhiy41g", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "telephone", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-92") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-92") {
 		addForeignKeyConstraint(baseColumnNames: "user_telephones_id", baseTableName: "user_telephone", constraintName: "FK_o9ffnbh6gmgiqswgr7tnmd33u", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "user", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-93") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-93") {
 		addForeignKeyConstraint(baseColumnNames: "musician_id", baseTableName: "validation_message", constraintName: "FK_3ugn6wij9gp6ryqbt38qt61jb", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "musician", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-94") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-94") {
 		addForeignKeyConstraint(baseColumnNames: "user_id", baseTableName: "validation_message", constraintName: "FK_al181veet6d6uh3x3fpx7y5y7", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "user", referencesUniqueColumn: "false")
 	}
 
-	changeSet(author: "josdem (generated)", id: "1437062625766-95") {
+	changeSet(author: "RicardoTIM (generated)", id: "1437063284057-95") {
 		addForeignKeyConstraint(baseColumnNames: "musician_id", baseTableName: "video", constraintName: "FK_s0eh4ylgywtxpqxhjk73yf0e6", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "musician", referencesUniqueColumn: "false")
 	}
 }
