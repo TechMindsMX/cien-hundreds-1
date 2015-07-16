@@ -11,7 +11,7 @@ class MusicianController {
 
     static showMe = true /*Parametro para aparecer en el menú*/
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def index(Integer max) {
@@ -58,21 +58,30 @@ class MusicianController {
     }
 
     def edit(Musician musicianInstance) {
+        log.info "${musicianInstance.dump()}"
         respond musicianInstance
     }
 
-    def update(Musician musicianInstance) {
-        if (musicianInstance == null) {
-            notFound()
+    def update(MusicianCommand command) {
+        log.info "${command.dump()}"
+
+        if (command.hasErrors()) {
+            Musician musicianInstance = new Musician(params)
+            musicianInstance.errors = command.errors
+            render view:'edit', model: [musicianInstance:musicianInstance]
             return
         }
 
-        if (musicianInstance.hasErrors()) {
-            respond musicianInstance.errors, view:'edit'
-            return
+       if(!params.logo.isEmpty()){
+          def logoPath = logoStorerService.storeFile(request.getFile('logo'))
+          command.logoPath = logoPath
         }
 
-        musicianInstance.save flush:true
+        def musicianInstance = Musician.findByUuid(command.uuid)
+        bindData(musicianInstance, command)
+        musicianService.save(musicianInstance)
+
+        tagService.addMusicianTags(musicianInstance, "${command.name},${command.genre.name},${command.tagsComma}")
 
         request.withFormat {
             form multipartForm {

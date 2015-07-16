@@ -28,7 +28,7 @@
 			</ul>
 			</div>
 		</g:hasErrors>
-			<g:form url="[resource:musicianInstance, action:'update']" method="PUT" class="form-horizontal" >
+			<g:uploadForm url="[resource:musicianInstance, action:'update']" method="POST" class="form-horizontal" >
 				<g:hiddenField name="version" value="${musicianInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>
@@ -39,7 +39,7 @@
 				    <g:actionSubmit class="btn btn-success" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					<button class="btn btn-danger" type="reset">Cancelar</button>
 				</div>
-			</g:form>
+			</g:uploadForm>
 		</div>
 	</body>
 </html>

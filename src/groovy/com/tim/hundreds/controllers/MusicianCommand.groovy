@@ -4,6 +4,7 @@ import grails.validation.Validateable
 
 @Validateable
 class MusicianCommand {
+  String uuid
   String name
   String history
   String web

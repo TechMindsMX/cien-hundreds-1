@@ -35,14 +35,15 @@ class TagServiceIntegrationSpec extends Specification {
   cleanup:"We delete contact"
     user.delete flush: true
   where: "We have next values"
-    tagsComma         || result
-    'One, Two'        || ['One', 'Two']
-    'One'             || ['One']
-    'One,Two'         || ['One', 'Two']
-    'One,Two,Three'   || ['One', 'Two', 'Three']
-    'One,Two,Three,'  || ['One', 'Two', 'Three']
-    ',One,Two,Three,' || ['One', 'Two', 'Three']
-    'One,Two,null'    || ['One', 'Two']
+    tagsComma             || result
+    'One, Two'            || ['One', 'Two']
+    'One'                 || ['One']
+    'One,Two'             || ['One', 'Two']
+    'One,Two,Three'       || ['One', 'Two', 'Three']
+    'One,Two,Three,'      || ['One', 'Two', 'Three']
+    ',One,Two,Three,'     || ['One', 'Two', 'Three']
+    'One,Two,null'        || ['One', 'Two']
+    'One,Two,Three,Three' || ['One', 'Two', 'Three']
   }
 
 }
