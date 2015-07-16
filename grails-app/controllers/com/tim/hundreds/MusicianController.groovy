@@ -81,6 +81,8 @@ class MusicianController {
         bindData(musicianInstance, command)
         musicianService.save(musicianInstance)
 
+        tagService.addMusicianTags(musicianInstance, "${command.name},${command.genre.name},${command.tagsComma}")
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Musician.label', default: 'Musician'), musicianInstance.id])
