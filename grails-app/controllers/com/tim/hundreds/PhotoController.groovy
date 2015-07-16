@@ -1,7 +1,5 @@
 package com.tim.hundreds
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
@@ -9,6 +7,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class PhotoController {
     def photoStorerService
+    def messengineService
     def photoService
 
     static showMe = false /*Parametro para aparecer en el menú*/
@@ -69,8 +68,10 @@ class PhotoController {
         if(params.file){
           command.path = photoStorerService.storeFile(request.getFile('file'))
         }
+
         Photo photoInstance = Photo.findByUuid(command.uuid)
         bindData(photoInstance, command)
+        messengineService.sendInstanceEditedMessage(photoInstance.musician, 'musician')
 
         try{
           def instance = photoService.savePhoto(photoInstance)
