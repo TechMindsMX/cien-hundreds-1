@@ -10,7 +10,7 @@ class CompanyController {
     def companyService
     def corporatePressStorerService
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     static showMe = true /*Parametro para aparecer en el menú*/
 
@@ -38,9 +38,6 @@ class CompanyController {
             return
         }
 
-        Company companyInstance = new Company()
-        bindData(companyInstance, command)
-
         if(!params.logo.empty){
           companyInstance.logo = logoStorerService.storeFile(request.getFile('logo'))
         }
@@ -48,6 +45,8 @@ class CompanyController {
           companyInstance.corporatePress = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
         }
 
+        Company companyInstance = new Company()
+        bindData(companyInstance, command)
         companyService.save(companyInstance)
 
         request.withFormat {
@@ -63,20 +62,25 @@ class CompanyController {
         respond companyInstance
     }
 
-    @Transactional
-    def update(Company companyInstance) {
-        log.info "${companyInstance.dump()}"
-        if (companyInstance == null) {
-            notFound()
+    def update(CompanyCommand command) {
+        log.info "${command.dump()}"
+        if (command.hasErrors()) {
+            Company companyInstance = new Company(params)
+            companyInstance.errors = command.errors
+            render view:'edit', model: [companyInstance:companyInstance]
             return
         }
 
-        if (companyInstance.hasErrors()) {
-            respond companyInstance.errors, view:'edit'
-            return
+        if(!params.logo.empty){
+          companyInstance.logo = logoStorerService.storeFile(request.getFile('logo'))
+        }
+        if(!params.corporatePress.empty){
+          companyInstance.corporatePress = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
         }
 
-        companyInstance.save flush:true
+        def companyInstance = Company.findByUuid(command.uuid)
+        bindData(companyInstance, command)
+        companyService.save(companyInstance)
 
         request.withFormat {
             form multipartForm {

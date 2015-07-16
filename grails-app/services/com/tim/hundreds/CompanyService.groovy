@@ -8,9 +8,13 @@ class CompanyService {
   def validationService
 
   def save(companyInstance) {
-    def user = springSecurityService.currentUser
-    user.addToCompanies(companyInstance)
-    user.save()
+    if(!companyInstance.user){
+      def user = springSecurityService.currentUser
+      user.addToCompanies(companyInstance)
+      user.save()
+    } else {
+      companyInstance.save()
+    }
 
     companyInstance
   }
