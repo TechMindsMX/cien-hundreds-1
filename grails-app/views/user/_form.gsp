@@ -50,7 +50,7 @@
 	<label class="${session.labelWidth} control-label" for="phone">Teléfono</label>
 
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.phone}" name="phone" class="form-control" />
+        <g:textField value="${model?.phone}" name="phone" class="form-control" size="10" />
     </div>
 </div>
 
