@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_COMPANY_ADMIN','ROLE_BUYER'])
 class ProductController {
     def productService
+    def messengineService
 
     static showMe = false /*Parametro para aparecer en el menú*/
 
@@ -74,6 +75,7 @@ class ProductController {
         }
 
         productInstance.save flush:true
+        messengineService.sendInstanceEditedMessage(productInstance.company, 'company')
 
         request.withFormat {
             form multipartForm {

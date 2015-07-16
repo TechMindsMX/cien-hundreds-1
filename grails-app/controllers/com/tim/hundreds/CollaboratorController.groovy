@@ -9,8 +9,8 @@ import grails.validation.ValidationException
 
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class CollaboratorController {
-
     def collaboratorService
+    def messengineService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -67,6 +67,7 @@ class CollaboratorController {
         }
 
         collaboratorInstance.save flush:true
+        messengineService.sendInstanceEditedMessage(collaboratorInstance.company, 'company')
 
         request.withFormat {
             form multipartForm {
