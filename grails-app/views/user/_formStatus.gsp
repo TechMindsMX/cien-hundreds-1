@@ -6,7 +6,7 @@
 </div>
 
 <div class="form-group fieldcontain ${hasErrors(bean: userInstance, field: 'accountExpired', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="accountExpired">${message(code: 'user.status.isEnabled.label')}<span class="required-indicator">*</span></label>
+	<label class="${session.labelWidth} control-label" for="accountExpired">${message(code: 'user.status.isBlocked.label')}<span class="required-indicator">*</span></label>
     <div class="${session.inputWidth}">
         <g:checkBox value="${userInstance?.accountExpired}" name="accountExpired" class="form-control" />
     </div>
