@@ -28,7 +28,7 @@
 			</ul>
 			</div>
 		</g:hasErrors>
-			<g:form url="[resource:photoInstance, action:'update']" method="PUT" class="form-horizontal" >
+			<g:uploadForm url="[resource:photoInstance, action:'update']" method="POST" class="form-horizontal" >
 				<g:hiddenField name="version" value="${photoInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>
@@ -39,7 +39,7 @@
 						<button class="btn btn-danger" type="reset"><g:message code="cancel.label" /></button>
 					</div>
 				</fieldset>
-			</g:form>
+			</g:uploadForm>
 		</div>
 	</body>
 </html>

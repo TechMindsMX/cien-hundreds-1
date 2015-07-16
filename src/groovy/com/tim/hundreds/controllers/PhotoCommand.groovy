@@ -4,6 +4,7 @@ import grails.validation.Validateable
 
 @Validateable
 class PhotoCommand {
+  String uuid
   String path
 
   Musician musician

@@ -13,7 +13,7 @@ class PhotoController {
 
     static showMe = false /*Parametro para aparecer en el menú*/
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -36,8 +36,7 @@ class PhotoController {
         }
 
         if(params.file){
-          def photoPath = photoStorerService.storeFile(request.getFile('file'))
-          command.path = photoPath
+          command.path = photoStorerService.storeFile(request.getFile('file'))
         }
         Photo photoInstance = new Photo()
         bindData(photoInstance, command)
@@ -61,26 +60,30 @@ class PhotoController {
         respond photoInstance
     }
 
-    @Transactional
-    def update(Photo photoInstance) {
-        if (photoInstance == null) {
-            notFound()
+    def update(PhotoCommand command) {
+        if (command.hasErrors()) {
+            respond command.errors, view:'edit'
             return
         }
 
-        if (photoInstance.hasErrors()) {
-            respond photoInstance.errors, view:'edit'
-            return
+        if(params.file){
+          command.path = photoStorerService.storeFile(request.getFile('file'))
         }
+        Photo photoInstance = Photo.findByUuid(command.uuid)
+        bindData(photoInstance, command)
 
-        photoInstance.save flush:true
-
-        request.withFormat {
+        try{
+          def instance = photoService.savePhoto(photoInstance)
+          request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Photo.label', default: 'Photo'), photoInstance.id])
-                redirect photoInstance
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'photo.label', default: 'Photo'), instance.id])
+                redirect instance
             }
-            '*'{ respond photoInstance, [status: OK] }
+            '*' { respond instance, [status: OK] }
+          }
+        } catch (Exception ve){
+          log.info "Errors ${ve.errors}"
+          respond photoInstance.musician.errors, view:'create'
         }
     }
 
