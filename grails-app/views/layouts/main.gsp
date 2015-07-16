@@ -101,17 +101,17 @@
 </ul>
 
 <div class="nav navbar-nav navbar-right">
+    <sec:ifNotLoggedIn>
+        <li><g:link controller="login">${message(code: 'springSecurity.login.link')}</g:link></li>
+    </sec:ifNotLoggedIn>
+    <sec:ifLoggedIn>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong class="font-bold"><sec:loggedInUserInfo field="username"/></strong> <span class="caret"></span></a>
         <ul class="dropdown-menu">
-            <sec:ifLoggedIn>
             <li><g:link class="logout" controller="logout"><g:message code="springSecurity.logout.link"/></g:link></li>
+        </ul>
         </sec:ifLoggedIn>
-        <sec:ifNotLoggedIn>
-        <li><g:link controller="login">${message(code: 'springSecurity.login.link')}</g:link></li>
-    </sec:ifNotLoggedIn>
-</ul>
-</li>
+    </li>
 </div>
 </div><!--/.nav-collapse -->
 </div>
