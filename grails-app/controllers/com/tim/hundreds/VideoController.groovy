@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class VideoController {
     def videoService
+    def messengineService
 
     static showMe = false /*Parametro para aparecer en el menú*/
 
@@ -69,6 +70,7 @@ class VideoController {
         }
 
         videoInstance.save flush:true
+        messengineService.sendInstanceEditedMessage(videoInstance.musician, 'musician')
 
         request.withFormat {
             form multipartForm {

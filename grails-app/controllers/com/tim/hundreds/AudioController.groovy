@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class AudioController {
     def audioService
+    def messengineService
 
     static showMe = false /*Parametro para aparecer en el menú*/
 
@@ -70,6 +71,7 @@ class AudioController {
         }
 
         audioInstance.save flush:true
+        messengineService.sendInstanceEditedMessage(audioInstance.musician, 'musician')
 
         request.withFormat {
             form multipartForm {
