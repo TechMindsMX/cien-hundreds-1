@@ -18,7 +18,7 @@ class TelephoneIntegrationSpec extends Specification {
       contact.entryDate = new Date()
     and: "A user"
       def user = new User(username:'telephoneIntegration1',password:'password')
-      def profile = new Profile(email:'telephoneIntegration1@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def profile = new Profile(email:'telephoneIntegration1@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
       user.profile = profile
     and: "A Musician"
       def musician = new Musician(name:'name',history:'history')
@@ -52,7 +52,7 @@ class TelephoneIntegrationSpec extends Specification {
       contact.entryDate = new Date()
     and: "A user"
       def user = new User(username:'telephoneIntegration2',password:'password')
-      def profile = new Profile(email:'telephoneIntegration2@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+      def profile = new Profile(email:'telephoneIntegration2@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
       user.profile = profile
     and: "A Musician"
       def musician = new Musician(name:'name',history:'history')

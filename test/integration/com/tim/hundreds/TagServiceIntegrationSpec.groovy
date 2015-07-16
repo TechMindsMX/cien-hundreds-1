@@ -22,7 +22,7 @@ class TagServiceIntegrationSpec extends Specification {
     musician.save flush: true
   and: "A user"
     def user = new User(username:'tagServiceIntegration',password:'password')
-    def profile = new Profile(email:'tagServiceIntegration@email.com', firstName:'me', middleName:'middleName', lastName:'lastName')
+    def profile = new Profile(email:'tagServiceIntegration@email.com', firstName:'me', motherLastName:'motherLastName', lastName:'lastName')
     user.profile = profile
   and: "We add musician to user"
     user.addToMusicians(musician)

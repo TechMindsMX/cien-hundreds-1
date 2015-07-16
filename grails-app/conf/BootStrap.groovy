@@ -44,7 +44,7 @@ class BootStrap {
 
     if(!defaultUser){
       def user = new User(username: name, password: 'T3chminds2015')
-      def  profile = new Profile(email: email, firstName: name, middleName:'middleName', lastName:'lastName').save()
+      def  profile = new Profile(email: email, firstName: name, motherLastName:'motherLastName', lastName:'lastName').save()
       user.profile = profile
       user.enabled = true
       user.save(flush: true)

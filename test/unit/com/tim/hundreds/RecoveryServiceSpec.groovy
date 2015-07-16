@@ -98,7 +98,7 @@ class RecoveryServiceSpec extends Specification {
     def email = 'josdem@email.com'
   and: "user"
     def user = Mock(User)
-    def profile = new Profile(email:email, firsName:'firsName', middleName:'middleName', lastName:'lastName')
+    def profile = new Profile(email:email, firsName:'firsName', motherLastName:'motherLastName', lastName:'lastName')
   when: "We confirm account for token"
     service.confirmAccountForToken(token)
   then: "We expect user enabled"

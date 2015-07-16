@@ -11,31 +11,31 @@ import spock.lang.Unroll
 class CollaboratorSpec extends Specification {
 
   @Unroll
-  void """When we have an collaborator with firstName: #firstName, middleName: #middleName, lastName: #lastName, position: #position, notes: #notes and we validate we expect result: #result"""() {
+  void """When we have an collaborator with firstName: #firstName, motherLastName: #motherLastName, lastName: #lastName, position: #position, notes: #notes and we validate we expect result: #result"""() {
   given: "An collaborator"
     Company company = new Company(name:'name',description:'desc')
     Collaborator collaborator = new Collaborator()
     collaborator.company = company
   when: "We assign collaborator values"
     collaborator.firstName = firstName
-    collaborator.middleName = middleName
+    collaborator.motherLastName = motherLastName
     collaborator.lastName = lastName
     collaborator.position = position
     collaborator.notes = notes
   then: "We validate collaborator"
     result == collaborator.validate()
   where: "We have next values"
-  firstName   | middleName   | lastName   | position   | notes   || result
-  'firstName' | 'middleName' | 'lastName' | 'position' | 'notes' || true
-  'firstName' | 'middleName' | 'lastName' | 'position' | null    || true
-  null        | 'middleName' | 'lastName' | 'position' | 'notes' || false
-  ''          | 'middleName' | 'lastName' | 'position' | 'notes' || false
+  firstName   | motherLastName   | lastName   | position   | notes   || result
+  'firstName' | 'motherLastName' | 'lastName' | 'position' | 'notes' || true
+  'firstName' | 'motherLastName' | 'lastName' | 'position' | null    || true
+  null        | 'motherLastName' | 'lastName' | 'position' | 'notes' || false
+  ''          | 'motherLastName' | 'lastName' | 'position' | 'notes' || false
   'firstName' | null         | 'lastName' | 'position' | 'notes' || false
   'firstName' | ''           | 'lastName' | 'position' | 'notes' || false
-  'firstName' | 'middleName' | null       | 'position' | 'notes' || false
-  'firstName' | 'middleName' | ''         | 'position' | 'notes' || false
-  'firstName' | 'middleName' | 'lastName' | null       | 'notes' || false
-  'firstName' | 'middleName' | 'lastName' | ''         | 'notes' || false
-  'firstName' | 'middleName' | 'lastName' | 'position' | ''      || false
+  'firstName' | 'motherLastName' | null       | 'position' | 'notes' || false
+  'firstName' | 'motherLastName' | ''         | 'position' | 'notes' || false
+  'firstName' | 'motherLastName' | 'lastName' | null       | 'notes' || false
+  'firstName' | 'motherLastName' | 'lastName' | ''         | 'notes' || false
+  'firstName' | 'motherLastName' | 'lastName' | 'position' | ''      || false
   }
 }

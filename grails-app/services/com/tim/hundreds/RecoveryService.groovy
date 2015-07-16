@@ -37,7 +37,7 @@ class RecoveryService {
     user.enabled = true
     user.save()
 
-    def name = "${user.profile.firstName} ${user.profile.middleName} ${user.profile.lastName}"
+    def name = "${user.profile.firstName} ${user.profile.motherLastName} ${user.profile.lastName}"
     def message = new NameCommand(email:user.profile.email, name:name)
     restService.sendCommand(message, grailsApplication.config.newUser.url)
   }

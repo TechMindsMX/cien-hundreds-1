@@ -29,7 +29,7 @@ class SocialServiceIntegrationSpec extends Specification {
 
   void "Should save socialInstance to contact"() {
     given: "An instance"
-      def instance = new Contact(firstName:'firstName',middleName:'middleName',lastName:'lastName')
+      def instance = new Contact(firstName:'firstName',motherLastName:'motherLastName',lastName:'lastName')
       instance.type = GenderType.MALE
       instance.role = new MusicianRole(name: 'Manager').save()
       instance.birthDate = new Date()
