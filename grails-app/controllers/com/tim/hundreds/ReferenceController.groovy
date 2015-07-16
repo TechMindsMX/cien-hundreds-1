@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class ReferenceController {
     def referenceService
+    def messengineService
 
     static showMe = false /*Parametro para aparecer en el menú*/
 
@@ -71,6 +72,7 @@ class ReferenceController {
         }
 
         referenceInstance.save flush:true
+        messengineService.sendInstanceEditedMessage(referenceInstance.company, 'company')
 
         request.withFormat {
             form multipartForm {
