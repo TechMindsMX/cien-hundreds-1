@@ -7,6 +7,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class MusicianController {
     def logoStorerService
     def musicianService
+    def messengineService
     def tagService
 
     static showMe = true /*Parametro para aparecer en el menú*/
@@ -81,6 +82,7 @@ class MusicianController {
         musicianService.save(musicianInstance)
 
         tagService.addMusicianTags(musicianInstance, "${command.name},${command.genre.name},${command.tagsComma}")
+        messengineService.sendInstanceEditedMessage(musicianInstance, 'musician')
 
         request.withFormat {
             form multipartForm {
