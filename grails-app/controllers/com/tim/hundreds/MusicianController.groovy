@@ -73,8 +73,7 @@ class MusicianController {
         }
 
        if(!params.logo.isEmpty()){
-          def logoPath = logoStorerService.storeFile(request.getFile('logo'))
-          command.logoPath = logoPath
+          command.logoPath = logoStorerService.storeFile(request.getFile('logo'))
         }
 
         def musicianInstance = Musician.findByUuid(command.uuid)

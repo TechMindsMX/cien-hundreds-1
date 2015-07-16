@@ -39,10 +39,10 @@ class CompanyController {
         }
 
         if(!params.logo.empty){
-          companyInstance.logo = logoStorerService.storeFile(request.getFile('logo'))
+          command.logoPath = logoStorerService.storeFile(request.getFile('logo'))
         }
         if(!params.corporatePress.empty){
-          companyInstance.corporatePress = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
+          command.corporatePressPath = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
         }
 
         Company companyInstance = new Company()
@@ -72,10 +72,10 @@ class CompanyController {
         }
 
         if(!params.logo.empty){
-          companyInstance.logo = logoStorerService.storeFile(request.getFile('logo'))
+          command.logoPath = logoStorerService.storeFile(request.getFile('logo'))
         }
         if(!params.corporatePress.empty){
-          companyInstance.corporatePress = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
+          command.corporatePressPath = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
         }
 
         def companyInstance = Company.findByUuid(command.uuid)

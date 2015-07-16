@@ -4,6 +4,7 @@ import grails.validation.Validateable
 
 @Validateable
 class CompanyCommand {
+  String uuid
   String name
   String description
   String web

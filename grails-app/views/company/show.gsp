@@ -26,8 +26,8 @@
 	        <div class="col-xs-12 ">
 	        	<div class="row">
 		        	<div class="col-xs-12 col-md-4">
-		        		<g:if test="${companyInstance?.logo}">
-						<img class="img-responsive max300" src="${grailsApplication.config.base.logo.url}${companyInstance.logo}" />
+		        		<g:if test="${companyInstance?.logoPath}">
+						<img class="img-responsive max300" src="${grailsApplication.config.base.logo.url}${companyInstance.logoPath}" />
 						</g:if>
 		        	</div>
 		        	<div class="col-xs-12 col-md-8">
@@ -97,7 +97,7 @@
 				</p>
 				<g:if test="${companyInstance?.events}">
 					<ul>
-						<g:each in="${companyInstance?.events}" var="e"> 
+						<g:each in="${companyInstance?.events}" var="e">
 						<li><g:link controller="event" action="edit" id="${e.id}" params="['company.id': companyInstance?.id]"><g:formatDate format="dd-MM-yyyy" date="${e.date}"/> ${e.activity} ${e.place}</g:link></li>
 						</g:each>
 					</ul>
@@ -114,7 +114,7 @@
 				</p>
 				<g:if test="${companyInstance?.references}">
 					<ul>
-						<g:each in="${companyInstance?.references}" var="r"> 
+						<g:each in="${companyInstance?.references}" var="r">
 						<li><g:link controller="reference" action="edit" id="${r.id}" >${r.name} - ${r.contactName} - ${r.type.name} - ${r.email} - ${r.phone}</g:link></li>
 						</g:each>
 					</ul>
@@ -139,17 +139,17 @@
 		        		<div class="col-sm-12">
 							<div class="fieldcontain well">
 								<p id="notes-label" class=""><g:message code="company.message.label" default="Reviews" /></p>
-								<g:if test="${companyInstance?.companyValidation}">				
-									<g:each in="${companyInstance?.companyValidation}" var="cv"> 
+								<g:if test="${companyInstance?.companyValidation}">
+									<g:each in="${companyInstance?.companyValidation}" var="cv">
 										<span class="property-value" aria-labelledby="companyValidation-label">${cv.message}</span>
 									</g:each>
 								</g:if>
 							</div>
 		        		</div>
 		        	</div>
-		        </sec:access>	
+		        </sec:access>
     	</div>
-			
+
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="fieldcontain">
@@ -184,7 +184,7 @@
 				<div class="fieldcontain">
 					<label for="collaborators">
 						<g:message code="collaborators.label" default="Collaborators" />
-						
+
 					</label>
 						<div class="">
 							<ul>
@@ -204,7 +204,7 @@
 		</div>
 
 		<p></p>
-		
+
 		<g:form url="[resource:companyInstance, action:'delete']" method="DELETE">
 			<fieldset class="buttons">
 				<g:link class="btn btn-primary edit" action="edit" resource="${companyInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

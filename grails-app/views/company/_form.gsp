@@ -56,7 +56,7 @@
 
 	</label>
 		<div class="${session.inputWidth}">
-			<input type="file" class="form-control" name="logo" value="${companyInstance?.logo}"/>
+			<input type="file" class="form-control" name="logo" />
 		</div>
 </div>
 
@@ -66,7 +66,7 @@
 
 	</label>
 		<div class="${session.inputWidth}">
-			<input type="file" class="form-control" name="corporatePress" value="${companyInstance?.corporatePress}"/>
+			<input type="file" class="form-control" name="corporatePress"/>
 		</div>
 </div>
 
