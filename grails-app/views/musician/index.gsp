@@ -41,7 +41,7 @@
 							<g:each in="${musicianInstance.contacts?.telephones}" var="v"><% v.phone.each {println it} %></g:each>
 						</td>
 						<td>
-							<g:each in="${musicianInstance.contacts?.emails}" var="v"><% v.phone.each {println it} %></g:each>
+							<g:each in="${musicianInstance.contacts?.emails}" var="v"><% v.address.each {println it} %></g:each>
 						</td>
 						<td><g:formatDate format="dd-MM-yyyy" date="${musicianInstance.dateCreated}" /></td>
 										

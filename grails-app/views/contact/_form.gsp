@@ -73,7 +73,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${session.inputWidth}">
-		<g:timDatePicker name="birthDate" minDate="-10Y" maxDate="-0D" value="${contactInstance?.birthDate}"></g:timDatePicker>
+		<g:timDatePicker name="birthDate" minDate="-10Y" maxDate="-0D" value="${contactInstance?.birthDate}" required="true"></g:timDatePicker>
 	</div>
 </div>
 
@@ -83,7 +83,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${session.inputWidth}">
-		<g:timDatePicker name="entryDate" minDate="-10Y" maxDate="-0D" value="${contactInstance?.entryDate}"></g:timDatePicker>
+		<g:timDatePicker name="entryDate" minDate="-10Y" maxDate="-0D" value="${contactInstance?.entryDate}" required="true"></g:timDatePicker>
 	</div>
 </div>
 

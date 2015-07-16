@@ -10,12 +10,13 @@ class TIMDatepickerTagLib {
         def datepickerFormat = attrs.datepickerFormat
         def minDate = attrs.minDate
         def maxDate = attrs.maxDate
+        def required = attrs.required ? 'required=\"\"': null
 
         def displayFormatString = displayFormat ? displayFormat : "dd-mm-yy"
         def datepickerFormatString = datepickerFormat ? datepickerFormat : "dd-MM-yyyy"
         def dateString = value ? value.format(datepickerFormatString) : ""
 
-        out.println "<input type=\"text\" name=\"${name}\" id=\"${id}\" value=\"${dateString}\" class=\"form-control ${className}\" />"
+        out.println "<input type=\"text\" name=\"${name}\" id=\"${id}\" value=\"${dateString}\" class=\"form-control ${className}\" ${required} />"
 
         out.println "<script type=\"text/javascript\"> \$(document).ready(function(){"
         out.println "\$(\"#${name}\").datepicker({"
