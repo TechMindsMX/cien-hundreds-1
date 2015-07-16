@@ -8,10 +8,13 @@ class MusicianService {
   def validationService
 
   def save(musicianInstance){
-    log.info "musicianInstance: ${musicianInstance.dump()}"
-    def user = springSecurityService.currentUser
-    user.addToMusicians(musicianInstance)
-    user.save()
+    if(!musicianInstance.user){
+      def user = springSecurityService.currentUser
+      user.addToMusicians(musicianInstance)
+      user.save()
+    } else {
+      musicianInstance.save()
+    }
 
     musicianInstance
   }
