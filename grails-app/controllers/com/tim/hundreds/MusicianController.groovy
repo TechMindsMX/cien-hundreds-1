@@ -72,9 +72,8 @@ class MusicianController {
             return
         }
 
-        Musician musicianInstance = new Musician()
+        def musicianInstance = Musician.findByUuid(command.uuid)
         bindData(musicianInstance, command)
-        musicianInstance.id = command.id
         musicianService.save(musicianInstance)
 
         request.withFormat {

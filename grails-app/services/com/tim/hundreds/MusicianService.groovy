@@ -9,13 +9,9 @@ class MusicianService {
 
   def save(musicianInstance){
     log.info "musicianInstance: ${musicianInstance.dump()}"
-    if(!musicianInstance.id){
-      def user = springSecurityService.currentUser
-      user.addToMusicians(musicianInstance)
-      user.save()
-    } else {
-      musicianInstance.save flush:true
-    }
+    def user = springSecurityService.currentUser
+    user.addToMusicians(musicianInstance)
+    user.save()
 
     musicianInstance
   }
