@@ -25,8 +25,10 @@ class RecoveryController {
   def confirm() {
     try {
       recoveryService.confirmAccountForToken(params.token)
+      flash.message = g.message(code: 'login.confirm')
       redirect controller:'login', action:'auth'
     }catch(BusinessException be) {
+      flash.error = "No hemos encontrado ese correo en nuestros registros"
       render status:NOT_FOUND
     }
   }
