@@ -11,9 +11,6 @@ class TelephoneSpec extends Specification {
   void """When we have a telephone with phone: #phone, type: #type we expect result: #result"""() {
   given: "A telephone"
     def telephone = new Telephone()
-  and: "A Contact"
-    def contact = new Contact()
-    telephone.contact = contact
   when: "We assign values"
     telephone.phone = phone
     telephone.type = type
