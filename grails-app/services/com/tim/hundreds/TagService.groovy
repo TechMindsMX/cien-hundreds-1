@@ -5,15 +5,15 @@ import grails.transaction.Transactional
 @Transactional
 class TagService {
 
-  def addMusicianTags(musicianInstance, tagsComma) {
+  def addTags(def target, String tagsComma) {
     def tags = tagsComma?.tokenize(',')
     tags.each {
-      if(it != 'null' && !musicianInstance.tags.contains(it.trim())){
-        musicianInstance.addTag(it.trim())
+      if(it != 'null' && !target.tags.contains(it.trim())){
+        target.addTag(it.trim())
       }
     }
 
-    musicianInstance.save()
+    target.save()
   }
 
 }

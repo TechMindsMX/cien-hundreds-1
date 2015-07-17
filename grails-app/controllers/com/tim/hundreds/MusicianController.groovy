@@ -47,7 +47,7 @@ class MusicianController {
         bindData(musicianInstance, command)
         musicianService.save(musicianInstance)
 
-        tagService.addMusicianTags(musicianInstance, "${command.name},${command.genre.name},${command.tagsComma}")
+        tagService.addTags(musicianInstance, "${command.name},${command.genre.name},${command.tagsComma}")
 
         request.withFormat {
             form multipartForm {
@@ -81,7 +81,7 @@ class MusicianController {
         bindData(musicianInstance, command)
         musicianService.save(musicianInstance)
 
-        tagService.addMusicianTags(musicianInstance, "${command.name},${command.genre.name},${command.tagsComma}")
+        tagService.addTags(musicianInstance, "${command.name},${command.genre.name},${command.tagsComma}")
         messengineService.sendInstanceEditedMessage(musicianInstance, 'musician')
 
         request.withFormat {

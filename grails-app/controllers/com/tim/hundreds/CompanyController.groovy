@@ -10,6 +10,7 @@ class CompanyController {
     def companyService
     def messengineService
     def corporatePressStorerService
+    def tagService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
@@ -50,6 +51,8 @@ class CompanyController {
         bindData(companyInstance, command)
         companyService.save(companyInstance)
 
+        tagService.addTags(companyInstance, "${command.name},${command.type.name},${command.tagsComma}")
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'company.label', default: 'Company'), companyInstance.id])
@@ -83,6 +86,7 @@ class CompanyController {
         bindData(companyInstance, command)
         companyService.save(companyInstance)
 
+        tagService.addTags(companyInstance, "${command.name},${command.type.name},${command.tagsComma}")
         messengineService.sendInstanceEditedMessage(companyInstance, 'company')
 
         request.withFormat {

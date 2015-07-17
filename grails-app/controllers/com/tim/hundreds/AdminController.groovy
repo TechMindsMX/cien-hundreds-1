@@ -3,7 +3,7 @@ package com.tim.hundreds
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN','ROLE_COMPANY_ADMIN'])
-class FacilitatorController {
+class AdminController {
 
   static defaultAction = "create"
   static allowedMethods = [save:'POST']

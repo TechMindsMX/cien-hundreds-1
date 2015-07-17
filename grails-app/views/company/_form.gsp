@@ -46,7 +46,7 @@
 
 	</label>
 		<div class="${session.inputWidth}">
-			<g:textArea class="form-control" name="tags" cols="40" rows="5" maxlength="10000" value="${companyInstance?.tags}" placeholder="${message(code:'tags.placeholder')}"/>
+			<g:textArea class="form-control" name="tagsComma" cols="40" rows="5" maxlength="10000" value="${companyInstance?.tags.join(", ")}" placeholder="${message(code:'tags.placeholder')}"/>
 		</div>
 </div>
 
