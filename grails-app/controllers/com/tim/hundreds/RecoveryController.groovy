@@ -25,8 +25,10 @@ class RecoveryController {
   def confirm() {
     try {
       recoveryService.confirmAccountForToken(params.token)
+      flash.message = g.message(code: 'login.confirm')
       redirect controller:'login', action:'auth'
     }catch(BusinessException be) {
+      flash.error = g.message(code: 'login.notfound')
       render status:NOT_FOUND
     }
   }
@@ -34,10 +36,10 @@ class RecoveryController {
   def recoveryUser(){
     try{
       recoveryService.recoveryUser(params.email)
-      flash.message = "Un mensaje se te ha enviado al correo"
+      flash.message = g.message(code: 'login.email')
       redirect controller:'login', action:'auth'
     }catch(BusinessException be) {
-      flash.error = "No hemos encontrado ese correo en nuestros registros"
+      flash.error = g.message(code: 'login.notfound')
       redirect action:'user'
     }
   }
@@ -46,13 +48,13 @@ class RecoveryController {
     def email = params.email
     try {
       recoveryService.generateRegistrationCodeForEmail(email)
-      flash.message = "Un mensaje se te ha enviado al correo"
+      flash.message = g.message(code: 'login.email')
       redirect action:'index'
     } catch(BusinessException be) {
-      flash.error = "No hemos encontrado ese correo en nuestros registros"
+      flash.error = g.message(code: 'login.notfound')
       redirect action:'index'
     } catch(Exception ex) {
-      flash.error = "El servicio de correo no esta disponible"
+      flash.error = g.message(code: 'login.email.unavailable')
       redirect action:'index'
     }
 
@@ -67,7 +69,7 @@ class RecoveryController {
       recoveryService.changePasswordForToken(params.id, command.password)
       redirect controller:'login', action:'auth'
     } catch(BusinessException be) {
-      flash.error = "El token ha expirado"
+      flash.error = g.message(code: 'login.token.expired')
       redirect action:'index'
     }
   }
