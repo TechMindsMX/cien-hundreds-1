@@ -37,7 +37,7 @@ class UserController {
       userService.create(user)
 
       flash.message = "Su usuario ha sido creado y se ha enviado un correo electrónico"
-      respond command, view: 'create'
+      redirect url: '/'
     } catch(DuplicatedEmailException de){
       flash.error = "El correo ya pertenece a otro usuario"
       respond command, view: 'create'
