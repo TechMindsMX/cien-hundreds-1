@@ -4,9 +4,6 @@ import grails.test.mixin.TestFor
 import spock.lang.Specification
 import spock.lang.Unroll
 
-/**
- * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
- */
 class TagServiceIntegrationSpec extends Specification {
   def tagService
 
@@ -28,7 +25,7 @@ class TagServiceIntegrationSpec extends Specification {
     user.addToMusicians(musician)
     user.save(flush: true)
   when: "We add tags using service"
-    tagService.addMusicianTags(musician, tagsComma)
+    tagService.addTags(musician, tagsComma)
   then: "We expect following result"
     result == musician.tags
     println result
