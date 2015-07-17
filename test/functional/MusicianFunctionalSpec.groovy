@@ -11,8 +11,8 @@ import page.MusicianShowPage
 import page.ContactPage
 import page.ContactShowPage
 
-import page.AddressPage
-import page.AddressSavePage
+import page.AddressFormPage
+import page.AddressShowPage
 
 import page.SocialCreatePage
 import page.SocialShowPage
@@ -130,38 +130,39 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         'images/test.jpg' || PhotoShowPage //Pass
     }
 
-    @Unroll
-    def "Fill Social form for Musician"() {
-        given:"navigate to form Social create"
-        at PhotoShowPage
-        backToMusician.click()
-        at MusicianShowPage
-        addSocial.click()
-        at SocialCreatePage
+    // @Unroll
+    // def "Fill Social form for Musician"() {
+    //     given:"navigate to form Social create"
+    //     at PhotoShowPage
+    //     backToMusician.click()
+    //     at MusicianShowPage
+    //     addSocial.click()
+    //     at SocialCreatePage
 
-        when: "I fill the form fields"
-        socialForm.facebook     = facebook
-        socialForm.twitter      = twitter
-        socialForm.googlePlus   = googlePlus 
-        socialForm.instagram    = instagram
-        socialForm.youtube      = youtube 
-        socialForm.linkedin     = linkedin 
-        socialForm.other        = other 
+    //     when: "I fill the form fields"
+    //     socialForm.facebook     = facebook
+    //     socialForm.twitter      = twitter
+    //     socialForm.googlePlus   = googlePlus 
+    //     socialForm.instagram    = instagram
+    //     socialForm.youtube      = youtube 
+    //     socialForm.linkedin     = linkedin 
+    //     socialForm.other        = other 
 
-        submitButton.click()
+    //     submitButton.click()
 
-        then: "I am being redirected to the show page with success message"
-        at result
-        alertSuccess
+    //     then: "I am being redirected to the show page with success message"
+    //     at result
+    //     alertSuccess
 
-        where: "We have the next cases"
-        facebook                         | twitter                    | googlePlus                        | instagram                       | youtube                               | linkedin                                  | other                                 || result
-        'https://www.facebook.com/Sony'  | 'https://twitter.com/sony' | 'https://plus.google.com/+Sony'   | 'https://instagram.com/sony/'   | 'https://www.youtube.com/user/Sony'   | 'https://www.linkedin.com/company/sony'   | 'https://en.wikipedia.org/wiki/Sony'  || SocialShowPage
-    }
+    //     where: "We have the next cases"
+    //     facebook                         | twitter                    | googlePlus                        | instagram                       | youtube                               | linkedin                                  | other                                 || result
+    //     'https://www.facebook.com/Sony'  | 'https://twitter.com/sony' | 'https://plus.google.com/+Sony'   | 'https://instagram.com/sony/'   | 'https://www.youtube.com/user/Sony'   | 'https://www.linkedin.com/company/sony'   | 'https://en.wikipedia.org/wiki/Sony'  || SocialShowPage
+    // }
 
     @Unroll
     def "Fill Activity form"() {
         given:"form Activity create"
+        at PhotoShowPage
         backToMusician.click()
         at MusicianShowPage
         addActivity.click()
@@ -169,14 +170,15 @@ class MusicianFunctionalSpec extends GebReportingSpec {
 
         when: "I don't fill form fields "
         activityForm.activity = activity
-        activityForm.place    = place
+        activityForm.date = date
+        activityForm.place = place
 
         then: "I am being redirected to the same page with errors"
         submitButton.click()
 
         where: "We have the next cases"
-        activity            | place    || result
-        'no hacer nada'     |  'algo'  || ActivityShowPage
+        activity            | place    | date               || result
+        'no hacer nada'     |  'algo'  | '20-06-2015'       || ActivityShowPage
     }
 
     @Unroll
@@ -248,33 +250,33 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         'correo@correo.com' | 'WORK'        || ContactShowPage
     }
 
-    @Unroll
-    def "Fill Social form for Musician Contact"() {
-        given:"navigate to form Social create"
-        at ContactShowPage
-        addSocial.click()
-        at SocialCreatePage
+    // @Unroll
+    // def "Fill Social form for Musician Contact"() {
+    //     given:"navigate to form Social create"
+    //     at ContactShowPage
+    //     addSocial.click()
+    //     at SocialCreatePage
 
-        when: "I fill the form fields"
-        socialForm.facebook     = facebook
-        socialForm.twitter      = twitter
-        socialForm.googlePlus   = googlePlus 
-        socialForm.instagram    = instagram
-        socialForm.youtube      = youtube 
-        socialForm.linkedin     = linkedin 
-        socialForm.other        = other 
+    //     when: "I fill the form fields"
+    //     socialForm.facebook     = facebook
+    //     socialForm.twitter      = twitter
+    //     socialForm.googlePlus   = googlePlus 
+    //     socialForm.instagram    = instagram
+    //     socialForm.youtube      = youtube 
+    //     socialForm.linkedin     = linkedin 
+    //     socialForm.other        = other 
 
-        submitButton.click()
+    //     submitButton.click()
 
-        then: "I am being redirected to the show page with success message"
-        at result
-        alertSuccess
+    //     then: "I am being redirected to the show page with success message"
+    //     at result
+    //     alertSuccess
 
-        where: "We have the next cases"
-        facebook                         | twitter                    | googlePlus                        | instagram                       | youtube                               | linkedin                                  | other                                 || result
-        'https://www.facebook.com/Sony'  | 'https://twitter.com/sony' | 'https://plus.google.com/+Sony'   | 'https://instagram.com/sony/'   | 'https://www.youtube.com/user/Sony'   | 'https://www.linkedin.com/company/sony'   | 'https://en.wikipedia.org/wiki/Sony'  || SocialShowPage
+    //     where: "We have the next cases"
+    //     facebook                         | twitter                    | googlePlus                        | instagram                       | youtube                               | linkedin                                  | other                                 || result
+    //     'https://www.facebook.com/Sony'  | 'https://twitter.com/sony' | 'https://plus.google.com/+Sony'   | 'https://instagram.com/sony/'   | 'https://www.youtube.com/user/Sony'   | 'https://www.linkedin.com/company/sony'   | 'https://en.wikipedia.org/wiki/Sony'  || SocialShowPage
 
-    }
+    // }
 
     @Unroll
     def "Fill Address form for Musician Contact"() {
@@ -305,6 +307,5 @@ class MusicianFunctionalSpec extends GebReportingSpec {
 
 
     def cleanupSpec() {
-        logout.click()
     }
 }
