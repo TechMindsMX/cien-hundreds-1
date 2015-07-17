@@ -178,14 +178,14 @@
 </div>
 </g:if>
 
-<g:if test="${contactInstance.address == null}">
+<g:if test="${!contactInstance?.address}">
 <div>
-	<g:link controller="address" action="create" params='[contactUuid: "${contactInstance.uuid}"]'>Agregar Dirección</g:link>
+	<g:link controller="address" action="create" params='[contactUuid: "${contactInstance.uuid}"]'>${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
 </div>
 </g:if>
-<g:if test="${contactInstance.social == null}">
+<g:if test="${!contactInstance?.social}">
 <div>
-	<g:link controller="social" action="create" params='[contactUuid: "${contactInstance.uuid}"]'>Agregar Redes Sociales</g:link>
+	<g:link controller="social" action="create" params='[contactUuid: "${contactInstance.uuid}"]'>${message(code: 'default.add.label', args: [message(code: 'social.label')])}</g:link>
 </div>
 </g:if>
 <g:if test="${!contactInstance.telephones || contactInstance.telephones?.size() < ApplicationState.MAX_TELEPHONES}">

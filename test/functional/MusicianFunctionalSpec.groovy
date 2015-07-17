@@ -2,6 +2,7 @@ import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import spock.lang.Shared
 import spock.lang.Unroll
+
 import page.LoginPage
 import page.MusicianPage
 import page.MusicianSavePage
@@ -16,7 +17,22 @@ import page.AddressSavePage
 import page.SocialCreatePage
 import page.SocialShowPage
 
-import page.UserTelephonePage
+import page.ActivityFormPage
+import page.ActivityShowPage
+
+import page.PrepareTelephoneFormPage
+
+import page.PrepareEmailFormPage
+
+import page.VideoFormPage
+import page.VideoShowPage
+
+import page.AudioFormPage
+import page.AudioShowPage
+
+import page.PhotoFormPage
+import page.PhotoShowPage
+
 
 @Stepwise
 class MusicianFunctionalSpec extends GebReportingSpec {
@@ -32,10 +48,10 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         loginButton.click()
     }
 
-    @Unroll
-    def "Fill Form for Musician"() {
+    def "Fill Form for Musician checkbox"() {
         given:"Create Musician Form"
         to MusicianPage
+
         when: "I do fill fields form"
         musicianForm.name      = name
         musicianForm.history   = history
@@ -43,53 +59,133 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         musicianForm.notes     = notes
         musicianForm.tagsComma = tagsComma
         musicianForm.formed    = formed
-        musicianForm.logo      = logo
         select                 = genre
+        musicianForm.find('[name="hasManager"]').click()
+        musicianForm.logo      = logo
+
         then: "I am being redirected to the same page with errors"
         submitButton.click()
+
         where: "We have the next cases"
         name    | history | web                           | notes  | tagsComma                    | formed       | genre| logo               || result
-        // ''      | ''      | ''                            | ''     | ''                           | ''           | '1'  | ''                 || MusicianPage
-        // 'luis'  | ''      | ''                            | ''     | ''                           | ''           | '1'  | ''                 || MusicianPage
-        // 'luis1' | 'test'  | ''                            | ''     | ''                           | ''           | '1'  | ''                 || MusicianSavePage
-        // 'luis2' | 'test'  | 'https://www.ironmaiden.com/' | ''     | ''                           | ''           | '1'  | ''                 || MusicianSavePage
-        // 'luis3' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | ''           | '1'  | ''                 || MusicianSavePage
-        // 'luis4' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '27-06-2015' | '1'  | ''                 || MusicianShowPage
-        // 'luis5' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '28-06-2015' | '2'  | ''                 || MusicianShowPage
-        'luis6' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '29-06-2015' | '3'  | 'images/test.jpg'  || MusicianShowPage
+        'luis7' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '30-06-2015' | '2'  | '/images/test.jpg' || MusicianPage
 
     }
 
-    // @Unroll
-    // def "Fill Form for Musician checkbox"() {
-    //     given:"Create Musician Form"
-    //     to MusicianPage
+    @Unroll
+    def "Fill Video form"() {
+        given:"form Video create"
+        at MusicianShowPage
+        addVideo.click()
+        at VideoFormPage
 
-    //     when: "I do fill fields form"
-    //     musicianForm.name      = name
-    //     musicianForm.history   = history
-    //     musicianForm.web       = web
-    //     musicianForm.notes     = notes
-    //     musicianForm.tagsComma = tagsComma
-    //     musicianForm.formed    = formed
-    //     select                 = genre
-    //     musicianForm.find('[name="hasManager"]').click()
-    //     musicianForm.logo      = logo
+        when: "I don't fill the form fields "
+        videoForm.url = siteUrl
 
-    //     then: "I am being redirected to the same page with errors"
-    //     submitButton.click()
+        then: "I am being redirected to the same page with errors"
+        submitButton.click()
 
-    //     where: "We have the next cases"
-    //     name    | history | web                           | notes  | tagsComma                    | formed       | genre| logo               || result
-    //     'luis7' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '30-06-2015' | '2'  | '/images/test.jpg' || MusicianPage
+        where: "We have the next cases"
+        siteUrl                                       || result
+        'https://www.youtube.com/watch?v=wP1zAyibHm8' || VideoShowPage
+    }
 
-    // }
+    @Unroll
+    def "Fill Audio form"() {
+        given:"form Audio create"
+        at VideoShowPage
+        backToMusician.click()
+        at MusicianShowPage
+        addAudio.click()
+        to AudioFormPage
+
+        when: "I fill the Audio form"
+        audioForm.url = url
+
+        then: "I am being redirected to the same page with errors or redirect to view Audio page."
+        submitButton.click()
+
+        where: "We have the next cases"
+        url                                                                  || result
+        'https://soundcloud.com/metalbladerecords/act-of-defiance-throwback' || AudioShowPage //Pass
+    }
+
+    @Unroll
+    def "Fill Photo form"() {
+        given:"form Photo create"
+        at AudioShowPage
+        backToMusician.click()
+        at MusicianShowPage
+        addPhoto.click()
+        to PhotoFormPage
+
+        when: "I fill the Photo form"
+        photoForm.file = file
+
+        then: "I am being redirected to the same page with errors or redirect to view Photo page."
+        submitButton.click()
+
+        where: "We have the next cases"
+        file              || result
+        'images/test.jpg' || PhotoShowPage //Pass
+    }
+
+    @Unroll
+    def "Fill Social form for Musician"() {
+        given:"navigate to form Social create"
+        at PhotoShowPage
+        backToMusician.click()
+        at MusicianShowPage
+        addSocial.click()
+        at SocialCreatePage
+
+        when: "I fill the form fields"
+        socialForm.facebook     = facebook
+        socialForm.twitter      = twitter
+        socialForm.googlePlus   = googlePlus 
+        socialForm.instagram    = instagram
+        socialForm.youtube      = youtube 
+        socialForm.linkedin     = linkedin 
+        socialForm.other        = other 
+
+        submitButton.click()
+
+        then: "I am being redirected to the show page with success message"
+        at result
+        alertSuccess
+
+        where: "We have the next cases"
+        facebook                         | twitter                    | googlePlus                        | instagram                       | youtube                               | linkedin                                  | other                                 || result
+        'https://www.facebook.com/Sony'  | 'https://twitter.com/sony' | 'https://plus.google.com/+Sony'   | 'https://instagram.com/sony/'   | 'https://www.youtube.com/user/Sony'   | 'https://www.linkedin.com/company/sony'   | 'https://en.wikipedia.org/wiki/Sony'  || SocialShowPage
+    }
+
+    @Unroll
+    def "Fill Activity form"() {
+        given:"form Activity create"
+        backToMusician.click()
+        at MusicianShowPage
+        addActivity.click()
+        at ActivityFormPage
+
+        when: "I don't fill form fields "
+        activityForm.activity = activity
+        activityForm.place    = place
+
+        then: "I am being redirected to the same page with errors"
+        submitButton.click()
+
+        where: "We have the next cases"
+        activity            | place    || result
+        'no hacer nada'     |  'algo'  || ActivityShowPage
+    }
 
     @Unroll
     def "Fill Contact form"() {
         given:"form Contact create"
+        at ActivityShowPage
+        backToMusician.click()
         at MusicianShowPage
-        contactCreate.click()
+        addContact.click()
 
         when: "I fill the form fields"
         at ContactPage
@@ -111,57 +207,52 @@ class MusicianFunctionalSpec extends GebReportingSpec {
 
         where: "We have the next cases"
         firstName | lastName   | motherLastName    | other   | nationality | biography   | style   | birthDate    | entryDate   | role | type   | file || result
-        // ''        | ''         | ''                | ''      | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | ''         | ''                | ''      | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | ''                | ''      | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | ''      | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | ''          | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'alb'       | ''          | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'ago'       | 'biography' | ''      | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'ata'       | 'biography' | 'style' | ''           | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'bmu'       | 'biography' | 'style' | '28-03-1981' | ''          | '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'vgb'       | 'biography' | 'style' | '28-03-1981' | '20-06-2015'| '1'  | 'MALE' | ''   || ContactPage
-        // 'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'cxr'       | 'biography' | 'style' | '28-03-1981' | '20-06-2015'| '1'  | 'MALE' | ''   || ContactPage
         'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'mex'       | 'biography' | 'style' | '28-03-1981' | '20-06-2015'| '1'  | 'MALE' | ''   || ContactShowPage
     }
 
     @Unroll
-    def "Fill UserTelephonePage form"() {
-        given:"form UserTelephonePage create"
+    def "Fill PrepareTelephoneFormPage form"() {
+        given:"form PrepareTelephoneFormPage create"
         at ContactShowPage
         addTelephone.click()
-        at UserTelephonePage
+        at PrepareTelephoneFormPage
 
-        when: "I don't fill the form fields "
+        when: "I fill the form fields "
         userTelephoneForm.phone     = phone
         type                        = type
-        userTelephoneForm.uuid      = uuid
 
-
-        then: "I am being redirected to the same page with errors"
+        then: "I submit the form"
         submitButton.click()
 
-        where: "We have the next cases"
-        phone        | type          | uuid                               || result
-        // ''           | ''            | ''                                 || UserTelephonePage
-        // '1234567890' | ''            | ''                                 || UserTelephonePage
-        // '12345678'   | ''            | ''                                 || UserTelephonePage
-        // '12345678901'| ''            | ''                                 || UserTelephonePage
-        // '1234567890' | 'WORK'        | ''                                 || UserTelephonePage
-        // '1234567890' | 'WORK'        | ''                                 || UserTelephonePage
-        // '1234567890' | 'WORK'        | ''                                 || UserTelephonePage
-        // '1234567890' | 'WORK'        | ''                                 || UserTelephonePage
-        // '1234567890' | 'WORK'        | '7d0f82f'                          || UserTelephonePage
-        '1234567890' | 'WORK'        | '7d0f82fbb0ba4beabda87d25914590c9' || ContactShowPage
+        where: "We expect a result for the next cases"
+        phone        | type           || result
+        '1234567890' | 'WORK'         || ContactShowPage
     }
 
     @Unroll
-    def "Fill Social form"() {
+    def "Fill PrepareEmailPage form"() {
+        given:"form UserEmailPage create"
+        at ContactShowPage
+        addEmail.click()
+        at PrepareEmailFormPage
+
+        when: "I fill the form fields "
+        emailForm.address     = address
+        type                  = type
+
+        then: "I submit the form"
+        submitButton.click()
+
+        where: "We expect a result for the next cases"
+        address             | type          || result
+        'correo@correo.com' | 'WORK'        || ContactShowPage
+    }
+
+    @Unroll
+    def "Fill Social form for Musician Contact"() {
         given:"navigate to form Social create"
         at ContactShowPage
-        backToMusician.click()
-        at MusicianShowPage
-        socialCreate.click()
+        addSocial.click()
         at SocialCreatePage
 
         when: "I fill the form fields"
@@ -185,37 +276,35 @@ class MusicianFunctionalSpec extends GebReportingSpec {
 
     }
 
+    @Unroll
+    def "Fill Address form for Musician Contact"() {
+        given:"form Address create"
+        at ContactShowPage
+        addAddress.click()
+        at AddressFormPage
 
-    // @Unroll
-    // def "Fill Address form"() {
-    //     given:"form Address create"
-    //     backToMusician.click()
-    //     createAddress.click()
+        when: "I fill the form fields"
+        addressForm.country      = country
+        addressForm.street       = street
+        addressForm.zipcode      = zipcode
+        addressForm.neighborhood = neighborhood
+        addressForm.county       = county
+        addressForm.town         = town
+        addressForm.state        = state
 
-    //     when: "I fill the form fields"
-    //     addressForm.country      = country
-    //     addressForm.street       = street
-    //     addressForm.zipcode      = zipcode
+        submitButton.click()
 
-    //     js('jQuery("#zipcode").trigger("change")')
+        then: "I am being redirected to the same page with errors"
+        at result
+        alertSuccess
 
-    //     addressForm.neighborhood = neighborhood
-    //     addressForm.county       = county
-    //     addressForm.town         = town
-    //     addressForm.state        = state
-
-    //     submitButton.click()
-
-    //     then: "I am being redirected to the same page with errors"
-    //     at result
-    //     alertSuccess
-
-    //     where: "We have the next cases"
-    //     country | street            | zipcode | neighborhood | county | town   | state     || result
-    //     'aus'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | 'Apan' | 'Hidalgo' || AddressSavePage
-    //     'mex'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | 'Apan' | 'Hidalgo' || AddressSavePage
-    // }
+        where: "We have the next cases"
+        country | street            | zipcode | neighborhood | county | town   | state     || result
+        'alb'   | 'San Itario #666' | '43904' | 'Azteca'     | 'Apan' | 'Apan' | 'Hidalgo' || AddressShowPage
+    }
 
 
-    def cleanupSpec() {}
+    def cleanupSpec() {
+        logout.click()
+    }
 }

@@ -9,6 +9,7 @@ class SocialShowPage extends Page {
     static at = { driver.currentUrl.contains('social/show') }
 
     static content = {
+        backToMusician { $('a[href*="musician/show"]') }
         logout { $('.nav-header').find('.logout') }
         
         alertSuccess (required: false) { $('.alert-info') }

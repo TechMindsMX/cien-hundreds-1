@@ -1,6 +1,7 @@
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import spock.lang.Unroll
+import spock.lang.Shared
 
 import page.LoginPage
 import page.LogoutPage
@@ -10,6 +11,9 @@ import page.MusicianListPage
 @Stepwise
 class MusicianListAclFunctionalSpec extends GebReportingSpec {
 
+    @Shared
+    def grailsApplication = new org.codehaus.groovy.grails.commons.DefaultGrailsApplication()
+
     def setup() {
         to LoginPage
     }
@@ -18,7 +22,7 @@ class MusicianListAclFunctionalSpec extends GebReportingSpec {
     void """When we authenticate with the username #username, we expect to be able to access the Musician list"""() {
         given:"A user login with authority #authority"
         loginForm.j_username = username
-        loginForm.j_password = "12345678"
+        loginForm.j_password = grailsApplication.config.tests.userPassword
         loginButton.click()
         when: "navigate to Musician list"
         to MusicianListPage

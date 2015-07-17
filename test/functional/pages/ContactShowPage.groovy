@@ -15,5 +15,7 @@ class ContactShowPage extends Page {
 
         addTelephone 	{ $('a[href*="prepareTelephone"]') } 
         addEmail 		{ $('a[href*="prepareEmail"]') } 
+        addSocial 		{ $('a[href*="social/create"]') } 
+        addAddress 		{ $('a[href*="address/create"]') } 
     }
 }

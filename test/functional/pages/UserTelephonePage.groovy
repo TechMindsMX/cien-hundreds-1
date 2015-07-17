@@ -1,7 +1,7 @@
 package page
 import geb.Page
 
-class UserTelephonePage extends Page {
+class PrepareTelephoneFormPage extends Page {
 
     static url = "prepareTelephone"
 

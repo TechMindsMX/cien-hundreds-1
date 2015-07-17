@@ -1,16 +1,22 @@
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import spock.lang.Unroll
+import spock.lang.Shared
 import page.UserEmailPage
 import page.LoginPage
 
+import spock.lang.Ignore
+@Ignore
 @Stepwise
 class UserEmailFunctionalSpec extends GebReportingSpec {
+
+    @Shared
+    def grailsApplication = new org.codehaus.groovy.grails.commons.DefaultGrailsApplication()
 
     def setupSpec() {
         to LoginPage
         loginForm.j_username = "admin"
-        loginForm.j_password = "12345678"
+        loginForm.j_password = grailsApplication.config.tests.userPassword
         loginButton.click()
     }
 

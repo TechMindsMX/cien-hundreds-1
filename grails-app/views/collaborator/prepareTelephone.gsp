@@ -27,7 +27,7 @@
 				</ul>
 			</div>
 			</g:hasErrors>
-      <g:form url="[controller:'collaborator', action:'saveTelephone', params:[collaboratorUuid: collaboratorInstance.uuid, telephoneInstance: '${telephoneInstance}']]"  class="form-horizontal telephone-form">
+  			<g:form url="[controller:'collaborator', action:'saveTelephone', params:[collaboratorUuid: collaboratorInstance.uuid, telephoneInstance: '${telephoneInstance}']]"  class="form-horizontal telephone-form">
 				<fieldset class="form">
 					<g:render template="/telephone/form"/>
 				</fieldset>

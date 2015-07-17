@@ -27,7 +27,7 @@
 			</ul>
 			</div>
 		</g:hasErrors>
-			<g:uploadForm url="[resource:photoInstance, action:'save']" class="form-horizontal" >
+			<g:uploadForm url="[resource:photoInstance, action:'save']" class="form-horizontal" id="photoForm">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
