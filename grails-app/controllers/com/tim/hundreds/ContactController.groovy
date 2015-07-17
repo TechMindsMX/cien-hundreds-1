@@ -51,7 +51,7 @@ class ContactController {
         bindData(contactInstance, command)
         Musician musician = Musician.findById(params.musician.id)
         contactInstance.musician = musician
-        tagService.addMusicianTags(musician, "${contactInstance.firstName},${contactInstance.lastName},${contactInstance.motherLastName}")
+        tagService.addTags(musician, "${contactInstance.firstName},${contactInstance.lastName},${contactInstance.motherLastName}")
 
         try{
           def instance = contactService.save(contactInstance)

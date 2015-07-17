@@ -1,6 +1,8 @@
 package com.tim.hundreds
 
-class Company {
+import org.grails.taggable.*
+
+class Company implements Taggable {
   String uuid = TokenGenerator.generateToken()
   String name
   String description
@@ -8,7 +10,7 @@ class Company {
   String logoPath
   String corporatePressPath
   String notes
-  String tags
+  String tagsComma
 
   Boolean active = false
 
@@ -17,6 +19,8 @@ class Company {
   Address address
   Social social
   User assigned
+
+  static transients = ['tagsComma']
 
   static hasOne = [
     companyValidation : CompanyValidation,
@@ -46,7 +50,7 @@ class Company {
     description blank:false,size:1..10000
     web nullable:true,blank:false,size:1..100,url:true
     notes nullable:true,blank:false,size:1..10000
-    tags nullable:true,blank:false,size:1..10000
+    tagsComma nullable:true,blank:false,size:1..10000
     logoPath nullable:true
     corporatePressPath nullable:true
     address nullable:true
