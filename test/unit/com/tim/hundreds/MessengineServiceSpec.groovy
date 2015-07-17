@@ -9,7 +9,8 @@ class MessengineServiceSpec extends Specification {
 
   def setup() {
     service.restService = restService
-    grailsApplication.config.musician.edited.user.url >> 'editedUrl'
+    grailsApplication.config.musician.edited.user.url = 'editedMusicianUrl'
+    grailsApplication.config.company.edited.user.url = 'editedCompanyUrl'
   }
 
   void "should send an edited message to musician user"() {
@@ -20,7 +21,22 @@ class MessengineServiceSpec extends Specification {
   when:"We send an message"
     musician.user >> user
     user.profile >> profile
+    service.sendInstanceEditedMessage(musician, 'musician')
   then:"We expect message was sent"
-    restService.sendCommand(_ as AssignationCommand, 'editedUrl')
+    1 * restService.sendCommand(_ as AssignationCommand, 'editedMusicianUrl')
   }
+
+  void "should send an edited message to company user"() {
+  given:"And Musician"
+    def company = Mock(Company)
+    def user = Mock(User)
+    def profile = Mock(Profile)
+  when:"We send an message"
+    company.user >> user
+    user.profile >> profile
+    service.sendInstanceEditedMessage(company, 'company')
+  then:"We expect message was sent"
+    1 * restService.sendCommand(_ as AssignationCommand, 'editedCompanyUrl')
+  }
+
 }

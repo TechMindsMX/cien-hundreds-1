@@ -9,6 +9,7 @@ class ValidationService {
 
   def validate(def instanceValidation, String instance) {
     def domain = instanceValidation."${instance}"
+    log.info "Domain: ${domain.dump()}"
     def target = instanceValidation.user
     def active = instanceValidation.type == ValidationType.ACCEPTED ? true : false
     def targetProfile = target.profile
