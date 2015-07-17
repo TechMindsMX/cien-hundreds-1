@@ -1,0 +1,19 @@
+package page
+import geb.Page
+
+class AudioShowPage extends Page{
+
+    static url = "audio/show"
+
+    static at = { driver.currentUrl.contains('audio/show') }
+
+    static content = {
+        backToMusician { $('a[href*="musician/show"]') }
+
+        editButtton { audioForm.find('.edit') }
+        cancelButton { $("#btnCancel") }
+        logout       { $('.nav-header').find('.logout') }
+    }
+}
+
+
