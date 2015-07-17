@@ -17,26 +17,30 @@ class MessengineServiceSpec extends Specification {
   given:"And Musician"
     def musician = Mock(Musician)
     def user = Mock(User)
-    def profile = Mock(Profile)
+    def assigned = Mock(User)
+    def userProfile = Mock(userProfile)
   when:"We send an message"
     musician.user >> user
-    user.profile >> profile
+    user.userProfile >> userProfile
+    assigned.userProfile >> targetProfile
     service.sendInstanceEditedMessage(musician, 'musician')
   then:"We expect message was sent"
-    1 * restService.sendCommand(_ as AssignationCommand, 'editedMusicianUrl')
+    2 * restService.sendCommand(_ as AssignationCommand, 'editedMusicianUrl')
   }
 
   void "should send an edited message to company user"() {
   given:"And Musician"
     def company = Mock(Company)
     def user = Mock(User)
-    def profile = Mock(Profile)
+    def assigned = Mock(User)
+    def userProfile = Mock(userProfile)
   when:"We send an message"
     company.user >> user
-    user.profile >> profile
+    user.userProfile >> userProfile
+    assigned.userProfile >> targetProfile
     service.sendInstanceEditedMessage(company, 'company')
   then:"We expect message was sent"
-    1 * restService.sendCommand(_ as AssignationCommand, 'editedCompanyUrl')
+    2 * restService.sendCommand(_ as AssignationCommand, 'editedCompanyUrl')
   }
 
 }
