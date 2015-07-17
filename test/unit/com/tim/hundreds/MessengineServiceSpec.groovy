@@ -21,12 +21,28 @@ class MessengineServiceSpec extends Specification {
     def userProfile = Mock(userProfile)
   when:"We send an message"
     musician.user >> user
-    user.userProfile >> userProfile
-    assigned.userProfile >> targetProfile
+    user.profile >> userProfile
+    assigned.profile >> targetProfile
     service.sendInstanceEditedMessage(musician, 'musician')
   then:"We expect message was sent"
     2 * restService.sendCommand(_ as AssignationCommand, 'editedMusicianUrl')
   }
+
+  void "should not send an edited message to facilitator"() {
+  given:"And Musician"
+    def musician = Mock(Musician)
+    def user = Mock(User)
+    def assigned = Mock(User)
+    def userProfile = Mock(userProfile)
+  when:"We send an message"
+    musician.user >> user
+    user.profile >> userProfile
+    assigned.profile >> null
+    service.sendInstanceEditedMessage(musician, 'musician')
+  then:"We expect message was sent"
+    1 * restService.sendCommand(_ as AssignationCommand, 'editedMusicianUrl')
+  }
+
 
   void "should send an edited message to company user"() {
   given:"And Musician"
@@ -36,11 +52,27 @@ class MessengineServiceSpec extends Specification {
     def userProfile = Mock(userProfile)
   when:"We send an message"
     company.user >> user
-    user.userProfile >> userProfile
-    assigned.userProfile >> targetProfile
+    user.profile >> userProfile
+    assigned.profile >> targetProfile
     service.sendInstanceEditedMessage(company, 'company')
   then:"We expect message was sent"
     2 * restService.sendCommand(_ as AssignationCommand, 'editedCompanyUrl')
   }
+
+  void "should not send an edited message to buyer"() {
+  given:"And Musician"
+    def company = Mock(Company)
+    def user = Mock(User)
+    def assigned = Mock(User)
+    def userProfile = Mock(userProfile)
+  when:"We send an message"
+    company.user >> user
+    user.profile >> userProfile
+    assigned.profile >> null
+    service.sendInstanceEditedMessage(company, 'company')
+  then:"We expect message was sent"
+    1 * restService.sendCommand(_ as AssignationCommand, 'editedCompanyUrl')
+  }
+
 
 }
