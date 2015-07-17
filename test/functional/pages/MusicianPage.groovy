@@ -13,7 +13,7 @@ class MusicianPage extends Page {
         submitButton { $('#create') }
         cancelButton { musicianForm.find(".btn-danger") }
         select       { $('#genre') }
-        logout { $('.nav-header').find('.logout') }
+        logout { $('#navbar').find('.logout') }
 
     }
 }

@@ -6,6 +6,8 @@ import spock.lang.Shared
 import page.LoginPage
 import page.CompanyPage
 
+import spock.lang.Ignore
+@Ignore
 @Stepwise
 class CompanyFunctionalSpec extends GebReportingSpec {
 

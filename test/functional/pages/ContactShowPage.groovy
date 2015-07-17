@@ -11,7 +11,7 @@ class ContactShowPage extends Page {
     static content = {
         cancelButton 	{ $("#btnCancel") }
         backToMusician 	{ $('a[href*="musician/show"]') }
-        logout       	{ $('.nav-header').find('.logout') }
+        logout       	{ $('#navbar').find('.logout') }
 
         addTelephone 	{ $('a[href*="prepareTelephone"]') } 
         addEmail 		{ $('a[href*="prepareEmail"]') } 

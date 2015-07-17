@@ -5,6 +5,8 @@ import spock.lang.Shared
 import page.UserTelephonePage
 import page.LoginPage
 
+import spock.lang.Ignore
+@Ignore
 @Stepwise
 class UserTelephoneFunctionalSpec extends GebReportingSpec {
 

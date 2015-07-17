@@ -13,7 +13,7 @@ class PrepareEmailFormPage extends Page {
         cancelButton    { $("#btnCancel") }
         user            { $("#user") }
         type            { $("#type")}
-        logout          { $('.nav-header').find('.logout') }
+        logout          { $('#navbar').find('.logout') }
     }
 
 }

@@ -6,7 +6,7 @@ class LogoutPage extends Page {
 
   static url = "logout/index"
 
-  static at = { driver.currentUrl.contains('logout/index') }
+  static at = { driver.currentUrl.contains('login/auth') }
 
   static content = {
 

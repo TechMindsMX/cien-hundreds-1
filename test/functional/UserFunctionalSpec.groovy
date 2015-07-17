@@ -1,6 +1,8 @@
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
+
 import page.UserPage
+import page.UserSavePage
 import page.HomePage
 
 @Stepwise
@@ -20,7 +22,7 @@ class UserFunctionalSpec extends GebReportingSpec {
     userForm.emailCheck = 'joseluis.delacruz@gmail.com'
     $("#create").click()
   then: "I am being redirected to the homepage"
-    at UserPage
+    at UserSavePage
   }
 
   def "should create an account"() {

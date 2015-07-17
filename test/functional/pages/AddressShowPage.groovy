@@ -16,7 +16,6 @@ class AddressShowPage extends Page {
     static content = {
         editButton { addressForm.find('.edit') }
         cancelButton { $("#btnCancel") }
-        logout       { $('.nav-header').find('.logout') }
 
         backToMusician (required: false) { $('a[href*="musician/show"]') }
         company (required: false) { $('a[href*="company/show"]') }

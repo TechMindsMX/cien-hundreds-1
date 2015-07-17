@@ -8,6 +8,8 @@ import page.LogoutPage
 import page.HomePage
 import page.MusicianListPage
 
+import spock.lang.Ignore
+@Ignore
 @Stepwise
 class MusicianListAclFunctionalSpec extends GebReportingSpec {
 

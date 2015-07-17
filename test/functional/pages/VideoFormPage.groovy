@@ -11,7 +11,7 @@ class VideoFormPage extends Page{
         videoForm { $('#videoForm') }
         submitButton { videoForm.find('.save') }
         cancelButton { $("#btnCancel") }
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
     }
 }
 

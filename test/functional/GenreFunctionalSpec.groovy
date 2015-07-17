@@ -4,7 +4,8 @@ import spock.lang.Unroll
 import spock.lang.Shared
 
 import page.LoginPage
-import page.GenrePage
+import page.GenreCreatePage
+import page.GenreSavePage
 import page.GenreShowPage
 
 @Stepwise
@@ -23,7 +24,7 @@ class GenreFunctionalSpec extends GebReportingSpec {
     @Unroll
     def "Fill Genre form"() {
         given:"form Genre create"
-        to GenrePage
+        to GenreCreatePage
 
         when: "I do not fill form fields "
         genreForm.name = name
@@ -37,7 +38,7 @@ class GenreFunctionalSpec extends GebReportingSpec {
 
         where: "We have the next cases"
          name         || result
-        ''            || GenrePage
+        ''            || GenreSavePage
         'Heavy Metal' || GenreShowPage
     }
 

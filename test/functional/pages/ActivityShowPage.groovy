@@ -13,6 +13,6 @@ class ActivityShowPage extends Page {
 
         submitButton { $('.edit') }
         cancelButton { $("#btnCancel") }
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
     }
 }

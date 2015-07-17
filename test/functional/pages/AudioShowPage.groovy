@@ -12,7 +12,7 @@ class AudioShowPage extends Page{
 
         editButtton { audioForm.find('.edit') }
         cancelButton { $("#btnCancel") }
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
     }
 }
 

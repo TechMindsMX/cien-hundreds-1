@@ -12,6 +12,6 @@ class AudioFormPage extends Page {
         audioForm    { $('#audioForm') }
         submitButton { audioForm.find('.save') }
         cancelButton { $("#btnCancel") }
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
     }
 }

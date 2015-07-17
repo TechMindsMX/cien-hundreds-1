@@ -12,7 +12,7 @@ class VideoShowPage extends Page{
 
         editButtton { videoForm.find('.edit') }
         cancelButton { $("#btnCancel") }
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
     }
 }
 

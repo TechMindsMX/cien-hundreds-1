@@ -4,14 +4,14 @@ import geb.Page
 
 class FacilitatorPage extends Page {
 
-    static url = "facilitator/create"
+    static url = "admin/create"
 
-    static at = { driver.currentUrl.contains('facilitator/create') }
+    static at = { driver.currentUrl.contains('admin/create') }
 
     static content = {
-        facilitatorForm { $('form.form-horizontal') }
+        facilitatorForm { $('.form-horizontal') }
         submitButton { $('#create') }
         cancelButton { facilitatorForm.find(".btn-danger") }
-        logout { $('.nav-header').find('.logout') }
+        logout { $('#navbar').find('.logout') }
     }
 }

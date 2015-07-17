@@ -9,6 +9,8 @@ import page.HomePage
 import page.CompanyPage
 import page.CompanyShowFirstPage
 
+import spock.lang.Ignore
+@Ignore
 @Stepwise
 class CompanyAclShowFirstFunctionalSpec extends GebReportingSpec {
 

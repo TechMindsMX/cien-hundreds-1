@@ -12,7 +12,7 @@ class SocialCreatePage extends Page {
         socialForm { $('form.form-horizontal') }
         submitButton { $('#create') }
         cancelButton { musicianForm.find(".btn-danger") }
-        logout { $('.nav-header').find('.logout') }
+        logout { $('#navbar').find('.logout') }
     }
 
 }

@@ -13,7 +13,7 @@ class PrepareTelephoneFormPage extends Page {
         cancelButton { $("#btnCancel") }
         uuid         { $("#uuid") }
         type         { $("#type")}
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
     }
 
 }

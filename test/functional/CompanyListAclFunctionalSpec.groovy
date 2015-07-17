@@ -8,6 +8,8 @@ import page.LogoutPage
 import page.HomePage
 import page.CompanyListPage
 
+import spock.lang.Ignore
+@Ignore
 @Stepwise
 class CompanyListAclFunctionalSpec extends GebReportingSpec {
 

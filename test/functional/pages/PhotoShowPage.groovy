@@ -12,7 +12,7 @@ class PhotoShowPage extends Page{
 
         editButtton { photoForm.find('.edit') }
         cancelButton { $("#btnCancel") }
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
     }
 }
 

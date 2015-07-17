@@ -17,6 +17,6 @@ class AddressFormPage extends Page {
         addressForm  { $('#addressForm') }
         submitButton { addressForm.find('.save') }
         cancelButton { $("#btnCancel") }
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
     }
 }

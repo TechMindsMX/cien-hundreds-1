@@ -12,6 +12,6 @@ class ActivityFormPage extends Page {
         activityForm { $('#activityForm') }
         submitButton { activityForm.find('.save') }
         cancelButton { $("#btnCancel") }
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
     }
 }

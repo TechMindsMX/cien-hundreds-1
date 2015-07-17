@@ -4,6 +4,8 @@ import spock.lang.Shared
 import spock.lang.Unroll
 
 import page.LoginPage
+import page.LogoutPage
+
 import page.MusicianPage
 import page.MusicianSavePage
 import page.MusicianShowPage
@@ -33,6 +35,7 @@ import page.AudioShowPage
 import page.PhotoFormPage
 import page.PhotoShowPage
 
+// TODO: carga de archivo, Address y Sociall links para volver al objeto padre
 
 @Stepwise
 class MusicianFunctionalSpec extends GebReportingSpec {
@@ -307,5 +310,6 @@ class MusicianFunctionalSpec extends GebReportingSpec {
 
 
     def cleanupSpec() {
+        to LogoutPage
     }
 }

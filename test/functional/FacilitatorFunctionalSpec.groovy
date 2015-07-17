@@ -37,9 +37,9 @@ class FacilitatorFunctionalSpec extends GebReportingSpec {
         then: "I am being redirected to the same page with errors"
         submitButton.click()
         where: "We have the next cases"
-        username | password | passwordCheck | firstName | motherLastName | lastName | phone | email | emailCheck || result
-        ''       | ''       | ''            | ''        | ''         | ''       | ''    |  ''   | ''         || FacilitatorPage
-        'Luis'   | ''       | ''            | ''        | ''         | ''       | ''    |  ''   | ''         || FacilitatorPage
+        username | password | passwordCheck | firstName | motherLastName    | lastName | phone | email | emailCheck || result
+        ''       | ''       | ''            | ''        | ''                | ''       | ''    |  ''   | ''         || FacilitatorPage
+        'Luis'   | ''       | ''            | ''        | ''                | ''       | ''    |  ''   | ''         || FacilitatorPage
 
     }
 

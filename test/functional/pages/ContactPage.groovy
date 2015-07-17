@@ -13,6 +13,6 @@ class ContactPage extends Page {
         submitButton { contactForm.find('.save') }
         cancelButton { $("#btnCancel") }
         roleSelect   { $('#role') }
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
     }
 }

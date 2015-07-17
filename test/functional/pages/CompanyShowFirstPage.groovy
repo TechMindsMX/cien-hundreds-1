@@ -9,6 +9,6 @@ class CompanyShowFirstPage extends Page {
     static at = { driver.currentUrl.contains('company/show/1') }
 
     static content = {
-    	logout       { $('.nav-header').find('.logout') }
+    	logout       { $('#navbar').find('.logout') }
     }
 }

@@ -11,7 +11,7 @@ class PhotoFormPage extends Page{
         photoForm 		{ $('#photoForm') }
         submitButton 	{ photoForm.find('.save') }
         cancelButton 	{ $("#btnCancel") }
-        logout       	{ $('.nav-header').find('.logout') }
+        logout       	{ $('#navbar').find('.logout') }
     }
 }
 
