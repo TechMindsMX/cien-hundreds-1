@@ -19,10 +19,8 @@ class UserManagementController {
 
     @Secured(['ROLE_ADMIN'])
     def allAdmins(Integer max, Integer offset) {
-        params.max = Math.min(max ?: 10, 100)
-        params.offset = params?.offset ?: 0
         def userList = userHelperService.findListByRole(['ROLE_ADMIN','ROLE_COMPANY_ADMIN','ROLE_MUSICIAN_ADMIN'])
-        renderView(userList, max, offset)
+        renderView(userList)
     }
 
     @Secured(['ROLE_ADMIN'])
@@ -67,27 +65,9 @@ class UserManagementController {
         renderView(userList)
     }
 
-    def renderView(userList, Integer max, Integer offset) {
-        render view: 'index', model:[userInstanceList: paginateList(userList, max, offset), userInstanceCount: userList.size()]
+    def renderView(ArrayList userList) {
+        render view: 'index', model:[userInstanceList: ControllerPaginationUtil.paginateList(userList, params), userInstanceCount: userList.size()]
     }
 
-    def paginateList(userList, Integer max, Integer offset) {
-        max = Math.min(max ?: 10, 100)
-        offset = (offset && offset>0) ? params?.offset as int : 0
-    
-        int total = userList.size()
-        int upperLimit = findUpperIndex(params.offset as int, max, total)
-        List filteredUsers = userList.getAt(offset..upperLimit)
-    
-        filteredUsers
-    }
-
-  public static int findUpperIndex(int offset, int max, int total) {
-    max = offset + max - 1
-    if (max >= total) {
-      max -= max - total + 1
-    }
-    return max
-  }
 
 }
