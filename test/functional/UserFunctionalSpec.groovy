@@ -13,13 +13,13 @@ class UserFunctionalSpec extends GebReportingSpec {
     to UserPage
   when: "I am entering user values"
     userForm.username = 'josdem'
-    userForm.password = 'aA12345678'
-    userForm.passwordCheck = 'aA12345678'
+    userForm.password = 'aA1234567!'
+    userForm.passwordCheck = 'aA1234567!'
     userForm.firstName = 'Jose Luis'
-    userForm.motherLastName = 'De la Cruz'
-    userForm.lastName = 'Morales'
-    userForm.email = 'joseluis.delacruz@gmail.com'
-    userForm.emailCheck = 'joseluis.delacruz@gmail.com'
+    userForm.lastName = 'De la Cruz'
+    userForm.motherLastName = 'Morales'
+    userForm.email = 'qa@trama.mx'
+    userForm.emailCheck = 'qa@trama.mx'
     $("#create").click()
   then: "I am being redirected to the homepage"
     at UserSavePage
@@ -30,13 +30,13 @@ class UserFunctionalSpec extends GebReportingSpec {
     to UserPage
   when: "I am entering user values"
     userForm.username = 'josdem'
-    userForm.password = 'aA12345678'
-    userForm.passwordCheck = 'aA12345678'
+    userForm.password = 'aA1234567!'
+    userForm.passwordCheck = 'aA1234567!'
     userForm.firstName = 'Jose Luis'
-    userForm.motherLastName = 'De la Cruz'
-    userForm.lastName = 'Morales'
-    userForm.email = 'joseluis.delacruz@gmail.com'
-    userForm.emailCheck = 'joseluis.delacruz@gmail.com'
+    userForm.lastName = 'De la Cruz'
+    userForm.motherLastName = 'Morales'
+    userForm.email = 'qa@trama.mx'
+    userForm.emailCheck = 'qa@trama.mx'
     $("#terms").click()
     $("#create").click()
   then: "I am being redirected to the homepage"
