@@ -25,9 +25,7 @@ class UserHelperService {
         userList << it
       }
     }
-
     userList
   }
-
 
 }
