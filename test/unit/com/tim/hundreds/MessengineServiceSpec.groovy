@@ -18,14 +18,15 @@ class MessengineServiceSpec extends Specification {
     def musician = Mock(Musician)
     def user = Mock(User)
     def assigned = Mock(User)
-    def userProfile = Mock(userProfile)
+    def userProfile = Mock(Profile)
+    def targetProfile = Mock(Profile)
   when:"We send an message"
     musician.user >> user
     user.profile >> userProfile
     assigned.profile >> targetProfile
     service.sendInstanceEditedMessage(musician, 'musician')
   then:"We expect message was sent"
-    2 * restService.sendCommand(_ as AssignationCommand, 'editedMusicianUrl')
+    1 * restService.sendCommand(_ as AssignationCommand, 'editedMusicianUrl')
   }
 
   void "should not send an edited message to facilitator"() {
@@ -33,7 +34,7 @@ class MessengineServiceSpec extends Specification {
     def musician = Mock(Musician)
     def user = Mock(User)
     def assigned = Mock(User)
-    def userProfile = Mock(userProfile)
+    def userProfile = Mock(Profile)
   when:"We send an message"
     musician.user >> user
     user.profile >> userProfile
@@ -49,14 +50,15 @@ class MessengineServiceSpec extends Specification {
     def company = Mock(Company)
     def user = Mock(User)
     def assigned = Mock(User)
-    def userProfile = Mock(userProfile)
+    def userProfile = Mock(Profile)
+    def targetProfile = Mock(Profile)
   when:"We send an message"
     company.user >> user
     user.profile >> userProfile
     assigned.profile >> targetProfile
     service.sendInstanceEditedMessage(company, 'company')
   then:"We expect message was sent"
-    2 * restService.sendCommand(_ as AssignationCommand, 'editedCompanyUrl')
+    1 * restService.sendCommand(_ as AssignationCommand, 'editedCompanyUrl')
   }
 
   void "should not send an edited message to buyer"() {
@@ -64,7 +66,7 @@ class MessengineServiceSpec extends Specification {
     def company = Mock(Company)
     def user = Mock(User)
     def assigned = Mock(User)
-    def userProfile = Mock(userProfile)
+    def userProfile = Mock(Profile)
   when:"We send an message"
     company.user >> user
     user.profile >> userProfile

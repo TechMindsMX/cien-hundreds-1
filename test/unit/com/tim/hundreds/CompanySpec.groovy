@@ -22,12 +22,12 @@ class CompanySpec extends Specification {
     company.logoPath = logoPath
     company.corporatePressPath = corporatePressPath
     company.notes = notes
-    company.tags = tags
+    company.tagsComma = tagsComma
     company.type = type
    then: "We validate command"
     result == company.validate()
    where: "We have next cases"
-   uuid                                       | name     | description | web                           | logoPath                               | corporatePressPath                     | notes   | tags   | type                                  || result
+   uuid                                       | name     | description | web                           | logoPath                               | corporatePressPath                     | notes   | tagsComma  | type                                  || result
    'ae96fd7f42d128185b6cfb8a9cec5176c800f491' | 'Anjuna' | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || true
    'ae96fd7f42d128185b6cfb8a9cec5176c800f491' | 'A'      | 'd'         | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || true
    'ae96fd7f42d128185b6cfb8a9cec5176c800f491' |'Anjun'  | 'desc'      | null                          | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || true
@@ -51,12 +51,12 @@ class CompanySpec extends Specification {
     company.logoPath = logoPath
     company.corporatePressPath = corporatePressPath
     company.notes = notes
-    company.tags = tags
+    company.tagsComma = tagsComma
     company.type = type
    then: "We validate command"
     result == company.validate()
    where: "We have next cases"
-   uuid | name          | description | web                           | logoPath                               | corporatePressPath                     | notes   | tags   | type                                  || result
+   uuid | name          | description | web                           | logoPath                               | corporatePressPath                     | notes   | tagsComma   | type                                  || result
    'ae96fd7f42d128185b6cfb8a9cec5176c800f491' |null          | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
    'ae96fd7f42d128185b6cfb8a9cec5176c800f491' |''            | 'desc'      | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
    'ae96fd7f42d128185b6cfb8a9cec5176c800f491' |'Anjunabeats' | null        | 'http://www.anjunabeats.com/' | '5c7f5fdfd9a34af3abb28302efb45996.png' | '493087f832a84ca999efe93f0cfd8473.pdf' | 'notes' | 'tags' | new BusinessActivity(name:'Products') || false
