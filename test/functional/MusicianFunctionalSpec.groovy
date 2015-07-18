@@ -70,8 +70,8 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         submitButton.click()
 
         where: "We have the next cases"
-        name    | history | web                           | notes  | tagsComma                    | formed       | genre| logo               || result
-        'luis7' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '30-06-2015' | '2'  | '/images/test.jpg' || MusicianPage
+        name    | history | web                           | notes  | tagsComma                    | formed       | genre| logo                                          || result
+        'luis7' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '30-06-2015' | '2'  | grailsApplication.config.tests.filesPath.jpg  || MusicianPage
 
     }
 
@@ -129,8 +129,8 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         submitButton.click()
 
         where: "We have the next cases"
-        file              || result
-        'images/test.jpg' || PhotoShowPage //Pass
+        file                                           || result
+        grailsApplication.config.tests.filesPath.jpg   || PhotoShowPage //Pass
     }
 
     // @Unroll
@@ -211,8 +211,8 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         submitButton.click()
 
         where: "We have the next cases"
-        firstName | lastName   | motherLastName    | other   | nationality | biography   | style   | birthDate    | entryDate   | role | type   | file || result
-        'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'mex'       | 'biography' | 'style' | '28-03-1981' | '20-06-2015'| '1'  | 'MALE' | ''   || ContactShowPage
+        firstName | lastName   | motherLastName    | other   | nationality | biography   | style   | birthDate    | entryDate   | role | type   | file                                          || result
+        'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'mex'       | 'biography' | 'style' | '28-03-1981' | '20-06-2015'| '1'  | 'MALE' | grailsApplication.config.tests.filesPath.jpg  || ContactShowPage
     }
 
     @Unroll

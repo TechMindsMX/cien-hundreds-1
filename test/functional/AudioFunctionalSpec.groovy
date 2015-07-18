@@ -3,7 +3,7 @@ import spock.lang.Stepwise
 import spock.lang.Unroll
 import spock.lang.Shared
 
-import page.AudioPage
+import page.AudioFormPage
 import page.LoginPage
 
 import spock.lang.Ignore
@@ -24,7 +24,7 @@ class AudioFunctionalSpec extends GebReportingSpec {
     @Unroll
     def "Fill Audio form"() {
         given:"form Audio create"
-        to AudioPage
+        to AudioFormPage
 
         when: "I fill the Audio form"
         audioForm.url = url
@@ -34,9 +34,9 @@ class AudioFunctionalSpec extends GebReportingSpec {
 
         where: "We have the next cases"
         url                                                                  || result
-        ''                                                                   || AudioPage //Error
-        'https://www.youtube.com/watch?v=RgKAFK5djSk'                        || AudioPage //Error
-        'https://soundcloud.com/metalbladerecords/act-of-defiance-throwback' || AudioPage //Pass
+        ''                                                                   || AudioFormPage //Error
+        'https://www.youtube.com/watch?v=RgKAFK5djSk'                        || AudioFormPage //Error
+        'https://soundcloud.com/metalbladerecords/act-of-defiance-throwback' || AudioFormPage //Pass
     }
 
     def cleanupSpec() {}

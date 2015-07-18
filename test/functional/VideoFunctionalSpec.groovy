@@ -2,7 +2,7 @@ import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import spock.lang.Unroll
 import spock.lang.Shared
-import page.VideoPage
+import page.VideoFormPage
 import page.LoginPage
 
 import spock.lang.Ignore
@@ -23,7 +23,7 @@ class VideoFunctionalSpec extends GebReportingSpec {
     @Unroll
     def "Fill Video form"() {
         given:"form Video create"
-        to VideoPage
+        to VideoFormPage
 
         when: "I don't fill the form fields "
         videoForm.url = siteUrl
@@ -34,9 +34,9 @@ class VideoFunctionalSpec extends GebReportingSpec {
 
         where: "We have the next cases"
         siteUrl                                       || result
-        ''                                            || VideoPage
-        'No video'                                    || VideoPage
-        'https://www.youtube.com/watch?v=wP1zAyibHm8' || VideoPage
+        ''                                            || VideoFormPage
+        'No video'                                    || VideoFormPage
+        'https://www.youtube.com/watch?v=wP1zAyibHm8' || VideoFormPage
     }
 
     def cleanupSpec() {
