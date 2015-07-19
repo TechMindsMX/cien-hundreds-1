@@ -1,22 +1,21 @@
-// import org.openqa.selenium.firefox.FirefoxDriver
-// import org.openqa.selenium.firefox.FirefoxProfile
+/*
+import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.firefox.FirefoxProfile
+import org.openqa.selenium.htmlunit.HtmlUnitDriver
 
+driver = {
 
-// import org.openqa.selenium.htmlunit.HtmlUnitDriver
+  FirefoxProfile profile = new FirefoxProfile()
+  profile.setPreference("intl.accept_languages", "en-us")
+  def driverInstance = new FirefoxDriver(profile)
+  driverInstance.manage().window().maximize()
+  driverInstance
 
-// driver = {
-  
-//   FirefoxProfile profile = new FirefoxProfile()
-//   profile.setPreference("intl.accept_languages", "en-us")
-//   def driverInstance = new FirefoxDriver(profile)
-//   driverInstance.manage().window().maximize()
-//   driverInstance
-  
-// }
+}
 
-// baseNavigatorWaiting = true
-// atCheckWaiting = true
-
+baseNavigatorWaiting = true
+atCheckWaiting = true
+*/
 
 import org.openqa.selenium.htmlunit.HtmlUnitDriver
 
