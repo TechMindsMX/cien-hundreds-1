@@ -15,6 +15,7 @@ class CompanyCommentController {
         respond CompanyComment.list(params), model:[companyCommentInstanceCount: CompanyComment.count()]
     }
 
+    @Secured(['ROLE_BUYER','ROLE_COMPANY_VIEWER'])
     def show(CompanyComment companyCommentInstance) {
         respond companyCommentInstance
     }

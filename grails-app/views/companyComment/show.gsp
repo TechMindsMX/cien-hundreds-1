@@ -90,7 +90,7 @@
 				<li class="fieldcontain">
 					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="companyComment.company.label" default="Company" /></span>
 					
-						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${companyCommentInstance?.company?.id}">${companyCommentInstance?.company?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${companyCommentInstance?.company?.id}">${companyCommentInstance?.company?.name.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
