@@ -22,7 +22,10 @@ class MusicianController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def creationReportFilter() {
-      log.info "${params.dump()}"
+      log.info "Listing musician created from ${params.from} to ${params.to}"
+      if(params.from > params.to){
+        flash.error="La fecha de inicio no puede ser mayor a la fecha final"
+      }
       render view:'creationReportView', model: [musicianInstance: Musician.list()]
     }
 
