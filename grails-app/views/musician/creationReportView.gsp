@@ -15,7 +15,7 @@
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
-    <g:form action="creationReport">
+    <g:form action="creationReportFilter">
       <g:timDatePicker name="from" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
       <g:timDatePicker name="to" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
       <g:actionSubmit value="${message(code: 'default.button.send.label', default: 'Enviar')}" />
