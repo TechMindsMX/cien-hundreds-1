@@ -14,7 +14,7 @@
 	<div class="nav" role="navigation">
 		<ul class="nav nav-pills">
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-			
+
 		</ul>
 	</div>
 	<div id="show-contact" class="content scaffold-show" role="main">
@@ -54,6 +54,15 @@
 	<span id="other-label" class="${session.labelWidth} property-label"><g:message code="contact.other.label" default="Other" /></span>
 
 	<span class="property-value" aria-labelledby="other-label"><g:fieldValue bean="${contactInstance}" field="other"/></span>
+
+</div>
+</g:if>
+
+<g:if test="${contactInstance?.web}">
+<div class="fieldcontain">
+	<span id="web-label" class="${session.labelWidth} property-label"><g:message code="contact.web.label" default="Web" /></span>
+
+	<span class="property-value" aria-labelledby="web-label"><g:fieldValue bean="${contactInstance}" field="web"/></span>
 
 </div>
 </g:if>
