@@ -24,7 +24,7 @@ class MusicianController {
     def creationReportFilter() {
       log.info "Listing musician created from ${params.from} to ${params.to}"
       if(params.from > params.to){
-        flash.error="La fecha de inicio no puede ser mayor a la fecha final"
+        flash.error=g.message(code: 'error.date.range')
       }
       render view:'creationReportView', model: [musicianInstance: Musician.list()]
     }
