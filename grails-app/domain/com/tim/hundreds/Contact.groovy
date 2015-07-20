@@ -10,6 +10,8 @@ class Contact {
   String biography
   String style
   String photoPath
+  String telefono
+  String email
 
   Date birthDate
   Date entryDate
