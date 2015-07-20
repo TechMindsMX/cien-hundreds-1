@@ -39,6 +39,14 @@
 	</div>
 </div>
 
+<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'web', 'error')} ">
+	<label class="${session.labelWidth} control-label" for="web">
+		<g:message code="contact.web.label" default="Web" />
+	</label>
+	<div class="${session.inputWidth}">
+		<g:textField class="form-control" name="web" maxlength="100" value="${contactInstance?.web}"/>
+	</div>
+</div>
 
 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'nationality', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="nationality">
