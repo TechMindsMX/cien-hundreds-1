@@ -38,7 +38,7 @@ class GenreFunctionalSpec extends GebReportingSpec {
 
         where: "We have the next cases"
          name         || result
-        ''            || GenreCreatePage
+        ''            || GenreSavePage
         'Heavy Metal' || GenreShowPage
     }
 
