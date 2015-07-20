@@ -17,6 +17,7 @@ class MusicianCommentController {
         respond MusicianComment.list(params), model:[musicianCommentInstanceCount: MusicianComment.count()]
     }
 
+    @Secured(['ROLE_FACILITATOR','ROLE_MUSICIAN_VIEWER'])
     def show(MusicianComment musicianCommentInstance) {
         respond musicianCommentInstance
     }
