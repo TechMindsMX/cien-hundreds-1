@@ -5,8 +5,8 @@ class UserPermissionsService {
 	def canEditUserStatus(User currentUser, User userInstance) {
 		ArrayList currUserAuths
 
-		def auth = userInstance.getAuthorities().authority
-		switch(auth) {
+		def userInstanceAuth = userInstance.getAuthorities().authority
+		switch(userInstanceAuth) {
 			case '[ROLE_BUYER]':
 			currUserAuths = ['ROLE_ADMIN','ROLE_COMPANY_ADMIN']
 			break

@@ -84,7 +84,6 @@
 					
 				</li>
 				</g:if>
-			${socialInstance.dump()}
 			
 %{-- 				<g:if test="${socialInstance?.musician}">
 				<li class="fieldcontain">
