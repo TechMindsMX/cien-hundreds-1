@@ -43,6 +43,19 @@ class BootStrap {
     createGenres()
     createMusicianRoles()
     createBusinessActivity()
+    createAllRole()
+    createUserWithRole('ROLE_ADMIN',            'admin',          'administrator@trama.mx')
+
+    if(Environment.current == Environment.DEVELOPMENT || Environment.current == Environment.TEST) {
+      createUserWithRole('ROLE_USER',             'cien',           'usuario1@trama.mx')
+      createUserWithRole('ROLE_FACILITATOR',      'facilitator',    'usuario2@trama.mx')
+      createUserWithRole('ROLE_BUYER',            'buyer',          'usuario3@trama.mx')
+      createUserWithRole('ROLE_MUSICIAN_ADMIN',   'musicicanAdmin', 'usuario4@trama.mx')
+      createUserWithRole('ROLE_COMPANY_ADMIN',    'companyAdmin',   'usuario5@trama.mx')
+      createUserWithRole('ROLE_MUSICIAN_VIEWER',  'musicianViewer', 'usuario6@trama.mx')
+      createUserWithRole('ROLE_COMPANY_VIEWER',   'companyViewer',  'usuario7@trama.mx')
+    }
+
   }
 
   def destroy = {
@@ -87,13 +100,13 @@ class BootStrap {
 
   def createMusicianRoles(){
     MusicianRole.findOrSaveWhere(name:'Manager')
-    MusicianRole.findOrSaveWhere(name:'Element')
-    MusicianRole.findOrSaveWhere(name:'Other')
+    MusicianRole.findOrSaveWhere(name:'Integrante')
+    MusicianRole.findOrSaveWhere(name:'Otro')
   }
 
   def createBusinessActivity(){
-    BusinessActivity.findOrSaveWhere(name:'Products')
-    BusinessActivity.findOrSaveWhere(name:'Services')
+    BusinessActivity.findOrSaveWhere(name:'Productos')
+    BusinessActivity.findOrSaveWhere(name:'Servicios')
   }
 
 }
