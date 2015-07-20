@@ -2,7 +2,7 @@ import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import spock.lang.Unroll
 import spock.lang.Shared
-import page.UserEmailPage
+import page.PrepareEmailFormPage
 import page.LoginPage
 
 import spock.lang.Ignore
@@ -21,9 +21,9 @@ class UserEmailFunctionalSpec extends GebReportingSpec {
     }
 
     @Unroll
-    def "Fill UserEmailPage form"() {
-        given:"form UserEmailPage create"
-        to UserEmailPage
+    def "Fill PrepareEmailFormPage form"() {
+        given:"form PrepareEmailFormPage create"
+        to PrepareEmailFormPage
 
         when: "I don't fill the form fields "
         userEmailForm.address     = address
@@ -37,11 +37,11 @@ class UserEmailFunctionalSpec extends GebReportingSpec {
 
         where: "We have the next cases"
         address        | typeAddress   | userId            | uuid                               || result
-        ''             | 'WORK'        | '1'               | '7d0f82fbb0ba4beabda87d25914590c9' || UserEmailPage
-        '1234567890'   | ''            | '1'               | '7d0f82fbb0ba4beabda87d25914590c9' || UserEmailPage
-        '12345678'     | 'WORK'        | ''                | '7d0f82fbb0ba4beabda87d25914590c9' || UserEmailPage
-        '12345678901'  | 'WORK'        | '1'               | ''                                 || UserEmailPage
-        '1234567890'   | 'WORK'        | '1'               | '7d0f82fbb0ba4beabda87d25914590c9' || UserEmailPage
+        ''             | 'WORK'        | '1'               | '7d0f82fbb0ba4beabda87d25914590c9' || PrepareEmailFormPage
+        '1234567890'   | ''            | '1'               | '7d0f82fbb0ba4beabda87d25914590c9' || PrepareEmailFormPage
+        '12345678'     | 'WORK'        | ''                | '7d0f82fbb0ba4beabda87d25914590c9' || PrepareEmailFormPage
+        '12345678901'  | 'WORK'        | '1'               | ''                                 || PrepareEmailFormPage
+        '1234567890'   | 'WORK'        | '1'               | '7d0f82fbb0ba4beabda87d25914590c9' || PrepareEmailFormPage
     }
 
     def cleanupSpec() {}

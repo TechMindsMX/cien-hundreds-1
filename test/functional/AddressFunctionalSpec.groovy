@@ -3,7 +3,7 @@ import spock.lang.Stepwise
 import spock.lang.Unroll
 import spock.lang.Shared
 
-import page.AddressPage
+import page.AddressFormPage
 import page.AddressSavePage
 import page.LoginPage
 
@@ -25,7 +25,7 @@ class AddressFunctionalSpec extends GebReportingSpec {
     @Unroll
     def "Fill Address form"() {
         given:"form Address create"
-        to AddressPage
+        to AddressFormPage
 
         when: "I fill the form fields"
         addressForm.country      = country
