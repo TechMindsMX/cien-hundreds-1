@@ -31,7 +31,11 @@
         <div class="${session.inputWidth}">
           <g:timDatePicker name="to" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
         </div>
-      <g:actionSubmit value="${message(code: 'default.button.send.label', default: 'Enviar')}" />
+        <div class="${session.btnOffset} fieldcontain ${hasErrors(bean: musicianInstance, field: 'to', 'error')} ">
+				  <label for="buttons">
+				  </label>
+				   <g:submitButton name="send" class="btn btn-success" value="${message(code: 'default.button.send.label', default: 'Enviar')}" />
+				</div>
     </g:form>
 		<div id="list-musician" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
