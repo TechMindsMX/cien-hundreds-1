@@ -178,6 +178,20 @@
 </div>
 </g:if>
 
+<div class="fieldcontain">
+	<span id="type-label" class="${session.labelWidth} property-label"><g:message code="contact.telefono.label" default="Telefono Principal" /></span>
+
+	<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${contactInstance}" field="telefono"/></span>
+
+</div>
+
+<div class="fieldcontain">
+	<span id="type-label" class="${session.labelWidth} property-label"><g:message code="contact.email.label" default="Email Principal" /></span>
+
+	<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${contactInstance}" field="email"/></span>
+
+</div>
+
 <g:if test="${contactInstance.address == null}">
 <div>
 	<g:link controller="address" action="create" params='[contactUuid: "${contactInstance.uuid}"]'>Agregar Dirección</g:link>
