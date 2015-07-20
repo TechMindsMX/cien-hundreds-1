@@ -80,7 +80,7 @@
     <label class="${session.labelWidth} control-label" for="emailCheck"><g:message code="admin.emailCheck.label" default="Confirme su correo electrónico"/><span class="required-indicator">*</span></label>
 
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.emailCheck}" name="emailCheck" class="form-control" />
+        <g:textField value="${model?.email}" name="emailCheck" class="form-control" />
     </div>
 </div>
 
