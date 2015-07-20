@@ -55,4 +55,20 @@ class AdminController {
     }
   }
 
+  def edit() {
+    def user = User.findByUuid(params.id)
+    def userCommand = new UserCommand()
+    userCommand.username = user.username
+    userCommand.email = user.profile.email
+    userCommand.firstName = user.profile.firstName
+    userCommand.lastName = user.profile.lastName
+    userCommand.motherLastName = user.profile.motherLastName
+    userCommand.phone = user.profile.phone
+    userCommand.role = user.profile.role
+    userCommand.photoPath = user.profile.photoPath
+    userCommand.resumePath = user.profile.resumePath
+    userCommand.status = !user.accountExpired
+    [model:userCommand]
+  }
+
 }
