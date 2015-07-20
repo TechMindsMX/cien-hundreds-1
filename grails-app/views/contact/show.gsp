@@ -187,9 +187,7 @@
 </div>
 </g:if>
 
-<<<<<<< HEAD
 <g:if test="${!contactInstance?.address}">
-=======
 <div class="fieldcontain">
 	<span id="type-label" class="${session.labelWidth} property-label"><g:message code="contact.telefono.label" default="Telefono Principal" /></span>
 
