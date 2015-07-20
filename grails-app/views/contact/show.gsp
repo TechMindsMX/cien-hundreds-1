@@ -205,7 +205,6 @@
 </div>
 
 <g:if test="${contactInstance.address == null}">
->>>>>>> feature/209
 <div>
 	<g:link controller="address" action="create" params='[contactUuid: "${contactInstance.uuid}"]'>${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
 </div>
