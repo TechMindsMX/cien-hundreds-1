@@ -21,6 +21,13 @@ class MusicianController {
     }
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
+    def creationReport(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond Musician.list(params), model:[musicianInstanceCount: Musician.count()]
+    }
+
+
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def show(Musician musicianInstance) {
         respond musicianInstance
     }
