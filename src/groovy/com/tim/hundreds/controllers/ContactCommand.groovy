@@ -13,6 +13,8 @@ class ContactCommand {
   String style
   String photoPath
   String web
+  String telefono
+  String email
 
   Date birthDate
   Date entryDate
@@ -42,6 +44,8 @@ class ContactCommand {
     web nullable:true,blank:false,size:10..100,url:true
     social nullable:true
     photoPath nullable:true
+    email nullable:false
+    telefono nullable:false,size:8..10
   }
 
 }

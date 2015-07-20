@@ -187,7 +187,25 @@
 </div>
 </g:if>
 
+<<<<<<< HEAD
 <g:if test="${!contactInstance?.address}">
+=======
+<div class="fieldcontain">
+	<span id="type-label" class="${session.labelWidth} property-label"><g:message code="contact.telefono.label" default="Telefono Principal" /></span>
+
+	<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${contactInstance}" field="telefono"/></span>
+
+</div>
+
+<div class="fieldcontain">
+	<span id="type-label" class="${session.labelWidth} property-label"><g:message code="contact.email.label" default="Email Principal" /></span>
+
+	<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${contactInstance}" field="email"/></span>
+
+</div>
+
+<g:if test="${contactInstance.address == null}">
+>>>>>>> feature/209
 <div>
 	<g:link controller="address" action="create" params='[contactUuid: "${contactInstance.uuid}"]'>${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
 </div>
