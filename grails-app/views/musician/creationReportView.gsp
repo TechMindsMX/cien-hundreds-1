@@ -15,13 +15,15 @@
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
-    <g:form action="creationReportFilter">
+      <section class="content">
+      <g:form action="creationReportFilter" class="form">
       <div class="form-group">
+        <div class="row">
         <label class="${session.labelWidth} control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'from', 'error')} required">
           <g:message code="musician.from.label" default="Desde" />
         </label>
         <div class="${session.inputWidth}">
-          <g:timDatePicker name="from" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
+          <g:timDatePicker class="form-control" name="from" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
         </div>
       </div>
       <div class="form-group">
@@ -29,14 +31,16 @@
           <g:message code="musician.to.label" default="Hasta" />
         </label>
         <div class="${session.inputWidth}">
-          <g:timDatePicker name="to" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
+          <g:timDatePicker class="form-control" name="to" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
         </div>
         <div class="${session.btnOffset} fieldcontain ${hasErrors(bean: musicianInstance, field: 'to', 'error')} ">
 				  <label for="buttons">
 				  </label>
 				   <g:submitButton name="send" class="btn btn-success" value="${message(code: 'default.button.send.label', default: 'Enviar')}" />
 				</div>
-    </g:form>
+        </div>
+      </g:form>
+      </section>
 		<div id="list-musician" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
