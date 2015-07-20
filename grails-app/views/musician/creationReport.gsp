@@ -15,8 +15,11 @@
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
-    <g:timDatePicker name="from" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
-    <g:timDatePicker name="to" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
+    <g:form action="creationReport">
+      <g:timDatePicker name="from" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
+      <g:timDatePicker name="to" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
+      <g:actionSubmit value="${message(code: 'default.button.send.label', default: 'Enviar')}" />
+    </g:form>
 		<div id="list-musician" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
