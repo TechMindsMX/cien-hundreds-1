@@ -69,7 +69,7 @@
 <li><g:link controller="genre" action="create">${message(code: 'default.add.label', args: [message(code: 'genre.label')])}</g:link></li>
 <li role="separator" class="divider"></li>
 </sec:ifAnyGranted>
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN">
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN">
 <li><g:link controller="businessActivity" action="index">${message(code: 'default.list.label', args: [message(code: 'businessActivity.label')])}</g:link></li>
 <li><g:link controller="businessActivity" action="create">${message(code: 'default.add.label', args: [message(code: 'businessActivity.label')])}</g:link></li>
 </sec:ifAnyGranted>
@@ -93,6 +93,7 @@
 </sec:ifAnyGranted>
 <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_COMPANY_ADMIN">
 <li><g:link controller="userManagement" action="index">${message(code: 'default.list.label', args: [message(code: 'userManagement.label')])}</g:link></li>
+<li><g:link controller="admin" action="create">${message(code: 'default.create.label', args: [message(code: 'facilitator.label')])}</g:link></li>
 <li role="separator" class="divider"></li>
 </sec:ifAnyGranted>
 </ul>
@@ -108,6 +109,7 @@
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong class="font-bold"><sec:loggedInUserInfo field="username"/></strong> <span class="caret"></span></a>
         <ul class="dropdown-menu">
+            <li><g:link id="edit-user" controller="user" action="edit" >${message(code: 'default.edit.label', args: [message(code: 'profile.label')])}</g:link></li>
             <li><g:link class="logout" controller="logout"><g:message code="springSecurity.logout.link"/></g:link></li>
         </ul>
         </sec:ifLoggedIn>
