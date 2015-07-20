@@ -16,8 +16,21 @@
 			</ul>
 		</div>
     <g:form action="creationReportFilter">
-      <g:timDatePicker name="from" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
-      <g:timDatePicker name="to" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
+      <div class="form-group">
+        <label class="${session.labelWidth} control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'from', 'error')} required">
+          <g:message code="musician.from.label" default="Desde" />
+        </label>
+        <div class="${session.inputWidth}">
+          <g:timDatePicker name="from" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="${session.labelWidth} control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'to', 'error')} required">
+          <g:message code="musician.to.label" default="Hasta" />
+        </label>
+        <div class="${session.inputWidth}">
+          <g:timDatePicker name="to" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
+        </div>
       <g:actionSubmit value="${message(code: 'default.button.send.label', default: 'Enviar')}" />
     </g:form>
 		<div id="list-musician" class="content scaffold-list" role="main">
