@@ -7,9 +7,9 @@
 
 <body class="gray-bg">
 
-    <div class="middle-box text-center loginscreen animated fadeInDown max900">
+    <div class="middle-box text-center loginscreen animated fadeInDown">
         <div class="row">
-            <asset:image src="cien_logo.gif" />
+            <asset:image src="logo_talentua_azul.png"/>
             <h3>Bienvenido a 100-Hundreds</h3>
         </div>
         <div class="row">
@@ -29,14 +29,14 @@
             </div>
             <div class="col-xm-12 col-md-6 well">
                 <p>
-                    <g:link controller="recovery" action="user" class="btn btn-block btn-success">Recuperar usuario</g:link>
+                    <g:link controller="recovery" action="user" class="btn btn-block btn-primary">Recuperar usuario</g:link>
                 </p>
                 <p>
-                    <g:link controller="recovery" action="index" class="btn btn-block btn-success">Recuperar contraseña</g:link>
+                    <g:link controller="recovery" action="index" class="btn btn-block btn-primary">Recuperar contraseña</g:link>
                 </p>
                 <p>
                     <p class="text-center">Aún no tiene una cuenta?</p>
-                    <g:link controller="user" action="create" class="btn btn-block btn-success">Registrar nueva cuenta</g:link>
+                    <g:link controller="user" action="create" class="btn btn-block btn-primary">Registrar nueva cuenta</g:link>
                 </p>
             </div>
         </div>

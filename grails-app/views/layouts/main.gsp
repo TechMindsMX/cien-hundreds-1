@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <g:link class="navbar-brand" uri="/">LOGO</g:link>
+        <g:link class="navbar-brand" uri="/"><asset:image src="logo_talentua_blanco.png"/></g:link>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">

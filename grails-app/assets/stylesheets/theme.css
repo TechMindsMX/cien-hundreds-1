@@ -12,6 +12,14 @@ body { padding-top: 70px; }
     margin-bottom: 20px;
 }
 
+.navbar-brand img {
+    height: 100%;
+}
+.navbar-brand {
+    padding: 4px 15px;
+    margin-left: 0px;
+}
+
 .theme-showcase > p > .btn
 {
     margin: 5px 0;
@@ -24,11 +32,6 @@ body { padding-top: 70px; }
 
 .table > tbody > tr > td {
     border-top: medium none;
-}
-
-.max900, .loginscreen.middle-box.max900 {
-	width: 90%;
-	max-width: 900px;
 }
 
 input[type="checkbox"], input[type="radio"] {
@@ -51,6 +54,9 @@ img.max300 {
 img.max100pct {
     max-height: 100%;
     max-width: 100%;
+}
+.pad-bottom {
+    padding: 0 0 1em 0;
 }
 
 .cols-5 {
