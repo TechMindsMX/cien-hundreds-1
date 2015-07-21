@@ -65,7 +65,7 @@ class UserManagementController {
         renderView(userList)
     }
 
-    def renderView(ArrayList userList) {
+    private renderView(ArrayList userList) {
         render view: 'index', model:[userInstanceList: ControllerPaginationUtil.paginateList(userList, params), userInstanceCount: userList.size()]
     }
 
