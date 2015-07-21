@@ -31,7 +31,7 @@ class ContactServiceIntegrationSpec extends Specification {
     user.addToMusicians(musician)
     user.save(flush: true)
   and: "An email"
-    def email = new Email(address: 'josdem@email.com', type: EmailType.PERSONAL)
+    def email = new Email(mail: 'josdem@email.com', emailType: EmailType.PERSONAL)
   when: "We save an email"
     def result = contactService.saveEmail(contact, email)
   then: "We expect"
@@ -68,7 +68,7 @@ class ContactServiceIntegrationSpec extends Specification {
     user.addToMusicians(musician)
     user.save(flush: true)
   and: "An telephone"
-    def telephone = new Telephone(phone: '5512345678', type: TelephoneType.WORK)
+    def telephone = new Telephone(phone: '5512345678', phoneType: TelephoneType.WORK)
   when: "We save an email"
     def result = contactService.saveTelephone(contact, telephone)
   then: "We expect"
@@ -105,10 +105,10 @@ class ContactServiceIntegrationSpec extends Specification {
       user.addToMusicians(musician)
       user.save(flush: true)
     and: "We create several emails"
-      def emailInstance1 = new Email(address:'josdem@email.com',type:EmailType.WORK)
-      def emailInstance2 = new Email(address:'josdem@email.com',type:EmailType.WORK)
-      def emailInstance3 = new Email(address:'josdem@email.com',type:EmailType.WORK)
-      def emailInstance4 = new Email(address:'josdem@email.com',type:EmailType.WORK)
+      def emailInstance1 = new Email(mail:'josdem@email.com',emailType:EmailType.WORK)
+      def emailInstance2 = new Email(mail:'josdem@email.com',emailType:EmailType.WORK)
+      def emailInstance3 = new Email(mail:'josdem@email.com',emailType:EmailType.WORK)
+      def emailInstance4 = new Email(mail:'josdem@email.com',emailType:EmailType.WORK)
     when: "We save emails"
       contactService.saveEmail(contact, emailInstance1)
       contactService.saveEmail(contact, emailInstance2)
@@ -144,10 +144,10 @@ class ContactServiceIntegrationSpec extends Specification {
       user.addToMusicians(musician)
       user.save(flush: true)
     and: "We create an telephone"
-      def telephonecontact1 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
-      def telephonecontact2 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
-      def telephonecontact3 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
-      def telephonecontact4 = new Telephone(phone:'1234567890',type:TelephoneType.WORK,contact: contact)
+      def telephonecontact1 = new Telephone(phone:'1234567890',phoneType:TelephoneType.WORK,contact: contact)
+      def telephonecontact2 = new Telephone(phone:'1234567890',phoneType:TelephoneType.WORK,contact: contact)
+      def telephonecontact3 = new Telephone(phone:'1234567890',phoneType:TelephoneType.WORK,contact: contact)
+      def telephonecontact4 = new Telephone(phone:'1234567890',phoneType:TelephoneType.WORK,contact: contact)
     when: "We save telephone"
       contactService.saveTelephone(contact, telephonecontact1)
       contactService.saveTelephone(contact, telephonecontact2)
