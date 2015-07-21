@@ -10,7 +10,13 @@ class UserPermissionsService {
 			case '[ROLE_BUYER]':
 			currUserAuths = ['ROLE_ADMIN','ROLE_COMPANY_ADMIN']
 			break
+			case '[ROLE_COMPANY_VIEWER]':
+			currUserAuths = ['ROLE_ADMIN','ROLE_COMPANY_ADMIN']
+			break
 			case '[ROLE_FACILITATOR]':
+			currUserAuths = ['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN']
+			break
+			case '[ROLE_MUSICIAN_VIEWER]':
 			currUserAuths = ['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN']
 			break
 			default:

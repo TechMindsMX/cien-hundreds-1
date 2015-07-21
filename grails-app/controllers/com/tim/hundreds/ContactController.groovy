@@ -46,24 +46,18 @@ class ContactController {
           def photoPath = photoStorerService.storeFile(request.getFile('file'))
           command.photoPath = photoPath
         }
-
         Contact contactInstance = new Contact()
         bindData(contactInstance, command)
         Musician musician = Musician.findById(params.musician.id)
         contactInstance.musician = musician
         tagService.addTags(musician, "${contactInstance.firstName},${contactInstance.lastName},${contactInstance.motherLastName}")
-
         try{
           def instance = contactService.save(contactInstance)
-          request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'contact.label', default: 'Contact'), instance.id])
-                redirect instance
-            }
-            '*' { respond instance, [status: CREATED] }
-          }
+          def contact = createAndAddTelephoneAndEmailToContact(instance,command)
+          flash.message = message(code: 'default.created.message', args: [message(code: 'contact.label', default: 'Contact'), instance.id])
+          render view: 'show', model:[contactInstance:contact]
         }catch(Exception ex){
-          log.info "Errors: ${ex.message}"
+          log.info "Errors: ${ex}"
           respond contactInstance.musician.errors, view:'create'
         }
 
@@ -138,12 +132,12 @@ class ContactController {
       } catch (ValidationException ve){
         flash.error = g.message(code: 'error.email.limit')
       }
-      redirect(uri: "/contact/show/${contact.id}")
+      render view: 'show', params:[contactInstance:Contact.findByUuid(contactUuid)]
     }
 
     def prepareTelephone(){
       def contact = Contact.findByUuid(params.contactUuid)
-      render (view: "prepareTelephone", model: [contactInstance: contact,telephoneInstance: new Telephone()])
+      redirect (view: "prepareTelephone", model: [contactInstance: contact,telephoneInstance: new Telephone()])
     }
 
     def saveTelephone(String contactUuid, Telephone telephoneInstance){
@@ -153,7 +147,15 @@ class ContactController {
       } catch (ValidationException ve){
         flash.error = g.message(code: 'error.telephone.limit')
       }
-      redirect(uri: "/contact/show/${contact.id}")
+      render view: 'show', params:[contactInstance:Contact.findByUuid(contactUuid)]
     }
 
+    private def createAndAddTelephoneAndEmailToContact(contact, command) {
+      def telephone = new Telephone(phone:command.phone,phoneType:command.phoneType).save(failOnError:true)
+      def email = new Email(mail:command.mail,emailType:command.emailType).save(failOnError:true)
+      contact.addToEmails(email)
+      contact.addToTelephones(telephone)
+      contact.save()
+      contact
+    }
 }

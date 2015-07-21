@@ -132,9 +132,8 @@
 <g:if test="${contactInstance?.emails}">
 <div class="fieldcontain">
   <span id="emails-label" class="${session.labelWidth} property-label"><g:message code="contact.emails.label" default="Emails" /></span>
-
-  <g:each in="${contactInstance.emails}" var="e">
-  <span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.address?.encodeAsHTML()}</g:link></span>
+	<g:each in="${contactInstance.emails}" var="e">
+	<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.mail?.encodeAsHTML()}</g:link></span>
 </g:each>
 
 </div>
@@ -186,20 +185,6 @@
 
 </div>
 </g:if>
-
-<div class="fieldcontain">
-  <span id="type-label" class="${session.labelWidth} property-label"><g:message code="contact.telefono.label" default="Telefono Principal" /></span>
-
-  <span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${contactInstance}" field="telefono"/></span>
-
-</div>
-
-<div class="fieldcontain">
-  <span id="type-label" class="${session.labelWidth} property-label"><g:message code="contact.email.label" default="Email Principal" /></span>
-
-  <span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${contactInstance}" field="email"/></span>
-
-</div>
 <g:if test="${contactInstance.address == null}">
 <div>
   <g:link controller="address" action="create" params='[contactUuid: "${contactInstance.uuid}"]'>${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>

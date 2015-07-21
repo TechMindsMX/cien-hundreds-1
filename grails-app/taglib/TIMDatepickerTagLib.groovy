@@ -20,7 +20,19 @@ class TIMDatepickerTagLib {
 
         out.println "<script type=\"text/javascript\"> \$(document).ready(function(){"
         out.println "\$(\"#${name}\").datepicker({"
-        out.println "minDate: '${minDate}', maxDate: '${maxDate}', dateFormat: '${displayFormatString}'"
+        if (minDate) {
+            out.println "minDate: '${minDate}', "
+        }        
+        if (maxDate) {
+            out.println "maxDate: '${maxDate}', "
+        }
+        if (attrs.changeMonth) {
+            out.println "changeMonth: true, "
+        }
+        if (attrs.changeYear) {
+            out.println "changeYear: true, "
+        }
+        out.println "dateFormat: '${displayFormatString}'"
         out.println "});"
         out.println "})</script>"
     }

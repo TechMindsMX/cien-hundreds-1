@@ -57,25 +57,6 @@
   </div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'telefono', 'error')} required">
-  <label class="${session.labelWidth} control-label" for="telefono">
-    <g:message code="contact.telefono.label" default="Telephone" />
-    <span class="required-indicator">*</span>
-  </label>
-  <div class="${session.inputWidth}">
-    <input type="tel" class="form-control" name="telefono" required="" value="${contactInstance?.telefono}"/>
-  </div>
-</div>
-<div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'email', 'error')} required">
-  <label class="${session.labelWidth} control-label" for="email">
-    <g:message code="contact.email.label" default="Email" />
-    <span class="required-indicator">*</span>
-  </label>
-  <div class="${session.inputWidth}">
-    <input type="email" class="form-control" name="email" value="${contactInstance?.email}">
-  </div>
-</div>
-
 <div class="form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'biography', 'error')} ">
   <label class="${session.labelWidth} control-label" for="biography">
     <g:message code="contact.biography.label" default="Biography" />
@@ -100,7 +81,7 @@
     <span class="required-indicator">*</span>
   </label>
   <div class="${session.inputWidth}">
-    <g:timDatePicker name="birthDate" minDate="-10Y" maxDate="-0D" value="${contactInstance?.birthDate}" required="true"></g:timDatePicker>
+    <g:timDatePicker name="birthDate" maxDate="-0D" changeMonth="true" changeYear="true" value="${contactInstance?.birthDate}" required="true"></g:timDatePicker>
   </div>
 </div>
 
@@ -110,7 +91,7 @@
     <span class="required-indicator">*</span>
   </label>
   <div class="${session.inputWidth}">
-    <g:timDatePicker name="entryDate" minDate="-10Y" maxDate="-0D" value="${contactInstance?.entryDate}" required="true"></g:timDatePicker>
+    <g:timDatePicker name="entryDate" maxDate="-0D" changeMonth="true" changeYear="true" value="${contactInstance?.entryDate}" required="true"></g:timDatePicker>
   </div>
 </div>
 
@@ -155,3 +136,6 @@
 
     </div>
 </div>
+<g:render template="/email/form" model="${emailInstance}"/>
+
+<g:render template="/telephone/form" model="${telephoneInstance}" />

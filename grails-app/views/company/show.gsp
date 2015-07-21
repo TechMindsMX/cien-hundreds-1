@@ -228,6 +228,12 @@
 				</g:else>
 			</sec:ifAnyGranted>
 
+			<sec:ifAnyGranted roles="ROLE_COMPANY_VIEWER">
+				<g:if test="${companyInstance?.companyComment}">
+					<g:link class="btn btn-success" controller="companyComment" action="show" id="${companyInstance.companyComment.id}" >${message(code: 'default.show.label', args: [message(code: 'companyComment.label')])}</g:link>
+				</g:if>
+			</sec:ifAnyGranted>
+
 				<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 			</fieldset>
 		</g:form>
