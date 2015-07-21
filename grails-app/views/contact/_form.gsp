@@ -136,6 +136,11 @@
 
     </div>
 </div>
-<g:render template="/email/form" model="${emailInstance}"/>
-
-<g:render template="/telephone/form" model="${telephoneInstance}" />
+<g:if test="${!flash.edit}" > 
+  <g:render template="/email/form" model="['emailInstance':contactInstance?.emails]"/>
+  <g:render template="/telephone/form" model="['telephoneInstance':contactInstance?.telephones]" />
+</g:if>
+<g:else> 
+  <g:link class="form-group" controller="email">Editar Emails</g:link>
+  <g:link class="form-group" controller="email">Editar Telefonos</g:link>
+</g:else>

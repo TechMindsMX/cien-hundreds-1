@@ -34,7 +34,7 @@ class EmailIntegrationSpec extends Specification {
       user.addToMusicians(musician)
       user.save(flush: true)
     and: "We create an email"
-      def emailInstance = new Email(address:'josdem@email.com',type:EmailType.WORK)
+      def emailInstance = new Email(mail:'josdem@email.com',emailType:EmailType.WORK)
     when: "We save email"
       def result = emailService.save(emailInstance, contact)
     then:"We validate command"
@@ -71,10 +71,10 @@ class EmailIntegrationSpec extends Specification {
       user.addToMusicians(musician)
       user.save(flush: true)
     and: "We create several emails"
-      def emailInstance1 = new Email(address:'josdem@email.com',type:EmailType.WORK)
-      def emailInstance2 = new Email(address:'josdem@email.com',type:EmailType.WORK)
-      def emailInstance3 = new Email(address:'josdem@email.com',type:EmailType.WORK)
-      def emailInstance4 = new Email(address:'josdem@email.com',type:EmailType.WORK)
+      def emailInstance1 = new Email(mail:'josdem@email.com',emailType:EmailType.WORK)
+      def emailInstance2 = new Email(mail:'josdem@email.com',emailType:EmailType.WORK)
+      def emailInstance3 = new Email(mail:'josdem@email.com',emailType:EmailType.WORK)
+      def emailInstance4 = new Email(mail:'josdem@email.com',emailType:EmailType.WORK)
     when: "We save emails"
       emailService.save(emailInstance1, contact)
       emailService.save(emailInstance2, contact)

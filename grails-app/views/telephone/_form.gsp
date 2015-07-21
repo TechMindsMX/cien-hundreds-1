@@ -16,7 +16,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${session.inputWidth}">
-		<g:select class="form-control" name="phoneType" from="${com.tim.hundreds.TelephoneType?.values()}" keys="${com.tim.hundreds.TelephoneType.values()*.name()}" required="" value="${telephoneInstance?.phoneType?.name()}" />
+		<g:select class="form-control" name="phoneType" from="${com.tim.hundreds.TelephoneType?.values()}" keys="${com.tim.hundreds.TelephoneType.values()*.name()}" required="" value="${telephoneInstance?.phoneType?.toString()}" />
 	</div>
 </div>
 

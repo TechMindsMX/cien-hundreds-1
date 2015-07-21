@@ -27,10 +27,11 @@ class MusicianService {
     musicianValidationInstance.save()
   }
 
-  def getMusiciansByDateCreated(String from, String to){
-    if(from > to){
+  def getMusiciansByDateCreated(Date startDate, Date endDate){
+    if(startDate>endDate){
       throw new InvalidParamsException('Date from is greater')
     }
+    Musician.findAllByDateCreatedBetween(startDate, endDate + 1)
   }
 
 }

@@ -23,7 +23,7 @@ class CollaboratorServiceIntegrationSpec extends Specification {
     user.addToCompanies(company)
     user.save(flush: true)
   and: "An email"
-    def email = new Email(address: 'josdem@email.com', type: EmailType.PERSONAL)
+    def email = new Email(mail: 'josdem@email.com', emailType: EmailType.PERSONAL)
   when: "We save an email"
     def result = collaboratorService.saveEmail(collaborator, email)
   then: "We expect"
@@ -50,7 +50,7 @@ class CollaboratorServiceIntegrationSpec extends Specification {
     user.addToCompanies(company)
     user.save(flush: true)
   and: "An telephone"
-    def telephone = new Telephone(phone: '5512345678', type: TelephoneType.WORK)
+    def telephone = new Telephone(phone: '5512345678', phoneType: TelephoneType.WORK)
   when: "We save an email"
     def result = collaboratorService.saveTelephone(collaborator, telephone)
   then: "We expect"
@@ -77,10 +77,10 @@ class CollaboratorServiceIntegrationSpec extends Specification {
       user.addToCompanies(company)
       user.save(flush: true)
     and: "We create several emails"
-      def emailInstance1 = new Email(address:'josdem@email.com',type:EmailType.WORK)
-      def emailInstance2 = new Email(address:'josdem@email.com',type:EmailType.WORK)
-      def emailInstance3 = new Email(address:'josdem@email.com',type:EmailType.WORK)
-      def emailInstance4 = new Email(address:'josdem@email.com',type:EmailType.WORK)
+      def emailInstance1 = new Email(mail:'josdem@email.com',emailType:EmailType.WORK)
+      def emailInstance2 = new Email(mail:'josdem@email.com',emailType:EmailType.WORK)
+      def emailInstance3 = new Email(mail:'josdem@email.com',emailType:EmailType.WORK)
+      def emailInstance4 = new Email(mail:'josdem@email.com',emailType:EmailType.WORK)
     when: "We save emails"
       collaboratorService.saveEmail(collaborator, emailInstance1)
       collaboratorService.saveEmail(collaborator, emailInstance2)
@@ -108,10 +108,10 @@ class CollaboratorServiceIntegrationSpec extends Specification {
       user.addToCompanies(company)
       user.save(flush: true)
     and: "We create an telephone"
-      def telephoneCollaborator1 = new Telephone(phone:'1234567890',type:TelephoneType.WORK)
-      def telephoneCollaborator2 = new Telephone(phone:'1234567890',type:TelephoneType.WORK)
-      def telephoneCollaborator3 = new Telephone(phone:'1234567890',type:TelephoneType.WORK)
-      def telephoneCollaborator4 = new Telephone(phone:'1234567890',type:TelephoneType.WORK)
+      def telephoneCollaborator1 = new Telephone(phone:'1234567890',phoneType:TelephoneType.WORK)
+      def telephoneCollaborator2 = new Telephone(phone:'1234567890',phoneType:TelephoneType.WORK)
+      def telephoneCollaborator3 = new Telephone(phone:'1234567890',phoneType:TelephoneType.WORK)
+      def telephoneCollaborator4 = new Telephone(phone:'1234567890',phoneType:TelephoneType.WORK)
     when: "We save telephone"
       collaboratorService.saveTelephone(collaborator, telephoneCollaborator1)
       collaboratorService.saveTelephone(collaborator, telephoneCollaborator2)
