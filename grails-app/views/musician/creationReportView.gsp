@@ -19,26 +19,28 @@
       <g:form action="creationReportFilter" class="form">
       <div class="form-group">
         <div class="row">
-        <label class="${session.labelWidth} control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'from', 'error')} required">
-          <g:message code="musician.from.label" default="Desde" />
-        </label>
-        <div class="${session.inputWidth}">
-          <g:timDatePicker class="form-control" name="from" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
+          <div class="col-md-10">
+          <label class="${session.labelWidth} control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'from', 'error')} required">
+            <g:message code="musician.from.label" default="Desde" />
+          </label>
+          <div class="${session.inputWidth}">
+            <g:timDatePicker class="form-control" name="from" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <label class="${session.labelWidth} control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'to', 'error')} required">
+            <g:message code="musician.to.label" default="Hasta" />
+          </label>
+          <div class="${session.inputWidth}">
+            <g:timDatePicker class="form-control" name="to" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
+          </div>
+          <div class="${session.btnOffset} fieldcontain ${hasErrors(bean: musicianInstance, field: 'to', 'error')} ">
+				    <label for="buttons">
+				    </label>
+				    <g:submitButton name="send" class="btn btn-success" value="${message(code: 'default.button.send.label', default: 'Enviar')}" />
+				  </div>
         </div>
       </div>
-      <div class="form-group">
-        <label class="${session.labelWidth} control-label fieldcontain ${hasErrors(bean: musicianInstance, field: 'to', 'error')} required">
-          <g:message code="musician.to.label" default="Hasta" />
-        </label>
-        <div class="${session.inputWidth}">
-          <g:timDatePicker class="form-control" name="to" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
-        </div>
-        <div class="${session.btnOffset} fieldcontain ${hasErrors(bean: musicianInstance, field: 'to', 'error')} ">
-				  <label for="buttons">
-				  </label>
-				   <g:submitButton name="send" class="btn btn-success" value="${message(code: 'default.button.send.label', default: 'Enviar')}" />
-				</div>
-        </div>
       </g:form>
       </section>
 		<div id="list-musician" class="content scaffold-list" role="main">
