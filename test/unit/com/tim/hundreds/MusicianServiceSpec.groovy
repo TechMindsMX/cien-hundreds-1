@@ -67,5 +67,18 @@ class MusicianServiceSpec extends Specification {
     result.isEmpty()
   }
 
+  void "should get musicians created same day"() {
+  given: "A date range"
+    def endDate = new Date()
+    def startDate = endDate - 9
+  and: "A musician"
+    def musician = new Musician()
+    musician.dateCreated = endDate
+    musician.save(validate: false)
+  when: "We try to get musician by range"
+    def result = service.getMusiciansByDateCreated(startDate, endDate)
+  then:
+    1 == result.size()
+  }
 
 }
