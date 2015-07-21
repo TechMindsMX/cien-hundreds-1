@@ -11,7 +11,7 @@ import spock.lang.Unroll
 class SocialSpec extends Specification {
 
   @Unroll
-  void "When we have a social with: facebook: #facebook, twitter: #twitter, googlePlus: #googlePlus, instagram: #instagram, youtube: #youtube, linkedin: #linkedin, other: #other and when we validate we expect the result is: #result"() {
+  void "When we have a social with: facebook: #facebook, twitter: #twitter, googlePlus: #googlePlus, instagram: #instagram, youtube: #youtube, linkedin: #linkedin, other: #other,  and when we validate we expect the result is: #result"() {
   given: "And Social"
     Social social = new Social()
   when: "We assign values to the social"
@@ -22,18 +22,24 @@ class SocialSpec extends Specification {
     social.youtube = youtube
     social.linkedin = linkedin
     social.other = other
+
+    social.musician = musicianId
+    social.company = companyId
+    social.contact = contactId
   then: "We validate social"
     result == social.validate()
   where: "We have next cases"
-  facebook                                  | twitter                               | googlePlus                                | instagram                              | youtube                                         | linkedin                                          | other                    || result
-  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' || true
-  ''                                        | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' || false
-  'https://www.facebook.com/aboveandbeyond' | ''                                    | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' || false
-  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | ''                                        | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' || false
-  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | ''                                     | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' || false
-  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | ''                                              | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' || false
-  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | ''                             | 'https://www.other.com/'                    || false
-  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | ''                       || false
+  facebook                                  | twitter                               | googlePlus                                | instagram                              | youtube                                         | linkedin                                          | other                    | musicianId     | companyId     | contactId     || result
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' | new Musician() | null          | null          || true
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' | null           | new Company() | null          || true
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' | null           | null          | new Contact() || true
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' | null           | null          | null          || false
+  ''                                        | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' | new Musician() | null          | null          || false
+  'https://www.facebook.com/aboveandbeyond' | ''                                    | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' | new Musician() | null          | null          || false
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | ''                                        | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' | new Musician() | null          | null          || false
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | ''                                     | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' | new Musician() | null          | null          || false
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | ''                                              | 'https://www.linkedin.com/company/above-&-beyond' | 'https://www.other.com/' | new Musician() | null          | null          || false
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | ''                             | 'https://www.other.com/'                    | new Musician() | null          | null          || false
+  'https://www.facebook.com/aboveandbeyond' | 'https://twitter.com/aboveandbeyond'  | 'https://plus.google.com/+aboveandbeyond' | 'https://instagram.com/aboveandbeyond' | 'https://www.youtube.com/user/aboveandbeyondtv' | 'https://www.linkedin.com/company/above-&-beyond' | ''                       | new Musician() | null          | null          || false
   }
-
 }
