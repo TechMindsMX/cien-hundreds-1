@@ -53,9 +53,12 @@ class ContactController {
         tagService.addTags(musician, "${contactInstance.firstName},${contactInstance.lastName},${contactInstance.motherLastName}")
         try{
           def instance = contactService.save(contactInstance)
-          def contact = createAndAddTelephoneAndEmailToContact(instance,command)
+          def telephone = new Telephone(phone:command.phone,phoneType:command.phoneType)
+          def email = new Email(mail:command.mail,emailType:command.emailType)
+          instance = contactService.saveEmail(instance,email)
+          instance = contactService.saveTelephone(instance,telephone)
           flash.message = message(code: 'default.created.message', args: [message(code: 'contact.label', default: 'Contact'), instance.id])
-          render view: 'show', model:[contactInstance:contact]
+          render view: 'show', model:[contactInstance:instance]
         }catch(Exception ex){
           log.info "Errors: ${ex}"
           respond contactInstance.musician.errors, view:'create'
@@ -64,7 +67,8 @@ class ContactController {
     }
 
     def edit(Contact contactInstance) {
-        respond contactInstance
+      flash.edit = "true"
+      respond contactInstance
     }
 
     @Transactional
@@ -137,7 +141,7 @@ class ContactController {
 
     def prepareTelephone(){
       def contact = Contact.findByUuid(params.contactUuid)
-      redirect (view: "prepareTelephone", model: [contactInstance: contact,telephoneInstance: new Telephone()])
+      render (view: "prepareTelephone", model: [contactInstance: contact,telephoneInstance: new Telephone()])
     }
 
     def saveTelephone(String contactUuid, Telephone telephoneInstance){
@@ -150,12 +154,4 @@ class ContactController {
       render view: 'show', params:[contactInstance:Contact.findByUuid(contactUuid)]
     }
 
-    private def createAndAddTelephoneAndEmailToContact(contact, command) {
-      def telephone = new Telephone(phone:command.phone,phoneType:command.phoneType).save(failOnError:true)
-      def email = new Email(mail:command.mail,emailType:command.emailType).save(failOnError:true)
-      contact.addToEmails(email)
-      contact.addToTelephones(telephone)
-      contact.save()
-      contact
-    }
 }
