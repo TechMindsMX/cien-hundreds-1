@@ -22,17 +22,17 @@
 			</g:if>
 			<ul class="property-list email">
 			
-				<g:if test="${emailInstance?.address}">
+				<g:if test="${emailInstance?.mail}">
 				<li class="fieldcontain">
 					<span id="address-label" class="${session.labelWidth} property-label"><g:message code="email.address.label" default="Address" /></span>
-					<span class="property-value" aria-labelledby="address-label"><g:fieldValue bean="${emailInstance}" field="address"/></span>
+					<span class="property-value" aria-labelledby="address-label"><g:fieldValue bean="${emailInstance}" field="mail"/></span>
 				</li>
 				</g:if>
 			
-				<g:if test="${emailInstance?.type}">
+				<g:if test="${emailInstance?.emailType}">
 				<li class="fieldcontain">
 					<span id="type-label" class="${session.labelWidth} property-label"><g:message code="email.type.label" default="Type" /></span>
-					<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${emailInstance}" field="type"/></span>
+					<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${emailInstance}" field="email.type"/></span>
 				</li>
 				</g:if>
 				

@@ -11,8 +11,6 @@ class Contact {
   String style
   String photoPath
   String web
-  String telefono
-  String email
 
   Date birthDate
   Date entryDate
