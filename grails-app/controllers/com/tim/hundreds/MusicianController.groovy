@@ -26,7 +26,7 @@ class MusicianController {
       if(params.from > params.to){
         flash.error=g.message(code: 'error.date.range')
       }
-      render view:'creationReportView', model: [musicianInstance: Musician.list()]
+      render view:'creationReportView', model: [musicianInstanceList: Musician.list()]
     }
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
