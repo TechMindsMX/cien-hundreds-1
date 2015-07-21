@@ -2,7 +2,7 @@
 
 
 
-<div class="form-group fieldcontain ${hasErrors(bean: emailInstance, field: 'mail', 'error')} required">
+<div class="form-group required" >
 	<label class="${session.labelWidth} control-label" for="address">
 		<g:message code="email.address.label" default="Email" />
 		<span class="required-indicator">*</span>
@@ -13,13 +13,13 @@
 		</div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: emailInstance, field: 'emailType', 'error')} required">
+<div class="form-group required">
 	<label class="${session.labelWidth} control-label" for="type">
 		<g:message code="email.type.label" default="Type" />
 		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
-			<g:select class="form-control" name="emailType" from="${com.tim.hundreds.EmailType?.values()}" keys="${com.tim.hundreds.EmailType.values()*.name()}" required="" value="${emailInstance?.emailType?.name()}" />
+			<g:select class="form-control" name="emailType" from="${com.tim.hundreds.EmailType?.values()}" keys="${com.tim.hundreds.EmailType.values()*.name()}" required="" value="${emailInstance?.emailType?.toString()}" />
 
 		</div>
 </div>
