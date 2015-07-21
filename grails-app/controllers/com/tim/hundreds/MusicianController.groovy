@@ -25,7 +25,9 @@ class MusicianController {
       log.info "Listing musician created from ${params.from} to ${params.to}"
       def musicianList
       try{
-        musicianList = musicianService.getMusiciansByDateCreated(params.from, params.to)
+        Date startDate = Date.parse('dd-MM-yyyy', params.from)
+        Date endDate = Date.parse('dd-MM-yyyy', params.to)
+        musicianList = musicianService.getMusiciansByDateCreated(startDate, endDate)
       }catch(InvalidParamsException ipe){
         log.warn ipe.message
         flash.error=g.message(code: 'error.date.range')
