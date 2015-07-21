@@ -4,6 +4,7 @@ import grails.test.mixin.TestFor
 import spock.lang.Specification
 
 @TestFor(MusicianService)
+@Mock([Musician])
 class MusicianServiceSpec extends Specification {
   def validationService = Mock(ValidationService)
 
@@ -44,11 +45,27 @@ class MusicianServiceSpec extends Specification {
     def startDate = endDate - 9
   and: "A musician"
     def musician = new Musician()
-    musician.dateCreated = new Date() - 1
+    musician.dateCreated = endDate - 1
+    musician.save(validate: false)
   when: "We try to get musician by range"
     def result = service.getMusiciansByDateCreated(startDate, endDate)
   then:
     1 == result.size()
   }
+
+  void "should not get musicians by creation date since is not in range"() {
+  given: "A date range"
+    def endDate = new Date()
+    def startDate = endDate - 9
+  and: "A musician"
+    def musician = new Musician()
+    musician.dateCreated = endDate - 15
+    musician.save(validate: false)
+  when: "We try to get musician by range"
+    def result = service.getMusiciansByDateCreated(startDate, endDate)
+  then:
+    result.isEmpty()
+  }
+
 
 }
