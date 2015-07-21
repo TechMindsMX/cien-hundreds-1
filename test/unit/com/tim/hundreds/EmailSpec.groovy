@@ -11,16 +11,16 @@ import spock.lang.Unroll
 class EmailSpec extends Specification {
 
   @Unroll
-  void """When we have an email with: address: #address, type: #type we expect result: #result"""() {
+  void """When we have an email with: mail: #mail, emailType: #emailType we expect result: #result"""() {
   given: "An email"
     def email = new Email()
   when: "We assign values"
-    email.address = address
-    email.type = type
+    email.mail = mail
+    email.emailType = emailType
   then: "We validate email"
     result == email.validate()
   where: "We have next values"
-  address             | type                || result
+  mail                | emailType           || result
   'josdem@email.com'  | EmailType.WORK      || true
   'josdem@email.com'  | EmailType.PERSONAL  || true
   'josdem@email.com'  | EmailType.OTHER     || true

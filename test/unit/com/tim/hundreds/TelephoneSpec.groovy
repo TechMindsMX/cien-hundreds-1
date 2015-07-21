@@ -8,16 +8,16 @@ import spock.lang.Unroll
 class TelephoneSpec extends Specification {
 
   @Unroll
-  void """When we have a telephone with phone: #phone, type: #type we expect result: #result"""() {
+  void """When we have a telephone with phone: #phone, type: #phoneType we expect result: #result"""() {
   given: "A telephone"
     def telephone = new Telephone()
   when: "We assign values"
     telephone.phone = phone
-    telephone.type = type
+    telephone.phoneType = phoneType
   then: "We validate result"
     result == telephone.validate()
   where: "We have next values"
-  phone         | type                          || result
+  phone         | phoneType                          || result
   '1234567890'  | TelephoneType.PERSONAL_MOBILE || true
   '1234567890'  | TelephoneType.WORK_MOBILE     || true
   '1234567890'  | TelephoneType.PERSONAL        || true
