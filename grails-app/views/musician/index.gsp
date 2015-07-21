@@ -28,7 +28,6 @@
 						<th>${message(code: 'telephone.label', default: 'Teléfonoooo')}</th>
 						<th>${message(code: 'email.label', default: 'Correo')}</th>
 						<g:sortableColumn property="dateCreated" title="${message(code: 'musician.dateCreated.label', default: 'Fecha de creación')}" />
-						<g:sortableColumn property="logoPath" title="${message(code: 'musician.logoPath.label', default: 'Logo')}" class="col-sm-12 col-md-4" />
 					
 					</tr>
 				</thead>
@@ -45,12 +44,6 @@
 						</td>
 						<td><g:formatDate format="dd-MM-yyyy" date="${musicianInstance.dateCreated}" /></td>
 										
-						<td>
-							<g:if test="${musicianInstance.logoPath}">
-								<img class="img-responsive max300" src="${grailsApplication.config.base.logo.url}${musicianInstance.logoPath}" />
-							</g:if>
-						</td>
-					
 					</tr>
 				</g:each>
 				</tbody>

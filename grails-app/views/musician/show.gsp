@@ -24,20 +24,18 @@
             <div class="page-header">
                 <h2 class="text-head-color text-center"><g:message code="${musicianInstance.name}" /></h2>
             </div>
-            <div class="dropdown theme-dropdown clearfix">
-	        <div class="col-xs-12 ">
 
         	<div class="row">
 	        	<div class="col-xs-12 col-md-4">
 					<g:if test="${musicianInstance?.logoPath}">
-						<span class="property-value" aria-labelledby="logoPath-label">
-						<img class="img-responsive max300" src="${grailsApplication.config.base.logo.url}${musicianInstance.logoPath}" />
-						</span>
+						<div class="img pad-bottom">
+						<img class="img-responsive img-thumbnail max300" src="${grailsApplication.config.base.logo.url}${musicianInstance.logoPath}" />
+						</div>
 					</g:if>
 					<g:if test="${musicianInstance?.photos}">
-						<span class="property-value" aria-labelledby="photos-label">
-						<img class="img-responsive max300" src="${grailsApplication.config.base.photo.url}${musicianInstance.photos[0].path}" />
-						</span>
+						<div class="img pad-bottom">
+						<img class="img-responsive img-thumbnail max300" src="${grailsApplication.config.base.photo.url}${musicianInstance.photos[0].path}" />
+						</div>
 					</g:if>
 	        	</div>
 
@@ -133,7 +131,7 @@
 
 	        </div>
 	        <div class="row">
-		        	<div class="col-xs-12">
+	        	<div class="col-xs-12">
 
 					<g:if test="${musicianInstance?.history}">
 					<div class="fieldcontain well">
@@ -219,31 +217,29 @@
                 	</div>
 
 
-				<g:if test="${musicianInstance?.notes}">
-				<div class="fieldcontain well">
-					<span id="notes-label" class="property-label"><b>Notas:</b></span>
-
+					<g:if test="${musicianInstance?.notes}">
+					<div class="fieldcontain well">
+						<span id="notes-label" class="property-label"><b>Notas:</b></span>
 						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${musicianInstance}" field="notes"/></span>
+					</div>
+					</g:if>
 
-				</div>
-				</g:if>
+					<sec:access expression="hasRole('ROLE_FACILITATOR')">
+			        	<div class="row">
+			        		<div class="col-sm-12">
+								<div class="fieldcontain well">
+									<p id="notes-label" class=""><g:message code="musician.message.label" default="Reviews" /></p>
+									<g:if test="${musicianInstance?.musicianValidation}">
+										<g:each in="${musicianInstance?.musicianValidation}" var="m">
+											<span class="property-value" aria-labelledby="musicianValidation-label">${m.message}</span>
+										</g:each>
+									</g:if>
+								</div>
+			        		</div>
+			        	</div>
+			        </sec:access>
 
-				<sec:access expression="hasRole('ROLE_FACILITATOR')">
-		        	<div class="row">
-		        		<div class="col-sm-12">
-							<div class="fieldcontain well">
-								<p id="notes-label" class=""><g:message code="musician.message.label" default="Reviews" /></p>
-								<g:if test="${musicianInstance?.musicianValidation}">
-									<g:each in="${musicianInstance?.musicianValidation}" var="m">
-										<span class="property-value" aria-labelledby="musicianValidation-label">${m.message}</span>
-									</g:each>
-								</g:if>
-							</div>
-		        		</div>
-		        	</div>
-		        </sec:access>
-
-
+			    </div>
   			</div>
         </div>
 
@@ -267,7 +263,7 @@
 								</g:each>
 							</ol>
 						</g:if>
-					<div>
+					</div>
 
 					<div>
 		            	<g:if test="${!musicianInstance?.datosFiscales}">
@@ -285,52 +281,44 @@
 						</g:if>
 					</div>
 				</div>
-
 			</div>
        	</div>
 
        	<div class="clearfix">
-        		<g:form url="[resource:musicianInstance, action:'delete']" method="DELETE">
-					<div class="aling-center">
-						<g:link class="btn btn-success blank" action="edit" resource="${musicianInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+    		<g:form url="[resource:musicianInstance, action:'delete']" method="DELETE">
+				<div class="aling-center">
+					<g:link class="btn btn-success blank" action="edit" resource="${musicianInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 
-						<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_MUSICIAN_ADMIN')">
-							<g:if test="${!musicianInstance?.musicianValidation}" >
-								<g:link class="btn btn-success" controller="musicianValidation" action="create" params="['musician.id': musicianInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'musicianValidation.label')])}</g:link>
-							</g:if>
-						</sec:access>
-						<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_MUSICIAN_ADMIN') || hasRole('ROLE_FACILITATOR')">
-							<g:if test="${musicianInstance?.musicianValidation}" >
-								<g:link class="btn btn-success" controller="musicianValidation" action="edit" id="${musicianInstance?.musicianValidation?.id}">${message(code: 'default.edit.label', args: [message(code: 'musicianValidation.label')])}</g:link>
-							</g:if>
-						</sec:access>
+					<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_MUSICIAN_ADMIN')">
+						<g:if test="${!musicianInstance?.musicianValidation}" >
+							<g:link class="btn btn-success" controller="musicianValidation" action="create" params="['musician.id': musicianInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'musicianValidation.label')])}</g:link>
+						</g:if>
+					</sec:access>
+					<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_MUSICIAN_ADMIN') || hasRole('ROLE_FACILITATOR')">
+						<g:if test="${musicianInstance?.musicianValidation}" >
+							<g:link class="btn btn-success" controller="musicianValidation" action="edit" id="${musicianInstance?.musicianValidation?.id}">${message(code: 'default.edit.label', args: [message(code: 'musicianValidation.label')])}</g:link>
+						</g:if>
+					</sec:access>
 
-						<sec:ifAnyGranted roles="ROLE_FACILITATOR">
-							<g:if test="${!musicianInstance?.musicianComment}">
-								<g:link class="btn btn-success" controller="musicianComment" action="create" params="['musician.id': musicianInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'musicianComment.label')])}</g:link>
-								
-							</g:if>
-							<g:else>
-								<g:link class="btn btn-success" controller="musicianComment" action="edit" id="${musicianInstance.musicianComment.id}" >${message(code: 'default.edit.label', args: [message(code: 'musicianComment.label')])}</g:link>
-							</g:else>
-						</sec:ifAnyGranted>
+					<sec:ifAnyGranted roles="ROLE_FACILITATOR">
+						<g:if test="${!musicianInstance?.musicianComment}">
+							<g:link class="btn btn-success" controller="musicianComment" action="create" params="['musician.id': musicianInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'musicianComment.label')])}</g:link>
+						</g:if>
+						<g:else>
+							<g:link class="btn btn-success" controller="musicianComment" action="edit" id="${musicianInstance.musicianComment.id}" >${message(code: 'default.edit.label', args: [message(code: 'musicianComment.label')])}</g:link>
+						</g:else>
+					</sec:ifAnyGranted>
 
-						<sec:ifAnyGranted roles="ROLE_MUSICIAN_VIEWER">
-							<g:if test="${musicianInstance?.musicianComment}">
-								<g:link class="btn btn-success" controller="musicianComment" action="show" id="${musicianInstance.musicianComment.id}" >${message(code: 'default.show.label', args: [message(code: 'musicianComment.label')])}</g:link>
-							</g:if>
-						</sec:ifAnyGranted>
+					<sec:ifAnyGranted roles="ROLE_MUSICIAN_VIEWER">
+						<g:if test="${musicianInstance?.musicianComment}">
+							<g:link class="btn btn-success" controller="musicianComment" action="show" id="${musicianInstance.musicianComment.id}" >${message(code: 'default.show.label', args: [message(code: 'musicianComment.label')])}</g:link>
+						</g:if>
+					</sec:ifAnyGranted>
 
-						<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-					</div>
-				</g:form>
+					<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</div>
-				</div>
-				</div>
-	    <!-- /container -->
-        <!-- Bootstrap core JavaScript
-    ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+			</g:form>
+		</div>
+
     </body>
 </html>
