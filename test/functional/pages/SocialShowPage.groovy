@@ -10,6 +10,8 @@ class SocialShowPage extends Page {
 
     static content = {
         backToMusician { $('a[href*="musician/show"]') }
+        backToCompany { $('a[href*="company/show"]') }
+        backToContact { $('a[href*="contact/show"]') }
         logout { $('#navbar').find('.logout') }
         
         alertSuccess (required: false) { $('.alert-info') }

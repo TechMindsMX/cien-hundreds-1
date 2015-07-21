@@ -70,6 +70,6 @@
 	</div>
 </div>
 
-<g:hiddenField name="musicianUuid" value="${params?.musicianUuid}"/>
-<g:hiddenField name="contactUuid" value="${params?.contactUuid}"/>
-<g:hiddenField name="companyUuid" value="${params?.companyUuid}"/>
+<g:hiddenField name="musician.id" value="${socialInstance.musician?.id}"/>
+<g:hiddenField name="contact.id" value="${socialInstance.contact?.id}"/>
+<g:hiddenField name="company.id" value="${socialInstance.company?.id}"/>

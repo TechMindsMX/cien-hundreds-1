@@ -7,16 +7,16 @@ class SocialContextService {
   def socialService
 
   def saveInstance(socialInstance, params) {
-    if(params.musicianUuid){
-      def musician = Musician.findByUuid(params.musicianUuid)
+    if(params.musician?.id){
+      def musician = Musician.findById(params.musician.id)
       socialService.saveSocialToInstance(socialInstance, musician)
     }
-    if(params.contactUuid){
-      def contact = Contact.findByUuid(params.contactUuid)
+    if(params.contact?.id){
+      def contact = Contact.findById(params.contact.id)
       socialService.saveSocialToInstance(socialInstance, contact)
     }
-    if(params.companyUuid){
-      def company = Company.findByUuid(params.companyUuid)
+    if(params.company?.id){
+      def company = Company.findById(params.company.id)
       socialService.saveSocialToInstance(socialInstance, company)
     }
   }

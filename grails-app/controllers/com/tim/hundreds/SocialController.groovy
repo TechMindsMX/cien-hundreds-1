@@ -25,17 +25,11 @@ class SocialController {
     }
 
     def create() {
-      [
-        contactUuid : params.contactUuid,
-        musicianUuid : params.musicianUuid,
-        companyUuid : params.companyUuid
-      ]
+      respond new Social(params)
     }
 
     @Transactional
     def save(Social socialInstance) {
-        log.info "companyId: ${params.dump()}"
-
         if (socialInstance == null) {
             notFound()
             return

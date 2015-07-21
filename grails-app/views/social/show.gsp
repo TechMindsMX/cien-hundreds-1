@@ -1,4 +1,3 @@
-
 <%@ page import="com.tim.hundreds.Social" %>
 <!DOCTYPE html>
 <html>
@@ -17,9 +16,6 @@
 		</div>
 		<div id="show-social" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
 			<ul class="property-list social">
 			
 				<g:if test="${socialInstance?.facebook}">
@@ -85,7 +81,7 @@
 				</li>
 				</g:if>
 			
-%{-- 				<g:if test="${socialInstance?.musician}">
+ 				<g:if test="${socialInstance?.musician}">
 				<li class="fieldcontain">
 					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="video.musician.label" default="Musician" /></span>
 					
@@ -111,7 +107,7 @@
 					
 				</li>
 				</g:if>
- --}%						
+						
 			</ul>
 			<g:form url="[resource:socialInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

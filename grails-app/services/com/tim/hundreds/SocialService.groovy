@@ -9,7 +9,7 @@ class SocialService {
     instance.social = socialInstance
     instance.save flush:true
 
-    instance
+    return instance
   }
 
   def deleteSocialFromInstance(socialInstance, instance){
