@@ -31,7 +31,7 @@ class MusicianService {
     if(startDate>endDate){
       throw new InvalidParamsException('Date from is greater')
     }
-    Musician.findAllByDateCreatedBetween(startDate, endDate)
+    Musician.findAllByDateCreatedBetween(startDate, endDate + 1)
   }
 
 }
