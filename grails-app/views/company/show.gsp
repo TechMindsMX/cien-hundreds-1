@@ -58,7 +58,7 @@
 
 				<div class="fieldcontain">
 					<g:if test="${!companyInstance?.social}">
-						<g:link controller="social" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'social.label')])}</g:link>
+						<g:link controller="social" action="create" params="['companyUuid': companyInstance?.uuid, 'company.id': companyInstance?.id]" >${message(code: 'default.add.label', args: [message(code: 'social.label')])}</g:link>
 					</g:if>
 					<g:if test="${companyInstance?.social}">
 						<g:message code="social.label" default="Social" />
