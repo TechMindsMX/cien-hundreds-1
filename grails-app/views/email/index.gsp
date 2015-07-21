@@ -36,9 +36,9 @@
 				<g:each in="${emailInstanceList}" status="i" var="emailInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${emailInstance.id}">${fieldValue(bean: emailInstance, field: "address")}</g:link></td>
+						<td><g:link action="show" id="${emailInstance.id}">${fieldValue(bean: emailInstance, field: "mail")}</g:link></td>
 					
-						<td>${fieldValue(bean: emailInstance, field: "type")}</td>
+						<td>${fieldValue(bean: emailInstance, field: "emailType")}</td>
 					
 						<td>${fieldValue(bean: emailInstance, field: "uuid")}</td>
 					
