@@ -38,4 +38,17 @@ class MusicianServiceSpec extends Specification {
     thrown InvalidParamsException
   }
 
+  void "should get musicians by creation date"() {
+  given: "A date range"
+    def endDate = new Date()
+    def startDate = endDate - 9
+  and: "A musician"
+    def musician = new Musician()
+    musician.dateCreated = new Date() - 1
+  when: "We try to get musician by range"
+    def result = service.getMusiciansByDateCreated(startDate, endDate)
+  then:
+    1 == result.size()
+  }
+
 }
