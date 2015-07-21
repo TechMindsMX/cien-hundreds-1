@@ -28,4 +28,14 @@ class MusicianServiceSpec extends Specification {
    1 * musicianValidationInstance.save()
   }
 
+  void "should not filter by date when start date is greater than end date"() {
+  given: "A date range"
+    def startDate = new Date()
+    def endDate = startDate - 9
+  when: "We try to get musician by range"
+    service.getMusiciansByDateCreated(startDate, endDate)
+  then:
+    thrown InvalidParamsException
+  }
+
 }
