@@ -84,14 +84,20 @@ class ContactController {
         }
 
         contactInstance.save flush:true
-        messengineService.sendInstanceEditedMessage(contactInstance.musician, 'musician')
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Contact.label', default: 'Contact'), contactInstance.id])
-                redirect contactInstance
-            }
-            '*'{ respond contactInstance, [status: OK] }
+        try {  
+          messengineService.sendInstanceEditedMessage(contactInstance.musician, 'musician')
+        }
+        catch(BusinessException ex){
+          log.error message(code:'message.service.down', default:"service temporarily down")
+        } 
+        finally {
+          request.withFormat {
+              form multipartForm {
+                  flash.message = message(code: 'default.updated.message', args: [message(code: 'Contact.label', default: 'Contact'), contactInstance.id])
+                  redirect contactInstance
+              }
+              '*'{ respond contactInstance, [status: OK] }
+          }
         }
     }
 
