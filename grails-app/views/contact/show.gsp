@@ -111,6 +111,8 @@
 </div>
 </g:if>
 
+${contactInstance.dump()}
+
 <g:if test="${contactInstance?.address}">
 <div class="fieldcontain">
   <span id="address-label" class="${session.labelWidth} property-label"><g:message code="contact.address.label" default="Address" /></span>

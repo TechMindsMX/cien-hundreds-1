@@ -22,7 +22,7 @@ class ContactController {
     }
 
     def show(Contact contactInstance) {
-        respond contactInstance:contactInstance
+        respond contactInstance
     }
 
     def create() {
@@ -157,5 +157,5 @@ class ContactController {
       contact.addToTelephones(telephone)
       contact.save()
       contact
-    } 
+    }
 }
