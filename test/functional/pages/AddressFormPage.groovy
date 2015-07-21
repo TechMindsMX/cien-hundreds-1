@@ -3,7 +3,7 @@ package page
 import geb.Page
 import org.openqa.selenium.JavascriptExecutor
 
-class AddressPage extends Page {
+class AddressFormPage extends Page {
 
     def js( String script ){
         (driver as JavascriptExecutor).executeScript( script )
@@ -17,6 +17,6 @@ class AddressPage extends Page {
         addressForm  { $('#addressForm') }
         submitButton { addressForm.find('.save') }
         cancelButton { $("#btnCancel") }
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
     }
 }

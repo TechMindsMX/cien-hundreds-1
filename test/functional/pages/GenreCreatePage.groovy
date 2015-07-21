@@ -2,7 +2,7 @@ package page
 
 import geb.Page
 
-class GenrePage extends Page {
+class GenreCreatePage extends Page {
 
     static url = "genre/create"
 
@@ -12,6 +12,6 @@ class GenrePage extends Page {
         genreForm    { $('#genreForm') }
         submitButton { genreForm.find('.save') }
         cancelButton { $("#btnCancel") }
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
     }
 }

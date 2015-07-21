@@ -12,7 +12,7 @@
 		<div class="nav" role="navigation">
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				
 			</ul>
 		</div>
 		<div id="show-social" class="content scaffold-show" role="main">
@@ -85,6 +85,33 @@
 				</li>
 				</g:if>
 			
+%{-- 				<g:if test="${socialInstance?.musician}">
+				<li class="fieldcontain">
+					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="video.musician.label" default="Musician" /></span>
+					
+						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${socialInstance?.musician?.id}">${socialInstance?.musician?.name.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+						
+				<g:if test="${socialInstance?.contact}">
+				<li class="fieldcontain">
+					<span id="contact-label" class="${session.labelWidth} property-label"><g:message code="video.contact.label" default="Musician" /></span>
+					
+						<span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" id="${socialInstance?.contact?.id}">${socialInstance?.contact?.firstName.encodeAsHTML()} ${socialInstance?.contact?.lastName.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+						
+				<g:if test="${socialInstance?.company}">
+				<li class="fieldcontain">
+					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="video.company.label" default="Musician" /></span>
+					
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${socialInstance?.company?.id}">${socialInstance?.company?.name.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+ --}%						
 			</ul>
 			<g:form url="[resource:socialInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

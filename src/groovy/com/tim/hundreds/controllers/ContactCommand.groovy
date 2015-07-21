@@ -12,8 +12,11 @@ class ContactCommand {
   String biography
   String style
   String photoPath
-  String telefono
-  String email
+  String web
+  String phone
+  String phoneType
+  String mail
+  String emailType
 
   Date birthDate
   Date entryDate
@@ -40,10 +43,13 @@ class ContactCommand {
     nationality nullable:true,blank:false,size:1..50
     biography nullable:true,blank:false,size:1..10000
     style nullable:true,blank:false,size:1..10000
+    web nullable:true,blank:false,size:10..100,url:true
     social nullable:true
     photoPath nullable:true
-    email nullable:false
-    telefono nullable:false,size:8..10
+    mail blank:false,email:true,size:6..200
+    phone blank:false,matches:/^[0-9]*$/,size:10..10
+    phoneType nullable:false
+    emailType nullable:false
   }
 
 }

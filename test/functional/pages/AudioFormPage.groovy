@@ -2,7 +2,7 @@ package page
 
 import geb.Page
 
-class AudioPage extends Page {
+class AudioFormPage extends Page {
 
     static url = "audio/create"
 
@@ -12,6 +12,6 @@ class AudioPage extends Page {
         audioForm    { $('#audioForm') }
         submitButton { audioForm.find('.save') }
         cancelButton { $("#btnCancel") }
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
     }
 }

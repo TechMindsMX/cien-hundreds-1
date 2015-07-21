@@ -10,7 +10,7 @@
 		<div class="nav" role="navigation">
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				
 			</ul>
 		</div>
 		<div id="create-collaborator" class="content scaffold-create" role="main">
@@ -27,7 +27,7 @@
 				</ul>
 			</div>
 			</g:hasErrors>
-      <g:form url="[controller:'collaborator', action:'saveTelephone', params:[collaboratorUuid: collaboratorInstance.uuid, telephoneInstance: '${telephoneInstance}']]"  class="form-horizontal">
+  			<g:form url="[controller:'collaborator', action:'saveTelephone', params:[collaboratorUuid: collaboratorInstance.uuid, telephoneInstance: '${telephoneInstance}']]"  class="form-horizontal telephone-form">
 				<fieldset class="form">
 					<g:render template="/telephone/form"/>
 				</fieldset>

@@ -12,6 +12,6 @@ class CollaboratorPage extends Page {
         collaboratorForm { $('#collaboratorForm') }
         submitButton     { collaboratorForm.find('.save') }
         cancelButton     { $("#btnCancel") }
-        logout           { $('.nav-header').find('.logout') }
+        logout           { $('#navbar').find('.logout') }
     }
 }

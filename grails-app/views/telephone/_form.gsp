@@ -3,9 +3,10 @@
 <div class="form-group fieldcontain ${hasErrors(bean: telephoneInstance, field: 'phone', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="phone">
 		<g:message code="telephone.phone.label" default="Phone" />
+		<span class="required-indicator">*</span>
 	</label>
 	<div class="${session.inputWidth}">
-		<g:textField class="form-control" name="phone" maxlength="10" pattern="${telephoneInstance.constraints.phone.matches}" value="${telephoneInstance?.phone}"/>
+		<g:textField class="form-control" name="phone" maxlength="10" pattern="${new Telephone().constraints.phone.matches}" value="${telephoneInstance?.phone}" required="" />
 	</div>
 </div>
 
@@ -15,7 +16,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<div class="${session.inputWidth}">
-		<g:select class="form-control" name="type" from="${com.tim.hundreds.TelephoneType?.values()}" keys="${com.tim.hundreds.TelephoneType.values()*.name()}" required="" value="${telephoneInstance?.type?.name()}" />
+		<g:select class="form-control" name="phoneType" from="${com.tim.hundreds.TelephoneType?.values()}" keys="${com.tim.hundreds.TelephoneType.values()*.name()}" required="" value="${telephoneInstance?.phoneType?.toString()}" />
 	</div>
 </div>
 

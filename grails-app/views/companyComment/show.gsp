@@ -12,7 +12,7 @@
 		<div class="nav" role="navigation">
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
@@ -90,7 +90,7 @@
 				<li class="fieldcontain">
 					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="companyComment.company.label" default="Company" /></span>
 					
-						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${companyCommentInstance?.company?.id}">${companyCommentInstance?.company?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${companyCommentInstance?.company?.id}">${companyCommentInstance?.company?.name.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

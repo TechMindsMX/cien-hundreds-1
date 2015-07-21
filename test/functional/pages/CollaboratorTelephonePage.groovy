@@ -12,6 +12,6 @@ class CollaboratorTelephonePage extends Page {
         collaboratorPhoneForm { $('#collaboratorPhoneForm') }
         submitButton          { collaboratorPhoneForm.find('.save') }
         cancelButton          { $("#btnCancel") }
-        logout                { $('.nav-header').find('.logout') }
+        logout                { $('#navbar').find('.logout') }
     }
 }

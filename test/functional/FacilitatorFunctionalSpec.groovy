@@ -1,16 +1,21 @@
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import spock.lang.Unroll
+import spock.lang.Shared
+
 import page.LoginPage
 import page.FacilitatorPage
 
 @Stepwise
 class FacilitatorFunctionalSpec extends GebReportingSpec {
 
+    @Shared
+    def grailsApplication = new org.codehaus.groovy.grails.commons.DefaultGrailsApplication()
+
     def setupSpec() {
         to LoginPage
         loginForm.j_username = "admin"
-        loginForm.j_password = "12345678"
+        loginForm.j_password = grailsApplication.config.tests.userPassword
         loginButton.click()
     }
 
@@ -23,7 +28,7 @@ class FacilitatorFunctionalSpec extends GebReportingSpec {
         facilitatorForm.password      = password
         facilitatorForm.passwordCheck = passwordCheck
         facilitatorForm.firstName     = firstName
-        facilitatorForm.middleName    = middleName
+        facilitatorForm.motherLastName    = motherLastName
         facilitatorForm.lastName      = lastName
         facilitatorForm.phone         = phone
         facilitatorForm.email         = email
@@ -32,9 +37,9 @@ class FacilitatorFunctionalSpec extends GebReportingSpec {
         then: "I am being redirected to the same page with errors"
         submitButton.click()
         where: "We have the next cases"
-        username | password | passwordCheck | firstName | middleName | lastName | phone | email | emailCheck || result
-        ''       | ''       | ''            | ''        | ''         | ''       | ''    |  ''   | ''         || FacilitatorPage
-        'Luis'   | ''       | ''            | ''        | ''         | ''       | ''    |  ''   | ''         || FacilitatorPage
+        username | password | passwordCheck | firstName | motherLastName    | lastName | phone | email | emailCheck || result
+        ''       | ''       | ''            | ''        | ''                | ''       | ''    |  ''   | ''         || FacilitatorPage
+        'Luis'   | ''       | ''            | ''        | ''                | ''       | ''    |  ''   | ''         || FacilitatorPage
 
     }
 

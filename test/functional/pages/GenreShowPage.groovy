@@ -4,9 +4,9 @@ import geb.Page
 
 class GenreShowPage extends Page {
 
-    static url = "activity/create"
+    static url = "genre/show"
 
-    static at = { driver.currentUrl.contains('activity/create') }
+    static at = { driver.currentUrl.contains('genre/show') }
 
     static content = {
         spanDato { $('.property-value') }

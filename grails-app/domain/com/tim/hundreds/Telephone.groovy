@@ -3,7 +3,7 @@ package com.tim.hundreds
 class Telephone {
   String uuid = TokenGenerator.generateToken()
   String phone
-  TelephoneType type
+  TelephoneType phoneType
 
   static belongsTo = [User,Contact,Collaborator]
 

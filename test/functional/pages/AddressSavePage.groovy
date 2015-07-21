@@ -17,7 +17,7 @@ class AddressSavePage extends Page {
         addressForm  { $('#addressForm') }
         submitButton { addressForm.find('.save') }
         cancelButton { $("#btnCancel") }
-        logout       { $('.nav-header').find('.logout') }
+        logout       { $('#navbar').find('.logout') }
 
         alertSuccess (required: false) { $('.alert-info') }
         alertErrors (required: false) { $('.alert-danger') }

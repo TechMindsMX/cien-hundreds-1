@@ -21,6 +21,24 @@ class MusicianController {
     }
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
+    def creationReportFilter() {
+      log.info "Listing musician created from ${params.from} to ${params.to}"
+      def musicianList
+      try{
+        musicianList = musicianService.getMusiciansByDateCreated(params.from, params.to)
+      }catch(InvalidParamsException ipe){
+        log.warn ipe.message
+        flash.error=g.message(code: 'error.date.range')
+      }
+      render view:'creationReportView', model: [musicianInstanceList: musicianList]
+    }
+
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
+    def creationReportView() {
+      [musicianInstance: Musician.list()]
+    }
+
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def show(Musician musicianInstance) {
         respond musicianInstance
     }

@@ -18,7 +18,7 @@ class UserManagementController {
     }
 
     @Secured(['ROLE_ADMIN'])
-    def allAdmins() {
+    def allAdmins(Integer max, Integer offset) {
         def userList = userHelperService.findListByRole(['ROLE_ADMIN','ROLE_COMPANY_ADMIN','ROLE_MUSICIAN_ADMIN'])
         renderView(userList)
     }
@@ -65,7 +65,9 @@ class UserManagementController {
         renderView(userList)
     }
 
-    def renderView(userList) {
-        render view: 'index', model:[userInstanceList: userList, userInstanceCount: userList.size()]
+    def renderView(ArrayList userList) {
+        render view: 'index', model:[userInstanceList: ControllerPaginationUtil.paginateList(userList, params), userInstanceCount: userList.size()]
     }
+
+
 }

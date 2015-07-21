@@ -2,13 +2,13 @@ package com.tim.hundreds
 
 class Email {
   String uuid = TokenGenerator.generateToken()
-  String address
-  EmailType type
+  String mail
+  EmailType emailType
 
   static belongsTo = [User, Contact, Collaborator]
 
   static constraints = {
-    address blank:false,email:true,size:6..200
+    mail blank:false,email:true,size:6..200
   }
 
 }

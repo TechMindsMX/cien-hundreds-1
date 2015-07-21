@@ -1,23 +1,27 @@
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import spock.lang.Unroll
-import page.ActivityPage
+import spock.lang.Shared
+
+import page.ActivityFormPage
 import page.LoginPage
 
+import spock.lang.Ignore
+@Ignore
 @Stepwise
 class ActivityFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
         loginForm.j_username = "admin"
-        loginForm.j_password = "12345678"
+        loginForm.j_password = grailsApplication.config.tests.userPassword
         loginButton.click()
     }
 
     @Unroll
     def "Fill Activity form"() {
         given:"form Activity create"
-        to ActivityPage
+        to ActivityFormPage
 
         when: "I don't fill form fields "
         activityForm.activity = activity
@@ -28,9 +32,9 @@ class ActivityFunctionalSpec extends GebReportingSpec {
 
         where: "We have the next cases"
         activity          | place    || result
-          ''              |  ''      || ActivityPage
-          'no hacer nada' |  ''      || ActivityPage
-          'no hacer nada' |  'algo'  || ActivityPage
+          ''              |  ''      || ActivityFormPage
+          'no hacer nada' |  ''      || ActivityFormPage
+          'no hacer nada' |  'algo'  || ActivityFormPage
     }
 
     def cleanupSpec() {}

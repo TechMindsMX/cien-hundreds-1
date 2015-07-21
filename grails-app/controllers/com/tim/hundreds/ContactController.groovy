@@ -46,31 +46,29 @@ class ContactController {
           def photoPath = photoStorerService.storeFile(request.getFile('file'))
           command.photoPath = photoPath
         }
-
         Contact contactInstance = new Contact()
         bindData(contactInstance, command)
         Musician musician = Musician.findById(params.musician.id)
         contactInstance.musician = musician
         tagService.addTags(musician, "${contactInstance.firstName},${contactInstance.lastName},${contactInstance.motherLastName}")
-
         try{
           def instance = contactService.save(contactInstance)
-          request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'contact.label', default: 'Contact'), instance.id])
-                redirect instance
-            }
-            '*' { respond instance, [status: CREATED] }
-          }
+          def telephone = new Telephone(phone:command.phone,phoneType:command.phoneType)
+          def email = new Email(mail:command.mail,emailType:command.emailType)
+          instance = contactService.saveEmail(instance,email)
+          instance = contactService.saveTelephone(instance,telephone)
+          flash.message = message(code: 'default.created.message', args: [message(code: 'contact.label', default: 'Contact'), instance.id])
+          render view: 'show', model:[contactInstance:instance]
         }catch(Exception ex){
-          log.info "Errors: ${ex.message}"
+          log.info "Errors: ${ex}"
           respond contactInstance.musician.errors, view:'create'
         }
 
     }
 
     def edit(Contact contactInstance) {
-        respond contactInstance
+      flash.edit = "true"
+      respond contactInstance
     }
 
     @Transactional
@@ -86,14 +84,20 @@ class ContactController {
         }
 
         contactInstance.save flush:true
-        messengineService.sendInstanceEditedMessage(contactInstance.musician, 'musician')
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Contact.label', default: 'Contact'), contactInstance.id])
-                redirect contactInstance
-            }
-            '*'{ respond contactInstance, [status: OK] }
+        try {  
+          messengineService.sendInstanceEditedMessage(contactInstance.musician, 'musician')
+        }
+        catch(BusinessException ex){
+          log.error message(code:'message.service.down', default:"service temporarily down")
+        } 
+        finally {
+          request.withFormat {
+              form multipartForm {
+                  flash.message = message(code: 'default.updated.message', args: [message(code: 'Contact.label', default: 'Contact'), contactInstance.id])
+                  redirect contactInstance
+              }
+              '*'{ respond contactInstance, [status: OK] }
+          }
         }
     }
 
@@ -138,7 +142,7 @@ class ContactController {
       } catch (ValidationException ve){
         flash.error = g.message(code: 'error.email.limit')
       }
-      redirect(uri: "/contact/show/${contact.id}")
+      render view: 'show', params:[contactInstance:Contact.findByUuid(contactUuid)]
     }
 
     def prepareTelephone(){
@@ -153,7 +157,7 @@ class ContactController {
       } catch (ValidationException ve){
         flash.error = g.message(code: 'error.telephone.limit')
       }
-      redirect(uri: "/contact/show/${contact.id}")
+      render view: 'show', params:[contactInstance:Contact.findByUuid(contactUuid)]
     }
 
 }

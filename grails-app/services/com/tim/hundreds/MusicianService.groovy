@@ -27,4 +27,10 @@ class MusicianService {
     musicianValidationInstance.save()
   }
 
+  def getMusiciansByDateCreated(String from, String to){
+    if(from > to){
+      throw new InvalidParamsException('Date from is greater')
+    }
+  }
+
 }

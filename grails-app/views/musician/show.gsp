@@ -315,6 +315,12 @@
 							</g:else>
 						</sec:ifAnyGranted>
 
+						<sec:ifAnyGranted roles="ROLE_MUSICIAN_VIEWER">
+							<g:if test="${musicianInstance?.musicianComment}">
+								<g:link class="btn btn-success" controller="musicianComment" action="show" id="${musicianInstance.musicianComment.id}" >${message(code: 'default.show.label', args: [message(code: 'musicianComment.label')])}</g:link>
+							</g:if>
+						</sec:ifAnyGranted>
+
 						<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 					</div>
 				</g:form>

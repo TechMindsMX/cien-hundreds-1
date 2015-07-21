@@ -9,11 +9,10 @@ class CompanyPage extends Page {
     static at = { driver.currentUrl.contains('company/create') }
 
     static content = {
-        companyForm { $('form') }
+        companyForm { $('.form-horizontal') }
         submitButton { $('#create') }
         cancelButton { $('form').find('button.btn') }
-        logout { $('.nav-header').find('.logout') }
+        logout { $('#navbar').find('.logout') }
 
-        companyName { $() }
     }
 }

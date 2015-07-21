@@ -10,7 +10,6 @@
     <div class="middle-box text-center loginscreen animated fadeInDown max900">
         <div class="row">
             <asset:image src="cien_logo.gif" />
-
             <h3>Bienvenido a 100-Hundreds</h3>
         </div>
         <div class="row">

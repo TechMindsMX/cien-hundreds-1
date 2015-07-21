@@ -1,23 +1,31 @@
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 import spock.lang.Unroll
-import page.AddressPage
+import spock.lang.Shared
+
+import page.AddressFormPage
 import page.AddressSavePage
 import page.LoginPage
 
+import spock.lang.Ignore
+@Ignore
 @Stepwise
 class AddressFunctionalSpec extends GebReportingSpec {
+
+    @Shared
+    def grailsApplication = new org.codehaus.groovy.grails.commons.DefaultGrailsApplication()
+
     def setupSpec() {
         to LoginPage
         loginForm.j_username = "admin"
-        loginForm.j_password = "12345678"
+        loginForm.j_password = grailsApplication.config.tests.userPassword
         loginButton.click()
     }
 
     @Unroll
     def "Fill Address form"() {
         given:"form Address create"
-        to AddressPage
+        to AddressFormPage
 
         when: "I fill the form fields"
         addressForm.country      = country

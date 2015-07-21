@@ -12,6 +12,6 @@ class BusinessActivityPage extends Page {
         businessActivityForm { $('#businessActivityForm') }
         submitButton         { businessActivityForm.find('.save') }
         cancelButton         { $("#btnCancel") }
-        logout               { $('.nav-header').find('.logout') }
+        logout               { $('#navbar').find('.logout') }
     }
 }
