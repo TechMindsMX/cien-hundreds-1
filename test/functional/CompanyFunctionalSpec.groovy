@@ -28,11 +28,12 @@ class CompanyFunctionalSpec extends GebReportingSpec {
         given:"Create Company Form"
         to CompanyCreatePage
         when: "I do fill fields form with"
-        companyForm.name        = name
-        companyForm.description = description
-        companyForm.web         = web
-        companyForm.notes       = notes
-        companyForm.tagsComma   = tags
+        companyForm.name           = name
+        companyForm.description    = description
+        companyForm.web            = web
+        companyForm.notes          = notes
+        companyForm.tagsComma      = tags
+        companyForm.corporatePress = corporatePress
 
         submitButton.click()
         then: "I am being redirected to the same page with errors"

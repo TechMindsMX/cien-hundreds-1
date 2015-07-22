@@ -6,7 +6,7 @@ import spock.lang.Shared
 import page.LoginPage
 import page.LogoutPage
 import page.HomePage
-import page.CompanyPage
+import page.CompanyCreatePage
 import page.CompanyShowFirstPage
 
 import spock.lang.Ignore
@@ -22,7 +22,7 @@ class CompanyAclShowFirstFunctionalSpec extends GebReportingSpec {
         loginForm.j_username = "admin"
         loginForm.j_password = grailsApplication.config.tests.userPassword
         loginButton.click()
-        to CompanyPage
+        to CompanyCreatePage
         companyForm.name = "company1"
         companyForm.description = "description1"
         submitButton.click()
