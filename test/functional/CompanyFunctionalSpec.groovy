@@ -33,6 +33,7 @@ class CompanyFunctionalSpec extends GebReportingSpec {
         companyForm.web            = web
         companyForm.notes          = notes
         companyForm.tagsComma      = tags
+        companyForm.logo           = logo
         companyForm.corporatePress = corporatePress
 
         submitButton.click()
