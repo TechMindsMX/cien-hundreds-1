@@ -12,6 +12,7 @@ class AdminController {
   def userService
   def photoStorerService
   def resumeStorerService
+  def springSecurityService
 
   def index() {
     redirect(controller: "userManagement", action: "index")
@@ -56,7 +57,7 @@ class AdminController {
   }
 
   def edit() {
-    def user = User.findByUuid(params.id)
+    def user = User.findByUuid(params.id) ?: springSecurityService.currentUser
     def userCommand = new UserCommand()
     userCommand.username = user.username
     userCommand.email = user.profile.email
