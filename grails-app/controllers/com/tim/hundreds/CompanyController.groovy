@@ -29,7 +29,7 @@ class CompanyController {
       try{
         Date startDate = Date.parse('dd-MM-yyyy', params.from)
         Date endDate = Date.parse('dd-MM-yyyy', params.to)
-        musicianList = musicianService.getMusiciansByDateCreated(startDate, endDate)
+        musicianList = companyService.getCompaniesByDateCreated(startDate, endDate)
       }catch(InvalidParamsException ipe){
         log.warn ipe.message
         flash.error=g.message(code: 'error.date.range')
