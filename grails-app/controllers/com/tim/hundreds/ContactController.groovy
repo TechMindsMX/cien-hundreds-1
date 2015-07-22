@@ -21,6 +21,7 @@ class ContactController {
         respond Contact.list(params), model:[contactInstanceCount: Contact.count()]
     }
 
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def show(Contact contactInstance) {
         respond contactInstance
     }
