@@ -254,14 +254,14 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         at PrepareEmailFormPage
 
         when: "I fill the form fields "
-        emailForm.address     = address
+        emailForm.mail     = mail
         type                  = type
 
         then: "I submit the form"
         submitButton.click()
 
         where: "We expect a result for the next cases"
-        address             | type          || result
+        mail                | type          || result
         'correo@correo.com' | 'WORK'        || ContactShowPage
     }
 

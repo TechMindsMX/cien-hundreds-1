@@ -4,6 +4,7 @@ import spock.lang.Unroll
 import spock.lang.Shared
 
 import page.LoginPage
+
 import page.GenreCreatePage
 import page.GenreSavePage
 import page.GenreShowPage
@@ -38,7 +39,7 @@ class GenreFunctionalSpec extends GebReportingSpec {
 
         where: "We have the next cases"
          name         || result
-        ''            || GenreCreatePage
+        ''            || GenreSavePage
         'Heavy Metal' || GenreShowPage
     }
 
