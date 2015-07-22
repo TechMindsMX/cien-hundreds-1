@@ -48,7 +48,7 @@
 					</g:if>
 
 					<div class="fieldcontain">
-				    	<g:link class="glyphicon" controller="contact" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Contactos</g:link>
+				    	<g:link class="" controller="contact" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Contactos</g:link>
 
 				    	<g:if test="${musicianInstance?.contacts}">
 					    	<ol>
@@ -81,10 +81,10 @@
 
 					<div class="fieldcontain">
 		                <g:if test="${!musicianInstance?.social}">
-		                	<g:link class="glyphicon" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> <g:message code="social.label" /></g:link>
+		                	<g:link class="" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> <g:message code="social.label" /></g:link>
 	                	</g:if>
 	                	<g:else>
-							<g:link class="glyphicon" controller="social" action="edit" id="${musicianInstance?.social.id}"> <g:message code="social.label"/></g:link>
+							<g:link class="" controller="social" action="edit" id="${musicianInstance?.social.id}"> <g:message code="social.label"/></g:link>
 	                	</g:else>
 
 	                	<g:if test="${musicianInstance?.social}">
@@ -141,7 +141,7 @@
 					</g:if>
 
 					<div class="fieldcontain well">
-                		<g:link class="glyphicon" controller="activity" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Actividades</g:link>
+                		<g:link class="" controller="activity" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Actividades</g:link>
 
  						<g:if test="${musicianInstance?.activities}">
 							<ol>
@@ -158,7 +158,7 @@
                 		<div class="row">
 	       					<div class="col-xs-12">
 		       					<g:if test="${musicianInstance.videos == null || musicianInstance.videos.size() < ApplicationState.MAX_VIDEOS }">
-		       						<g:link class="glyphicon" controller="video" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Videos</g:link>
+		       						<g:link class="" controller="video" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Videos</g:link>
 		       					</g:if>
 		       					<g:elseif test="${musicianInstance.videos.size() >= ApplicationState.MAX_VIDEOS}">
 		       						Videos
@@ -178,7 +178,7 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<g:if test="${musicianInstance.audios == null || musicianInstance.audios?.size() < ApplicationState.MAX_AUDIOS}">
-		   							<g:link class="glyphicon" controller="audio" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Audios</g:link>
+		   							<g:link class="" controller="audio" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Audios</g:link>
 		       					</g:if>
 		       					<g:elseif test="${musicianInstance.audios.size() >= ApplicationState.MAX_AUDIOS}">
 				                	Audios
@@ -199,7 +199,7 @@
 			                <div class="col-xs-12">
 			                	<p>
 					                <g:if test="${musicianInstance.photos == null || musicianInstance.photos.size() < ApplicationState.MAX_PHOTOS }">
-			       						<g:link class="glyphicon" controller="photo" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Fotos</g:link>
+			       						<g:link class="" controller="photo" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Fotos</g:link>
 			       					</g:if>
 			       					<g:elseif test="${musicianInstance.photos.size() >= ApplicationState.MAX_PHOTOS}">
 					                	Fotos
@@ -248,7 +248,7 @@
                 <div class="well">
      				<div>
 		        		<g:if test="${musicianInstance.suggestions == null || musicianInstance.suggestions.size() < ApplicationState.MAX_SUGGESTIONS }">
-							<g:link class="glyphicon" controller="suggestion" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Sugerencias</g:link>
+							<g:link class="" controller="suggestion" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Sugerencias</g:link>
 						</g:if>
 						<g:elseif test="${musicianInstance.suggestions.size() >= ApplicationState.MAX_SUGGESTIONS}">
 		                	Sugerencias
@@ -267,10 +267,10 @@
 
 					<div>
 		            	<g:if test="${!musicianInstance?.datosFiscales}">
-		                	<g:link class="glyphicon" controller="datosFiscales" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Datos Fiscales</g:link>
+		                	<g:link class="" controller="datosFiscales" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Datos Fiscales</g:link>
 		                </g:if>
 		                <g:else>
-		                	<g:link class="glyphicon" controller="datosFiscales" action="edit" id="${musicianInstance.datosFiscales?.id}"> Datos Fiscales</g:link>
+		                	<g:link class="" controller="datosFiscales" action="edit" id="${musicianInstance.datosFiscales?.id}"> Datos Fiscales</g:link>
 		                </g:else>
 		            	<g:if test="${musicianInstance?.datosFiscales}">
 							<ol>
