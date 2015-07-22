@@ -27,4 +27,11 @@ class CompanyService {
     companyValidationInstance.save()
   }
 
+  def getCompaniesByDateCreated(Date startDate, Date endDate){
+    if(startDate>endDate){
+      throw new InvalidParamsException('Date from is greater')
+    }
+    Company.findAllByDateCreatedBetween(startDate, endDate + 1)
+  }
+
 }

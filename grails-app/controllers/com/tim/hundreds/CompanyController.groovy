@@ -23,6 +23,25 @@ class CompanyController {
     }
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
+    def creationReportFilter() {
+      log.info "Listing companies created from ${params.from} to ${params.to}"
+      def companies
+      try{
+        Date startDate = Date.parse('dd-MM-yyyy', params.from)
+        Date endDate = Date.parse('dd-MM-yyyy', params.to)
+        companies = companyService.getCompaniesByDateCreated(startDate, endDate)
+      }catch(InvalidParamsException ipe){
+        log.warn ipe.message
+        flash.error=g.message(code: 'error.date.range')
+      }
+      render view:'creationReportView', model: [companyInstanceList: companies]
+    }
+
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
+    def creationReportView() {
+    }
+
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Company companyInstance) {
         respond companyInstance
     }
