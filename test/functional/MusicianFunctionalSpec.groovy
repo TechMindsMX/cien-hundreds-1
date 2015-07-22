@@ -51,6 +51,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         loginButton.click()
     }
 
+// 1
     def "Fill Form for Musician checkbox"() {
         given:"Create Musician Form"
         to MusicianPage
@@ -75,6 +76,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
 
     }
 
+// 2
     @Unroll
     def "Fill Video form"() {
         given:"form Video create"
@@ -93,6 +95,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         'https://www.youtube.com/watch?v=wP1zAyibHm8' || VideoShowPage
     }
 
+// 3
     @Unroll
     def "Fill Audio form"() {
         given:"form Audio create"
@@ -113,6 +116,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         'https://soundcloud.com/metalbladerecords/act-of-defiance-throwback' || AudioShowPage //Pass
     }
 
+// 4
     @Unroll
     def "Fill Photo form"() {
         given:"form Photo create"
@@ -133,6 +137,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         grailsApplication.config.tests.filesPath.jpg   || PhotoShowPage //Pass
     }
 
+// 5
     @Unroll
     def "Fill Social form for Musician"() {
         given:"navigate to form Social create"
@@ -162,6 +167,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         'https://www.facebook.com/Sony'  | 'https://twitter.com/sony' | 'https://plus.google.com/+Sony'   | 'https://instagram.com/sony/'   | 'https://www.youtube.com/user/Sony'   | 'https://www.linkedin.com/company/sony'   | 'https://en.wikipedia.org/wiki/Sony'  || SocialShowPage
     }
 
+// 6
     @Unroll
     def "Fill Activity form"() {
         given:"form Activity create"
@@ -184,6 +190,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         'no hacer nada'     |  'algo'  | '20-06-2015'       || ActivityShowPage
     }
 
+// 7
     @Unroll
     def "Fill Contact form"() {
         given:"form Contact create"
@@ -203,18 +210,22 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         contactForm.style          = style
         contactForm.birthDate      = birthDate
         contactForm.entryDate      = entryDate
+        contactForm.mail           = mail
+        contactForm.phone          = phone
         roleSelect                 = role
         contactForm.type           = type
         contactForm.file           = file
-
-        then: "I am being redirected to the same page with errors"
         submitButton.click()
 
+        then: "I am being redirected to the same page with errors"
+        at result
+
         where: "We have the next cases"
-        firstName | lastName   | motherLastName    | other   | nationality | biography   | style   | birthDate    | entryDate   | role | type   | file                                          || result
-        'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'mex'       | 'biography' | 'style' | '28-03-1981' | '20-06-2015'| '1'  | 'MALE' | grailsApplication.config.tests.filesPath.jpg  || ContactShowPage
+        firstName | lastName   | motherLastName    | other   | nationality | biography   | style   | birthDate    | entryDate   | mail           | phone        | role | type   | file                                          || result
+        'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'mex'       | 'biography' | 'style' | '28-03-1981' | '20-06-2015'| 'mail@mail.com'| '1234567890' | '1'  | 'MALE' | grailsApplication.config.tests.filesPath.jpg  || ContactShowPage
     }
 
+// 8
     @Unroll
     def "Fill PrepareTelephoneFormPage form"() {
         given:"form PrepareTelephoneFormPage create"
@@ -234,6 +245,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         '1234567890' | 'WORK'         || ContactShowPage
     }
 
+// 9
     @Unroll
     def "Fill PrepareEmailPage form"() {
         given:"form UserEmailPage create"
@@ -253,6 +265,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         'correo@correo.com' | 'WORK'        || ContactShowPage
     }
 
+// 10
     @Unroll
     def "Fill Social form for Musician Contact"() {
         given:"navigate to form Social create"
@@ -278,9 +291,9 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         where: "We have the next cases"
         facebook                         | twitter                    | googlePlus                        | instagram                       | youtube                               | linkedin                                  | other                                 || result
         'https://www.facebook.com/Sony'  | 'https://twitter.com/sony' | 'https://plus.google.com/+Sony'   | 'https://instagram.com/sony/'   | 'https://www.youtube.com/user/Sony'   | 'https://www.linkedin.com/company/sony'   | 'https://en.wikipedia.org/wiki/Sony'  || SocialShowPage
-
     }
 
+// 11
     @Unroll
     def "Fill Address form for Musician Contact"() {
         given:"form Address create"
