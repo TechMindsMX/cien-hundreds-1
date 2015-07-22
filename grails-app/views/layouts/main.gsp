@@ -20,8 +20,8 @@
 
 </head>
 
-<g:set var="btnOffset" scope="session" value="col-md-offset-2" />
-<g:set var="labelWidth" scope="session" value="col-sm-12 col-md-2" />
+<g:set var="btnOffset" scope="session" value="col-md-offset-3" />
+<g:set var="labelWidth" scope="session" value="col-sm-12 col-md-3" />
 <g:set var="inputWidth" scope="session" value="col-sm-12 col-md-6" />
 
 <body role="document">
