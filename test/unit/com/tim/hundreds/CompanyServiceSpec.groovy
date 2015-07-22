@@ -30,7 +30,7 @@ class CompanyServiceSpec extends Specification {
     company.dateCreated = endDate - 15
     company.save(validate: false)
   when: "We try to get company by range"
-    def result = service.getCompaniesByDateCreated(startDate, endDate)
+    def result = service.getcompaniesByDateCreated(startDate, endDate)
   then:
     result.isEmpty()
   }
