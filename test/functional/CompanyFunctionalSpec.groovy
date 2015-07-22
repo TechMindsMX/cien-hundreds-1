@@ -4,10 +4,11 @@ import spock.lang.Unroll
 import spock.lang.Shared
 
 import page.LoginPage
-import page.CompanyPage
 
-import spock.lang.Ignore
-@Ignore
+import page.CompanyCreatePage
+import page.CompanyShowPage
+import page.CompanySavePage
+
 @Stepwise
 class CompanyFunctionalSpec extends GebReportingSpec {
 
@@ -16,36 +17,32 @@ class CompanyFunctionalSpec extends GebReportingSpec {
 
     def setupSpec() {
         to LoginPage
-        loginForm.j_username = "admin"
+        loginForm.j_username = "cien"
         loginForm.j_password = grailsApplication.config.tests.userPassword
         loginButton.click()
     }
 
+// 1
     @Unroll
-    def "Fill Form for Campany"() {
+    def """Fill Form for Company with name #name, description #description, web #web, notes #notes, tags #tags, logo #logo, corporatePress #corporatePress, we expect #result """() {
         given:"Create Company Form"
-        to CompanyPage
+        to CompanyCreatePage
         when: "I do fill fields form with"
         companyForm.name        = name
         companyForm.description = description
         companyForm.web         = web
         companyForm.notes       = notes
-        companyForm.tags        = tags
+        companyForm.tagsComma   = tags
 
-        then: "I am being redirected to the same page with errors"
         submitButton.click()
+        then: "I am being redirected to the same page with errors"
+        at result
 
         where: "We have the next cases"
-        name   | description | web                      | notes  | tags          | logo | corporatePress || result
-        ''     | ''          | ''                       | ''     | ''            | ''   |  ''            ||CompanyPage
-        'Test' | ''          | ''                       | ''     | ''            | ''   |  ''            ||CompanyPage
-        'Test' | 'test'      | ''                       | ''     | ''            | ''   |  ''            ||CompanyPage
-        'Test' | 'test'      | 'http://www.susitio.com' | ''     | ''            | ''   |  ''            ||CompanyPage
-        'Test' | 'test'      | 'www.susitio.com'        | ''     | ''            | ''   |  ''            ||CompanyPage
-        'Test' | 'test'      | 'http://susitio.com'     | ''     | ''            | ''   |  ''            ||CompanyPage
-        'Test' | 'test'      | 'http://www.susitio.com' | 'test' | ''            | ''   |  ''            ||CompanyPage
-        'Test' | 'test'      | 'http://www.susitio.com' | 'test' | 'test,prueba' | ''   |  ''            ||CompanyPage
-
+        name   | description | web                      | notes  | tags          | logo                                           | corporatePress                               || result
+        ''     | ''          | ''                       | ''     | ''            | ''                                             | ''                                           || CompanySavePage
+        'Test' | ''          | ''                       | ''     | ''            | ''                                             | ''                                           || CompanySavePage
+        'Test' | 'test'      | 'http://www.susitio.com' | 'test' | 'test,prueba' | grailsApplication.config.tests.filesPath.jpg   | grailsApplication.config.tests.filesPath.pdf || CompanyShowPage
     }
 
     def cleanupSpec() {}

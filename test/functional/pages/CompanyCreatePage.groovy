@@ -2,7 +2,7 @@ package page
 
 import geb.Page
 
-class CompanyPage extends Page {
+class CompanyCreatePage extends Page {
 
     static url = "company/create"
 
@@ -13,6 +13,5 @@ class CompanyPage extends Page {
         submitButton { $('#create') }
         cancelButton { $('form').find('button.btn') }
         logout { $('#navbar').find('.logout') }
-
     }
 }
