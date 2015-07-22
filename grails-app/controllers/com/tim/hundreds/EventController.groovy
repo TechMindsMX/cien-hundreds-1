@@ -20,6 +20,7 @@ class EventController {
         respond Event.list(params), model:[eventInstanceCount: Event.count()]
     }
 
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def show(Event eventInstance) {
         respond eventInstance
     }
