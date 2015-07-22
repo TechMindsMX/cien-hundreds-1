@@ -23,12 +23,7 @@ class AddressController {
     }
 
     def create() {
-      [
-        datosFiscalesUuid : params.datosFiscalesUuid,
-        contactUuid : params.contactUuid,
-        musicianUuid : params.musicianUuid,
-        companyUuid : params.companyUuid
-      ]
+      respond new Address(params)
     }
 
     @Transactional

@@ -7,20 +7,20 @@ class AddressContextService {
   def addressService
 
   def saveInstance(addressInstance, params) {
-    if(params.musicianUuid){
-      def musician = Musician.findByUuid(params.musicianUuid)
+    if(params.musician.id){
+      def musician = Musician.findById(params.musician.id)
       addressService.saveAddressToInstance(addressInstance, musician)
     }
-    if(params.datosFiscalesUuid){
-      def datosFiscales = DatosFiscales.findByUuid(params.datosFiscalesUuid)
+    if(params.datosFiscales.id){
+      def datosFiscales = DatosFiscales.findById(params.datosFiscales.id)
       addressService.saveAddressToInstance(addressInstance, datosFiscales)
     }
-    if(params.contactUuid){
-      def contact = Contact.findByUuid(params.contactUuid)
+    if(params.contact.id){
+      def contact = Contact.findById(params.contact.id)
       addressService.saveAddressToInstance(addressInstance, contact)
     }
-    if(params.companyUuid){
-      def company = Company.findByUuid(params.companyUuid)
+    if(params.company.id){
+      def company = Company.findById(params.company.id)
       addressService.saveAddressToInstance(addressInstance, company)
     }
   }
