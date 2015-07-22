@@ -40,10 +40,9 @@ class CompanyFunctionalSpec extends GebReportingSpec {
         at result
 
         where: "We have the next cases"
-        name   | description | web                      | notes  | tags          | logo                                           | corporatePress                               || result
-        ''     | ''          | ''                       | ''     | ''            | ''                                             | ''                                           || CompanySavePage
-        'Test' | ''          | ''                       | ''     | ''            | ''                                             | ''                                           || CompanySavePage
-        'Test' | 'test'      | 'http://www.susitio.com' | 'test' | 'test,prueba' | grailsApplication.config.tests.filesPath.jpg   | grailsApplication.config.tests.filesPath.pdf || CompanyShowPage
+        name   | description | web                      | notes  | tags          | logo                                         | corporatePress                               || result
+        'Test' | 'test'      | 'http://www.susitio.com' | 'test' | 'test,prueba' | grailsApplication.config.tests.filesPath.jpg | ''                                           || CompanyShowPage
+        'Test' | 'test'      | 'http://www.susitio.com' | 'test' | 'test,prueba' | ''                                           | grailsApplication.config.tests.filesPath.pdf || CompanyShowPage
     }
 
     def cleanupSpec() {}
