@@ -84,6 +84,43 @@
 					
 				</li>
 				</g:if>
+
+
+ 				<g:if test="${addressInstance?.musician}">
+				<li class="fieldcontain">
+					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musician.label" default="Musician" /></span>
+					
+						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${addressInstance?.musician?.id}">${addressInstance?.musician?.name.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+						
+				<g:if test="${addressInstance?.contact}">
+				<li class="fieldcontain">
+					<span id="contact-label" class="${session.labelWidth} property-label"><g:message code="contact.label" default="contact" /></span>
+					
+						<span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" id="${addressInstance?.contact?.id}">${addressInstance?.contact?.firstName.encodeAsHTML()} ${addressInstance?.contact?.lastName.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+						
+				<g:if test="${addressInstance?.company}">
+				<li class="fieldcontain">
+					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="company.label" default="Musician" /></span>
+					
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${addressInstance?.company?.id}">${addressInstance?.company?.name.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${addressInstance?.datosFiscales}">
+				<li class="fieldcontain">
+					<span id="datosFiscales-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.label" default="Musician" /></span>
+					
+						<span class="property-value" aria-labelledby="datosFiscales-label"><g:link controller="datosFiscales" action="show" id="${addressInstance?.datosFiscales?.id}">${addressInstance?.datosFiscales?.razonSocial.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
 			
 			</ul>
 			<g:form url="[resource:addressInstance, action:'delete']" method="DELETE">

@@ -48,6 +48,7 @@
 <div class="form-group fieldcontain ${hasErrors(bean: addressInstance, field: 'county', 'error')} required">
 	<label for="county" class="${labelWidth} control-label">
 		<g:message code="address.county.label" default="County" />
+		<span class="required-indicator">*</span>
 	</label>
 	<div class="${inputWidth}">
 		<g:textField name="county" id="county" maxlength="100" required="" value="${addressInstance?.county}" class="form-control" />
@@ -74,9 +75,9 @@
 	</div>
 </div>
 
-<g:hiddenField name="musicianUuid" value="${params?.musicianUuid}"/>
-<g:hiddenField name="contactUuid" value="${params?.contactUuid}"/>
-<g:hiddenField name="datosFiscalesUuid" value="${params?.datosFiscalesUuid}"/>
-<g:hiddenField name="companyUuid" value="${params?.companyUuid}"/>
+<g:hiddenField name="musician.id" value="${addressInstance.musician?.id}"/>
+<g:hiddenField name="contact.id" value="${addressInstance.contact?.id}"/>
+<g:hiddenField name="company.id" value="${addressInstance.company?.id}"/>
+<g:hiddenField name="datosFiscales.id" value="${addressInstance?.datosFiscales?.id}"/>
 
 

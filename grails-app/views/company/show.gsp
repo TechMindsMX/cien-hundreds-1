@@ -161,7 +161,7 @@
 								<g:link controller="address" action="show" id="${companyInstance?.address?.id}">${message(code: 'default.show.label', args: [message(code: 'address.label')])}</g:link>
 							</g:if>
 							<g:else>
-								<g:link controller="address" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
+								<g:link controller="address" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
 							</g:else>
 						</div>
 				</div>

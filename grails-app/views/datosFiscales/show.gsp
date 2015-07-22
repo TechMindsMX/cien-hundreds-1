@@ -53,7 +53,7 @@
 						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${datosFiscalesInstance?.address?.id}"><g:message code="address.view.label" default="Ver dirección" /></g:link></span>
 				</g:if>
 				<g:else>
-                	<g:link class="glyphicon glyphicon-floppy-disk" controller="address" action="create" params='[datosFiscalesUuid: "${datosFiscalesInstance.uuid}"]'> Dirección</g:link>
+                	<g:link class="glyphicon glyphicon-floppy-disk" controller="address" action="create" params="['datosFiscales.id': datosFiscalesInstance.id]"> Dirección</g:link>
 				</g:else>
 				</li>
 			
