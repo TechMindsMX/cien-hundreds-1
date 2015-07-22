@@ -132,8 +132,8 @@
 <g:if test="${contactInstance?.emails}">
 <div class="fieldcontain">
   <span id="emails-label" class="${session.labelWidth} property-label"><g:message code="contact.emails.label" default="Emails" /></span>
-	<g:each in="${contactInstance.emails}" var="e">
-	<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.mail?.encodeAsHTML()}</g:link></span>
+  <g:each in="${contactInstance.emails}" var="e">
+  <span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.mail?.encodeAsHTML()}</g:link></span>
 </g:each>
 
 </div>
@@ -144,15 +144,6 @@
   <span id="entryDate-label" class="${session.labelWidth} property-label"><g:message code="contact.entryDate.label" default="Entry Date" /></span>
 
   <span class="property-value" aria-labelledby="entryDate-label"><g:formatDate format="dd-MM-yyyy"  date="${contactInstance?.entryDate}" /></span>
-
-</div>
-</g:if>
-
-<g:if test="${contactInstance?.musician}">
-<div class="fieldcontain">
-  <span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musician.label" default="Musician" /></span>
-
-  <span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${contactInstance?.musician?.id}">${contactInstance?.musician?.name.encodeAsHTML()}</g:link></span>
 
 </div>
 </g:if>
@@ -185,34 +176,49 @@
 
 </div>
 </g:if>
-<g:if test="${contactInstance.address == null}">
-<div>
-  <g:link controller="address" action="create" params="['contact.id': contactInstance.id]">${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
-</div>
-</g:if>
-<g:if test="${!contactInstance?.social}">
-<div>
-  <g:link controller="social" action="create" params="['contactUuid': contactInstance.uuid, 'contact.id': contactInstance.id]">${message(code: 'default.add.label', args: [message(code: 'social.label')])}</g:link>
-</div>
-</g:if>
-<g:if test="${!contactInstance.telephones || contactInstance.telephones?.size() < ApplicationState.MAX_TELEPHONES}">
-<div>
-  <g:link controller="contact" action="prepareTelephone" params="[contactUuid: contactInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'telephone.label')])}</g:link>
-</div>
-</g:if>
-<g:if test="${!contactInstance.emails || contactInstance.emails?.size() < ApplicationState.MAX_EMAILS}">
-<div>
-  <g:link controller="contact" action="prepareEmail" params="[contactUuid: contactInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'email.label')])}</g:link>
+
+<g:if test="${contactInstance?.musician}">
+<div class="fieldcontain">
+  <span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musician.label" default="Musician" /></span>
+
+  <span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${contactInstance?.musician?.id}">${contactInstance?.musician?.name.encodeAsHTML()}</g:link></span>
+
 </div>
 </g:if>
 
-</div>
-<g:form url="[resource:contactInstance, action:'delete']" method="DELETE">
-<fieldset class="buttons">
-  <g:link class="btn btn-primary edit" action="edit" resource="${contactInstance}" params="['musician.id': musicianInstance?.id]" ><g:message code="default.button.edit.label" default="Edit" /></g:link>
-  <g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-</fieldset>
-</g:form>
+<sec:ifAnyGranted roles="ROLE_USER">
+  <g:if test="${contactInstance.address == null}">
+  <div>
+    <g:link controller="address" action="create" params="['contact.id': contactInstance.id]">${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
+  </div>
+  </g:if>
+
+  <g:if test="${!contactInstance?.social}">
+  <div>
+    <g:link controller="social" action="create" params="['contactUuid': contactInstance.uuid, 'contact.id': contactInstance.id]">${message(code: 'default.add.label', args: [message(code: 'social.label')])}</g:link>
+  </div>
+  </g:if>
+
+  <g:if test="${!contactInstance.telephones || contactInstance.telephones?.size() < ApplicationState.MAX_TELEPHONES}">
+  <div>
+    <g:link controller="contact" action="prepareTelephone" params="[contactUuid: contactInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'telephone.label')])}</g:link>
+  </div>
+  </g:if>
+
+  <g:if test="${!contactInstance.emails || contactInstance.emails?.size() < ApplicationState.MAX_EMAILS}">
+  <div>
+    <g:link controller="contact" action="prepareEmail" params="[contactUuid: contactInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'email.label')])}</g:link>
+  </div>
+  </g:if>
+
+  </div>
+  <g:form url="[resource:contactInstance, action:'delete']" method="DELETE">
+  <fieldset class="buttons">
+    <g:link class="btn btn-primary edit" action="edit" resource="${contactInstance}" params="['musician.id': musicianInstance?.id]" ><g:message code="default.button.edit.label" default="Edit" /></g:link>
+    <g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+  </fieldset>
+  </g:form>
+</sec:ifAnyGranted>
 </div>
 </body>
 </html>
