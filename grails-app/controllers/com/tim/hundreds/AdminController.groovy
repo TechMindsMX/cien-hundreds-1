@@ -32,17 +32,17 @@ class AdminController {
     try{
       def user = new User(username: command.username, password: command.password)
       def profile = new Profile(email:command.email, firstName:command.firstName, motherLastName:command.motherLastName, lastName:command.lastName)
-      user.accountExpired = !command.status
-      profile.role = command.role
-      user.profile = profile
-      userService.create(user)
-
       if(!params.photo.isEmpty()){
         profile.photoPath = photoStorerService.storeFile(request.getFile('photo'))
       }
       if(!params.resume.isEmpty()){
         profile.resumePath = resumeStorerService.storeFile(request.getFile('resume'))
       }
+      user.accountExpired = !command.status
+      profile.role = command.role
+      user.profile = profile
+      userService.create(user)
+
 
       flash.message = "El usuario ha sido creado y se ha enviado un correo electrónico"
       respond command, view: 'create'
@@ -65,10 +65,38 @@ class AdminController {
     userCommand.motherLastName = user.profile.motherLastName
     userCommand.phone = user.profile.phone
     userCommand.role = user.profile.role
-    userCommand.photoPath = user.profile.photoPath
-    userCommand.resumePath = user.profile.resumePath
+    userCommand.photoPath = user.profile?.photoPath
+    userCommand.resumePath = user.profile?.resumePath
     userCommand.status = !user.accountExpired
-    [model:userCommand]
+    [model:userCommand,edit:true]
+  }
+
+  def update(AdminCommand command){
+    if(command.hasErrors()){
+      render(view:'edit', model:[model:command])
+      return
+    }
+
+    if (!params.photo.isEmpty()){
+      command.photoPath = photoStorerService.storeFile(request.getFile('photo'))
+    }
+
+    if (!params.resume.isEmpty()){
+      command.resumePath = resumeStorerService.storeFile(request.getFile('resume'))
+    }
+    def user = User.findByUsername(command.username)
+    user.username = command.username 
+    user.accountExpired = !command.status
+    user.profile.email = command.email
+    user.profile.firstName= command.firstName
+    user.profile.motherLastName= command.motherLastName
+    user.profile.lastName = command.lastName
+    user.profile.phone = command.phone ?: user.profile.phone
+    user.profile.role = command.role
+    user.profile.photoPath = command.photoPath ?: user.profile.photoPath
+    user.profile.resumePath = command.resumePath ?: user.profile.resumePath
+    user.save(flush:true)
+    redirect (controller:"user" ,action:"show", id:user.id)
   }
 
 }
