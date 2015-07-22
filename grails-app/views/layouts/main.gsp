@@ -110,7 +110,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong class="font-bold"><sec:loggedInUserInfo field="username"/></strong> <span class="caret"></span></a>
         <ul class="dropdown-menu">
             <sec:access expression="hasRole('ROLE_USER')" >
-            <li><g:link id="${applicationContext.springSecurityService.currentUser.id}" controller="user" action="edit" >${message(code: 'default.edit.label', args: [message(code: 'profile.label')])}</g:link></li>
+            <li><g:link id="${applicationContext.springSecurityService.currentUser.id}" controller="admin" action="edit" >${message(code: 'default.edit.label', args: [message(code: 'profile.label')])}</g:link></li>
             </sec:access>
             <sec:noAccess expression="hasRole('ROLE_USER')" >
             <li><g:link id="${applicationContext.springSecurityService.currentUser.id}" controller="admin" action="edit" >${message(code: 'default.edit.label', args: [message(code: 'profile.label')])}</g:link></li>
