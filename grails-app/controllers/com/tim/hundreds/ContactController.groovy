@@ -57,8 +57,13 @@ class ContactController {
           def email = new Email(mail:command.mail,emailType:command.emailType)
           instance = contactService.saveEmail(instance,email)
           instance = contactService.saveTelephone(instance,telephone)
-          flash.message = message(code: 'default.created.message', args: [message(code: 'contact.label', default: 'Contact'), instance.id])
-          render view: 'show', model:[contactInstance:instance]
+           request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'contact.label', default: 'Contact'), instance.id])
+                redirect instance
+            }
+            '*' { respond instance, [status: CREATED] }
+          }
         }catch(Exception ex){
           log.info "Errors: ${ex}"
           respond contactInstance.musician.errors, view:'create'
@@ -139,10 +144,11 @@ class ContactController {
       def contact = Contact.findByUuid(contactUuid)
       try{
         contactService.saveEmail(contact, emailInstance)
+        flash.message = message(code:"default.add.label", args:[message(code:'email.label')])
       } catch (ValidationException ve){
-        flash.error = g.message(code: 'error.email.limit')
+        flash.error = message(code: 'error.email.limit')
       }
-      render view: 'show', params:[contactInstance:Contact.findByUuid(contactUuid)]
+      redirect action: 'show', id:contact.id
     }
 
     def prepareTelephone(){
@@ -154,10 +160,11 @@ class ContactController {
       def contact = Contact.findByUuid(contactUuid)
       try{
         contactService.saveTelephone(contact, telephoneInstance)
+        flash.message = message(code:"default.add.label", args:[message(code:'telephone.labe')])
       } catch (ValidationException ve){
-        flash.error = g.message(code: 'error.telephone.limit')
+        flash.error = message(code: 'error.telephone.limit')
       }
-      render view: 'show', params:[contactInstance:Contact.findByUuid(contactUuid)]
+      redirect action: 'show', id:contact.id
     }
 
 }
