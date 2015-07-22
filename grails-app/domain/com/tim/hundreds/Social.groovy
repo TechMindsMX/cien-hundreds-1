@@ -20,8 +20,8 @@ class Social {
     youtube nullable:true,blank:false,size:10..100,url: true
     linkedin nullable:true,blank:false,size:10..100,url: true
     other nullable:true,blank:false,size:10..100
-    musician nullable:true, validator: {val, obj->  if (!val && !obj.company && !obj.contact) return 'social.association.mustbeone'}
-    company nullable:true, validator: {val, obj->  if (!val && !obj.musician && !obj.contact) return 'social.association.mustbeone'}
-    contact nullable:true, validator: {val, obj->  if (!val && !obj.musician && !obj.company) return 'social.association.mustbeone'}
+    musician nullable:true, validator: {val, obj->  if (!val && !obj.company && !obj.contact) return 'default.association.mustbeone'}
+    company nullable:true, validator: {val, obj->  if (!val && !obj.musician && !obj.contact) return 'default.association.mustbeone'}
+    contact nullable:true, validator: {val, obj->  if (!val && !obj.musician && !obj.company) return 'default.association.mustbeone'}
   }
 }
