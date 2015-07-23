@@ -1,6 +1,7 @@
 package com.tim.hundreds
 
 import grails.transaction.Transactional
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 @Transactional
 class MusicianService {
@@ -32,6 +33,21 @@ class MusicianService {
       throw new InvalidParamsException('Date from is greater')
     }
     Musician.findAllByDateCreatedBetween(startDate, endDate + 1)
+  }
+
+  def getMusicianList (User currentUser, params) {
+    def musicianList = [list: null, count: null]
+        if (SpringSecurityUtils.ifAnyGranted('ROLE_USER')) {
+            musicianList.list = Musician.findAllByUser(currentUser, [max: params.max, sort: "name", order: "asc", offset: params.offset ?: 0])
+            musicianList.count = Musician.findAllByUser(currentUser).size()
+        } else if (SpringSecurityUtils.ifAnyGranted('ROLE_FACILITATOR')) {
+            musicianList.list = Musician.findAllByAssigned(currentUser, [max: params.max, sort: "name", order: "asc", offset: params.offset ?: 0])
+            musicianList.count =  Musician.findAllByUser(currentUser).size()
+        } else {
+            musicianList.list = Musician.list(params)
+            musicianList.count =  Musician.count()
+        }
+        musicianList
   }
 
 }
