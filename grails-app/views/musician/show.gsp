@@ -167,7 +167,8 @@
 									<ol>
 										<g:each in="${musicianInstance.videos}" var="v">
 											<div>
-												<g:link controller="video" action="show" id="${v.id}">${v.url}</g:link>
+												<g:link url="${v.url}" target="_blank">${v.url}</g:link>
+												<sec:link expression="hasRole('ROLE_USER')" controller="video" action="edit" id="${v.id}">${message(code: 'default.edit.label', args:[message(code: 'video.label')])}</sec:link>
 											</div>
 										</g:each>
 									</ol>
@@ -187,7 +188,8 @@
 									<ol>
 										<g:each in="${musicianInstance.audios}" var="a">
 											<div>
-												<g:link controller="audio" action="show" id="${a.id}">${a.url}</g:link>
+												<g:link url="${a.url}" target="_blank">${a.url}</g:link>
+												<sec:link expression="hasRole('ROLE_USER')" controller="audio" action="edit" id="${a.id}">${message(code: 'default.edit.label', args:[message(code: 'audio.label')])}</sec:link>
 											</div>
 										</g:each>
 									</ol>

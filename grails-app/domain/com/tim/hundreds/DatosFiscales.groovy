@@ -8,7 +8,7 @@ class DatosFiscales {
   PersonaJuridicaType personaJuridica
   Address address
 
-  static belongsTo = [ Musician, Company ]
+  static belongsTo = [ musician: Musician, company: Company ]
 
   static constraints = {
     razonSocial blank:false,size:1..100

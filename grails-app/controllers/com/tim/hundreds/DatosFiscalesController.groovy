@@ -6,7 +6,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['IS_AUTHENTICATED_REMEMBERED'])
 @Transactional(readOnly = true)
 class DatosFiscalesController {
     def datosFiscalesContextService
@@ -24,13 +24,12 @@ class DatosFiscalesController {
         respond datosFiscalesInstance
     }
 
+    @Secured(['ROLE_USER'])
     def create() {
-      [
-        musicianUuidd : params.musicianUuid,
-        companyUuid : params.companyUuid
-      ]
+      respond new DatosFiscales(params)
     }
 
+    @Secured(['ROLE_USER'])
     @Transactional
     def save(DatosFiscales datosFiscalesInstance) {
         log.info "datosFiscalesInstance: ${datosFiscalesInstance.dump()}"
@@ -55,10 +54,12 @@ class DatosFiscalesController {
         }
     }
 
+    @Secured(['ROLE_USER'])
     def edit(DatosFiscales datosFiscalesInstance) {
         respond datosFiscalesInstance
     }
 
+    @Secured(['ROLE_USER'])
     @Transactional
     def update(DatosFiscales datosFiscalesInstance) {
         if (datosFiscalesInstance == null) {
@@ -82,6 +83,7 @@ class DatosFiscalesController {
         }
     }
 
+    @Secured(['ROLE_USER'])
     @Transactional
     def delete(DatosFiscales datosFiscalesInstance) {
 
