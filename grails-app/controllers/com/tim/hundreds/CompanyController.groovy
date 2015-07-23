@@ -57,7 +57,7 @@ class CompanyController {
         if (SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_BUYER,ROLE_COMPANY_ADMIN,ROLE_COMPANY_VIEWER') || springSecurityService.currentUser == companyInstance.user) {
             respond companyInstance
         } else {
-            flash.error = 'access.denied'
+            flash.error = 'access.denied.label'
             redirect url: '/'
         }
     }
