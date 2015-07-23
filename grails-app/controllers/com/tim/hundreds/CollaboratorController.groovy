@@ -7,7 +7,7 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['ROLE_USER'])
 class CollaboratorController {
     def collaboratorService
     def messengineService
@@ -19,6 +19,7 @@ class CollaboratorController {
         respond Collaborator.list(params), model:[collaboratorInstanceCount: Collaborator.count()]
     }
 
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Collaborator collaboratorInstance) {
         respond collaboratorInstance
     }

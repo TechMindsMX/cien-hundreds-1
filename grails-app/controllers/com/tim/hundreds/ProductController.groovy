@@ -86,6 +86,7 @@ class ProductController {
         }
     }
 
+    @Secured(['ROLE_USER'])
     @Transactional
     def delete(Product productInstance) {
 
