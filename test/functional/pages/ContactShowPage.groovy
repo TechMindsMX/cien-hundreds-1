@@ -9,6 +9,9 @@ class ContactShowPage extends Page {
     static at = { driver.currentUrl.contains('contact/show') }
 
     static content = {
+        alertSuccess (required:false) { $('.alert-info') }
+        alertErrors (required:false) { $('.alert-danger') }
+
         cancelButton 	{ $("#btnCancel") }
         backToMusician 	{ $('a[href*="musician/show"]') }
         logout       	{ $('#navbar').find('.logout') }

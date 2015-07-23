@@ -2,7 +2,7 @@ package page
 
 import geb.Page
 
-class MusicianPage extends Page {
+class MusicianCreatePage extends Page {
 
     static url = "musician/create"
 

@@ -9,8 +9,8 @@ class MusicianShowPage extends Page {
     static at = { driver.currentUrl.contains('musician/show') }
 
     static content = {
-       success (required:false) { $('.alert-info') }
-       errors (required:false) { $('.alert-danger') }
+       alertSuccess (required:false) { $('.alert-info') }
+       alertErrors (required:false) { $('.alert-danger') }
 
        addContact { $('a[href*="contact/create"]') }
        addSocial { $('a[href*="social/create"]') }
