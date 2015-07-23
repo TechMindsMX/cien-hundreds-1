@@ -6,7 +6,7 @@ import spock.lang.Unroll
 import page.LoginPage
 import page.LogoutPage
 
-import page.MusicianPage
+import page.MusicianCreatePage
 import page.MusicianSavePage
 import page.MusicianShowPage
 
@@ -54,7 +54,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
 // 1
     def "Fill Form for Musician checkbox"() {
         given:"Create Musician Form"
-        to MusicianPage
+        to MusicianCreatePage
 
         when: "I do fill fields form"
         musicianForm.name      = name
@@ -67,12 +67,14 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         musicianForm.find('[name="hasManager"]').click()
         musicianForm.logo      = logo
 
-        then: "I am being redirected to the same page with errors"
         submitButton.click()
+        then: "I am being redirected to the same page with errors"
+        at result
+        alertSuccess
 
         where: "We have the next cases"
         name    | history | web                           | notes  | tagsComma                    | formed       | genre| logo                                          || result
-        'luis7' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '30-06-2015' | '2'  | grailsApplication.config.tests.filesPath.jpg  || MusicianPage
+        'luis7' | 'test'  | 'https://www.ironmaiden.com/' | 'test' | 'Heavy, Metal, Iron, Maiden' | '30-06-2015' | '2'  | grailsApplication.config.tests.filesPath.jpg  || MusicianShowPage
 
     }
 
@@ -87,8 +89,10 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         when: "I don't fill the form fields "
         videoForm.url = siteUrl
 
-        then: "I am being redirected to the same page with errors"
         submitButton.click()
+        then: "I am being redirected to the same page with errors"
+        at result
+        alertSuccess
 
         where: "We have the next cases"
         siteUrl                                       || result
@@ -108,8 +112,10 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         when: "I fill the Audio form"
         audioForm.url = url
 
-        then: "I am being redirected to the same page with errors or redirect to view Audio page."
         submitButton.click()
+        then: "I am being redirected to the same page with errors or redirect to view Audio page."
+        at result
+        alertSuccess
 
         where: "We have the next cases"
         url                                                                  || result
@@ -129,8 +135,10 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         when: "I fill the Photo form"
         photoForm.file = file
 
-        then: "I am being redirected to the same page with errors or redirect to view Photo page."
         submitButton.click()
+        then: "I am being redirected to the same page with errors or redirect to view Photo page."
+        at result
+        alertSuccess
 
         where: "We have the next cases"
         file                                           || result
@@ -182,8 +190,10 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         activityForm.date = date
         activityForm.place = place
 
-        then: "I am being redirected to the same page with errors"
         submitButton.click()
+        then: "I am being redirected to the same page with errors"
+        at result
+        alertSuccess
 
         where: "We have the next cases"
         activity            | place    | date               || result
@@ -219,6 +229,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
 
         then: "I am being redirected to the same page with errors"
         at result
+        alertSuccess
 
         where: "We have the next cases"
         firstName | lastName   | motherLastName    | other   | nationality | biography   | style   | birthDate    | entryDate   | mail           | phone        | role | type   | file                                          || result
@@ -237,8 +248,10 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         userTelephoneForm.phone     = phone
         type                        = type
 
-        then: "I submit the form"
         submitButton.click()
+        then: "I submit the form"
+        at result
+        alertSuccess
 
         where: "We expect a result for the next cases"
         phone        | type           || result
@@ -257,8 +270,10 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         emailForm.mail     = mail
         type                  = type
 
-        then: "I submit the form"
         submitButton.click()
+        then: "I submit the form"
+        at result
+        alertSuccess
 
         where: "We expect a result for the next cases"
         mail                | type          || result

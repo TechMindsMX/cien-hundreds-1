@@ -8,6 +8,9 @@ class PhotoShowPage extends Page{
     static at = { driver.currentUrl.contains('photo/show') }
 
     static content = {
+		alertSuccess (required:false) { $('.alert-info') }
+		alertErrors (required:false) { $('.alert-danger') }
+
         backToMusician { $('a[href*="musician/show"]') }
 
         editButtton { photoForm.find('.edit') }

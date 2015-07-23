@@ -33,5 +33,5 @@
 
 <g:hiddenField name="address.id" value="${datosFiscalesInstance?.address?.id}"/>
 
-<g:hiddenField name="musicianUuid" value="${params?.musicianUuid}"/>
-<g:hiddenField name="companyUuid" value="${params?.companyUuid}"/>
+<g:hiddenField name="musician.id" value="${datosFiscalesInstance?.musician?.id}"/>
+<g:hiddenField name="company.id" value="${datosFiscalesInstance?.company?.id}"/>

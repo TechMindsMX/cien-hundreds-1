@@ -4,7 +4,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['IS_AUTHENTICATED_REMEMBERED'])
 @Transactional(readOnly = true)
 class AddressController {
     def addressContextService
@@ -22,10 +22,12 @@ class AddressController {
         respond addressInstance
     }
 
+    @Secured(['ROLE_USER'])
     def create() {
       respond new Address(params)
     }
 
+    @Secured(['ROLE_USER'])
     @Transactional
     def save(Address addressInstance) {
         log.info "companyId: ${params.companyId}"
@@ -51,10 +53,12 @@ class AddressController {
         }
     }
 
+    @Secured(['ROLE_USER'])
     def edit(Address addressInstance) {
         respond addressInstance
     }
 
+    @Secured(['ROLE_USER'])
     @Transactional
     def update(Address addressInstance) {
         if (addressInstance == null) {
@@ -78,6 +82,7 @@ class AddressController {
         }
     }
 
+    @Secured(['ROLE_USER'])
     @Transactional
     def delete(Address addressInstance) {
 

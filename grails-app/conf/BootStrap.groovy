@@ -46,6 +46,9 @@ class BootStrap {
       createUserWithRole('ROLE_MUSICIAN_ADMIN',   'musicianAdmin20',  'usuario27@trama.mx')
       createUserWithRole('ROLE_MUSICIAN_ADMIN',   'musicianAdmin21',  'usuario28@trama.mx')
       createUserWithRole('ROLE_MUSICIAN_ADMIN',   'musicianAdmin22',  'usuario29@trama.mx')
+      createUserWithRole('ROLE_USER',             'user2',            'usuario30@trama.mx')
+      createUserWithRole('ROLE_FACILITATOR',      'facilitator2',     'usuario31@trama.mx')
+      createUserWithRole('ROLE_BUYER',            'buyer2',           'usuario32@trama.mx')
     }
 
   }

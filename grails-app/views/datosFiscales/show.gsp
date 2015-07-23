@@ -46,6 +46,25 @@
 				</li>
 				</g:if>
 
+${datosFiscalesInstance?.dump()}
+ 				<g:if test="${datosFiscalesInstance?.musician}">
+				<li class="fieldcontain">
+					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musician.label" default="Musician" /></span>
+					
+						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${datosFiscalesInstance?.musician?.id}">${datosFiscalesInstance?.musician?.name.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+						
+				<g:if test="${datosFiscalesInstance?.company}">
+				<li class="fieldcontain">
+					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="company.label" default="Musician" /></span>
+					
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${datosFiscalesInstance?.company?.id}">${datosFiscalesInstance?.company?.name.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+
 				<li class="fieldcontain">
 					<span id="address-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.address.label" default="Address" /></span>
 					

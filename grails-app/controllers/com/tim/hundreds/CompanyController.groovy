@@ -3,6 +3,7 @@ package com.tim.hundreds
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 @Secured(['ROLE_USER'])
 class CompanyController {
@@ -11,6 +12,7 @@ class CompanyController {
     def messengineService
     def corporatePressStorerService
     def tagService
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
@@ -19,7 +21,16 @@ class CompanyController {
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Company.list(params), model:[companyInstanceCount: Company.count()]
+
+        if (SpringSecurityUtils.ifAnyGranted('ROLE_USER')) {
+            def companyList = Company.findAllByUser(springSecurityService.currentUser, [max: params.max, sort: "name", order: "asc", offset: params.offset ?: 0])
+            respond companyList, model:[companyInstanceCount: Company.findAllByUser(springSecurityService.currentUser).size()]
+        } else if (SpringSecurityUtils.ifAnyGranted('ROLE_BUYER')) {
+            def companyList = Company.findAllByUser(springSecurityService.currentUser, [max: params.max, sort: "name", order: "asc", offset: params.offset ?: 0])
+            respond companyList, model:[companyInstanceCount: Company.findAllByUser(springSecurityService.currentUser).size()]
+        } else {
+            respond Company.list(params), model:[companyInstanceCount: Company.count()]
+        }
     }
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
@@ -43,7 +54,12 @@ class CompanyController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Company companyInstance) {
-        respond companyInstance
+        if (SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_BUYER,ROLE_COMPANY_ADMIN,ROLE_COMPANY_VIEWER') || springSecurityService.currentUser == companyInstance.user) {
+            respond companyInstance
+        } else {
+            flash.error = 'access.denied'
+            redirect url: '/'
+        }
     }
 
     def create() {

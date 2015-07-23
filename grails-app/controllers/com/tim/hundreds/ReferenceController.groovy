@@ -6,7 +6,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['ROLE_USER'])
 class ReferenceController {
     def referenceService
     def messengineService
@@ -20,6 +20,7 @@ class ReferenceController {
         respond Reference.list(params), model:[referenceInstanceCount: Reference.count()]
     }
 
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Reference referenceInstance) {
         respond referenceInstance
     }
