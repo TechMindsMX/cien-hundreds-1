@@ -11,15 +11,12 @@ class MusicianController {
     def messengineService
     def tagService
     def springSecurityService
-    def userPermissionsService
-
-    static showMe = true /*Parametro para aparecer en el menú*/
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 3, 100)
         def musicianList = musicianService.getMusicianList(springSecurityService.currentUser, params)
         respond musicianList.list, model:[musicianInstanceCount: musicianList.count]
     }

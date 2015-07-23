@@ -16,21 +16,11 @@ class CompanyController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
-    static showMe = true /*Parametro para aparecer en el menú*/
-
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-
-        if (SpringSecurityUtils.ifAnyGranted('ROLE_USER')) {
-            def companyList = Company.findAllByUser(springSecurityService.currentUser, [max: params.max, sort: "name", order: "asc", offset: params.offset ?: 0])
-            respond companyList, model:[companyInstanceCount: Company.findAllByUser(springSecurityService.currentUser).size()]
-        } else if (SpringSecurityUtils.ifAnyGranted('ROLE_BUYER')) {
-            def companyList = Company.findAllByUser(springSecurityService.currentUser, [max: params.max, sort: "name", order: "asc", offset: params.offset ?: 0])
-            respond companyList, model:[companyInstanceCount: Company.findAllByUser(springSecurityService.currentUser).size()]
-        } else {
-            respond Company.list(params), model:[companyInstanceCount: Company.count()]
-        }
+        def companyList = companyService.getCompanyList(springSecurityService.currentUser, params)
+        respond companyList.list, model:[companyListCount: companyList.count] 
     }
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
