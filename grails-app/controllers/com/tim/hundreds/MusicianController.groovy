@@ -21,11 +21,11 @@ class MusicianController {
         params.max = Math.min(max ?: 3, 100)
 
         if (SpringSecurityUtils.ifAnyGranted('ROLE_USER')) {
-            def musicianList = Musician.findAllByUser(springSecurityService.currentUser, [max: params.max, sort: "name", order: "desc", offset: params.offset ?: 0])
-            respond musicianList, model:[musicianInstanceCount: musicianList.size()]
+            def musicianList = Musician.findAllByUser(springSecurityService.currentUser, [max: params.max, sort: "name", order: "asc", offset: params.offset ?: 0])
+            respond musicianList, model:[musicianInstanceCount: Musician.findAllByUser(springSecurityService.currentUser).size()]
         } else if (SpringSecurityUtils.ifAnyGranted('ROLE_FACILITATOR')) {
-            def musicianList = Musician.findAllByAssigned(springSecurityService.currentUser, [max: params.max, sort: "name", order: "desc", offset: params.offset ?: 0])
-            respond musicianList, model:[musicianInstanceCount: musicianList.size()]
+            def musicianList = Musician.findAllByAssigned(springSecurityService.currentUser, [max: params.max, sort: "name", order: "asc", offset: params.offset ?: 0])
+            respond musicianList, model:[musicianInstanceCount: Musician.findAllByUser(springSecurityService.currentUser).size()]
         } else {
             respond Musician.list(params), model:[musicianInstanceCount: Musician.count()]
         }
