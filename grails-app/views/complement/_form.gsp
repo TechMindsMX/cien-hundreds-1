@@ -7,7 +7,9 @@
 		<g:message code="complement.name.label" default="Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="name" maxlength="100" required="" value="${complementInstance?.name}"/>
+	<div class="${session.inputWidth}">
+		<g:textField class="form-control" name="name" maxlength="100" required="" value="${complementInstance?.name}"/>
+	</div>
 
 </div>
 
@@ -16,7 +18,10 @@
 		<g:message code="complement.price.label" default="Price" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="price" value="${fieldValue(bean: complementInstance, field: 'price')}" required=""/>
+
+	<div class="${session.inputWidth}">
+		<g:field class="form-control" name="price" value="${fieldValue(bean: complementInstance, field: 'price')}" required=""/>
+	</div>
 
 </div>
 
