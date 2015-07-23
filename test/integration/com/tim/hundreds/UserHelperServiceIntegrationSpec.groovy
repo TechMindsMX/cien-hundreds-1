@@ -18,10 +18,10 @@ class UserHelperServiceIntegrationSpec extends Specification {
 			userList.size() == result
 		where: "we have the next roles"
 		role  					    														|| result
-		['ROLE_USER']																		|| 1
+		['ROLE_USER']																		|| 2
 		['ROLE_ADMIN']			    														|| 1
-		['ROLE_FACILITATOR']																|| 1
-		['ROLE_BUYER']			    														|| 1
+		['ROLE_FACILITATOR']																|| 2
+		['ROLE_BUYER']			    														|| 2
 		['ROLE_MUSICIAN_ADMIN']																|| 22
 		['ROLE_COMPANY_ADMIN']																|| 1
 		['ROLE_MUSICIAN_VIEWER']															|| 1

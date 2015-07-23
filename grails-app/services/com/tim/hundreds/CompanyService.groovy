@@ -1,6 +1,7 @@
 package com.tim.hundreds
 
 import grails.transaction.Transactional
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 @Transactional
 class CompanyService {
@@ -34,4 +35,18 @@ class CompanyService {
     Company.findAllByDateCreatedBetween(startDate, endDate + 1)
   }
 
+  def getCompanyList (User currentUser, params) {
+    def companyList = [list: null, count: null]
+        if (SpringSecurityUtils.ifAnyGranted('ROLE_USER')) {
+            companyList.list = Company.findAllByUser(currentUser, [max: params.max, sort: "name", order: "asc", offset: params.offset ?: 0])
+            companyList.count = Company.findAllByUser(currentUser).size()
+        } else if (SpringSecurityUtils.ifAnyGranted('ROLE_BUYER')) {
+            companyList.list = Company.findAllByAssigned(currentUser, [max: params.max, sort: "name", order: "asc", offset: params.offset ?: 0])
+            companyList.count =  Company.findAllByUser(currentUser).size()
+        } else {
+            companyList.list = Company.list(params)
+            companyList.count =  Company.count()
+        }
+        companyList
+  }
 }

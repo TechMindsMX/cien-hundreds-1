@@ -2,7 +2,7 @@
 <%@ page import="com.tim.hundreds.ApplicationState" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
     	<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'musician.label', default: 'Musician')}" />

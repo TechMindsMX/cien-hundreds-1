@@ -11,34 +11,39 @@ import spock.lang.Unroll
 class DatosFiscalesSpec extends Specification {
 
   @Unroll
-  void """When we have datos fiscales with razonSocial: #razonSocial, rfc: #rfc, personaJuridica #personaJuridica we expect result: #result"""() {
+  def """When we have datos fiscales with razonSocial: #razonSocial, rfc: #rfc, personaJuridica #personaJuridica we expect result: #result"""() {
   given: "A datos ficales"
     def datosFiscales = new DatosFiscales()
   when: "We assign values"
     datosFiscales.razonSocial = razonSocial
     datosFiscales.rfc = rfc
     datosFiscales.personaJuridica = personaJuridica
+    datosFiscales.musician = musician
+    datosFiscales.company = company
+
     datosFiscales.validate()
     print datosFiscales.dump()
   then: "We validate result"
     result == datosFiscales.validate()
   where: "We have next values"
-  razonSocial           | rfc             | personaJuridica             || result
-  'Above & Beyond Inc.' | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   || true
-  'A'                   | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   || true
-  'Above & Beyond Inc.' | 'AABO8012028D3' | PersonaJuridicaType.MORAL   || false
-  'A'                   | 'AABO8012028D3' | PersonaJuridicaType.MORAL   || false
-  ''                    | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   || false
-  null                  | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   || false
-  'Above & Beyond Inc.' | ''              | PersonaJuridicaType.MORAL   || false
-  'Above & Beyond Inc.' | null            | PersonaJuridicaType.MORAL   || false
-  'Above & Beyond Inc.' | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  || true
-  'A'                   | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  || true
-  'Above & Beyond Inc.' | 'AAB8012028D3'  | PersonaJuridicaType.FISICA  || false
-  'A'                   | 'AAB8012028D3'  | PersonaJuridicaType.FISICA  || false
-  ''                    | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  || false
-  null                  | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  || false
-  'Above & Beyond Inc.' | ''              | PersonaJuridicaType.FISICA  || false
-  'Above & Beyond Inc.' | null            | PersonaJuridicaType.FISICA  || false
+  razonSocial           | rfc             | personaJuridica             | musician       | company       || result
+  'Above & Beyond Inc.' | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   | new Musician() | null          || true
+  'Above & Beyond Inc.' | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   | null           | new Company() || true
+  'A'                   | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   | null           | null          || false
+  'Above & Beyond Inc.' | 'AABO8012028D3' | PersonaJuridicaType.MORAL   | new Musician() | null          || false
+  'A'                   | 'AABO8012028D3' | PersonaJuridicaType.MORAL   | new Musician() | null          || false
+  ''                    | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   | new Musician() | null          || false
+  null                  | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   | new Musician() | null          || false
+  'Above & Beyond Inc.' | ''              | PersonaJuridicaType.MORAL   | new Musician() | null          || false
+  'Above & Beyond Inc.' | null            | PersonaJuridicaType.MORAL   | new Musician() | null          || false
+  'Above & Beyond Inc.' | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  | new Musician() | null          || true
+  'Above & Beyond Inc.' | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  | null           | new Company() || true
+  'A'                   | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  | null           | null          || false
+  'Above & Beyond Inc.' | 'AAB8012028D3'  | PersonaJuridicaType.FISICA  | new Musician() | null          || false
+  'A'                   | 'AAB8012028D3'  | PersonaJuridicaType.FISICA  | new Musician() | null          || false
+  ''                    | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  | new Musician() | null          || false
+  null                  | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  | new Musician() | null          || false
+  'Above & Beyond Inc.' | ''              | PersonaJuridicaType.FISICA  | new Musician() | null          || false
+  'Above & Beyond Inc.' | null            | PersonaJuridicaType.FISICA  | new Musician() | null          || false
   }
 }
