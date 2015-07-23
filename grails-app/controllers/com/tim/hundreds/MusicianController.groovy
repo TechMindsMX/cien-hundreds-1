@@ -18,7 +18,7 @@ class MusicianController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def index(Integer max) {
-        params.max = Math.min(max ?: 3, 100)
+        params.max = Math.min(max ?: 10, 100)
 
         if (SpringSecurityUtils.ifAnyGranted('ROLE_USER')) {
             def musicianList = Musician.findAllByUser(springSecurityService.currentUser, [max: params.max, sort: "name", order: "asc", offset: params.offset ?: 0])
