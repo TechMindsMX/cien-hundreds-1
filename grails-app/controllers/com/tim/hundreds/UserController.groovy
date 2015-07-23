@@ -54,7 +54,8 @@ class UserController {
     try {
       userPermissionsService.canEditUserStatus(springSecurityService.currentUser, userInstance)
     } catch (InvalidPermissionsException e) {
-      flash.error = message(code: 'access.denied.label', args: [message(code: e.message)])
+      log.info "InvalidPermissionsException: ${e.message}"
+      flash.error = message(code: 'access.denied.label')
       redirect url:'/'
     }
 
@@ -67,7 +68,8 @@ class UserController {
     try {
       userPermissionsService.canEditUserStatus(springSecurityService.currentUser, userInstance)
     } catch (InvalidPermissionsException e) {
-      flash.error = message(code: 'access.denied.label', args: [message(code: e.message)])
+      log.info "InvalidPermissionsException: ${e.message}"
+      flash.error = message(code: 'access.denied.label')
       redirect url:'/'
     }
 

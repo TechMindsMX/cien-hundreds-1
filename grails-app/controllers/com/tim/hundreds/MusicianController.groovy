@@ -2,6 +2,7 @@ package com.tim.hundreds
 
 import static org.springframework.http.HttpStatus.*
 import grails.plugin.springsecurity.annotation.Secured
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 @Secured(['ROLE_USER'])
 class MusicianController {
@@ -9,15 +10,15 @@ class MusicianController {
     def musicianService
     def messengineService
     def tagService
-
-    static showMe = true /*Parametro para aparecer en el menú*/
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Musician.list(params), model:[musicianInstanceCount: Musician.count()]
+        params.max = Math.min(max ?: 3, 100)
+        def musicianList = musicianService.getMusicianList(springSecurityService.currentUser, params)
+        respond musicianList.list, model:[musicianInstanceCount: musicianList.count]
     }
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
@@ -41,7 +42,12 @@ class MusicianController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def show(Musician musicianInstance) {
-        respond musicianInstance
+        if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == musicianInstance.user) {
+            respond musicianInstance
+        } else {
+            flash.error = 'access.denied.label'
+            redirect url: '/'
+        }
     }
 
     def create() {

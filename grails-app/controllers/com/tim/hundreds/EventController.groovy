@@ -6,7 +6,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['ROLE_USER'])
 class EventController {
     def eventService
     def messengineService
@@ -20,7 +20,7 @@ class EventController {
         respond Event.list(params), model:[eventInstanceCount: Event.count()]
     }
 
-    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Event eventInstance) {
         respond eventInstance
     }

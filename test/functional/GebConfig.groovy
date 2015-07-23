@@ -1,4 +1,4 @@
-/*
+
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.firefox.FirefoxProfile
 import org.openqa.selenium.htmlunit.HtmlUnitDriver
@@ -15,10 +15,11 @@ driver = {
 
 baseNavigatorWaiting = true
 atCheckWaiting = true
-*/
 
+/*
 import org.openqa.selenium.htmlunit.HtmlUnitDriver
 
 driver = {
   new HtmlUnitDriver()
 }
+*/

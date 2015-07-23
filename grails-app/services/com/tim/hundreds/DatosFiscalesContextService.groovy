@@ -7,12 +7,12 @@ class DatosFiscalesContextService {
   def datosFiscalesService
 
   def saveInstance(datosFiscalesInstance, params) {
-    if(params.musicianUuid){
-      def musician = Musician.findByUuid(params.musicianUuid)
+    if(params.musician?.id){
+      def musician = Musician.findById(params.musician.id)
       datosFiscalesService.saveDatosFiscalesToInstance(datosFiscalesInstance, musician)
     }
-    if(params.companyUuid){
-      def company = Company.findByUuid(params.companyUuid)
+    if(params.company?.id){
+      def company = Company.findById(params.company.id)
       datosFiscalesService.saveDatosFiscalesToInstance(datosFiscalesInstance, company)
     }
   }

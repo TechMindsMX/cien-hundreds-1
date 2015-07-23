@@ -63,3 +63,7 @@ img.max100pct {
     width: 20%;
     display: inline-block;
 }
+
+div.pagination a {
+    padding: 0 0.5em;
+}
