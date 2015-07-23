@@ -10,6 +10,7 @@ class MusicianController {
     def musicianService
     def messengineService
     def tagService
+    def springSecurityService
 
     static showMe = true /*Parametro para aparecer en el menú*/
 
