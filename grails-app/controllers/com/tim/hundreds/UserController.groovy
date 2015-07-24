@@ -14,7 +14,7 @@ class UserController {
   def userPermissionsService
 
   def show(User userInstance) {
-    respond userInstance
+    [userInstance: userInstance, currentUser: springSecurityService.currentUser]
   }
 
   def create(){

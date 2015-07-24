@@ -12,6 +12,12 @@
     <div class="nav" role="navigation">
       <ul class="nav nav-pills">
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+
+        <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_COMPANY_ADMIN">
+        <li>
+          <g:link controller="userManagement" action="index">${message(code: 'default.list.label', args: [message(code: 'userManagement.label')])}</g:link>
+        </li>
+        </sec:ifAnyGranted>
       </ul>
     </div>
     <div id="show-user" class="content scaffold-show" role="main">
@@ -69,12 +75,16 @@
       </li>
       
       </ul>
-      <g:form url="[resource:userInstance, action:'delete']" method="DELETE">
-        <fieldset class="buttons">
-          <g:link class="btn btn-primary edi" controller="admin" action="edit" id="${userInstance.uuid}" ><g:message code="default.button.edit.label" default="Edit" /></g:link>
-          <g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-        </fieldset>
-      </g:form>
+
+      <g:if test="${userInstance.uuid == currentUser.uuid}">
+        <g:form url="[resource:userInstance, action:'delete']" method="DELETE">
+          <fieldset class="buttons">
+            <g:link class="btn btn-primary edi" controller="admin" action="edit" id="${userInstance.uuid}" ><g:message code="default.button.edit.label" default="Edit" /></g:link>
+            <g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+          </fieldset>
+        </g:form>
+      </g:if>
+
     </div>
   </body>
 </html>
