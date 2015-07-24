@@ -22,6 +22,14 @@ class CompanyService {
 
   def assignCompanyToBuyer(companyValidationInstance){
     def company = companyValidationInstance.company
+    if(!companyValidationInstance.user){
+      throw new InvalidParamsException('No buyer was provided')
+    }
+
+    def validationExist = CompanyValidation.findByCompanyAndUser(companyValidationInstance.musician, companyValidationInstance.user)
+    if(validationExist){
+      throw new InvalidParamsException('This company was already assignated to that buyer')
+    }
     company.assigned = companyValidationInstance.user
     validationService.validate(companyValidationInstance, 'company')
     company.save()

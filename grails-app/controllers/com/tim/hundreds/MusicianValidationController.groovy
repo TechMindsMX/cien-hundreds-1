@@ -40,14 +40,19 @@ class MusicianValidationController {
             return
         }
 
-        musicianService.assignMusicianToFacilitator(musicianValidationInstance)
+        try{
+          musicianService.assignMusicianToFacilitator(musicianValidationInstance)
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'musicianValidation.label', default: 'MusicianValidation'), musicianValidationInstance.id])
-                redirect musicianValidationInstance
-            }
-            '*' { respond musicianValidationInstance, [status: CREATED] }
+          request.withFormat {
+              form multipartForm {
+                  flash.message = message(code: 'default.created.message', args: [message(code: 'musicianValidation.label', default: 'MusicianValidation'), musicianValidationInstance.id])
+                  redirect musicianValidationInstance
+              }
+              '*' { respond musicianValidationInstance, [status: CREATED] }
+          }
+        }catch (InvalidParamsException ipe){
+          flash.error = "El musico ya ha sido asignado o no se encontro al facilitador"
+          respond musicianValidationInstance, view: 'create'
         }
     }
 
