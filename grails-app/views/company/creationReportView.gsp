@@ -42,9 +42,6 @@
     </section>
 		<div id="list-company" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
 			<table class="table table-stripped">
 			<thead>
 					<tr>
@@ -65,7 +62,7 @@
 							<g:each in="${companyInstance.collaborators?.telephones}" var="v"><% v.phone.each {println it} %></g:each>
 						</td>
 						<td>
-							<g:each in="${companyInstance.collaborators?.emails}" var="v"><% v.address.each {println it} %></g:each>
+							<g:each in="${companyInstance.collaborators?.emails}" var="v"><% v.mail.each {println it} %></g:each>
 						</td>
 						<td><g:formatDate format="dd-MM-yyyy" date="${companyInstance.dateCreated}" /></td>
 
