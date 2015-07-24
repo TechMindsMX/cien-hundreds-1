@@ -39,6 +39,7 @@ class CompanyFunctionalSpec extends GebReportingSpec {
         submitButton.click()
         then: "I am being redirected to the same page with errors"
         at result
+        alertSuccess
 
         where: "We have the next cases"
         name   | description | web                      | notes  | tags          | logo                                         | corporatePress                               || result
