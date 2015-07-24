@@ -16,32 +16,29 @@
 			</ul>
 		</div>
     <section class="content">
-      <g:form action="creationReportFilter" class="form">
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-10">
-          <label class="${session.labelWidth} control-label fieldcontain ${hasErrors(bean: companyInstance, field: 'from', 'error')} required">
-            <g:message code="company.from.label" default="Desde" />
-          </label>
-          <div class="${session.inputWidth}">
-            <g:timDatePicker class="form-control" name="from" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
-          </div>
-        </div>
-        <div class="col-md-10">
-          <label class="${session.labelWidth} control-label fieldcontain ${hasErrors(bean: companyInstance, field: 'to', 'error')} required">
-            <g:message code="company.to.label" default="Hasta" />
-          </label>
-          <div class="${session.inputWidth}">
-            <g:timDatePicker class="form-control" name="to" minDate="-10Y" maxDate="-0D"></g:timDatePicker>
-          </div>
-          <div class="${session.btnOffset} fieldcontain ${hasErrors(bean: companyInstance, field: 'to', 'error')} ">
-				    <label for="buttons">
-				    </label>
-				    <g:submitButton name="send" class="btn btn-success" value="${message(code: 'default.button.send.label', default: 'Enviar')}" />
-				  </div>
-        </div>
-      </div>
-      </g:form>
+    	<g:form action="creationReportFilter" class="form form-inline">
+			<div class="form-group">
+				<label class="${session.labelWidth} control-label fieldcontain ${hasErrors(bean: companyInstance, field: 'from', 'error')} required">
+					<g:message code="company.from.label" default="Desde" />
+				</label>
+				<div class="${session.inputWidth}">
+					<g:timDatePicker class="form-control" name="from" maxDate="-0D" changeMonth="true" changeYear="true"></g:timDatePicker>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="${session.labelWidth} control-label fieldcontain ${hasErrors(bean: companyInstance, field: 'to', 'error')} required">
+					<g:message code="company.to.label" default="Hasta" />
+				</label>
+				<div class="${session.inputWidth}">
+					<g:timDatePicker class="form-control" name="to" maxDate="-0D" changeMonth="true" changeYear="true" ></g:timDatePicker>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="${session.inputWidth}">
+					<g:submitButton name="send" class="btn btn-success" value="${message(code: 'default.button.send.label', default: 'Enviar')}" />
+				</div>
+			</div>
+    	</g:form>
     </section>
 		<div id="list-company" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
