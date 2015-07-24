@@ -101,6 +101,24 @@
                         </ul>
                     </li>
                 </sec:ifAnyGranted>
+
+                <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN,ROLE_MUSICIAN_ADMIN">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'reports.label', default: 'User Mgmt')} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN">
+                                <li><g:link controller="musician" action="creationReportView">${message(code: 'creation.report.label', args: [message(code: 'musician.label')])}</g:link></li>
+                            </sec:ifAnyGranted>
+                            <sec:ifAnyGranted roles="ROLE_ADMIN">
+                                <li role="separator" class="divider"></li>
+                            </sec:ifAnyGranted>
+                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN">
+                                <li><g:link controller="company" action="creationReportView">${message(code: 'creation.report.label', args: [message(code: 'company.label')])}</g:link></li>
+                            </sec:ifAnyGranted>
+                        </ul>
+                    </li>
+                </sec:ifAnyGranted>
+
             </ul>
 
             <div class="nav navbar-nav navbar-right">
