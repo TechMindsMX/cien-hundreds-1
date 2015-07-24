@@ -27,7 +27,7 @@
 			</ul>
 			</div>
 		</g:hasErrors>
-			<g:form url="[resource:suggestionInstance, action:'save']" class="form-horizontal" >
+			<g:form url="[resource:suggestionInstance, action:'save']" class="form-horizontal" id="suggestionForm">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>

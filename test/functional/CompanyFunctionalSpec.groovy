@@ -55,8 +55,7 @@ class CompanyFunctionalSpec extends GebReportingSpec {
             companyListBtn.click()
         then:
             at CompanyIndexPage
-
-
+            
     }
 
     def cleanupSpec() {}

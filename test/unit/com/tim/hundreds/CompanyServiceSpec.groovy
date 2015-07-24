@@ -4,8 +4,22 @@ import grails.test.mixin.TestFor
 import spock.lang.Specification
 
 @TestFor(CompanyService)
-@Mock([Company])
+@Mock([Company, CompanyValidation])
 class CompanyServiceSpec extends Specification {
+
+  void "should not assign company to buyer and active company since no buyer"() {
+  given: "An company validation"
+   def companyValidationInstance = Mock(CompanyValidation)
+  and: "And companny and user"
+   def company = Mock(Company)
+   def user = Mock(User)
+   companyValidationInstance.musician >> company
+   companyValidationInstance.user >> null
+   when: "We assign values to the user"
+   service.assignCompanyToBuyer(companyValidationInstance)
+   then: "We expect company is save"
+    thrown InvalidParamsException
+  }
 
   void "should get companies by creation date"() {
   given: "A date range"
