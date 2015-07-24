@@ -10,8 +10,14 @@ import page.MusicianCreatePage
 import page.MusicianSavePage
 import page.MusicianShowPage
 
-import page.ContactPage
-import page.ContactShowPage
+import page.VideoFormPage
+import page.VideoShowPage
+
+import page.AudioFormPage
+import page.AudioShowPage
+
+import page.PhotoFormPage
+import page.PhotoShowPage
 
 import page.AddressFormPage
 import page.AddressShowPage
@@ -22,20 +28,15 @@ import page.SocialShowPage
 import page.ActivityFormPage
 import page.ActivityShowPage
 
+import page.SuggestionShowPage
+import page.SuggestionCreatePage
+
+import page.ContactPage
+import page.ContactShowPage
+
 import page.PrepareTelephoneFormPage
 
 import page.PrepareEmailFormPage
-
-import page.VideoFormPage
-import page.VideoShowPage
-
-import page.AudioFormPage
-import page.AudioShowPage
-
-import page.PhotoFormPage
-import page.PhotoShowPage
-
-// TODO: carga de archivo, Address y Sociall links para volver al objeto padre
 
 @Stepwise
 class MusicianFunctionalSpec extends GebReportingSpec {
@@ -51,8 +52,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         loginButton.click()
     }
 
-// 1
-    def "Fill Form for Musician checkbox"() {
+    def """Fill Form for Musician checkbox"""() {
         given:"Create Musician Form"
         to MusicianCreatePage
 
@@ -78,9 +78,8 @@ class MusicianFunctionalSpec extends GebReportingSpec {
 
     }
 
-// 2
     @Unroll
-    def "Fill Video form"() {
+    def """Fill Video form for Musician"""() {
         given:"form Video create"
         at MusicianShowPage
         addVideo.click()
@@ -99,9 +98,8 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         'https://www.youtube.com/watch?v=wP1zAyibHm8' || VideoShowPage
     }
 
-// 3
     @Unroll
-    def "Fill Audio form"() {
+    def """Fill Audio form for Musician"""() {
         given:"form Audio create"
         at VideoShowPage
         backToMusician.click()
@@ -122,9 +120,8 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         'https://soundcloud.com/metalbladerecords/act-of-defiance-throwback' || AudioShowPage //Pass
     }
 
-// 4
     @Unroll
-    def "Fill Photo form"() {
+    def """Fill Photo form for Musician"""() {
         given:"form Photo create"
         at AudioShowPage
         backToMusician.click()
@@ -145,9 +142,8 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         grailsApplication.config.tests.filesPath.jpg   || PhotoShowPage //Pass
     }
 
-// 5
     @Unroll
-    def "Fill Social form for Musician"() {
+    def """Fill Social form for Musician"""() {
         given:"navigate to form Social create"
         at PhotoShowPage
         backToMusician.click()
@@ -175,9 +171,8 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         'https://www.facebook.com/Sony'  | 'https://twitter.com/sony' | 'https://plus.google.com/+Sony'   | 'https://instagram.com/sony/'   | 'https://www.youtube.com/user/Sony'   | 'https://www.linkedin.com/company/sony'   | 'https://en.wikipedia.org/wiki/Sony'  || SocialShowPage
     }
 
-// 6
     @Unroll
-    def "Fill Activity form"() {
+    def """Fill Activity form for Musician"""() {
         given:"form Activity create"
         at SocialShowPage
         backToMusician.click()
@@ -200,11 +195,35 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         'no hacer nada'     |  'algo'  | '20-06-2015'       || ActivityShowPage
     }
 
-// 7
     @Unroll
-    def "Fill Contact form"() {
-        given:"form Contact create"
+    def """Fill Suggestion form for Musician"""() {
+        given:"form Activity create"
         at ActivityShowPage
+        backToMusician.click()
+        at MusicianShowPage
+        addSuggestion.click()
+        at SuggestionCreatePage
+
+        when: "I don't fill form fields "
+        suggestionForm.name = name
+        suggestionForm.contactName = contactName
+        suggestionForm.email = email
+        suggestionForm.phone = phone
+
+        submitButton.click()
+        then: "I am being redirected to the same page with errors"
+        at result
+        alertSuccess
+
+        where: "We have the next cases"
+        name            | contactName    | email             | phone        || result
+        'no hacer nada' | 'El contacto'  | 'email@email.com' | '1234567890' || SuggestionShowPage
+    }
+
+    @Unroll
+    def """Fill Contact form for Musician"""() {
+        given:"form Contact create"
+        at SuggestionShowPage
         backToMusician.click()
         at MusicianShowPage
         addContact.click()
@@ -236,9 +255,8 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         'Luis'    | 'lastName' | 'motherlastnname' | 'other' | 'mex'       | 'biography' | 'style' | '28-03-1981' | '20-06-2015'| 'mail@mail.com'| '1234567890' | '1'  | 'MALE' | grailsApplication.config.tests.filesPath.jpg  || ContactShowPage
     }
 
-// 8
     @Unroll
-    def "Fill PrepareTelephoneFormPage form"() {
+    def """Fill PrepareTelephoneFormPage form for Musician Contact"""() {
         given:"form PrepareTelephoneFormPage create"
         at ContactShowPage
         addTelephone.click()
@@ -260,7 +278,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
 
 // 9
     @Unroll
-    def "Fill PrepareEmailPage form"() {
+    def "Fill PrepareEmailPage form for Musician Contact"() {
         given:"form UserEmailPage create"
         at ContactShowPage
         addEmail.click()
