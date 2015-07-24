@@ -37,7 +37,7 @@ class RecoveryController {
     try{
       recoveryService.recoveryUser(params.email)
       flash.message = g.message(code: 'login.email')
-      redirect controller:'login', action:'auth'
+      redirect url:'/'
     }catch(BusinessException be) {
       flash.error = g.message(code: 'login.notfound')
       redirect action:'user'
@@ -49,7 +49,7 @@ class RecoveryController {
     try {
       recoveryService.generateRegistrationCodeForEmail(email)
       flash.message = g.message(code: 'login.email')
-      redirect action:'index'
+      redirect url:'/'
     } catch(BusinessException be) {
       flash.error = g.message(code: 'login.notfound')
       redirect action:'index'
