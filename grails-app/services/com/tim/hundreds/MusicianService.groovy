@@ -22,6 +22,15 @@ class MusicianService {
 
   def assignMusicianToFacilitator(musicianValidationInstance){
     def musician = musicianValidationInstance.musician
+    if(!musicianValidationInstance.user){
+      throw new InvalidParamsException('No facilitator was provided')
+    }
+
+    def validationExist = MusicianValidation.findByMusicianAndUser(musicianValidationInstance.musician, musicianValidationInstance.user)
+    if(validationExist){
+      throw new InvalidParamsException('This musician was already assignated to that facilitator')
+    }
+
     musician.assigned = musicianValidationInstance.user
     validationService.validate(musicianValidationInstance, 'musician')
     musician.save()
