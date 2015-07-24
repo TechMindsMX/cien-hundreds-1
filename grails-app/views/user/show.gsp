@@ -35,6 +35,13 @@
         </li>
       </g:if>
 
+      <g:if test="${userInstance?.profile?.motherLastName}">
+        <li class="fieldcontain">
+          <span id="motherLastName-label" class="${session.labelWidth} property-label"><g:message code="motherLastName.label" default="motherLastName" /></span>
+          <span class="property-value" aria-labelledby="motherLastName-label"><g:fieldValue bean="${userInstance}" field="profile.motherLastName"/></span>
+        </li>
+      </g:if>
+
       <g:if test="${userInstance?.profile?.email}">
         <li class="fieldcontain">
           <span id="email-label" class="${session.labelWidth} property-label"><g:message code="email.label" default="email" /></span>

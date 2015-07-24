@@ -1,12 +1,17 @@
 <%@ page import="com.tim.hundreds.Role" %>
 
-<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'status', 'error')} required">
-    <label class="${session.labelWidth} control-label" for="status"><g:message code="status.label" default="Estado"/></label>
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_COMPANY_ADMIN">
+    <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'status', 'error')} required">
+        <label class="${session.labelWidth} control-label" for="status"><g:message code="status.label" default="Estado"/></label>
 
-    <div class="${session.inputWidth}">
-        <g:select value="${model?.status}" name="status" class="form-control" from="${['true': 'Hablilitado', 'false': 'Deshabilitado']}" optionKey="key" optionValue="value" />
+        <div class="${session.inputWidth}">
+            <g:select value="${model?.status}" name="status" class="form-control" from="${['true': 'Hablilitado', 'false': 'Deshabilitado']}" optionKey="key" optionValue="value" />
+        </div>
     </div>
-</div>
+</sec:ifAnyGranted>
+<sec:ifNotGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_COMPANY_ADMIN">
+  <g:hiddenField name="status" value="${model?.status}" />
+</sec:ifNotGranted>
 
 <h4>Datos de Ingreso</h4>
 
@@ -87,13 +92,15 @@
     </div>
 </div>
 
-<div class="form-group fieldcontain ${hasErrors(bean: model, field: 'role', 'error')} required">
-    <label class="${session.labelWidth} control-label" for="role"><g:message code="admin.role.label" default="Tipo de Alta"/></label>
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_COMPANY_ADMIN">
+    <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'role', 'error')} required">
+        <label class="${session.labelWidth} control-label" for="role"><g:message code="admin.role.label" default="Tipo de Alta"/></label>
 
-    <div class="${session.inputWidth}">
-      <g:select value="${model?.role}" name="role" from="${Role.findAll({authority!='ROLE_USER' && authority!='ROLE_ADMIN'})}" optionKey="authority" optionValue="authority" class="form-control"/>
+        <div class="${session.inputWidth}">
+          <g:select value="${model?.role}" name="role" from="${Role.findAll({authority!='ROLE_USER' && authority!='ROLE_ADMIN'})}" optionKey="authority" optionValue="authority" class="form-control"/>
+        </div>
     </div>
-</div>
+</sec:ifAnyGranted>
 
 <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'photo', 'error')}">
     <label class="${session.labelWidth} control-label" for="photo"><g:message code="admin.photo.label" default="Foto(png)"/></label>

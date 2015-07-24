@@ -56,6 +56,7 @@ class AdminController {
     }
   }
 
+  @Secured(['IS_AUTHENTICATED_REMEMBERED'])
   def edit() {
     def user = User.findByUuid(params.id) ?: springSecurityService.currentUser
     def userCommand = new UserCommand()
@@ -72,6 +73,7 @@ class AdminController {
     [model:userCommand,edit:true]
   }
 
+  @Secured(['IS_AUTHENTICATED_REMEMBERED'])
   def update(AdminCommand command){
     if(command.hasErrors()){
       render(view:'edit', model:[model:command])
