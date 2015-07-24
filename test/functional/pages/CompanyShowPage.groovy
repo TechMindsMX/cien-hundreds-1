@@ -12,6 +12,8 @@ class CompanyShowPage extends Page {
 		alertSuccess (required:false) { $('.alert-info') }
 		alertErrors (required:false) { $('.alert-danger') }
 
+		companyListBtn { $('ul.nav-pills a.list') }
+
         editButtton { audioForm.find('.edit') }
         cancelButton { $("#btnCancel") }
     	logout       { $('#navbar').find('.logout') }
