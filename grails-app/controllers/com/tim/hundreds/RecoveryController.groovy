@@ -81,7 +81,7 @@ class ChangePasswordCommand {
   String confirmPassword
 
   static constraints = {
-    password(blank:false, size:10..50, matches:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{10,}$/,validator:{val, obj ->
+    password(blank:false, size:10..50, matches:/^(?=.*\d)(?=.*[=_\-¿?¡!@#\$%^&*]+)?(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,validator:{val, obj ->
       if(!val.equalsIgnoreCase(obj.confirmPassword)) {
         return false
       }
