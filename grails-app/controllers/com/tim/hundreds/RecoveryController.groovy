@@ -37,7 +37,7 @@ class RecoveryController {
     try{
       recoveryService.recoveryUser(params.email)
       flash.message = g.message(code: 'login.email')
-      redirect controller:'login', action:'auth'
+      redirect url:'/'
     }catch(BusinessException be) {
       flash.error = g.message(code: 'login.notfound')
       redirect action:'user'
@@ -49,7 +49,7 @@ class RecoveryController {
     try {
       recoveryService.generateRegistrationCodeForEmail(email)
       flash.message = g.message(code: 'login.email')
-      redirect action:'index'
+      redirect url:'/'
     } catch(BusinessException be) {
       flash.error = g.message(code: 'login.notfound')
       redirect action:'index'
@@ -81,7 +81,7 @@ class ChangePasswordCommand {
   String confirmPassword
 
   static constraints = {
-    password(blank:false, size:10..50, matches:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{10,}$/,validator:{val, obj ->
+    password(blank:false, size:10..50, matches:/^(?=.*\d)(?=.*[=_\-¿?¡!@#\$%^&*]+)?(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,validator:{val, obj ->
       if(!val.equalsIgnoreCase(obj.confirmPassword)) {
         return false
       }

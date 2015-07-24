@@ -8,6 +8,7 @@ import page.LoginPage
 import page.CompanyCreatePage
 import page.CompanyShowPage
 import page.CompanySavePage
+import page.CompanyIndexPage
 
 @Stepwise
 class CompanyFunctionalSpec extends GebReportingSpec {
@@ -39,11 +40,23 @@ class CompanyFunctionalSpec extends GebReportingSpec {
         submitButton.click()
         then: "I am being redirected to the same page with errors"
         at result
+        alertSuccess
 
         where: "We have the next cases"
         name   | description | web                      | notes  | tags          | logo                                         | corporatePress                               || result
         'Test' | 'test'      | 'http://www.susitio.com' | 'test' | 'test,prueba' | grailsApplication.config.tests.filesPath.jpg | ''                                           || CompanyShowPage
         'Test' | 'test'      | 'http://www.susitio.com' | 'test' | 'test,prueba' | ''                                           | grailsApplication.config.tests.filesPath.pdf || CompanyShowPage
+    }
+
+    def """List the Company on the index view"""() {
+        given: "we are at company details"
+            at CompanyShowPage
+        when: "we go to the list of companies"
+            companyListBtn.click()
+        then:
+            at CompanyIndexPage
+
+
     }
 
     def cleanupSpec() {}

@@ -13,7 +13,7 @@
 			<div class="jumbotron">
 			  <h1>Bienvenido a 100Hundreds</h1>
 			  <p>...</p>
-			  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+			  <p><g:link controller="login" action="auth" class="btn btn-primary btn-lg" role="button">Ingresar</g:link></p>
 			</div>
 		</div>
 		

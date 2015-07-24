@@ -13,8 +13,8 @@
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<sec:ifAnyGranted roles="ROLE_ADMIN"><li><g:link action="allAdmins"><g:message code="userManagement.mucicianAllAdminsList.label"/></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted roles="ROLE_ADMIN"><li><g:link action="admins"><g:message code="userManagement.adminList.label"/></g:link></li></sec:ifAnyGranted>
-				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN"><li><g:link action="mucicianAdmins"><g:message code="userManagement.mucicianAdminsList.label"/></g:link></li></sec:ifAnyGranted>
-				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN"><li><g:link action="companyAdmins"><g:message code="userManagement.companyAdminsList.label"/></g:link></li></sec:ifAnyGranted>
+				<sec:ifAnyGranted roles="ROLE_ADMIN"><li><g:link action="mucicianAdmins"><g:message code="userManagement.mucicianAdminsList.label"/></g:link></li></sec:ifAnyGranted>
+				<sec:ifAnyGranted roles="ROLE_ADMIN"><li><g:link action="companyAdmins"><g:message code="userManagement.companyAdminsList.label"/></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN"><li><g:link action="musicianViewers"><g:message code="userManagement.musicianViewersList.label"/></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN"><li><g:link action="companyViewers"><g:message code="userManagement.companyViewersList.label"/></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN"><li><g:link action="facilitator"><g:message code="userManagement.facilitatorList.label"/></g:link></li></sec:ifAnyGranted>

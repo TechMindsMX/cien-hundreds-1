@@ -2,17 +2,17 @@ package page
 
 import geb.Page
 
-class CompanyShowPage extends Page {
+class CompanyIndexPage extends Page {
 
-    static url = { driver.currentUrl.contains('company/show') }
+    static url = { driver.currentUrl.contains('company/index') }
 
-    static at = { driver.currentUrl.contains('company/show') }
+    static at = { driver.currentUrl.contains('company/index') }
 
     static content = {
 		alertSuccess (required:false) { $('.alert-info') }
 		alertErrors (required:false) { $('.alert-danger') }
 
-		companyListBtn { $('ul.nav-pills a.list') }
+		list { $('#list-company') }
 
         editButtton { audioForm.find('.edit') }
         cancelButton { $("#btnCancel") }

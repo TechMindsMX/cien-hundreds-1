@@ -26,102 +26,122 @@
 
 <body role="document">
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <g:link class="navbar-brand" uri="/"><asset:image src="logo_talentua_blanco.png"/></g:link>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <g:link class="navbar-brand" uri="/"><asset:image src="logo_talentua_blanco.png"/></g:link>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <sec:ifLoggedIn>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'musician.label')} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><g:link controller="musician" action="index"><g:message code="list.label" default="Listado" /></g:link></li>
+                            <li><g:link controller="musician" action="create">${message(code: 'default.add.label', args: [message(code: 'musician.label')])}</g:link></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'company.label')} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><g:link controller="company" action="index"><g:message code="list.label" default="Listado" /></g:link></li>
+                            <li><g:link controller="company" action="create">${message(code: 'default.add.label', args: [message(code: 'company.label')])}</g:link></li>
+                        </ul>
+                    </li>
+                </sec:ifLoggedIn>
+
+                <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_COMPANY_ADMIN">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'admin.label', default: 'Admin')} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <sec:ifAnyGranted roles="ROLE_ADMIN">
+                                <li><g:link controller="musicianRole" action="index">${message(code: 'default.list.label', args: [message(code: 'musicianRole.label')])}</g:link></li>
+                                <li><g:link controller="musicianRole" action="create">${message(code: 'default.add.label', args: [message(code: 'musicianRole.label')])}</g:link></li>
+                                <li role="separator" class="divider"></li>
+                            </sec:ifAnyGranted>
+                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN">
+                                <li><g:link controller="genre" action="index">${message(code: 'default.list.label', args: [message(code: 'genre.label')])}</g:link></li>
+                                <li><g:link controller="genre" action="create">${message(code: 'default.add.label', args: [message(code: 'genre.label')])}</g:link></li>
+                                <li role="separator" class="divider"></li>
+                            </sec:ifAnyGranted>
+                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN">
+                                <li><g:link controller="businessActivity" action="index">${message(code: 'default.list.label', args: [message(code: 'businessActivity.label')])}</g:link></li>
+                                <li><g:link controller="businessActivity" action="create">${message(code: 'default.add.label', args: [message(code: 'businessActivity.label')])}</g:link></li>
+                            </sec:ifAnyGranted>
+                        </ul>
+                    </li>
+                </sec:ifAnyGranted>
+
+                <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_BUYER,ROLE_FACILITATOR">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'userManagement.label', default: 'User Mgmt')} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN,ROLE_BUYER">
+                                <li><g:link controller="companyValidation" action="index">${message(code: 'default.list.label', args: [message(code: 'companyValidation.label')])}</g:link></li>
+                                <li><g:link controller="companyValidation" action="create">${message(code: 'default.add.label', args: [message(code: 'companyValidation.label')])}</g:link></li>
+                                <li role="separator" class="divider"></li>
+                            </sec:ifAnyGranted>
+                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_FACILITATOR">
+                                <li><g:link controller="musicianValidation" action="index">${message(code: 'default.list.label', args: [message(code: 'musicianValidation.label')])}</g:link></li>
+                                <li><g:link controller="musicianValidation" action="create">${message(code: 'default.add.label', args: [message(code: 'musicianValidation.label')])}</g:link></li>
+                                <li role="separator" class="divider"></li>
+                            </sec:ifAnyGranted>
+                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_COMPANY_ADMIN">
+                                <li><g:link controller="userManagement" action="index">${message(code: 'default.list.label', args: [message(code: 'userManagement.label')])}</g:link></li>
+                                <li><g:link controller="admin" action="create">${message(code: 'default.create.label', args: [message(code: 'facilitator.label')])}</g:link></li>
+                                <li role="separator" class="divider"></li>
+                            </sec:ifAnyGranted>
+                        </ul>
+                    </li>
+                </sec:ifAnyGranted>
+
+                <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN,ROLE_MUSICIAN_ADMIN">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'reports.label', default: 'User Mgmt')} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN">
+                                <li><g:link controller="musician" action="creationReportView">${message(code: 'creation.report.label', args: [message(code: 'musician.label')])}</g:link></li>
+                            </sec:ifAnyGranted>
+                            <sec:ifAnyGranted roles="ROLE_ADMIN">
+                                <li role="separator" class="divider"></li>
+                            </sec:ifAnyGranted>
+                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN">
+                                <li><g:link controller="company" action="creationReportView">${message(code: 'creation.report.label', args: [message(code: 'company.label')])}</g:link></li>
+                            </sec:ifAnyGranted>
+                        </ul>
+                    </li>
+                </sec:ifAnyGranted>
+
+            </ul>
+
+            <div class="nav navbar-nav navbar-right">
+                <sec:ifNotLoggedIn>
+                    <li><g:link controller="login">${message(code: 'springSecurity.login.link')}</g:link></li>
+                </sec:ifNotLoggedIn>
+                <sec:ifLoggedIn>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong class="font-bold"><sec:loggedInUserInfo field="username"/></strong> <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <sec:access expression="hasRole('ROLE_USER')" >
+                            <li><g:link id="${applicationContext.springSecurityService.currentUser.id}" controller="admin" action="edit" >${message(code: 'default.edit.label', args: [message(code: 'profile.label')])}</g:link></li>
+                        </sec:access>
+                        <sec:noAccess expression="hasRole('ROLE_USER')" >
+                            <li><g:link id="${applicationContext.springSecurityService.currentUser.id}" controller="admin" action="edit" >${message(code: 'default.edit.label', args: [message(code: 'profile.label')])}</g:link></li>
+                        </sec:noAccess>
+                        <li><g:link class="logout" controller="logout"><g:message code="springSecurity.logout.link"/></g:link></li>
+                    </ul>
+                </sec:ifLoggedIn>
+            </li>
+            </div>
+        </div><!--/.nav-collapse -->
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'musician.label')} <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><g:link controller="musician" action="index"><g:message code="list.label" default="Listado" /></g:link></li>
-            <li><g:link controller="musician" action="create">${message(code: 'default.add.label', args: [message(code: 'musician.label')])}</g:link></li>
-        </ul>
-    </li>
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'company.label')} <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><g:link controller="company" action="index"><g:message code="list.label" default="Listado" /></g:link></li>
-        <li><g:link controller="company" action="create">${message(code: 'default.add.label', args: [message(code: 'company.label')])}</g:link></li>
-    </ul>
-</li>
-
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_COMPANY_ADMIN">
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'admin.label', default: 'Admin')} <span class="caret"></span></a>
-  <ul class="dropdown-menu">
-    <sec:ifAnyGranted roles="ROLE_ADMIN">
-    <li><g:link controller="musicianRole" action="index">${message(code: 'default.list.label', args: [message(code: 'musicianRole.label')])}</g:link></li>
-    <li><g:link controller="musicianRole" action="create">${message(code: 'default.add.label', args: [message(code: 'musicianRole.label')])}</g:link></li>
-    <li role="separator" class="divider"></li>
-</sec:ifAnyGranted>
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN">
-<li><g:link controller="genre" action="index">${message(code: 'default.list.label', args: [message(code: 'genre.label')])}</g:link></li>
-<li><g:link controller="genre" action="create">${message(code: 'default.add.label', args: [message(code: 'genre.label')])}</g:link></li>
-<li role="separator" class="divider"></li>
-</sec:ifAnyGranted>
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN">
-<li><g:link controller="businessActivity" action="index">${message(code: 'default.list.label', args: [message(code: 'businessActivity.label')])}</g:link></li>
-<li><g:link controller="businessActivity" action="create">${message(code: 'default.add.label', args: [message(code: 'businessActivity.label')])}</g:link></li>
-</sec:ifAnyGranted>
-</ul>
-</li>
-</sec:ifAnyGranted>
-
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_BUYER,ROLE_FACILITATOR">
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'userManagement.label', default: 'User Mgmt')} <span class="caret"></span></a>
-  <ul class="dropdown-menu">
-    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN,ROLE_BUYER">
-    <li><g:link controller="companyValidation" action="index">${message(code: 'default.list.label', args: [message(code: 'companyValidation.label')])}</g:link></li>
-    <li><g:link controller="companyValidation" action="create">${message(code: 'default.add.label', args: [message(code: 'companyValidation.label')])}</g:link></li>
-    <li role="separator" class="divider"></li>
-</sec:ifAnyGranted>
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_FACILITATOR">
-<li><g:link controller="musicianValidation" action="index">${message(code: 'default.list.label', args: [message(code: 'musicianValidation.label')])}</g:link></li>
-<li><g:link controller="musicianValidation" action="create">${message(code: 'default.add.label', args: [message(code: 'musicianValidation.label')])}</g:link></li>
-<li role="separator" class="divider"></li>
-</sec:ifAnyGranted>
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_COMPANY_ADMIN">
-<li><g:link controller="userManagement" action="index">${message(code: 'default.list.label', args: [message(code: 'userManagement.label')])}</g:link></li>
-<li><g:link controller="admin" action="create">${message(code: 'default.create.label', args: [message(code: 'facilitator.label')])}</g:link></li>
-<li role="separator" class="divider"></li>
-</sec:ifAnyGranted>
-</ul>
-</li>
-</sec:ifAnyGranted>
-</ul>
-
-<div class="nav navbar-nav navbar-right">
-    <sec:ifNotLoggedIn>
-        <li><g:link controller="login">${message(code: 'springSecurity.login.link')}</g:link></li>
-    </sec:ifNotLoggedIn>
-    <sec:ifLoggedIn>
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong class="font-bold"><sec:loggedInUserInfo field="username"/></strong> <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <sec:access expression="hasRole('ROLE_USER')" >
-            <li><g:link id="${applicationContext.springSecurityService.currentUser.id}" controller="admin" action="edit" >${message(code: 'default.edit.label', args: [message(code: 'profile.label')])}</g:link></li>
-            </sec:access>
-            <sec:noAccess expression="hasRole('ROLE_USER')" >
-            <li><g:link id="${applicationContext.springSecurityService.currentUser.id}" controller="admin" action="edit" >${message(code: 'default.edit.label', args: [message(code: 'profile.label')])}</g:link></li>
-            </sec:noAccess>
-            <li><g:link class="logout" controller="logout"><g:message code="springSecurity.logout.link"/></g:link></li>
-        </ul>
-        </sec:ifLoggedIn>
-    </li>
-</div>
-</div><!--/.nav-collapse -->
-</div>
 </nav>
 
 <div class="container theme-showcase" role="main">
@@ -129,90 +149,90 @@
 
     <div id="page-wrapper" class="">
         <g:if test="${flash.message}">
-        <div class="alert alert-info" style="display: block">${flash.message}</div>
-    </g:if>
+            <div class="alert alert-info" style="display: block">${flash.message}</div>
+        </g:if>
 
-    <g:if test="${flash.error}">
-    <div class="alert alert-danger" style="display: block">${flash.error}</div>
-</g:if>
+        <g:if test="${flash.error}">
+            <div class="alert alert-danger" style="display: block">${flash.error}</div>
+        </g:if>
 
-<div id="content-wrapper">
-    <g:layoutBody/>
-</div>
-
-<div class="well">
-    <footer>
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <h3>Acerca de</h3>
-                <ul>
-                    <li>
-                        <g:link controller="static" params="[content:'what']">${message(code: 'what.label', default: 'Que son los 100 Hundreds?')}</g:link>
-                    </li>
-                    <li>
-                        <g:link controller="static" params="[content:'how']">${message(code: 'how.label', default: 'Como funciona?')}</g:link>
-                    </li>
-                    <li>
-                        <g:link controller="static" params="[content:'who']">${message(code: 'who.label', default: 'Quienes somos?')}</g:link>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <h3>Ayuda</h3>
-                <ul>
-                    <li>
-                        <g:link controller="static" params="[content:'faq']">${message(code: 'faq.label', default: 'FAQ')}</g:link>
-                    </li>
-                    <li>
-                        <g:link controller="static" params="[content:'terms']">${message(code: 'terms.label', default: 'Términos y condiciones')}</g:link>
-                    </li>
-                    <li>
-                        <g:link controller="static" params="[content:'privacy']">${message(code: 'privacy.label', default: 'Aviso de privacidad')}</g:link>
-                    </li>
-                </ul>
-            </div>
+        <div id="content-wrapper">
+            <g:layoutBody/>
         </div>
-    </footer>
-    <p>Copyright 2015 100 Hundreds.</p>
-</div>
-</div>
+
+        <div class="well">
+            <footer>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <h3>Acerca de</h3>
+                        <ul>
+                            <li>
+                                <g:link controller="static" params="[content:'what']">${message(code: 'what.label', default: 'Que son los 100 Hundreds?')}</g:link>
+                            </li>
+                            <li>
+                                <g:link controller="static" params="[content:'how']">${message(code: 'how.label', default: 'Como funciona?')}</g:link>
+                            </li>
+                            <li>
+                                <g:link controller="static" params="[content:'who']">${message(code: 'who.label', default: 'Quienes somos?')}</g:link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <h3>Ayuda</h3>
+                        <ul>
+                            <li>
+                                <g:link controller="static" params="[content:'faq']">${message(code: 'faq.label', default: 'FAQ')}</g:link>
+                            </li>
+                            <li>
+                                <g:link controller="static" params="[content:'terms']">${message(code: 'terms.label', default: 'Tï¿½rminos y condiciones')}</g:link>
+                            </li>
+                            <li>
+                                <g:link controller="static" params="[content:'privacy']">${message(code: 'privacy.label', default: 'Aviso de privacidad')}</g:link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+            <p>Copyright 2015 100 Hundreds.</p>
+        </div>
+    </div>
 
 
-<!-- Mainly scripts -->
-<asset:javascript src="js/bootstrap.min.js" />
-%{-- <asset:javascript src="js/plugins/slimscroll/jquery.slimscroll.min.js" /> --}%
+    <!-- Mainly scripts -->
+    <asset:javascript src="js/bootstrap.min.js" />
+    %{-- <asset:javascript src="js/plugins/slimscroll/jquery.slimscroll.min.js" /> --}%
 
-<!-- Flot -->
-%{-- <asset:javascript src="js/plugins/flot/jquery.flot.js" /> --}%
-%{-- <asset:javascript src="js/plugins/flot/jquery.flot.tooltip.min.js" /> --}%
-%{-- <asset:javascript src="js/plugins/flot/jquery.flot.spline.js" /> --}%
-%{-- <asset:javascript src="js/plugins/flot/jquery.flot.resize.js" /> --}%
-%{-- <asset:javascript src="js/plugins/flot/jquery.flot.pie.js" /> --}%
+    <!-- Flot -->
+    %{-- <asset:javascript src="js/plugins/flot/jquery.flot.js" /> --}%
+    %{-- <asset:javascript src="js/plugins/flot/jquery.flot.tooltip.min.js" /> --}%
+    %{-- <asset:javascript src="js/plugins/flot/jquery.flot.spline.js" /> --}%
+    %{-- <asset:javascript src="js/plugins/flot/jquery.flot.resize.js" /> --}%
+    %{-- <asset:javascript src="js/plugins/flot/jquery.flot.pie.js" /> --}%
 
-<!-- Peity -->
-%{-- <asset:javascript src="js/plugins/peity/jquery.peity.min.js" /> --}%
-%{-- <asset:javascript src="js/demo/peity-demo.js" /> --}%
+    <!-- Peity -->
+    %{-- <asset:javascript src="js/plugins/peity/jquery.peity.min.js" /> --}%
+    %{-- <asset:javascript src="js/demo/peity-demo.js" /> --}%
 
-<!-- Custom and plugin javascript -->
-%{-- <asset:javascript src="js/plugins/pace/pace.min.js" /> --}%
+    <!-- Custom and plugin javascript -->
+    %{-- <asset:javascript src="js/plugins/pace/pace.min.js" /> --}%
 
-<!-- jQuery UI -->
+    <!-- jQuery UI -->
     <asset:javascript src="js/file_validation.js" />
 
     <!-- jQuery UI -->
 
-<!-- GITTER -->
+    <!-- GITTER -->
 
-<!-- Sparkline -->
+    <!-- Sparkline -->
 
 
-<!-- Sparkline demo data  -->
+    <!-- Sparkline demo data  -->
 
-<!-- ChartJS-->
+    <!-- ChartJS-->
 
-<!-- Toastr -->
+    <!-- Toastr -->
 
-<asset:javascript src="js/analytics-code.js" />
+    <asset:javascript src="js/analytics-code.js" />
 
 </body>
 </html>
