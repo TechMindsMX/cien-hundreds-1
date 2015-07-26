@@ -40,14 +40,19 @@ class CompanyValidationController {
             return
         }
 
-        companyService.assignCompanyToBuyer(companyValidationInstance)
+        try{
+          companyService.assignCompanyToBuyer(companyValidationInstance)
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'companyValidation.label', default: 'CompanyValidation'), companyValidationInstance.id])
-                redirect companyValidationInstance
-            }
-            '*' { respond companyValidationInstance, [status: CREATED] }
+          request.withFormat {
+              form multipartForm {
+                  flash.message = message(code: 'default.created.message', args: [message(code: 'companyValidation.label', default: 'CompanyValidation'), companyValidationInstance.id])
+                  redirect companyValidationInstance
+              }
+              '*' { respond companyValidationInstance, [status: CREATED] }
+          }
+        }catch (InvalidParamsException ipe){
+          flash.error = "La empresa ya ha sido asignada o no se encontro al comprador"
+          respond companyValidationInstance, view: 'create'
         }
     }
 
