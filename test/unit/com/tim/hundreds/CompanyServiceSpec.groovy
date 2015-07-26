@@ -6,6 +6,28 @@ import spock.lang.Specification
 @TestFor(CompanyService)
 @Mock([Company, CompanyValidation])
 class CompanyServiceSpec extends Specification {
+  def validationService = Mock(ValidationService)
+
+  def setup() {
+    service.validationService = validationService
+  }
+
+  void "should assign company to buyer and active company"() {
+  given: "An company validation"
+   def companyValidationInstance = Mock(CompanyValidation)
+  and: "And companny and user"
+   def company = Mock(Company)
+   def user = Mock(User)
+   companyValidationInstance.company >> company
+   companyValidationInstance.user >> user
+   when: "We assign values to the user"
+   service.assignCompanyToBuyer(companyValidationInstance)
+   then: "We expect company is save"
+   1 * company.setProperty('assigned', user)
+   1 * validationService.validate(companyValidationInstance, 'company')
+   1 * company.save()
+   1 * companyValidationInstance.save()
+  }
 
   void "should not assign company to buyer and active company since no buyer"() {
   given: "An company validation"

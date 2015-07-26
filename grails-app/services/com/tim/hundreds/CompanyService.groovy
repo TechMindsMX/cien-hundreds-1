@@ -26,7 +26,7 @@ class CompanyService {
       throw new InvalidParamsException('No buyer was provided')
     }
 
-    def validationExist = CompanyValidation.findByCompanyAndUser(companyValidationInstance.musician, companyValidationInstance.user)
+    def validationExist = CompanyValidation.findByCompanyAndUser(companyValidationInstance.company, companyValidationInstance.user)
     if(validationExist){
       throw new InvalidParamsException('This company was already assignated to that buyer')
     }
