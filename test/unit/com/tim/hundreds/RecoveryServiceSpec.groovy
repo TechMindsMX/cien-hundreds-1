@@ -46,6 +46,20 @@ class RecoveryServiceSpec extends Specification {
     thrown BusinessException
   }
 
+  void "should not generate registration code for email since account is not activated"() {
+  given: "An email"
+    def email = 'josdem@email.com'
+  and: "User mock"
+    def user = Mock(User)
+  when: "We find user by email"
+    userHelperService.findByEmail(email) >> user
+    user.activated >> false
+    service.generateRegistrationCodeForEmail(email)
+  then: "We expect send message to the email service"
+    thrown BusinessException
+  }
+
+
   void "should change password for token"(){
   given: "Token and password"
     def token = 'token'
