@@ -32,6 +32,7 @@ class RecoveryServiceSpec extends Specification {
   when: "We find user by email"
     userHelperService.findByEmail(email) >> user
     recoveryCollaboratorService.generateToken(email) >> message
+    user.enabled >> true
     service.generateRegistrationCodeForEmail(email)
   then: "We expect send message to the email service"
     1 * restService.sendCommand(message, 'forgotPasswordUrl')
@@ -43,7 +44,20 @@ class RecoveryServiceSpec extends Specification {
   when: "We find user by email"
     service.generateRegistrationCodeForEmail(email)
   then: "We expect send message to the email service"
-    thrown BusinessException
+    thrown UserNotFoundException
+  }
+
+  void "should not generate registration code for email since account is not activated"() {
+  given: "An email"
+    def email = 'josdem@email.com'
+  and: "User mock"
+    def user = Mock(User)
+  when: "We find user by email"
+    userHelperService.findByEmail(email) >> user
+    user.enabled >> false
+    service.generateRegistrationCodeForEmail(email)
+  then: "We expect send message to the email service"
+    thrown AccountNoActivatedException
   }
 
   void "should change password for token"(){

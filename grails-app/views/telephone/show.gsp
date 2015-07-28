@@ -29,7 +29,7 @@
         </li>
         </g:if>
       
-        <g:if test="${telephoneInstance?.type}">
+        <g:if test="${telephoneInstance?.phoneType}">
         <li class="fieldcontain">
           <span id="type-label" class="${session.labelWidth} property-label"><g:message code="telephone.type.label" default="Type" /></span>
           <span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${telephoneInstance}" field="phoneType"/></span>
@@ -39,7 +39,7 @@
       </ul>
       <g:form url="[resource:telephoneInstance, action:'delete']" method="DELETE">
         <fieldset class="buttons">
-          <g:link class="btn btn-primary edit" action="edit" resource="${telephoneInstance}" params="[contactId: telephoneInstance.contact.id]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+          <g:link class="btn btn-primary edit" action="edit" resource="${telephoneInstance}" ><g:message code="default.button.edit.label" default="Edit" /></g:link>
           <g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
         </fieldset>
       </g:form>

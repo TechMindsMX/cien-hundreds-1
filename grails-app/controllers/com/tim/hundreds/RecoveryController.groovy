@@ -50,8 +50,11 @@ class RecoveryController {
       recoveryService.generateRegistrationCodeForEmail(email)
       flash.message = g.message(code: 'login.email')
       redirect url:'/'
-    } catch(BusinessException be) {
+    } catch(UserNotFoundException unfe) {
       flash.error = g.message(code: 'login.notfound')
+      redirect action:'index'
+    } catch(AccountNoActivatedException be) {
+      flash.error = g.message(code: 'login.account.disabled')
       redirect action:'index'
     } catch(Exception ex) {
       flash.error = g.message(code: 'login.email.unavailable')
