@@ -43,7 +43,7 @@ class RecoveryServiceSpec extends Specification {
   when: "We find user by email"
     service.generateRegistrationCodeForEmail(email)
   then: "We expect send message to the email service"
-    thrown BusinessException
+    thrown UserNotFoundException
   }
 
   void "should not generate registration code for email since account is not activated"() {

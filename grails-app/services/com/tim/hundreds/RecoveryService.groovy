@@ -12,7 +12,7 @@ class RecoveryService {
 
   def generateRegistrationCodeForEmail(String email) {
     def user = userHelperService.findByEmail(email)
-    if(!user) throw new BusinessException("User not found")
+    if(!user) throw new UserNotFoundException("User not found")
     if(!user.activated) throw new BusinessException("Account is not activated")
 
     def message = recoveryCollaboratorService.generateToken(email)
