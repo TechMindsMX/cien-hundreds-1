@@ -145,13 +145,13 @@ class RecoveryServiceSpec extends Specification {
   and: "user"
     def user = Mock(User)
   when: "We send change password for token"
+    userHelperService.findByEmail(email) >> user
     user.enabled >> true
     service.confirmAccountForToken(token)
   then: "We expect save new password"
     registrationHelperService.findEmailByToken(token) >> email
     thrown AccountEnabledException
   }
-
 
   void "should send a message to recovery an user"(){
   given: "An email"

@@ -33,7 +33,8 @@ class RecoveryService {
 
   def confirmAccountForToken(token){
     def user = getUserByToken(token)
-    if(!user) throw new BusinessException("User not found")
+    if(!user) throw new UserNotFoundException("User not found")
+    if(user.enabled) throw new AccountEnabledException("Account is already activated")
 
     user.enabled = true
     user.save()
