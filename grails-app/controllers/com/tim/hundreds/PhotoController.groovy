@@ -34,24 +34,27 @@ class PhotoController {
             return
         }
 
-        if(params.file){
+        if(!params.file.isEmpty()){
           command.path = photoStorerService.storeFile(request.getFile('file'))
-        }
-        Photo photoInstance = new Photo()
-        bindData(photoInstance, command)
+          Photo photoInstance = new Photo()
+          bindData(photoInstance, command)
 
-        try{
-          def instance = photoService.savePhoto(photoInstance)
-          request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'photo.label', default: 'Photo'), instance.id])
-                redirect instance
+          try{
+            def instance = photoService.savePhoto(photoInstance)
+            request.withFormat {
+              form multipartForm {
+                  flash.message = message(code: 'default.created.message', args: [message(code: 'photo.label', default: 'Photo'), instance.id])
+                  redirect instance
+              }
+              '*' { respond instance, [status: CREATED] }
             }
-            '*' { respond instance, [status: CREATED] }
+          } catch (Exception ve){
+            log.info "Errors ${ve.errors}"
+            respond photoInstance.musician.errors, view:'create'
           }
-        } catch (Exception ve){
-          log.info "Errors ${ve.errors}"
-          respond photoInstance.musician.errors, view:'create'
+        } else {
+          flash.error="El archivo de foto no se ha especificado"
+          respond command, view:'create'
         }
     }
 
