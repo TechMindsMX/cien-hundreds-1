@@ -57,7 +57,7 @@ class RecoveryServiceSpec extends Specification {
     user.enabled >> false
     service.generateRegistrationCodeForEmail(email)
   then: "We expect send message to the email service"
-    thrown BusinessException
+    thrown AccountNoActivatedException
   }
 
   void "should change password for token"(){
