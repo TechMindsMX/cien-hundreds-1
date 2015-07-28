@@ -27,10 +27,14 @@ class RecoveryController {
       recoveryService.confirmAccountForToken(params.token)
       flash.message = g.message(code: 'login.confirm')
       redirect controller:'login', action:'auth'
-    }catch(BusinessException be) {
+    } catch(UserNotFoundException be) {
       flash.error = g.message(code: 'login.notfound')
       render status:NOT_FOUND
+    } catch(AccountEnabledException be) {
+      flash.error = g.message(code: 'login.account.enabled')
+      render status:NOT_FOUND
     }
+
   }
 
   def recoveryUser(){
