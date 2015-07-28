@@ -37,10 +37,10 @@
 					
 						<td><g:link action="show" id="${companyInstance.id}">${fieldValue(bean: companyInstance, field: "name")}</g:link></td>
 						<td>
-							<g:each in="${companyInstance.collaborators?.telephones}" var="v"><% v.phone.each {println it} %></g:each>
+							<g:each in="${companyInstance.collaborators?.telephones}" var="v"><div><% v.phone.each {println it} %></div></g:each>
 						</td>
 						<td>
-							<g:each in="${companyInstance.collaborators?.emails}" var="v"><% v.mail.each {println it} %></g:each>
+							<g:each in="${companyInstance.collaborators?.emails}" var="v"><div><% v.mail.each {println it} %></div></g:each>
 						</td>
 						<td><g:formatDate format="dd-MM-yyyy" date="${companyInstance.dateCreated}" /></td>
 						
