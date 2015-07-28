@@ -97,7 +97,7 @@
         <label class="${session.labelWidth} control-label" for="role"><g:message code="admin.role.label" default="Tipo de Alta"/></label>
 
         <div class="${session.inputWidth}">
-          <g:select value="${model?.role}" name="role" from="${Role.findAll({authority!='ROLE_USER' && authority!='ROLE_ADMIN'})}" optionKey="authority" optionValue="authority" class="form-control"/>
+          <g:select value="${model?.role}" name="role" from="${roles}" optionKey="authority" optionValue="authority" class="form-control"/>
         </div>
     </div>
 </sec:ifAnyGranted>

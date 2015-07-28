@@ -35,4 +35,24 @@ class UserPermissionsService {
 		}
 	}
 
+	def getManageableRoleList(String userAuthority) {
+		List manageableRoleList = []
+
+		switch(userAuthority) {
+			case 'ROLE_ADMIN':
+			manageableRoleList = Role.findAll({authority!='ROLE_USER' && authority!='ROLE_ADMIN'})
+			break
+			case 'ROLE_MUSICIAN_ADMIN':
+			manageableRoleList = Role.findAll({authority in ['ROLE_MUSICIAN_VIEWER', 'ROLE_FACILITATOR']})
+			break
+			case 'ROLE_COMPANY_ADMIN':
+			manageableRoleList = Role.findAll({authority in ['ROLE_COMPANY_VIEWER', 'ROLE_BUYER']})
+			break
+			default:
+			manageableRoleList = Role.findAll({authority==userAuthority})
+			break
+		}
+		manageableRoleList
+	}
+
 }
