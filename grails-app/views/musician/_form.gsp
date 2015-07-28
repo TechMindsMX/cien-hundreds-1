@@ -56,7 +56,7 @@
  </label>
  <div class="${session.inputWidth}">
     <div class="input-group">
-        <g:timDatePicker name="formed" minDate="01-01-1900" maxDate="-0D" changeMonth="true" changeYear="true" value="${musicianInstance?.formed}" required="true"></g:timDatePicker>
+        <g:timDatePicker name="formed" minDate="01-01-1900" maxDate="-0D" changeMonth="true" changeYear="true" yearRange="-100:+0" value="${musicianInstance?.formed}" required="true"></g:timDatePicker>
         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
     </div>
 </div>

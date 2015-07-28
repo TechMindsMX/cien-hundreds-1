@@ -22,7 +22,7 @@
 					<g:message code="company.from.label" default="Desde" />
 				</label>
 				<div class="${session.inputWidth}">
-					<g:timDatePicker class="form-control" name="from" maxDate="-0D" changeMonth="true" changeYear="true"></g:timDatePicker>
+					<g:timDatePicker class="form-control" name="from" maxDate="-0D" changeMonth="true" yearRange="-100:+0" changeYear="true"></g:timDatePicker>
 				</div>
 			</div>
 			<div class="form-group">
@@ -30,7 +30,7 @@
 					<g:message code="company.to.label" default="Hasta" />
 				</label>
 				<div class="${session.inputWidth}">
-					<g:timDatePicker class="form-control" name="to" maxDate="-0D" changeMonth="true" changeYear="true" ></g:timDatePicker>
+					<g:timDatePicker class="form-control" name="to" maxDate="-0D" changeMonth="true" yearRange="-100:+0" changeYear="true" ></g:timDatePicker>
 				</div>
 			</div>
 			<div class="form-group">
