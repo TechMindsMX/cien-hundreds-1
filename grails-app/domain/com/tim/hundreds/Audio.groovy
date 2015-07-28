@@ -9,7 +9,7 @@ class Audio {
   ]
 
   static constraints = {
-    url(blank:false,size:10..100,matches: /^https?:\/\/(?:www\.)?soundcloud\.com\/[A-Za-z0-9\/?&=_-]+/
+    url(blank:false,size:10..100,matches: /^https?:\/\/(?:www\.)?soundcloud\.com\/[\w#!:.?+=&%@!\-\/]+/
       )
 	}
 }
