@@ -114,6 +114,7 @@ class RecoveryServiceSpec extends Specification {
     def user = Mock(User)
     def profile = new Profile(email:email, firsName:'firsName', motherLastName:'motherLastName', lastName:'lastName')
   when: "We confirm account for token"
+    user.enabled >> false
     service.confirmAccountForToken(token)
   then: "We expect user enabled"
     user.profile >> profile
@@ -134,8 +135,23 @@ class RecoveryServiceSpec extends Specification {
     service.confirmAccountForToken(token)
   then: "We expect save new password"
     registrationHelperService.findEmailByToken(token) >> email
-    thrown BusinessException
+    thrown UserNotFoundException
   }
+
+  void "should not confirm account for token since user is already active"(){
+  given: "Token and password"
+    def token = 'token'
+    def email = 'josdem@email.com'
+  and: "user"
+    def user = Mock(User)
+  when: "We send change password for token"
+    user.enabled >> true
+    service.confirmAccountForToken(token)
+  then: "We expect save new password"
+    registrationHelperService.findEmailByToken(token) >> email
+    thrown AccountEnabledException
+  }
+
 
   void "should send a message to recovery an user"(){
   given: "An email"
