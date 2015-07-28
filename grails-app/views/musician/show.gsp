@@ -282,6 +282,22 @@
 							</ol>
 						</g:if>
 					</div>
+
+					<div>
+		            	<g:if test="${!musicianInstance?.address}">
+		                	<g:link class="text-capitalize" controller="address" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"><g:message code="address.label" /></g:link>
+		                </g:if>
+		                <g:else>
+		                	<g:link class="text-capitalize" controller="address" action="edit" id="${musicianInstance.address?.id}"><g:message code="address.label" /></g:link>
+		                </g:else>
+		            	<g:if test="${musicianInstance?.address}">
+							<ol>
+								<div class="fieldcontain">
+									<g:link controller="address" action="show" id="${musicianInstance?.address?.id}">${message(code: 'default.show.label', args: [message(code: 'address.label')])}</g:link>
+								</div>
+							</ol>
+						</g:if>
+					</div>
 				</div>
 			</div>
        	</div>
