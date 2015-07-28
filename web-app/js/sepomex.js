@@ -88,6 +88,8 @@ $(document).ready(function(){
     $('#country').on('change',cambio);
     $('#zipcode').on('change',llenarcampos);
 
-    $('#country').trigger('change');
-    $('#zipcode').trigger('change');
+    if ( $('#country').val() == 'mex' ) {
+        $('#country').trigger('change');
+        $('#zipcode').trigger('change');
+    }
 });

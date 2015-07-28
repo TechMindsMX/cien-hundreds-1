@@ -116,8 +116,8 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         alertSuccess
 
         where: "We have the next cases"
-        url                                                                  || result
-        'https://soundcloud.com/metalbladerecords/act-of-defiance-throwback' || AudioShowPage //Pass
+        url                                                     || result
+        'https://soundcloud.com/reyhan-rizky-1/sets/ghost-bc'   || AudioShowPage //Pass
     }
 
     @Unroll
