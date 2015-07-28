@@ -46,7 +46,6 @@
 				</li>
 				</g:if>
 
-${datosFiscalesInstance?.dump()}
  				<g:if test="${datosFiscalesInstance?.musician}">
 				<li class="fieldcontain">
 					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musician.label" default="Musician" /></span>
