@@ -29,10 +29,10 @@ class RecoveryController {
       redirect controller:'login', action:'auth'
     } catch(UserNotFoundException be) {
       flash.error = g.message(code: 'login.notfound')
-      render status:NOT_FOUND
+      redirect url:'/'
     } catch(AccountEnabledException be) {
       flash.error = g.message(code: 'login.account.enabled')
-      render status:NOT_FOUND
+      redirect url:'/'
     }
 
   }
