@@ -16,7 +16,7 @@
 			</li>
 			<li>
 				<label><g:message code="dateCreate.label" /></label>			
-				<g:formatDate format="dd MMMM yyyy" date="${musicianCommentInstance?.musician?.dateCreated}" />
+				<g:formatDate format="dd-MM-yyyy" date="${musicianCommentInstance?.musician?.formed}" />
     		</li>
 		</ul>
 	</div>
