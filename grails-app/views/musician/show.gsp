@@ -50,7 +50,13 @@
 					</g:if>
 
 					<div class="fieldcontain">
-				    	<g:link class="" controller="contact" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Contactos</g:link>
+						<span id="contactos-label" class="property-label"><strong><g:message code="contactos.label" default="Contactos" /></strong></span>
+
+						<sec:ifAnyGranted roles="ROLE_USER">
+					    	<g:link class="" controller="contact" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">
+					    	${message(code: 'default.add.label' args:[message(code: 'contact.label')])}
+					    	</g:link>
+						</sec:ifAnyGranted>
 
 				    	<g:if test="${musicianInstance?.contacts}">
 					    	<ol>
