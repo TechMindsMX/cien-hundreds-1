@@ -305,7 +305,11 @@
        	<div class="clearfix">
     		<g:form url="[resource:musicianInstance, action:'delete']" method="DELETE">
 				<div class="aling-center">
-					<g:link class="btn btn-success blank" action="edit" resource="${musicianInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+
+					<sec:ifAnyGranted roles="ROLE_USER">
+						<g:link class="btn btn-success blank" action="edit" resource="${musicianInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					</sec:ifAnyGranted>
 
 					<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_MUSICIAN_ADMIN')">
 						<g:if test="${!musicianInstance?.musicianValidation}" >
@@ -333,7 +337,6 @@
 						</g:if>
 					</sec:ifAnyGranted>
 
-					<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</div>
 			</g:form>
 		</div>
