@@ -99,17 +99,20 @@
 				</li>
 				</g:if>
 
-        <g:link controller="collaborator" action="prepareEmail" params="[collaboratorUuid: collaboratorInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'email.label')])}</g:link>
-        <br/>
-        <g:link controller="collaborator" action="prepareTelephone" params="[collaboratorUuid: collaboratorInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'telephone.label')])}</g:link>
 
 			</ul>
-			<g:form url="[resource:collaboratorInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="btn btn-primary edit" action="edit" resource="${collaboratorInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
+
+			<sec:ifAnyGranted roles="ROLE_USER">
+		        <g:link controller="collaborator" action="prepareEmail" params="[collaboratorUuid: collaboratorInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'email.label')])}</g:link>
+		        <br/>
+		        <g:link controller="collaborator" action="prepareTelephone" params="[collaboratorUuid: collaboratorInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'telephone.label')])}</g:link>
+				<g:form url="[resource:collaboratorInstance, action:'delete']" method="DELETE">
+					<fieldset class="buttons">
+						<g:link class="btn btn-primary edit" action="edit" resource="${collaboratorInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					</fieldset>
+				</g:form>
+			</sec:ifAnyGranted>
 		</div>
 	</body>
 </html>
