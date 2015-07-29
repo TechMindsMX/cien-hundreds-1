@@ -5,7 +5,7 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['ROLE_USER'])
 class ComplementController {
 
     static showMe = false /*Parametro para aparecer en el menú*/
@@ -17,6 +17,7 @@ class ComplementController {
         respond Complement.list(params), model:[complementInstanceCount: Complement.count()]
     }
 
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Complement complementInstance) {
         respond complementInstance
     }
