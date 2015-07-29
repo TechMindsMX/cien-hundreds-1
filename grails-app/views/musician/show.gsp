@@ -15,7 +15,9 @@
 				<ul class="nav nav-pills">
 					<li><a class="home" href="${createLink(uri: '/')}">Inicio</a></li>
 					<li><g:link class="list" action="index">Listado de Músicos</g:link></li>
-					<li><g:link class="create" action="create">Nuevo Músico</g:link></li>
+					<sec:ifAnyGranted roles="ROLE_USER">
+						<li><g:link class="create" action="create">Nuevo Músico</g:link></li>
+					</sec:ifAnyGranted>
 				</ul>
 			</div>
 		</div>
