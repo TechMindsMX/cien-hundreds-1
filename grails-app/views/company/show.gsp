@@ -16,7 +16,7 @@
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<sec:ifAnyGranted roles="ROLE_USER">
 					<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-				<sec:ifAnyGranted>
+				</sec:ifAnyGranted>
 			</ul>
 		</div>
 		<div id="show-company" class="content scaffold-show" role="main">
