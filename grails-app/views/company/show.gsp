@@ -178,7 +178,7 @@
 								<g:link controller="datosFiscales" action="show" id="${companyInstance?.datosFiscales?.id}">${message(code: 'default.show.label', args: [message(code: 'datosFiscales.label')])}</g:link>
 							</g:if>
 							<g:else>
-								<g:link controller="datosFiscales" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'datosFiscales.label')])}</g:link>
+								<g:link controller="datosFiscales" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'datosFiscales.label')])}</g:link>
 							</g:else>
 						</div>
 				</div>

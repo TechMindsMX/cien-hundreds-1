@@ -82,7 +82,7 @@
 					<span id="emails-label" class="${session.labelWidth} property-label"><g:message code="collaborator.emails.label" default="Emails" /></span>
 
 						<g:each in="${collaboratorInstance.emails}" var="e">
-						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.address.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.mail.encodeAsHTML()}</g:link></span>
 						</g:each>
 
 				</li>
