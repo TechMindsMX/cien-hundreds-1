@@ -6,7 +6,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER','ROLE_ADMIN','ROLE_COMPANY_ADMIN','ROLE_BUYER'])
+@Secured(['ROLE_USER'])
 class ProductController {
     def productService
     def messengineService
@@ -20,16 +20,15 @@ class ProductController {
         respond Product.list(params), model:[productInstanceCount: Product.count()]
     }
 
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER','ROLE_BUYER'])
     def show(Product productInstance) {
         respond productInstance
     }
 
-    @Secured(['ROLE_USER'])
     def create() {
         respond new Product(params)
     }
 
-    @Secured(['ROLE_USER'])
     def save(Product productInstance) {
         if (productInstance == null) {
             notFound()
@@ -56,12 +55,10 @@ class ProductController {
         }
     }
 
-    @Secured(['ROLE_USER','ROLE_ADMIN'])
     def edit(Product productInstance) {
         respond productInstance
     }
 
-    @Secured(['ROLE_USER','ROLE_ADMIN'])
     @Transactional
     def update(Product productInstance) {
         if (productInstance == null) {
@@ -86,7 +83,6 @@ class ProductController {
         }
     }
 
-    @Secured(['ROLE_USER'])
     @Transactional
     def delete(Product productInstance) {
 
