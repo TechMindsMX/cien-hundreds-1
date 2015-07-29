@@ -109,12 +109,15 @@
 				</g:if>
 						
 			</ul>
-			<g:form url="[resource:socialInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="btn btn-primary edit" action="edit" resource="${socialInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
+
+			<sec:ifAnyGranted roles="ROLE_USER">
+				<g:form url="[resource:socialInstance, action:'delete']" method="DELETE">
+					<fieldset class="buttons">
+						<g:link class="btn btn-primary edit" action="edit" resource="${socialInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					</fieldset>
+				</g:form>
+			</sec:ifAnyGranted>
 		</div>
 	</body>
 </html>

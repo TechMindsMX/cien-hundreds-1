@@ -34,7 +34,8 @@
 						<th>${message(code: 'user.place.label', default: 'rol')}</th>
 						<g:sortableColumn property="profile.firstName" title="${message(code: 'user.date.label', default: 'Correos electrónicos')}" />
 						<th>${message(code: 'user.date.label', default: 'Teléfonos')}</th>
-						<th>${message(code: 'user.date.label', default: 'Estatus')}</th>
+						<th>${message(code: 'user.active.label', default: 'Estatus')}</th>
+						<th>${message(code: 'user.status.label', default: 'Estatus')}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -53,6 +54,11 @@
 						<td>${userInstance.getAuthorities().authority}</td>
 						<td>${fieldValue(bean: userInstance, field: "profile.email")}</td>
 						<td>${fieldValue(bean: userInstance, field: "profile.phone")}</td>
+						<td>
+							<g:if test="${userInstance.enabled}"><g:message code="general.enabled.label" /></g:if>
+							<g:else><g:message code="general.disabled.label"/></g:else>
+
+						</td>
 						<td>
 							<g:if test="${userInstance.accountExpired}"><g:message code="general.blocked.label" /></g:if>
 							<g:else><g:message code="general.unblocked.label"/></g:else>

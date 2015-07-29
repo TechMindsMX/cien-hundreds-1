@@ -14,7 +14,9 @@
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<sec:ifAnyGranted roles="ROLE_USER">
+					<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				</sec:ifAnyGranted>
 			</ul>
 		</div>
 		<div id="show-company" class="content scaffold-show" role="main">
@@ -176,7 +178,7 @@
 								<g:link controller="datosFiscales" action="show" id="${companyInstance?.datosFiscales?.id}">${message(code: 'default.show.label', args: [message(code: 'datosFiscales.label')])}</g:link>
 							</g:if>
 							<g:else>
-								<g:link controller="datosFiscales" action="create" params="[companyUuid: companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'datosFiscales.label')])}</g:link>
+								<g:link controller="datosFiscales" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'datosFiscales.label')])}</g:link>
 							</g:else>
 						</div>
 				</div>
@@ -207,7 +209,11 @@
 
 		<g:form url="[resource:companyInstance, action:'delete']" method="DELETE">
 			<fieldset class="buttons">
-				<g:link class="btn btn-primary edit" action="edit" resource="${companyInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+				<sec:ifAnyGranted roles="ROLE_USER">
+					<g:link class="btn btn-primary edit" action="edit" resource="${companyInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+				</sec:ifAnyGranted>
+
 				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN">
 					<g:if test="${!companyInstance?.companyValidation}" >
 						<g:link class="btn btn-success" controller="companyValidation" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'companyValidation.label')])}</g:link>
@@ -234,7 +240,6 @@
 				</g:if>
 			</sec:ifAnyGranted>
 
-				<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 			</fieldset>
 		</g:form>
 	</div>

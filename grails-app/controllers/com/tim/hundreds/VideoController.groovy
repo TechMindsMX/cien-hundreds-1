@@ -6,7 +6,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['ROLE_USER'])
 class VideoController {
     def videoService
     def messengineService

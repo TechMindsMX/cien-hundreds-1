@@ -15,7 +15,9 @@
 				<ul class="nav nav-pills">
 					<li><a class="home" href="${createLink(uri: '/')}">Inicio</a></li>
 					<li><g:link class="list" action="index">Listado de Músicos</g:link></li>
-					<li><g:link class="create" action="create">Nuevo Músico</g:link></li>
+					<sec:ifAnyGranted roles="ROLE_USER">
+						<li><g:link class="create" action="create">Nuevo Músico</g:link></li>
+					</sec:ifAnyGranted>
 				</ul>
 			</div>
 		</div>
@@ -48,7 +50,13 @@
 					</g:if>
 
 					<div class="fieldcontain">
-				    	<g:link class="" controller="contact" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> Contactos</g:link>
+						<span id="contactos-label" class="property-label"><strong><g:message code="contactos.label" default="Contactos" /></strong></span>
+
+						<sec:ifAnyGranted roles="ROLE_USER">
+					    	<g:link class="" controller="contact" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">
+					    	${message(code: 'default.add.label' args:[message(code: 'contact.label')])}
+					    	</g:link>
+						</sec:ifAnyGranted>
 
 				    	<g:if test="${musicianInstance?.contacts}">
 					    	<ol>
@@ -305,7 +313,11 @@
        	<div class="clearfix">
     		<g:form url="[resource:musicianInstance, action:'delete']" method="DELETE">
 				<div class="aling-center">
-					<g:link class="btn btn-success blank" action="edit" resource="${musicianInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+
+					<sec:ifAnyGranted roles="ROLE_USER">
+						<g:link class="btn btn-success blank" action="edit" resource="${musicianInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					</sec:ifAnyGranted>
 
 					<sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_MUSICIAN_ADMIN')">
 						<g:if test="${!musicianInstance?.musicianValidation}" >
@@ -333,7 +345,6 @@
 						</g:if>
 					</sec:ifAnyGranted>
 
-					<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</div>
 			</g:form>
 		</div>

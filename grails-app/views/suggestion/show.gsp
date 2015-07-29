@@ -12,7 +12,7 @@
 		<div class="nav" role="navigation">
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				
+
 			</ul>
 		</div>
 		<div id="show-suggestion" class="content scaffold-show" role="main">
@@ -21,52 +21,53 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ul class="property-list suggestion">
-			
+
 				<g:if test="${suggestionInstance?.name}">
 				<li class="fieldcontain">
 					<span id="name-label" class="${session.labelWidth} property-label"><g:message code="suggestion.name.label" default="Name" /></span>
-					
+
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${suggestionInstance}" field="name"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${suggestionInstance?.contactName}">
 				<li class="fieldcontain">
 					<span id="contactName-label" class="${session.labelWidth} property-label"><g:message code="suggestion.contactName.label" default="Contact Name" /></span>
-					
+
 						<span class="property-value" aria-labelledby="contactName-label"><g:fieldValue bean="${suggestionInstance}" field="contactName"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${suggestionInstance?.email}">
 				<li class="fieldcontain">
 					<span id="email-label" class="${session.labelWidth} property-label"><g:message code="suggestion.email.label" default="Email" /></span>
-					
+
 						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${suggestionInstance}" field="email"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${suggestionInstance?.phone}">
 				<li class="fieldcontain">
 					<span id="phone-label" class="${session.labelWidth} property-label"><g:message code="suggestion.phone.label" default="Phone" /></span>
-					
+
 						<span class="property-value" aria-labelledby="phone-label"><g:fieldValue bean="${suggestionInstance}" field="phone"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${suggestionInstance?.musician}">
 				<li class="fieldcontain">
 					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="suggestion.musician.label" default="Musician" /></span>
-					
+
 						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${suggestionInstance?.musician?.id}">${suggestionInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
 				</li>
 				</g:if>
-			
+
 			</ul>
+      <sec:ifAnyGranted roles="ROLE_USER">
 			<g:form url="[resource:suggestionInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<div class="form-actions">
@@ -75,6 +76,7 @@
 					</div>
 				</fieldset>
 			</g:form>
+      </sec:ifAnyGranted>
 		</div>
 	</body>
 </html>
