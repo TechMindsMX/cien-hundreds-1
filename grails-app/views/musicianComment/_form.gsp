@@ -60,7 +60,16 @@
 	<div class="col-md-4">
 		<ul>
 			<li>		
-				${musicianCommentInstance?.musician?.datosFiscales}
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.razonSocial}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.rfc}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.personaJuridica}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.street}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.neighborhood}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.county}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.town}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.state}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.country}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.zipcode}</div>
 			</li>
 		</ul>
 	</div>
