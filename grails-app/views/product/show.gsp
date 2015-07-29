@@ -188,56 +188,11 @@
 			</li>
 		</g:if>
 
-		<g:if test="${productInstance?.campaign}">
-			<li class="fieldcontain">
-				<span id="campaign-label" class="${session.labelWidth} property-label"><g:message code="product.campaign.label" default="Campaign" /></span>
-
-				<span class="property-value" aria-labelledby="campaign-label"><g:formatBoolean boolean="${productInstance?.campaign}" /></span>
-
-			</li>
-		</g:if>
-
 		<g:if test="${productInstance?.company}">
 			<li class="fieldcontain">
 				<span id="company-label" class="${session.labelWidth} property-label"><g:message code="product.company.label" default="Company" /></span>
 
 				<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${productInstance?.company?.id}">${productInstance?.company?.name?.encodeAsHTML()}</g:link></span>
-
-			</li>
-		</g:if>
-
-		<g:if test="${productInstance?.event}">
-			<li class="fieldcontain">
-				<span id="event-label" class="${session.labelWidth} property-label"><g:message code="product.event.label" default="Event" /></span>
-
-				<span class="property-value" aria-labelledby="event-label"><g:formatBoolean boolean="${productInstance?.event}" /></span>
-
-			</li>
-		</g:if>
-
-		<g:if test="${productInstance?.other}">
-			<li class="fieldcontain">
-				<span id="other-label" class="${session.labelWidth} property-label"><g:message code="product.other.label" default="Other" /></span>
-
-				<span class="property-value" aria-labelledby="other-label"><g:formatBoolean boolean="${productInstance?.other}" /></span>
-
-			</li>
-		</g:if>
-
-		<g:if test="${productInstance?.telephone}">
-			<li class="fieldcontain">
-				<span id="telephone-label" class="${session.labelWidth} property-label"><g:message code="product.telephone.label" default="Telephone" /></span>
-
-				<span class="property-value" aria-labelledby="telephone-label"><g:formatBoolean boolean="${productInstance?.telephone}" /></span>
-
-			</li>
-		</g:if>
-
-		<g:if test="${productInstance?.web}">
-			<li class="fieldcontain">
-				<span id="web-label" class="${session.labelWidth} property-label"><g:message code="product.web.label" default="Web" /></span>
-
-				<span class="property-value" aria-labelledby="web-label"><g:formatBoolean boolean="${productInstance?.web}" /></span>
 
 			</li>
 		</g:if>
