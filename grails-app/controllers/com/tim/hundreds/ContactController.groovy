@@ -5,7 +5,7 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['ROLE_USER'])
 class ContactController {
     def photoStorerService
     def contactService

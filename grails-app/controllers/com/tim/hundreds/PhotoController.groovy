@@ -3,12 +3,14 @@ package com.tim.hundreds
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 @Secured(['ROLE_USER','ROLE_ADMIN'])
 class PhotoController {
     def photoStorerService
     def messengineService
     def photoService
+    def springSecurityService
 
     static showMe = false /*Parametro para aparecer en el menú*/
 
@@ -19,8 +21,14 @@ class PhotoController {
         respond Photo.list(params), model:[photoInstanceCount: Photo.count()]
     }
 
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER','ROLE_FACILITATOR'])
     def show(Photo photoInstance) {
-        respond photoInstance
+        if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == photoInstance.musician.user) {
+            respond photoInstance
+        } else {
+            flash.error = 'access.denied.label'
+            redirect url: '/'
+        }
     }
 
     def create() {
