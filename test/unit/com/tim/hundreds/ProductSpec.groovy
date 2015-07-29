@@ -87,6 +87,7 @@ class ProductSpec extends Specification {
   'product' | 'desc'      | 'benefits' | 'target' | 'competence' | 'https://youtu.be/LKckM5gq7VU' | null      | 'customerModel' || false
   'product' | 'desc'      | 'benefits' | 'target' | 'competence' | 'https://youtu.be/LKckM5gq7VU' | 'clients' | ''              || false
   'product' | 'desc'      | 'benefits' | 'target' | 'competence' | 'https://youtu.be/LKckM5gq7VU' | 'clients' | null            || false
+  'product' | 'desc'      | 'benefits' | 'target' | 'competence' | 'https://yoitube.com/83742834' | 'clients' | 'c'             || false
   }
 
 }
