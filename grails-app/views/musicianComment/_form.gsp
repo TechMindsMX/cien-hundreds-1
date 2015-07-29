@@ -117,7 +117,9 @@
 				</h4>
 				<g:each in="${musicianCommentInstance?.musician?.photos}">
 					<li>		
-						${it.path}
+						<div class="img pad-bottom">
+						<img class="img-responsive img-thumbnail max300" src="${grailsApplication.config.base.photo.url}${it.path}" />
+						</div>
 					</li>
 				</g:each>		
 			</li>		
