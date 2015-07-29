@@ -46,7 +46,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'musician.label')} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><g:link controller="musician" action="index"><g:message code="list.label" default="Listado" /></g:link></li>
-                                <li><g:link controller="musician" action="create">${message(code: 'default.add.label', args: [message(code: 'musician.label')])}</g:link></li>
+
+                                <sec:ifAnyGranted roles="ROLE_USER">
+                                    <li><g:link controller="musician" action="create">${message(code: 'default.add.label', args: [message(code: 'musician.label')])}</g:link></li>
+                                </sec:ifAnyGranted>
                             </ul>
                         </li>
                     </sec:ifAnyGranted>
@@ -55,7 +58,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'company.label')} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><g:link controller="company" action="index"><g:message code="list.label" default="Listado" /></g:link></li>
-                                <li><g:link controller="company" action="create">${message(code: 'default.add.label', args: [message(code: 'company.label')])}</g:link></li>
+
+                                <sec:ifAnyGranted roles="ROLE_USER">
+                                    <li><g:link controller="company" action="create">${message(code: 'default.add.label', args: [message(code: 'company.label')])}</g:link></li>
+                                </sec:ifAnyGranted>
                             </ul>
                         </li>
                     </sec:ifAnyGranted>
@@ -83,16 +89,16 @@
                     </li>
                 </sec:ifAnyGranted>
 
-                <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_BUYER,ROLE_FACILITATOR">
+                <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN,ROLE_MUSICIAN_ADMIN">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'userManagement.label', default: 'User Mgmt')} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN,ROLE_BUYER">
+                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN">
                                 <li><g:link controller="companyValidation" action="index">${message(code: 'default.list.label', args: [message(code: 'companyValidation.label')])}</g:link></li>
                                 <li><g:link controller="companyValidation" action="create">${message(code: 'default.add.label', args: [message(code: 'companyValidation.label')])}</g:link></li>
                                 <li role="separator" class="divider"></li>
                             </sec:ifAnyGranted>
-                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_FACILITATOR">
+                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN">
                                 <li><g:link controller="musicianValidation" action="index">${message(code: 'default.list.label', args: [message(code: 'musicianValidation.label')])}</g:link></li>
                                 <li><g:link controller="musicianValidation" action="create">${message(code: 'default.add.label', args: [message(code: 'musicianValidation.label')])}</g:link></li>
                                 <li role="separator" class="divider"></li>
