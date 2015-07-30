@@ -78,16 +78,16 @@ class CompanyFunctionalSpec extends GebReportingSpec {
         form.customerModel = "el dato customerModel"
         form.postSaleModel = "el dato postSaleModel"
         form.notes = "el dato notes"
-        form.find('[name="campaign"]').click()
-        form.campaignDescription = "el dato campaignDescription"
-        form.find('[name="event"]').click()
-        form.eventDescription = "el dato eventDescription"
-        form.find('[name="other"]').click()
-        form.otherDescription = "el dato otherDescription"
-        form.find('[name="telephone"]').click()
-        form.telephoneDescription = "el dato telephoneDescription"
-        form.find('[name="web"]').click()
-        form.webDescription = "el dato webDescription"
+        // form.find('[name="campaign"]').click()
+        // form.campaignDescription = "el dato campaignDescription"
+        // form.find('[name="event"]').click()
+        // form.eventDescription = "el dato eventDescription"
+        // form.find('[name="other"]').click()
+        // form.otherDescription = "el dato otherDescription"
+        // form.find('[name="telephone"]').click()
+        // form.telephoneDescription = "el dato telephoneDescription"
+        // form.find('[name="web"]').click()
+        // form.webDescription = "el dato webDescription"
         and: "I submit the form"
         submitButton.click()
         then: "I should see validation errors"
