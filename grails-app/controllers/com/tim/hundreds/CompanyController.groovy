@@ -28,7 +28,9 @@ class CompanyController {
       log.info "Listing companies created from ${params.from} to ${params.to}"
       def companies
       try{
-        Date startDate = Date.parse('dd-MM-yyyy', params.from)
+        params.from = params.from ?: '01-01-1900'
+        params.to = params.to ?: new Date().format('dd-MM-yyyy').toString()
+        Date startDate = Date.parse('dd-MM-yyyy', params.from) 
         Date endDate = Date.parse('dd-MM-yyyy', params.to)
         companies = companyService.getCompaniesByDateCreated(startDate, endDate)
       }catch(InvalidParamsException ipe){
