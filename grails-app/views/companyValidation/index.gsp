@@ -24,11 +24,13 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="message" title="${message(code: 'companyValidation.message.label', default: 'Message')}" />
+						<g:sortableColumn property="message" title="${message(code: 'companyValidation.id.label', default: 'id')}" />
+
+						<th><g:message code="companyValidation.message.label" default="Message" /></th>
 					
 						<th><g:message code="companyValidation.company.label" default="Company" /></th>
 					
-						<g:sortableColumn property="type" title="${message(code: 'companyValidation.type.label', default: 'Type')}" />
+						<th><g:message code="companyValidation.type.label" default="Type" /></th>
 					
 						<th><g:message code="companyValidation.user.label" default="User" /></th>
 					
@@ -38,7 +40,9 @@
 				<g:each in="${companyValidationInstanceList}" status="i" var="companyValidationInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${companyValidationInstance.id}">${fieldValue(bean: companyValidationInstance, field: "message")}</g:link></td>
+						<td><g:link action="show" id="${companyValidationInstance.id}">${fieldValue(bean: companyValidationInstance, field: "id")}</g:link></td>
+
+						<td>${fieldValue(bean: companyValidationInstance, field: "message")}</td>
 					
 						<td>${companyValidationInstance?.company?.name?.encodeAsHTML()}</td>
 					

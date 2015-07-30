@@ -105,7 +105,7 @@
 
 <g:if test="${contactInstance?.social}">
 <div class="fieldcontain">
-  <span id="social-label" class="${session.labelWidth} property-label"><g:message code="contact.social.label" default="Social" /></span>
+  <span id="social-label" class="${session.labelWidth} property-label"><g:message code="social.label" default="Social" /></span>
   <span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" id="${contactInstance?.social?.id}"><g:message code="default.show.label" args=" " /></g:link></span>
 
 </div>
@@ -113,7 +113,7 @@
 
 <g:if test="${contactInstance?.address}">
 <div class="fieldcontain">
-  <span id="address-label" class="${session.labelWidth} property-label"><g:message code="contact.address.label" default="Address" /></span>
+  <span id="address-label" class="${session.labelWidth} property-label"><g:message code="address.label" default="Address" /></span>
 
   <span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${contactInstance?.address?.id}"><g:message code="default.show.label" args=" " /></g:link></span>
 

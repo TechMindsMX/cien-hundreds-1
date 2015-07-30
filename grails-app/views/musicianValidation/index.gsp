@@ -20,12 +20,13 @@
 			<table class="table table-stripped">
 			<thead>
 					<tr>
+						<g:sortableColumn property="message" title="${message(code: 'musicianValidation.id.label', default: 'Id')}" />
 					
 						<g:sortableColumn property="message" title="${message(code: 'musicianValidation.message.label', default: 'Message')}" />
 					
 						<th><g:message code="musicianValidation.musician.label" default="Musician" /></th>
 					
-						<g:sortableColumn property="type" title="${message(code: 'musicianValidation.type.label', default: 'Type')}" />
+						<th><g:message code="musicianValidation.type.label" default="Type" /></th>
 					
 						<th><g:message code="musicianValidation.user.label" default="User" /></th>
 					
@@ -35,8 +36,10 @@
 				<g:each in="${musicianValidationInstanceList}" status="i" var="musicianValidationInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${musicianValidationInstance.id}">${fieldValue(bean: musicianValidationInstance, field: "message")}</g:link></td>
+						<td><g:link action="show" id="${musicianValidationInstance.id}">${fieldValue(bean: musicianValidationInstance, field: "id")}</g:link></td>
 					
+						<td>${fieldValue(bean: musicianValidationInstance, field: "message")}</td>
+
 						<td>${musicianValidationInstance?.musician?.name?.encodeAsHTML()}</td>
 					
 						<td>${fieldValue(bean: musicianValidationInstance, field: "type")}</td>
