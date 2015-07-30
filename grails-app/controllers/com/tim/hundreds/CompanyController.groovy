@@ -67,10 +67,10 @@ class CompanyController {
             return
         }
 
-        if(!params.logo.empty){
+        if(!params.logo.isEmpty()){
           command.logoPath = logoStorerService.storeFile(request.getFile('logo'))
         }
-        if(!params.corporatePress.empty){
+        if(!params.corporatePress.isEmpty()){
           command.corporatePressPath = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
         }
 
@@ -102,10 +102,10 @@ class CompanyController {
             return
         }
 
-        if(!params.logo.empty){
+        if(!params.logo.isEmpty()){
           command.logoPath = logoStorerService.storeFile(request.getFile('logo'))
         }
-        if(!params.corporatePress.empty){
+        if(!params.corporatePress.isEmpty()){
           command.corporatePressPath = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
         }
 
@@ -113,7 +113,8 @@ class CompanyController {
         DataBinder.copy(companyInstance, command)
         companyService.save(companyInstance)
 
-        tagService.addTags(companyInstance, "${command.name},${command.type.name},${command.tagsComma}")
+        tagService.dropTags(companyInstance)
+        tagService.addTags(companyInstance, "${command.tagsComma}")
         messengineService.sendInstanceEditedMessage(companyInstance, 'company')
 
         request.withFormat {

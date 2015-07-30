@@ -11,6 +11,7 @@ class DataBinder {
     musician.formed = command.formed ?: musician.formed
     musician.hasManager = command.hasManager ?: musician.hasManager
     musician.genre = command.genre ?: musician.genre
+    musician.logoPath = command.logoPath ?: musician.logoPath
   }
 
   def static copy(Company company, CompanyCommand command){
@@ -19,6 +20,8 @@ class DataBinder {
     company.web = command.web ?: company.web
     company.notes = command.notes ?: company.notes
     company.tagsComma = command.tagsComma ?: company.tagsComma
+    company.logoPath = command.logoPath ?: company.logoPath
+    company.corporatePressPath = command.corporatePressPath ?: company.corporatePressPath
   }
 
 }
