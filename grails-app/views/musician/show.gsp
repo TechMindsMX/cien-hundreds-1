@@ -88,12 +88,20 @@
             </g:if>
 
             <div class="fieldcontain">
-                <g:if test="${!musicianInstance?.social}">
-                    <g:link class="" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]"> <g:message code="social.label" /></g:link>
-                </g:if>
-                <g:else>
-                    <g:link class="" controller="social" action="edit" id="${musicianInstance?.social.id}"> <g:message code="social.label"/></g:link>
-                </g:else>
+                <span id="redessocial-label" class="property-label"><strong><g:message code="social.label" default="Redes sociales" /></strong></span>
+
+                <sec:ifAnyGranted roles="ROLE_USER">
+                    <g:if test="${!musicianInstance?.social}">
+                        <g:link class="" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">
+                            ${message(code:'default.add.label', args:[message(code:'social.label')])}
+                        </g:link>
+                    </g:if>
+                    <g:else>
+                        <g:link class="" controller="social" action="edit" id="${musicianInstance?.social.id}">
+                            ${message(code:'default.edit.label', args:[message(code:'social.label')])}
+                        </g:link>
+                    </g:else>
+                </sec:ifAnyGranted>
 
                 <g:if test="${musicianInstance?.social}">
                     <ol>
