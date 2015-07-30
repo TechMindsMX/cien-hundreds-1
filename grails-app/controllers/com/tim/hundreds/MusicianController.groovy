@@ -105,8 +105,8 @@ class MusicianController {
         DataBinder.copy(musicianInstance, command)
         musicianService.save(musicianInstance)
 
-        tagService.deleteTags(musicianInstance)
-        tagService.addTags(musicianInstance, "$${command.tagsComma}")
+        tagService.dropTags(musicianInstance)
+        tagService.addTags(musicianInstance, "${command.tagsComma}")
         messengineService.sendInstanceEditedMessage(musicianInstance, 'musician')
 
         request.withFormat {
