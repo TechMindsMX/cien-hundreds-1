@@ -65,10 +65,10 @@ class CompanyController {
             return
         }
 
-        if(!params.logo.empty){
+        if(!params.logo.isEmpty()){
           command.logoPath = logoStorerService.storeFile(request.getFile('logo'))
         }
-        if(!params.corporatePress.empty){
+        if(!params.corporatePress.isEmpty()){
           command.corporatePressPath = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
         }
 
@@ -100,10 +100,10 @@ class CompanyController {
             return
         }
 
-        if(!params.logo.empty){
+        if(!params.logo.isEmpty()){
           command.logoPath = logoStorerService.storeFile(request.getFile('logo'))
         }
-        if(!params.corporatePress.empty){
+        if(!params.corporatePress.isEmpty()){
           command.corporatePressPath = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
         }
 
