@@ -224,7 +224,6 @@
     %{-- <asset:javascript src="js/plugins/pace/pace.min.js" /> --}%
 
     <!-- jQuery UI -->
-    <asset:javascript src="js/file_validation.js" />
 
     <!-- jQuery UI -->
 
@@ -239,12 +238,18 @@
 
     <!-- Toastr -->
 
+    <!-- Techmindsr -->
+    <asset:javascript src="js/file_validation.js" />
+
+    <asset:javascript src="js/text-area-max.js" />
+
     <asset:javascript src="js/analytics-code.js" />
 
 <script type="text/javascript">
-    $(function() {
-        $('button[type="reset"]').after('<input class="btn btn-danger" type="button" value="Cancelar" onclick="window.history.back()" />').remove()
-    });
+$(function() {
+    $('button[type="reset"]').after('<input class="btn btn-danger" type="button" value="Cancelar" onclick="window.history.back()" />').remove()
+});
+
 </script>
 
 </body>
