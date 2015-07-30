@@ -54,7 +54,7 @@
 
 						<sec:ifAnyGranted roles="ROLE_USER">
 					    	<g:link class="" controller="contact" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">
-					    	${message(code: 'default.add.label' args:[message(code: 'contact.label')])}
+					    	${message(code: 'default.add.label', args:[message(code: 'contact.label')])}
 					    	</g:link>
 						</sec:ifAnyGranted>
 
