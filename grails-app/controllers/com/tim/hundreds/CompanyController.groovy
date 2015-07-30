@@ -111,7 +111,8 @@ class CompanyController {
         DataBinder.copy(companyInstance, command)
         companyService.save(companyInstance)
 
-        tagService.addTags(companyInstance, "${command.name},${command.type.name},${command.tagsComma}")
+        tagService.dropTags(companyInstance)
+        tagService.addTags(companyInstance, "${command.tagsComma}")
         messengineService.sendInstanceEditedMessage(companyInstance, 'company')
 
         request.withFormat {
