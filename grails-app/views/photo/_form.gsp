@@ -9,7 +9,9 @@
 	</label>
 		<div class="${session.inputWidth}">
 			<input class="form-control" type="file" id="file" name="file" />
-
+    		<g:if test="${photoInstance?.path}">
+				<img class="img-responsive max300" src="${grailsApplication.config.base.logo.url}${photoInstance.path}" />
+			</g:if>
 		</div>
 </div>
 

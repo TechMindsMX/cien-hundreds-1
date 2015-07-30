@@ -87,6 +87,11 @@
   </label>
   <div class="${session.inputWidth}">
       <input type="file" id="logo" name="logo" class="form-control"/>
+      <g:if test="${musicianInstance?.logoPath}">
+        <div class="img pad-bottom">
+            <img class="img-responsive img-thumbnail max300" src="${grailsApplication.config.base.logo.url}${musicianInstance.logoPath}" />
+        </div>
+    </g:if>
   </div>
 </div>
 

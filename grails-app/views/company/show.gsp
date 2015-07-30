@@ -29,7 +29,7 @@
 	        	<div class="row">
 		        	<div class="col-xs-12 col-md-4">
 		        		<g:if test="${companyInstance?.logoPath}">
-						<img class="img-responsive max300" src="${grailsApplication.config.base.logo.url}${companyInstance.logoPath}" />
+							<img class="img-responsive max300" src="${grailsApplication.config.base.logo.url}${companyInstance.logoPath}" />
 						</g:if>
 		        	</div>
 		        	<div class="col-xs-12 col-md-8">
@@ -38,6 +38,13 @@
 					<span id="type-label" class="${session.labelWidth} property-label"><g:message code="company.type.label" default="Type" /></span>
 					<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${companyInstance}" field="type.name"/></span>
 				</div>
+				</g:if>
+
+				<g:if test="${companyInstance?.corporatePressPath}">
+					<div class="fieldcontain">
+						<span id="corporatePress-label" class="${session.labelWidth} property-label"><g:message code="corporatePress.label" default="corporatePress" /></span>
+						<span class="property-value" aria-labelledby="corporatePress-label"><g:link target="_blank" url="${grailsApplication.config.base.press.url}${companyInstance.corporatePressPath}">${message(code: 'default.show.label', args: [message(code: 'corporatePress.label')])}</g:link></span>
+					</div>
 				</g:if>
 
 				<div class="fieldcontain">
