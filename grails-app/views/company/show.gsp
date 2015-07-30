@@ -41,7 +41,9 @@
 				</g:if>
 
 				<div class="fieldcontain">
+				<sec:ifAnyGranted roles="ROLE_USER">
 					<g:link controller="product" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'product.label', default: 'Product')])}</g:link>
+				</sec:ifAnyGranted>
 					<g:if test="${companyInstance?.products}">
 						<ul class="one-to-many">
 						<g:each in="${companyInstance?.products}" var="p">
@@ -59,9 +61,11 @@
 				</g:if>
 
 				<div class="fieldcontain">
+				<sec:ifAnyGranted roles="ROLE_USER">
 					<g:if test="${!companyInstance?.social}">
 						<g:link controller="social" action="create" params="['companyUuid': companyInstance?.uuid, 'company.id': companyInstance?.id]" >${message(code: 'default.add.label', args: [message(code: 'social.label')])}</g:link>
 					</g:if>
+				</sec:ifAnyGranted>
 					<g:if test="${companyInstance?.social}">
 						<g:message code="social.label" default="Social" />
 						<g:link controller="social" action="edit" id="${companyInstance?.social?.id}">
@@ -95,12 +99,15 @@
 	        		<div class="col-sm-12">
 				<div class="fieldcontain well">
 				<p id="events-label" class="">
-					<g:link controller="event" action="create" params="['company.id': companyInstance?.id]">${message(code: 'event.label', default: 'Actividades')}</g:link>
+					${message(code: 'event.label', default: 'Actividades')}
+				<sec:ifAnyGranted roles="ROLE_USER">
+					<g:link controller="event" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args:[message(code: 'event.label')])}</g:link>
+				</sec:ifAnyGranted>
 				</p>
 				<g:if test="${companyInstance?.events}">
 					<ul>
 						<g:each in="${companyInstance?.events}" var="e">
-						<li><g:link controller="event" action="edit" id="${e.id}" params="['company.id': companyInstance?.id]"><g:formatDate format="dd-MM-yyyy" date="${e.date}"/> ${e.activity} ${e.place}</g:link></li>
+						<li><g:link controller="event" action="show" id="${e.id}" params="['company.id': companyInstance?.id]"><g:formatDate format="dd-MM-yyyy" date="${e.date}"/> ${e.activity} ${e.place}</g:link></li>
 						</g:each>
 					</ul>
 				</g:if>
@@ -112,12 +119,15 @@
 	        		<div class="col-sm-12">
 				<div class="fieldcontain well">
 				<p id="references-label" class="">
-					<g:link controller="reference" action="create" params="['company.id': companyInstance?.id]">${message(code: 'references.label', default: 'Recomendaciones')}</g:link>
+					${message(code: 'references.label', default: 'Recomendaciones')}
+				<sec:ifAnyGranted roles="ROLE_USER">
+					<g:link controller="reference" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args:[message(code: 'reference.label')])}</g:link>
+				</sec:ifAnyGranted>
 				</p>
 				<g:if test="${companyInstance?.references}">
 					<ul>
 						<g:each in="${companyInstance?.references}" var="r">
-						<li><g:link controller="reference" action="edit" id="${r.id}" >${r.name} - ${r.contactName} - ${r.type.name} - ${r.email} - ${r.phone}</g:link></li>
+						<li><g:link controller="reference" action="show" id="${r.id}" >${r.name} - ${r.contactName} - ${r.type.name} - ${r.email} - ${r.phone}</g:link></li>
 						</g:each>
 					</ul>
 				</g:if>
@@ -163,7 +173,9 @@
 								<g:link controller="address" action="show" id="${companyInstance?.address?.id}">${message(code: 'default.show.label', args: [message(code: 'address.label')])}</g:link>
 							</g:if>
 							<g:else>
+				<sec:ifAnyGranted roles="ROLE_USER">
 								<g:link controller="address" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
+				</sec:ifAnyGranted>
 							</g:else>
 						</div>
 				</div>
@@ -178,7 +190,9 @@
 								<g:link controller="datosFiscales" action="show" id="${companyInstance?.datosFiscales?.id}">${message(code: 'default.show.label', args: [message(code: 'datosFiscales.label')])}</g:link>
 							</g:if>
 							<g:else>
+				<sec:ifAnyGranted roles="ROLE_USER">
 								<g:link controller="datosFiscales" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'datosFiscales.label')])}</g:link>
+				</sec:ifAnyGranted>
 							</g:else>
 						</div>
 				</div>
@@ -196,9 +210,11 @@
 									</li>
 								</g:each>
 							</ul>
+				<sec:ifAnyGranted roles="ROLE_USER">
 							<div>
 								<g:link controller="collaborator" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'collaborator.label')])}</g:link>
 							</div>
+				</sec:ifAnyGranted>
 						</div>
 				</div>
 
