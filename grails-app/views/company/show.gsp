@@ -68,7 +68,9 @@
 				</sec:ifAnyGranted>
 					<g:if test="${companyInstance?.social}">
 						<g:message code="social.label" default="Social" />
-						<g:link controller="social" action="edit" id="${companyInstance?.social?.id}">
+						<sec:ifAnyGranted roles="ROLE_USER">
+							<g:link controller="social" action="edit" id="${companyInstance?.social?.id}">${message(code: 'default.edit.label', args: [message(code: 'social.label')])}</g:link>
+						</sec:ifAnyGranted>
 							<ul>
 								<g:if test="${companyInstance?.social?.facebook}"><li>${companyInstance?.social.facebook}</li></g:if>
 								<g:if test="${companyInstance?.social?.twitter}"><li>${companyInstance?.social.twitter}</li></g:if>
@@ -78,7 +80,6 @@
 								<g:if test="${companyInstance?.social?.linkedin}"><li>${companyInstance?.social.linkedin}</li></g:if>
 								<g:if test="${companyInstance?.social?.other}"><li>${companyInstance?.social.other}</li></g:if>
 							</ul>
-						</g:link>
 					</g:if>
 				</div>
 		        	</div>

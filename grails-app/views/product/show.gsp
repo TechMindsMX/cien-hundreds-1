@@ -143,7 +143,7 @@
 			</div>
 		</g:if>
 
-		<g:if test="${productInstance?.webDescription}">
+		<g:if test="${productInstance?.web && productInstance?.webDescription}">
 			<div class="fieldcontain row">
 				<span id="webDescription-label" class="${session.labelWidth} property-label"><g:message code="product.webDescription.label" default="Web Description" /></span>
 
@@ -152,7 +152,7 @@
 			</div>
 		</g:if>
 
-		<g:if test="${productInstance?.telephoneDescription}">
+		<g:if test="${productInstance?.telephone && productInstance?.telephoneDescription}">
 			<div class="fieldcontain row">
 				<span id="telephoneDescription-label" class="${session.labelWidth} property-label"><g:message code="product.telephoneDescription.label" default="Telephone Description" /></span>
 
@@ -161,7 +161,7 @@
 			</div>
 		</g:if>
 
-		<g:if test="${productInstance?.campaignDescription}">
+		<g:if test="${productInstance?.campaign && productInstance?.campaignDescription}">
 			<div class="fieldcontain row">
 				<span id="campaignDescription-label" class="${session.labelWidth} property-label"><g:message code="product.campaignDescription.label" default="Campaign Description" /></span>
 
@@ -170,7 +170,7 @@
 			</div>
 		</g:if>
 
-		<g:if test="${productInstance?.eventDescription}">
+		<g:if test="${productInstance?.event && productInstance?.eventDescription}">
 			<div class="fieldcontain row">
 				<span id="eventDescription-label" class="${session.labelWidth} property-label"><g:message code="product.eventDescription.label" default="Event Description" /></span>
 
@@ -179,7 +179,7 @@
 			</div>
 		</g:if>
 
-		<g:if test="${productInstance?.otherDescription}">
+		<g:if test="${productInstance?.other && productInstance?.otherDescription}">
 			<div class="fieldcontain row">
 				<span id="otherDescription-label" class="${session.labelWidth} property-label"><g:message code="product.otherDescription.label" default="Other Description" /></span>
 
@@ -190,7 +190,7 @@
 
 		<g:if test="${productInstance?.company}">
 			<div class="fieldcontain row">
-				<span id="company-label" class="${session.labelWidth} property-label"><g:message code="product.company.label" default="Company" /></span>
+				<span id="company-label" class="${session.labelWidth} property-label"><g:message code="company.label" default="Company" /></span>
 
 				<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${productInstance?.company?.id}">${productInstance?.company?.name?.encodeAsHTML()}</g:link></span>
 

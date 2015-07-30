@@ -13,7 +13,9 @@
 	}
 
 	$(document).ready(function(){
-		$('input:checkbox').on('change', enableDisableTextAreas)
+		$('input:checkbox').on('change', enableDisableTextAreas);
+		$('input:checkbox').each(enableDisableTextAreas);
+
 	});
 </script>
 
