@@ -92,7 +92,7 @@
 
                 <sec:ifAnyGranted roles="ROLE_USER">
                     <g:if test="${!musicianInstance?.social}">
-                        <g:link class="" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">
+                        <g:link class="" controller="social" action="create" params="['musicianUuid': musicianInstance?.uuid]">
                             ${message(code:'default.add.label', args:[message(code:'social.label')])}
                         </g:link>
                     </g:if>

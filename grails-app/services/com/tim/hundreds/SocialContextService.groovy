@@ -6,18 +6,21 @@ import grails.transaction.Transactional
 class SocialContextService {
   def socialService
 
-  def saveInstance(socialInstance, params) {
-    if(params.musician?.id){
-      def musician = Musician.findById(params.musician.id)
-      socialService.saveSocialToInstance(socialInstance, musician)
+  def saveInstance(socialInstance) {
+    if(socialInstance.musician){
+      def musician = socialInstance.musician
+      musician.social = socialInstance
+      musician.save flush:true
     }
-    if(params.contact?.id){
-      def contact = Contact.findById(params.contact.id)
-      socialService.saveSocialToInstance(socialInstance, contact)
+    if(socialInstance.contact){
+      def contact = socialInstance.contact
+      musician.social = socialInstance
+      contact.save flush:true
     }
-    if(params.company?.id){
-      def company = Company.findById(params.company.id)
-      socialService.saveSocialToInstance(socialInstance, company)
+    if(socialInstance.company){
+      def company = socialInstance.company
+      company.social = socialInstance
+      company.save flush:true
     }
   }
 

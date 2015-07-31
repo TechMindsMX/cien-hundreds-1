@@ -26,11 +26,18 @@ class SocialController {
     }
 
     def create() {
-      respond new Social(params)
+      def social = new Social(params)
+      social.musician = Musician.findByUuid(params.musicianUuid)
+      social.company = Company.findByUuid(params.companyUuid)
+      social.contact = Contact.findByUuid(params.contactUuid)
+      respond social
     }
 
     @Transactional
     def save(Social socialInstance) {
+        socialInstance.musician = Musician.findByUuid(params.musicianUuid)
+        socialInstance.company = Company.findByUuid(params.companyUuid)
+        socialInstance.contact = Contact.findByUuid(params.contactUuid)
         if (socialInstance == null) {
             notFound()
             return
@@ -41,7 +48,7 @@ class SocialController {
             return
         }
 
-        socialContextService.saveInstance(socialInstance, params)
+        socialContextService.saveInstance(socialInstance)
 
         request.withFormat {
             form multipartForm {
