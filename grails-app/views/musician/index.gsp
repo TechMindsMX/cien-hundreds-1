@@ -25,19 +25,19 @@
 			<table class="table table-stripped">
 			<thead>
 					<tr>
-					
+
 						<g:sortableColumn property="name" title="${message(code: 'musician.name.label', default: 'Nombre(s)')}" />
 						<th>${message(code: 'telephone.label', default: 'Teléfonoooo')}</th>
 						<th>${message(code: 'email.label', default: 'Correo')}</th>
 						<g:sortableColumn property="dateCreated" title="${message(code: 'musician.dateCreated.label', default: 'Fecha de creación')}" />
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${musicianInstanceList}" status="i" var="musicianInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${musicianInstance.id}">${fieldValue(bean: musicianInstance, field: "name")}</g:link></td>
+
+						<td><g:link action="show" params="['musicianUuid': musicianInstance?.uuid]">${fieldValue(bean: musicianInstance, field: "name")}</g:link></td>
 						<td>
 							<g:each in="${musicianInstance.contacts?.telephones}" var="v"><div><% v.phone.each {println it} %></div></g:each>
 						</td>
@@ -45,7 +45,7 @@
 							<g:each in="${musicianInstance.contacts?.emails}" var="v"><div><% v.mail.each {println it} %></div></g:each>
 						</td>
 						<td><g:formatDate format="dd-MM-yyyy" date="${musicianInstance.dateCreated}" /></td>
-										
+
 					</tr>
 				</g:each>
 				</tbody>
