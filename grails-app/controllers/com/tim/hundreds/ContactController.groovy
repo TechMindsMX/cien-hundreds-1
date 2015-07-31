@@ -5,7 +5,7 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['ROLE_USER'])
 class ContactController {
     def photoStorerService
     def contactService
@@ -43,9 +43,8 @@ class ContactController {
             return
         }
 
-        if(params.file){
-          def photoPath = photoStorerService.storeFile(request.getFile('file'))
-          command.photoPath = photoPath
+        if(!params.file.isEmpty()){
+          command.photoPath = photoStorerService.storeFile(request.getFile('file'))
         }
         Contact contactInstance = new Contact()
         bindData(contactInstance, command)
@@ -90,12 +89,12 @@ class ContactController {
         }
 
         contactInstance.save flush:true
-        try {  
+        try {
           messengineService.sendInstanceEditedMessage(contactInstance.musician, 'musician')
         }
         catch(BusinessException ex){
           log.error message(code:'message.service.down', default:"service temporarily down")
-        } 
+        }
         finally {
           request.withFormat {
               form multipartForm {

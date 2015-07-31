@@ -3,12 +3,14 @@ package com.tim.hundreds
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
+import grails.plugin.springsecurity.SpringSecurityUtils
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['ROLE_USER'])
 class PhotoController {
     def photoStorerService
     def messengineService
     def photoService
+    def springSecurityService
 
     static showMe = false /*Parametro para aparecer en el menú*/
 
@@ -19,8 +21,14 @@ class PhotoController {
         respond Photo.list(params), model:[photoInstanceCount: Photo.count()]
     }
 
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER','ROLE_FACILITATOR'])
     def show(Photo photoInstance) {
-        respond photoInstance
+        if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == photoInstance.musician.user) {
+            respond photoInstance
+        } else {
+            flash.error = 'access.denied.label'
+            redirect url: '/'
+        }
     }
 
     def create() {
@@ -34,24 +42,27 @@ class PhotoController {
             return
         }
 
-        if(params.file){
+        if(!params.file.isEmpty()){
           command.path = photoStorerService.storeFile(request.getFile('file'))
-        }
-        Photo photoInstance = new Photo()
-        bindData(photoInstance, command)
+          Photo photoInstance = new Photo()
+          bindData(photoInstance, command)
 
-        try{
-          def instance = photoService.savePhoto(photoInstance)
-          request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'photo.label', default: 'Photo'), instance.id])
-                redirect instance
+          try{
+            def instance = photoService.savePhoto(photoInstance)
+            request.withFormat {
+              form multipartForm {
+                  flash.message = message(code: 'default.created.message', args: [message(code: 'photo.label', default: 'Photo'), instance.id])
+                  redirect instance
+              }
+              '*' { respond instance, [status: CREATED] }
             }
-            '*' { respond instance, [status: CREATED] }
+          } catch (Exception ve){
+            log.info "Errors ${ve.errors}"
+            respond photoInstance.musician.errors, view:'create'
           }
-        } catch (Exception ve){
-          log.info "Errors ${ve.errors}"
-          respond photoInstance.musician.errors, view:'create'
+        } else {
+          flash.error="El archivo de foto no se ha especificado"
+          respond command, view:'create'
         }
     }
 

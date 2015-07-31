@@ -20,7 +20,7 @@ class CompanyController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def companyList = companyService.getCompanyList(springSecurityService.currentUser, params)
-        respond companyList.list, model:[companyListCount: companyList.count] 
+        respond companyList.list, model:[companyListCount: companyList.count]
     }
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
@@ -28,7 +28,9 @@ class CompanyController {
       log.info "Listing companies created from ${params.from} to ${params.to}"
       def companies
       try{
-        Date startDate = Date.parse('dd-MM-yyyy', params.from)
+        params.from = params.from ?: '01-01-1900'
+        params.to = params.to ?: new Date().format('dd-MM-yyyy').toString()
+        Date startDate = Date.parse('dd-MM-yyyy', params.from) 
         Date endDate = Date.parse('dd-MM-yyyy', params.to)
         companies = companyService.getCompaniesByDateCreated(startDate, endDate)
       }catch(InvalidParamsException ipe){
@@ -65,10 +67,10 @@ class CompanyController {
             return
         }
 
-        if(!params.logo.empty){
+        if(!params.logo.isEmpty()){
           command.logoPath = logoStorerService.storeFile(request.getFile('logo'))
         }
-        if(!params.corporatePress.empty){
+        if(!params.corporatePress.isEmpty()){
           command.corporatePressPath = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
         }
 
@@ -100,18 +102,19 @@ class CompanyController {
             return
         }
 
-        if(!params.logo.empty){
+        if(!params.logo.isEmpty()){
           command.logoPath = logoStorerService.storeFile(request.getFile('logo'))
         }
-        if(!params.corporatePress.empty){
+        if(!params.corporatePress.isEmpty()){
           command.corporatePressPath = corporatePressStorerService.storeFile(request.getFile('corporatePress'))
         }
 
         def companyInstance = Company.findByUuid(command.uuid)
-        bindData(companyInstance, command)
+        DataBinder.copy(companyInstance, command)
         companyService.save(companyInstance)
 
-        tagService.addTags(companyInstance, "${command.name},${command.type.name},${command.tagsComma}")
+        tagService.dropTags(companyInstance)
+        tagService.addTags(companyInstance, "${command.tagsComma}")
         messengineService.sendInstanceEditedMessage(companyInstance, 'company')
 
         request.withFormat {

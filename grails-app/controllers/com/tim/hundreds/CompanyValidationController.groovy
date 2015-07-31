@@ -3,21 +3,27 @@ package com.tim.hundreds
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_ADMIN','ROLE_COMPANY_ADMIN', 'ROLE_BUYER'])
+@Secured(['ROLE_ADMIN','ROLE_COMPANY_ADMIN','ROLE_BUYER'])
 class CompanyValidationController {
     def companyService
+    def springSecurityService
 
     static showMe = true
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETEs"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond CompanyValidation.list(params), model:[companyValidationInstanceCount: CompanyValidation.count()]
+        if( SpringSecurityUtils.ifAnyGranted('ROLE_BUYER') ) {
+            respond CompanyValidation.findAllByUser(springSecurityService.currentUser), model:[companyValidationInstanceCount: CompanyValidation.count()]
+        } else {
+            respond CompanyValidation.list(params), model:[companyValidationInstanceCount: CompanyValidation.count()]
+        }
     }
 
-    @Secured(['ROLE_ADMIN', 'ROLE_COMPANY_ADMIN','ROLE_BUYER'])
+    @Secured(['ROLE_ADMIN','ROLE_COMPANY_ADMIN','ROLE_BUYER'])
     def show(CompanyValidation companyValidationInstance) {
         respond companyValidationInstance
     }
@@ -40,14 +46,19 @@ class CompanyValidationController {
             return
         }
 
-        companyService.assignCompanyToBuyer(companyValidationInstance)
+        try{
+          companyService.assignCompanyToBuyer(companyValidationInstance)
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'companyValidation.label', default: 'CompanyValidation'), companyValidationInstance.id])
-                redirect companyValidationInstance
-            }
-            '*' { respond companyValidationInstance, [status: CREATED] }
+          request.withFormat {
+              form multipartForm {
+                  flash.message = message(code: 'default.created.message', args: [message(code: 'companyValidation.label', default: 'CompanyValidation'), companyValidationInstance.id])
+                  redirect companyValidationInstance
+              }
+              '*' { respond companyValidationInstance, [status: CREATED] }
+          }
+        }catch (InvalidParamsException ipe){
+          flash.error = "La empresa ya ha sido asignada o no se encontro al comprador"
+          respond companyValidationInstance, view: 'create'
         }
     }
 

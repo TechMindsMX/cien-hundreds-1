@@ -17,5 +17,13 @@ class CompanyShowPage extends Page {
         editButtton { audioForm.find('.edit') }
         cancelButton { $("#btnCancel") }
     	logout       { $('#navbar').find('.logout') }
+
+        createDatosFiscales { $('a[href*="datosFiscales/create"]') }
+        createAddress { $('a[href*="address/create"]') }
+        createSocial { $('a[href*="social/create"]') }
+        createReference { $('a[href*="reference/create"]') }
+        createCollaborator { $('a[href*="collaborator/create"]') }
+        createEvent { $('a[href*="event/create"]') }
+        createProduct { $('a[href*="product/create"]') }
     }
 }

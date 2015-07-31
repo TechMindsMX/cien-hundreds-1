@@ -6,7 +6,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['ROLE_USER'])
 class SocialController {
     def musicianService
     def socialContextService
@@ -20,6 +20,7 @@ class SocialController {
         respond Social.list(params), model:[socialInstanceCount: Social.count()]
     }
 
+    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def show(Social socialInstance) {
         respond socialInstance
     }

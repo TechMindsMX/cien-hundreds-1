@@ -57,6 +57,12 @@
 	</label>
 		<div class="${session.inputWidth}">
 			<input type="file" class="form-control" name="logo" />
+        		<g:if test="${companyInstance?.logoPath}">
+					<img class="img-responsive max300" src="${grailsApplication.config.base.logo.url}${companyInstance.logoPath}" />
+	        		<g:if test="${companyInstance?.logoPath}">
+						<img class="img-responsive max300" src="${grailsApplication.config.base.logo.url}${companyInstance.logoPath}" />
+					</g:if>
+				</g:if>
 		</div>
 </div>
 
@@ -67,6 +73,10 @@
 	</label>
 		<div class="${session.inputWidth}">
 			<input type="file" class="form-control" name="corporatePress"/>
+			<g:if test="${companyInstance?.corporatePressPath}">
+					<span class="property-value" aria-labelledby="corporatePress-label"><g:link target="_blank" url="${grailsApplication.config.base.press.url}${companyInstance.corporatePressPath}">${message(code: 'default.show.label', args: [message(code: 'corporatePress.label')])}</g:link></span>
+			</g:if>
+
 		</div>
 </div>
 

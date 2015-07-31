@@ -102,10 +102,11 @@ class MusicianController {
         }
 
         def musicianInstance = Musician.findByUuid(command.uuid)
-        bindData(musicianInstance, command)
+        DataBinder.copy(musicianInstance, command)
         musicianService.save(musicianInstance)
 
-        tagService.addTags(musicianInstance, "${command.name},${command.genre.name},${command.tagsComma}")
+        tagService.dropTags(musicianInstance)
+        tagService.addTags(musicianInstance, "${command.tagsComma}")
         messengineService.sendInstanceEditedMessage(musicianInstance, 'musician')
 
         request.withFormat {

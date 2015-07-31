@@ -46,7 +46,6 @@
 				</li>
 				</g:if>
 
-${datosFiscalesInstance?.dump()}
  				<g:if test="${datosFiscalesInstance?.musician}">
 				<li class="fieldcontain">
 					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musician.label" default="Musician" /></span>
@@ -66,24 +65,29 @@ ${datosFiscalesInstance?.dump()}
 				</g:if>
 
 				<li class="fieldcontain">
-					<span id="address-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.address.label" default="Address" /></span>
+					<span id="address-label" class="${session.labelWidth} property-label"><g:message code="address.label" default="Address" /></span>
 					
 				<g:if test="${datosFiscalesInstance?.address}">
-						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${datosFiscalesInstance?.address?.id}"><g:message code="address.view.label" default="Ver dirección" /></g:link></span>
+						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${datosFiscalesInstance?.address?.id}">${message(code: 'default.show.label', args:[message(code:'address.label')])}</g:link></span>
 				</g:if>
 				<g:else>
-                	<g:link class="glyphicon glyphicon-floppy-disk" controller="address" action="create" params="['datosFiscales.id': datosFiscalesInstance.id]"> Dirección</g:link>
+					${message(code: 'address.missing.label')}
+					<sec:ifAnyGranted roles="ROLE_USER">
+                		<g:link class="glyphicon glyphicon-floppy-disk" controller="address" action="create" params="['datosFiscales.id': datosFiscalesInstance.id]"> Dirección</g:link>
+					</sec:ifAnyGranted>
 				</g:else>
 				</li>
 			
 			</ul>
 
-			<g:form url="[resource:datosFiscalesInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="btn btn-primary edit" action="edit" resource="${datosFiscalesInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
+			<sec:ifAnyGranted roles="ROLE_USER">
+				<g:form url="[resource:datosFiscalesInstance, action:'delete']" method="DELETE">
+					<fieldset class="buttons">
+						<g:link class="btn btn-primary edit" action="edit" resource="${datosFiscalesInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					</fieldset>
+				</g:form>
+			</sec:ifAnyGranted>
 		</div>
 	</body>
 </html>

@@ -5,7 +5,7 @@
 <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'username', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="username">Usuario<span class="required-indicator">*</span></label>
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.username}" name="username" class="form-control" size="46" />
+        <g:textField value="${model?.username}" name="username" class="form-control" maxlength="46" />
     </div>
 </div>
 
@@ -28,7 +28,7 @@
 <div class="form-group fieldcontain ${hasErrors(bean: model, field: 'firstName', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="firstName">Nombre(s)<span class="required-indicator">*</span></label>
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.firstName}" name="firstName" class="form-control" size="60"/>
+        <g:textField value="${model?.firstName}" name="firstName" class="form-control" maxlength="60"/>
     </div>
 </div>
 
@@ -50,7 +50,7 @@
 	<label class="${session.labelWidth} control-label" for="phone">Teléfono</label>
 
     <div class="${session.inputWidth}">
-        <g:textField value="${model?.phone}" name="phone" class="form-control" size="10" />
+        <g:textField value="${model?.phone}" name="phone" class="form-control" maxlength="10" />
     </div>
 </div>
 

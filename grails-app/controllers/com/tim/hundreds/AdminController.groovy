@@ -10,6 +10,7 @@ class AdminController {
   static showMe = true
 
   def userService
+  def userPermissionsService
   def photoStorerService
   def resumeStorerService
   def springSecurityService
@@ -20,7 +21,8 @@ class AdminController {
 
   def create(){
     UserCommand command = new UserCommand()
-    respond command
+    List roles = userPermissionsService.getManageableRoleList(springSecurityService.currentUser.getAuthorities().authority)
+    respond command, model: [roles: roles]
   }
 
   def save(UserCommand command){
@@ -70,7 +72,9 @@ class AdminController {
     userCommand.photoPath = user.profile?.photoPath
     userCommand.resumePath = user.profile?.resumePath
     userCommand.status = !user.accountExpired
-    [model:userCommand,edit:true]
+
+    List roles = userPermissionsService.getManageableRoleList(springSecurityService.currentUser.getAuthorities().authority)
+    [model:userCommand, roles:roles, edit:true]
   }
 
   @Secured(['IS_AUTHENTICATED_REMEMBERED'])

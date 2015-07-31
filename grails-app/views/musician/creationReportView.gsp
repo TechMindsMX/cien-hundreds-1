@@ -12,7 +12,6 @@
 		<div class="nav" role="navigation">
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
       <section class="content">
@@ -22,7 +21,7 @@
 					<g:message code="musician.from.label" default="Desde" />
 				</label>
 				<div class="${session.inputWidth}">
-					<g:timDatePicker class="form-control" name="from" maxDate="-0D" changeMonth="true" changeYear="true"></g:timDatePicker>
+					<g:timDatePicker class="form-control" name="from" maxDate="-0D" changeMonth="true" changeYear="true" yearRange="-100:+0" ></g:timDatePicker>
 				</div>
 			</div>
 			<div class="form-group">
@@ -30,7 +29,7 @@
 					<g:message code="musician.to.label" default="Hasta" />
 				</label>
 				<div class="${session.inputWidth}">
-					<g:timDatePicker class="form-control" name="to" maxDate="-0D" changeMonth="true" changeYear="true" ></g:timDatePicker>
+					<g:timDatePicker class="form-control" name="to" maxDate="-0D" changeMonth="true" changeYear="true" yearRange="-100:+0" ></g:timDatePicker>
 				</div>
 			</div>
 			<div class="form-group">

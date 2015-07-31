@@ -71,7 +71,7 @@
 				<li class="fieldcontain">
 					<span id="type-label" class="${session.labelWidth} property-label"><g:message code="reference.type.label" default="Type" /></span>
 					
-						<span class="property-value" aria-labelledby="type-label"><g:link controller="businessActivity" action="show" id="${referenceInstance?.type?.id}">${referenceInstance?.type?.name?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="type-label">${referenceInstance?.type?.name?.encodeAsHTML()}</span>
 					
 				</li>
 				</g:if>

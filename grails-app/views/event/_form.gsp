@@ -41,7 +41,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
-			<g:timDatePicker name="date" maxDate="-0D" changeMonth="true" changeYear="true" value="${eventInstance?.date}" required="true"></g:timDatePicker>
+			<g:timDatePicker name="date" maxDate="-0D" changeMonth="true" changeYear="true" yearRange="-100:+0" value="${eventInstance?.date}" required="true"></g:timDatePicker>
 		</div>
 </div>
 
