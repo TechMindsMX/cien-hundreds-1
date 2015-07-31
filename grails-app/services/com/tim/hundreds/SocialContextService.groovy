@@ -14,7 +14,7 @@ class SocialContextService {
     }
     if(socialInstance.contact){
       def contact = socialInstance.contact
-      musician.social = socialInstance
+      contact.social = socialInstance
       contact.save flush:true
     }
     if(socialInstance.company){

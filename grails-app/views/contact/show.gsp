@@ -195,7 +195,7 @@
 
   <g:if test="${!contactInstance?.social}">
   <div>
-    <g:link controller="social" action="create" params="['contactUuid': contactInstance.uuid, 'contact.id': contactInstance.id]">${message(code: 'default.add.label', args: [message(code: 'social.label')])}</g:link>
+    <g:link controller="social" action="create" params="['contactUuid': contactInstance.uuid]">${message(code: 'default.add.label', args: [message(code: 'social.label')])}</g:link>
   </div>
   </g:if>
 
