@@ -75,9 +75,9 @@
 	</div>
 </div>
 
-<g:hiddenField name="musician.id" value="${addressInstance.musician?.id}"/>
-<g:hiddenField name="contact.id" value="${addressInstance.contact?.id}"/>
-<g:hiddenField name="company.id" value="${addressInstance.company?.id}"/>
-<g:hiddenField name="datosFiscales.id" value="${addressInstance?.datosFiscales?.id}"/>
+<g:hiddenField name="musicianUuid" value="${addressInstance.musician?.uuid}"/>
+<g:hiddenField name="contactUuid" value="${addressInstance.contact?.uuid}"/>
+<g:hiddenField name="companyUuid" value="${addressInstance.company?.uuid}"/>
+<g:hiddenField name="datosFiscalesUuid" value="${addressInstance?.datosFiscales?.uuid}"/>
 
 

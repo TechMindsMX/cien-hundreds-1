@@ -6,22 +6,26 @@ import grails.transaction.Transactional
 class AddressContextService {
   def addressService
 
-  def saveInstance(addressInstance, params) {
-    if(params.musician.id){
-      def musician = Musician.findById(params.musician.id)
-      addressService.saveAddressToInstance(addressInstance, musician)
+  def saveInstance(addressInstance) {
+    if(addressInstance.musician){
+      def musician = addressInstance.musician
+      musician.address = addressInstance
+      musician.save flush:true
     }
-    if(params.datosFiscales.id){
-      def datosFiscales = DatosFiscales.findById(params.datosFiscales.id)
-      addressService.saveAddressToInstance(addressInstance, datosFiscales)
+    if(addressInstance.datosFiscales){
+      def datosFiscales = addressInstance.datosFiscales
+      datosFiscales.address = addressInstance
+      company.save flush:true
     }
-    if(params.contact.id){
-      def contact = Contact.findById(params.contact.id)
-      addressService.saveAddressToInstance(addressInstance, contact)
+    if(addressInstance.contact){
+      def contact = addressInstance.contact
+      contact.address = addressInstance
+      contact.save flush:true
     }
-    if(params.company.id){
-      def company = Company.findById(params.company.id)
-      addressService.saveAddressToInstance(addressInstance, company)
+    if(addressInstance.company){
+      def company = addressInstance.company
+      company.address = addressInstance
+      company.save flush:true
     }
   }
 

@@ -60,7 +60,6 @@ class SocialController {
     }
 
     def edit(Social socialInstance) {
-      log.info "socialInstance: ${socialInstance.dump()}"
       socialInstance.musician = Musician.findByUuid(params.musicianUuid)
       socialInstance.company = Company.findByUuid(params.companyUuid)
       socialInstance.contact = Contact.findByUuid(params.contactUuid)

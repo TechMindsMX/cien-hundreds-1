@@ -24,13 +24,22 @@ class AddressController {
 
     @Secured(['ROLE_USER'])
     def create() {
-      respond new Address(params)
+      def address = new Address(params)
+      address.musician = Musician.findByUuid(params.musicianUuid)
+      address.company = Company.findByUuid(params.companyUuid)
+      address.contact = Contact.findByUuid(params.contactUuid)
+      address.datosFiscales = DatosFiscales.findByUuid(params.datosFiscalesUuid)
+      respond address
     }
 
     @Secured(['ROLE_USER'])
     @Transactional
     def save(Address addressInstance) {
         log.info "companyId: ${params.companyId}"
+        addressInstance.musician = Musician.findByUuid(params.musicianUuid)
+        addressInstance.company = Company.findByUuid(params.companyUuid)
+        addressInstance.contact = Contact.findByUuid(params.contactUuid)
+        addressInstance.datosFiscales = DatosFiscales.findByUuid(params.datosFiscalesUuid)
 
         if (addressInstance == null) {
             notFound()
@@ -42,7 +51,7 @@ class AddressController {
             return
         }
 
-        addressContextService.saveInstance(addressInstance, params)
+        addressContextService.saveInstance(addressInstance)
 
         request.withFormat {
           form multipartForm {
@@ -55,7 +64,11 @@ class AddressController {
 
     @Secured(['ROLE_USER'])
     def edit(Address addressInstance) {
-        respond addressInstance
+      addressInstance.musician = Musician.findByUuid(params.musicianUuid)
+      addressInstance.company = Company.findByUuid(params.companyUuid)
+      addressInstance.contact = Contact.findByUuid(params.contactUuid)
+      addressInstance.datosFiscales = DatosFiscales.findByUuid(params.datosFiscalesUuid)
+      respond addressInstance
     }
 
     @Secured(['ROLE_USER'])
