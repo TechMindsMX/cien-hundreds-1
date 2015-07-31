@@ -338,7 +338,7 @@
                <span id="direccion-label" class="property-label"><strong><g:message code="company.address.label" default="Dirección" /> </strong></span>
                 <sec:ifAnyGranted roles="ROLE_USER">
                     <g:if test="${!musicianInstance?.address}">
-                        <g:link class="text-capitalize" controller="address" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">
+                        <g:link class="text-capitalize" controller="address" action="create" params="['musicianUuid': musicianInstance?.uuid]">
                             ${message(code:'default.add.label', args:[message(code:'address.label')])}
                         </g:link>
                     </g:if>
