@@ -35,7 +35,7 @@ class AddressController {
     @Secured(['ROLE_USER'])
     @Transactional
     def save(Address addressInstance) {
-        log.info "companyId: ${params.companyId}"
+        log.info "address: ${addressInstance.dump()}"
         addressInstance.musician = Musician.findByUuid(params.musicianUuid)
         addressInstance.company = Company.findByUuid(params.companyUuid)
         addressInstance.contact = Contact.findByUuid(params.contactUuid)

@@ -189,7 +189,7 @@
 <sec:ifAnyGranted roles="ROLE_USER">
   <g:if test="${contactInstance.address == null}">
   <div>
-    <g:link controller="address" action="create" params="['contact.id': contactInstance.id]">${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
+    <g:link controller="address" action="create" params="['contactUuid': contactInstance.uuid]">${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
   </div>
   </g:if>
 
