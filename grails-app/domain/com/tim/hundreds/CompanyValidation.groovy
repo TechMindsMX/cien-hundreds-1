@@ -5,6 +5,9 @@ class CompanyValidation {
   String message
   ValidationType type
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [
     user: User,
     company: Company

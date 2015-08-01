@@ -4,6 +4,9 @@ class Audio {
   String uuid = TokenGenerator.generateToken()
   String url
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [
     musician : Musician
   ]

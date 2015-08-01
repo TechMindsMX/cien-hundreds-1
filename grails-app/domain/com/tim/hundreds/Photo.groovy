@@ -5,6 +5,9 @@ class Photo {
   String uuid = TokenGenerator.generateToken()
   String path
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [
     musician : Musician
   ]

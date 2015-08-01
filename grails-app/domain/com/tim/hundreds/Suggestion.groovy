@@ -7,6 +7,9 @@ class Suggestion {
   String email
   String phone
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [ musician : Musician ]
 
   static constraints = {

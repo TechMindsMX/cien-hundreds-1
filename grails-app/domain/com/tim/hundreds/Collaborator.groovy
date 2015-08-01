@@ -8,6 +8,9 @@ class Collaborator {
   String position
   String notes
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [ company : Company ]
 
   static hasMany = [

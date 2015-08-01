@@ -20,6 +20,9 @@ class Company implements Taggable {
   Social social
   User assigned
 
+  Date dateCreated
+  Date lastUpdated
+
   static transients = ['tagsComma']
 
   static hasOne = [

@@ -8,6 +8,9 @@ class DatosFiscales {
   PersonaJuridicaType personaJuridica
   Address address
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [ musician: Musician, company: Company ]
 
   static constraints = {

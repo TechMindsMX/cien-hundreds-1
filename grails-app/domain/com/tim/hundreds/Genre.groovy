@@ -4,6 +4,9 @@ class Genre {
   String name
   Boolean enabled = true
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [Musician]
 
   static constraints = {

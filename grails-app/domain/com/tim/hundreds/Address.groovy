@@ -10,6 +10,9 @@ class Address {
   String state
   String country
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [ musician: Musician, company: Company, contact: Contact, datosFiscales: DatosFiscales ]
 
   static constraints = {

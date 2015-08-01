@@ -12,6 +12,8 @@ class Contact {
   String photoPath
   String web
 
+  Date dateCreated
+  Date lastUpdated
   Date birthDate
   Date entryDate
 

@@ -33,6 +33,9 @@ class Product {
   Boolean other
   String otherDescription
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [
     company : Company
   ]

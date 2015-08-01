@@ -10,6 +10,9 @@ class MusicianComment {
   String suggestions
   String contacts
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [ musician : Musician ]
 
   static mapping = {
