@@ -26,6 +26,10 @@ class CompanyController {
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Company companyInstance) {
         companyInstance = Company.findByUuid(params.uuid)
+        if (companyInstance == null) {
+            notFound()
+            return
+        }
         if (SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_BUYER,ROLE_COMPANY_ADMIN,ROLE_COMPANY_VIEWER') || springSecurityService.currentUser == companyInstance.user) {
             respond companyInstance
         } else {
@@ -150,11 +154,11 @@ class CompanyController {
 
     protected void notFound() {
         request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), params.id])
+            '*' {
+                flash.error = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            json { render status: NOT_FOUND }
         }
     }
 }

@@ -22,6 +22,11 @@ class ProductController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER','ROLE_BUYER'])
     def show(Product productInstance) {
+        productInstance = Product.findByUuid(params.uuid)
+        if (productInstance == null) {
+            notFound()
+            return
+        }
         respond productInstance
     }
 
@@ -104,11 +109,11 @@ class ProductController {
 
     protected void notFound() {
         request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'product.label', default: 'Product'), params.id])
+            '*' {
+                flash.error = message(code: 'default.not.found.message', args: [message(code: 'product.label', default: 'Product'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            json { render status: NOT_FOUND }
         }
     }
 }
