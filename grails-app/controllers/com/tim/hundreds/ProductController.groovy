@@ -11,8 +11,6 @@ class ProductController {
     def messengineService
     def springSecurityService
 
-    static showMe = false /*Parametro para aparecer en el menú*/
-
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -61,7 +59,7 @@ class ProductController {
           request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'product.label', default: 'Product'), instance.id])
-                redirect controller: 'company', action: 'show', params: [uuid: productInstance.company.uuid]
+                redirect productInstance
             }
             '*' { respond instance, [status: CREATED] }
           }
@@ -79,7 +77,6 @@ class ProductController {
 
     @Transactional
     def update(Product productInstance) {
-        productInstance.company = productInstance.company ?: Company.findByUuid(params.companyUuid) 
         if (productInstance == null) {
             notFound()
             return
@@ -90,12 +87,12 @@ class ProductController {
             return
         }
 
+        productInstance.company = productInstance.company ?: Company.findByUuid(params.companyUuid) 
         productInstance.save flush:true
         messengineService.sendInstanceEditedMessage(productInstance.company, 'company')
 
         request.withFormat {
             form multipartForm {
-              log.info "UPDATE"
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Product.label', default: 'Product'), productInstance.id])
                 redirect productInstance
             }
@@ -123,7 +120,6 @@ class ProductController {
     }
 
     protected void notFound() {
-      log.info "404"
         request.withFormat {
             '*' {
                 flash.error = message(code: 'default.not.found.message', args: [message(code: 'product.label', default: 'Product'), params.id])
