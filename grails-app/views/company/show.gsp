@@ -182,7 +182,7 @@
 							</g:if>
 							<g:else>
 				<sec:ifAnyGranted roles="ROLE_USER">
-								<g:link controller="address" action="create" params="['uuid': companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
+								<g:link controller="address" action="create" params="['companyUuid': companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
 				</sec:ifAnyGranted>
 							</g:else>
 						</div>
@@ -199,7 +199,7 @@
 							</g:if>
 							<g:else>
 				<sec:ifAnyGranted roles="ROLE_USER">
-								<g:link controller="datosFiscales" action="create" params="['uuid': companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'datosFiscales.label')])}</g:link>
+								<g:link controller="datosFiscales" action="create" params="['companyUuid': companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'datosFiscales.label')])}</g:link>
 				</sec:ifAnyGranted>
 							</g:else>
 						</div>
@@ -220,7 +220,7 @@
 							</ul>
 				<sec:ifAnyGranted roles="ROLE_USER">
 							<div>
-								<g:link controller="collaborator" action="create" params="['uuid': companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'collaborator.label')])}</g:link>
+								<g:link controller="collaborator" action="create" params="['companyUuid': companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'collaborator.label')])}</g:link>
 							</div>
 				</sec:ifAnyGranted>
 						</div>

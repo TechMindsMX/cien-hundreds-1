@@ -121,11 +121,11 @@ class EventController {
 
     protected void notFound() {
         request.withFormat {
+            json { render status: NOT_FOUND }
             '*' {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'event.label', default: 'Event'), params.id])
                 redirect action: "index", method: "GET"
             }
-            json { render status: NOT_FOUND }
         }
     }
 }

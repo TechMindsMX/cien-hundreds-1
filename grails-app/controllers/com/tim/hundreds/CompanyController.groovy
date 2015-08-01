@@ -154,11 +154,11 @@ class CompanyController {
 
     protected void notFound() {
         request.withFormat {
+            json { render status: NOT_FOUND }
             '*' {
                 flash.error = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), params.id])
                 redirect action: "index", method: "GET"
             }
-            json { render status: NOT_FOUND }
         }
     }
 }
