@@ -38,7 +38,7 @@
 				<g:each in="${complementInstanceList}" status="i" var="complementInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${complementInstance.id}">${fieldValue(bean: complementInstance, field: "name")}</g:link></td>
+						<td><g:link action="show" params="['uuid': complementInstance.uuid]">${fieldValue(bean: complementInstance, field: "name")}</g:link></td>
 					
 						<td>${fieldValue(bean: complementInstance, field: "price")}</td>
 					

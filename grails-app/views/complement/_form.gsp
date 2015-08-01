@@ -30,9 +30,9 @@
 		<span class="required-indicator">*</span>
 	</label>
 		<div class="${session.inputWidth}">
-			<g:textField class="form-control" name="uuid" id="uuid" required="" value="${complementInstance?.uuid}"/>
 
 		</div>
 </div>
 
-<g:hiddenField id="product" name="product.id" required="" value="${complementInstance?.product?.id}" class="form-control many-to-one"/>
+<g:hiddenField name="uuid" id="uuid" required="" value="${complementInstance?.uuid}" class="form-control" />
+<g:hiddenField name="productUuid" id="productUuid" required="" value="${complementInstance?.product?.uuid}" class="form-control many-to-one"/>
