@@ -29,7 +29,7 @@ class SocialController {
   def create() {
     def socialInstance = new Social(params)
     socialInstance = setSocialParent(socialInstance, params)
-    respond social
+    respond socialInstance
   }
 
   @Transactional
