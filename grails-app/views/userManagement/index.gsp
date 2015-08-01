@@ -34,7 +34,8 @@
 						<th>${message(code: 'user.place.label', default: 'rol')}</th>
 						<g:sortableColumn property="profile.firstName" title="${message(code: 'user.date.label', default: 'Correos electrónicos')}" />
 						<th>${message(code: 'user.date.label', default: 'Teléfonos')}</th>
-						<th>${message(code: 'user.active.label', default: 'Estatus')}</th>
+						<th>${message(code: 'user.active.label', default: 'Activo')}</th>
+						<th>${message(code: 'user.status.label', default: 'Estatus')}</th>
 						<th>${message(code: 'user.status.label', default: 'Estatus')}</th>
 					</tr>
 				</thead>
@@ -66,6 +67,8 @@
 							<g:link controller="user" action="status" id="${userInstance.id}">${message(code: 'default.edit.label', args:[message(code:'status.label')])}</g:link>
 
 						</td>
+						<td>${userInstance.dump()}</td>
+
 					</tr>
 				</g:each>
 				</tbody>
