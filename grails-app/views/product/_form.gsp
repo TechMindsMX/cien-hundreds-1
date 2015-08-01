@@ -163,17 +163,6 @@
 	</div>
 </div>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: productInstance, field: 'company', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="company">
-		<g:message code="product.company.label" default="Company" />
-		<span class="required-indicator">*</span>
-	</label>
-	<div class="${session.inputWidth}">
-		<g:select id="company" name="company.id" from="${com.tim.hundreds.Company.list()}" optionKey="id" optionValue="name" required="" value="${productInstance?.company?.id}" class="form-control many-to-one"/>
-
-	</div>
-</div>
-
 <div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'campaign', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="campaign">
 		<g:message code="product.campaign.label" default="Campaign" />
@@ -260,18 +249,6 @@
 	</div>
 </div>
 
-
-<div class="hide form-group fieldcontain ${hasErrors(bean: productInstance, field: 'uuid', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="uuid">
-		<g:message code="product.uuid.label" default="Uuid" />
-		<span class="required-indicator">*</span>
-	</label>
-	<div class="${session.inputWidth}">
-		<g:textField class="form-control" name="uuid" id="uuid" required="" value="${productInstance?.uuid}"/>
-
-	</div>
-</div>
-
 <div class="form-group fieldcontain ${hasErrors(bean: productInstance, field: 'web', 'error')} ">
 	<label class="${session.labelWidth} control-label" for="web">
 		<g:message code="product.web.label" default="Web" />
@@ -294,3 +271,5 @@
 </div>
 
 
+<g:hiddenField class="form-control" name="uuid" id="uuid" required="" value="${productInstance?.uuid}"/>
+<g:hiddenField class="form-control" name="companyUuid" id="companyUuid" required="" value="${productInstance?.company?.uuid}"/>

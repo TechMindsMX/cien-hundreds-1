@@ -1,15 +1,15 @@
 package com.tim.hundreds
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 @Secured(['ROLE_USER'])
 class ProductController {
     def productService
     def messengineService
+    def springSecurityService
 
     static showMe = false /*Parametro para aparecer en el menú*/
 
@@ -22,16 +22,23 @@ class ProductController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER','ROLE_BUYER'])
     def show(Product productInstance) {
-        productInstance = Product.findByUuid(params.uuid)
+        productInstance = productInstance ?: Product.findByUuid(params.uuid)
         if (productInstance == null) {
             notFound()
             return
         }
-        respond productInstance
+        if (SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_BUYER,ROLE_COMPANY_ADMIN,ROLE_COMPANY_VIEWER') || springSecurityService.currentUser == productInstance.company.user) {
+            respond productInstance
+        } else {
+            flash.error = 'access.denied.label'
+            redirect url: '/'
+        }
     }
 
     def create() {
-        respond new Product(params)
+        def productInstance = new Product(params)
+        productInstance.company = Company.findByUuid(params.companyUuid) 
+        respond productInstance
     }
 
     def save(Product productInstance) {
@@ -40,17 +47,21 @@ class ProductController {
             return
         }
 
+        productInstance.company = Company.findByUuid(params.companyUuid)
+        productInstance.validate()
+
         if (productInstance.hasErrors()) {
             respond productInstance.errors, view:'create'
             return
         }
 
         try{
+
           def instance = productService.save(productInstance)
           request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'product.label', default: 'Product'), instance.id])
-                redirect instance
+                redirect controller: 'company', action: 'show', params: [uuid: productInstance.company.uuid]
             }
             '*' { respond instance, [status: CREATED] }
           }
@@ -61,11 +72,14 @@ class ProductController {
     }
 
     def edit(Product productInstance) {
-        respond productInstance
+        productInstance = Product.findByUuid(params.uuid)
+        productInstance.company = productInstance.company ?: Company.findByUuid(params.companyUuid) 
+        [productInstance: productInstance, companyUuid: productInstance.company.uuid]
     }
 
     @Transactional
     def update(Product productInstance) {
+        productInstance.company = productInstance.company ?: Company.findByUuid(params.companyUuid) 
         if (productInstance == null) {
             notFound()
             return
@@ -81,6 +95,7 @@ class ProductController {
 
         request.withFormat {
             form multipartForm {
+              log.info "UPDATE"
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Product.label', default: 'Product'), productInstance.id])
                 redirect productInstance
             }
@@ -101,13 +116,14 @@ class ProductController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Product.label', default: 'Product'), productInstance.id])
-                redirect action:"index", method:"GET"
+                redirect controller: "company", action:"show", params:[uuid: productInstance.company.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }
     }
 
     protected void notFound() {
+      log.info "404"
         request.withFormat {
             '*' {
                 flash.error = message(code: 'default.not.found.message', args: [message(code: 'product.label', default: 'Product'), params.id])
@@ -116,4 +132,5 @@ class ProductController {
             json { render status: NOT_FOUND }
         }
     }
+
 }
