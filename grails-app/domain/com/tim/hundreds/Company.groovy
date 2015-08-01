@@ -30,9 +30,6 @@ class Company implements Taggable {
     companyComment: CompanyComment
   ]
 
-  Date dateCreated
-  Date lastUpdated
-
   static belongsTo = [user : User]
 
   static hasMany = [
