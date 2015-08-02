@@ -20,7 +20,7 @@ class CompanyController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def companyList = companyService.getCompanyList(springSecurityService.currentUser, params)
-        respond companyList.list, model:[companyListCount: companyList.count]
+        respond companyList.list, model:[companyInstanceCount: companyList.count]
     }
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
