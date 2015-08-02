@@ -8,7 +8,7 @@ class Video {
   Date lastUpdated
 
   static belongsTo = [
-    musician : Musician
+    musician : Musician, contact: Contact
   ]
 
   static constraints = {
@@ -23,6 +23,8 @@ class Video {
 	    	}
 	    }
 	  )
+    musician nullable:true
+    contact nullable:true
 	}
 
 }

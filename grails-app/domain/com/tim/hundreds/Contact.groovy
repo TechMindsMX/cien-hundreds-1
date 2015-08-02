@@ -26,7 +26,11 @@ class Contact {
 
   static hasMany = [
     emails : Email,
-    telephones : Telephone
+    telephones : Telephone,
+    photos : Photo,
+    videos : Video,
+    audios : Audio,
+    activities : Activity
   ]
 
   static constraints = {
@@ -43,6 +47,10 @@ class Contact {
     address nullable:true
     telephones maxSize: ApplicationState.MAX_TELEPHONES
     emails maxSize: ApplicationState.MAX_EMAILS
+    videos maxSize: ApplicationState.MAX_VIDEOS
+    photos maxSize: ApplicationState.MAX_PHOTOS
+    audios maxSize: ApplicationState.MAX_AUDIOS
+    activities maxSize: ApplicationState.MAX_ACTIVITIES
   }
 
 }
