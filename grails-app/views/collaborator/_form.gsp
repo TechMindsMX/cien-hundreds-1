@@ -57,25 +57,5 @@
 		</div>
 </div>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'company', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="company">
-		<g:message code="collaborator.company.label" default="Company" />
-		<span class="required-indicator">*</span>
-	</label>
-		<div class="${session.inputWidth}">
-			<g:select id="company" name="company.id" from="${com.tim.hundreds.Company.list()}" optionKey="id" required="" value="${collaboratorInstance?.company?.id}" class="form-control many-to-one"/>
-
-		</div>
-</div>
-
-<div class="hide form-group fieldcontain ${hasErrors(bean: collaboratorInstance, field: 'uuid', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="uuid">
-		<g:message code="collaborator.uuid.label" default="Uuid" />
-		<span class="required-indicator">*</span>
-	</label>
-		<div class="${session.inputWidth}">
-			<g:textField class="form-control" name="uuid" id="uuid" required="" value="${collaboratorInstance?.uuid}"/>
-
-		</div>
-</div>
-
+<g:hiddenField id="uuid" name="uuid" value="${collaboratorInstance?.uuid}" class="form-control" />
+<g:hiddenField id="companyUuid" name="companyUuid" value="${collaboratorInstance?.company?.uuid}" class="form-control many-to-one" />
