@@ -431,4 +431,67 @@ databaseChangeLog = {
 			}
 		}
 	}
+
+	changeSet(author: "rlyon (generated)", id: "updating-date-columns-55") {
+		sql(''' UPDATE activity SET date_created = NOW() ''' )
+		sql(''' UPDATE activity SET last_updated = NOW() ''' )
+		sql(''' UPDATE address SET date_created = NOW() ''' )
+		sql(''' UPDATE address SET last_updated = NOW() ''' )
+		sql(''' UPDATE audio SET date_created = NOW() ''' )
+		sql(''' UPDATE audio SET last_updated = NOW() ''' )
+		sql(''' UPDATE business_activity SET date_created = NOW() ''' )
+		sql(''' UPDATE business_activity SET last_updated = NOW() ''' )
+		sql(''' UPDATE collaborator SET date_created = NOW() ''' )
+		sql(''' UPDATE collaborator SET last_updated = NOW() ''' )
+
+		sql(''' UPDATE company_comment SET date_created = NOW() ''' )
+		sql(''' UPDATE company_comment SET last_updated = NOW() ''' )
+		sql(''' UPDATE company_validation SET date_created = NOW() ''' )
+		sql(''' UPDATE company_validation SET last_updated = NOW() ''' )
+		sql(''' UPDATE complement SET date_created = NOW() ''' )
+		sql(''' UPDATE complement SET last_updated = NOW() ''' )
+		sql(''' UPDATE contact SET date_created = NOW() ''' )
+		sql(''' UPDATE contact SET last_updated = NOW() ''' )
+		sql(''' UPDATE datos_fiscales SET date_created = NOW() ''' )
+		sql(''' UPDATE datos_fiscales SET last_updated = NOW() ''' )
+
+		sql(''' UPDATE email SET date_created = NOW() ''' )
+		sql(''' UPDATE email SET last_updated = NOW() ''' )
+		sql(''' UPDATE event SET date_created = NOW() ''' )
+		sql(''' UPDATE event SET last_updated = NOW() ''' )
+		sql(''' UPDATE genre SET date_created = NOW() ''' )
+		sql(''' UPDATE genre SET last_updated = NOW() ''' )
+		sql(''' UPDATE musician_comment SET date_created = NOW() ''' )
+		sql(''' UPDATE musician_comment SET last_updated = NOW() ''' )
+		sql(''' UPDATE musician_role SET date_created = NOW() ''' )
+		sql(''' UPDATE musician_role SET last_updated = NOW() ''' )
+
+		sql(''' UPDATE musician_validation SET date_created = NOW() ''' )
+		sql(''' UPDATE musician_validation SET last_updated = NOW() ''' )
+		sql(''' UPDATE photo SET date_created = NOW() ''' )
+		sql(''' UPDATE photo SET last_updated = NOW() ''' )
+		sql(''' UPDATE product SET date_created = NOW() ''' )
+		sql(''' UPDATE product SET last_updated = NOW() ''' )
+		sql(''' UPDATE product_comment SET date_created = NOW() ''' )
+		sql(''' UPDATE product_comment SET last_updated = NOW() ''' )
+		sql(''' UPDATE profile SET date_created = NOW() ''' )
+		sql(''' UPDATE profile SET last_updated = NOW() ''' )
+
+		sql(''' UPDATE reference SET date_created = NOW() ''' )
+		sql(''' UPDATE reference SET last_updated = NOW() ''' )
+		sql(''' UPDATE social SET date_created = NOW() ''' )
+		sql(''' UPDATE social SET last_updated = NOW() ''' )
+		sql(''' UPDATE suggestion SET date_created = NOW() ''' )
+		sql(''' UPDATE suggestion SET last_updated = NOW() ''' )
+		sql(''' UPDATE telephone SET date_created = NOW() ''' )
+		sql(''' UPDATE telephone SET last_updated = NOW() ''' )
+		sql(''' UPDATE user SET date_created = NOW() ''' )
+		sql(''' UPDATE user SET last_updated = NOW() ''' )
+
+		sql(''' UPDATE validation_message SET date_created = NOW() ''' )
+		sql(''' UPDATE validation_message SET last_updated = NOW() ''' )
+		sql(''' UPDATE video SET date_created = NOW() ''' )
+		sql(''' UPDATE video SET last_updated = NOW() ''' )
+
+	}
 }
