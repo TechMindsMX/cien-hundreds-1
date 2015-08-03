@@ -21,7 +21,7 @@ class ComplementController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Complement complementInstance) {
-        complementInstance = complementInstance ?: Complement.findByUuid(params.uuid)
+        complementInstance = Complement.findByUuid(params.uuid)
         if (complementInstance == null) {
             notFound()
             return
@@ -55,16 +55,15 @@ class ComplementController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'complement.label', default: 'Complement'), complementInstance.id])
-                redirect complementInstance
+                redirect action: 'show', params: [uuid: complementInstance.uuid]
             }
             '*' { respond complementInstance, [status: CREATED] }
         }
     }
 
     def edit(Complement complementInstance) {
-        complementInstance = complementInstance ?: Complement.findByUuid(params.uuid)
-        complementInstance.product = complementInstance.product ?: Product.findByUuid(params.productUuid)
-        [complementInstance: complementInstance, productUuid: complementInstance.product.uuid]
+        complementInstance = Complement.findByUuid(params.uuid)
+        respond complementInstance
     }
 
     @Transactional
@@ -79,14 +78,13 @@ class ComplementController {
             return
         }
 
-        complementInstance.product = complementInstance.product ?: Product.findByUuid(params.productUuid) 
         complementInstance.save flush:true
         messengineService.sendInstanceEditedMessage(complementInstance.product.company, 'company')
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Complement.label', default: 'Complement'), complementInstance.id])
-                redirect complementInstance
+                redirect action: 'show', params: [uuid: complementInstance.uuid]
             }
             '*'{ respond complementInstance, [status: OK] }
         }
