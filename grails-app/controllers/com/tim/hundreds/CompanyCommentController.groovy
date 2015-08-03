@@ -17,15 +17,19 @@ class CompanyCommentController {
 
     @Secured(['ROLE_BUYER','ROLE_COMPANY_VIEWER'])
     def show(CompanyComment companyCommentInstance) {
+        companyCommentInstance = CompanyComment.findByUuid(params.uuid)
         respond companyCommentInstance
     }
 
     def create() {
-        respond new CompanyComment(params)
+        def companyComment = new CompanyComment(params)
+        companyComment.company = Company.findByUuid(params.companyUuid)
+        respond companyComment
     }
 
     @Transactional
     def save(CompanyComment companyCommentInstance) {
+        companyCommentInstance = CompanyComment.findByUuid(params.uuid)
         if (companyCommentInstance == null) {
             notFound()
             return
@@ -41,13 +45,14 @@ class CompanyCommentController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'companyComment.label', default: 'CompanyComment'), companyCommentInstance.id])
-                redirect companyCommentInstance
+                redirect action: 'show', params: [uuid: companyCommentInstance.uuid]
             }
             '*' { respond companyCommentInstance, [status: CREATED] }
         }
     }
 
     def edit(CompanyComment companyCommentInstance) {
+        companyCommentInstance = CompanyComment.findByUuid(params.uuid)
         respond companyCommentInstance
     }
 
@@ -68,7 +73,7 @@ class CompanyCommentController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'CompanyComment.label', default: 'CompanyComment'), companyCommentInstance.id])
-                redirect companyCommentInstance
+                redirect action: 'show', params: [uuid: companyCommentInstance.uuid]
             }
             '*'{ respond companyCommentInstance, [status: OK] }
         }
@@ -87,7 +92,7 @@ class CompanyCommentController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'CompanyComment.label', default: 'CompanyComment'), companyCommentInstance.id])
-                redirect action:"index", method:"GET"
+                redirect controller: "company", action:"show", params:[uuid: companyCommentInstance.company.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }
