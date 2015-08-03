@@ -36,7 +36,7 @@ class EventController {
 
     def create() {
         def eventInstance = new Event(params)
-        eventInstance.company = Company.findByUuid(params.companyUuid) 
+        eventInstance.company = Company.findByUuid(params.companyUuid)
         respond eventInstance
     }
 
@@ -71,7 +71,7 @@ class EventController {
 
     def edit(Event eventInstance) {
         eventInstance = Event.findByUuid(params.uuid)
-        eventInstance.company = eventInstance.company ?: Company.findByUuid(params.companyUuid) 
+        eventInstance.company = eventInstance.company ?: Company.findByUuid(params.companyUuid)
         [eventInstance: eventInstance, companyUuid: eventInstance.company.uuid]
     }
 
@@ -87,7 +87,7 @@ class EventController {
             return
         }
 
-        eventInstance.company = eventInstance.company ?: Company.findByUuid(params.companyUuid) 
+        eventInstance.company = eventInstance.company ?: Company.findByUuid(params.companyUuid)
         eventInstance.save flush:true
         messengineService.sendInstanceEditedMessage(eventInstance.company, 'company')
 
