@@ -11,6 +11,9 @@ class Profile {
   String photoPath
   String resumePath
 
+  Date dateCreated
+  Date lastUpdated
+
   static transients = ['role']
   static belongsTo = [User]
 

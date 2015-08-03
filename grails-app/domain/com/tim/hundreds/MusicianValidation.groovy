@@ -5,6 +5,9 @@ class MusicianValidation {
   String message
   ValidationType type
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [
     user: User,
     musician: Musician

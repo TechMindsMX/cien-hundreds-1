@@ -9,8 +9,6 @@ import grails.plugin.springsecurity.annotation.Secured
 class AddressController {
     def addressContextService
 
-    static showMe = false /*Parametro para aparecer en el menú*/
-
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -19,32 +17,28 @@ class AddressController {
     }
 
     def show(Address addressInstance) {
+        addressInstance = addressInstance ?: Address.findByUuid(params.uuid)
         respond addressInstance
     }
 
     @Secured(['ROLE_USER'])
     def create() {
-      def address = new Address(params)
-      address.musician = Musician.findByUuid(params.musicianUuid)
-      address.company = Company.findByUuid(params.companyUuid)
-      address.contact = Contact.findByUuid(params.contactUuid)
-      address.datosFiscales = DatosFiscales.findByUuid(params.datosFiscalesUuid)
-      respond address
+      def addressInstance = new Address(params)
+      addressInstance = setParent(addressInstance, params)
+      respond addressInstance
     }
 
     @Secured(['ROLE_USER'])
     @Transactional
     def save(Address addressInstance) {
         log.info "address: ${addressInstance.dump()}"
-        addressInstance.musician = Musician.findByUuid(params.musicianUuid)
-        addressInstance.company = Company.findByUuid(params.companyUuid)
-        addressInstance.contact = Contact.findByUuid(params.contactUuid)
-        addressInstance.datosFiscales = DatosFiscales.findByUuid(params.datosFiscalesUuid)
 
         if (addressInstance == null) {
             notFound()
             return
         }
+
+        addressInstance = setParent(addressInstance, params)
 
         if (addressInstance.hasErrors()) {
             respond addressInstance.errors, view:'create'
@@ -56,7 +50,7 @@ class AddressController {
         request.withFormat {
           form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'address.label', default: 'Address'), addressInstance.id])
-                redirect addressInstance
+                redirect action: "show", params:[uuid: addressInstance.uuid]
             }
             '*' { respond addressInstance, [status: CREATED] }
         }
@@ -64,11 +58,9 @@ class AddressController {
 
     @Secured(['ROLE_USER'])
     def edit(Address addressInstance) {
-      addressInstance.musician = Musician.findByUuid(params.musicianUuid)
-      addressInstance.company = Company.findByUuid(params.companyUuid)
-      addressInstance.contact = Contact.findByUuid(params.contactUuid)
-      addressInstance.datosFiscales = DatosFiscales.findByUuid(params.datosFiscalesUuid)
-      respond addressInstance
+        addressInstance = Address.findByUuid(params.uuid)
+        addressInstance = setParent(addressInstance, params)
+        [addressInstance: addressInstance, companyUuid: addressInstance.company.uuid]
     }
 
     @Secured(['ROLE_USER'])
@@ -89,7 +81,7 @@ class AddressController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Address.label', default: 'Address'), addressInstance.id])
-                redirect addressInstance
+                redirect action: "show", params:[uuid: addressInstance.uuid]
             }
             '*'{ respond addressInstance, [status: OK] }
         }
@@ -109,7 +101,8 @@ class AddressController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Address.label', default: 'Address'), addressInstance.id])
-                redirect action:"index", method:"GET"
+                getParamsForRedirectOnDelete(addressInstance)
+                redirect controller: request.controller, action:"show", params: [uuid: request.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -124,4 +117,33 @@ class AddressController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    private setParent(instance, params) {
+        if (params.musicianUuid) { instance.musician = Musician.findByUuid(params.musicianUuid) }
+        else if (params.companyUuid) { instance.company = Company.findByUuid(params.companyUuid) }
+        else if (params.contactUuid) { instance.contact = Contact.findByUuid(params.contactUuid) }
+        else if (params.datosFiscalesUuid) { instance.datosFiscales = DatosFiscales.findByUuid(params.datosFiscalesUuid) }
+
+        instance
+    }
+
+    private getParamsForRedirectOnDelete(instance) {
+        if (instance.musician) {
+            request.controller = 'musician'
+            request.uuid = instance.musician.uuid
+        }
+        else if (instance.company) {
+            request.controller = 'company'
+            request.uuid = instance.company.uuid
+        }
+        else if (instance.contact) {
+            request.controller = 'contact'
+            request.uuid = instance.contact.uuid
+        }
+        else if (instance.datosFiscales) {
+            request.controller = 'datosFiscales'
+            request.uuid = instance.datosFiscales.uuid
+        }
+    }
+
 }

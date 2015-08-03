@@ -5,6 +5,9 @@ class Email {
   String mail
   EmailType emailType
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [User, Contact, Collaborator]
 
   static constraints = {

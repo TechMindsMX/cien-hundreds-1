@@ -41,7 +41,7 @@
 				<li class="fieldcontain">
 					<span id="product-label" class="${session.labelWidth} property-label"><g:message code="complement.product.label" default="Product" /></span>
 					
-						<span class="property-value" aria-labelledby="product-label"><g:link controller="product" action="show" id="${complementInstance?.product?.id}">${complementInstance?.product?.name.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="product-label"><g:link controller="product" action="show" params="['uuid': complementInstance?.product?.uuid]">${complementInstance?.product?.name.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -51,7 +51,7 @@
 			<sec:ifAnyGranted roles="ROLE_USER">
 				<g:form url="[resource:complementInstance, action:'delete']" method="DELETE">
 					<fieldset class="buttons">
-						<g:link class="btn btn-primary edit" action="edit" resource="${complementInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:link class="btn btn-primary edit" action="edit" params="[uuid: complementInstance.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 						<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 					</fieldset>
 				</g:form>

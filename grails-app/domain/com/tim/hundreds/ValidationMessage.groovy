@@ -4,6 +4,9 @@ class ValidationMessage {
   String uuid = TokenGenerator.generateToken()
   String message
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [
     user: User,
     musician: Musician

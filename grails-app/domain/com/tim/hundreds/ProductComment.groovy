@@ -11,6 +11,9 @@ class ProductComment {
   String customerModel
   String notes
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [ product : Product ]
 
   static mapping = {

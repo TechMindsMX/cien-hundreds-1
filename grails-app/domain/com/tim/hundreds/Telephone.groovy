@@ -5,6 +5,9 @@ class Telephone {
   String phone
   TelephoneType phoneType
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [User,Contact,Collaborator]
 
   static constraints = {

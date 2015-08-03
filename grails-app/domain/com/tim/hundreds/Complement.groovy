@@ -5,12 +5,15 @@ class Complement {
   String name
   BigDecimal price
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [
     product : Product
   ]
 
   static constraints = {
     name blank:false,size:1..100
-    price blank:false,min:0.01
+    price min:0.01
   }
 }

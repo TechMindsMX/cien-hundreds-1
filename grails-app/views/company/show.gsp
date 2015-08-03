@@ -49,12 +49,12 @@
 
 				<div class="fieldcontain">
 				<sec:ifAnyGranted roles="ROLE_USER">
-					<g:link controller="product" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'product.label', default: 'Product')])}</g:link>
+					<g:link controller="product" action="create" params="['companyUuid': companyInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'product.label', default: 'Product')])}</g:link>
 				</sec:ifAnyGranted>
 					<g:if test="${companyInstance?.products}">
 						<ul class="one-to-many">
 						<g:each in="${companyInstance?.products}" var="p">
-						    <li><g:link controller="product" action="show" id="${p.id}">${p?.name?.encodeAsHTML()}</g:link></li>
+						    <li><g:link controller="product" action="show" params="['uuid': p.uuid]">${p?.name?.encodeAsHTML()}</g:link></li>
 						</g:each>
 						</ul>
 					</g:if>
@@ -70,13 +70,13 @@
 				<div class="fieldcontain">
 				<sec:ifAnyGranted roles="ROLE_USER">
 					<g:if test="${!companyInstance?.social}">
-						<g:link controller="social" action="create" params="['companyUuid': companyInstance?.uuid, 'company.id': companyInstance?.id]" >${message(code: 'default.add.label', args: [message(code: 'social.label')])}</g:link>
+						<g:link controller="social" action="create" params="['companyUuid': companyInstance?.uuid]" >${message(code: 'default.add.label', args: [message(code: 'social.label')])}</g:link>
 					</g:if>
 				</sec:ifAnyGranted>
 					<g:if test="${companyInstance?.social}">
 						<g:message code="social.label" default="Social" />
 						<sec:ifAnyGranted roles="ROLE_USER">
-							<g:link controller="social" action="edit" id="${companyInstance?.social?.id}">${message(code: 'default.edit.label', args: [message(code: 'social.label')])}</g:link>
+							<g:link controller="social" action="edit" params="['uuid': companyInstance?.social?.uuid]">${message(code: 'default.edit.label', args: [message(code: 'social.label')])}</g:link>
 						</sec:ifAnyGranted>
 							<ul>
 								<g:if test="${companyInstance?.social?.facebook}"><li>${companyInstance?.social.facebook}</li></g:if>
@@ -109,13 +109,13 @@
 				<p id="events-label" class="">
 					${message(code: 'event.label', default: 'Actividades')}
 				<sec:ifAnyGranted roles="ROLE_USER">
-					<g:link controller="event" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args:[message(code: 'event.label')])}</g:link>
+					<g:link controller="event" action="create" params="['companyUuid': companyInstance?.uuid]">${message(code: 'default.add.label', args:[message(code: 'event.label')])}</g:link>
 				</sec:ifAnyGranted>
 				</p>
 				<g:if test="${companyInstance?.events}">
 					<ul>
 						<g:each in="${companyInstance?.events}" var="e">
-						<li><g:link controller="event" action="show" id="${e.id}" params="['company.id': companyInstance?.id]"><g:formatDate format="dd-MM-yyyy" date="${e.date}"/> ${e.activity} ${e.place}</g:link></li>
+						<li><g:link controller="event" action="show" params="['uuid': e.uuid]"><g:formatDate format="dd-MM-yyyy" date="${e.date}"/> ${e.activity} ${e.place}</g:link></li>
 						</g:each>
 					</ul>
 				</g:if>
@@ -129,13 +129,13 @@
 				<p id="references-label" class="">
 					${message(code: 'references.label', default: 'Recomendaciones')}
 				<sec:ifAnyGranted roles="ROLE_USER">
-					<g:link controller="reference" action="create" params="['company.id': companyInstance?.id]">${message(code: 'default.add.label', args:[message(code: 'reference.label')])}</g:link>
+					<g:link controller="reference" action="create" params="['companyUuid': companyInstance?.uuid]">${message(code: 'default.add.label', args:[message(code: 'reference.label')])}</g:link>
 				</sec:ifAnyGranted>
 				</p>
 				<g:if test="${companyInstance?.references}">
 					<ul>
 						<g:each in="${companyInstance?.references}" var="r">
-						<li><g:link controller="reference" action="show" id="${r.id}" >${r.name} - ${r.contactName} - ${r.type.name} - ${r.email} - ${r.phone}</g:link></li>
+						<li><g:link controller="reference" action="show" params="['uuid': r.uuid]" >${r.name} - ${r.contactName} - ${r.type.name} - ${r.email} - ${r.phone}</g:link></li>
 						</g:each>
 					</ul>
 				</g:if>
@@ -178,11 +178,11 @@
 					</label>
 						<div class="">
 							<g:if test="${companyInstance.address}">
-								<g:link controller="address" action="show" id="${companyInstance?.address?.id}">${message(code: 'default.show.label', args: [message(code: 'address.label')])}</g:link>
+								<g:link controller="address" action="show" params="['uuid': companyInstance?.address?.uuid]">${message(code: 'default.show.label', args: [message(code: 'address.label')])}</g:link>
 							</g:if>
 							<g:else>
 				<sec:ifAnyGranted roles="ROLE_USER">
-								<g:link controller="address" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
+								<g:link controller="address" action="create" params="['companyUuid': companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'address.label')])}</g:link>
 				</sec:ifAnyGranted>
 							</g:else>
 						</div>
@@ -195,11 +195,11 @@
 					</label>
 						<div class="">
 							<g:if test="${companyInstance.datosFiscales}">
-								<g:link controller="datosFiscales" action="show" id="${companyInstance?.datosFiscales?.id}">${message(code: 'default.show.label', args: [message(code: 'datosFiscales.label')])}</g:link>
+								<g:link controller="datosFiscales" action="show" params="['uuid': companyInstance?.datosFiscales?.uuid]">${message(code: 'default.show.label', args: [message(code: 'datosFiscales.label')])}</g:link>
 							</g:if>
 							<g:else>
 				<sec:ifAnyGranted roles="ROLE_USER">
-								<g:link controller="datosFiscales" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'datosFiscales.label')])}</g:link>
+								<g:link controller="datosFiscales" action="create" params="['companyUuid': companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'datosFiscales.label')])}</g:link>
 				</sec:ifAnyGranted>
 							</g:else>
 						</div>
@@ -214,13 +214,13 @@
 							<ul>
 								<g:each in="${companyInstance.collaborators}" var="c">
 									<li>
-									<g:link controller="collaborator" action="show" id="${c?.id}">${c.firstName} ${c.lastName}</g:link>
+									<g:link controller="collaborator" action="show" params="['uuid': c?.uuid]">${c.firstName} ${c.lastName}</g:link>
 									</li>
 								</g:each>
 							</ul>
 				<sec:ifAnyGranted roles="ROLE_USER">
 							<div>
-								<g:link controller="collaborator" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'collaborator.label')])}</g:link>
+								<g:link controller="collaborator" action="create" params="['companyUuid': companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'collaborator.label')])}</g:link>
 							</div>
 				</sec:ifAnyGranted>
 						</div>
@@ -234,33 +234,33 @@
 		<g:form url="[resource:companyInstance, action:'delete']" method="DELETE">
 			<fieldset class="buttons">
 				<sec:ifAnyGranted roles="ROLE_USER">
-					<g:link class="btn btn-primary edit" action="edit" resource="${companyInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="btn btn-primary edit" action="edit" params="['uuid': companyInstance.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</sec:ifAnyGranted>
 
 				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN">
 					<g:if test="${!companyInstance?.companyValidation}" >
-						<g:link class="btn btn-success" controller="companyValidation" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'companyValidation.label')])}</g:link>
+						<g:link class="btn btn-success" controller="companyValidation" action="create" params="['uuid': companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'companyValidation.label')])}</g:link>
 					</g:if>
 				</sec:ifAnyGranted>
 				<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_COMPANY_ADMIN,ROLE_BUYER">
 					<g:if test="${companyInstance?.companyValidation}" >
-						<g:link class="btn btn-success" controller="companyValidation" action="edit" id="${companyInstance?.companyValidation?.id}">${message(code: 'default.edit.label', args: [message(code: 'companyValidation.label')])}</g:link>
+						<g:link class="btn btn-success" controller="companyValidation" action="edit" params="['uuid': companyInstance?.companyValidation?.uuid]">${message(code: 'default.edit.label', args: [message(code: 'companyValidation.label')])}</g:link>
 					</g:if>
 				</sec:ifAnyGranted>
 
 			<sec:ifAnyGranted roles="ROLE_BUYER">
 				<g:if test="${!companyInstance?.companyComment}">
-					<g:link class="btn btn-success" controller="companyComment" action="create" params="['company.id': companyInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'companyComment.label')])}</g:link>
+					<g:link class="btn btn-success" controller="companyComment" action="create" params="['uuid': companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'companyComment.label')])}</g:link>
 				</g:if>
 				<g:else>
-					<g:link class="btn btn-success" controller="companyComment" action="edit" id="${companyInstance.companyComment.id}" >${message(code: 'default.edit.label', args: [message(code: 'companyComment.label')])}</g:link>
+					<g:link class="btn btn-success" controller="companyComment" action="edit" params="['uuid': companyInstance.companyComment.uuid]" >${message(code: 'default.edit.label', args: [message(code: 'companyComment.label')])}</g:link>
 				</g:else>
 			</sec:ifAnyGranted>
 
 			<sec:ifAnyGranted roles="ROLE_COMPANY_VIEWER">
 				<g:if test="${companyInstance?.companyComment}">
-					<g:link class="btn btn-success" controller="companyComment" action="show" id="${companyInstance.companyComment.id}" >${message(code: 'default.show.label', args: [message(code: 'companyComment.label')])}</g:link>
+					<g:link class="btn btn-success" controller="companyComment" action="show" params="['uuid': companyInstance.companyComment.uuid]" >${message(code: 'default.show.label', args: [message(code: 'companyComment.label')])}</g:link>
 				</g:if>
 			</sec:ifAnyGranted>
 

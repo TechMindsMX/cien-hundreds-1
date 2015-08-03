@@ -192,7 +192,7 @@
 			<div class="fieldcontain row">
 				<span id="company-label" class="${session.labelWidth} property-label"><g:message code="company.label" default="Company" /></span>
 
-				<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${productInstance?.company?.id}">${productInstance?.company?.name?.encodeAsHTML()}</g:link></span>
+				<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" params="['uuid': productInstance?.company?.uuid]">${productInstance?.company?.name?.encodeAsHTML()}</g:link></span>
 
 			</div>
 		</g:if>
@@ -207,11 +207,11 @@
 
 			<ul class="one-to-many">
 				<g:each in="${productInstance?.complements}" var="c">
-					<li><g:link controller="complement" action="show" id="${c.id}">${c?.name?.encodeAsHTML()}</g:link></li>
+					<li><g:link controller="complement" action="show" params="['uuid': c.uuid]">${c?.name?.encodeAsHTML()}</g:link></li>
 				</g:each>
 				<sec:ifAnyGranted roles="ROLE_USER">
 					<li class="add">
-						<g:link controller="complement" action="create" params="['product.id': productInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'complement.label', default: 'Complement')])}</g:link>
+						<g:link controller="complement" action="create" params="['productUuid': productInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'complement.label', default: 'Complement')])}</g:link>
 					</li>
 				</sec:ifAnyGranted>
 			</ul>
@@ -224,14 +224,14 @@
 	<sec:ifAnyGranted roles="ROLE_USER">
 		<g:form url="[resource:productInstance, action:'delete']" method="DELETE">
 			<fieldset class="buttons">
-				<g:link class="btn btn-primary edit" action="edit" resource="${productInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+				<g:link class="btn btn-primary edit" action="edit" params="['uuid': productInstance.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 
 				<sec:ifAnyGranted roles="ROLE_BUYER">
 					<g:if test="${!productInstance?.productComment}">
-						<g:link class="btn btn-success" controller="productComment" action="create" params="['product.id': productInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'productComment.label')])}</g:link>
+						<g:link class="btn btn-success" controller="productComment" action="create" params="['productUuid': productInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'productComment.label')])}</g:link>
 					</g:if>
 					<g:else>
-						<g:link class="btn btn-success" controller="productComment" action="edit" id="${productInstance.productComment.id}" >${message(code: 'default.edit.label', args: [message(code: 'productComment.label')])}</g:link>
+						<g:link class="btn btn-success" controller="productComment" action="edit" params="['uuid': productInstance.productComment.uuid}" >${message(code: 'default.edit.label', args: [message(code: 'productComment.label')])}</g:link>
 					</g:else>
 				</sec:ifAnyGranted>
 

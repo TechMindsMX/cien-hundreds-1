@@ -10,6 +10,9 @@ class Social {
   String linkedin
   String other
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [ musician: Musician, company: Company, contact: Contact ]
 
   static constraints = {

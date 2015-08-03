@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title><g:layoutTitle default="100Hundreds" /></title>
+    <title><g:layoutTitle default="${message(code: 'project.name.label')}" /></title>
 
     <asset:stylesheet src="css/bootstrap.min.css"/>
     <asset:stylesheet src="font-awesome/css/font-awesome.css"/>
@@ -174,7 +174,7 @@
                         <h3>Acerca de</h3>
                         <ul>
                             <li>
-                                <g:link controller="static" params="[content:'what']">${message(code: 'what.label', default: 'Que son los 100 Hundreds?')}</g:link>
+                                <g:link controller="static" params="[content:'what']">${message(code: 'what.label', default: 'Que es Talentua Music?')}</g:link>
                             </li>
                             <li>
                                 <g:link controller="static" params="[content:'how']">${message(code: 'how.label', default: 'Como funciona?')}</g:link>
@@ -191,7 +191,7 @@
                                 <g:link controller="static" params="[content:'faq']">${message(code: 'faq.label', default: 'FAQ')}</g:link>
                             </li>
                             <li>
-                                <g:link controller="static" params="[content:'terms']">${message(code: 'terms.label', default: 'T�rminos y condiciones')}</g:link>
+                                <g:link controller="static" params="[content:'terms']">${message(code: 'terms.label', default: 'T&accutee;rminos y condiciones')}</g:link>
                             </li>
                             <li>
                                 <g:link controller="static" params="[content:'privacy']">${message(code: 'privacy.label', default: 'Aviso de privacidad')}</g:link>
@@ -200,7 +200,7 @@
                     </div>
                 </div>
             </footer>
-            <p>Copyright 2015 100 Hundreds.</p>
+            <p>Copyright 2015 ${message(code: 'project.name.label')}.</p>
         </div>
     </div>
 

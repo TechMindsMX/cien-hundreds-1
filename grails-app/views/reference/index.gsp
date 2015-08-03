@@ -16,9 +16,6 @@
 		</div>
 		<div id="list-reference" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
 			<table class="table table-stripped">
 			<thead>
 					<tr>
@@ -41,7 +38,7 @@
 				<g:each in="${referenceInstanceList}" status="i" var="referenceInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${referenceInstance.id}">${fieldValue(bean: referenceInstance, field: "name")}</g:link></td>
+						<td><g:link action="show" params="['uuid': referenceInstance.uuid]">${fieldValue(bean: referenceInstance, field: "name")}</g:link></td>
 					
 						<td>${fieldValue(bean: referenceInstance, field: "contactName")}</td>
 					

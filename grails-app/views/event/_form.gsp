@@ -24,17 +24,6 @@
 		</div>
 </div>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: eventInstance, field: 'company', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="company">
-		<g:message code="event.company.label" default="Company" />
-		<span class="required-indicator">*</span>
-	</label>
-		<div class="${session.inputWidth}">
-			<g:select id="company" name="company.id" from="${com.tim.hundreds.Company.list()}" optionKey="id" required="" value="${eventInstance?.company?.id}" class="form-control many-to-one"/>
-
-		</div>
-</div>
-
 <div class="form-group fieldcontain ${hasErrors(bean: eventInstance, field: 'date', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="date">
 		<g:message code="event.date.label" default="Date" />
@@ -45,14 +34,5 @@
 		</div>
 </div>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: eventInstance, field: 'uuid', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="uuid">
-		<g:message code="event.uuid.label" default="Uuid" />
-		<span class="required-indicator">*</span>
-	</label>
-		<div class="${session.inputWidth}">
-			<g:textField class="form-control" name="uuid" id="uuid" required="" value="${eventInstance?.uuid}"/>
-
-		</div>
-</div>
-
+<g:hiddenField name="uuid" id="uuid" required="" value="${eventInstance?.uuid}" class="form-control" />
+<g:hiddenField name="companyUuid" id="companyUuid" required="" value="${eventInstance?.company?.uuid}" class="form-control many-to-one"/>

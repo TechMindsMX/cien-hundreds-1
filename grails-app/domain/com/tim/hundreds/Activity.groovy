@@ -6,6 +6,9 @@ class Activity {
   String place
   Date date
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [ musician : Musician ]
 
   static constraints = {

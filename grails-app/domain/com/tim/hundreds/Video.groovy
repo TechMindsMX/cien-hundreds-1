@@ -4,8 +4,11 @@ class Video {
   String uuid = TokenGenerator.generateToken()
   String url
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [
-    musician : Musician
+    musician : Musician, contact: Contact
   ]
 
   static constraints = {
@@ -20,6 +23,8 @@ class Video {
 	    	}
 	    }
 	  )
+    musician nullable:true
+    contact nullable:true
 	}
 
 }

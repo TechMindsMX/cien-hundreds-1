@@ -6,6 +6,9 @@ class Event {
   String place
   Date date
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [ company : Company ]
 
   static constraints = {

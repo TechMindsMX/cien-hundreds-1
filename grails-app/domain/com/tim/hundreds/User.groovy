@@ -13,6 +13,9 @@ class User {
 
   Profile profile
 
+  Date dateCreated
+  Date lastUpdated
+
   static hasMany = [
     musicians : Musician,
     companies : Company,

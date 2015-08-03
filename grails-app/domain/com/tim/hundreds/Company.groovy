@@ -20,15 +20,15 @@ class Company implements Taggable {
   Social social
   User assigned
 
+  Date dateCreated
+  Date lastUpdated
+
   static transients = ['tagsComma']
 
   static hasOne = [
     companyValidation : CompanyValidation,
     companyComment: CompanyComment
   ]
-
-  Date dateCreated
-  Date lastUpdated
 
   static belongsTo = [user : User]
 

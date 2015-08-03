@@ -20,32 +20,16 @@ class CompanyController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def companyList = companyService.getCompanyList(springSecurityService.currentUser, params)
-        respond companyList.list, model:[companyListCount: companyList.count]
-    }
-
-    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
-    def creationReportFilter() {
-      log.info "Listing companies created from ${params.from} to ${params.to}"
-      def companies
-      try{
-        params.from = params.from ?: '01-01-1900'
-        params.to = params.to ?: new Date().format('dd-MM-yyyy').toString()
-        Date startDate = Date.parse('dd-MM-yyyy', params.from) 
-        Date endDate = Date.parse('dd-MM-yyyy', params.to)
-        companies = companyService.getCompaniesByDateCreated(startDate, endDate)
-      }catch(InvalidParamsException ipe){
-        log.warn ipe.message
-        flash.error=g.message(code: 'error.date.range')
-      }
-      render view:'creationReportView', model: [companyInstanceList: companies]
-    }
-
-    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
-    def creationReportView() {
+        respond companyList.list, model:[companyInstanceCount: companyList.count]
     }
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Company companyInstance) {
+        companyInstance = Company.findByUuid(params.uuid)
+        if (companyInstance == null) {
+            notFound()
+            return
+        }
         if (SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_BUYER,ROLE_COMPANY_ADMIN,ROLE_COMPANY_VIEWER') || springSecurityService.currentUser == companyInstance.user) {
             respond companyInstance
         } else {
@@ -83,13 +67,14 @@ class CompanyController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'company.label', default: 'Company'), companyInstance.id])
-                redirect companyInstance
+                redirect action: 'show', params: [uuid:companyInstance.uuid]
             }
             '*' { respond companyInstance, [status: CREATED] }
         }
     }
 
     def edit(Company companyInstance) {
+        companyInstance = Company.findByUuid(params.uuid)
         respond companyInstance
     }
 
@@ -120,7 +105,7 @@ class CompanyController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Company.label', default: 'Company'), companyInstance.id])
-                redirect companyInstance
+                redirect action: 'show', params: [uuid:companyInstance.uuid]
             }
             '*'{ respond companyInstance, [status: OK] }
         }
@@ -146,13 +131,34 @@ class CompanyController {
         }
     }
 
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
+    def creationReportFilter() {
+      log.info "Listing companies created from ${params.from} to ${params.to}"
+      def companies
+      try{
+        params.from = params.from ?: '01-01-1900'
+        params.to = params.to ?: new Date().format('dd-MM-yyyy').toString()
+        Date startDate = Date.parse('dd-MM-yyyy', params.from) 
+        Date endDate = Date.parse('dd-MM-yyyy', params.to)
+        companies = companyService.getCompaniesByDateCreated(startDate, endDate)
+      }catch(InvalidParamsException ipe){
+        log.warn ipe.message
+        flash.error=g.message(code: 'error.date.range')
+      }
+      render view:'creationReportView', model: [companyInstanceList: companies]
+    }
+
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
+    def creationReportView() {
+    }
+
     protected void notFound() {
         request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), params.id])
+            json { render status: NOT_FOUND }
+            '*' {
+                flash.error = message(code: 'default.not.found.message', args: [message(code: 'company.label', default: 'Company'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
         }
     }
 }
