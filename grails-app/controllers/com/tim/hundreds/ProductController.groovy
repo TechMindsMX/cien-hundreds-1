@@ -59,7 +59,7 @@ class ProductController {
           request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'product.label', default: 'Product'), instance.id])
-                redirect action: 'show', params: [uuid: productInstance.uuid]
+                redirect action: 'show', params: [uuid: instance.uuid]
             }
             '*' { respond instance, [status: CREATED] }
           }
@@ -71,8 +71,7 @@ class ProductController {
 
     def edit(Product productInstance) {
         productInstance = Product.findByUuid(params.uuid)
-        productInstance.company = productInstance.company ?: Company.findByUuid(params.companyUuid) 
-        [productInstance: productInstance, companyUuid: productInstance.company.uuid]
+        respond productInstance
     }
 
     @Transactional
@@ -87,7 +86,6 @@ class ProductController {
             return
         }
 
-        productInstance.company = productInstance.company ?: Company.findByUuid(params.companyUuid) 
         productInstance.save flush:true
         messengineService.sendInstanceEditedMessage(productInstance.company, 'company')
 
