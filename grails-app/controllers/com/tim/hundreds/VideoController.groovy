@@ -58,7 +58,6 @@ class VideoController {
     }
 
     def edit(Video videoInstance) {
-      log.info "params: ${params.dump()}"
       videoInstance = Video.findByUuid(params.uuid)
       videoInstance.musician = videoInstance.musician ?: Video.findByUuid(params.musicianUuid)
       [videoInstance: videoInstance, musicianUuid: videoInstance.musician.uuid]
@@ -98,7 +97,7 @@ class VideoController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Video.label', default: 'Video'), videoInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Video.label', default: 'Video'), videoInstance.uuid])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
