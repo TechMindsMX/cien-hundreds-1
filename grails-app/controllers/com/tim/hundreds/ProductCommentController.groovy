@@ -90,7 +90,7 @@ class ProductCommentController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'ProductComment.label', default: 'ProductComment'), productCommentInstance.id])
-                redirect controller: "product" action:"show", params:[uuid: productCommentInstance.product.uuid]
+                redirect controller: "product", action:"show", params:[uuid: productCommentInstance.product.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }

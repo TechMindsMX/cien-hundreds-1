@@ -61,7 +61,7 @@ class CollaboratorController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'collaborator.label', default: 'Collaborator'), collaboratorInstance.id])
-                redirect collaboratorInstance
+                redirect action:"show", params:[uuid: collaboratorInstance.uuid]
             }
             '*' { respond collaboratorInstance, [status: CREATED] }
         }
@@ -69,8 +69,7 @@ class CollaboratorController {
 
     def edit(Collaborator collaboratorInstance) {
         collaboratorInstance = Collaborator.findByUuid(params.uuid)
-        collaboratorInstance.company = collaboratorInstance.company ?: Company.findByUuid(params.companyUuid) 
-        [collaboratorInstance: collaboratorInstance, companyUuid: collaboratorInstance.company.uuid]
+        respond collaboratorInstance
     }
 
     @Transactional
@@ -85,14 +84,13 @@ class CollaboratorController {
             return
         }
 
-        collaboratorInstance.company = collaboratorInstance.company ?: Company.findByUuid(params.companyUuid) 
         collaboratorInstance.save flush:true
         messengineService.sendInstanceEditedMessage(collaboratorInstance.company, 'company')
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Collaborator.label', default: 'Collaborator'), collaboratorInstance.id])
-                redirect collaboratorInstance
+                redirect action:"show", params:[uuid: collaboratorInstance.uuid]
             }
             '*'{ respond collaboratorInstance, [status: OK] }
         }

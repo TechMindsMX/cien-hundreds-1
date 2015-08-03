@@ -59,7 +59,7 @@ class ReferenceController {
           request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'reference.label', default: 'Reference'), instance.id])
-                redirect instance
+                redirect action:"show", params:[uuid: referenceInstance.uuid]
             }
             '*' { respond instance, [status: CREATED] }
           }
@@ -71,8 +71,7 @@ class ReferenceController {
 
     def edit(Reference referenceInstance) {
         referenceInstance = Reference.findByUuid(params.uuid)
-        referenceInstance.company = referenceInstance.company ?: Company.findByUuid(params.companyUuid) 
-        [referenceInstance: referenceInstance, companyUuid: referenceInstance.company.uuid]
+        respond referenceInstance
     }
 
     @Transactional
@@ -87,14 +86,13 @@ class ReferenceController {
             return
         }
 
-        referenceInstance.company = referenceInstance.company ?: Company.findByUuid(params.companyUuid) 
         referenceInstance.save flush:true
         messengineService.sendInstanceEditedMessage(referenceInstance.company, 'company')
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Reference.label', default: 'Reference'), referenceInstance.id])
-                redirect referenceInstance
+                redirect action:"show", params:[uuid: referenceInstance.uuid]
             }
             '*'{ respond referenceInstance, [status: OK] }
         }
