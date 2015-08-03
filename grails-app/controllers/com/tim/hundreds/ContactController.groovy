@@ -151,7 +151,7 @@ class ContactController {
       } catch (ValidationException ve){
         flash.error = message(code: 'error.email.limit')
       }
-      redirect action: 'show', params:[uuid: contact.uuid]
+      redirect controller: 'contact', action:'show', params: [uuid: contact.uuid]
     }
 
     def prepareTelephone(){
@@ -167,7 +167,7 @@ class ContactController {
       } catch (ValidationException ve){
         flash.error = message(code: 'error.telephone.limit')
       }
-      redirect action: 'show', params:[uuid: contact.uuid]
+      redirect controller: 'contact', action:'show', params: [uuid: contact.uuid]
     }
 
 }
