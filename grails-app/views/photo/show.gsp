@@ -13,7 +13,7 @@
 		<div class="nav" role="navigation">
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				
+
 			</ul>
 		</div>
 		<div id="show-photo" class="content scaffold-show" role="main">
@@ -31,7 +31,7 @@
 					<li class="fieldcontain">
 						<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="photo.musician.label" default="Musician" /></span>
 
-							<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${photoInstance?.musician?.id}">${photoInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
+							<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" params="['uuid' : photoInstance?.musician?.uuid]">${photoInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
 
 					</li>
 				</g:if>

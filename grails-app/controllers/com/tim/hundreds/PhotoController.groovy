@@ -23,6 +23,7 @@ class PhotoController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER','ROLE_FACILITATOR'])
     def show(Photo photoInstance) {
+        photoInstance = photoInstance ?: Photo.findByUuid(params.uuid)
         if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == photoInstance.musician.user) {
             respond photoInstance
         } else {
@@ -32,7 +33,9 @@ class PhotoController {
     }
 
     def create() {
-        respond new Photo(params)
+      def photoInstance = new Photo(params)
+      photoInstance.musician = Musician.findByUuid(params.musicianUuid)
+      respond photoInstance
     }
 
     def save(PhotoCommand command) {
@@ -51,8 +54,8 @@ class PhotoController {
             def instance = photoService.savePhoto(photoInstance)
             request.withFormat {
               form multipartForm {
-                  flash.message = message(code: 'default.created.message', args: [message(code: 'photo.label', default: 'Photo'), instance.id])
-                  redirect instance
+                  flash.message = message(code: 'default.created.message', args: [message(code: 'photo.label', default: 'Photo'), instance.uuid])
+                  redirect action: 'show', params: [uuid: instance.uuid]
               }
               '*' { respond instance, [status: CREATED] }
             }
@@ -67,7 +70,9 @@ class PhotoController {
     }
 
     def edit(Photo photoInstance) {
-        respond photoInstance
+      photoInstance = Photo.findByUuid(params.uuid)
+      photoInstance.musician = photoInstance.musician ?: Video.findByUuid(params.musicianUuid)
+      [photoInstance: photoInstance, musicianUuid: photoInstance.musician.uuid]
     }
 
     def update(PhotoCommand command) {
@@ -88,8 +93,8 @@ class PhotoController {
           def instance = photoService.savePhoto(photoInstance)
           request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'photo.label', default: 'Photo'), instance.id])
-                redirect instance
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'photo.label', default: 'Photo'), instance.uuid])
+                redirect controller: "musician", action:"show", params:[uuid: photoInstance.musician.uuid]
             }
             '*' { respond instance, [status: OK] }
           }
@@ -111,7 +116,7 @@ class PhotoController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Photo.label', default: 'Photo'), photoInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Photo.label', default: 'Photo'), photoInstance.uuid])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
