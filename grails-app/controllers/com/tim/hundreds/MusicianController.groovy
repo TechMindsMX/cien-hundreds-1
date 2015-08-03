@@ -43,7 +43,7 @@ class MusicianController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def show(Musician musicianInstance) {
-      musicianInstance = finderService.findMusician(musicianInstance, params)
+      musicianInstance = Musician.findByUuid(params.uuid)
       if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == musicianInstance.user) {
           respond musicianInstance
       } else {
@@ -78,7 +78,7 @@ class MusicianController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'musician.label', default: 'Musician'), musicianInstance.id])
-                redirect musicianInstance
+                redirect action: 'show', params: [uuid:musicianInstance.uuid]
             }
             '*' { respond musicianInstance, [status: CREATED] }
         }
@@ -114,7 +114,7 @@ class MusicianController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Musician.label', default: 'Musician'), musicianInstance.id])
-                redirect musicianInstance
+                redirect action: 'show', params: [uuid:musicianInstance.uuid]
             }
             '*'{ respond musicianInstance, [status: OK] }
         }
