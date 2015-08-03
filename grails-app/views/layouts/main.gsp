@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html>
 
 <head>
@@ -71,12 +71,10 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${message(code: 'admin.label', default: 'Admin')} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <sec:ifAnyGranted roles="ROLE_ADMIN">
+                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN">
                                 <li><g:link controller="musicianRole" action="index">${message(code: 'default.list.label', args: [message(code: 'musicianRole.label')])}</g:link></li>
                                 <li><g:link controller="musicianRole" action="create">${message(code: 'default.add.label', args: [message(code: 'musicianRole.label')])}</g:link></li>
                                 <li role="separator" class="divider"></li>
-                            </sec:ifAnyGranted>
-                            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN">
                                 <li><g:link controller="genre" action="index">${message(code: 'default.list.label', args: [message(code: 'genre.label')])}</g:link></li>
                                 <li><g:link controller="genre" action="create">${message(code: 'default.add.label', args: [message(code: 'genre.label')])}</g:link></li>
                                 <li role="separator" class="divider"></li>
