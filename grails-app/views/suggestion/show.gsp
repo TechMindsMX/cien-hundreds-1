@@ -62,7 +62,7 @@
 				<li class="fieldcontain">
 					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="suggestion.musician.label" default="Musician" /></span>
 
-						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${suggestionInstance?.musician?.id}">${suggestionInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" params="['uuid' : suggestionInstance?.musician?.uuid]">${suggestionInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
 				</li>
 				</g:if>
 
@@ -71,7 +71,7 @@
 			<g:form url="[resource:suggestionInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<div class="form-actions">
-						<g:link class="btn btn-primary edit" action="edit" resource="${suggestionInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:link class="btn btn-primary edit" action="edit" params="['uuid' : suggestionInstance?.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 						<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 					</div>
 				</fieldset>

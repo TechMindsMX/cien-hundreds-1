@@ -86,7 +86,7 @@ class ActivityController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Activity.label', default: 'Activity'), activityInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'Activity.label', default: 'Activity'), activityInstance.uuid])
                 redirect activityInstance
             }
             '*'{ respond activityInstance, [status: OK] }
@@ -105,7 +105,7 @@ class ActivityController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Activity.label', default: 'Activity'), activityInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Activity.label', default: 'Activity'), activityInstance.uuid])
                 redirect controller: "musician", action:"show", params:[uuid: acitvityInstance.musician.uuid]
             }
             '*'{ render status: NO_CONTENT }
