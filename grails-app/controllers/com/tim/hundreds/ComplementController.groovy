@@ -3,12 +3,14 @@ package com.tim.hundreds
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['ROLE_USER'])
 class ComplementController {
 
-    static showMe = false /*Parametro para aparecer en el menú*/
+    def messengineService
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -17,12 +19,20 @@ class ComplementController {
         respond Complement.list(params), model:[complementInstanceCount: Complement.count()]
     }
 
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Complement complementInstance) {
+        complementInstance = Complement.findByUuid(params.uuid)
+        if (complementInstance == null) {
+            notFound()
+            return
+        }
         respond complementInstance
     }
 
     def create() {
-        respond new Complement(params)
+        def complementInstance = new Complement(params)
+        complementInstance.product = Product.findByUuid(params.productUuid) 
+        respond complementInstance
     }
 
     @Transactional
@@ -31,6 +41,9 @@ class ComplementController {
             notFound()
             return
         }
+
+        complementInstance.product = Product.findByUuid(params.productUuid)
+        complementInstance.validate()
 
         if (complementInstance.hasErrors()) {
             respond complementInstance.errors, view:'create'
@@ -42,13 +55,14 @@ class ComplementController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'complement.label', default: 'Complement'), complementInstance.id])
-                redirect complementInstance
+                redirect action: 'show', params: [uuid: complementInstance.uuid]
             }
             '*' { respond complementInstance, [status: CREATED] }
         }
     }
 
     def edit(Complement complementInstance) {
+        complementInstance = Complement.findByUuid(params.uuid)
         respond complementInstance
     }
 
@@ -65,11 +79,12 @@ class ComplementController {
         }
 
         complementInstance.save flush:true
+        messengineService.sendInstanceEditedMessage(complementInstance.product.company, 'company')
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Complement.label', default: 'Complement'), complementInstance.id])
-                redirect complementInstance
+                redirect action: 'show', params: [uuid: complementInstance.uuid]
             }
             '*'{ respond complementInstance, [status: OK] }
         }
@@ -88,7 +103,7 @@ class ComplementController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Complement.label', default: 'Complement'), complementInstance.id])
-                redirect action:"index", method:"GET"
+                redirect controller: 'product', action:"show", params: [uuid: complementInstance.product.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -96,11 +111,11 @@ class ComplementController {
 
     protected void notFound() {
         request.withFormat {
-            form multipartForm {
+            json { render status: NOT_FOUND }
+            '*' {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'complement.label', default: 'Complement'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
         }
     }
 }

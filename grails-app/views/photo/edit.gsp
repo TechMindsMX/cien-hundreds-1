@@ -11,7 +11,7 @@
 		<div class="nav" role="navigation">
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				
+
 			</ul>
 		</div>
 		<div id="edit-photo" class="content scaffold-edit" role="main">

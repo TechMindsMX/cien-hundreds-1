@@ -12,7 +12,9 @@
 		<div class="nav" role="navigation">
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<sec:ifAnyGranted roles="ROLE_USER">
+					<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				</sec:ifAnyGranted>
 			</ul>
 		</div>
 		<div id="list-musician" class="content scaffold-list" role="main">
@@ -23,27 +25,27 @@
 			<table class="table table-stripped">
 			<thead>
 					<tr>
-					
+
 						<g:sortableColumn property="name" title="${message(code: 'musician.name.label', default: 'Nombre(s)')}" />
 						<th>${message(code: 'telephone.label', default: 'Teléfonoooo')}</th>
 						<th>${message(code: 'email.label', default: 'Correo')}</th>
 						<g:sortableColumn property="dateCreated" title="${message(code: 'musician.dateCreated.label', default: 'Fecha de creación')}" />
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${musicianInstanceList}" status="i" var="musicianInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${musicianInstance.id}">${fieldValue(bean: musicianInstance, field: "name")}</g:link></td>
+
+						<td><g:link action="show" params="['uuid': musicianInstance?.uuid]">${fieldValue(bean: musicianInstance, field: "name")}</g:link></td>
 						<td>
-							<g:each in="${musicianInstance.contacts?.telephones}" var="v"><% v.phone.each {println it} %></g:each>
+							<g:each in="${musicianInstance.contacts?.telephones}" var="v"><div><% v.phone.each {println it} %></div></g:each>
 						</td>
 						<td>
-							<g:each in="${musicianInstance.contacts?.emails}" var="v"><% v.mail.each {println it} %></g:each>
+							<g:each in="${musicianInstance.contacts?.emails}" var="v"><div><% v.mail.each {println it} %></div></g:each>
 						</td>
 						<td><g:formatDate format="dd-MM-yyyy" date="${musicianInstance.dateCreated}" /></td>
-										
+
 					</tr>
 				</g:each>
 				</tbody>

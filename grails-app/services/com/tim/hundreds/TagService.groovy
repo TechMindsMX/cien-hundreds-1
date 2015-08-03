@@ -16,4 +16,9 @@ class TagService {
     target.save()
   }
 
+  def dropTags(def target){
+    target.setTags([])
+    target.save()
+  }
+
 }

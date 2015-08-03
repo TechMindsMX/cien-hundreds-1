@@ -64,8 +64,15 @@
 
       <g:if test="${userInstance?.profile?.photoPath}">
         <li class="fieldcontain">
-          <span id="photoPath-label" class="${session.labelWidth} property-label"><g:message code="user.photoPath.label" default="photoPath" /></span>
-          <img class="img-responsive max300" src="${grailsApplication.config.photo.url.base}${userInstance.profile.photoPath}" />
+          <span id="photoPath-label" class="${session.labelWidth} property-label"><g:message code="photo.label" default="photoPath" /></span>
+          <img class="img-responsive max300" src="${grailsApplication.config.base.photo.url}${userInstance.profile.photoPath}" />
+        </li>
+      </g:if>
+
+      <g:if test="${userInstance?.profile?.resumePath}">
+        <li class="fieldcontain">
+          <span id="resumePath-label" class="${session.labelWidth} property-label"><g:message code="resume.label" default="resumePath" /></span>
+          <a href="${grailsApplication.config.base.resume.url}${userInstance.profile.resumePath}" target="_blank">Abrir</a>
         </li>
       </g:if>
 

@@ -46,17 +46,6 @@
 		</div>
 </div>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: referenceInstance, field: 'company', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="company">
-		<g:message code="reference.company.label" default="Company" />
-		<span class="required-indicator">*</span>
-	</label>
-		<div class="${session.inputWidth}">
-			<g:select id="company" name="company.id" from="${com.tim.hundreds.Company.list()}" optionKey="id" required="" value="${referenceInstance?.company?.id}" class="form-control many-to-one"/>
-
-		</div>
-</div>
-
 <div class="form-group fieldcontain ${hasErrors(bean: referenceInstance, field: 'type', 'error')} required">
 	<label class="${session.labelWidth} control-label" for="type">
 		<g:message code="reference.type.label" default="Type" />
@@ -68,14 +57,6 @@
 		</div>
 </div>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: referenceInstance, field: 'uuid', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="uuid">
-		<g:message code="reference.uuid.label" default="Uuid" />
-		<span class="required-indicator">*</span>
-	</label>
-		<div class="${session.inputWidth}">
-			<g:textField class="form-control" name="uuid" id="uuid" required="" value="${referenceInstance?.uuid}"/>
-
-		</div>
-</div>
+<g:hiddenField id="uuid" name="uuid" required="" value="${referenceInstance?.uuid}" class="form-control" />
+<g:hiddenField id="companyUuid" name="companyUuid" required="" value="${referenceInstance?.company?.uuid}" class="form-control many-to-one"/>
 

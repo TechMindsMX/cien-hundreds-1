@@ -10,6 +10,7 @@ class MusicianController {
     def musicianService
     def messengineService
     def tagService
+    def finderService
     def springSecurityService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
@@ -42,12 +43,13 @@ class MusicianController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def show(Musician musicianInstance) {
-        if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == musicianInstance.user) {
-            respond musicianInstance
-        } else {
-            flash.error = 'access.denied.label'
-            redirect url: '/'
-        }
+      musicianInstance = Musician.findByUuid(params.uuid)
+      if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == musicianInstance.user) {
+          respond musicianInstance
+      } else {
+          flash.error = 'access.denied.label'
+          redirect url: '/'
+      }
     }
 
     def create() {
@@ -76,7 +78,7 @@ class MusicianController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'musician.label', default: 'Musician'), musicianInstance.id])
-                redirect musicianInstance
+                redirect action: 'show', params: [uuid:musicianInstance.uuid]
             }
             '*' { respond musicianInstance, [status: CREATED] }
         }
@@ -102,16 +104,17 @@ class MusicianController {
         }
 
         def musicianInstance = Musician.findByUuid(command.uuid)
-        bindData(musicianInstance, command)
+        DataBinder.copy(musicianInstance, command)
         musicianService.save(musicianInstance)
 
-        tagService.addTags(musicianInstance, "${command.name},${command.genre.name},${command.tagsComma}")
+        tagService.dropTags(musicianInstance)
+        tagService.addTags(musicianInstance, "${command.tagsComma}")
         messengineService.sendInstanceEditedMessage(musicianInstance, 'musician')
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Musician.label', default: 'Musician'), musicianInstance.id])
-                redirect musicianInstance
+                redirect action: 'show', params: [uuid:musicianInstance.uuid]
             }
             '*'{ respond musicianInstance, [status: OK] }
         }

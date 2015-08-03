@@ -1,17 +1,15 @@
 package com.tim.hundreds
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 @Secured(['ROLE_USER'])
 class ReferenceController {
     def referenceService
     def messengineService
-
-    static showMe = false /*Parametro para aparecer en el menú*/
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -22,19 +20,34 @@ class ReferenceController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Reference referenceInstance) {
-        respond referenceInstance
-    }
-
-    def create() {
-        respond new Reference(params)
-    }
-
-    def save(Reference referenceInstance) {
-        log.info "reference: ${referenceInstance.dump()}"
+        referenceInstance = referenceInstance ?: Reference.findByUuid(params.uuid)
         if (referenceInstance == null) {
             notFound()
             return
         }
+        if (SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_BUYER,ROLE_COMPANY_ADMIN,ROLE_COMPANY_VIEWER') || springSecurityService.currentUser == referenceInstance.company.user) {
+            respond referenceInstance
+        } else {
+            flash.error = 'access.denied.label'
+            redirect url: '/'
+        }
+        respond referenceInstance
+    }
+
+    def create() {
+        def referenceInstance = new Reference(params)
+        referenceInstance.company = Company.findByUuid(params.companyUuid) 
+        respond referenceInstance
+    }
+
+    def save(Reference referenceInstance) {
+        if (referenceInstance == null) {
+            notFound()
+            return
+        }
+
+        referenceInstance.company = Company.findByUuid(params.companyUuid)
+        referenceInstance.validate()
 
         if (referenceInstance.hasErrors()) {
             respond referenceInstance.errors, view:'create'
@@ -46,7 +59,7 @@ class ReferenceController {
           request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'reference.label', default: 'Reference'), instance.id])
-                redirect instance
+                redirect action:"show", params:[uuid: referenceInstance.uuid]
             }
             '*' { respond instance, [status: CREATED] }
           }
@@ -57,6 +70,7 @@ class ReferenceController {
     }
 
     def edit(Reference referenceInstance) {
+        referenceInstance = Reference.findByUuid(params.uuid)
         respond referenceInstance
     }
 
@@ -78,7 +92,7 @@ class ReferenceController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Reference.label', default: 'Reference'), referenceInstance.id])
-                redirect referenceInstance
+                redirect action:"show", params:[uuid: referenceInstance.uuid]
             }
             '*'{ respond referenceInstance, [status: OK] }
         }
@@ -97,7 +111,7 @@ class ReferenceController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Reference.label', default: 'Reference'), referenceInstance.id])
-                redirect action:"index", method:"GET"
+                redirect controller: "company", action:"show", params:[uuid: referenceInstance.company.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -105,11 +119,11 @@ class ReferenceController {
 
     protected void notFound() {
         request.withFormat {
-            form multipartForm {
+            json { render status: NOT_FOUND }
+            '*' {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'reference.label', default: 'Reference'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
         }
     }
 }

@@ -81,7 +81,7 @@
     <span class="required-indicator">*</span>
   </label>
   <div class="${session.inputWidth}">
-    <g:timDatePicker name="birthDate" maxDate="-0D" changeMonth="true" changeYear="true" value="${contactInstance?.birthDate}" required="true"></g:timDatePicker>
+    <g:timDatePicker name="birthDate" maxDate="-0D" changeMonth="true" changeYear="true" yearRange="-100:+0" value="${contactInstance?.birthDate}" required="true"></g:timDatePicker>
   </div>
 </div>
 
@@ -91,7 +91,7 @@
     <span class="required-indicator">*</span>
   </label>
   <div class="${session.inputWidth}">
-    <g:timDatePicker name="entryDate" maxDate="-0D" changeMonth="true" changeYear="true" value="${contactInstance?.entryDate}" required="true"></g:timDatePicker>
+    <g:timDatePicker name="entryDate" maxDate="-0D" changeMonth="true" changeYear="true" yearRange="-100:+0" value="${contactInstance?.entryDate}" required="true"></g:timDatePicker>
   </div>
 </div>
 
@@ -126,21 +126,9 @@
   </div>
 </div>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'musician', 'error')} required">
-  <label class="${session.labelWidth} control-label" for="musician">
-    <g:message code="contact.musician.label" default="Musician" />
-    <span class="required-indicator">*</span>
-  </label>
-    <div class="${session.inputWidth}">
-      <g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician?.list()}" optionKey="id" required="" value="${contactInstance?.musician?.id ?: params?.musician?.id}" class="form-control many-to-one"/>
-
-    </div>
-</div>
-<g:if test="${!flash.edit}" > 
+<g:if test="${!flash.edit}" >
   <g:render template="/email/form" model="['emailInstance':contactInstance?.emails]"/>
   <g:render template="/telephone/form" model="['telephoneInstance':contactInstance?.telephones]" />
 </g:if>
-<g:else> 
-  <g:link class="form-group" controller="email">Editar Emails</g:link>
-  <g:link class="form-group" controller="email">Editar Telefonos</g:link>
-</g:else>
+
+<g:hiddenField id="musicianUuid" name="musicianUuid" value="${contactInstance?.musician?.uuid}" class="form-control many-to-one"/>

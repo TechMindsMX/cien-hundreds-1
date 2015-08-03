@@ -24,6 +24,7 @@ class AudioSpec extends Specification {
   where: "The following data"
   url                                                         || result
   'https://soundcloud.com/fettywap1738-zoo/fetty-wap-again'   || true
+  'https://soundcloud.com/reyhan-rizky-1/sets/ghost-bc'       || true
   'https://probando12.com/aboveandbeyond/abgt100'             || false
   'h'                                                         || false
   ''                                                          || false

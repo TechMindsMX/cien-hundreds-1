@@ -16,7 +16,7 @@
 			</li>
 			<li>
 				<label><g:message code="dateCreate.label" /></label>			
-				<g:formatDate format="dd MMMM yyyy" date="${musicianCommentInstance?.musician?.dateCreated}" />
+				<g:formatDate format="dd-MM-yyyy" date="${musicianCommentInstance?.musician?.formed}" />
     		</li>
 		</ul>
 	</div>
@@ -60,7 +60,16 @@
 	<div class="col-md-4">
 		<ul>
 			<li>		
-				${musicianCommentInstance?.musician?.datosFiscales}
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.razonSocial}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.rfc}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.personaJuridica}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.street}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.neighborhood}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.county}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.town}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.state}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.country}</div>
+				<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.zipcode}</div>
 			</li>
 		</ul>
 	</div>
@@ -117,7 +126,9 @@
 				</h4>
 				<g:each in="${musicianCommentInstance?.musician?.photos}">
 					<li>		
-						${it.path}
+						<div class="img pad-bottom">
+						<img class="img-responsive img-thumbnail max300" src="${grailsApplication.config.base.photo.url}${it.path}" />
+						</div>
 					</li>
 				</g:each>		
 			</li>		

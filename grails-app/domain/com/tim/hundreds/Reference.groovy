@@ -9,6 +9,9 @@ class Reference {
 
   BusinessActivity type
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [ company : Company ]
 
   static constraints = {

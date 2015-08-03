@@ -10,6 +10,9 @@ class Social {
   String linkedin
   String other
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [ musician: Musician, company: Company, contact: Contact ]
 
   static constraints = {
@@ -20,8 +23,8 @@ class Social {
     youtube nullable:true,blank:false,size:10..100,url: true
     linkedin nullable:true,blank:false,size:10..100,url: true
     other nullable:true,blank:false,size:10..100
-    musician nullable:true, validator: {val, obj->  if (!val && !obj.company && !obj.contact) return 'default.association.mustbeone'}
-    company nullable:true, validator: {val, obj->  if (!val && !obj.musician && !obj.contact) return 'default.association.mustbeone'}
-    contact nullable:true, validator: {val, obj->  if (!val && !obj.musician && !obj.company) return 'default.association.mustbeone'}
+    musician nullable:true
+    company nullable:true
+    contact nullable:true
   }
 }

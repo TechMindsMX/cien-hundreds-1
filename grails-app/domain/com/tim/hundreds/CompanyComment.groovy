@@ -9,6 +9,9 @@ class CompanyComment {
   String refs
   String collaborators
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [ company : Company ]
 
   static mapping = {

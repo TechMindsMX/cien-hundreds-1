@@ -8,6 +8,9 @@ class DatosFiscales {
   PersonaJuridicaType personaJuridica
   Address address
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [ musician: Musician, company: Company ]
 
   static constraints = {
@@ -20,8 +23,8 @@ class DatosFiscales {
         }
       })
     address nullable:true
-    musician nullable:true, validator: {val, obj->  if (!val && !obj.company) return 'default.association.mustbeone'}
-    company nullable:true, validator: {val, obj->  if (!val && !obj.musician) return 'default.association.mustbeone'}
+    musician nullable:true
+    company nullable:true
   }
 
 }

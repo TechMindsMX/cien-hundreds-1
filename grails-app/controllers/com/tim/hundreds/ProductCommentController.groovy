@@ -16,11 +16,14 @@ class ProductCommentController {
     }
 
     def show(ProductComment productCommentInstance) {
+        productCommentInstance = ProductComment.findByUuid(params.uuid)
         respond productCommentInstance
     }
 
     def create() {
-        respond new ProductComment(params)
+        def productComment = new ProductComment(params)
+        productComment.product = Product.findByUuid(params.productUuid)
+        respond productComment
     }
 
     @Transactional
@@ -40,13 +43,14 @@ class ProductCommentController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'productComment.label', default: 'ProductComment'), productCommentInstance.id])
-                redirect productCommentInstance
+                redirect action: 'show', params: [uuid: productCommentInstance.uuid]
             }
             '*' { respond productCommentInstance, [status: CREATED] }
         }
     }
 
     def edit(ProductComment productCommentInstance) {
+        productCommentInstance = ProductComment.findByUuid(params.uuid)
         respond productCommentInstance
     }
 
@@ -67,7 +71,7 @@ class ProductCommentController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'ProductComment.label', default: 'ProductComment'), productCommentInstance.id])
-                redirect productCommentInstance
+                redirect action: 'show', params: [uuid: productCommentInstance.uuid]
             }
             '*'{ respond productCommentInstance, [status: OK] }
         }
@@ -86,7 +90,7 @@ class ProductCommentController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'ProductComment.label', default: 'ProductComment'), productCommentInstance.id])
-                redirect action:"index", method:"GET"
+                redirect controller: "product", action:"show", params:[uuid: productCommentInstance.product.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -94,11 +98,11 @@ class ProductCommentController {
 
     protected void notFound() {
         request.withFormat {
-            form multipartForm {
+            json { render status: NOT_FOUND }
+            '*' {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'productComment.label', default: 'ProductComment'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
         }
     }
 }

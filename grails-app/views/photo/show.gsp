@@ -13,7 +13,7 @@
 		<div class="nav" role="navigation">
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				
+
 			</ul>
 		</div>
 		<div id="show-photo" class="content scaffold-show" role="main">
@@ -31,18 +31,21 @@
 					<li class="fieldcontain">
 						<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="photo.musician.label" default="Musician" /></span>
 
-							<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${photoInstance?.musician?.id}">${photoInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
+							<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" params="['uuid' : photoInstance?.musician?.uuid]">${photoInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
 
 					</li>
 				</g:if>
 
 			</ul>
-			<g:form url="[resource:photoInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="btn btn-primary edit" action="edit" resource="${photoInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
+
+			<sec:ifAnyGranted roles="ROLE_USER">
+				<g:form url="[resource:photoInstance, action:'delete']" method="DELETE">
+					<fieldset class="buttons">
+						<g:link class="btn btn-primary edit" action="edit" params="['uuid' : photoInstance?.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					</fieldset>
+				</g:form>
+			</sec:ifAnyGranted>
 		</div>
 	</body>
 </html>

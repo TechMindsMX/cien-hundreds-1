@@ -18,9 +18,6 @@ ${eventInstance.dump()}
 		</div>
 		<div id="show-event" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
 			<ul class="property-list event">
 			
 				<g:if test="${eventInstance?.activity}">
@@ -45,7 +42,7 @@ ${eventInstance.dump()}
 				<li class="fieldcontain">
 					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="event.company.label" default="Company" /></span>
 					
-						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${eventInstance?.company?.id}">${eventInstance?.company?.name.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" params="['uuid': eventInstance?.company?.uuid]">${eventInstance?.company?.name.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -64,7 +61,7 @@ ${eventInstance.dump()}
 			<sec:ifAnyGranted roles="ROLE_USER">
 				<g:form url="[resource:eventInstance, action:'delete']" method="DELETE">
 					<fieldset class="buttons">
-						<g:link class="btn btn-primary edit" action="edit" resource="${eventInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:link class="btn btn-primary edit" action="edit" params="['uuid': eventInstance.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 						<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 					</fieldset>
 				</g:form>

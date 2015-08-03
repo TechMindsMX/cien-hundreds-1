@@ -10,7 +10,7 @@
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div class="row">
             <asset:image src="logo_talentua_azul.png"/>
-            <h3>Bienvenido a 100-Hundreds</h3>
+            <h3>Bienvenido a ${message(code: 'project.name.label')}</h3>
         </div>
         <div class="row">
             <div class="col-xm-12 col-md-6 text-left">

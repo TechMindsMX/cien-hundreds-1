@@ -1,5 +1,5 @@
-
 <%@ page import="com.tim.hundreds.ProductComment" %>
+${}
 <!DOCTYPE html>
 <html>
 	<head>

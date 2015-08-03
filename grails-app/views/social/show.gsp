@@ -83,38 +83,41 @@
 			
  				<g:if test="${socialInstance?.musician}">
 				<li class="fieldcontain">
-					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="video.musician.label" default="Musician" /></span>
+					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musician.label" default="Musician" /></span>
 					
-						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${socialInstance?.musician?.id}">${socialInstance?.musician?.name.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" params="['uuid': socialInstance?.musician?.uuid]">${socialInstance?.musician?.name.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 						
 				<g:if test="${socialInstance?.contact}">
 				<li class="fieldcontain">
-					<span id="contact-label" class="${session.labelWidth} property-label"><g:message code="video.contact.label" default="Musician" /></span>
+					<span id="contact-label" class="${session.labelWidth} property-label"><g:message code="contact.label" default="Contact" /></span>
 					
-						<span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" id="${socialInstance?.contact?.id}">${socialInstance?.contact?.firstName.encodeAsHTML()} ${socialInstance?.contact?.lastName.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" params="['uuid': socialInstance?.contact?.uuid]">${socialInstance?.contact?.firstName.encodeAsHTML()} ${socialInstance?.contact?.lastName.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 						
 				<g:if test="${socialInstance?.company}">
 				<li class="fieldcontain">
-					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="video.company.label" default="Musician" /></span>
+					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="company.label" default="Company" /></span>
 					
-						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${socialInstance?.company?.id}">${socialInstance?.company?.name.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" params="['uuid': socialInstance?.company?.uuid]">${socialInstance?.company?.name.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 						
 			</ul>
-			<g:form url="[resource:socialInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="btn btn-primary edit" action="edit" resource="${socialInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
+
+			<sec:ifAnyGranted roles="ROLE_USER">
+				<g:form url="[resource:socialInstance, action:'delete']" method="DELETE">
+					<fieldset class="buttons">
+						<g:link class="btn btn-primary edit" action="edit" params="['uuid': socialInstance.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					</fieldset>
+				</g:form>
+			</sec:ifAnyGranted>
 		</div>
 	</body>
 </html>

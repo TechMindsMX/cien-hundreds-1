@@ -32,6 +32,7 @@ class RecoveryServiceSpec extends Specification {
   when: "We find user by email"
     userHelperService.findByEmail(email) >> user
     recoveryCollaboratorService.generateToken(email) >> message
+    user.enabled >> true
     service.generateRegistrationCodeForEmail(email)
   then: "We expect send message to the email service"
     1 * restService.sendCommand(message, 'forgotPasswordUrl')
@@ -43,7 +44,20 @@ class RecoveryServiceSpec extends Specification {
   when: "We find user by email"
     service.generateRegistrationCodeForEmail(email)
   then: "We expect send message to the email service"
-    thrown BusinessException
+    thrown UserNotFoundException
+  }
+
+  void "should not generate registration code for email since account is not activated"() {
+  given: "An email"
+    def email = 'josdem@email.com'
+  and: "User mock"
+    def user = Mock(User)
+  when: "We find user by email"
+    userHelperService.findByEmail(email) >> user
+    user.enabled >> false
+    service.generateRegistrationCodeForEmail(email)
+  then: "We expect send message to the email service"
+    thrown AccountNoActivatedException
   }
 
   void "should change password for token"(){
@@ -100,6 +114,7 @@ class RecoveryServiceSpec extends Specification {
     def user = Mock(User)
     def profile = new Profile(email:email, firsName:'firsName', motherLastName:'motherLastName', lastName:'lastName')
   when: "We confirm account for token"
+    user.enabled >> false
     service.confirmAccountForToken(token)
   then: "We expect user enabled"
     user.profile >> profile
@@ -120,7 +135,22 @@ class RecoveryServiceSpec extends Specification {
     service.confirmAccountForToken(token)
   then: "We expect save new password"
     registrationHelperService.findEmailByToken(token) >> email
-    thrown BusinessException
+    thrown UserNotFoundException
+  }
+
+  void "should not confirm account for token since user is already active"(){
+  given: "Token and password"
+    def token = 'token'
+    def email = 'josdem@email.com'
+  and: "user"
+    def user = Mock(User)
+  when: "We send change password for token"
+    userHelperService.findByEmail(email) >> user
+    user.enabled >> true
+    service.confirmAccountForToken(token)
+  then: "We expect save new password"
+    registrationHelperService.findEmailByToken(token) >> email
+    thrown AccountEnabledException
   }
 
   void "should send a message to recovery an user"(){

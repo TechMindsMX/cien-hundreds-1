@@ -4,12 +4,17 @@ class Audio {
   String uuid = TokenGenerator.generateToken()
   String url
 
+  Date dateCreated
+  Date lastUpdated
+
   static belongsTo = [
-    musician : Musician
+    musician : Musician, contact: Contact
   ]
 
   static constraints = {
-    url(blank:false,size:10..100,matches: /^https?:\/\/(?:www\.)?soundcloud\.com\/[A-Za-z0-9]+(?:[-_][A-Za-z0-9]+)*(?!\/sets(?:\/|$))(?:\/[A-Za-z0-9]+(?:[-_][A-Za-z0-9]+)*){1,2}\/?$/
+    url(blank:false,size:10..100,matches: /^https?:\/\/(?:www\.)?soundcloud\.com\/[\w#!:.?+=&%@!\-\/]+/
       )
+    musician nullable:true
+    contact nullable:true
 	}
 }

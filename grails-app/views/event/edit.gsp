@@ -16,9 +16,6 @@
 		</div>
 		<div id="edit-event" class="content scaffold-edit" role="main">
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
 			<g:hasErrors bean="${eventInstance}">
 			<div class="alert alert-danger">
 				<ul class="errors" role="alert">

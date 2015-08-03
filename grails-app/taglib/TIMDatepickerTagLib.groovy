@@ -10,6 +10,7 @@ class TIMDatepickerTagLib {
         def datepickerFormat = attrs.datepickerFormat
         def minDate = attrs.minDate
         def maxDate = attrs.maxDate
+        def yearRange = attrs.yearRange
         def required = attrs.required ? 'required=\"\"': null
 
         def displayFormatString = displayFormat ? displayFormat : "dd-mm-yy"
@@ -22,7 +23,7 @@ class TIMDatepickerTagLib {
         out.println "\$(\"#${name}\").datepicker({"
         if (minDate) {
             out.println "minDate: '${minDate}', "
-        }        
+        }
         if (maxDate) {
             out.println "maxDate: '${maxDate}', "
         }
@@ -31,6 +32,9 @@ class TIMDatepickerTagLib {
         }
         if (attrs.changeYear) {
             out.println "changeYear: true, "
+        }
+        if (yearRange) {
+            out.println "yearRange: '${yearRange}', "
         }
         out.println "dateFormat: '${displayFormatString}'"
         out.println "});"

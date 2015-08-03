@@ -11,7 +11,7 @@
 
 		<div>
 			<div class="jumbotron">
-			  <h1>Bienvenido a 100Hundreds</h1>
+			  <h1>Bienvenido a Talentua Music</h1>
 			  <p>...</p>
 			  <p><g:link controller="login" action="auth" class="btn btn-primary btn-lg" role="button">Ingresar</g:link></p>
 			</div>

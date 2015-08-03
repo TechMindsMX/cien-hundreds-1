@@ -90,7 +90,7 @@
 				<li class="fieldcontain">
 					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musician.label" default="Musician" /></span>
 					
-						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${addressInstance?.musician?.id}">${addressInstance?.musician?.name.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" params="['uuid': addressInstance?.musician?.uuid]">${addressInstance?.musician?.name.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -99,7 +99,7 @@
 				<li class="fieldcontain">
 					<span id="contact-label" class="${session.labelWidth} property-label"><g:message code="contact.label" default="contact" /></span>
 					
-						<span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" id="${addressInstance?.contact?.id}">${addressInstance?.contact?.firstName.encodeAsHTML()} ${addressInstance?.contact?.lastName.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" params="['uuid': addressInstance?.contact?.uuid]">${addressInstance?.contact?.firstName.encodeAsHTML()} ${addressInstance?.contact?.lastName.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -108,7 +108,7 @@
 				<li class="fieldcontain">
 					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="company.label" default="Musician" /></span>
 					
-						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${addressInstance?.company?.id}">${addressInstance?.company?.name.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" params="['uuid': addressInstance?.company?.uuid]">${addressInstance?.company?.name.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -117,18 +117,21 @@
 				<li class="fieldcontain">
 					<span id="datosFiscales-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.label" default="Musician" /></span>
 					
-						<span class="property-value" aria-labelledby="datosFiscales-label"><g:link controller="datosFiscales" action="show" id="${addressInstance?.datosFiscales?.id}">${addressInstance?.datosFiscales?.razonSocial.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="datosFiscales-label"><g:link controller="datosFiscales" action="show" params="['uuid': addressInstance?.datosFiscales?.uuid]">${addressInstance?.datosFiscales?.razonSocial.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
 			</ul>
-			<g:form url="[resource:addressInstance, action:'delete']" method="DELETE">
-				<fieldset class="button form-actions">
-					<g:link class="btn btn-primary edit" action="edit" resource="${addressInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
+
+			<sec:ifAnyGranted roles="ROLE_USER">
+				<g:form url="[resource:addressInstance, action:'delete']" method="DELETE">
+					<fieldset class="button form-actions">
+						<g:link class="btn btn-primary edit" action="edit" params="['uuid': addressInstance.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					</fieldset>
+				</g:form>
+			</sec:ifAnyGranted>
 		</div>
 	</body>
 </html>

@@ -36,7 +36,7 @@
      <g:message code="musician.notes.label" default="Notas" />
  </label>
  <div class="${session.inputWidth}">
-    <g:textArea name="notes" class="form-control" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.notes}" placeholder="${message(code:'musician.notes. placeholder')}"/>
+    <g:textArea name="notes" class="form-control" cols="40" rows="5" maxlength="10000" value="${musicianInstance?.notes}" placeholder="${message(code:'musician.notes.placeholder')}"/>
 </div>
 </div>
 
@@ -56,7 +56,7 @@
  </label>
  <div class="${session.inputWidth}">
     <div class="input-group">
-        <g:timDatePicker name="formed" maxDate="-0D" changeMonth="true" changeYear="true" value="${musicianInstance?.formed}" required="true"></g:timDatePicker>
+        <g:timDatePicker name="formed" minDate="01-01-1900" maxDate="-0D" changeMonth="true" changeYear="true" yearRange="-100:+0" value="${musicianInstance?.formed}" required="true"></g:timDatePicker>
         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
     </div>
 </div>
@@ -87,6 +87,11 @@
   </label>
   <div class="${session.inputWidth}">
       <input type="file" id="logo" name="logo" class="form-control"/>
+      <g:if test="${musicianInstance?.logoPath}">
+        <div class="img pad-bottom">
+            <img class="img-responsive img-thumbnail max300" src="${grailsApplication.config.base.logo.url}${musicianInstance.logoPath}" />
+        </div>
+    </g:if>
   </div>
 </div>
 

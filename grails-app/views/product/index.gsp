@@ -41,7 +41,7 @@
 				<g:each in="${productInstanceList}" status="i" var="productInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${productInstance.id}">${fieldValue(bean: productInstance, field: "name")}</g:link></td>
+						<td><g:link action="show" params="['uuid': productInstance.uuid]">${fieldValue(bean: productInstance, field: "name")}</g:link></td>
 					
 						<td>${fieldValue(bean: productInstance, field: "description")}</td>
 					

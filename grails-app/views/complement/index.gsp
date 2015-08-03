@@ -10,8 +10,9 @@
 	<body>
 		<a href="#list-complement" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
-			<ul>
+			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="list-complement" class="content scaffold-list" role="main">
@@ -26,10 +27,10 @@
 						<g:sortableColumn property="name" title="${message(code: 'complement.name.label', default: 'Name')}" />
 					
 						<g:sortableColumn property="price" title="${message(code: 'complement.price.label', default: 'Price')}" />
-
-						<g:sortableColumn property="product.name" title="${message(code: 'complement.product.label', default: 'Product')}" />
-
-						%{--<th><g:message code="complement.product.label" default="Product" /></th>--}%
+					
+						<th><g:message code="complement.product.label" default="Product" /></th>
+					
+						<g:sortableColumn property="uuid" title="${message(code: 'complement.uuid.label', default: 'Uuid')}" />
 					
 					</tr>
 				</thead>
@@ -37,11 +38,13 @@
 				<g:each in="${complementInstanceList}" status="i" var="complementInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${complementInstance.id}">${fieldValue(bean: complementInstance, field: "name")}</g:link></td>
+						<td><g:link action="show" params="['uuid': complementInstance.uuid]">${fieldValue(bean: complementInstance, field: "name")}</g:link></td>
 					
 						<td>${fieldValue(bean: complementInstance, field: "price")}</td>
 					
-						<td>${fieldValue(bean: complementInstance, field: "product.name")}</td>
+						<td>${fieldValue(bean: complementInstance, field: "product")}</td>
+					
+						<td>${fieldValue(bean: complementInstance, field: "uuid")}</td>
 					
 					</tr>
 				</g:each>

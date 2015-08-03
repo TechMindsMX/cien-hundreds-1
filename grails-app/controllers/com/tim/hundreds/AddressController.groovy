@@ -8,8 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class AddressController {
     def addressContextService
-
-    static showMe = false /*Parametro para aparecer en el menú*/
+    def modelContextService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -19,35 +18,40 @@ class AddressController {
     }
 
     def show(Address addressInstance) {
+        addressInstance = addressInstance ?: Address.findByUuid(params.uuid)
         respond addressInstance
     }
 
     @Secured(['ROLE_USER'])
     def create() {
-      respond new Address(params)
+      def addressInstance = new Address(params)
+      addressInstance = modelContextService.setParent(addressInstance, params)
+      respond addressInstance
     }
 
     @Secured(['ROLE_USER'])
     @Transactional
     def save(Address addressInstance) {
-        log.info "companyId: ${params.companyId}"
+        log.info "address: ${addressInstance.dump()}"
 
         if (addressInstance == null) {
             notFound()
             return
         }
 
+        addressInstance = modelContextService.setParent(addressInstance, params)
+
         if (addressInstance.hasErrors()) {
             respond addressInstance.errors, view:'create'
             return
         }
 
-        addressContextService.saveInstance(addressInstance, params)
+        addressContextService.saveInstance(addressInstance)
 
         request.withFormat {
           form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'address.label', default: 'Address'), addressInstance.id])
-                redirect addressInstance
+                redirect action: "show", params:[uuid: addressInstance.uuid]
             }
             '*' { respond addressInstance, [status: CREATED] }
         }
@@ -55,7 +59,9 @@ class AddressController {
 
     @Secured(['ROLE_USER'])
     def edit(Address addressInstance) {
-        respond addressInstance
+        addressInstance = Address.findByUuid(params.uuid)
+        addressInstance = modelContextService.setParent(addressInstance, params)
+        [addressInstance: addressInstance, companyUuid: addressInstance.company.uuid]
     }
 
     @Secured(['ROLE_USER'])
@@ -76,7 +82,7 @@ class AddressController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Address.label', default: 'Address'), addressInstance.id])
-                redirect addressInstance
+                redirect action: "show", params:[uuid: addressInstance.uuid]
             }
             '*'{ respond addressInstance, [status: OK] }
         }
@@ -96,7 +102,8 @@ class AddressController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Address.label', default: 'Address'), addressInstance.id])
-                redirect action:"index", method:"GET"
+                modelContextService.getParamsForRedirectOnDelete(addressInstance, request)
+                redirect controller: request.controller, action:"show", params: [uuid: request.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -111,4 +118,6 @@ class AddressController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+
 }

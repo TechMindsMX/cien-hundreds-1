@@ -1,17 +1,15 @@
 package com.tim.hundreds
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 @Secured(['ROLE_USER'])
 class EventController {
     def eventService
     def messengineService
-
-    static showMe = false /*Parametro para aparecer en el menú*/
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -22,19 +20,34 @@ class EventController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Event eventInstance) {
-        respond eventInstance
-    }
-
-    def create() {
-        respond new Event(params)
-    }
-
-    def save(Event eventInstance) {
-        log.info "event: ${eventInstance.dump()}"
+        eventInstance = Event.findByUuid(params.uuid)
         if (eventInstance == null) {
             notFound()
             return
         }
+        if (SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_BUYER,ROLE_COMPANY_ADMIN,ROLE_COMPANY_VIEWER') || springSecurityService.currentUser == eventInstance.company.user) {
+            respond eventInstance
+        } else {
+            flash.error = 'access.denied.label'
+            redirect url: '/'
+        }
+        respond eventInstance
+    }
+
+    def create() {
+        def eventInstance = new Event(params)
+        eventInstance.company = Company.findByUuid(params.companyUuid) 
+        respond eventInstance
+    }
+
+    def save(Event eventInstance) {
+        if (eventInstance == null) {
+            notFound()
+            return
+        }
+
+        eventInstance.company = Company.findByUuid(params.companyUuid)
+        eventInstance.validate()
 
         if (eventInstance.hasErrors()) {
             respond eventInstance.errors, view:'create'
@@ -46,7 +59,7 @@ class EventController {
           request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), instance.id])
-                redirect instance
+                redirect action: 'show', params: [uuid: instance.uuid]
             }
             '*' { respond instance, [status: CREATED] }
           }
@@ -57,6 +70,7 @@ class EventController {
     }
 
     def edit(Event eventInstance) {
+        eventInstance = Event.findByUuid(params.uuid)
         respond eventInstance
     }
 
@@ -78,7 +92,7 @@ class EventController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Event.label', default: 'Event'), eventInstance.id])
-                redirect eventInstance
+                redirect action: 'show', params: [uuid: eventInstance.uuid]
             }
             '*'{ respond eventInstance, [status: OK] }
         }
@@ -97,7 +111,7 @@ class EventController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Event.label', default: 'Event'), eventInstance.id])
-                redirect action:"index", method:"GET"
+                redirect controller: "company", action:"show", params:[uuid: eventInstance.company.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -105,11 +119,11 @@ class EventController {
 
     protected void notFound() {
         request.withFormat {
-            form multipartForm {
+            json { render status: NOT_FOUND }
+            '*' {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'event.label', default: 'Event'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
         }
     }
 }

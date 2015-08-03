@@ -30,7 +30,6 @@
 			<g:select class="form-control" name="personaJuridica" from="${com.tim.hundreds.PersonaJuridicaType?.values()}" keys="${com.tim.hundreds.PersonaJuridicaType.values()*.name()}" required="" value="${datosFiscalesInstance?.personaJuridica?.name()}" />
 		</div>
 </div>
-
 <g:hiddenField name="address.id" value="${datosFiscalesInstance?.address?.id}"/>
 
 <g:hiddenField name="musician.id" value="${datosFiscalesInstance?.musician?.id}"/>

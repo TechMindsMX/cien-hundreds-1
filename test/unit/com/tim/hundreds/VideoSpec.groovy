@@ -23,9 +23,11 @@ class VideoSpec extends Specification {
     result == video.validate()
   where: "We have next values"
   url                                           || result
+  'https://youtu.be/c9_9y9zBRVQ'                || true
   'https://youtu.be/LKckM5gq7VU'                || true
   'https://www.youtube.com/watch?v=4R3CZeHaD_4' || true
   'https://vimeo.com/130593856'                 || true
+  'https://yoitube.com/83742834'                || false
   'https://probando12.com/abovea'               || false
   'h'                                           || false
   ''                                            || false

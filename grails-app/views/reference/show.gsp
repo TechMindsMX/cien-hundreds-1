@@ -17,9 +17,6 @@
 		</div>
 		<div id="show-reference" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
 			<ul class="property-list reference">
 			
 				<g:if test="${referenceInstance?.name}">
@@ -62,7 +59,7 @@
 				<li class="fieldcontain">
 					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="reference.company.label" default="Company" /></span>
 					
-						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${referenceInstance?.company?.id}">${referenceInstance?.company?.name?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" params="['uuid': referenceInstance?.company?.uuid]">${referenceInstance?.company?.name?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -71,16 +68,7 @@
 				<li class="fieldcontain">
 					<span id="type-label" class="${session.labelWidth} property-label"><g:message code="reference.type.label" default="Type" /></span>
 					
-						<span class="property-value" aria-labelledby="type-label"><g:link controller="businessActivity" action="show" id="${referenceInstance?.type?.id}">${referenceInstance?.type?.name?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${referenceInstance?.uuid}">
-				<li class="hide fieldcontain">
-					<span id="uuid-label" class="${session.labelWidth} property-label"><g:message code="reference.uuid.label" default="Uuid" /></span>
-					
-						<span class="property-value" aria-labelledby="uuid-label"><g:fieldValue bean="${referenceInstance}" field="uuid"/></span>
+						<span class="property-value" aria-labelledby="type-label">${referenceInstance?.type?.name?.encodeAsHTML()}</span>
 					
 				</li>
 				</g:if>
@@ -88,7 +76,7 @@
 			</ul>
 			<g:form url="[resource:referenceInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="btn btn-primary edit" action="edit" resource="${referenceInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="btn btn-primary edit" action="edit" params="['uuid': referenceInstance.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
