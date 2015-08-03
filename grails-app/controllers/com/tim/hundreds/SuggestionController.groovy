@@ -21,11 +21,14 @@ class SuggestionController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def show(Suggestion suggestionInstance) {
+        suggestionInstance = suggestionInstance ?: Suggestion.findByUuid(params.uuid)
         respond suggestionInstance
     }
 
     def create() {
-        respond new Suggestion(params)
+      def suggestionInstance = new Suggestion(params)
+      suggestionInstance.musician = Musician.findByUuid(params.musicianUuid)
+      respond suggestionInstance
     }
 
     def save(Suggestion suggestionInstance) {
@@ -45,7 +48,7 @@ class SuggestionController {
           request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'suggestion.label', default: 'Suggestion'), instance.id])
-                redirect instance
+                redirect action: 'show', params: [uuid: instance.uuid]
             }
             '*' { respond instance, [status: CREATED] }
           }
@@ -56,7 +59,9 @@ class SuggestionController {
     }
 
     def edit(Suggestion suggestionInstance) {
-        respond suggestionInstance
+      suggestionInstance = Suggestion.findByUuid(params.uuid)
+      suggestionInstance.musician = suggestionInstance.musician ?: Activity.findByUuid(params.musicianUuid)
+      [suggestionInstance: suggestionInstance, musicianUuid: suggestionInstance.musician.uuid]
     }
 
     @Transactional
@@ -76,7 +81,7 @@ class SuggestionController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Suggestion.label', default: 'Suggestion'), suggestionInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'Suggestion.label', default: 'Suggestion'), suggestionInstance.uuid])
                 redirect suggestionInstance
             }
             '*'{ respond suggestionInstance, [status: OK] }
@@ -95,8 +100,8 @@ class SuggestionController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Suggestion.label', default: 'Suggestion'), suggestionInstance.id])
-                redirect action:"index", method:"GET"
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Suggestion.label', default: 'Suggestion'), suggestionInstance.uuid])
+                redirect controller: "musician", action:"show", params:[uuid: suggestionInstance.musician.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }
