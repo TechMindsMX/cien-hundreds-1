@@ -8,6 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class AddressController {
     def addressContextService
+    def modelContextService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -24,7 +25,7 @@ class AddressController {
     @Secured(['ROLE_USER'])
     def create() {
       def addressInstance = new Address(params)
-      addressInstance = setParent(addressInstance, params)
+      addressInstance = modelContextService.setParent(addressInstance, params)
       respond addressInstance
     }
 
@@ -38,7 +39,7 @@ class AddressController {
             return
         }
 
-        addressInstance = setParent(addressInstance, params)
+        addressInstance = modelContextService.setParent(addressInstance, params)
 
         if (addressInstance.hasErrors()) {
             respond addressInstance.errors, view:'create'
@@ -59,7 +60,7 @@ class AddressController {
     @Secured(['ROLE_USER'])
     def edit(Address addressInstance) {
         addressInstance = Address.findByUuid(params.uuid)
-        addressInstance = setParent(addressInstance, params)
+        addressInstance = modelContextService.setParent(addressInstance, params)
         [addressInstance: addressInstance, companyUuid: addressInstance.company.uuid]
     }
 
@@ -101,7 +102,7 @@ class AddressController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Address.label', default: 'Address'), addressInstance.id])
-                getParamsForRedirectOnDelete(addressInstance)
+                modelContextService.getParamsForRedirectOnDelete(addressInstance, request)
                 redirect controller: request.controller, action:"show", params: [uuid: request.uuid]
             }
             '*'{ render status: NO_CONTENT }
@@ -118,32 +119,5 @@ class AddressController {
         }
     }
 
-    private setParent(instance, params) {
-        if (params.musicianUuid) { instance.musician = Musician.findByUuid(params.musicianUuid) }
-        else if (params.companyUuid) { instance.company = Company.findByUuid(params.companyUuid) }
-        else if (params.contactUuid) { instance.contact = Contact.findByUuid(params.contactUuid) }
-        else if (params.datosFiscalesUuid) { instance.datosFiscales = DatosFiscales.findByUuid(params.datosFiscalesUuid) }
-
-        instance
-    }
-
-    private getParamsForRedirectOnDelete(instance) {
-        if (instance.musician) {
-            request.controller = 'musician'
-            request.uuid = instance.musician.uuid
-        }
-        else if (instance.company) {
-            request.controller = 'company'
-            request.uuid = instance.company.uuid
-        }
-        else if (instance.contact) {
-            request.controller = 'contact'
-            request.uuid = instance.contact.uuid
-        }
-        else if (instance.datosFiscales) {
-            request.controller = 'datosFiscales'
-            request.uuid = instance.datosFiscales.uuid
-        }
-    }
 
 }
