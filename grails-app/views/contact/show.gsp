@@ -106,7 +106,7 @@
 <g:if test="${contactInstance?.social}">
 <div class="fieldcontain">
   <span id="social-label" class="${session.labelWidth} property-label"><g:message code="social.label" default="Social" /></span>
-  <span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" id="${contactInstance?.social?.id}"><g:message code="default.show.label" args=" " /></g:link></span>
+  <span class="property-value" aria-labelledby="social-label"><g:link controller="social" action="show" params="['uuid': contactInstance?.social?.uuid]"><g:message code="default.show.label" args=" " /></g:link></span>
 
 </div>
 </g:if>
@@ -115,7 +115,7 @@
 <div class="fieldcontain">
   <span id="address-label" class="${session.labelWidth} property-label"><g:message code="address.label" default="Address" /></span>
 
-  <span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${contactInstance?.address?.id}"><g:message code="default.show.label" args=" " /></g:link></span>
+  <span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" params="['uuid': contactInstance?.address?.uuid]"><g:message code="default.show.label" args=" " /></g:link></span>
 
 </div>
 </g:if>
@@ -133,7 +133,7 @@
 <div class="fieldcontain">
   <span id="emails-label" class="${session.labelWidth} property-label"><g:message code="contact.emails.label" default="Emails" /></span>
   <g:each in="${contactInstance.emails}" var="e">
-  <span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" id="${e.id}">${e?.mail?.encodeAsHTML()}</g:link></span>
+  <span class="property-value" aria-labelledby="emails-label"><g:link controller="email" action="show" params="['uuid': e.uuid]">${e?.mail?.encodeAsHTML()}</g:link></span>
 </g:each>
 
 </div>
@@ -162,7 +162,7 @@
   <span id="telephones-label" class="${session.labelWidth} property-label"><g:message code="contact.telephones.label" default="Telephones" /></span>
 
   <g:each in="${contactInstance.telephones}" var="t">
-  <span class="property-value" aria-labelledby="telephones-label"><g:link controller="telephone" action="show" id="${t.id}">${t?.phone.encodeAsHTML()}</g:link></span>
+  <span class="property-value" aria-labelledby="telephones-label"><g:link controller="telephone" action="show" params="['uuid': t.uuid]">${t?.phone.encodeAsHTML()}</g:link></span>
 </g:each>
 
 </div>
@@ -181,7 +181,7 @@
 <div class="fieldcontain">
   <span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musician.label" default="Musician" /></span>
 
-  <span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${contactInstance?.musician?.id}">${contactInstance?.musician?.name.encodeAsHTML()}</g:link></span>
+  <span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" params="['uuid': contactInstance?.musician?.uuid]">${contactInstance?.musician?.name.encodeAsHTML()}</g:link></span>
 
 </div>
 </g:if>
@@ -214,7 +214,7 @@
   </div>
   <g:form url="[resource:contactInstance, action:'delete']" method="DELETE">
   <fieldset class="buttons">
-    <g:link class="btn btn-primary edit" action="edit" resource="${contactInstance}" params="['musician.id': musicianInstance?.id]" ><g:message code="default.button.edit.label" default="Edit" /></g:link>
+    <g:link class="btn btn-primary edit" action="edit" params="['uuid': contactInstance.uuid]" ><g:message code="default.button.edit.label" default="Edit" /></g:link>
     <g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
   </fieldset>
   </g:form>

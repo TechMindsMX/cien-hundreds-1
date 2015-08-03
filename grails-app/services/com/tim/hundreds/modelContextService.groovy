@@ -8,15 +8,13 @@ class modelContextService {
     else if (params.contactUuid) { instance.contact = Contact.findByUuid(params.contactUuid) }
     else if (params.datosFiscalesUuid) { instance.datosFiscales = Contact.findByUuid(params.datosFiscalesUuid) }
     else {
-      log.info "INSTANCE: ${instance.dump()}"
-      log.info "PARAMS: ${params.dump()}"
       throw new MissingParentException('Parent error')
     }
 
     instance
   }
 
-  def getParamsForRedirectOnDelete(instance) {
+  def getParamsForRedirectOnDelete(instance, request) {
     if (instance.musician) {
       request.controller = 'musician'
       request.uuid = instance.musician.uuid
@@ -34,8 +32,6 @@ class modelContextService {
       request.uuid = instance.datosFiscales.uuid
     }
     else {
-      log.info "INSTANCE: ${instance.dump()}"
-      log.info "PARAMS: ${params.dump()}"
       throw new MissingParentException('Parent error')
     }
   }

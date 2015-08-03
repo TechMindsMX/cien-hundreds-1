@@ -95,7 +95,7 @@ class SocialController {
     request.withFormat {
       form multipartForm {
         flash.message = message(code: 'default.deleted.message', args: [message(code: 'Social.label', default: 'Social'), socialInstance.id])
-        modelContextService.getParamsForRedirectOnDelete(socialInstance)
+        modelContextService.getParamsForRedirectOnDelete(socialInstance, request)
         redirect controller: request.controller, action:"show", params: [uuid: request.uuid]
        }
       '*'{ render status: NO_CONTENT }

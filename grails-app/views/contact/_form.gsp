@@ -126,17 +126,9 @@
   </div>
 </div>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: contactInstance, field: 'musician', 'error')} required">
-  <label class="${session.labelWidth} control-label" for="musician">
-    <g:message code="contact.musician.label" default="Musician" />
-    <span class="required-indicator">*</span>
-  </label>
-    <div class="${session.inputWidth}">
-      <g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician?.list()}" optionKey="id" required="" value="${contactInstance?.musician?.id ?: params?.musician?.id}" class="form-control many-to-one"/>
-
-    </div>
-</div>
 <g:if test="${!flash.edit}" >
   <g:render template="/email/form" model="['emailInstance':contactInstance?.emails]"/>
   <g:render template="/telephone/form" model="['telephoneInstance':contactInstance?.telephones]" />
 </g:if>
+
+<g:hiddenField id="musicianUuid" name="musicianUuid" value="${contactInstance?.musician?.uuid}" class="form-control many-to-one"/>
