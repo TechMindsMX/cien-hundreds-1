@@ -21,11 +21,14 @@ class VideoController {
     }
 
     def show(Video videoInstance) {
+        videoInstance = videoInstance ?: Video.findByUuid(params.uuid)
         respond videoInstance
     }
 
     def create() {
-        respond new Video(params)
+      def videoInstance = new Video(params)
+      videoInstance.musician = Musician.findByUuid(params.musicianUuid)
+      respond videoInstance
     }
 
     def save(Video videoInstance) {
@@ -43,8 +46,8 @@ class VideoController {
           def instance = videoService.saveVideo(videoInstance)
           request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'video.label', default: 'Video'), instance.id])
-                redirect instance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'video.label', default: 'Video'), instance.uuid])
+                redirect action: 'show', params: [uuid: instance.uuid]
             }
             '*' { respond instance, [status: CREATED] }
           }
@@ -55,7 +58,10 @@ class VideoController {
     }
 
     def edit(Video videoInstance) {
-        respond videoInstance
+      log.info "params: ${params.dump()}"
+      videoInstance = Video.findByUuid(params.uuid)
+      videoInstance.musician = videoInstance.musician ?: Video.findByUuid(params.musicianUuid)
+      [videoInstance: videoInstance, musicianUuid: videoInstance.musician.uuid]
     }
 
     def update(Video videoInstance) {
@@ -75,7 +81,7 @@ class VideoController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Video.label', default: 'Video'), videoInstance.id])
-                redirect videoInstance
+                redirect controller: "musician", action:"show", params:[uuid: videoInstance.musician.uuid]
             }
             '*'{ respond videoInstance, [status: OK] }
         }

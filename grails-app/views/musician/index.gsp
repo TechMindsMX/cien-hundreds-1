@@ -37,7 +37,7 @@
 				<g:each in="${musicianInstanceList}" status="i" var="musicianInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-						<td><g:link action="show" params="['musicianUuid': musicianInstance?.uuid]">${fieldValue(bean: musicianInstance, field: "name")}</g:link></td>
+						<td><g:link action="show" params="['uuid': musicianInstance?.uuid]">${fieldValue(bean: musicianInstance, field: "name")}</g:link></td>
 						<td>
 							<g:each in="${musicianInstance.contacts?.telephones}" var="v"><div><% v.phone.each {println it} %></div></g:each>
 						</td>

@@ -160,7 +160,7 @@
                 <span id="actividades-label" class="property-label"><strong><g:message code="musicianComment.activities.label" default="Actividades" /></strong></span>
 
                 <sec:ifAnyGranted roles="ROLE_USER">
-                    <g:link class="" controller="activity" action="create" params="[d]">
+                    <g:link class="" controller="activity" action="create" params="['musicianUuid' : musicianInstance?.uuid]">
                         ${message(code:'default.add.label', args:[message(code: 'musicianComment.activity.label')])}
                     </g:link>
                 </sec:ifAnyGranted>
@@ -168,7 +168,7 @@
                     <ol>
                         <g:each in="${musicianInstance.activities}" var="a">
                             <li>
-                                <g:link controller="activity" action="show" id="${a.id}">${a.activity}</g:link>
+                                <g:link controller="activity" action="show" params="['uuid' : a.uuid]">${a.activity}</g:link>
                             </li>
                         </g:each>
                     </ol>
