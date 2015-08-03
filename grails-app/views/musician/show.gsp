@@ -160,7 +160,7 @@
                 <span id="actividades-label" class="property-label"><strong><g:message code="musicianComment.activities.label" default="Actividades" /></strong></span>
 
                 <sec:ifAnyGranted roles="ROLE_USER">
-                    <g:link class="" controller="activity" action="create" params="['musicianUuid': musicianInstance?.uuid]">
+                    <g:link class="" controller="activity" action="create" params="[d]">
                         ${message(code:'default.add.label', args:[message(code: 'musicianComment.activity.label')])}
                     </g:link>
                 </sec:ifAnyGranted>
@@ -181,7 +181,7 @@
                         <g:if test="${musicianInstance.videos == null || musicianInstance.videos.size() < ApplicationState.MAX_VIDEOS }">
                             <span id="videos-label" class="property-label"><strong><g:message code="videos.label" default="Videos" /></strong></span>
                             <sec:ifAnyGranted roles="ROLE_USER">
-                                <g:link class="" controller="video" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">
+                                <g:link class="" controller="video" action="create" params="['musicianUuid': musicianInstance?.uuid]">
                                     ${message(code:'default.add.label', args:[message(code:'videos.label')])}
                                 </g:link>
                             </sec:ifAnyGranted>
@@ -209,7 +209,7 @@
                             <span id="audios-label" class="property-label"><strong><g:message code="audios.label" default="Audios" /></strong></span>
 
                             <sec:ifAnyGranted roles="ROLE_USER">
-                                <g:link class="" controller="audio" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">
+                                <g:link class="" controller="audio" action="create" params="['musicianUuid': musicianInstance?.uuid]">
                                     ${message(code:'default.add.label', args:[message(code:'audios.label')])}
                                 </g:link>
                             </sec:ifAnyGranted>
@@ -236,7 +236,7 @@
                             <g:if test="${musicianInstance.photos == null || musicianInstance.photos.size() < ApplicationState.MAX_PHOTOS }">
                                 <span id="fotos-label" class="property-label"><strong><g:message code="photo.label" default="Fotos" /> </strong></span>
                                 <sec:ifAnyGranted roles="ROLE_USER">
-                                <g:link class="" controller="photo" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">
+                                <g:link class="" controller="photo" action="create" params="['musicianUuid': musicianInstance?.uuid]">
                                     ${message(code:'default.add.label', args:[message(code:'photo.label')])}
                                 </g:link>
                                 </sec:ifAnyGranted>
