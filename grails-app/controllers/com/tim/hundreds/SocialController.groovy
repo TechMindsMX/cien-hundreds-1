@@ -8,6 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class SocialController {
   def musicianService
   def socialContextService
+  def modelContextService
 
   static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -24,17 +25,18 @@ class SocialController {
 
   def create() {
     def socialInstance = new Social(params)
-    socialInstance = setParent(socialInstance, params)
+    socialInstance = modelContextService.setParent(socialInstance, params)
     respond socialInstance
   }
 
   @Transactional
   def save(Social socialInstance) {
-    socialInstance = setParent(socialInstance, params)
     if (socialInstance == null) {
       notFound()
       return
     }
+
+    socialInstance = modelContextService.setParent(socialInstance, params)
 
     if (socialInstance.hasErrors()) {
       respond socialInstance.errors, view:'create'
@@ -54,7 +56,6 @@ class SocialController {
 
   def edit(Social socialInstance) {
     socialInstance = Social.findByUuid(params.uuid)
-    socialInstance = setParent(socialInstance, params)
     respond socialInstance
   }
 
@@ -94,7 +95,7 @@ class SocialController {
     request.withFormat {
       form multipartForm {
         flash.message = message(code: 'default.deleted.message', args: [message(code: 'Social.label', default: 'Social'), socialInstance.id])
-        getParamsForRedirectOnDelete(socialInstance)
+        modelContextService.getParamsForRedirectOnDelete(socialInstance, request)
         redirect controller: request.controller, action:"show", params: [uuid: request.uuid]
        }
       '*'{ render status: NO_CONTENT }
@@ -111,26 +112,5 @@ class SocialController {
     }
   }
 
-  private setParent(instance, params) {
-    if (params.musicianUuid) { instance.musician = Musician.findByUuid(params.musicianUuid) }
-    else if (params.companyUuid) { instance.company = Company.findByUuid(params.companyUuid) }
-    else if (params.contactUuid) { instance.contact = Contact.findByUuid(params.contactUuid) }
-
-    instance
-  }
-    private getParamsForRedirectOnDelete(instance) {
-        if (instance.musician) {
-            request.controller = 'musician'
-            request.uuid = instance.musician.uuid
-        }
-        else if (instance.company) {
-            request.controller = 'company'
-            request.uuid = instance.company.uuid
-        }
-        else if (instance.contact) {
-            request.controller = 'contact'
-            request.uuid = instance.contact.uuid
-        }
-    }
 
 }

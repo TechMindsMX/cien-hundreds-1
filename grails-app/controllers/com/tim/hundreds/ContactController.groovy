@@ -11,8 +11,7 @@ class ContactController {
     def contactService
     def messengineService
     def tagService
-
-    static showMe = false /*Parametro para aparecer en el menú*/
+    def modelContextService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -23,15 +22,17 @@ class ContactController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def show(Contact contactInstance) {
+        contactInstance = Contact.findByUuid(params.uuid)
         respond contactInstance
     }
 
     def create() {
-      [
-        musicianUuid : params.musicianUuid
-      ]
+      def contactInstance = new Contact(params)
+      contactInstance = modelContextService.setParent(contactInstance, params)
+      respond contactInstance
     }
 
+    @Transactional
     def save(ContactCommand command) {
         if (command == null) {
             notFound()
@@ -48,9 +49,9 @@ class ContactController {
         }
         Contact contactInstance = new Contact()
         bindData(contactInstance, command)
-        Musician musician = Musician.findById(params.musician.id)
-        contactInstance.musician = musician
-        tagService.addTags(musician, "${contactInstance.firstName},${contactInstance.lastName},${contactInstance.motherLastName}")
+
+        contactInstance = modelContextService.setParent(contactInstance, params)
+        tagService.addTags(contactInstance.musician, "${contactInstance.firstName},${contactInstance.lastName},${contactInstance.motherLastName}")
         try{
           def instance = contactService.save(contactInstance)
           def telephone = new Telephone(phone:command.phone,phoneType:command.phoneType)
@@ -60,7 +61,7 @@ class ContactController {
            request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'contact.label', default: 'Contact'), instance.id])
-                redirect instance
+                redirect action:'show', params:[uuid: contactInstance.uuid]
             }
             '*' { respond instance, [status: CREATED] }
           }
@@ -73,6 +74,7 @@ class ContactController {
 
     def edit(Contact contactInstance) {
       flash.edit = "true"
+      contactInstance = Contact.findByUuid(params.uuid)
       respond contactInstance
     }
 
@@ -99,7 +101,7 @@ class ContactController {
           request.withFormat {
               form multipartForm {
                   flash.message = message(code: 'default.updated.message', args: [message(code: 'Contact.label', default: 'Contact'), contactInstance.id])
-                  redirect contactInstance
+                  redirect action:'show', params:[uuid: contactInstance.uuid]
               }
               '*'{ respond contactInstance, [status: OK] }
           }
@@ -119,7 +121,8 @@ class ContactController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Contact.label', default: 'Contact'), contactInstance.id])
-                redirect action:"index", method:"GET"
+                modelContextService.getParamsForRedirectOnDelete(socialInstance, request)
+                redirect controller: request.controller, action:"show", params: [uuid: request.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -148,7 +151,7 @@ class ContactController {
       } catch (ValidationException ve){
         flash.error = message(code: 'error.email.limit')
       }
-      redirect action: 'show', id:contact.id
+      redirect controller: 'contact', action:'show', params: [uuid: contact.uuid]
     }
 
     def prepareTelephone(){
@@ -164,7 +167,7 @@ class ContactController {
       } catch (ValidationException ve){
         flash.error = message(code: 'error.telephone.limit')
       }
-      redirect action: 'show', id:contact.id
+      redirect controller: 'contact', action:'show', params: [uuid: contact.uuid]
     }
 
 }
