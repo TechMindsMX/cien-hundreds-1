@@ -20,7 +20,7 @@ class EventController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_BUYER','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER'])
     def show(Event eventInstance) {
-        eventInstance = eventInstance ?: Event.findByUuid(params.uuid)
+        eventInstance = Event.findByUuid(params.uuid)
         if (eventInstance == null) {
             notFound()
             return
@@ -59,7 +59,7 @@ class EventController {
           request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), instance.id])
-                redirect instance
+                redirect action: 'show', params: [uuid: instance.uuid]
             }
             '*' { respond instance, [status: CREATED] }
           }
@@ -71,8 +71,7 @@ class EventController {
 
     def edit(Event eventInstance) {
         eventInstance = Event.findByUuid(params.uuid)
-        eventInstance.company = eventInstance.company ?: Company.findByUuid(params.companyUuid) 
-        [eventInstance: eventInstance, companyUuid: eventInstance.company.uuid]
+        respond eventInstance
     }
 
     @Transactional
@@ -87,14 +86,13 @@ class EventController {
             return
         }
 
-        eventInstance.company = eventInstance.company ?: Company.findByUuid(params.companyUuid) 
         eventInstance.save flush:true
         messengineService.sendInstanceEditedMessage(eventInstance.company, 'company')
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Event.label', default: 'Event'), eventInstance.id])
-                redirect eventInstance
+                redirect action: 'show', params: [uuid: eventInstance.uuid]
             }
             '*'{ respond eventInstance, [status: OK] }
         }

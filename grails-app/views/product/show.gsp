@@ -221,10 +221,12 @@
 	</div>
 	<div class="clearfix"> </div>
 
-	<sec:ifAnyGranted roles="ROLE_USER">
+	<sec:ifAnyGranted roles="ROLE_USER,ROLE_BUYER">
 		<g:form url="[resource:productInstance, action:'delete']" method="DELETE">
 			<fieldset class="buttons">
-				<g:link class="btn btn-primary edit" action="edit" params="['uuid': productInstance.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+				<sec:ifAnyGranted roles="ROLE_USER">
+					<g:link class="btn btn-primary edit" action="edit" params="['uuid': productInstance.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+				</sec:ifAnyGranted>
 
 				<sec:ifAnyGranted roles="ROLE_BUYER">
 					<g:if test="${!productInstance?.productComment}">
@@ -235,7 +237,9 @@
 					</g:else>
 				</sec:ifAnyGranted>
 
-				<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+				<sec:ifAnyGranted roles="ROLE_USER">
+					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+				</sec:ifAnyGranted>
 			</fieldset>
 		</g:form>
 	</sec:ifAnyGranted>

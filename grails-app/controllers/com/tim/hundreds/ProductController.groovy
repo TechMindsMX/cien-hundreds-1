@@ -20,7 +20,7 @@ class ProductController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_COMPANY_ADMIN','ROLE_COMPANY_VIEWER','ROLE_BUYER'])
     def show(Product productInstance) {
-        productInstance = productInstance ?: Product.findByUuid(params.uuid)
+        productInstance = Product.findByUuid(params.uuid)
         if (productInstance == null) {
             notFound()
             return
@@ -59,7 +59,7 @@ class ProductController {
           request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'product.label', default: 'Product'), instance.id])
-                redirect productInstance
+                redirect action: 'show', params: [uuid: productInstance.uuid]
             }
             '*' { respond instance, [status: CREATED] }
           }
@@ -94,7 +94,7 @@ class ProductController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Product.label', default: 'Product'), productInstance.id])
-                redirect productInstance
+                redirect action: 'show', params: [uuid: productInstance.uuid]
             }
             '*'{ respond productInstance, [status: OK] }
         }

@@ -20,7 +20,9 @@ class ProductCommentController {
     }
 
     def create() {
-        respond new ProductComment(params)
+        def productComment = new ProductComment(params)
+        productComment.product = Product.findByUuid(params.productUuid)
+        respond productComment
     }
 
     @Transactional
