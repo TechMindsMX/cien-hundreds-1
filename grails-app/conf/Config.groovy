@@ -159,7 +159,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
   '/dbconsole/**':                  ['permitAll']
 ]
 
-grails.plugin.databasemigration.updateOnStart = true
-grails.plugin.databasemigration.updateOnStartFileNames = ['changelog.groovy']
+if(Environment.current != Environment.TEST) {
+    grails.plugin.databasemigration.updateOnStart = true
+    grails.plugin.databasemigration.updateOnStartFileNames = ['changelog.groovy']
+}
 
 grails.databinding.dateFormats = ['dd-MM-yyyy', 'yyyy-MM-dd HH:mm:ss.S', "yyyy-MM-dd'T'hh:mm:ss'Z'"]
