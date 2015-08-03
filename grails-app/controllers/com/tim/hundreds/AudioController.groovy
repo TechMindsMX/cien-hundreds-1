@@ -21,11 +21,15 @@ class AudioController {
     }
 
     def show(Audio audioInstance) {
+        audioInstance = audioInstance ?: Audio.findByUuid(params.uuid)
         respond audioInstance
     }
 
     def create() {
-        respond new Audio(params)
+      def audioInstance = new Video(params)
+      audioInstance.musician = Musician.findByUuid(params.musicianUuid)
+      respond audioInstance
+
     }
 
     def save(Audio audioInstance) {
@@ -44,7 +48,7 @@ class AudioController {
           request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'audio.label', default: 'Audio'), instance.id])
-                redirect instance
+                redirect action: 'show', params: [uuid: instance.uuid]
             }
             '*' { respond instance, [status: CREATED] }
           }
@@ -55,8 +59,10 @@ class AudioController {
     }
 
     def edit(Audio audioInstance) {
-        respond audioInstance
-    }
+      audioInstance = Video.findByUuid(params.uuid)
+      audioInstance.musician = audioInstance.musician ?: Video.findByUuid(params.musicianUuid)
+      [audioInstance: audioInstance, musicianUuid: audioInstance.musician.uuid]
+   }
 
     @Transactional
     def update(Audio audioInstance) {
@@ -76,7 +82,7 @@ class AudioController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Audio.label', default: 'Audio'), audioInstance.id])
-                redirect audioInstance
+                redirect controller: "musician", action:"show", params:[uuid: audioInstance.musician.uuid]
             }
             '*'{ respond audioInstance, [status: OK] }
         }
@@ -94,7 +100,7 @@ class AudioController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Audio.label', default: 'Audio'), audioInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Audio.label', default: 'Audio'), audioInstance.uuid])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
