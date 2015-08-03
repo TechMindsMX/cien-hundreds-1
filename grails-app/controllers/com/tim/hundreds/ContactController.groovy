@@ -28,7 +28,7 @@ class ContactController {
 
     def create() {
       [
-        musicianId : params.musicianId
+        musicianUuid : params.musicianUuid
       ]
     }
 

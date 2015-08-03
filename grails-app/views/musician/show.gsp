@@ -53,7 +53,7 @@
                 <span id="contactos-label" class="property-label"><strong><g:message code="contactos.label" default="Contactos" /></strong></span>
 
                 <sec:ifAnyGranted roles="ROLE_USER">
-                    <g:link class="" controller="contact" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">
+                    <g:link class="" controller="contact" action="create" params="['musicianUuid': musicianInstance?.uuid]">
                         ${message(code: 'default.add.label', args:[message(code: 'contact.label')])}
                     </g:link>
                 </sec:ifAnyGranted>
@@ -160,7 +160,7 @@
                 <span id="actividades-label" class="property-label"><strong><g:message code="musicianComment.activities.label" default="Actividades" /></strong></span>
 
                 <sec:ifAnyGranted roles="ROLE_USER">
-                    <g:link class="" controller="activity" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">
+                    <g:link class="" controller="activity" action="create" params="['musicianUuid': musicianInstance?.uuid]">
                         ${message(code:'default.add.label', args:[message(code: 'musicianComment.activity.label')])}
                     </g:link>
                 </sec:ifAnyGranted>

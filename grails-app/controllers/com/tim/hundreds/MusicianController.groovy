@@ -43,15 +43,13 @@ class MusicianController {
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
     def show(Musician musicianInstance) {
-      log.info "musician: ${musicianInstance.dump()}"
-      log.info "musicianUuid: ${params.musicianUuid}"
-        musicianInstance = finderService.findMusician(musicianInstance, params)
-        if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == musicianInstance.user) {
-            respond musicianInstance
-        } else {
-            flash.error = 'access.denied.label'
-            redirect url: '/'
-        }
+      musicianInstance = finderService.findMusician(musicianInstance, params)
+      if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == musicianInstance.user) {
+          respond musicianInstance
+      } else {
+          flash.error = 'access.denied.label'
+          redirect url: '/'
+      }
     }
 
     def create() {
