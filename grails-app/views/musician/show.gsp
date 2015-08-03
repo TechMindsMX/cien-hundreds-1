@@ -291,7 +291,7 @@
                     <span id="sugerencias-label" class="property-label"><strong><g:message code="suggestions.label" default="Sugerencias" /> </strong></span>
 
                     <sec:ifAnyGranted roles="ROLE_USER">
-                        <g:link class="" controller="suggestion" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">
+                        <g:link class="" controller="suggestion" action="create" params="['musicianUuid': musicianInstance?.uuid]">
                             ${message(code:'default.add.label', args:[message(code:'suggestion.label')])}
                         </g:link>
                     </sec:ifAnyGranted>
@@ -315,7 +315,7 @@
                 <span id="datosFiscales-label" class="property-label"><strong><g:message code="musicianComment.datosFiscales.label" default="Datos Fiscales"/></strong></span>
                 <sec:ifAnyGranted roles="ROLE_USER">
                     <g:if test="${!musicianInstance?.datosFiscales}">
-                        <g:link class="" controller="datosFiscales" action="create" params="['musicianUuid': musicianInstance?.uuid, 'musician.id': musicianInstance?.id]">
+                        <g:link class="" controller="datosFiscales" action="create" params="['musicianUuid': musicianInstance?.uuid]">
                           ${message(code:'default.add.label', args:[message(code:'musicianComment.datosFiscales.label')])}
                         </g:link>
                     </g:if>
