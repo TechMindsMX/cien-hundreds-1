@@ -29,7 +29,6 @@ class DatosFiscalesSpec extends Specification {
   razonSocial           | rfc             | personaJuridica             | musician       | company       || result
   'Above & Beyond Inc.' | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   | new Musician() | null          || true
   'Above & Beyond Inc.' | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   | null           | new Company() || true
-  'A'                   | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   | null           | null          || false
   'Above & Beyond Inc.' | 'AABO8012028D3' | PersonaJuridicaType.MORAL   | new Musician() | null          || false
   'A'                   | 'AABO8012028D3' | PersonaJuridicaType.MORAL   | new Musician() | null          || false
   ''                    | 'ABO8012028D3'  | PersonaJuridicaType.MORAL   | new Musician() | null          || false
@@ -38,7 +37,6 @@ class DatosFiscalesSpec extends Specification {
   'Above & Beyond Inc.' | null            | PersonaJuridicaType.MORAL   | new Musician() | null          || false
   'Above & Beyond Inc.' | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  | new Musician() | null          || true
   'Above & Beyond Inc.' | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  | null           | new Company() || true
-  'A'                   | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  | null           | null          || false
   'Above & Beyond Inc.' | 'AAB8012028D3'  | PersonaJuridicaType.FISICA  | new Musician() | null          || false
   'A'                   | 'AAB8012028D3'  | PersonaJuridicaType.FISICA  | new Musician() | null          || false
   ''                    | 'ABOD8012028D3' | PersonaJuridicaType.FISICA  | new Musician() | null          || false
