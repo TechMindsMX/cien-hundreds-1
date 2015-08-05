@@ -62,7 +62,7 @@
                     <ol>
                         <g:each in="${musicianInstance.contacts}" var="c">
                             <div>
-                                <g:link controller="contact" action="show" params="['uuid' : a.uuid]">${c.firstName} ${c.lastName} (${c.role.name})</g:link>
+                                <g:link controller="contact" action="show" params="['uuid' : c.uuid]">${c.firstName} ${c.lastName} (${c.role.name})</g:link>
                             </div>
                         </g:each>
                     </ol>
@@ -222,7 +222,7 @@
                                 <g:each in="${musicianInstance.audios}" var="a">
                                     <div>
                                         <g:link url="${a.url}" target="_blank">${a.url}</g:link>
-                                        <sec:link expression="hasRole('ROLE_USER')" controller="audio" action="edit" params="['uuid': a.uuid]">${message(code: 'default.edit.label', args:[message(code: 'audio.label')])}</sec:link>
+                                        <sec:link expression="hasRole('ROLE_USER')" controller="audio" action="show" params="['uuid': a.uuid]">${message(code: 'default.edit.label', args:[message(code: 'audio.label')])}</sec:link>
                                     </div>
                                 </g:each>
                             </ol>
