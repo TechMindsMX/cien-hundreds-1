@@ -62,7 +62,7 @@
                     <ol>
                         <g:each in="${musicianInstance.contacts}" var="c">
                             <div>
-                                <g:link controller="contact" action="show" id="${c.id}">${c.firstName} ${c.lastName} (${c.role.name})</g:link>
+                                <g:link controller="contact" action="show" params="['uuid' : a.uuid]">${c.firstName} ${c.lastName} (${c.role.name})</g:link>
                             </div>
                         </g:each>
                     </ol>
@@ -97,7 +97,7 @@
                         </g:link>
                     </g:if>
                     <g:else>
-                        <g:link class="" controller="social" action="edit" id="${musicianInstance?.social.id}">
+                        <g:link class="" controller="social" action="edit" params="['uuid': musicianInstance?.social?.uuid]">
                             ${message(code:'default.edit.label', args:[message(code:'social.label')])}
                         </g:link>
                     </g:else>
@@ -195,7 +195,7 @@
                                 <g:each in="${musicianInstance.videos}" var="v">
                                     <div>
                                         <g:link url="${v.url}" target="_blank">${v.url}</g:link>
-                                        <sec:link expression="hasRole('ROLE_USER')" controller="video" action="edit" id="${v.id}">${message(code: 'default.edit.label', args:[message(code: 'video.label')])}</sec:link>
+                                        <sec:link expression="hasRole('ROLE_USER')" controller="video" action="edit" params="['uuid': v.uuid]">${message(code: 'default.edit.label', args:[message(code: 'video.label')])}</sec:link>
                                     </div>
                                 </g:each>
                             </ol>
@@ -222,7 +222,7 @@
                                 <g:each in="${musicianInstance.audios}" var="a">
                                     <div>
                                         <g:link url="${a.url}" target="_blank">${a.url}</g:link>
-                                        <sec:link expression="hasRole('ROLE_USER')" controller="audio" action="edit" id="${a.id}">${message(code: 'default.edit.label', args:[message(code: 'audio.label')])}</sec:link>
+                                        <sec:link expression="hasRole('ROLE_USER')" controller="audio" action="edit" params="['uuid': a.uuid]">${message(code: 'default.edit.label', args:[message(code: 'audio.label')])}</sec:link>
                                     </div>
                                 </g:each>
                             </ol>
@@ -248,7 +248,7 @@
                         <g:if test="${musicianInstance?.photos}">
                             <g:each in="${musicianInstance.photos}" var="p">
                                 <div class="img-tumbnail cols-5">
-                                    <g:link controller="photo" action="show" id="${p.id}"><img class="img-responsive max100pct" src="${grailsApplication.config.base.photo.url}${p.path}" /></g:link>
+                                    <g:link controller="photo" action="show" params="['uuid': p.uuid]"><img class="img-responsive max100pct" src="${grailsApplication.config.base.photo.url}${p.path}" /></g:link>
                                 </div>
                             </g:each>
                         </g:if>
@@ -304,7 +304,7 @@
                     <ol>
                         <g:each in="${musicianInstance.suggestions}" var="s">
                             <div>
-                                <g:link controller="suggestion" action="show" id="${s.id}">${s.name}</g:link>
+                                <g:link controller="suggestion" action="show" params="['uuid': s.uuid]">${s.name}</g:link>
                             </div>
                         </g:each>
                     </ol>
@@ -320,7 +320,7 @@
                         </g:link>
                     </g:if>
                     <g:else>
-                        <g:link class="" controller="datosFiscales" action="edit" id="${musicianInstance.datosFiscales?.id}">
+                        <g:link class="" controller="datosFiscales" action="edit" params="['uuid': musicianInstance.datosFiscales?.uuid]">
                           ${message(code:'default.edit.label', args:[message(code:'musicianComment.datosFiscales.label')])}
                         </g:link>
                     </g:else>
@@ -328,7 +328,7 @@
                 <g:if test="${musicianInstance?.datosFiscales}">
                     <ol>
                         <div class="fieldcontain">
-                            <g:link controller="datosFiscales" action="show" id="${musicianInstance?.datosFiscales?.id}">${musicianInstance?.datosFiscales?.razonSocial}</g:link>
+                            <g:link controller="datosFiscales" action="show" params="['uuid': musicianInstance?.datosFiscales?.uuid]">${musicianInstance?.datosFiscales?.razonSocial}</g:link>
                         </div>
                     </ol>
                 </g:if>
@@ -343,7 +343,7 @@
                         </g:link>
                     </g:if>
                     <g:else>
-                        <g:link class="text-capitalize" controller="address" action="edit" id="${musicianInstance.address?.id}">
+                        <g:link class="text-capitalize" controller="address" action="edit" params="['uuid': musicianInstance.address?.uuid]">
                             ${message(code:'default.edit.label', args:[message(code:'address.label')])}
                         </g:link>
                     </g:else>
@@ -351,7 +351,7 @@
                 <g:if test="${musicianInstance?.address}">
                     <ol>
                         <div class="fieldcontain">
-                            <g:link controller="address" action="show" id="${musicianInstance?.address?.id}">${message(code: 'default.show.label', args: [message(code: 'address.label')])}</g:link>
+                            <g:link controller="address" action="show" params="['uuid': musicianInstance?.address?.uuid]">${message(code: 'default.show.label', args: [message(code: 'address.label')])}</g:link>
                         </div>
                     </ol>
                 </g:if>
