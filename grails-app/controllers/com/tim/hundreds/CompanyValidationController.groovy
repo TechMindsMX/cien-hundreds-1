@@ -82,6 +82,7 @@ class CompanyValidationController {
             return
         }
 
+        validationService.validate(companyValidationInstance, 'company')
         companyValidationInstance.save flush:true
 
         request.withFormat {
