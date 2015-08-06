@@ -15,24 +15,18 @@ class modelContextService {
   }
 
   def getParamsForRedirectOnDelete(instance, request) {
-    if (instance.musician) {
-      request.controller = 'musician'
-      request.uuid = instance.musician.uuid
+    List models = ['musician', 'company', 'contact', 'datosFiscales']
+    models.each {
+      if(instance.hasProperty(it) ){
+        if (instance."${it}") {
+          request.controller = it
+          request.uuid = instance."${it}".uuid
+        }
+      }
     }
-    else if (instance.company) {
-      request.controller = 'company'
-      request.uuid = instance.company.uuid
-    }
-    else if (instance.contact) {
-      request.controller = 'contact'
-      request.uuid = instance.contact.uuid
-    }
-    else if (instance.datosFiscales) {
-      request.controller = 'datosFiscales'
-      request.uuid = instance.datosFiscales.uuid
-    }
-    else {
+    if (!request.controller || !request.uuid) {
       throw new MissingParentException('Parent error')
     }
   }
+
 }
