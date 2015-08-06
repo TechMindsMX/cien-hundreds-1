@@ -21,7 +21,7 @@ class ValidationService {
       message = new AssignationCommand(email:userProfile.email, name:"${targetProfile.firstName}", reference:domain.name, emailOptional:targetProfile.email)
       restService.sendCommand(message, grailsApplication.config."${instance}".assigned.user.url)
     } else {
-      def message = new AssignationCommand(email:userProfile.email, name:"${userProfile.firstName}", reference:domain.name)
+      def message = new AssignationCommand(email:userProfile.email, name:"${userProfile.firstName}", reference:domain.name, note: domain.message)
       restService.sendCommand(message, grailsApplication.config."${instance}".refused.url)
     }
 

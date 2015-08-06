@@ -5,4 +5,5 @@ class AssignationCommand implements MessageCommand {
   String name
   String reference
   String emailOptional
+  String note
 }
