@@ -168,6 +168,50 @@
 </div>
 </g:if>
 
+<g:if test="${contactInstance?.audios}">
+<div class="fieldcontain">
+  <span id="telephones-label" class="${session.labelWidth} property-label"><g:message code="audio.label" default="Audios" /></span>
+
+  <g:each in="${contactInstance.audios}" var="t">
+  <span class="property-value" aria-labelledby="audio-label"><g:link controller="audio" action="show" params="['uuid': t.uuid]">${t?.url.encodeAsHTML()}</g:link></span>
+</g:each>
+
+</div>
+</g:if>
+
+<g:if test="${contactInstance?.videos}">
+<div class="fieldcontain">
+  <span id="videos-label" class="${session.labelWidth} property-label"><g:message code="video.label" default="Telephones" /></span>
+
+  <g:each in="${contactInstance.videos}" var="t">
+  <span class="property-value" aria-labelledby="video-label"><g:link controller="video" action="show" params="['uuid': t.uuid]">${t?.url.encodeAsHTML()}</g:link></span>
+</g:each>
+
+</div>
+</g:if>
+
+<g:if test="${contactInstance?.photos}">
+<div class="fieldcontain">
+  <span id="telephones-label" class="${session.labelWidth} property-label"><g:message code="photos.label" default="photos" /></span>
+
+  <g:each in="${contactInstance.photos}" var="t">
+  <span class="property-value" aria-labelledby="photo-label"><g:link controller="photo" action="show" params="['uuid': t.uuid]">${t?.photoPath.encodeAsHTML()}</g:link></span>
+</g:each>
+
+</div>
+</g:if>
+
+<g:if test="${contactInstance?.activities}">
+<div class="fieldcontain">
+  <span id="activities-label" class="${session.labelWidth} property-label"><g:message code="activities.label" default="Telephones" /></span>
+
+  <g:each in="${contactInstance.activities}" var="t">
+  <span class="property-value" aria-labelledby="activities-label"><g:link controller="activity" action="show" params="['uuid': t.uuid]">${t?.phone.encodeAsHTML()}</g:link></span>
+</g:each>
+
+</div>
+</g:if>
+
 <g:if test="${contactInstance?.type}">
 <div class="fieldcontain">
   <span id="type-label" class="${session.labelWidth} property-label"><g:message code="contact.type.label" default="Type" /></span>
@@ -199,6 +243,12 @@
   </div>
   </g:if>
 
+  <g:if test="${!contactInstance.activities || contactInstance.activities?.size() < ApplicationState.MAX_ACTIVITIES}">
+  <div>
+    <g:link controller="activity" action="create" params="[contactUuid: contactInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'activity.label')])}</g:link>
+  </div>
+  </g:if>
+
   <g:if test="${!contactInstance.telephones || contactInstance.telephones?.size() < ApplicationState.MAX_TELEPHONES}">
   <div>
     <g:link controller="contact" action="prepareTelephone" params="[contactUuid: contactInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'telephone.label')])}</g:link>
@@ -211,7 +261,28 @@
   </div>
   </g:if>
 
+  <g:if test="${!contactInstance.audios || contactInstance.audios?.size() < ApplicationState.MAX_AUDIOS}">
+  <div>
+    <g:link controller="audio" action="create" params="[contactUuid: contactInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'audio.label')])}</g:link>
   </div>
+  </g:if>
+
+  <g:if test="${!contactInstance.videos || contactInstance.videos?.size() < ApplicationState.MAX_VIDEOS}">
+  <div>
+    <g:link controller="video" action="create" params="[contactUuid: contactInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'video.label')])}</g:link>
+  </div>
+  </g:if>
+
+  <g:if test="${!contactInstance.photos || contactInstance.photos?.size() < ApplicationState.MAX_PHOTOS}">
+  <div>
+    <g:link controller="photo" action="create" params="[contactUuid: contactInstance?.uuid]">${message(code: 'default.add.label', args: [message(code: 'photo.label')])}</g:link>
+  </div>
+  </g:if>
+
+  </div>
+
+  <br />
+
   <g:form url="[resource:contactInstance, action:'delete']" method="DELETE">
   <fieldset class="buttons">
     <g:link class="btn btn-primary edit" action="edit" params="['uuid': contactInstance.uuid]" ><g:message code="default.button.edit.label" default="Edit" /></g:link>
