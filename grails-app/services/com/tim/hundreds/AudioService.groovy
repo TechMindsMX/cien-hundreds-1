@@ -6,11 +6,26 @@ import grails.transaction.Transactional
 class AudioService {
 
   def saveAudio(audioInstance){
-    def musician = audioInstance.musician
-    musician.addToAudios(audioInstance)
-    musician.save(failOnError: true)
+    if(audioInstance.musician){
+      def musician = audioInstance.musician
+      musician.addToAudios(audioInstance)
+      musician.save flush:true
+    }
+    if(audioInstance.contact){
+      def contact = audioInstance.contact
+      contact.addToAudios(audioInstance)
+      contact.save flush:true
+    }
 
     audioInstance
   }
 
+  def resolveMusician(audioInstance) {
+    if(audioInstance.musician){
+      audioInstance.musician
+    }
+    if (audioInstance.contact){
+      audioInstance.contact.musician
+    }
+  }
 }

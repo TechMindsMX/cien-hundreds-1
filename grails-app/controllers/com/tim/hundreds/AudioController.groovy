@@ -1,7 +1,5 @@
 package com.tim.hundreds
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
@@ -10,8 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class AudioController {
     def audioService
     def messengineService
-
-    static showMe = false /*Parametro para aparecer en el menú*/
+    def modelContextService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -26,10 +23,9 @@ class AudioController {
     }
 
     def create() {
-      def audioInstance = new Video(params)
-      audioInstance.musician = Musician.findByUuid(params.musicianUuid)
+      def audioInstance = new Audio(params)
+      audioInstance = modelContextService.setParent(audioInstance, params)
       respond audioInstance
-
     }
 
     def save(Audio audioInstance) {
@@ -37,6 +33,8 @@ class AudioController {
             notFound()
             return
         }
+
+        audioInstance = modelContextService.setParent(audioInstance, params)
 
         if (audioInstance.hasErrors()) {
             respond audioInstance.errors, view:'create'
@@ -48,20 +46,19 @@ class AudioController {
           request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'audio.label', default: 'Audio'), instance.id])
-                redirect action: 'show', params: [uuid: instance.uuid]
+                redirect action: 'show', params: [uuid: audioInstance.uuid]
             }
             '*' { respond instance, [status: CREATED] }
           }
         } catch (Exception ve){
-          log.info "Errors ${ve.errors}"
-          respond audioInstance.musician.errors, view:'create'
+          log.info "Errors ${ve.dump()}"
+          respond audioInstance.errors, view:'create'
         }
     }
 
     def edit(Audio audioInstance) {
-      audioInstance = Video.findByUuid(params.uuid)
-      audioInstance.musician = audioInstance.musician ?: Video.findByUuid(params.musicianUuid)
-      [audioInstance: audioInstance, musicianUuid: audioInstance.musician.uuid]
+      audioInstance = Audio.findByUuid(params.uuid)
+      respond audioInstance
    }
 
     @Transactional
@@ -77,12 +74,13 @@ class AudioController {
         }
 
         audioInstance.save flush:true
-        messengineService.sendInstanceEditedMessage(audioInstance.musician, 'musician')
+        def musician = audioService.resolveMusician(audioInstance)
+        messengineService.sendInstanceEditedMessage(musician, 'musician')
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Audio.label', default: 'Audio'), audioInstance.id])
-                redirect controller: "musician", action:"show", params:[uuid: audioInstance.musician.uuid]
+                redirect action:"show", params:[uuid: audioInstance.uuid]
             }
             '*'{ respond audioInstance, [status: OK] }
         }
@@ -101,7 +99,8 @@ class AudioController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Audio.label', default: 'Audio'), audioInstance.uuid])
-                redirect action:"index", method:"GET"
+                modelContextService.getParamsForRedirectOnDelete(audioInstance, request)
+                redirect controller: request.controller,action:"show", params: [uuid: request.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -109,11 +108,11 @@ class AudioController {
 
     protected void notFound() {
         request.withFormat {
-            form multipartForm {
+            json { render status: NOT_FOUND }
+            '*' {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'audio.label', default: 'Audio'), params.id])
-                redirect action: "index", method: "GET"
+                redirect url: "/"
             }
-            '*'{ render status: NOT_FOUND }
         }
     }
 }

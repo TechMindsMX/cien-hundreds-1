@@ -17,9 +17,6 @@
 		</div>
 		<div id="show-audio" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
 			<ul class="property-list audio">
 
 				<g:if test="${audioInstance?.url}">
@@ -36,6 +33,15 @@
 					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="audio.musician.label" default="Musician" /></span>
 
           <span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" params="['uuid' : audioInstance?.musician?.uuid]">${audioInstance?.musician?.name.encodeAsHTML()}</g:link></span>
+
+				</li>
+				</g:if>
+
+				<g:if test="${audioInstance?.contact}">
+				<li class="fieldcontain">
+					<span id="contact-label" class="${session.labelWidth} property-label"><g:message code="contact.label" default="Contact" /></span>
+
+          <span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" params="['uuid' : audioInstance?.contact?.uuid]">${audioInstance?.contact?.firstName.encodeAsHTML()} ${audioInstance?.contact?.lastName.encodeAsHTML()}</g:link></span>
 
 				</li>
 				</g:if>
