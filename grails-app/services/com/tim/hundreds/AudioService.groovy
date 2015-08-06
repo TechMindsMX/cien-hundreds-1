@@ -9,12 +9,12 @@ class AudioService {
     if(audioInstance.musician){
       def musician = audioInstance.musician
       musician.addToAudios(audioInstance)
-      musician.save flush:true
+      musician.save failOnError: true
     }
     if(audioInstance.contact){
       def contact = audioInstance.contact
       contact.addToAudios(audioInstance)
-      contact.save flush:true
+      contact.save failOnError: true
     }
 
     audioInstance
