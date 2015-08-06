@@ -10,6 +10,8 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class DatosFiscalesController {
     def datosFiscalesContextService
+    def modelContextService
+    def messengineService
 
     static showMe = false /*Parametro para aparecer en el menú*/
 
@@ -21,12 +23,15 @@ class DatosFiscalesController {
     }
 
     def show(DatosFiscales datosFiscalesInstance) {
+        datosFiscalesInstance = datosFiscalesInstance ?: DatosFiscales.findByUuid(params.uuid)
         respond datosFiscalesInstance
     }
 
     @Secured(['ROLE_USER'])
     def create() {
-      respond new DatosFiscales(params)
+      def datosFiscalesInstance = new DatosFiscales(params)
+      datosFiscalesInstance = modelContextService.setParent(datosFiscalesInstance, params)
+      respond datosFiscalesInstance
     }
 
     @Secured(['ROLE_USER'])
@@ -56,6 +61,7 @@ class DatosFiscalesController {
 
     @Secured(['ROLE_USER'])
     def edit(DatosFiscales datosFiscalesInstance) {
+        datosFiscalesInstance = DatosFiscales.findByUuid(params.uuid)
         respond datosFiscalesInstance
     }
 
@@ -73,6 +79,8 @@ class DatosFiscalesController {
         }
 
         datosFiscalesInstance.save flush:true
+        String instance = modelContextService.getInstanceFromDatosFiscales(datosFiscalesInstance)
+        messengineService.sendInstanceEditedMessage(datosFiscalesInstance."${instance}", instance)
 
         request.withFormat {
             form multipartForm {

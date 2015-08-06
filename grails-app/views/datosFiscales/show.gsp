@@ -12,63 +12,63 @@
 		<div class="nav" role="navigation">
 			<ul class="nav nav-pills">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				
+
 			</ul>
 		</div>
 		<div id="show-datosFiscales" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<ul class="property-list datosFiscales">
-			
+
 				<g:if test="${datosFiscalesInstance?.razonSocial}">
 				<li class="fieldcontain">
 					<span id="razonSocial-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.razonSocial.label" default="Razon Social" /></span>
-					
+
 						<span class="property-value" aria-labelledby="razonSocial-label"><g:fieldValue bean="${datosFiscalesInstance}" field="razonSocial"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${datosFiscalesInstance?.rfc}">
 				<li class="fieldcontain">
 					<span id="rfc-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.rfc.label" default="Rfc" /></span>
-					
+
 						<span class="property-value" aria-labelledby="rfc-label"><g:fieldValue bean="${datosFiscalesInstance}" field="rfc"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${datosFiscalesInstance?.personaJuridica}">
 				<li class="fieldcontain">
 					<span id="personaJuridica-label" class="${session.labelWidth} property-label"><g:message code="datosFiscales.personaJuridica.label" default="Persona Juridica" /></span>
-					
+
 						<span class="property-value" aria-labelledby="personaJuridica-label"><g:fieldValue bean="${datosFiscalesInstance}" field="personaJuridica"/></span>
-					
+
 				</li>
 				</g:if>
 
  				<g:if test="${datosFiscalesInstance?.musician}">
 				<li class="fieldcontain">
 					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musician.label" default="Musician" /></span>
-					
+
 						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${datosFiscalesInstance?.musician?.id}">${datosFiscalesInstance?.musician?.name.encodeAsHTML()}</g:link></span>
-					
+
 				</li>
 				</g:if>
-						
+
 				<g:if test="${datosFiscalesInstance?.company}">
 				<li class="fieldcontain">
 					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="company.label" default="Musician" /></span>
-					
+
 						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${datosFiscalesInstance?.company?.id}">${datosFiscalesInstance?.company?.name.encodeAsHTML()}</g:link></span>
-					
+
 				</li>
 				</g:if>
 
 				<li class="fieldcontain">
 					<span id="address-label" class="${session.labelWidth} property-label"><g:message code="address.label" default="Address" /></span>
-					
+
 				<g:if test="${datosFiscalesInstance?.address}">
-						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${datosFiscalesInstance?.address?.id}">${message(code: 'default.show.label', args:[message(code:'address.label')])}</g:link></span>
+						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" params="['uuid': addressInstance?.datosFiscales?.uuid]">${message(code: 'default.show.label', args:[message(code:'address.label')])}</g:link></span>
 				</g:if>
 				<g:else>
 					${message(code: 'address.missing.label')}
@@ -77,7 +77,7 @@
 					</sec:ifAnyGranted>
 				</g:else>
 				</li>
-			
+
 			</ul>
 
 			<sec:ifAnyGranted roles="ROLE_USER">

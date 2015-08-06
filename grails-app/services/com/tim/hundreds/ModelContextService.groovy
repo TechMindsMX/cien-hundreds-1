@@ -21,6 +21,13 @@ class ModelContextService {
       'musician'
   }
 
+  String getInstanceFromDatosFiscales(def datosFiscales){
+    if(datosFiscales.company)
+      'company'
+    else
+      'musician'
+  }
+
   def getParamsForRedirectOnDelete(instance, request) {
     List models = ['musician', 'company', 'contact', 'datosFiscales']
     models.each {
