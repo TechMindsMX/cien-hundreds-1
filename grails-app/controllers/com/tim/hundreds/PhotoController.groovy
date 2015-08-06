@@ -11,8 +11,7 @@ class PhotoController {
     def messengineService
     def photoService
     def springSecurityService
-
-    static showMe = false /*Parametro para aparecer en el menú*/
+    def modelContextService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
@@ -34,7 +33,7 @@ class PhotoController {
 
     def create() {
       def photoInstance = new Photo(params)
-      photoInstance.musician = Musician.findByUuid(params.musicianUuid)
+      photoInstance = modelContextService.setParent(photoInstance, params)
       respond photoInstance
     }
 
@@ -51,6 +50,8 @@ class PhotoController {
           bindData(photoInstance, command)
 
           try{
+            photoInstance = modelContextService.setParent(photoInstance, params)
+
             def instance = photoService.savePhoto(photoInstance)
             request.withFormat {
               form multipartForm {
@@ -71,8 +72,7 @@ class PhotoController {
 
     def edit(Photo photoInstance) {
       photoInstance = Photo.findByUuid(params.uuid)
-      photoInstance.musician = photoInstance.musician ?: Video.findByUuid(params.musicianUuid)
-      [photoInstance: photoInstance, musicianUuid: photoInstance.musician.uuid]
+      respond photoInstance
     }
 
     def update(PhotoCommand command) {
