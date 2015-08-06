@@ -19,4 +19,5 @@ class MessengineService {
       restService.sendCommand(message, grailsApplication.config."${instance}".edited.user.url)
     }
   }
+
 }
