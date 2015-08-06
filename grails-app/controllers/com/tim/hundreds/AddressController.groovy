@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class AddressController {
     def addressContextService
     def modelContextService
+    def messengineService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -60,8 +61,8 @@ class AddressController {
     @Secured(['ROLE_USER'])
     def edit(Address addressInstance) {
         addressInstance = Address.findByUuid(params.uuid)
-        addressInstance = modelContextService.setParent(addressInstance, params)
-        [addressInstance: addressInstance, companyUuid: addressInstance.company.uuid]
+        log.info "address: ${addressInstance.dump()}"
+        respond addressInstance
     }
 
     @Secured(['ROLE_USER'])
