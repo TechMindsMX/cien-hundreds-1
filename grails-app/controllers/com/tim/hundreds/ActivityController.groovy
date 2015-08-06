@@ -10,8 +10,7 @@ class ActivityController {
     def activityService
     def messengineService
     def springSecurityService
-
-    static showMe = false /*Parametro para aparecer en el menú*/
+    def modelContextService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 

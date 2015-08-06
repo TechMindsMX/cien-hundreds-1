@@ -7,9 +7,12 @@ class PhotoCommand {
   String uuid
   String path
 
-  Musician musician
+  String musician
+  String contact
 
   static constraints = {
     path nullable:true
+    musician nullable:true
+    contact nullable:true
   }
 }

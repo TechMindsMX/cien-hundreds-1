@@ -26,4 +26,12 @@ class ActivityService {
     }
     activityInstance
   }
+  def resolveMusician(activityInstance) {
+    if(activityInstance.musician){
+      return activityInstance.musician
+    }
+    if (activityInstance.contact){
+      return activityInstance.contact.musician
+    }
+  }
 }

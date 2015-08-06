@@ -86,8 +86,9 @@ class PhotoController {
         }
 
         Photo photoInstance = Photo.findByUuid(command.uuid)
-        bindData(photoInstance, command)
-        messengineService.sendInstanceEditedMessage(photoInstance.musician, 'musician')
+        photoInstance.path = command.path
+        def musician = photoService.resolveMusician(photoInstance)
+        messengineService.sendInstanceEditedMessage(musician, 'musician')
 
         try{
           def instance = photoService.savePhoto(photoInstance)
@@ -117,7 +118,8 @@ class PhotoController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Photo.label', default: 'Photo'), photoInstance.uuid])
-                redirect action:"index", method:"GET"
+                modelContextService.getParamsForRedirectOnDelete(photoInstance, request)
+                redirect controller: request.controller,action:"show", params: [uuid: request.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }

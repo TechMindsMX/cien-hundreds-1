@@ -33,4 +33,4 @@
 
 <g:hiddenField id="uuid" name="uuid" value="${activityInstance?.uuid}" />
 <g:hiddenField id="musicianUuid" name="musicianUuid" value="${activityInstance?.musician?.uuid}" />
-<g:hiddenField id="contactUuid" name="contactUuid" value="${activityInstance?.contact?.uuid}" 
+<g:hiddenField id="contactUuid" name="contactUuid" value="${activityInstance?.contact?.uuid}"/> 
