@@ -14,6 +14,13 @@ class ModelContextService {
     instance
   }
 
+  String getInstanceFromSocial(def social){
+    if(social.company)
+      'company'
+    else
+      'musician'
+  }
+
   def getParamsForRedirectOnDelete(instance, request) {
     List models = ['musician', 'company', 'contact', 'datosFiscales']
     models.each {

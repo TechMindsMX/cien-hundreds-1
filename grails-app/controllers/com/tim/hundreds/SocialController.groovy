@@ -73,7 +73,8 @@ class SocialController {
     }
 
     socialInstance.save flush:true
-    messengineService.sendInstanceEditedMessage(socialInstance.company, 'company')
+    String instance = modelContextService.getInstanceFromSocial(socialInstance)
+    messengineService.sendInstanceEditedMessage(socialInstance."${instance}", instance)
 
     request.withFormat {
       form multipartForm {
