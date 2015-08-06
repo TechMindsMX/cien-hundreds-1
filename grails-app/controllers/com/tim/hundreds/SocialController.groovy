@@ -9,6 +9,7 @@ class SocialController {
   def musicianService
   def socialContextService
   def modelContextService
+  def messengineService
 
   static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -72,6 +73,7 @@ class SocialController {
     }
 
     socialInstance.save flush:true
+    messengineService.sendInstanceEditedMessage(socialInstance.company, 'company')
 
     request.withFormat {
       form multipartForm {

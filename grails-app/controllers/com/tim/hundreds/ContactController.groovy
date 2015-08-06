@@ -91,6 +91,7 @@ class ContactController {
         }
 
         contactInstance.save flush:true
+
         try {
           messengineService.sendInstanceEditedMessage(contactInstance.musician, 'musician')
         }
