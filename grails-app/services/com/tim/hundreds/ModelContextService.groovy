@@ -1,6 +1,6 @@
 package com.tim.hundreds
 
-class modelContextService {
+class ModelContextService {
 
   def setParent(instance, params) {
     if (params.musicianUuid) { instance.musician = Musician.findByUuid(params.musicianUuid) }

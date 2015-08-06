@@ -78,6 +78,7 @@ class AddressController {
         }
 
         addressInstance.save flush:true
+        messengineService.sendInstanceEditedMessage(addressInstance.company, 'company')
 
         request.withFormat {
             form multipartForm {
