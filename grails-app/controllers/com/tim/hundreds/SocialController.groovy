@@ -73,7 +73,7 @@ class SocialController {
     }
 
     socialInstance.save flush:true
-    String instance = modelContextService.getInstanceFromSocial(socialInstance)
+    String instance = modelContextService.getInstanceFromChild(socialInstance)
     messengineService.sendInstanceEditedMessage(socialInstance."${instance}", instance)
 
     request.withFormat {

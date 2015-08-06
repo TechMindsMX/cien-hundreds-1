@@ -77,7 +77,8 @@ class AddressController {
         }
 
         addressInstance.save flush:true
-        messengineService.sendInstanceEditedMessage(addressInstance.company, 'company')
+        String instance = modelContextService.getInstanceFromChild(addressInstance)
+        messengineService.sendInstanceEditedMessage(addressInstance."${instance}", instance)
 
         request.withFormat {
             form multipartForm {

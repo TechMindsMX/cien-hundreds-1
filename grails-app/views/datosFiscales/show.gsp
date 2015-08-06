@@ -65,7 +65,7 @@
 				</g:if>
 
 				<li class="fieldcontain">
-					<span id="address-label" class="${session.labelWidth} property-label"><g:message code="address.label" default="Address" /></span>
+					<span id="address-label" class="${session.labelWidth} property-label"><g:message code="musician.address.label" default="Dirección" /></span>
 
 				<g:if test="${datosFiscalesInstance?.address}">
 						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" params="['uuid': addressInstance?.datosFiscales?.uuid]">${message(code: 'default.show.label', args:[message(code:'address.label')])}</g:link></span>

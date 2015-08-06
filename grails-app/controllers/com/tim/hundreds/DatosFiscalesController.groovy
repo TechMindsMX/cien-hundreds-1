@@ -79,7 +79,7 @@ class DatosFiscalesController {
         }
 
         datosFiscalesInstance.save flush:true
-        String instance = modelContextService.getInstanceFromDatosFiscales(datosFiscalesInstance)
+        String instance = modelContextService.getInstanceFromChild(datosFiscalesInstance)
         messengineService.sendInstanceEditedMessage(datosFiscalesInstance."${instance}", instance)
 
         request.withFormat {
