@@ -1,7 +1,5 @@
 package com.tim.hundreds
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
@@ -10,8 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class VideoController {
     def videoService
     def messengineService
-
-    static showMe = false /*Parametro para aparecer en el menú*/
+    def modelContextService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -27,7 +24,7 @@ class VideoController {
 
     def create() {
       def videoInstance = new Video(params)
-      videoInstance.musician = Musician.findByUuid(params.musicianUuid)
+      videoInstance = modelContextService.setParent(videoInstance, params)
       respond videoInstance
     }
 
@@ -36,6 +33,8 @@ class VideoController {
             notFound()
             return
         }
+
+        videoInstance = modelContextService.setParent(videoInstance, params)
 
         if (videoInstance.hasErrors()) {
             respond videoInstance.errors, view:'create'
@@ -53,14 +52,13 @@ class VideoController {
           }
         } catch (Exception ve){
           log.info "Errors ${ve.errors}"
-          respond videoInstance.musician.errors, view:'create'
+          respond videoInstance.errors, view:'create'
         }
     }
 
     def edit(Video videoInstance) {
       videoInstance = Video.findByUuid(params.uuid)
-      videoInstance.musician = videoInstance.musician ?: Video.findByUuid(params.musicianUuid)
-      [videoInstance: videoInstance, musicianUuid: videoInstance.musician.uuid]
+      respond videoInstance
     }
 
     def update(Video videoInstance) {
@@ -75,12 +73,13 @@ class VideoController {
         }
 
         videoInstance.save flush:true
-        messengineService.sendInstanceEditedMessage(videoInstance.musician, 'musician')
+        def musician = videoService.resolveMusician(videoInstance)
+        messengineService.sendInstanceEditedMessage(musician, 'musician')
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Video.label', default: 'Video'), videoInstance.id])
-                redirect controller: "musician", action:"show", params:[uuid: videoInstance.musician.uuid]
+                redirect action:"show", params:[uuid: videoInstance.uuid]
             }
             '*'{ respond videoInstance, [status: OK] }
         }
@@ -98,7 +97,8 @@ class VideoController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Video.label', default: 'Video'), videoInstance.uuid])
-                redirect action:"index", method:"GET"
+                modelContextService.getParamsForRedirectOnDelete(videoInstance, request)
+                redirect controller: request.controller,action:"show", params: [uuid: request.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -106,11 +106,11 @@ class VideoController {
 
     protected void notFound() {
         request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'video.label', default: 'Video'), params.id])
-                redirect action: "index", method: "GET"
+            json { render status: NOT_FOUND }
+            '*' {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'audio.label', default: 'Audio'), params.id])
+                redirect url: "/"
             }
-            '*'{ render status: NOT_FOUND }
         }
     }
 }
