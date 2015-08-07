@@ -14,6 +14,15 @@ class ModelContextService {
     instance
   }
 
+  String getInstanceFromChild(child){
+    if(child.company) child.company.class.getSimpleName().toString().toLowerCase()
+    else if(child.musician) child.musician.class.getSimpleName().toString().toLowerCase()
+    else if(child.contact) child.contact.class.getSimpleName().toString().toLowerCase()
+    else {
+      throw new MissingParentException('Parent error')
+    }
+  }
+
   def getParamsForRedirectOnDelete(instance, request) {
     List models = ['musician', 'company', 'contact', 'datosFiscales']
     models.each {
