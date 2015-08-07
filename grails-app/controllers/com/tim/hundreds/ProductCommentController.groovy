@@ -18,7 +18,6 @@ class ProductCommentController {
     @Secured(['ROLE_BUYER','ROLE_COMPANY_VIEWER'])
     def show(ProductComment productCommentInstance) {
         productCommentInstance = ProductComment.findByUuid(params.uuid)
-        productCommentInstance.productComment = Product.findBy()
         respond productCommentInstance
     }
 

@@ -16,8 +16,6 @@ class Product {
   String postSaleModel
   String notes
 
-  ProductComment productComment
-
   Boolean web
   String webDescription
 
@@ -35,6 +33,10 @@ class Product {
 
   Date dateCreated
   Date lastUpdated
+
+  static hasOne = [ 
+    productComment: ProductComment
+  ]
 
   static belongsTo = [
     company : Company
