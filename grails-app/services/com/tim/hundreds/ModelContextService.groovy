@@ -17,8 +17,10 @@ class ModelContextService {
   String getInstanceFromChild(child){
     if(child.company)
       'company'
-    else
+    else if(child.musician)
       'musician'
+    else
+      'contact'
   }
 
   def getParamsForRedirectOnDelete(instance, request) {
