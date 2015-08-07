@@ -18,9 +18,6 @@
 		</div>
 		<div id="show-photo" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
 			<ul class="property-list photo">
 
 				<g:if test="${photoInstance?.path}">
@@ -32,6 +29,15 @@
 						<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="photo.musician.label" default="Musician" /></span>
 
 							<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" params="['uuid' : photoInstance?.musician?.uuid]">${photoInstance?.musician?.name?.encodeAsHTML()}</g:link></span>
+
+					</li>
+				</g:if>
+
+				<g:if test="${photoInstance?.contact}">
+					<li class="fieldcontain">
+						<span id="contact-label" class="${session.labelWidth} property-label"><g:message code="photo.contact.label" default="Contact" /></span>
+
+							<span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" params="['uuid' : photoInstance?.contact?.uuid]">${photoInstance?.contact?.firstName?.encodeAsHTML()} ${photoInstance?.contact?.lastName?.encodeAsHTML()}</g:link></span>
 
 					</li>
 				</g:if>

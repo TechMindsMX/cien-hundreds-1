@@ -22,7 +22,7 @@ class ActivityController {
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER','ROLE_FACILITATOR'])
     def show(Activity activityInstance) {
         activityInstance = activityInstance ?: Activity.findByUuid(params.uuid)
-        if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == activityInstance.musician.user) {
+        if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == activityService.resolveMusician(activityInstance).user) {
             respond activityInstance
         } else {
             flash.error = 'access.denied.label'

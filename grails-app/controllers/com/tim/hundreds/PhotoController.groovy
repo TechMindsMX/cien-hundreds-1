@@ -23,7 +23,7 @@ class PhotoController {
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER','ROLE_FACILITATOR'])
     def show(Photo photoInstance) {
         photoInstance = photoInstance ?: Photo.findByUuid(params.uuid)
-        if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == photoInstance.musician.user) {
+        if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == photoService.resolveMusician(photoInstance).user) {
             respond photoInstance
         } else {
             flash.error = 'access.denied.label'
