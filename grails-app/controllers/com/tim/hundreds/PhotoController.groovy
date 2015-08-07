@@ -76,32 +76,30 @@ class PhotoController {
     }
 
     def update(PhotoCommand command) {
+      log.info "command: ${command.dump()}"
         if (command.hasErrors()) {
             respond command.errors, view:'edit'
             return
         }
 
-        if(params.file){
+        if(!params.file.isEmpty()){
           command.path = photoStorerService.storeFile(request.getFile('file'))
-        }
+          Photo photoInstance = Photo.findByUuid(command.uuid)
+          photoInstance.path = command.path
+          photoInstance.save flush:true
+          def musician = photoService.resolveMusician(photoInstance)
+          messengineService.sendInstanceEditedMessage(musician, 'musician')
 
-        Photo photoInstance = Photo.findByUuid(command.uuid)
-        photoInstance.path = command.path
-        def musician = photoService.resolveMusician(photoInstance)
-        messengineService.sendInstanceEditedMessage(musician, 'musician')
-
-        try{
-          def instance = photoService.savePhoto(photoInstance)
           request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'photo.label', default: 'Photo'), instance.uuid])
-                redirect controller: "musician", action:"show", params:[uuid: photoInstance.musician.uuid]
+              flash.message = message(code: 'default.updated.message', args: [message(code: 'photo.label', default: 'Photo'), photoInstance.uuid])
+              redirect action:"show", params:[uuid: photoInstance.uuid]
             }
-            '*' { respond instance, [status: OK] }
+            '*' { respond photoInstance, [status: OK] }
           }
-        } catch (Exception ve){
-          log.info "Errors ${ve.errors}"
-          respond photoInstance.musician.errors, view:'create'
+        } else {
+          flash.error="El archivo de foto no se ha especificado"
+          respond command, view:'create'
         }
     }
 
