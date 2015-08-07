@@ -14,15 +14,6 @@ class ModelContextService {
     instance
   }
 
-  String getInstanceFromChild(child){
-    if(child.company)
-      'company'
-    else if(child.musician)
-      'musician'
-    else
-      'contact'
-  }
-
   def getParamsForRedirectOnDelete(instance, request) {
     List models = ['musician', 'company', 'contact', 'datosFiscales']
     models.each {
