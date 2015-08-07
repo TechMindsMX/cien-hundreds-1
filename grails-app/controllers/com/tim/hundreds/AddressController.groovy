@@ -34,7 +34,6 @@ class AddressController {
     @Transactional
     def save(Address addressInstance) {
         log.info "address: ${addressInstance.dump()}"
-
         if (addressInstance == null) {
             notFound()
             return
@@ -61,7 +60,6 @@ class AddressController {
     @Secured(['ROLE_USER'])
     def edit(Address addressInstance) {
         addressInstance = Address.findByUuid(params.uuid)
-        log.info "address: ${addressInstance.dump()}"
         respond addressInstance
     }
 
@@ -79,7 +77,8 @@ class AddressController {
         }
 
         addressInstance.save flush:true
-        messengineService.sendInstanceEditedMessage(addressInstance.company, 'company')
+        String instance = modelContextService.getInstanceFromChild(addressInstance)
+        messengineService.sendInstanceEditedMessage(addressInstance."${instance}", instance)
 
         request.withFormat {
             form multipartForm {

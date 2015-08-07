@@ -14,8 +14,8 @@ class ModelContextService {
     instance
   }
 
-  String getInstanceFromSocial(def social){
-    if(social.company)
+  String getInstanceFromChild(child){
+    if(child.company)
       'company'
     else
       'musician'
