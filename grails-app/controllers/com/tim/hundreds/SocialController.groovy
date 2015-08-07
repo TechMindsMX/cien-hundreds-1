@@ -62,6 +62,7 @@ class SocialController {
 
   @Transactional
   def update(Social socialInstance) {
+    log.info "social: ${socialInstance.dump()}"
     if (socialInstance == null) {
       notFound()
       return
@@ -74,7 +75,8 @@ class SocialController {
 
     socialInstance.save flush:true
     String instance = modelContextService.getInstanceFromChild(socialInstance)
-    messengineService.sendInstanceEditedMessage(socialInstance."${instance}", instance)
+    if(instance.equals('contact')) messengineService.sendInstanceEditedMessage(socialInstance.contact.musician, 'musician')
+    else messengineService.sendInstanceEditedMessage(socialInstance."${instance}", instance)
 
     request.withFormat {
       form multipartForm {
