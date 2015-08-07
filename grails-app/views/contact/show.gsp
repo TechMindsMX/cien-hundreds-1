@@ -195,7 +195,9 @@
   <span id="telephones-label" class="${session.labelWidth} property-label"><g:message code="photos.label" default="photos" /></span>
 
   <g:each in="${contactInstance.photos}" var="t">
-  <span class="property-value" aria-labelledby="photo-label"><g:link controller="photo" action="show" params="['uuid': t.uuid]">${t?.photoPath.encodeAsHTML()}</g:link></span>
+  <span class="property-value" aria-labelledby="photo-label"><g:link controller="photo" action="show" params="['uuid': t.uuid]">
+    <img class="img-responsive max300" src="${grailsApplication.config.base.photo.url}${t.path}" />
+  </g:link></span>
 </g:each>
 
 </div>
@@ -203,10 +205,10 @@
 
 <g:if test="${contactInstance?.activities}">
 <div class="fieldcontain">
-  <span id="activities-label" class="${session.labelWidth} property-label"><g:message code="activities.label" default="Telephones" /></span>
+  <span id="activities-label" class="${session.labelWidth} property-label"><g:message code="activities.label" default="Acitvities" /></span>
 
   <g:each in="${contactInstance.activities}" var="t">
-  <span class="property-value" aria-labelledby="activities-label"><g:link controller="activity" action="show" params="['uuid': t.uuid]">${t?.phone.encodeAsHTML()}</g:link></span>
+  <span class="property-value" aria-labelledby="activities-label"><g:link controller="activity" action="show" params="['uuid': t.uuid]">${t?.activity.encodeAsHTML()}</g:link></span>
 </g:each>
 
 </div>

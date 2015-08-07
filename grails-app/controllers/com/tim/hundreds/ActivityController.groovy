@@ -10,8 +10,7 @@ class ActivityController {
     def activityService
     def messengineService
     def springSecurityService
-
-    static showMe = false /*Parametro para aparecer en el menú*/
+    def modelContextService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -23,7 +22,7 @@ class ActivityController {
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER','ROLE_FACILITATOR'])
     def show(Activity activityInstance) {
         activityInstance = activityInstance ?: Activity.findByUuid(params.uuid)
-        if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == activityInstance.musician.user) {
+        if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == activityService.resolveMusician(activityInstance).user) {
             respond activityInstance
         } else {
             flash.error = 'access.denied.label'
@@ -33,7 +32,7 @@ class ActivityController {
 
     def create() {
         def activityInstance = new Activity(params)
-        activityInstance.musician = Musician.findByUuid(params.musicianUuid)
+        activityInstance = modelContextService.setParent(activityInstance, params)
         respond activityInstance
     }
 
@@ -48,8 +47,10 @@ class ActivityController {
             return
         }
 
+        activityInstance = modelContextService.setParent(activityInstance, params)
+
         try{
-          def instance = activityService.save(activityInstance)
+          def instance = activityService.saveActivity(activityInstance)
           request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'activity.label', default: 'Activity'), instance.uuid])
@@ -58,15 +59,14 @@ class ActivityController {
             '*' { respond instance, [status: CREATED] }
           }
         }catch(Exception ex){
-          log.info "${ex.errors}"
+          log.info "${ex.message}"
           respond activityInstance.musician.errors, view:'create'
         }
     }
 
     def edit(Activity activityInstance) {
       activityInstance = Activity.findByUuid(params.uuid)
-      activityInstance.musician = activityInstance.musician ?: Activity.findByUuid(params.musicianUuid)
-      [activityInstance: activityInstance, musicianUuid: activityInstance.musician.uuid]
+       respond activityInstance
     }
 
     @Transactional
@@ -82,7 +82,8 @@ class ActivityController {
         }
 
         activityInstance.save flush:true
-        messengineService.sendInstanceEditedMessage(activityInstance.musician, 'musician')
+        def musician = activityService.resolveMusician(activityInstance)
+        messengineService.sendInstanceEditedMessage(musician, 'musician')
 
         request.withFormat {
             form multipartForm {
@@ -106,7 +107,8 @@ class ActivityController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Activity.label', default: 'Activity'), activityInstance.uuid])
-                redirect controller: "musician", action:"show", params:[uuid: acitvityInstance.musician.uuid]
+                modelContextService.getParamsForRedirectOnDelete(activityInstance, request)
+                redirect controller: "musician", action:"show", params:[uuid: activityInstance.musician.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }

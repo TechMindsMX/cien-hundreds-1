@@ -22,10 +22,10 @@ class AudioService {
 
   def resolveMusician(audioInstance) {
     if(audioInstance.musician){
-      audioInstance.musician
+      return audioInstance.musician
     }
     if (audioInstance.contact){
-      audioInstance.contact.musician
+      return audioInstance.contact.musician
     }
   }
 }

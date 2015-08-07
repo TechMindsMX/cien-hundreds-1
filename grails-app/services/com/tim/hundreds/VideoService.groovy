@@ -22,10 +22,10 @@ class VideoService {
   
   def resolveMusician(videoInstance) {
     if(videoInstance.musician){
-      videoInstance.musician
+      return videoInstance.musician
     }
     if (videoInstance.contact){
-      videoInstance.contact.musician
+      return videoInstance.contact.musician
     }
   }
 }

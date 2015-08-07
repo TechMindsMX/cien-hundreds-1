@@ -22,10 +22,10 @@ class PhotoService {
 
   def resolveMusician(photoInstance) {
     if(photoInstance.musician){
-      photoInstance.musician
+      return photoInstance.musician
     }
     if (photoInstance.contact){
-      photoInstance.contact.musician
+      return photoInstance.contact.musician
     }
   }
 
