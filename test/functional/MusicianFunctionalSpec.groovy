@@ -105,7 +105,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         backToMusician.click()
         at MusicianShowPage
         addAudio.click()
-        to AudioFormPage
+        at AudioFormPage
 
         when: "I fill the Audio form"
         audioForm.url = url
@@ -127,7 +127,7 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         backToMusician.click()
         at MusicianShowPage
         addPhoto.click()
-        to PhotoFormPage
+        at PhotoFormPage
 
         when: "I fill the Photo form"
         photoForm.file = file
@@ -227,9 +227,9 @@ class MusicianFunctionalSpec extends GebReportingSpec {
         backToMusician.click()
         at MusicianShowPage
         addContact.click()
+        at ContactPage
 
         when: "I fill the form fields"
-        at ContactPage
         contactForm.firstName      = firstName
         contactForm.lastName       = lastName
         contactForm.motherLastName = motherLastName

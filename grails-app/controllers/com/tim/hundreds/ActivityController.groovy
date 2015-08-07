@@ -59,15 +59,14 @@ class ActivityController {
             '*' { respond instance, [status: CREATED] }
           }
         }catch(Exception ex){
-          log.info "${ex.errors}"
+          log.info "${ex.message}"
           respond activityInstance.musician.errors, view:'create'
         }
     }
 
     def edit(Activity activityInstance) {
       activityInstance = Activity.findByUuid(params.uuid)
-      activityInstance.musician = activityInstance.musician ?: Activity.findByUuid(params.musicianUuid)
-      [activityInstance: activityInstance, musicianUuid: activityInstance.musician.uuid]
+       respond activityInstance
     }
 
     @Transactional
@@ -83,7 +82,7 @@ class ActivityController {
         }
 
         activityInstance.save flush:true
-        def musician = audioService.resolveMusician(audioInstance)
+        def musician = activityService.resolveMusician(activityInstance)
         messengineService.sendInstanceEditedMessage(musician, 'musician')
 
         request.withFormat {
@@ -109,7 +108,7 @@ class ActivityController {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Activity.label', default: 'Activity'), activityInstance.uuid])
                 modelContextService.getParamsForRedirectOnDelete(activityInstance, request)
-                redirect controller: "musician", action:"show", params:[uuid: acitvityInstance.musician.uuid]
+                redirect controller: "musician", action:"show", params:[uuid: activityInstance.musician.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }

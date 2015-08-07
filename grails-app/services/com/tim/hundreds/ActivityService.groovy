@@ -16,12 +16,12 @@ class ActivityService {
   def saveActivity(activityInstance) {
   	if(activityInstance.musician){
       def musician = activityInstance.musician
-      musician.addToAudios(activityInstance)
+      musician.addToActivities(activityInstance)
       musician.save failOnError: true
     }
     if(activityInstance.contact){
       def contact = activityInstance.contact
-      contact.addToAudios(activityInstance)
+      contact.addToActivities(activityInstance)
       contact.save failOnError: true
     }
     activityInstance
