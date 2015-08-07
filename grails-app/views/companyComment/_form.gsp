@@ -2,7 +2,7 @@
 
 
 <h4>
-	<g:message code="companyComment.general.label" default="General" />
+	<g:message code="general.label" default="General" />
 </h4>
 <div class="row">
 	<div class="col-md-4">
@@ -28,7 +28,7 @@
 	</div>
 	<div class="col-md-8 form-group fieldcontain ${hasErrors(bean: companyCommentInstance, field: 'general', 'error')} ">
 		<label class="${session.labelWidth} control-label" for="general">
-			<g:message code="companyComment.general.label" default="General" />
+			<g:message code="general.label" default="General" />
 			
 		</label>
 		<div class="${session.inputWidth}">
@@ -39,7 +39,7 @@
 </div>
 
 <h4>
-	<g:message code="companyComment.description.label" default="Description" />
+	<g:message code="description.label" default="Description" />
 </h4>
 <div class="row">
 	<div class="col-md-4">
@@ -51,7 +51,7 @@
 	</div>
 	<div class="col-md-8 form-group fieldcontain ${hasErrors(bean: companyCommentInstance, field: 'description', 'error')} ">
 		<label class="${session.labelWidth} control-label" for="description">
-			<g:message code="companyComment.description.label" default="Description" />
+			<g:message code="description.label" default="Description" />
 			
 		</label>
 		<div class="${session.inputWidth}">
@@ -62,7 +62,7 @@
 </div>
 
 <h4>
-	<g:message code="companyComment.datosFiscales.label" default="Datos Fiscales" />
+	<g:message code="datosFiscales.label" default="Datos Fiscales" />
 </h4>
 <div class="row">
 	<div class="col-md-4">
@@ -74,7 +74,7 @@
 	</div>
 	<div class="col-md-8 form-group fieldcontain ${hasErrors(bean: companyCommentInstance, field: 'datosFiscales', 'error')} ">
 		<label class="${session.labelWidth} control-label" for="datosFiscales">
-			<g:message code="companyComment.datosFiscales.label" default="Datos Fiscales" />
+			<g:message code="datosFiscales.label" default="Datos Fiscales" />
 			
 		</label>
 		<div class="${session.inputWidth}">
@@ -85,7 +85,7 @@
 </div>
 
 <h4>
-	<g:message code="companyComment.events.label" default="Events" />
+	<g:message code="events.label" default="Events" />
 </h4>
 <div class="row">
 	<div class="col-md-4">
@@ -99,7 +99,7 @@
 	</div>
 	<div class="col-md-8 form-group fieldcontain ${hasErrors(bean: companyCommentInstance, field: 'events', 'error')} ">
 		<label class="${session.labelWidth} control-label" for="events">
-			<g:message code="companyComment.events.label" default="Events" />
+			<g:message code="events.label" default="Events" />
 			
 		</label>
 		<div class="${session.inputWidth}">
@@ -110,7 +110,7 @@
 </div>
 
 <h4>
-	<g:message code="companyComment.notes.label" default="Notes" />
+	<g:message code="notes.label" default="Notes" />
 </h4>
 <div class="row">
 	<div class="col-md-4">
@@ -122,7 +122,7 @@
 	</div>
 	<div class="col-md-8 form-group fieldcontain ${hasErrors(bean: companyCommentInstance, field: 'notes', 'error')} ">
 		<label class="${session.labelWidth} control-label" for="notes">
-			<g:message code="companyComment.notes.label" default="Notes" />
+			<g:message code="notes.label" default="Notes" />
 			
 		</label>
 		<div class="${session.inputWidth}">
@@ -158,7 +158,7 @@
 </div>
 
 <h4>
-	<g:message code="companyComment.collaborators.label" default="Collaborators" />
+	<g:message code="collaborators.label" default="Collaborators" />
 </h4>
 <div class="row">
 	<div class="col-md-4">
@@ -172,7 +172,7 @@
 	</div>
 	<div class="col-md-8 form-group fieldcontain ${hasErrors(bean: companyCommentInstance, field: 'collaborators', 'error')} ">
 		<label class="${session.labelWidth} control-label" for="collaborators">
-			<g:message code="companyComment.collaborators.label" default="Collaborators" />
+			<g:message code="collaborators.label" default="Collaborators" />
 			
 		</label>
 		<div class="${session.inputWidth}">
