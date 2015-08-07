@@ -180,14 +180,4 @@
 	</div>
 </div>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'product', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="product">
-		<g:message code="productComment.product.label" default="Product" />
-		<span class="required-indicator">*</span>
-	</label>
-		<div class="${session.inputWidth}">
-			<g:select id="product" name="product.id" from="${com.tim.hundreds.Product.list()}" optionKey="id" required="" value="${productCommentInstance?.product?.id}" class="form-control many-to-one"/>
-
-		</div>
-</div>
-
+<g:hiddenField name="product.id" value="${productCommentInstance?.product?.id}" required="" />

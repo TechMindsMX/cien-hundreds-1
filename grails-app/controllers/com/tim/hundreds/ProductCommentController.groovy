@@ -15,15 +15,17 @@ class ProductCommentController {
         respond ProductComment.list(params), model:[productCommentInstanceCount: ProductComment.count()]
     }
 
+    @Secured(['ROLE_BUYER','ROLE_COMPANY_VIEWER'])
     def show(ProductComment productCommentInstance) {
         productCommentInstance = ProductComment.findByUuid(params.uuid)
+        productCommentInstance.productComment = Product.findBy()
         respond productCommentInstance
     }
 
     def create() {
-        def productComment = new ProductComment(params)
-        productComment.product = Product.findByUuid(params.productUuid)
-        respond productComment
+        def productCommentInstance = new ProductComment(params)
+        productCommentInstance.product = Product.findByUuid(params.productUuid)
+        respond productCommentInstance
     }
 
     @Transactional

@@ -1777,4 +1777,6 @@ databaseChangeLog = {
 	include file: 'chnagelog-model-dates.groovy'
 
 	include file: 'chnagelog-add-activities-multimedia-to-contact.groovy'
+
+	include file: 'add-uuid-to-comments-models.groovy'
 }

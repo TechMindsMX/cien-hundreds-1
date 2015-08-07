@@ -29,7 +29,6 @@ class CompanyCommentController {
 
     @Transactional
     def save(CompanyComment companyCommentInstance) {
-        companyCommentInstance = CompanyComment.findByUuid(params.uuid)
         if (companyCommentInstance == null) {
             notFound()
             return
