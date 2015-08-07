@@ -10,30 +10,11 @@
 		<div class="${session.inputWidth}">
 			<input class="form-control" type="file" id="file" name="file" />
     		<g:if test="${photoInstance?.path}">
-				<img class="img-responsive max300" src="${grailsApplication.config.base.logo.url}${photoInstance.path}" />
+				<img class="img-responsive max300" src="${grailsApplication.config.base.photo.url}${photoInstance.path}" />
 			</g:if>
 		</div>
 </div>
 
-<div class="hide form-group fieldcontain ${hasErrors(bean: photoInstance, field: 'musician', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="musician">
-		<g:message code="photo.musician.label" default="Musician" />
-		<span class="required-indicator">*</span>
-	</label>
-		<div class="${session.inputWidth}">
-			<g:select id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionKey="id" required="" value="${photoInstance?.musician?.id}" class="form-control many-to-one"/>
-
-		</div>
-</div>
-
-<div class="hide form-group fieldcontain ${hasErrors(bean: photoInstance, field: 'uuid', 'error')} required">
-	<label class="${session.labelWidth} control-label" for="uuid">
-		<g:message code="photo.uuid.label" default="Uuid" />
-		<span class="required-indicator">*</span>
-	</label>
-		<div class="${session.inputWidth}">
-			<g:textField class="form-control" name="uuid" required="" value="${photoInstance?.uuid}"/>
-
-		</div>
-</div>
-
+<g:hiddenField id="uuid" name="uuid" value="${photoInstance?.uuid}" />
+<g:hiddenField id="musicianUuid" name="musicianUuid" value="${photoInstance?.musician?.uuid}" />
+<g:hiddenField id="contactUuid" name="contactUuid" value="${photoInstance?.contact?.uuid}" />

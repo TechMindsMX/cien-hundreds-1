@@ -3,7 +3,7 @@ import geb.Page
 
 class VideoFormPage extends Page{
 
-    static url = "video/create"
+    static url = { driver.currentUrl.contains('video/create') }
 
     static at = { driver.currentUrl.contains('video/create') }
 
@@ -14,5 +14,3 @@ class VideoFormPage extends Page{
         logout       { $('#navbar').find('.logout') }
     }
 }
-
-

@@ -4,7 +4,7 @@ import geb.Page
 
 class AudioFormPage extends Page {
 
-    static url = "audio/create"
+    static url = { driver.currentUrl.contains('audio/create') }
 
     static at = { driver.currentUrl.contains('audio/create') }
 

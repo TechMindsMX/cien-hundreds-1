@@ -9,10 +9,12 @@ class Activity {
   Date dateCreated
   Date lastUpdated
 
-  static belongsTo = [ musician : Musician ]
+  static belongsTo = [ musician : Musician, contact: Contact ]
 
   static constraints = {
     activity blank:false,size:1..100
     place blank:false,size:1..100
+    musician nullable:true
+    contact nullable:true
   }
 }

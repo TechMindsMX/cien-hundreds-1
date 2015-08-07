@@ -1,6 +1,7 @@
 package com.tim.hundreds
 
 class MusicianComment {
+  String uuid = TokenGenerator.generateToken()
   String general
   String history
   String datosFiscales

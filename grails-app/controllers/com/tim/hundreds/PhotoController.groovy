@@ -11,8 +11,7 @@ class PhotoController {
     def messengineService
     def photoService
     def springSecurityService
-
-    static showMe = false /*Parametro para aparecer en el menú*/
+    def modelContextService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
@@ -24,7 +23,7 @@ class PhotoController {
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER','ROLE_FACILITATOR'])
     def show(Photo photoInstance) {
         photoInstance = photoInstance ?: Photo.findByUuid(params.uuid)
-        if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == photoInstance.musician.user) {
+        if(SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN,ROLE_FACILITATOR,ROLE_MUSICIAN_ADMIN,ROLE_MUSICIAN_VIEWER') || springSecurityService.currentUser == photoService.resolveMusician(photoInstance).user) {
             respond photoInstance
         } else {
             flash.error = 'access.denied.label'
@@ -34,7 +33,7 @@ class PhotoController {
 
     def create() {
       def photoInstance = new Photo(params)
-      photoInstance.musician = Musician.findByUuid(params.musicianUuid)
+      photoInstance = modelContextService.setParent(photoInstance, params)
       respond photoInstance
     }
 
@@ -51,6 +50,8 @@ class PhotoController {
           bindData(photoInstance, command)
 
           try{
+            photoInstance = modelContextService.setParent(photoInstance, params)
+
             def instance = photoService.savePhoto(photoInstance)
             request.withFormat {
               form multipartForm {
@@ -71,36 +72,34 @@ class PhotoController {
 
     def edit(Photo photoInstance) {
       photoInstance = Photo.findByUuid(params.uuid)
-      photoInstance.musician = photoInstance.musician ?: Video.findByUuid(params.musicianUuid)
-      [photoInstance: photoInstance, musicianUuid: photoInstance.musician.uuid]
+      respond photoInstance
     }
 
     def update(PhotoCommand command) {
+      log.info "command: ${command.dump()}"
         if (command.hasErrors()) {
             respond command.errors, view:'edit'
             return
         }
 
-        if(params.file){
+        if(!params.file.isEmpty()){
           command.path = photoStorerService.storeFile(request.getFile('file'))
-        }
+          Photo photoInstance = Photo.findByUuid(command.uuid)
+          photoInstance.path = command.path
+          photoInstance.save flush:true
+          def musician = photoService.resolveMusician(photoInstance)
+          messengineService.sendInstanceEditedMessage(musician, 'musician')
 
-        Photo photoInstance = Photo.findByUuid(command.uuid)
-        bindData(photoInstance, command)
-        messengineService.sendInstanceEditedMessage(photoInstance.musician, 'musician')
-
-        try{
-          def instance = photoService.savePhoto(photoInstance)
           request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'photo.label', default: 'Photo'), instance.uuid])
-                redirect controller: "musician", action:"show", params:[uuid: photoInstance.musician.uuid]
+              flash.message = message(code: 'default.updated.message', args: [message(code: 'photo.label', default: 'Photo'), photoInstance.uuid])
+              redirect action:"show", params:[uuid: photoInstance.uuid]
             }
-            '*' { respond instance, [status: OK] }
+            '*' { respond photoInstance, [status: OK] }
           }
-        } catch (Exception ve){
-          log.info "Errors ${ve.errors}"
-          respond photoInstance.musician.errors, view:'create'
+        } else {
+          flash.error="El archivo de foto no se ha especificado"
+          respond command, view:'create'
         }
     }
 
@@ -117,7 +116,8 @@ class PhotoController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Photo.label', default: 'Photo'), photoInstance.uuid])
-                redirect action:"index", method:"GET"
+                modelContextService.getParamsForRedirectOnDelete(photoInstance, request)
+                redirect controller: request.controller,action:"show", params: [uuid: request.uuid]
             }
             '*'{ render status: NO_CONTENT }
         }

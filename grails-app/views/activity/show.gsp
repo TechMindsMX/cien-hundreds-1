@@ -58,6 +58,15 @@
 				</li>
 				</g:if>
 
+				<g:if test="${activityInstance?.contact}">
+				<li class="fieldcontain">
+					<span id="contact-label" class="${session.labelWidth} property-label"><g:message code="contact.label" default="Contact" /></span>
+
+						<span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" params="['uuid' : activityInstance?.contact?.uuid]">${activityInstance?.contact?.firstName?.encodeAsHTML()} ${activityInstance?.contact?.lastName?.encodeAsHTML()}</g:link></span>
+
+				</li>
+				</g:if>
+
 			</ol>
 
 			<sec:ifAnyGranted roles="ROLE_USER">

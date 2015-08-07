@@ -90,7 +90,7 @@
 				<li class="fieldcontain">
 					<span id="company-label" class="${session.labelWidth} property-label"><g:message code="companyComment.company.label" default="Company" /></span>
 					
-						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${companyCommentInstance?.company?.id}">${companyCommentInstance?.company?.name.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" params="[uuid: companyCommentInstance?.company?.uuid]">${companyCommentInstance?.company?.name.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -98,7 +98,7 @@
 			</ul>
 			<g:form url="[resource:companyCommentInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="btn btn-primary edit" action="edit" resource="${companyCommentInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="btn btn-primary edit" action="edit" params="[uuid: companyCommentInstance.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>

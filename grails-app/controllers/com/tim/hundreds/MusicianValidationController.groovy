@@ -8,6 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN'])
 class MusicianValidationController {
     def musicianService
+    def validationService
 
     static showMe = true
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -76,6 +77,7 @@ class MusicianValidationController {
             return
         }
 
+        validationService.validate(musicianValidationInstance, 'musician')
         musicianValidationInstance.save flush:true
 
         request.withFormat {

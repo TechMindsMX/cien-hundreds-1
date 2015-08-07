@@ -1,6 +1,7 @@
 package com.tim.hundreds
 
 class ProductComment {
+  String uuid = TokenGenerator.generateToken()
   String general
   String description
   String benefits

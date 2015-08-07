@@ -6,10 +6,26 @@ import grails.transaction.Transactional
 class VideoService {
 
   def saveVideo(videoInstance){
-    def musician = videoInstance.musician
-    musician.addToVideos(videoInstance)
-    musician.save(failOnError:true)
+    if(videoInstance.musician){
+      def musician = videoInstance.musician
+      musician.addToVideos(videoInstance)
+      musician.save failOnError: true
+    }
+    if(videoInstance.contact){
+      def contact = videoInstance.contact
+      contact.addToVideos(videoInstance)
+      contact.save failOnError: true
+    }
 
     videoInstance
+  }
+  
+  def resolveMusician(videoInstance) {
+    if(videoInstance.musician){
+      return videoInstance.musician
+    }
+    if (videoInstance.contact){
+      return videoInstance.contact.musician
+    }
   }
 }

@@ -1,6 +1,7 @@
 package com.tim.hundreds
 
 class CompanyComment {
+  String uuid = TokenGenerator.generateToken()
   String general
   String description
   String datosFiscales

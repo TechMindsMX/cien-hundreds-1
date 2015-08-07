@@ -8,6 +8,7 @@ class MessengineService {
   def grailsApplication
 
   def sendInstanceEditedMessage(def target, String instance) {
+    log.info "target: ${target.dump()}"
     def userProfile = target.user.profile
     def targetProfile = target.assigned?.profile
 
@@ -19,4 +20,5 @@ class MessengineService {
       restService.sendCommand(message, grailsApplication.config."${instance}".edited.user.url)
     }
   }
+
 }
