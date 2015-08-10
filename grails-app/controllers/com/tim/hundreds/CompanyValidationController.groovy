@@ -10,6 +10,7 @@ import grails.plugin.springsecurity.SpringSecurityUtils
 class CompanyValidationController {
     def companyService
     def springSecurityService
+    def validationService
 
     static showMe = true
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -25,6 +26,7 @@ class CompanyValidationController {
 
     @Secured(['ROLE_ADMIN','ROLE_COMPANY_ADMIN','ROLE_BUYER'])
     def show(CompanyValidation companyValidationInstance) {
+        companyValidationInstance = companyValidationInstance ?: CompanyValidation.findByUuid(params.uuid)
         respond companyValidationInstance
     }
 
@@ -64,6 +66,7 @@ class CompanyValidationController {
 
     @Secured(['ROLE_ADMIN', 'ROLE_COMPANY_ADMIN','ROLE_BUYER'])
     def edit(CompanyValidation companyValidationInstance) {
+      companyValidationInstance = CompanyValidation.findByUuid(params.uuid)
       def roleBuyer = Role.findByAuthority("ROLE_BUYER")
       def users = UserRole.findAllByRole(roleBuyer)
       respond companyValidationInstance, [model:[buyers:users*.user]]
