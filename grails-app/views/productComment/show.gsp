@@ -100,6 +100,16 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${productCommentInstance?.complements}">
+				<li class="row fieldcontain">
+					<span id="complements-label" class="${session.labelWidth} property-label"><g:message code="productComment.complements.label" default="Complements" /></span>
+					
+						<span class="property-value" aria-labelledby="complements-label"><g:fieldValue bean="${productCommentInstance}" field="complements"/></span>
+					
+				</li>
+				</g:if>
+
 				<g:if test="${productCommentInstance?.product}">
 				<li class="row fieldcontain">
 					<span id="product-label" class="${session.labelWidth} property-label"><g:message code="productComment.product.label" default="Product" /></span>

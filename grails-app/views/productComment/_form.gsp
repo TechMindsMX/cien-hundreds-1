@@ -180,4 +180,26 @@
 	</div>
 </div>
 
+<div class="row">
+	<div class="col-md-4">
+		<ul>
+		<g:each in="${productCommentInstance.product?.complements}" var="c" >
+			<li>
+				${c.name} - ${c.price}
+			</li>
+		</ul>
+		</g:each>
+	</div>
+	<div class="col-md-8 form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'complements', 'error')} ">
+		<label class="${session.labelWidth} control-label" for="complements">
+			<g:message code="productComment.complements.label" default="Complements" />
+			
+		</label>
+			<div class="${session.inputWidth}">
+				<g:textArea class="form-control" name="complements" id="notes" cols="40" rows="5" maxlength="10000" value="${productCommentInstance?.complements}"/>
+
+			</div>
+	</div>
+</div>
+
 <g:hiddenField name="product.id" value="${productCommentInstance?.product?.id}" required="" />
