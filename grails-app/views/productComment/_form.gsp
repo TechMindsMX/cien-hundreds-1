@@ -185,10 +185,10 @@
 		<ul>
 		<g:each in="${productCommentInstance.product?.complements}" var="c" >
 			<li>
-				${c.name} - ${c.price}
+				${c.name} - precio: ${c.price}
 			</li>
-		</ul>
 		</g:each>
+		</ul>
 	</div>
 	<div class="col-md-8 form-group fieldcontain ${hasErrors(bean: productCommentInstance, field: 'complements', 'error')} ">
 		<label class="${session.labelWidth} control-label" for="complements">
