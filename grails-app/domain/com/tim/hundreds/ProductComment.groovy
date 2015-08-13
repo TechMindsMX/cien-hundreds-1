@@ -11,6 +11,7 @@ class ProductComment {
   String distributionModel
   String customerModel
   String notes
+  String complements
 
   Date dateCreated
   Date lastUpdated
@@ -27,6 +28,7 @@ class ProductComment {
     distributionModel type:'text'
     customerModel type:'text'
     notes type:'text'
+    complements type:'text'
   }
 
   static constraints = {
@@ -39,6 +41,7 @@ class ProductComment {
     distributionModel nullable:true,blank:false,size:1..10000
     customerModel nullable:true,blank:false,size:1..10000
     notes nullable:true,blank:false,size:1..10000
+    complements nullable:true,blank:false,size:1..10000
   }
 
 }
