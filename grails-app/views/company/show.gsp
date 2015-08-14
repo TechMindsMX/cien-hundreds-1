@@ -253,12 +253,9 @@
 				<g:if test="${!companyInstance?.companyComment}">
 					<g:link class="btn btn-success" controller="companyComment" action="create" params="['companyUuid': companyInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'companyComment.label')])}</g:link>
 				</g:if>
-				<g:else>
-					<g:link class="btn btn-success" controller="companyComment" action="edit" params="['uuid': companyInstance.companyComment.uuid]" >${message(code: 'default.edit.label', args: [message(code: 'companyComment.label')])}</g:link>
-				</g:else>
 			</sec:ifAnyGranted>
 
-			<sec:ifAnyGranted roles="ROLE_COMPANY_VIEWER">
+			<sec:ifAnyGranted roles="ROLE_COMPANY_VIEWER,ROLE_BUYER">
 				<g:if test="${companyInstance?.companyComment}">
 					<g:link class="btn btn-success" controller="companyComment" action="show" params="['uuid': companyInstance.companyComment.uuid]" >${message(code: 'default.show.label', args: [message(code: 'companyComment.label')])}</g:link>
 				</g:if>
