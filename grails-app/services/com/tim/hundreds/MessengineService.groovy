@@ -21,4 +21,10 @@ class MessengineService {
     }
   }
 
+  def sendMusicianAskValidationMessage(User to, Musician musician, String instance) {
+    def userProfile = to.profile
+
+    def message = new AssignationCommand(email:userProfile.email, name:userProfile.firstName, reference:musician.name)
+    restService.sendCommand(message, grailsApplication.config."${instance}".askValidation.url)
+  }
 }

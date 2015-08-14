@@ -59,4 +59,8 @@ class MusicianService {
         musicianList
   }
 
+  def canAskForValidation(Musician musicianInstance) {
+    return !musicianInstance.active
+  }
+
 }

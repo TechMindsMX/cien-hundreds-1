@@ -12,6 +12,7 @@ class MusicianController {
     def tagService
     def finderService
     def springSecurityService
+    def userHelperService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
@@ -20,25 +21,6 @@ class MusicianController {
         params.max = Math.min(max ?: 10, 100)
         def musicianList = musicianService.getMusicianList(springSecurityService.currentUser, params)
         respond musicianList.list, model:[musicianInstanceCount: musicianList.count]
-    }
-
-    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
-    def creationReportFilter() {
-      log.info "Listing musician created from ${params.from} to ${params.to}"
-      def musicianList
-      try{
-        Date startDate = Date.parse('dd-MM-yyyy', params.from)
-        Date endDate = Date.parse('dd-MM-yyyy', params.to)
-        musicianList = musicianService.getMusiciansByDateCreated(startDate, endDate)
-      }catch(InvalidParamsException ipe){
-        log.warn ipe.message
-        flash.error=g.message(code: 'error.date.range')
-      }
-      render view:'creationReportView', model: [musicianInstanceList: musicianList]
-    }
-
-    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
-    def creationReportView() {
     }
 
     @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
@@ -137,6 +119,49 @@ class MusicianController {
             }
             '*'{ render status: NO_CONTENT }
         }
+    }
+
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
+    def creationReportFilter() {
+      log.info "Listing musician created from ${params.from} to ${params.to}"
+      def musicianList
+      try{
+        Date startDate = Date.parse('dd-MM-yyyy', params.from)
+        Date endDate = Date.parse('dd-MM-yyyy', params.to)
+        musicianList = musicianService.getMusiciansByDateCreated(startDate, endDate)
+      }catch(InvalidParamsException ipe){
+        log.warn ipe.message
+        flash.error=g.message(code: 'error.date.range')
+      }
+      render view:'creationReportView', model: [musicianInstanceList: musicianList]
+    }
+
+    @Secured(['ROLE_USER','ROLE_ADMIN','ROLE_FACILITATOR','ROLE_MUSICIAN_ADMIN','ROLE_MUSICIAN_VIEWER'])
+    def creationReportView() {
+    }
+
+    @Secured(['ROLE_USER'])
+    def requireValidation() {
+        def musicianInstance = Musician.findByUuid(params.uuid)
+        if (musicianInstance == null) {
+            flash.error = g.message(code: 'error.not.found.msg')
+            redirect action: "show", params: [uuid: params.uuid]
+        }
+
+        log.info "${musicianService.canAskForValidation(musicianInstance)}"
+        if (musicianService.canAskForValidation(musicianInstance)) {
+            def userList = userHelperService.findListByRole(['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN'])
+        log.info "${userList.dump()}"
+            userList.each {
+        log.info "${it.dump()}"
+                messengineService.sendMusicianAskValidationMessage(it, musicianInstance, 'musician')
+            }
+            flash.message = g.message(code: 'error.musician.validation.emails.sent')
+        } else {
+            flash.error = g.message(code: 'error.musician.validated.already')
+        }
+
+        redirect action: "show", params: [uuid: musicianInstance.uuid]
     }
 
     protected void notFound() {
