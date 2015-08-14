@@ -151,9 +151,7 @@ class MusicianController {
         log.info "${musicianService.canAskForValidation(musicianInstance)}"
         if (musicianService.canAskForValidation(musicianInstance)) {
             def userList = userHelperService.findListByRole(['ROLE_ADMIN','ROLE_MUSICIAN_ADMIN'])
-        log.info "${userList.dump()}"
             userList.each {
-        log.info "${it.dump()}"
                 messengineService.sendMusicianAskValidationMessage(it, musicianInstance, 'musician')
             }
             flash.message = g.message(code: 'error.musician.validation.emails.sent')

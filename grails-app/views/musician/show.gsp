@@ -367,6 +367,7 @@
             <sec:ifAnyGranted roles="ROLE_USER">
                 <g:link class="btn btn-success blank" action="edit" resource="${musicianInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                 <g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                <g:link class="btn btn-success blank" action="requireValidation" params="['uuid': musicianInstance.uuid]"><g:message code="musician.ask.validation.label" default="Solicitar validación" /></g:link>
             </sec:ifAnyGranted>
 
             <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN">
