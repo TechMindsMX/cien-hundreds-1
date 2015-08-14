@@ -98,7 +98,7 @@
 				<g:if test="${musicianCommentInstance?.musician}">
 				<li class="fieldcontain">
 					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musicianComment.musician.label" default="Musician" /></span>
-						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" id="${musicianCommentInstance?.musician?.id}">${musicianCommentInstance?.musician?.name}</g:link></span>			
+						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" params="['uuid': musicianCommentInstance?.musician?.uuid]">${musicianCommentInstance?.musician?.name}</g:link></span>			
 				</li>
 				</g:if>
 			
