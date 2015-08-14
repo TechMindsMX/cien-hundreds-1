@@ -1,7 +1,7 @@
 <%@ page import="com.tim.hundreds.MusicianComment" %>
 
 <h4>
-	<g:message code="companyComment.general.label" default="General" />
+	<g:message code="general.label" default="General" />
 </h4>
 <div class="row">
 	<div class="col-md-4">

@@ -18,91 +18,209 @@
 		</div>
 		<div id="show-musicianComment" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ul class="property-list musicianComment">
 			
-				<g:if test="${musicianCommentInstance?.general}">
-				<li class="fieldcontain">
-					<span id="general-label" class="${session.labelWidth} property-label"><g:message code="musicianComment.general.label" default="General" /></span>
-					
-						<span class="property-value" aria-labelledby="general-label"><g:fieldValue bean="${musicianCommentInstance}" field="general"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${musicianCommentInstance?.history}">
-				<li class="fieldcontain">
-					<span id="history-label" class="${session.labelWidth} property-label"><g:message code="musicianComment.history.label" default="History" /></span>
-					
-						<span class="property-value" aria-labelledby="history-label"><g:fieldValue bean="${musicianCommentInstance}" field="history"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${musicianCommentInstance?.datosFiscales}">
-				<li class="fieldcontain">
-					<span id="datosFiscales-label" class="${session.labelWidth} property-label"><g:message code="musicianComment.datosFiscales.label" default="Datos Fiscales" /></span>
-					
-						<span class="property-value" aria-labelledby="datosFiscales-label"><g:fieldValue bean="${musicianCommentInstance}" field="datosFiscales"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${musicianCommentInstance?.activities}">
-				<li class="fieldcontain">
-					<span id="activities-label" class="${session.labelWidth} property-label"><g:message code="musicianComment.activities.label" default="Activities" /></span>
-					
-						<span class="property-value" aria-labelledby="activities-label"><g:fieldValue bean="${musicianCommentInstance}" field="activities"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${musicianCommentInstance?.medias}">
-				<li class="fieldcontain">
-					<span id="medias-label" class="${session.labelWidth} property-label"><g:message code="musicianComment.medias.label" default="Medias" /></span>
-					
-						<span class="property-value" aria-labelledby="medias-label"><g:fieldValue bean="${musicianCommentInstance}" field="medias"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${musicianCommentInstance?.notes}">
-				<li class="fieldcontain">
-					<span id="notes-label" class="${session.labelWidth} property-label"><g:message code="musicianComment.notes.label" default="Notes" /></span>
-					
-						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${musicianCommentInstance}" field="notes"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${musicianCommentInstance?.suggestions}">
-				<li class="fieldcontain">
-					<span id="suggestions-label" class="${session.labelWidth} property-label"><g:message code="musicianComment.suggestions.label" default="Suggestions" /></span>
-					
-						<span class="property-value" aria-labelledby="suggestions-label"><g:fieldValue bean="${musicianCommentInstance}" field="suggestions"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${musicianCommentInstance?.contacts}">
-				<li class="fieldcontain">
-					<span id="contacts-label" class="${session.labelWidth} property-label"><g:message code="musicianComment.contacts.label" default="Contacts" /></span>
-					
-						<span class="property-value" aria-labelledby="contacts-label"><g:fieldValue bean="${musicianCommentInstance}" field="contacts"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${musicianCommentInstance?.musician}">
-				<li class="fieldcontain">
-					<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musicianComment.musician.label" default="Musician" /></span>
-						<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" params="['uuid': musicianCommentInstance?.musician?.uuid]">${musicianCommentInstance?.musician?.name}</g:link></span>			
-				</li>
-				</g:if>
-			
-			</ul>
+			<h4>
+				<g:message code="general.label" default="General" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>
+						<label><g:message code="name.label" /></label>
+							${musicianCommentInstance?.musician?.name}
+						</li>
+						<li>
+						<label><g:message code="web.label" /></label>
+							<a href="${musicianCommentInstance?.musician?.web}">${musicianCommentInstance?.musician?.web}</a>
+						</li>
+						<li>
+							<label><g:message code="dateCreate.label" /></label>			
+							<g:formatDate format="dd-MM-yyyy" date="${musicianCommentInstance?.musician?.formed}" />
+			    		</li>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="general-label"><g:fieldValue bean="${musicianCommentInstance}" field="general"/></span>
+				</div>
+			</div>
+
+			<h4>
+				<g:message code="musician.history.placeholder" default="General" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>		
+							${musicianCommentInstance?.musician?.history}
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="history-label"><g:fieldValue bean="${musicianCommentInstance}" field="history"/></span>
+				</div>
+			</div>
+
+			<h4>
+				<g:message code="datosFiscales.label" default="Datos Fiscales" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>		
+							<div>${musicianCommentInstance?.musician?.datosFiscales?.razonSocial}</div>
+							<div>${musicianCommentInstance?.musician?.datosFiscales?.rfc}</div>
+							<div>${musicianCommentInstance?.musician?.datosFiscales?.personaJuridica}</div>
+							<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.street}</div>
+							<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.neighborhood}</div>
+							<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.county}</div>
+							<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.town}</div>
+							<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.state}</div>
+							<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.country}</div>
+							<div>${musicianCommentInstance?.musician?.datosFiscales?.address?.zipcode}</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="datosFiscales-label"><g:fieldValue bean="${musicianCommentInstance}" field="datosFiscales"/></span>
+				</div>
+			</div>
+
+			<h4>
+				<g:message code="musicianComment.activities.label" default="Actividades Relevantes" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<g:each in="${musicianCommentInstance?.musician?.activities}">
+							<li>		
+								${it.activity}
+							</li>
+						</g:each>	
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="activities-label"><g:fieldValue bean="${musicianCommentInstance}" field="activities"/></span>
+				</div>
+			</div>
+
+			<h4>
+				<g:message code="musicianComment.medias.label" default="Actividades Relevantes" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>
+							<h4>
+								<label>
+									<g:message code="photo.label" default="Fotos" />
+								</label>
+							</h4>
+							<g:each in="${musicianCommentInstance?.musician?.photos}">
+								<li>		
+									<div class="img pad-bottom">
+									<img class="img-responsive img-thumbnail max300" src="${grailsApplication.config.base.photo.url}${it.path}" />
+									</div>
+								</li>
+							</g:each>		
+						</li>		
+						<li>
+							<h4>
+								<label>
+									<g:message code="video.label" default="Videos" />
+								</label>
+							</h4>		
+							<ul>
+								<g:each in="${musicianCommentInstance?.musician?.videos}">
+									<li>
+										<a href="${it.url}">${it.url}</a>
+									</li>
+								</g:each>
+							</ul>
+						</li>		
+						<li>
+							<h4>
+								<label>
+									<g:message code="audios.label" default="Audios" />	
+								</label>
+							</h4>		
+							<ul>
+								<g:each in="${musicianCommentInstance?.musician?.audios}">
+									<li>
+										<a href="${it.url}">${it.url}</a>
+									</li>
+								</g:each>
+							</ul>	
+						</li>		
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="medias-label"><g:fieldValue bean="${musicianCommentInstance}" field="medias"/></span>
+				</div>
+			</div>
+
+			<h4>
+				<g:message code="musicianComment.suggestions.label" default="Actividades Relevantes" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					 <ul>
+						<g:each in="${musicianCommentInstance?.musician?.suggestions}">
+								<li>		
+									${it.name}
+								</li>
+						</g:each>		
+					</ul>
+
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="suggestions-label"><g:fieldValue bean="${musicianCommentInstance}" field="suggestions"/></span>
+				</div>
+			</div>	
+
+			<h4>
+				<g:message code="musicianComment.notes.label" default="Actividades Relevantes" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>		
+							${musicianCommentInstance?.musician?.notes}
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${musicianCommentInstance}" field="notes"/></span>
+				</div>
+			</div>
+
+			<h4>
+				<g:message code="musicianComment.contacts.label" default="Contactos" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					 <ul>
+						<g:each in="${musicianCommentInstance?.musician?.contacts}">
+								<li>		
+									${it.firstName} ${it.lastName} <g:link target="_blank" controller="contact" action="show" params="['uuid': it.uuid ]">${message(code: 'default.show.label', args: [message(code: 'contact.label')])}</g:link>
+								</li>
+						</g:each>		
+					</ul>
+
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="contacts-label"><g:fieldValue bean="${musicianCommentInstance}" field="contacts"/></span>
+				</div>
+			</div>	
+
+			<div class="row">
+				<div class="col-md-12">
+					<p class="fieldcontain">
+						<span id="musician-label" class="${session.labelWidth} property-label"><g:message code="musician.label" /></span>
+						
+							<span class="property-value" aria-labelledby="musician-label"><g:link controller="musician" action="show" params="[uuid: musicianCommentInstance?.musician?.uuid]">${musicianCommentInstance?.musician?.name.encodeAsHTML()}</g:link></span>
+					</p>
+				</div>
+			</div>
 
       <sec:ifAnyGranted roles="ROLE_FACILITATOR">
 				<g:form url="[resource:musicianCommentInstance, action:'delete']" method="DELETE">
