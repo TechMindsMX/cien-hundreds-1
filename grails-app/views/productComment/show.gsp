@@ -18,111 +18,183 @@
 		</div>
 		<div id="show-productComment" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<ul class="property-list productComment">
-			
-				<g:if test="${productCommentInstance?.general}">
-				<li class="row fieldcontain">
-					<span id="general-label" class="${session.labelWidth} property-label"><g:message code="productComment.general.label" default="General" /></span>
-					
-						<span class="property-value" aria-labelledby="general-label"><g:fieldValue bean="${productCommentInstance}" field="general"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productCommentInstance?.description}">
-				<li class="row fieldcontain">
-					<span id="description-label" class="${session.labelWidth} property-label"><g:message code="productComment.description.label" default="Description" /></span>
-					
-						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${productCommentInstance}" field="description"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productCommentInstance?.benefits}">
-				<li class="row fieldcontain">
-					<span id="benefits-label" class="${session.labelWidth} property-label"><g:message code="productComment.benefits.label" default="Benefits" /></span>
-					
-						<span class="property-value" aria-labelledby="benefits-label"><g:fieldValue bean="${productCommentInstance}" field="benefits"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productCommentInstance?.target}">
-				<li class="row fieldcontain">
-					<span id="target-label" class="${session.labelWidth} property-label"><g:message code="productComment.target.label" default="Target" /></span>
-					
-						<span class="property-value" aria-labelledby="target-label"><g:fieldValue bean="${productCommentInstance}" field="target"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productCommentInstance?.competence}">
-				<li class="row fieldcontain">
-					<span id="competence-label" class="${session.labelWidth} property-label"><g:message code="productComment.competence.label" default="Competence" /></span>
-					
-						<span class="property-value" aria-labelledby="competence-label"><g:fieldValue bean="${productCommentInstance}" field="competence"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productCommentInstance?.discountModel}">
-				<li class="row fieldcontain">
-					<span id="discountModel-label" class="${session.labelWidth} property-label"><g:message code="productComment.discountModel.label" default="Discount Model" /></span>
-					
-						<span class="property-value" aria-labelledby="discountModel-label"><g:fieldValue bean="${productCommentInstance}" field="discountModel"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productCommentInstance?.distributionModel}">
-				<li class="row fieldcontain">
-					<span id="distributionModel-label" class="${session.labelWidth} property-label"><g:message code="productComment.distributionModel.label" default="Distribution Model" /></span>
-					
-						<span class="property-value" aria-labelledby="distributionModel-label"><g:fieldValue bean="${productCommentInstance}" field="distributionModel"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productCommentInstance?.customerModel}">
-				<li class="row fieldcontain">
-					<span id="customerModel-label" class="${session.labelWidth} property-label"><g:message code="productComment.customerModel.label" default="Customer Model" /></span>
-					
-						<span class="property-value" aria-labelledby="customerModel-label"><g:fieldValue bean="${productCommentInstance}" field="customerModel"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productCommentInstance?.notes}">
-				<li class="row fieldcontain">
-					<span id="notes-label" class="${session.labelWidth} property-label"><g:message code="productComment.notes.label" default="Notes" /></span>
-					
-						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${productCommentInstance}" field="notes"/></span>
-					
-				</li>
-				</g:if>
 
-				<g:if test="${productCommentInstance?.complements}">
-				<li class="row fieldcontain">
-					<span id="complements-label" class="${session.labelWidth} property-label"><g:message code="productComment.complements.label" default="Complements" /></span>
-					
-						<span class="property-value" aria-labelledby="complements-label"><g:fieldValue bean="${productCommentInstance}" field="complements"/></span>
-					
-				</li>
-				</g:if>
+			<h4>
+				<g:message code="general.label" default="General" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>
+							${productCommentInstance.product?.name}
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="general-label"><g:fieldValue bean="${productCommentInstance}" field="general"/></span>
+				</div>
+			</div>
 
-				<g:if test="${productCommentInstance?.product}">
-				<li class="row fieldcontain">
-					<span id="product-label" class="${session.labelWidth} property-label"><g:message code="productComment.product.label" default="Product" /></span>
-					
-						<span class="property-value" aria-labelledby="product-label"><g:link controller="product" action="show" params="['uuid': productCommentInstance?.product?.uuid]">${productCommentInstance?.product?.name.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
+			<h4>
+				<g:message code="description.label" default="Descripción" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>
+							${productCommentInstance.product?.description}
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${productCommentInstance}" field="description"/></span>
+				</div>
+			</div>
 
-			</ul>
+			<h4>
+				<g:message code="benefits.label" default="Beneficios" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>
+							${productCommentInstance.product?.benefits}
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="benefits-label"><g:fieldValue bean="${productCommentInstance}" field="benefits"/></span>
+				</div>
+			</div>
+
+			<h4>
+				<g:message code="target.label" default="General" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>
+							${productCommentInstance.product?.target}
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="target-label"><g:fieldValue bean="${productCommentInstance}" field="target"/></span>
+				</div>
+			</div>
+
+			<h4>
+				<g:message code="competence.label" default="General" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>
+							${productCommentInstance.product?.competence}
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="competence-label"><g:fieldValue bean="${productCommentInstance}" field="competence"/></span>
+				</div>
+			</div>
+
+			<h4>
+				<g:message code="discountModel.label" default="General" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>
+							${productCommentInstance.product?.discountModel}
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="discountModel-label"><g:fieldValue bean="${productCommentInstance}" field="discountModel"/></span>
+				</div>
+			</div>
+
+			<h4>
+				<g:message code="distributionModel.label" default="General" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>
+							${productCommentInstance.product?.distributionModel}
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="distributionModel-label"><g:fieldValue bean="${productCommentInstance}" field="distributionModel"/></span>
+				</div>
+			</div>
+
+			<h4>
+				<g:message code="customerModel.label" default="General" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>
+							${productCommentInstance.product?.customerModel}
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="customerModel-label"><g:fieldValue bean="${productCommentInstance}" field="customerModel"/></span>
+				</div>
+			</div>
+
+			<h4>
+				<g:message code="notes.label" default="General" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+						<li>
+							${productCommentInstance.product?.notes}
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${productCommentInstance}" field="notes"/></span>
+				</div>
+			</div>
+
+			<h4>
+				<g:message code="complements.label" default="General" />
+			</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<ul>
+					<g:each in="${productCommentInstance.product?.complements}" var="c" >
+						<li>
+							${c.name} - precio: ${c.price}
+						</li>
+					</g:each>
+					</ul>
+				</div>
+				<div class="col-md-8 form-group well">
+					<span class="property-value" aria-labelledby="complements-label"><g:fieldValue bean="${productCommentInstance}" field="complements"/></span>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<p class="fieldcontain">
+						<span id="product-label" class="${session.labelWidth} property-label"><g:message code="product.label" /></span>
+						
+							<span class="property-value" aria-labelledby="product-label"><g:link controller="product" action="show" params="[uuid: productCommentInstance?.product?.uuid]">${companyCommentInstance?.product?.name.encodeAsHTML()}</g:link></span>
+						
+					</p>
+				</div>
+			</div>
+
 			<g:form url="[resource:productCommentInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="btn btn-primary edit" action="edit" parmas="['uuid': productCommentInstance.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="btn btn-primary edit" action="edit" params="['uuid': productCommentInstance.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
