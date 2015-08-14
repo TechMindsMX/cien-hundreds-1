@@ -264,7 +264,7 @@
                 </div>
             </g:if>
 
-            <sec:access expression="hasRole('ROLE_FACILITATOR')">
+            <sec:ifAnyGranted roles="ROLE_FACILITATOR,ROLE_MUSICIAN_VIEWER">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="fieldcontain well">
@@ -277,7 +277,7 @@
                         </div>
                     </div>
                 </div>
-            </sec:access>
+            </sec:ifAnyGranted>
 
         </div>
     </div>
@@ -369,27 +369,24 @@
                 <g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
             </sec:ifAnyGranted>
 
-            <sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_MUSICIAN_ADMIN')">
+            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN">
                 <g:if test="${!musicianInstance?.musicianValidation}" >
                     <g:link class="btn btn-success" controller="musicianValidation" action="create" params="['musician.id': musicianInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'musicianValidation.label')])}</g:link>
                 </g:if>
-            </sec:access>
-            <sec:access expression="hasRole('ROLE_ADMIN') || hasRole('ROLE_MUSICIAN_ADMIN') || hasRole('ROLE_FACILITATOR')">
+            </sec:ifAnyGranted>
+            <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MUSICIAN_ADMIN,ROLE_FACILITATOR">
                 <g:if test="${musicianInstance?.musicianValidation}" >
                     <g:link class="btn btn-success" controller="musicianValidation" action="edit" id="${musicianInstance?.musicianValidation?.id}">${message(code: 'default.edit.label', args: [message(code: 'musicianValidation.label')])}</g:link>
                 </g:if>
-            </sec:access>
+            </sec:ifAnyGranted>
 
             <sec:ifAnyGranted roles="ROLE_FACILITATOR">
                 <g:if test="${!musicianInstance?.musicianComment}">
                     <g:link class="btn btn-success" controller="musicianComment" action="create" params="['musician.id': musicianInstance.id]" >${message(code: 'default.add.label', args: [message(code: 'musicianComment.label')])}</g:link>
                 </g:if>
-                <g:else>
-                    <g:link class="btn btn-success" controller="musicianComment" action="edit" id="${musicianInstance.musicianComment.id}" >${message(code: 'default.edit.label', args: [message(code: 'musicianComment.label')])}</g:link>
-                </g:else>
             </sec:ifAnyGranted>
 
-            <sec:ifAnyGranted roles="ROLE_MUSICIAN_VIEWER">
+            <sec:ifAnyGranted roles="ROLE_MUSICIAN_VIEWER,ROLE_FACILITATOR">
                 <g:if test="${musicianInstance?.musicianComment}">
                     <g:link class="btn btn-success" controller="musicianComment" action="show" id="${musicianInstance.musicianComment.id}" >${message(code: 'default.show.label', args: [message(code: 'musicianComment.label')])}</g:link>
                 </g:if>
