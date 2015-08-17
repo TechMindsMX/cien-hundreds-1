@@ -225,14 +225,16 @@
 					<g:link class="btn btn-primary edit" action="edit" params="['uuid': productInstance.uuid]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 				</sec:ifAnyGranted>
 
-				<sec:ifAnyGranted roles="ROLE_BUYER">
-					<g:if test="${!productInstance?.productComment}">
+				<g:if test="${!productInstance?.productComment}">
+					<sec:ifAnyGranted roles="ROLE_BUYER">
 						<g:link class="btn btn-success" controller="productComment" action="create" params="['productUuid': productInstance.uuid]" >${message(code: 'default.add.label', args: [message(code: 'productComment.label')])}</g:link>
-					</g:if>
-					<g:else>
-						<g:link class="btn btn-success" controller="productComment" action="edit" params="['uuid': productInstance.productComment.uuid}" >${message(code: 'default.edit.label', args: [message(code: 'productComment.label')])}</g:link>
-					</g:else>
-				</sec:ifAnyGranted>
+					</sec:ifAnyGranted>
+				</g:if>
+				<g:else>
+					<sec:ifAnyGranted roles="ROLE_BUYER,ROLE_COMPANY_VIEWER">
+						<g:link class="btn btn-success" controller="productComment" action="show" params="['uuid': productInstance.productComment.uuid]" >${message(code: 'default.show.label', args: [message(code: 'productComment.label')])}</g:link>
+					</sec:ifAnyGranted>
+				</g:else>
 
 				<sec:ifAnyGranted roles="ROLE_USER">
 					<g:actionSubmit class="btn btn-danger delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />

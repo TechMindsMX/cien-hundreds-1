@@ -1,7 +1,7 @@
 <%@ page import="com.tim.hundreds.MusicianComment" %>
 
 <h4>
-	<g:message code="companyComment.general.label" default="General" />
+	<g:message code="general.label" default="General" />
 </h4>
 <div class="row">
 	<div class="col-md-4">
@@ -223,6 +223,32 @@
 			</div>
 	</div>
 </div>
+
+<h4>
+	<g:message code="musicianComment.contacts.label" default="Contactos" />
+</h4>
+<div class="row">
+	<div class="col-md-4">
+		 <ul>
+			<g:each in="${musicianCommentInstance?.musician?.contacts}">
+					<li>		
+						${it.firstName} ${it.lastName} <g:link target="_blank" controller="contact" action="show" params="['uuid': it.uuid ]">${message(code: 'default.show.label', args: [message(code: 'contact.label')])}</g:link>
+					</li>
+			</g:each>		
+		</ul>
+
+	</div>
+	<div class="col-md-8 form-group fieldcontain ${hasErrors(bean: musicianCommentInstance, field: 'contacts', 'error')} ">
+		<label class="${session.labelWidth} control-label" for="contacts">
+			<g:message code="musicianComment.contacts.label" default="Contactos" />
+			
+		</label>
+			<div class="${session.inputWidth}">
+				<g:textArea class="form-control" name="contacts" id="contacts" cols="40" rows="5" maxlength="10000" value="${musicianCommentInstance?.contacts}"/>
+
+			</div>
+	</div>
+</div>	
 
 	<g:hiddenField class="form-control" name="contacts" id="contacts" cols="40" rows="5" maxlength="10000" value="${musicianCommentInstance?.contacts}"/>
 	<g:hiddenField id="musician" name="musician.id" from="${com.tim.hundreds.Musician.list()}" optionKey="id" required="" value="${musicianCommentInstance?.musician?.id}" class="form-control many-to-one"/>
